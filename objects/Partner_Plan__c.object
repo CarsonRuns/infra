@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Advanced_Tech__c</fullName>
+        <description>Percentage of sales for this partner that come from advanced technologies</description>
+        <externalId>false</externalId>
+        <label>Advanced Tech %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CCIE_s__c</fullName>
+        <externalId>false</externalId>
+        <label>CCIE's</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Cisco_Business__c</fullName>
+        <externalId>false</externalId>
+        <label>Cisco Business</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ATM</fullName>
+                    <default>false</default>
+                    <label>ATM</label>
+                </value>
+                <value>
+                    <fullName>Call Centre</fullName>
+                    <default>false</default>
+                    <label>Call Centre</label>
+                </value>
+                <value>
+                    <fullName>Content</fullName>
+                    <default>false</default>
+                    <label>Content</label>
+                </value>
+                <value>
+                    <fullName>Frame</fullName>
+                    <default>false</default>
+                    <label>Frame</label>
+                </value>
+                <value>
+                    <fullName>Global Networks</fullName>
+                    <default>false</default>
+                    <label>Global Networks</label>
+                </value>
+                <value>
+                    <fullName>IP Core</fullName>
+                    <default>false</default>
+                    <label>IP Core</label>
+                </value>
+                <value>
+                    <fullName>IP Edge</fullName>
+                    <default>false</default>
+                    <label>IP Edge</label>
+                </value>
+                <value>
+                    <fullName>IP Telephony</fullName>
+                    <default>false</default>
+                    <label>IP Telephony</label>
+                </value>
+                <value>
+                    <fullName>LAN</fullName>
+                    <default>false</default>
+                    <label>LAN</label>
+                </value>
+                <value>
+                    <fullName>Metro Core</fullName>
+                    <default>false</default>
+                    <label>Metro Core</label>
+                </value>
+                <value>
+                    <fullName>Metro Ethernet</fullName>
+                    <default>false</default>
+                    <label>Metro Ethernet</label>
+                </value>
+                <value>
+                    <fullName>Metro Optical</fullName>
+                    <default>false</default>
+                    <label>Metro Optical</label>
+                </value>
+                <value>
+                    <fullName>Optical</fullName>
+                    <default>false</default>
+                    <label>Optical</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>Storage IT/DCN</fullName>
+                    <default>false</default>
+                    <label>Storage IT/DCN</label>
+                </value>
+                <value>
+                    <fullName>VoIP Gateway</fullName>
+                    <default>false</default>
+                    <label>VoIP Gateway</label>
+                </value>
+                <value>
+                    <fullName>WAN</fullName>
+                    <default>false</default>
+                    <label>WAN</label>
+                </value>
+                <value>
+                    <fullName>Wireless</fullName>
+                    <default>false</default>
+                    <label>Wireless</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cisco_Services_Competency__c</fullName>
+        <description>Multiselect Picklist that allows the user to indicate what services the partner is competent in providing</description>
+        <externalId>false</externalId>
+        <label>Cisco Services Competency</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Advanced Routing and Switching</fullName>
+                    <default>false</default>
+                    <label>Advanced Routing and Switching</label>
+                </value>
+                <value>
+                    <fullName>Advanced Security</fullName>
+                    <default>false</default>
+                    <label>Advanced Security</label>
+                </value>
+                <value>
+                    <fullName>Advanced Unified Communications</fullName>
+                    <default>false</default>
+                    <label>Advanced Unified Communications</label>
+                </value>
+                <value>
+                    <fullName>Advanced Wireless LAN</fullName>
+                    <default>false</default>
+                    <label>Advanced Wireless LAN</label>
+                </value>
+                <value>
+                    <fullName>Express Foundation</fullName>
+                    <default>false</default>
+                    <label>Express Foundation</label>
+                </value>
+                <value>
+                    <fullName>Storage Networking</fullName>
+                    <default>false</default>
+                    <label>Storage Networking</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cisco_Technology_Competency__c</fullName>
+        <description>Multiselect Picklist that allows the user to indicate what Cisco Technologies the partner is competent in selling</description>
+        <externalId>false</externalId>
+        <label>Cisco Technology Competency</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ATM</fullName>
+                    <default>false</default>
+                    <label>ATM</label>
+                </value>
+                <value>
+                    <fullName>Call Centre</fullName>
+                    <default>false</default>
+                    <label>Call Centre</label>
+                </value>
+                <value>
+                    <fullName>Content</fullName>
+                    <default>false</default>
+                    <label>Content</label>
+                </value>
+                <value>
+                    <fullName>Frame</fullName>
+                    <default>false</default>
+                    <label>Frame</label>
+                </value>
+                <value>
+                    <fullName>Global Networks</fullName>
+                    <default>false</default>
+                    <label>Global Networks</label>
+                </value>
+                <value>
+                    <fullName>IP Core</fullName>
+                    <default>false</default>
+                    <label>IP Core</label>
+                </value>
+                <value>
+                    <fullName>IP Edge</fullName>
+                    <default>false</default>
+                    <label>IP Edge</label>
+                </value>
+                <value>
+                    <fullName>IP Telephony</fullName>
+                    <default>false</default>
+                    <label>IP Telephony</label>
+                </value>
+                <value>
+                    <fullName>LAN</fullName>
+                    <default>false</default>
+                    <label>LAN</label>
+                </value>
+                <value>
+                    <fullName>Metro Core</fullName>
+                    <default>false</default>
+                    <label>Metro Core</label>
+                </value>
+                <value>
+                    <fullName>Metro Ethernet</fullName>
+                    <default>false</default>
+                    <label>Metro Ethernet</label>
+                </value>
+                <value>
+                    <fullName>Metro Optical</fullName>
+                    <default>false</default>
+                    <label>Metro Optical</label>
+                </value>
+                <value>
+                    <fullName>Optical</fullName>
+                    <default>false</default>
+                    <label>Optical</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>Storage IT/DCN</fullName>
+                    <default>false</default>
+                    <label>Storage IT/DCN</label>
+                </value>
+                <value>
+                    <fullName>VoIP Gateway</fullName>
+                    <default>false</default>
+                    <label>VoIP Gateway</label>
+                </value>
+                <value>
+                    <fullName>WAN</fullName>
+                    <default>false</default>
+                    <label>WAN</label>
+                </value>
+                <value>
+                    <fullName>Wireless</fullName>
+                    <default>false</default>
+                    <label>Wireless</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Competitors_Technical_Fit__c</fullName>
+        <description>Describes the technical fit of any competitors</description>
+        <externalId>false</externalId>
+        <label>Competitors Technical Fit</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Data_Source_Name__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Data Source Name</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deployment_No__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Deployment No</label>
+        <length>15</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expertise__c</fullName>
+        <description>Text area to indicate this partner’s area of expertise</description>
+        <externalId>false</externalId>
+        <label>Expertise</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Key_Competitors__c</fullName>
+        <description>Text area to indicate this partner’s key competitors</description>
+        <externalId>false</externalId>
+        <label>Key Competitors</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Key_Customers__c</fullName>
+        <description>Text area to indicate this partner’s key customers</description>
+        <externalId>false</externalId>
+        <label>Key Customers</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Key_Partner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Text area to indicate this partner’s key partners</description>
+        <externalId>false</externalId>
+        <label>Key Partner</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Known_Deal_Barriers__c</fullName>
+        <description>What are the known deal barriers that involve this partner with respect to the solution plan</description>
+        <externalId>false</externalId>
+        <label>Known Deal Barriers</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Legacy_Partner_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Legacy - Partner Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunities__c</fullName>
+        <description>Part of SWOT analysis of the partner.  What opportunities exist.</description>
+        <externalId>false</externalId>
+        <label>Opportunities</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <externalId>false</externalId>
+        <label>Solution Plan</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Partner Plans</relationshipLabel>
+        <relationshipName>R00N300000010XFLEA2</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Other_Information__c</fullName>
+        <description>An additional text area field for any other relevant information</description>
+        <externalId>false</externalId>
+        <label>Other Information</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Other_Supplier_Products__c</fullName>
+        <description>Describes the products another supplier can offer</description>
+        <externalId>false</externalId>
+        <label>Other Supplier Products</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Other_URL__c</fullName>
+        <description>URL field that points to other relevant information</description>
+        <externalId>false</externalId>
+        <label>Other URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Overall_Technical_Fit__c</fullName>
+        <description>Text Area to indicate how well this partner’s offering fits with the customer’s needs</description>
+        <externalId>false</externalId>
+        <label>Overall Technical Fit</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Partner_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Reference field to the Contact record at the partner Account in the system.  This is a clickable field that when clicked will bring up the Partner Contact record in salesforce.com</description>
+        <externalId>false</externalId>
+        <label>Partner Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Partner Plans</relationshipLabel>
+        <relationshipName>R00N300000018v7fEAA</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Impact_Comment__c</fullName>
+        <description>Describes impacts and comment from the partner</description>
+        <externalId>false</externalId>
+        <label>Partner Impact/Comment</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Partner_Technical_Solution__c</fullName>
+        <description>Describes the technical solution provided by the partner</description>
+        <externalId>false</externalId>
+        <label>Partner Technical Solution</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Reference field to the partner Account record in the system.  This is a clickable field that when clicked will bring up the partner record in salesforce.com</description>
+        <externalId>false</externalId>
+        <label>Partner</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Partner Plans</relationshipLabel>
+        <relationshipName>R00N30000001D72sEAC</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>References__c</fullName>
+        <description>List of references that can give input on this partner’s prior performance</description>
+        <externalId>false</externalId>
+        <label>References</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Strategy_Description__c</fullName>
+        <description>Text area description explaining the Sales Strategy above</description>
+        <externalId>false</externalId>
+        <label>Sales Strategy Description</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Sales_Strategy__c</fullName>
+        <description>Picklist of different methods of how the partner approaches the customer in terms of selling strategy</description>
+        <externalId>false</externalId>
+        <label>Sales Strategy</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Change the Criteria</fullName>
+                    <default>false</default>
+                    <label>Change the Criteria</label>
+                </value>
+                <value>
+                    <fullName>Establish Beachhead</fullName>
+                    <default>false</default>
+                    <label>Establish Beachhead</label>
+                </value>
+                <value>
+                    <fullName>Defensive</fullName>
+                    <default>false</default>
+                    <label>Defensive</label>
+                </value>
+                <value>
+                    <fullName>Offensive</fullName>
+                    <default>false</default>
+                    <label>Offensive</label>
+                </value>
+                <value>
+                    <fullName>Walk</fullName>
+                    <default>false</default>
+                    <label>Walk</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SiteMapIdentifier__c</fullName>
+        <description>Determines how the record displays on the site map</description>
+        <externalId>false</externalId>
+        <formula>Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SiteMapIdentifier</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Account_Plan_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Source Account Plan Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Opp_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Opp Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Partner_Plan_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Partner Plan Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Specializations__c</fullName>
+        <description>A text area field to indicate what services and products the partner specializes in providing</description>
+        <externalId>false</externalId>
+        <label>Specializations</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Strategies_to_address_weaknesses__c</fullName>
+        <externalId>false</externalId>
+        <label>Strategies to address weaknesses</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Strategies_to_enhance_strengths__c</fullName>
+        <description>Text Area field to indicate how Cisco is going to help the partner enhance their existing strengths</description>
+        <externalId>false</externalId>
+        <label>Strategies to enhance strengths</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Strengths__c</fullName>
+        <description>Part of SWOT analysis of the partner.  What strengths can the partner provide.  Text Area field to indicate what the Partner’s strengths are in areas such as implementation, service, relationship etc…</description>
+        <externalId>false</externalId>
+        <label>Strengths</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Technical_Issues_Deal_Killers__c</fullName>
+        <description>Describes potential problems or barriers that could prevent a deal</description>
+        <externalId>false</externalId>
+        <label>Technical Issues/Deal Killers</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Threats__c</fullName>
+        <description>Part of SWOT analysis of the partner.  What threats does the partner experience.</description>
+        <externalId>false</externalId>
+        <label>Threats</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Weaknesses__c</fullName>
+        <description>Text Area field indicate what the partner’s weaknesses are.</description>
+        <externalId>false</externalId>
+        <label>Weaknesses</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Partner Plan</label>
+    <nameField>
+        <displayFormat>PP-{00000}</displayFormat>
+        <label>Partner Plan ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Partner Plans</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

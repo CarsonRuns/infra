@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Accepted_Date__c</fullName>
+        <description>Time stamp when the Sales Support Request is updated/accepted by Support provider</description>
+        <externalId>false</externalId>
+        <label>Accepted Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Account associated with the Opportunity for which Support is requested</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Sales_Support_Requests</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Application__c</fullName>
+        <description>As Per QW-3089: Used to store user DataCentre information</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Application__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Application</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cloud_Utility_Computing_Strategy__c</fullName>
+        <description>Utility computing strategy of customer</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Cloud_Utility_computing_strategy__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Cloud/Utility Computing Strategy</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <description>Comments from Support Request provider</description>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Comments_by_Requestor__c</fullName>
+        <description>Comments for the Support Request given by Requestor</description>
+        <externalId>false</externalId>
+        <label>Comments by Requestor</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Completed_Date__c</fullName>
+        <description>Time stamp when the Sales Support Request is completed/Rejected by support provider</description>
+        <externalId>false</externalId>
+        <label>Completed Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Objective_Plan__c</fullName>
+        <description>Customer Objective/Plans of related opportunity</description>
+        <externalId>false</externalId>
+        <formula>TRIM(IF( INCLUDES(Opportunity__r.Customer_Objective_Plans__c,'Improve Operation Efficiency'),' Improve Operation Efficiency '+BR(),'') +
+IF( INCLUDES(Opportunity__r.Customer_Objective_Plans__c,'Consolidate-Application Workloads'),' Consolidate-Application Workloads'+BR(),'') +
+IF( INCLUDES(Opportunity__r.Customer_Objective_Plans__c,'Reduce Overall Data Center Cost'),' Reduce Overall Data Center Cost'+BR(),'') +
+IF( INCLUDES(Opportunity__r.Customer_Objective_Plans__c,'Reduce Complexity'),' Reduce Complexity'+BR(),'') +
+IF( INCLUDES(Opportunity__r.Customer_Objective_Plans__c,'Address Staffing Cost Issues listed'),' Address Staffing Cost Issues listed'+BR(),'') +
+IF( INCLUDES(Opportunity__r.Customer_Objective_Plans__c,'New Project'),' New Project'+BR(),'') +
+IF( INCLUDES(Opportunity__r.Customer_Objective_Plans__c,'Disaster Recovery'),' Disaster Recovery'+BR(),'') +
+IF( INCLUDES(Opportunity__r.Customer_Objective_Plans__c,'Application Implementation'),' Application Implementation'+BR(),'') +
+IF( INCLUDES(Opportunity__r.Customer_Objective_Plans__c,'Other'),' Other',''))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer Objective/Plan</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Center_Financed_By__c</fullName>
+        <description>The data center of customer is financed by, if any</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Data_Center_Financed_By__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Data Center Financed By</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Center_Installed_Base__c</fullName>
+        <description>Type of data center base which are installed by customer</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Data_Center_Installed_Base__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Data Center Installed Base</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deal_ID__c</fullName>
+        <description>Deal ID for the Opportunity for which Sales Support is requested</description>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.DealID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Deal ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deployed_Blade_Servers__c</fullName>
+        <description>Has the customer deployed blade servers</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Account__r.Deployed_Blade_Servers__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Deployed Blade Servers?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Does_Cisco_has_CxO_level_relationship__c</fullName>
+        <description>Does Cisco has any CXO level relationship with the customer</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Does_Cisco_has_CxO_level_relationship__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Does Cisco has CxO level relationship?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Early_Adopter__c</fullName>
+        <description>Whether the Account is Early Adopter of Technologies</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Account__r.Early_Adopter__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Early Adopter</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <description>Expected End date of Opportunity</description>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.End_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Existing_Data_Center_Products__c</fullName>
+        <description>Information about the existing data center products of the customer</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Existing_Data_Center_Products__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Existing Data Center Products</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Technology_Service__c</fullName>
+        <description>Expected Product value of Opportunity</description>
+        <externalId>false</externalId>
+        <formula>Text(Opportunity__r.Expected_Product__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Expected Technology/Service</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Forecasting_Posn__c</fullName>
+        <description>Forecasting Position of Opportunity</description>
+        <externalId>false</externalId>
+        <formula>Text(Opportunity__r.Position__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Forecasting Position</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interested_in_new_biz_models_from_Cisco__c</fullName>
+        <description>Is the customer interested in new business model from Cisco e.g. (aaS)?</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Interested_in_new_biz_models_from_Cisco__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Interested in new biz models from Cisco?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Partner_ATP_Certified__c</fullName>
+        <description>Is the Partner ATP Certified</description>
+        <externalId>false</externalId>
+        <formula>Text ( Opportunity__r.Is_Partner_ATP_Certified__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Partner ATP Certified?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Key_Business_Initiatives__c</fullName>
+        <description>Key Business Initiatives for the account associated with the Opportunity for which Support has been requested</description>
+        <externalId>false</externalId>
+        <formula>Account__r.Key_Business_Initiatives__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Key Business Initiatives</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Modified_By_Email__c</fullName>
+        <description>Provides the email address of the LastModifiedBy person</description>
+        <externalId>false</externalId>
+        <formula>LastModifiedBy.Email</formula>
+        <label>Last Modified By Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meet_Comp__c</fullName>
+        <description>Is your UCS opportunity competing against an AMD, SPARC, or other RISC offer?</description>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL( Request_Type__c , 'UCS') &amp;&amp; Support_Request_Type__c == 'Intel Competitive Discounts (MEET-COMP)' , TEXT(Support_Request__r.SAC_MEET_COMP_UCS__c) , '')</formula>
+        <label>Opportunity Competing against AMD</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Data_Centers__c</fullName>
+        <description>Number of data centers of the customer</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Number_of_Data_Centers__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Data Centers</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Budget_Allocated__c</fullName>
+        <description>Whether Opportunity budget is allocated or not</description>
+        <externalId>false</externalId>
+        <formula>Text( Opportunity__r.Opportunity_Budget_Allocated__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Budget Allocated</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Led_by__c</fullName>
+        <description>Shows how this Opportunity is developed</description>
+        <externalId>false</externalId>
+        <formula>Text( Opportunity__r.Opportunity_Led_by__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Led by?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Owner_Name__c</fullName>
+        <description>Name of Opportunity Owner</description>
+        <externalId>false</externalId>
+        <label>Opportunity Owner Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Opportunity associated with the Sales Support that has been requested</description>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipName>Sales_Support_Requests</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Initiated_Opportunity__c</fullName>
+        <description>Checks whether the Opportunity for which Sales Support is requested is Partner Initiated</description>
+        <externalId>false</externalId>
+        <formula>Text(Opportunity__r.Partner_Initiated_Opportunity__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>YES: For opportunity that was identified and developed by the Channel Partner before bringing in the Cisco Account Team.</inlineHelpText>
+        <label>Partner Initiated Opportunity?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Operating_System__c</fullName>
+        <description>Prefered operating system of the customer</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Preferred_Operating_System__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Preferred Operating System</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Server_Vendor__c</fullName>
+        <description>Preferred Server Vendor, If any, for the Account with which the Opportunity is associated for Sales Support Request</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Preffered_Server_Vendor__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Preferred Server Vendor</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Storage_Vendor__c</fullName>
+        <description>Preferred storage vendor of the customer</description>
+        <externalId>false</externalId>
+        <formula>Account__r.Preffered_Storage_Vendor__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Preferred Storage Vendor</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Partner__c</fullName>
+        <description>Added for ISP Mar 09 release to enter Partners</description>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Primary_Partner__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Primary Partner</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relation_with_the_server_buying_centre__c</fullName>
+        <description>Whether the customer has any relation with the server buying center</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.Relation_with_the_server_buying_centre__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Relation with the Server Buying Centre?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Request_Type__c</fullName>
+        <description>Type of SAC request</description>
+        <externalId>false</externalId>
+        <label>Request Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>UCS</fullName>
+                    <default>true</default>
+                    <label>UCS</label>
+                </value>
+                <value>
+                    <fullName>SAC TV</fullName>
+                    <default>false</default>
+                    <label>SAC TV</label>
+                </value>
+                <value>
+                    <fullName>SAC HCS</fullName>
+                    <default>false</default>
+                    <label>SAC HCS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status of Sales Support Request</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Requested</fullName>
+                    <default>false</default>
+                    <label>Requested</label>
+                </value>
+                <value>
+                    <fullName>In Process</fullName>
+                    <default>false</default>
+                    <label>In Process</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Completed - NS</fullName>
+                    <default>false</default>
+                    <label>Completed - NS</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Support_Request_Type_Others__c</fullName>
+        <description>Other type of Sales Support Request for the opportunity
+Formula has been changed from:
+IF( Support_Request_Type__c = 'Other', Support_Request__r.Support_Request_Type_Others__c , Null)
+to NULL as Support Request Type (Other) in Support Request object is now a Text Area(32000) which is not supported in formula</description>
+        <externalId>false</externalId>
+        <formula>NULL</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Support Request Type (Others)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Support_Request_Type__c</fullName>
+        <description>Individual Support Request type requested for the opportunity</description>
+        <externalId>false</externalId>
+        <label>Support Request Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Support_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Support Requests associated with the individual Sales Support Request</description>
+        <externalId>false</externalId>
+        <label>Support Request</label>
+        <referenceTo>Support_Request__c</referenceTo>
+        <relationshipName>Sales_Support_Requests</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Theater__c</fullName>
+        <description>Theater of the Opportunity for which Sales Support is requested</description>
+        <externalId>false</externalId>
+        <formula>Text(Opportunity__r.Theater__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Theater</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Elapsed_for_Request_Completion__c</fullName>
+        <description>Days taken to complete the Sales Support Request by support provider from the day it was accepted</description>
+        <externalId>false</externalId>
+        <formula>IF(OR( ISPICKVAL(Status__c, 'Completed') , ISPICKVAL(Status__c, 'Rejected') , ISPICKVAL(Status__c, 'Completed - NS')) , Completed_Date__c - Accepted_Date__c ,NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Days taken to complete the Sales Support Request by support provider from the day it was accepted</inlineHelpText>
+        <label>Days taken to complete</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_taken_to_accept_request__c</fullName>
+        <description>Days taken to accept the Sales Support Request by support provider from the day it was created</description>
+        <externalId>false</externalId>
+        <formula>Accepted_Date__c - CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Days taken to accept the Sales Support Request by support provider from the day it was created</inlineHelpText>
+        <label>Days taken to accept</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User_of_VMware_or_Microsoft_HyperV__c</fullName>
+        <description>Customer is a user of VMware or Microsoft HyperV</description>
+        <externalId>false</externalId>
+        <formula>Text( Account__r.User_of_VMware_or_Microsoft_HyperV__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>User of VMware or Microsoft HyperV?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Willing_to_be_a_Reference__c</fullName>
+        <description>Is the customer willing to be a reference</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Account__r.Willing_to_be_a_Reference__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Willing to be a Reference?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>InDevelopment</deploymentStatus>
+    <description>This object captures the information for individual Sales Support Requests requested for the opportunity.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>zzSAC Support</label>
+    <nameField>
+        <displayFormat>SR-{00000000}</displayFormat>
+        <label>Sales Support Request</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>SAC Supports</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Support_Request_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Deal_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Opportunity__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Deal_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Opportunity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <validationRules>
+        <fullName>Comments_for_Rejected_Status</fullName>
+        <active>true</active>
+        <description>This rule will validate that Support Provider should enter the comments if he has canceled or rejected the request</description>
+        <errorConditionFormula>AND( 
+ISBLANK(Comments__c ) ,
+ISPICKVAL( Status__c , 'Rejected')
+)</errorConditionFormula>
+        <errorMessage>Please fill the Comments</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Prevent_Edit_of_Completed_Request</fullName>
+        <active>true</active>
+        <description>This Validation rule will prevent edit of Request which is completed.</description>
+        <errorConditionFormula>!ISNEW() &amp;&amp; 
+$Profile.Id != '00e30000000dcbg' &amp;&amp; 
+$Profile.Id != '00e30000000dfUE' &amp;&amp; 
+$Profile.Id != '00e30000000eca0' &amp;&amp; 
+$Profile.Id != '00e30000000dcbf' &amp;&amp; 
+$Profile.Id != '00e30000000qiJj' &amp;&amp; 
+(TEXT(PRIORVALUE(Status__c )) = 'Completed' || 
+TEXT(PRIORVALUE(Status__c )) = 'Rejected' ||
+TEXT(PRIORVALUE(Status__c )) = 'Completed - NS')</errorConditionFormula>
+        <errorMessage>Completed or Rejected Sales Support Request Cannot be Edited</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>New_SAC_Support</fullName>
+        <availability>online</availability>
+        <description>Requesting SAC Support for PSS Users</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New SAC Support</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>top.location.href='apex/SAC_Support?id={!Opportunity.Id}';</url>
+    </webLinks>
+</CustomObject>

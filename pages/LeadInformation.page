@@ -1,0 +1,15 @@
+<apex:page showHeader="False" sidebar="false" standardController="opportunity" >
+  <!--
+  <apex:iframe src="/00O80000004kSo1?pv0={!Opportunity.Id}" height="1250px" scrolling="true" rendered="{! $User.UIThemeDisplayed != 'Theme4d' }"/>
+  <apex:iframe src="/00O80000004kSo1?fv0={!Opportunity.Id}" height="1250px" scrolling="true" rendered="{! $User.UIThemeDisplayed == 'Theme4d' }"/>  
+  -->
+  
+  <script>
+        if(typeof sforce !== 'undefined' && sforce !== null && '{!$User.UIThemeDisplayed}' === 'Theme4d'){
+            sforce.one.navigateToURL('{!'/lightning/r/sObject/00O80000004kSo1/view?fv0=' & LEFT(Opportunity.Id,15) }');
+        } else {
+            window.top.location = '{!'/00O80000004kSo1?pv0=' & LEFT(Opportunity.Id,15)}';
+        }
+  </script>
+  
+</apex:page>

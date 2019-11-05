@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_WebEx_IS</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-Senior Agent DCR (Brazil)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.Marketing_Call_Center__c</field>
+                <operation>equals</operation>
+                <value>DCR Brazil</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Call_Center_Vendor__c</field>
+                <operation>equals</operation>
+                <value>DCR Brazil</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Lead_Qualifier_Call_Center__c</field>
+                <operation>equals</operation>
+                <value>DCR Brazil</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC Americas DCR Brazil Senior agent approval process</label>
+        <name>NGCC_Americas_DCR_Brazil_Senior_agent_approval_process</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_DCR_US</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>DCR US</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.Marketing_Call_Center__c</field>
+                <operation>equals</operation>
+                <value>DCR US</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Call_Center_Vendor__c</field>
+                <operation>equals</operation>
+                <value>DCR US</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Lead_Qualifier_Call_Center__c</field>
+                <operation>equals</operation>
+                <value>DCR US</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC Americas DCR US Senior agent approval process</label>
+        <name>NGCC_Americas_DCR_US_Senior_agent_approval_process</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_Approval_Submission</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Cisco_Contact_Center_Manager2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Cisco_Contact_Center_Manager1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Lead.Originating_Marketing_Pipeline__c</field>
+                <operation>greaterOrEqual</operation>
+                <value>1000000.0</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>NGCC Senior Agent Americas Mktg CCM Step2</label>
+        <name>NGCC_Senior_Agent_Americas_Mktg_CCM_Step2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>NGCC: Approval process for Senior Agent user and it will support for all Americas Theater call centers</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND( 
+RecordType.Name = &apos;Prospect&apos;, 
+Theater__c = &apos;Americas&apos;, 
+CONTAINS( $UserRole.Name ,&apos;Senior Agent&apos;), 
+OR( 
+TEXT(Status) = &apos;Rejected&apos;, 
+TEXT(Status) = &apos;Marketing Qualified&apos; 
+) 
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>NGCC_Approval_Submission_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Approval_Submission_Mktg_Qualified</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>NGCC_Approval_Submission_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Notify_Lead_Owner_with_Rejection_Reason</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>NGCC_Requalification_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>NGCC_Approval_Submission</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>NGCC Americas Senior Agent Aprroval 4/10</label>
+    <recallActions>
+        <action>
+            <name>NGCC_Approval_Submission_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

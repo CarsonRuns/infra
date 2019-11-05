@@ -1,0 +1,54 @@
+<apex:page showHeader="false" sidebar="false" StandardController="Super_Group__c" extensions="Super_Group_Direct_SAV_CTE,Super_Group_Direct_Acct_CTE,Super_Group_Direct_Oppty_CTE">
+<apex:form >
+<table width = "100%">
+    <tr align="center">
+    
+        <td width = "30%"></td>
+        
+        <td width = "14%"> 
+            <apex:outputLink target="_parent" value="/{!Super_Group__c.Id}#{!navigateToSalesAccount}"> Sales Account &nbsp; 
+                                                     [{!IF(SAVCON == null,0,SAVCON.ResultSize)}]</apex:outputLink>
+                                                                                          
+        </td>
+        
+        <td width = "1%">|</td>
+        
+        <td width = "10%">       
+             <apex:outputLink target="_parent" value="/{!Super_Group__c.Id}#{!navigateToAccount}"> Accounts &nbsp; 
+                                                    [{!IF(ACCTCON == null,0,ACCTCON.ResultSize)}]</apex:outputLink> 
+                                                                             
+        </td>
+        
+        <td width = "1%">|</td>
+        
+        <td width = "12%"> 
+             <apex:outputLink target="_parent" value="/{!Super_Group__c.Id}#{!navigateToOppty}"> Opportunities &nbsp; 
+                                                    [{!IF(OPPTYCON == null,0,OPPTYCON.ResultSize)}] </apex:outputLink> 
+                                                                             
+        </td>
+        
+        <td width = "30%"></td>
+    </tr>
+</table> 
+</apex:form>
+
+<script language = "javascript">
+
+
+
+function resizeIframe() {
+    var me = window.name;
+    if (me) {
+      var iframes = parent.document.getElementsByName(me);
+      if (iframes && iframes.length == 1) {
+        height = document.body.offsetHeight; 
+        width  = document.body.offsetWidth;
+            iframes[0].style.height = height + "px";
+            iframes[0].style.width  = width  + "px";
+        
+      }
+    }
+  }
+ resizeIframe(); 
+</script>
+</apex:page>

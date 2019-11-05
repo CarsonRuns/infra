@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Nom du compte</label>
+        <name>Account_Name__c</name>
+        <relationshipLabel>Transactions et devis CCW (Nom compte)</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Ligne d'adresse 1</label>
+        <name>Address_Line_1__c</name>
+    </fields>
+    <fields>
+        <label>Ligne d'adresse 2</label>
+        <name>Address_Line_2__c</name>
+    </fields>
+    <fields>
+        <label>Ligne d'adresse 3</label>
+        <name>Address_Line_3__c</name>
+    </fields>
+    <fields>
+        <label>ID BEC</label>
+        <name>BEC_ID__c</name>
+    </fields>
+    <fields>
+        <label>Statut CBN</label>
+        <name>CBN_Status__c</name>
+    </fields>
+    <fields>
+        <label>Statut de la transaction CCW</label>
+        <name>CCW_Deal_Status__c</name>
+    </fields>
+    <fields>
+        <label>ID interlocuteur CR</label>
+        <name>CR_Party_ID__c</name>
+    </fields>
+    <fields>
+        <label>Dossier</label>
+        <name>Case__c</name>
+        <relationshipLabel>Transactions et devis CCW</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Ville</label>
+        <name>City__c</name>
+    </fields>
+    <fields>
+        <label>Pays</label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label>ID de devis</label>
+        <name>DM_Quote_ID__c</name>
+    </fields>
+    <fields>
+        <label>Date/heure de création de la transaction</label>
+        <name>Deal_Create_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label>Date de création de la transaction</label>
+        <name>Deal_Create_Date__c</name>
+    </fields>
+    <fields>
+        <label>Date d'expiration de la transaction</label>
+        <name>Deal_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label>ID de la transaction</label>
+        <name>Deal_ID__c</name>
+    </fields>
+    <fields>
+        <label>Nom de l'opportunité</label>
+        <name>Deal_Name__c</name>
+    </fields>
+    <fields>
+        <label>Statut du bureau des transactions</label>
+        <name>Deal_Status__c</name>
+    </fields>
+    <fields>
+        <label>Type de remise</label>
+        <name>Discount_Type__c</name>
+    </fields>
+    <fields>
+        <label>Admissible pour NS</label>
+        <name>Eligible_for_NS__c</name>
+    </fields>
+    <fields>
+        <label>Nom du compte client</label>
+        <name>End_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label>Montant escompté liste produits (000 $)</label>
+        <name>Expected_Product_List_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Montant escompté liste services (000 $)</label>
+        <name>Expected_Service_List_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Devis factice</label>
+        <name>Is_Dummy_Quote__c</name>
+    </fields>
+    <fields>
+        <label>Finalisé</label>
+        <name>Is_Finalized__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead --></label>
+        <name>Lead__c</name>
+        <relationshipLabel>Transactions et devis CCW</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Ancien ID de la transaction</label>
+        <name>Old_Deal_ID__c</name>
+    </fields>
+    <fields>
+        <label>Ancien ID du compte partenaire</label>
+        <name>Old_Partner_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label>Nom de l'opportunité</label>
+        <name>Opportunity_Name__c</name>
+        <relationshipLabel>Transactions et devis CCW</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Compte partenaire</label>
+        <name>Partner_Account__c</name>
+        <relationshipLabel>Transac et devis CCW (compte partenaire)</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Nom du programme</label>
+        <name>Program_Name__c</name>
+    </fields>
+    <fields>
+        <label>Programme/Promotion</label>
+        <name>Program_Promotion__c</name>
+    </fields>
+    <fields>
+        <label>Nom de la promotion</label>
+        <name>Promotion_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Province --></label>
+        <name>Province__c</name>
+    </fields>
+    <fields>
+        <label>Dernière modification du devis par</label>
+        <name>Quote_Last_Modified_By__c</name>
+    </fields>
+    <fields>
+        <label>Dernière mise à jour du devis</label>
+        <name>Quote_Last_Updated__c</name>
+    </fields>
+    <fields>
+        <label>Montant liste des produits du devis</label>
+        <name>Quote_Product_List_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Prix net des produits du devis (000 $)</label>
+        <name>Quote_Product_Net_Price__c</name>
+    </fields>
+    <fields>
+        <label>Montant liste des services du devis</label>
+        <name>Quote_Service_List_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Prix net des services du devis (000 $)</label>
+        <name>Quote_Service_Net_Price__c</name>
+    </fields>
+    <fields>
+        <label>Statut du devis CCW</label>
+        <name>Quote_Status__c</name>
+        <picklistValues>
+            <masterLabel>Finalized</masterLabel>
+            <translation>Finalisé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unfinilized</masterLabel>
+            <translation>Inachevé</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Résumé du devis</label>
+        <name>Quote_Summary__c</name>
+        <relationshipLabel>Transactions et devis CCW</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Devis</label>
+        <name>Quote__c</name>
+        <relationshipLabel>Transactions et devis CCW</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Prospect</label>
+        <name>Target_Prospect__c</name>
+        <relationshipLabel>Transactions et devis CCW</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Montant total liste du devis</label>
+        <name>Total_Quote_List_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Tarif net total du devis (en milliers)</label>
+        <name>Total_Quote_Net_Price__c</name>
+    </fields>
+    <fields>
+        <label>Code postal</label>
+        <name>Zip_Postal_Code__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- CCW Deal or Quote --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- CCW Deal or Quote --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Multi Object Quote Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Multi Object Quote Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

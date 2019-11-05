@@ -1,0 +1,63 @@
+<apex:page standardController="Opportunity" extensions="Opportunity_Forecasting_Position_CT" showHeader="false" id="OpportunityForecastingPositionField" >
+    <apex:includeScript value="/support/console/45.0/integration.js"/>
+    <style>
+		#ChangeForecastingPosition {cursor: pointer;}        
+    </style>
+    <apex:outputlabel styleClass="content-block" id="Position__c">{!Opportunity.Position__c}</apex:outputlabel>&nbsp;
+    <a href="javascript:openForecastPage()" id="ChangeForecastingPosition" styleClass="content-block" >[Change]</a>
+    <script>
+    // window.location.reload( true );
+    console.log('Loading..');
+    /*May 2018 Lightning Release change: start*/
+    //Check if UI is Salesforce mobile app theme
+    function inMobile() {
+        return ['Theme4t'].indexOf('{!$User.UIThemeDisplayed}') > -1; 
+    }
+    
+    function openForecastPage() {
+         if (sforce.console.isInConsole()) {
+            //First find the ID of the primary tab to put the new subtab in
+            sforce.console.getEnclosingPrimaryTabId(openSubtab);
+         }else{
+             window.open('{!$Page.ForecastPosition}?id={!Opportunity.Id}', '_top');
+         }
+    }
+     var openSubtab = function openSubtab(result) {
+            //Open a new subtab
+            var primaryTabId = result.id;
+            sforce.console.openSubtab(primaryTabId , '{!$Page.ForecastPosition}?id={!Opportunity.Id}', true, 
+                'Opportunity', null, null, 'Forecast');
+        };
+    
+    // if( (typeof sforce != 'undefined') && (sforce != null)  ) {      
+    if( (typeof sforce != 'undefined') && (sforce != null) && inMobile() ) {
+        /*May 2018 Lightning Release change: end*/
+        document.getElementById("ChangeForecastingPosition").style.visibility = 'hidden';
+        var position = document.getElementById("{!$Component.Position__c}");
+        position.style.fontSize = '14px';
+        position.style.fontWeight = 'Normal';
+        position.style.color = '#3c3d3e';
+        position.style.fontFamily = 'ProximaNovaSoft-Regular';
+        // <!-- Updated By Naresh for SCAVA  Fix -->
+        var hasInValidTech = {!IF(redirectTechnology, "true", "false")};               // <!-- {!redirectTechnology}; -->
+        console.log('Naresh'+hasInValidTech);
+        var hasInValidServ = {!IF(redirectService, "true", "false")};                  // <!-- {!redirectService};  -->
+        console.log('Naresh'+hasInValidServ);
+        var hasForecastingPosition = {!IF(hasForecastingPosition, "true", "false")};   // <!-- {!hasForecastingPosition}; -->
+        console.log('Naresh'+hasForecastingPosition);
+        //  <!-- Updated By Naresh for SCAVA  Fix -->
+        //Komal - 08/10/18 Lightning/Mobile Release - Verbiage Update on messages
+        
+        if(!hasForecastingPosition){
+            alert('Change your Forecasting Position on desktop at this time.');
+        } else if( hasInValidTech && hasInValidServ ){
+            alert('Quote/Technology & Service is best performed on desktop.');
+        } else if ( hasInValidTech && !hasInValidServ ){
+            alert('Quote/Technology & Service is best performed on desktop.');
+        } else if ( !hasInValidTech && hasInValidServ ){
+            alert('Quote/Technology & Service is best performed on desktop.');
+        }
+    }
+    
+    </script>
+</apex:page>

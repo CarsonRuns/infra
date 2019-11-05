@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Will store the ID of the account against which Quote is Created.</description>
+        <externalId>false</externalId>
+        <label>Account ID</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Esales Quote Header</relationshipLabel>
+        <relationshipName>Esales_Quote_Header</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores the ID of the contact of the Quote</description>
+        <externalId>false</externalId>
+        <label>Contact ID</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Esales Quote Header</relationshipLabel>
+        <relationshipName>Esales_Quote_Header</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Curr_code__c</fullName>
+        <description>Gives the currency code on opportunity against which the quote is created. May not be same as the currency code of the quote</description>
+        <externalId>false</externalId>
+        <formula>text(Opportunity_ID__r.CurrencyIsoCode)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Curr code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Eff_End_Dt__c</fullName>
+        <description>Date on which the quote would expire</description>
+        <externalId>false</externalId>
+        <label>Eff End Dt</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Eff_Start_Dt__c</fullName>
+        <description>Date on which the quote is created in the system</description>
+        <externalId>false</externalId>
+        <label>Eff Start Dt</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Stores the boolean value to show if the quote is active.</description>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsApproved__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Stores the approval status of the code. Currently defaulted to True</description>
+        <externalId>false</externalId>
+        <label>Approved</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Stores the ID of the opportunity against which the quote is created</description>
+        <externalId>false</externalId>
+        <label>Opportunity ID</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Esales Quote Header</relationshipLabel>
+        <relationshipName>Esales_Quote_Header</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quote_ID_Seq__c</fullName>
+        <description>Unique ID of quote generated</description>
+        <displayFormat>ES{000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Quote ID Seq</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Type__c</fullName>
+        <defaultValue>"Quotation"</defaultValue>
+        <description>Type of Quote. Currently all values are defaulted to "Quoting"</description>
+        <externalId>false</externalId>
+        <label>Quote Type</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Rep_Postn_Name__c</fullName>
+        <description>The name of the position against which the quote is created</description>
+        <externalId>false</externalId>
+        <label>Sales Rep Postn Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Siebel_Account_ID__c</fullName>
+        <description>Siebel ID of the account against which the quote was created in Siebel System</description>
+        <externalId>false</externalId>
+        <label>Siebel Account ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Siebel_Contact_ID__c</fullName>
+        <description>Siebel ID of the Contact against which the quote was created in Siebel System</description>
+        <externalId>false</externalId>
+        <label>Siebel Contact ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Siebel_Created__c</fullName>
+        <description>Quote Creation date in Siebel</description>
+        <externalId>false</externalId>
+        <label>Siebel Created</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Siebel_Last_Upd__c</fullName>
+        <description>Date on which the quote was updated in Siebel</description>
+        <externalId>false</externalId>
+        <label>Siebel Last Upd</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Siebel_Opportunity_ID__c</fullName>
+        <description>Siebel ID of the Opportunity against which the quote was created in Siebel System</description>
+        <externalId>false</externalId>
+        <label>Siebel Opportunity ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Siebel_Quote_Id__c</fullName>
+        <description>The Actual quote ID the users would see on the quotes. It will contain the siebel based quote ids for the migrated quotes and for the quotes created in SFDC, this will be same as the seq number generated in the Quote_id_seq Field</description>
+        <externalId>false</externalId>
+        <label>Siebel Quote Id</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stat_CD__c</fullName>
+        <defaultValue>"In Progress"</defaultValue>
+        <externalId>false</externalId>
+        <label>Stat CD</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Territory_ID__c</fullName>
+        <description>Siebel/FDA System ID for the position of the quote</description>
+        <externalId>false</externalId>
+        <label>Sales Rep Postn ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Theater__c</fullName>
+        <description>This Field is not used</description>
+        <externalId>false</externalId>
+        <label>Theater</label>
+        <length>60</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X_Product_Total__c</fullName>
+        <description>Total Product amount on the quote line items</description>
+        <externalId>false</externalId>
+        <label>X Product Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>7</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X_Quote_Total__c</fullName>
+        <description>Total  amount (Product+Service)on the quote line items</description>
+        <externalId>false</externalId>
+        <label>X Quote Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>7</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X_Service_Total__c</fullName>
+        <description>Total Service amount on the quote line items</description>
+        <externalId>false</externalId>
+        <label>X Service Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>7</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object will store the esales quoting header level information.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>Esales Quote Header</label>
+    <nameField>
+        <label>Esales Quote Header Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Esales Quote Header</pluralLabel>
+    <searchLayouts />
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

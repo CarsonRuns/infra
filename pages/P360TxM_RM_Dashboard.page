@@ -1,0 +1,312 @@
+<apex:page controller="P360TxM_RM_DashboardCTE" action="{!initDashboard}" sidebar="false" id="txhome" showHeader="true" readOnly="true">
+    <script type="text/javascript">
+        window.onload = function()
+             {
+                document.getElementById('txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkwgt').style.display="none";
+         };
+         
+         function assignOwnerFilter()
+         {
+             document.getElementById('{!$Component.txhome:mainform:pbBlock1:j_id1:strPartnerFilterValue}').value=document.getElementById('txhome:mainform:pbBlock1:pb1BS1:pb1BSI2:inF1_lkold').value;
+             if(document.getElementById('txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkid').value == '')
+             {
+                 document.getElementById('{!$Component.txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:OwnerfilterStd}').value= '000000000000000AAA';
+             }else{
+                 document.getElementById('{!$Component.txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:OwnerfilterStd}').value= document.getElementById('txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkid').value;
+             }
+         }
+         function enableLookup()
+         {
+             var i=document.getElementById('{!$Component.txhome:mainform:pbBlock1:j_id1:selected}').value;
+             
+             if(i=='My Leads and Target Prospects')  
+             {
+                 document.getElementById('txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkwgt').style.display="none";
+             }
+             else
+             {
+                 document.getElementById('txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkwgt').style.display="show";
+             }
+             
+         }
+         
+         
+    </script>
+    <style>
+        .pbWidth{
+        width:100px;
+        }
+        .vfHelpText a            {position:relative;}
+        .vfHelpText a span       {display: none;}
+        .vfHelpText a:hover span {display: block;
+        position:absolute;
+        top:1.25em;
+        padding:2px 5px;
+        left:0em; width:25em;
+        z-index:100;
+        border:1px solid orange;
+        background-color:#FEFDB9;
+        color:black;
+        }
+    </style>
+    <apex:form id="mainform" style="width:100%" >
+        <apex:pageBlock id="pbBlock1">
+            <apex:pageBlockButtons location="bottom">
+                <apex:inputhidden value="{!strPartnerFilter}" id="strPartnerFilterValue"/>
+                <apex:inputhidden value="{!SelectedValue}" id="selected" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
+                <apex:commandButton value="Apply Filter" action="{!cmdPartnerFilter}" style="width:80px" rerender="pbBlock2,txhomepbsec,link,txhomepbNot,pbchart" status="processing" onclick="assignOwnerFilter();"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:commandButton value="Refresh" action="{!cmdPartnerFilter}" style="width:80px" rerender="pbBlock2,txhomepbsec,link,txhomepbNot,pbchart" status="processing" onclick="assignOwnerFilter();"/>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:actionStatus startStyle="font-size:14px;color:#FF0000" id="processing">
+                    <apex:facet name="start">
+                        <img src="{!$Resource.P360TxMLoading}"/> Please wait a moment...
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" id="pb1BS1" showHeader="True">
+                <apex:facet name="header">
+                    <apex:outputtext value="Show Filters" style="font-weight:bold;font-size:14px" escape="false"/>
+                </apex:facet>
+                <apex:pageBlockSectionItem id="pb1BSI1" dataStyleClass="pbWidth">
+                    <apex:outputText style="font-size:12px;float:Right" value="View by"/>
+                    <apex:outputPanel >
+                        <apex:selectList value="{!selectedValue}" id="filters" size="1" required="true">
+                            <apex:selectOptions value="{!Items}"/>
+                            <apex:actionSupport event="onchange" action="{!showAllFilter}" status="processing" oncomplete="enableLookup();"  rerender="Ownerfilter,mainform,txhomepbsec,pbBSI2,pgMain2,txt" />
+                        </apex:selectList>
+                         &nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pb1BSI2">
+                    <apex:outputtext value="Please select a Channel Partner" />
+                    <apex:inputField value="{!newlead.Channel_Partner__c}" style="float:left;" id="inF1"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pb1BSI3">
+                    <apex:outputText style="font-size:12px;float:right;" value="Select a TxM" id="selOwner"/>
+                    <apex:outputPanel >
+                        <apex:inputhidden value="{!idTxM}" id="OwnerfilterStd" />
+                        <input type="hidden" name="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkid" id="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkid" value="000000000000000"/>
+                        <input type="hidden" name="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkold" id="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkold" value="null"/>
+                        <input type="hidden" name="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lktp" id="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lktp" value="005"/>
+                        <input type="hidden" name="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lspf" id="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lspf" value="0"/>
+                        <input type="hidden" name="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lspfsub" id="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lspfsub" value="0"/>
+                        <input type="hidden" name="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_mod" id="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_mod" value="0"/>
+                        <apex:inputText id="Ownerfilter" maxlength="255" disabled="{!if(selectedValue=='My Leads and Target Prospects',true,false)}" onchange="getElementByIdCS('txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkid').value='';getElementByIdCS('txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_mod').value='1';" size="20" title="TxM Search"/>
+                        <a href="javascript:%20openLookup%28%27%2F_ui%2Fcommon%2Fdata%2FLookupPage%3Flkfm%3Dtxhome%253Amainform%26lknm%3Dtxhome%253Amainform%253ApbBlock1%253Apb1BS1%253Apb1BSI3%253AOwnerfilter%26lktp%3D%27%20%2B%20getElementByIdCS%28%27txhome%3Amainform%3ApbBlock1%3Apb1BS1%3Apb1BSI3%3AOwnerfilter_lktp%27%29.value%2C670%2C%271%27%2C%27%26lksrch%3D%27%20%2B%20escapeUTF%28getElementByIdCS%28%27txhome%3Amainform%3ApbBlock1%3Apb1BS1%3Apb1BSI3%3AOwnerfilter%27%29.value.substring%280%2C%2080%29%29%29" 
+                        id="txhome:mainform:pbBlock1:pb1BS1:pb1BSI3:Ownerfilter_lkwgt" onclick="setLastMousePosition(event)" title="TxM Search (New Window)">
+                        <img src="/s.gif" alt="TxM Search (New Window)" class="lookupIcon" onblur="this.className = 'lookupIcon';" onfocus="this.className = 'lookupIconOn';" onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';" title="TxM Search (New Window)"/></a>
+                        <span class="vfHelpText">
+                            <apex:outputLink value="javascript:return false;" id="helpText">
+                                <img src="/s.gif" alt="" class="helpOrb" />
+                                <span>Enabled when viewing all records</span>
+                            </apex:outputLink>
+                        </span>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                
+                <!-- <script>twistSection(document.getElementById("{!$Component.pb1BS1}").childNodes[0].childNodes[0]); </script>-->
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <!--------------------- Main page with all different section to display data--------------------------------------------->
+        <!----------------------------------------------------------------------------------------------------------------------->
+        <apex:pageBlock id="pbBlock2">
+            <apex:pageblocksection columns="2" id="pb2BS1" collapsible="false">
+                <apex:facet name="header">
+                    <apex:outputtext value="Alert - Action Required" style="color:red;font-weight:bold;font-size:16px" escape="false"/>
+                </apex:facet>
+                <!-- Lead Waiting List Start-->
+
+                <apex:outputtext rendered="{!IF(Lead1Waitings=0,true,false)}" value="<a href={!urlLeadWaitingAssignment} target=_blank>{!IF(Lead1Waitings=0,'<img src=/img/msg_icons/info24.png> <font color=blue><u>','<img src=/img/msg_icons/error24.png> <font color=red><u>')}{!Lead1Waitings} Leads waiting for assignment</u></font>" style="font-weight:bold;font-size:14px" escape="false"/>
+                <apex:pageblockSectionItem rendered="{!IF(Lead1Waitings!=0,true,false)}" dataStyleClass="pbWidth">
+                <apex:pageBlockTable value="{!lstLeadWaiting}" var="Lead" style="font-size:11px;"  rendered="{!IF(Lead1Waitings!=0,true,false)}">
+                    <apex:facet name="header">
+                        <apex:outputtext value="<a href={!urlLeadWaitingAssignment} target=_blank>{!IF(Lead1Waitings=0,'<img src=/img/msg_icons/info24.png> <font color=blue><u>','<img src=/img/msg_icons/error24.png> <font color=red><u>')}{!if(Lead1Waitings=1001,'1000+',Lead1Waitings)} Leads waiting for assignment</u></font>" style="font-weight:bold;font-size:14px" escape="false"/>
+                    </apex:facet>
+                    <apex:column headerValue="Lead Name" rendered="{!If(Lead1Waitings=0,false,true)}">
+                        <apex:outputLink target="_blank" value="/{!Lead.Id}">
+                            {!Lead.Name}
+                        </apex:outputLink>
+                    </apex:column>
+                    <apex:repeat value="{!$ObjectType.Lead.FieldSets.P360LeadTxMAlert}" var="f">
+                        <apex:column value="{!Lead[f]}" width="100px">    
+                        </apex:column>
+                    </apex:repeat>
+                </apex:pageBlockTable>
+                </apex:pageblockSectionItem>
+                <!-- Lead Waiting List End--> 
+                <!-- Lead Reassignment Start-->  
+                
+                <apex:outputtext rendered="{!IF(LeadReassignment=0,true,false)}" value="<a href={!urlLeadWaitingReAssignment} target=_blank>{!IF(LeadReassignment=0,'<img src=/img/msg_icons/info24.png> <font color=blue><u>','<img src=/img/msg_icons/error24.png> <font color=red><u>')}{!LeadReassignment} Leads waiting for re-assignment </u></font>" style="font-weight:bold;font-size:14px" escape="false"/>
+                <apex:pageblockSectionItem rendered="{!IF(LeadReassignment!=0,true,false)}" dataStyleClass="pbWidth">
+                <apex:pageBlockTable value="{!lstLeadReAssignment}" var="Lead"  style="font-size:11px;" rendered="{!IF(LeadReassignment!=0,true,false)}">
+                    <apex:facet name="header">
+                        <apex:outputtext value="<a href={!urlLeadWaitingReAssignment} target=_blank>{!IF(LeadReassignment=0,'<img src=/img/msg_icons/info24.png> <font color=blue><u>','<img src=/img/msg_icons/error24.png> <font color=red><u>')}{!if(LeadReassignment=1001,'1000+',LeadReassignment)} Leads waiting for re-assignment</u></font>" style="font-weight:bold;font-size:14px" escape="false"/>
+                    </apex:facet>
+                    <apex:column headerValue="Lead Name"  rendered="{!If(LeadReassignment=0,false,true)}" >
+                        <apex:outputLink target="_blank" value="/{!Lead.Id}">
+                            {!Lead.Name}
+                        </apex:outputLink>
+                    </apex:column>
+                    <apex:repeat value="{!$ObjectType.Lead.FieldSets.P360LeadTxMAlert}" var="f">
+                        <apex:column value="{!Lead[f]}" width="100px">    
+                        </apex:column>
+                    </apex:repeat>
+                </apex:pageBlockTable>
+                </apex:pageblockSectionItem>
+                <!-- Lead Reassignment End--> 
+                <!-- TP Not Activated Start-->  
+                <apex:outputtext rendered="{!IF(TPWaitingToActivate=0,true,false)}" value="<a href={!urlTPWaitingActivation} target=_blank>{!IF(TPWaitingToActivate=0,'<img src=/img/msg_icons/info24.png> <font color=blue><u>','<img src=/img/msg_icons/error24.png> <font color=red><u>')}{!TPWaitingToActivate} Target Prospects waiting for activation </u></font>" style="font-weight:bold;font-size:14px" escape="false"/>
+                <apex:pageblockSectionItem rendered="{!IF(TPWaitingToActivate!=0,true,false)}" dataStyleClass="pbWidth">
+                <apex:pageBlockTable value="{!lstTPNotActivated}" var="TP"  style="font-size:11px;"  rendered="{!IF(TPWaitingToActivate!=0,true,false)}">
+                    <apex:facet name="header">
+                        <apex:outputtext value="<a href={!urlTPWaitingActivation} target=_blank>{!IF(TPWaitingToActivate=0,'<img src=/img/msg_icons/info24.png> <font color=blue><u>','<img src=/img/msg_icons/error24.png> <font color=red><u>')}{!if(TPWaitingToActivate=1001,'1000+',TPWaitingToActivate)} Target Prospects waiting for activation </u></font>" style="font-weight:bold;font-size:14px" escape="false"/>
+                    </apex:facet>
+                    <apex:column headerValue="Target Prospect Name" rendered="{!If(TPWaitingToActivate=0,false,true)}">
+                        <apex:outputLink target="_blank" value="/{!TP.Id}">{!TP.Name}</apex:outputLink>
+                    </apex:column>
+                    <apex:repeat value="{!$ObjectType.Assigned_Partner__c.FieldSets.P360TPTxMAlert}" var="f">
+                        <apex:column value="{!TP[f]}"  width="100px">    
+                        </apex:column>
+                    </apex:repeat>
+                </apex:pageBlockTable>
+                </apex:pageblockSectionItem>
+                <!-- TP Not Activated End-->  
+                <!-- TP Expiring List Start-->
+                <apex:outputtext rendered="{!IF(TPExpiringTomorrow=0,true,false)}" value="<a href={!urlTPExpiringTomorrow} target=_blank>{!IF(TPExpiringTomorrow=0,'<img src=/img/msg_icons/info24.png> <font color=blue><u>','<img src=/img/msg_icons/error24.png> <font color=red><u>')}{!TPExpiringTomorrow}  Target Prospects expiring tomorrow</u></font></a> " style="font-weight:bold;font-size:14px" escape="false"/>
+
+               <apex:pageblockSectionItem rendered="{!IF(TPExpiringTomorrow!=0,true,false)}" dataStyleClass="pbWidth">
+                <apex:pageBlockTable value="{!lstTPExpiringTomorrow}" var="TP" style="font-size:11px;" rendered="{!IF(TPExpiringTomorrow!=0,true,false)}">
+                    <apex:facet name="header">
+                        <apex:outputtext value="<a href={!urlTPExpiringTomorrow} target=_blank>{!IF(TPExpiringTomorrow=0,'<img src=/img/msg_icons/info24.png> <font color=blue><u>','<img src=/img/msg_icons/error24.png> <font color=red><u>')}{!if(TPExpiringTomorrow=1001,'1000+',TPExpiringTomorrow)}  Target Prospects expiring tomorrow</u></font></a> " style="font-weight:bold;font-size:14px" escape="false"/>
+                    </apex:facet>
+                    <apex:column headerValue="Target Prospect Name"  rendered="{!If(TPExpiringTomorrow=0,false,true)}">
+                        <apex:outputLink target="_blank" value="/{!TP.Id}">{!TP.Name}</apex:outputLink>
+                    </apex:column>
+                    <apex:repeat value="{!$ObjectType.Assigned_Partner__c.FieldSets.P360TPTxMNotification}" var="f">
+                        <apex:column value="{!TP[f]}" width="100px">    
+                        </apex:column>
+                    </apex:repeat>
+                </apex:pageBlockTable>
+               </apex:pageblockSectionItem>
+                <!-- TP Expiring List End-->
+            </apex:pageblocksection>
+            <!----------------------Notification section in the Page----------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------->
+            <apex:pageblocksection columns="2" id="pb2BS2"  collapsible="false">
+                <apex:facet name="header">
+                    <apex:outputtext value="Notifications" style="font-weight:bold;font-size:14px" escape="false"/>
+                </apex:facet>
+                <!-- Lead Deals Start--> 
+                <apex:outputtext rendered="{!IF(LeadToDeal=0,true,false)}" value="<a href={!urlLeadConvertedDeal5Days} target=_blank><u>{!LeadToDeal} Leads Converted to Deals in last 5 days</u></font>" style="font-weight:bold;font-size:14px" escape="false"/>
+                <apex:pageblockSectionItem rendered="{!IF(LeadToDeal!=0,true,false)}" dataStyleClass="pbWidth">
+                <apex:pageBlockTable value="{!lstLeadToDeal}" var="Lead" style="font-size:11px;" rendered="{!IF(LeadToDeal!=0,true,false)}">
+                    <apex:facet name="header">
+                        <apex:outputtext value="<a href={!urlLeadConvertedDeal5Days} target=_blank><u>{!if(LeadToDeal=1001,'1000+',LeadToDeal)} Leads Converted to Deals in last 5 days</u></font>" style="font-weight:bold;font-size:14px" escape="false"/>
+                    </apex:facet>
+                    <apex:column headerValue="Lead Name" rendered="{!If(LeadToDeal=0,false,true)}">
+                        <apex:outputLink target="_blank" value="/{!Lead.Id}">
+                            {!Lead.Name}
+                        </apex:outputLink>
+                    </apex:column>
+                    <apex:repeat value="{!$ObjectType.Lead.FieldSets.P360LeadTxMNotification}" var="f">
+                        <apex:column value="{!Lead[f]}" width="100px">    
+                        </apex:column>
+                    </apex:repeat>
+                </apex:pageBlockTable>
+                </apex:pageblockSectionItem>
+                <!-- Lead Deals End--> 
+                <!--TP Expiring in 2Weeks Start-->
+                <apex:outputtext rendered="{!IF(TPExpiring2W=0,true,false)}" value="<a href={!urlTPExpiringTwoWeeks} target=_blank><u>{!TPExpiring2W} Target Prospects Expiring in 2 Weeks</u></font></a>" style="font-weight:bold;font-size:14px" escape="false"/>
+                <apex:pageblockSectionItem rendered="{!IF(TPExpiring2W!=0,true,false)}" dataStyleClass="pbWidth">
+                <apex:pageBlockTable value="{!lstTPExpiring}" var="TP" style="font-size:11px;" rendered="{!IF(TPExpiring2W!=0,true,false)}">
+                    <apex:facet name="header">
+                        <apex:outputtext value="<a href={!urlTPExpiringTwoWeeks} target=_blank><u>{!if(TPExpiring2W=1001,'1000+',TPExpiring2W)} Target Prospects Expiring in 2 weeks</u></font></a>" style="font-weight:bold;font-size:14px" escape="false"/>
+                    </apex:facet>
+                    <apex:column headerValue="Target Prospect Name" rendered="{!If(TPExpiring2W=0,false,true)}">
+                        <apex:outputLink target="_blank" value="/{!TP.Id}">{!TP.Name}</apex:outputLink>
+                    </apex:column>
+                    <apex:repeat value="{!$ObjectType.Assigned_Partner__c.FieldSets.P360TPTxMNotification}" var="f" >
+                        <apex:column value="{!TP[f]}"  width="100px">    
+                        </apex:column>
+                    </apex:repeat>
+                </apex:pageBlockTable>
+                 </apex:pageblockSectionItem>
+                <!--TP Expiring in 2Weeks End-->
+                <apex:outputtext value="<a href={!urlLeadWaitingforPAfor4Days} target=_blank><u>{!if(LeadPAToPSR=1001,'1000+',LeadPAToPSR)} Leads waiting with PA to assign to PSR for more than 4 days</u></a>" style="font-weight:bold;font-size:14px" escape="false"/>
+                <apex:outputtext value="<a href={!urlTPDeals5Days} target=_blank><u>{!if(TPsDeal=1001,'1000+',TPsDeal)} New Deals created from TPs in last 5 days</u></font></a>" style="font-weight:bold;font-size:14px" escape="false"/>
+                <apex:outputtext value="<a href={!urlLeadWaitingforPSRfor4Days} target=_blank><u> {!if(LeadWaitingPSR=1001,'1000+',LeadWaitingPSR)} Leads waiting with PSR for more than 4 days (lead aging)</u></font></a>" style="font-weight:bold;font-size:14px" escape="false"/>
+                <apex:outputtext value=""/>
+                                <apex:outputtext style="font-weight:bold;font-size:14px" value="<a href={!urlPartnerWith10PlusPartnerAssigned} target=_blank><u>{!countofPartnerAssignedLead} Partners with more than 10 leads assigned"  escape="false">  </apex:outputtext>
+            </apex:pageblocksection>
+            <!----------------------SCP Alert---------------------------------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------->
+            <apex:pageBlockSection columns="1" id="pb2BS3" collapsible="false" rendered="{!if(scpAlert=0,false,true)}">
+                <apex:facet name="header">
+                    <apex:outputtext value="SCP Messages" style="font-weight:bold;font-size:14px" escape="false"/>
+                </apex:facet>
+                <apex:dataList value="{!lstSCPAlert}" var="scp" style="background-color:#FFFFCC;">
+                <!-- SCAVA FIX -->
+                    <apex:outputText value="{!HTMLENCODE(scp.Description__c)}" escape="false"/>
+                </apex:dataList>
+            </apex:pageBlockSection>
+            <!----------------------Bar Charts--------------------------------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------->
+            <apex:pageBlockSection columns="2" id="pb2BS4" collapsible="false" >
+                <apex:facet name="header">
+                    <apex:outputtext value="Charts – Past 120 Days Information" style="font-weight:bold;font-size:14px" escape="false"/>
+                </apex:facet>
+                <apex:pageBlockSectionItem id="txtpchart">
+                    <apex:outputPanel >
+                        <br/>
+                        <apex:outputtext value="<a href={!urlLeadChart} target=_blank style=color:blue>Partner Lead Status</a>" style="color:blue;font-weight:bold;font-size:14px" escape="false"/>
+                        <apex:chart height="600" width="100%" data="{!ChartDataLead}" legend="true">
+                            <apex:axis type="Numeric" position="left" fields="data" title="Count" steps="2" minimum="0"/>
+                            <apex:axis type="Category" position="bottom" fields="name" title="Status">
+                                <apex:chartLabel rotate="70" />
+                            </apex:axis>
+                            <apex:barSeries orientation="vertical" axis="left" xField="name" yField="data" colorsProgressWithinSeries="true">
+                                <apex:chartLabel display="rotate" field="data" minMargin="300"/>
+                                <apex:chartTips height="20" width="240"/>
+                            </apex:barSeries>
+                        </apex:chart>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="txleadchart">
+                    <apex:outputPanel >
+                        <br/>
+                        <apex:outputtext value="<a href={!urlTPChart} target=_blank style=color:blue>TPs by status</a>" style="color:blue;font-weight:bold;font-size:14px" escape="false"/>
+                        <apex:chart height="500" width="100%" data="{!ChartData}" legend="true"  >
+                            <apex:axis type="Numeric" position="left" fields="data" title="Count" minimum="0">
+                            </apex:axis>
+                            <apex:axis type="Category" position="bottom" fields="name" title="Status">
+                                <apex:chartLabel rotate="70"/>
+                            </apex:axis>
+                            <apex:barSeries orientation="vertical" axis="left" xField="name" yField="data" colorsProgressWithinSeries="true">
+                                <apex:chartLabel display="rotate" field="data" minMargin="300"/>
+                                <apex:chartTips height="20" width="240"/>
+                            </apex:barSeries>
+                        </apex:chart>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <!----------------------Reports------------------------------------------------------------------------------------------>
+            <!----------------------------------------------------------------------------------------------------------------------->
+            <apex:pageBlockSection collapsible="false" id="pb2BS5" columns="3" >
+                <apex:facet name="header">
+                    <apex:outputtext value=" More Information" style="font-weight:bold;font-size:14px" escape="false"/>
+                </apex:facet>
+                <apex:repeat value="{!lstReports}" var="f" >
+                    <apex:outputLink value="/{!f.ReportID__c}" target="_blank" style="color:blue;padding-left: 50px;">
+                        {!f.Name__c}
+                    </apex:outputlink>
+                </apex:repeat>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

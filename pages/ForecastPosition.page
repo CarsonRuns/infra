@@ -1,0 +1,320 @@
+<apex:page standardController="Opportunity" extensions="OpportunityForecastPosition_CT" sidebar="true" lightningStylesheets="true">
+    <apex:stylesheet value="{!URLFOR($Resource.bootstrap,'bootstrap-sf1-0.1.0-beta.5/dist/css/bootstrap-namespaced.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.sf1_styles,'icons.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.sf1_styles,'styles.css')}" />
+    <apex:stylesheet value="{!$Resource.sfone}" />
+    <script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+    <apex:includeScript value="/support/console/45.0/integration.js"/>
+        <script type='text/javascript'>
+            function updateDefaultForecastingPosition(){
+            var selectedForecastingPosition = document.getElementById("{!$Component.OpptyForm.Position__c}").value;;
+            console.log(selectedForecastingPosition);
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.OpportunityForecastPosition_CT.updateForecastingPosition}','{!oppty.Id}',selectedForecastingPosition,handleResult);
+        }
+        function handleResult(result, event) { 
+            if(event.status){
+                Sfdc.canvas.publisher.publish({name: "publisher.close", payload:{ refresh:"true"}});  
+            } else if (event.type === 'exception'){
+                console.log(result);
+                console.log(event);
+                document.getElementById("sf1ErrorMessage").innerHTML = event.message;                
+                document.getElementById("sf1Error").style.display = "block";
+            } else {
+            }
+        }
+    function closeAction(){
+        Sfdc.canvas.publisher.publish({name: "publisher.close", payload:{ refresh:"true"}});
+    }
+    
+    SaveVal = function()
+    {
+        var pageMsgEl = document.getElementById("PAGE_MSG");
+        var ErrorMsg = validate();
+        if (ErrorMsg == "" || ErrorMsg == undefined)
+        {   
+            var spinner  = document.getElementById("spinner");
+            spinner.classList.add("show");                                     
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.OpportunityForecastPosition_CT.saveRecordUpdated}',
+                '{!Opportunity.id}', 
+                document.getElementById('{!$Component.OpptyForm.Position__c}').value,
+                function(result, event){
+                    if (event.status) {
+                        if(event.result=='Success'){
+                            if (sforce.console.isInConsole()) {
+                                sforce.console.getEnclosingPrimaryTabId(showTabId);
+                                sforce.console.getEnclosingTabId(closeSubtab);
+                            }else{
+                                window.open('/{!Opportunity.id}', '_top');
+                            }
+                        }else{
+                            document.getElementById('PAGE_MSG').innerHTML = event.result;
+                            spinner.classList.remove("show"); 
+                        }   
+                    } else if (event.type === 'exception') {
+                        console.log('Error Occured');
+                    } else {
+                        console.log('Error Occured');
+                    }
+                }, 
+                {escape: true}
+            );
+            return false;
+        }
+        else
+        {    
+            document.getElementById('PAGE_MSG').innerHTML = ErrorMsg;
+            return false;
+        }
+    }
+    var showTabId = function showTabId(result) {
+        sforce.console.refreshPrimaryTabById(result.id, false, refreshSuccess);
+    };
+    
+    var closeSubtab = function closeSubtab(result) {
+        var tabId = result.id;
+        sforce.console.closeTab(tabId);
+    };
+    
+    var refreshSuccess = function refreshSuccess(result) {
+        if (result.success == true) {
+            console('Primary tab refreshed successfully');
+        } else {
+            console('Primary did not refresh');
+        }
+    };
+    Cancel = function()
+    {
+        if (sforce.console.isInConsole()) {
+            sforce.console.getEnclosingTabId(closeSubtab);
+            return false;
+        }else{
+            window.open('/{!Opportunity.id}', '_top');
+        }
+    }
+    
+    validate = function()
+    {
+        var submitMsg;
+        var forecast = document.getElementById('{!$Component.OpptyForm.Position__c}').value;
+        
+        if (forecast == ""){
+            submitMsg = '{!$Label.Forecasting_Position_Invalid_Error_Message}';           
+        }
+        return submitMsg;
+    }
+    
+    
+    </script>
+    <style>
+        *{box-sizing:border-box;}
+        .MainContainer{padding: 5px 10px 20px 10px;background-color: transparent;}
+        .contentContainer{background-color:#f8f8f8;border-bottom:1px solid #eaeaea;border-left:1px solid #eaeaea;border-right:1px solid #eaeaea;border-top:1px solid #eaeaea;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;}
+        .mainTitle {padding: 15px 0 0;}
+        .mainTitleBody{background-color: transparent;color: #000;padding: 0;margin-bottom:15px;}
+        .mainTitleContent{vertical-align: middle;padding-left: 5px;width: 100%;}
+        .title{margin-left: 0px;padding-left: 0px;}
+        .titleStyle{margin-top: 9px;margin-bottom: 0;color: #000;font-size: 2em;font-weight: normal;}
+        .blank{clear:both;height:0;}
+        .headerContainer{text-align:center;padding:0px 5px;}
+        .pad{padding: 2px 3px;}
+        .whiteborder{border-bottom: 1px solid #fff;background-color: transparent;margin: 0;padding: 0;}
+        .borderContainer{border-bottom: 1px solid #dbdbdb;padding: 5px 0;}
+        .mainContent{margin: 7px 12px 7px;}
+        .contentHeader{border-width: 2px 0 0;background-color: #F2F2F2;border-style: solid;padding: 4px 3px;border-top: 0;}
+        .contentHeader h3{font-size: 12px;font-weight: bold;margin-bottom: 0px;margin-top: 0px;line-height: 17.14px}
+        .contentDetailView{color: #000;}
+        .row{width:100%;padding:5px 0px;border-bottom:1px solid #ececec;}
+        .label{width:36%;float:left;text-align:right;padding:5px 10px 5px 2px;vertical-align: top;font-size: 91%;font-weight: bold;color: #4a4a56;}
+        .labelRow{width:18%;}
+        .detailValue{width:64%;float:left;padding:5px 10px 5px 2px;text-align:left;color: #000;vertical-align: top;}
+        .floatleft{float:left;width:50%;}
+        .select {width: 100%;}
+        @media screen and (max-width: 250px) {
+        .contentHeader h3{font-size: 16px;font-weight: bold;margin-bottom: 0px;margin-top: 0px;line-height: 17.14px;padding:7px 0px;color:#000000;}
+        .whiteborder{display:none;}
+        .MainContainer{padding:10px;background:#FFFFFF;}
+        .mainTitle{display:none;}
+        .contentContainer{background-color:#FFFFFF;border:0px;}
+        .contentHeader{background-color:#FFFFFF;border:0px;padding:4px 0px;}
+        .row{border:0px;padding:0px;}
+        .floatleft{float:none;width:100%;}
+        .label{float:left;text-align:left;font-size:14px;font-weight:normal;width:100%;padding:5px 10px 5px 2px;vertical-align: top;color:#000000;font-weight:bold;}
+        .detailValue{width:100%;float:left;padding:5px 10px 5px 2px;text-align:left;color: #000;vertical-align: top; font-size:14px;color:#000000;}
+        }
+        @media screen and (min-width: 20px) and (max-width: 60px) {
+        .contentHeader h3{font-size: 16px;font-weight: bold;margin-bottom: 0px;margin-top: 0px;line-height: 17.14px;padding:7px 0px;color:#000000;}
+        .whiteborder{display:none;}
+        .MainContainer{padding:10px;background:#FFFFFF;}
+        .mainTitle{display:none;}
+        .contentContainer{background-color:#FFFFFF;border:0px;}
+        .contentHeader{background-color:#FFFFFF;border:0px;padding:4px 0px;}
+        .row{border:0px;padding:0px;}
+        .floatleft{float:none;width:100%;}
+        .label{float:left;text-align:left;font-size:14px;font-weight:normal;width:25%;padding:5px 10px 5px 2px;vertical-align: top;color:#000000;font-weight:bold;}
+        .detailValue{width:75%;float:left;padding:5px 10px 5px 2px;text-align:left;color: #000;vertical-align: top; font-size:14px;color:#000000;}
+        }
+        @media screen and (min-width: 200px) and (max-width: 400px) {
+        .label{float:left;text-align:left;font-size:14px;font-weight:normal;width:100%;padding:5px 10px 5px 2px;vertical-align: top;color:#000000;font-weight:bold;}
+        .detailValue{width:100%;float:left;padding:5px 10px 5px 2px;text-align:left;color: #000;vertical-align: top; font-size:14px;color:#000000;}
+        }
+        @media screen and (min-width: 400px) and (max-width: 480px) {
+        .label{float:left;text-align:left;font-size:14px;font-weight:normal;width:47%;padding:5px 10px 5px 2px;vertical-align: top;color:#000000;font-weight:bold;}
+        .detailValue{width:53%;float:left;padding:5px 10px 5px 2px;text-align:left;color: #000;vertical-align: top; font-size:14px;color:#000000;}
+        }
+        @media screen and (min-width: 480px) and (max-width: 550px) {
+        .label{float:left;text-align:left;font-size:14px;font-weight:normal;width:42%;padding:5px 10px 5px 2px;vertical-align: top;color:#000000;font-weight:bold;}
+        .detailValue{width:58%;float:left;padding:5px 10px 5px 2px;text-align:left;color: #000;vertical-align: top; font-size:14px;color:#000000;}
+        }
+        @media screen and (min-width: 550px) and (max-width: 800px) {
+        .label{float:left;text-align:left;font-size:14px;font-weight:normal;width:30%;padding:5px 10px 5px 2px;vertical-align: top;color:#000000;font-weight:bold;}
+        .detailValue{width:60%;float:left;padding:5px 10px 5px 2px;text-align:left;color: #000;vertical-align: top; font-size:14px;color:#000000;}
+        }
+        
+        #selectOpt .requiredBlock {
+        background-color: #c00;          
+        width: 3px;
+        top: -4px;
+        bottom: 0px;
+        height: 18px;
+        display: inline-block;
+        margin-left: -3px;           
+        margin-top: -3px;
+        vertical-align: middle;
+        }
+        .spinner {
+        display: block;
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        background: url(/img/loading32.gif) no-repeat center #FFFFFF;
+        text-align: center;
+        padding: 10px;
+        font: normal 16px Tahoma, Geneva, sans-serif;
+        /* border: 1px solid #666; */
+        border-radius: 5px;
+        box-shadow: 5px 5px 31px 0px #000000;
+        margin-left: -50px;
+        margin-top: -50px;
+        z-index: 1001;
+        overflow: auto;
+        }  
+       .hide{
+        display:none;
+        }
+       .show{
+        display:block;
+        }
+    </style>
+    <div class="MainContainer">
+        <div id="spinner" class="spinner hide"/>
+        <apex:form id="OpptyForm">
+            <div class="mainTitle">
+                <div class="mainTitleBody">
+                    <div class="mainTitleContent">
+                        <h1 class="title titleStyle">Change Forecasting Position</h1>
+                        <div class="blank"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contentContainer">
+                <div class="borderContainer">
+                    <div class="headerContainer">
+                        <span class="pad"><apex:commandButton onclick="return SaveVal();" value="Save" id="updateButton" style="button"/></span>
+                        <span class="pad"><apex:commandButton onclick="return Cancel();" value="Cancel" id="cancelButton" /></span>                            
+                    </div>
+                    <center>
+                        <div id="PAGE_MSG" style="color:#CC0000;font-weight:bold"></div>
+                    </center>
+                </div>
+                <div class="mainContent">
+                    <div class="contentHeader">
+                        <h2><center>{!oppty.name}</center></h2>
+                    </div>
+                    <div class="contentDetailView">
+                        <div class="row">
+                            <div class="floatleft">
+                                <div class="label">{!$ObjectType.Account.Label}</div>
+                                <div class="detailValue">{!Opportunity.Account.Name}</div>
+                                <div class="blank"></div>
+                            </div>
+                            <div class="floatleft">
+                                <div class="label">{!$ObjectType.Opportunity.fields.StageName.label}</div>
+                                <div class="detailValue">{!Opportunity.StageName}</div>
+                                <div class="blank"></div>
+                            </div>
+                            <div class="blank"></div>
+                        </div>
+                        <div class="row">
+                            <div class="floatleft">
+                                <div class="label">{!$ObjectType.Opportunity.fields.Expected_Product__c.label}</div>
+                                <div class="detailValue">{!CEILING(Opportunity.Expected_Product__c)}</div>
+                                <div class="blank"></div>
+                            </div>
+                            <div class="floatleft">
+                                <div class="label">{!$ObjectType.Opportunity.fields.Expected_Service__c.label}</div>
+                                <div class="detailValue">{!CEILING(Opportunity.Expected_Service__c)}</div>
+                                <div class="blank"></div>
+                            </div>
+                            <div class="blank"></div>
+                        </div>
+                        <div class="row">
+                            <div class="floatleft">
+                                <div class="label">{!$ObjectType.Opportunity.fields.Opportunity_Status__c.label}</div>
+                                <div class="detailValue">{!Opportunity.Opportunity_Status__c}</div>
+                                <div class="blank"></div>
+                            </div>
+                            <div class="floatleft">
+                                <div class="label">{!$ObjectType.Opportunity.fields.DealID__c.label}</div>
+                                <div class="detailValue">{!Opportunity.DealID__c}</div>
+                                <div class="blank"></div>
+                            </div>
+                            <div class="blank"></div>
+                        </div>
+                        <div>
+                            <div class="label labelRow"><apex:outputLabel value="Please select Forecasting Position" for="forecastPosition" /></div>
+                            <div class="detailValue" id="selectOpt">
+                                <apex:inputhidden value="{!oppty.id}" />
+                                <apex:outputPanel styleClass="requiredInput" layout="block">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                    <apex:selectList styleclass="select" value="{!oppty.Position__c}" size="1" id="Position__c">
+                                        <apex:selectOptions value="{!forecastPositionOptions}" />
+                                    </apex:selectList>
+                                    <apex:outputText value="{!showMsg}" style="color:#CC0000;font-weight:bold"/> 
+                                </apex:outputPanel>
+                            </div>
+                            <div class="blank"></div>
+                        </div>
+                    </div>
+                    <div class="headerContainer">
+                        <span class="pad"><apex:commandButton onclick="return SaveVal();" value="Save"  style="button"/></span>
+                        <span class="pad"><apex:commandButton onclick="return Cancel();" value="Cancel"  /></span>                            
+                    </div>
+                </div>
+            </div>
+            
+        </apex:form>
+    </div>
+    <script>
+    var x = document.getElementById("{!$Component.OpptyForm.Position__c}");
+    var y = document.createElement("OPTGROUP");
+    x.appendChild(y);
+    if( (typeof sforce != 'undefined') && (sforce != null) ) {
+        var btndiv = document.getElementById("btndiv");
+        btndiv.style.display = "none";
+    }
+    Sfdc.canvas.publisher.subscribe({name: "publisher.showPanel",
+                                     onData:function(e) {
+                                         Sfdc.canvas.publisher.publish({name:"publisher.setValidForSubmit", payload:"true"});
+                                     }
+                                    });
+    Sfdc.canvas.publisher.subscribe({
+        name : "publisher.post",
+        onData : function(e) {
+            updateDefaultForecastingPosition();
+        }
+    });
+    </script>
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page standardController="Case" extensions="TSN_Closed_Case_CTE" action="{!start}">
+<apex:pageBlock >
+<br></br>
+<apex:outputText value="{!ErrorContent}"></apex:outputText>
+<br></br>
+<br></br>
+<apex:outputLink value="{!PageRef}">Click here to go back to the case</apex:outputLink>
+</apex:pageBlock>
+</apex:page>

@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Account Plan --></label>
+        <name>Account_Plan_New__c</name>
+        <relationshipLabel><!-- Competitive Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cisco Strengths Strategy --></label>
+        <name>Cisco_Strengths_Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cisco Weakness Strategy --></label>
+        <name>Cisco_Weakness_Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Strengths Strategy --></label>
+        <name>Competitor_Strengths_Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Weakness Strategy --></label>
+        <name>Competitor_Weakness_Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor --></label>
+        <name>Competitors__c</name>
+        <relationshipLabel><!-- Competitive Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Data Source Name --></label>
+        <name>Data_Source_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deployment No --></label>
+        <name>Deployment_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunities --></label>
+        <name>Opportunities__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Competitor Name --></label>
+        <name>Other_Competitor_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Information --></label>
+        <name>Other_Information__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other URL --></label>
+        <name>Other_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Competitor Partner --></label>
+        <name>Primary_Competitor_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Service --></label>
+        <name>Primary_Service__c</name>
+        <picklistValues>
+            <masterLabel>PCS</masterLabel>
+            <translation><!-- PCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subscriptional</masterLabel>
+            <translation><!-- Subscriptional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSS</masterLabel>
+            <translation><!-- TSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transactional</masterLabel>
+            <translation><!-- Transactional --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Primary Technology --></label>
+        <name>Primary_Technology__c</name>
+        <picklistValues>
+            <masterLabel>ATM</masterLabel>
+            <translation><!-- ATM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call Centre</masterLabel>
+            <translation><!-- Call Centre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Content</masterLabel>
+            <translation><!-- Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Frame</masterLabel>
+            <translation><!-- Frame --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Networks</masterLabel>
+            <translation><!-- Global Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IP Core</masterLabel>
+            <translation><!-- IP Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IP Edge</masterLabel>
+            <translation><!-- IP Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IP Telephony</masterLabel>
+            <translation><!-- IP Telephony --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAN</masterLabel>
+            <translation><!-- LAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Metro Core</masterLabel>
+            <translation><!-- Metro Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Metro Ethernet</masterLabel>
+            <translation><!-- Metro Ethernet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Metro Optical</masterLabel>
+            <translation><!-- Metro Optical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optical</masterLabel>
+            <translation><!-- Optical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation><!-- Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage IT/DCN</masterLabel>
+            <translation><!-- Storage IT/DCN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VoIP Gateway</masterLabel>
+            <translation><!-- VoIP Gateway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WAN</masterLabel>
+            <translation><!-- WAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless</masterLabel>
+            <translation><!-- Wireless --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Related Solution1 Partner --></label>
+        <name>Related_Opp1_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Solution2 Partner --></label>
+        <name>Related_Opp2_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Solution3 Partner --></label>
+        <name>Related_Opp3_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Solution Plan1 --></label>
+        <name>Related_Opportunity_1__c</name>
+        <relationshipLabel><!-- Competitive Plans (Related Solution Plan1) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Related Solution Plan2 --></label>
+        <name>Related_Opportunity_2__c</name>
+        <relationshipLabel><!-- Competitive Plans (Related Solution Plan2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Related Solution Plan3 --></label>
+        <name>Related_Opportunity_3__c</name>
+        <relationshipLabel><!-- Competitive Plans (Related Solution Plan3) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Source Account Plan Id --></label>
+        <name>Source_Account_Plan_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source Comp Plan Id --></label>
+        <name>Source_Comp_Plan_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Strengths --></label>
+        <name>Strengths__c</name>
+    </fields>
+    <fields>
+        <label><!-- Threats --></label>
+        <name>Threats__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weaknesses --></label>
+        <name>Weaknesses__c</name>
+    </fields>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Ablative</caseType>
+        <plural>false</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Ablative</caseType>
+        <plural>true</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Ablative</caseType>
+        <plural>false</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Ablative</caseType>
+        <plural>true</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Ablative</caseType>
+        <plural>false</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Ablative</caseType>
+        <plural>true</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Locative</caseType>
+        <plural>false</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Locative</caseType>
+        <plural>true</plural>
+        <possessive>None</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Locative</caseType>
+        <plural>false</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Locative</caseType>
+        <plural>true</plural>
+        <possessive>First</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Locative</caseType>
+        <plural>false</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Locative</caseType>
+        <plural>true</plural>
+        <possessive>Second</possessive>
+        <value>Rekabet Planı</value>
+    </caseValues>
+    <nameFieldLabel>Competitive Plan ID</nameFieldLabel>
+    <layouts>
+        <layout>CSAPEN Competitive Plan Layout - REL_7.0</layout>
+        <sections>
+            <label><!-- Account Plan --></label>
+            <section>Account Plan</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Informaiton --></label>
+            <section>Additional Informaiton</section>
+        </sections>
+        <sections>
+            <label><!-- SWOT --></label>
+            <section>SWOT</section>
+        </sections>
+        <sections>
+            <label><!-- Separator --></label>
+            <section>Separator</section>
+        </sections>
+        <sections>
+            <label><!-- Useful Links --></label>
+            <section>Useful Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Competitive Plan Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Related Opportunities --></label>
+            <section>Related Opportunities</section>
+        </sections>
+        <sections>
+            <label><!-- SWOT --></label>
+            <section>SWOT</section>
+        </sections>
+        <sections>
+            <label><!-- Separator --></label>
+            <section>Separator</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>zz_CSAPEN Competitive Plan Layout - REL_7.0_2010_05</layout>
+        <sections>
+            <label><!-- Account Plan --></label>
+            <section>Account Plan</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Informaiton --></label>
+            <section>Additional Informaiton</section>
+        </sections>
+        <sections>
+            <label><!-- SWOT --></label>
+            <section>SWOT</section>
+        </sections>
+        <sections>
+            <label><!-- Separator --></label>
+            <section>Separator</section>
+        </sections>
+        <sections>
+            <label><!-- Useful Links --></label>
+            <section>Useful Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>zz_Competitive Plan Layout_2010_05</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Related Opportunities --></label>
+            <section>Related Opportunities</section>
+        </sections>
+        <sections>
+            <label><!-- SWOT --></label>
+            <section>SWOT</section>
+        </sections>
+        <sections>
+            <label><!-- Separator --></label>
+            <section>Separator</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Dodatkowe informacje o kliencie</label>
+        <name>Additional_Customer_Information__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assign Directly to Recommended PSR? --></label>
+        <name>Assign_Recommended_PSR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned Partner Sales Rep 1 Name --></label>
+        <name>Assigned_PSR_SYS1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned Partner Sales Rep 2 Name --></label>
+        <name>Assigned_PSR_SYS2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned Partner Sales Rep 3 Name --></label>
+        <name>Assigned_PSR_SYS3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned Partner ID --></label>
+        <name>Assigned_Partner_ID__c</name>
+    </fields>
+    <fields>
+        <label>Przedstawiciel działu sprzedaży przypisanego partnera 2: </label>
+        <name>Assigned_Partner_Sales_Rep_2__c</name>
+        <relationshipLabel><!-- Target Prospects (Assigned Partner Sales Rep 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Przedstawiciel działu sprzedaży przypisanego partnera 3</label>
+        <name>Assigned_Partner_Sales_Rep_3__c</name>
+        <relationshipLabel><!-- Target Prospects (Assigned Partner Sales Rep 3) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Przedstawiciel działu sprzedaży przypisanego partnera</label>
+        <name>Assigned_Partner_Sales_Rep__c</name>
+        <relationshipLabel><!-- Target Prospects (Assigned Partner Sales Rep) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Przypisany Partner</label>
+        <name>Assigned_Partner__c</name>
+        <relationshipLabel><!-- Target Prospects (Assigned Partner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Assignment Activated --></label>
+        <name>Assignment_Activated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Associated Partners On Account --></label>
+        <name>Associated_Partners_On_Account__c</name>
+    </fields>
+    <fields>
+        <label>PSR rekomendowany przez Cisco</label>
+        <name>Cisco_Rec_PSR_Name__c</name>
+    </fields>
+    <fields>
+        <label>PSR rekomendowany przez firmę Cisco</label>
+        <name>Cisco_Recomended_Partner_Sales_Rep__c</name>
+        <relationshipLabel><!-- Target Prospects (Cisco Recommended PSR) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Created By Name --></label>
+        <name>CreatedByName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current_FY_Wallet_Total_000 --></label>
+        <name>Current_FY_Wallet_Total_000__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Account Country --></label>
+        <name>Customer_Account_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Account ID --></label>
+        <name>Customer_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label>Nazwa klienta</label>
+        <name>Customer_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label>Konto klienta</label>
+        <name>Customer_Account__c</name>
+        <relationshipLabel>Klienci docelowi</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Customer Intelligence --></label>
+        <name>Customer_Intelligence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Added --></label>
+        <name>Date_Added__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days Taken by PSR to Accept --></label>
+        <name>Days_Taken_by_PSR_to_Accept__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days Taken to Activate Prospect/Partner --></label>
+        <name>Days_Taken_to_Activate_Prospect_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days Taken to Add Partner --></label>
+        <name>Days_Taken_to_Add_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days Taken to Assign PSR --></label>
+        <name>Days_Taken_to_Assign_PSR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days Without Patner --></label>
+        <name>Days_Without_Patner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Create Date --></label>
+        <name>Deal_Create_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duplicate Prevention --></label>
+        <name>Duplicate_Prevention__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manage Expiration Date --></label>
+        <name>Expiration_Date_Link__c</name>
+    </fields>
+    <fields>
+        <label>Data wygaśnięcia</label>
+        <name>Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Extend By --></label>
+        <name>Extend_By__c</name>
+        <picklistValues>
+            <masterLabel>15 Days</masterLabel>
+            <translation><!-- 15 Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30 Days</masterLabel>
+            <translation><!-- 30 Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60 Days</masterLabel>
+            <translation><!-- 60 Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>90 Days</masterLabel>
+            <translation><!-- 90 Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Expiration</masterLabel>
+            <translation><!-- No Expiration --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Extension Reason --></label>
+        <name>Extension_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Explicit Extension by Partner</masterLabel>
+            <translation><!-- Explicit Extension by Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Initial Expiration with Prospect Upload</masterLabel>
+            <translation><!-- Initial Expiration with Prospect Upload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Deal Creation</masterLabel>
+            <translation><!-- New Deal Creation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Created Target Prospect Default</masterLabel>
+            <translation><!-- Partner Created Target Prospect Default --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TxM Extension</masterLabel>
+            <translation><!-- TxM Extension --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Industry --></label>
+        <name>Industry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By Name --></label>
+        <name>LastModifiedByName__c</name>
+    </fields>
+    <fields>
+        <label>Materiały marketingowe</label>
+        <name>Marketing_Collateral__c</name>
+    </fields>
+    <fields>
+        <label>Opis gry marketingowej</label>
+        <name>Marketing_Play_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Play Information --></label>
+        <name>Marketing_Play_Information__c</name>
+    </fields>
+    <fields>
+        <label>Nazwa gry marketingowej</label>
+        <name>Marketing_Play_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify Partner on Activation --></label>
+        <name>Notify_Partner_on_Activation__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- PSR Accepted Date/Time --></label>
+        <name>PSR_Accepted_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSR Assigned Date/Time --></label>
+        <name>PSR_Assigned_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days taken to Accept by Partner --></label>
+        <name>Partner_Acceptance_Within_3_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Accepted Date/Time --></label>
+        <name>Partner_Accepted_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Added Date/Time --></label>
+        <name>Partner_Added_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prospect/Partner Activated Date/Time --></label>
+        <name>Partner_Assigned_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prospect/Partner Activated --></label>
+        <name>Partner_Assigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner BEC ID (PDB) --></label>
+        <name>Partner_BEC_ID_PDB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner BEC ID (PGTMV) --></label>
+        <name>Partner_BEC_ID_PGTMV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner BE GEO ID (PDB) --></label>
+        <name>Partner_BE_GEO_ID_PDB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner BE GEO ID (PGTMV) --></label>
+        <name>Partner_BE_GEO_ID_PGTMV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner City --></label>
+        <name>Partner_City__c</name>
+    </fields>
+    <fields>
+        <label>Kraj Partnera</label>
+        <name>Partner_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Status Order --></label>
+        <name>Partner_Status_Order__c</name>
+    </fields>
+    <fields>
+        <label>Status Partnera</label>
+        <name>Partner_Status__c</name>
+        <picklistValues>
+            <masterLabel>Actively Working</masterLabel>
+            <translation>Aktywnie pracujący</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assigned (New)</masterLabel>
+            <translation>Przypisany (nowy)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assigned to PSR</masterLabel>
+            <translation>Przypisany do Partner Sales Representative (PSR)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation>Zamknięto</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Assigned</masterLabel>
+            <translation>Przypisany Partner</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation>Odrzucono</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Dni od rozpoczęcia prospektu</label>
+        <name>Prospect_Age__c</name>
+    </fields>
+    <fields>
+        <label>Przyczyna zamknięcia/odrzucenia</label>
+        <name>Rejected_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Customer has no money/budget/credit/financing</masterLabel>
+            <translation>Klient nie posiada gotówki/budżetu/kredytu/finansowania</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer outside of my geography</masterLabel>
+            <translation>Klient spoza mojego rynku geograficznego</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer/vertical outside focus area</masterLabel>
+            <translation>Klient /branża spoza obszaru zainteresowań</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Capacity at this time</masterLabel>
+            <translation>Aktualnie brak ogłoszeń</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No viable opportunity</masterLabel>
+            <translation>Brak realnych możliwości</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not certified/qualified to provide solution</masterLabel>
+            <translation>Brak certyfikacji/kwalifikacji do dostarczenia rozwiązania</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Too small of an opportunity</masterLabel>
+            <translation>Niewielka szansa</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Status --></label>
+        <name>SCP_Partner_Status__c</name>
+        <picklistValues>
+            <masterLabel>Actively Working</masterLabel>
+            <translation><!-- Actively Working --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assigned to PSR</masterLabel>
+            <translation><!-- Assigned to PSR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Assigned</masterLabel>
+            <translation><!-- Partner Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- TBM/TAM Email --></label>
+        <name>TBM_TAM_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- TBM/TAM Name --></label>
+        <name>TBM_TAM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- TBM TAM Username --></label>
+        <name>TBM_TAM_Username__c</name>
+    </fields>
+    <fields>
+        <label>TBM/TAM</label>
+        <name>TBM_TAM__c</name>
+        <relationshipLabel><!-- Target Prospects (TBM/TAM) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- TP Conflicts with Partner Allocation --></label>
+        <name>TP_Conflicts_with_Partner_Allocation__c</name>
+    </fields>
+    <fields>
+        <label>Architektura docelowa</label>
+        <name>Target_Architecture__c</name>
+        <picklistValues>
+            <masterLabel>Any/All Technologies</masterLabel>
+            <translation>Technologie Jakiekolwiek/Wszystkie</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration-Unified Communications (UC)</masterLabel>
+            <translation>Collaboration-Unified Communications (UC)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core-Routing Switching &amp; Services</masterLabel>
+            <translation>Przełączanie routingu i usługi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center-Unified Computing Systems (UCS)</masterLabel>
+            <translation>Centra Data Centre - Unified Computing Systems (UCS)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video-TelePresence &amp; Conferencing</masterLabel>
+            <translation>Wideo - Telepresence i konferencje</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Opis klienta docelowego</label>
+        <name>Target_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Prospect Owner ID --></label>
+        <name>Target_Prospect_Owner_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Prospect Source --></label>
+        <name>Target_Prospect_Source__c</name>
+    </fields>
+    <fields>
+        <help><!-- This picklist field is used on the TP filter screen --></help>
+        <label>Technologia</label>
+        <name>Technology_Filter__c</name>
+        <picklistValues>
+            <masterLabel>Collab Applications</masterLabel>
+            <translation>Aplikacja do współpracy</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collab Voice</masterLabel>
+            <translation>Współpraca głosowa</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataCenter UCS</masterLabel>
+            <translation>Centrum danych UCS</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Inne</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Routing</masterLabel>
+            <translation>Routing</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation>Zabezpieczenia</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Services</masterLabel>
+            <translation>Usługi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switching</masterLabel>
+            <translation>Przełączniki</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telepresence</masterLabel>
+            <translation>Telepresence</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wirless</masterLabel>
+            <translation>Łączność bezprzewodowa</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- has Customer Intelligence --></label>
+        <name>has_Customer_Intelligence__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSR Assigned? --></label>
+        <name>isPSRAssigned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is PA Assigned Today --></label>
+        <name>is_PA_Assigned_Today__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is PSR Assigned Today --></label>
+        <name>is_PSR_Assigned_Today__c</name>
+    </fields>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>false</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>true</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Locative</caseType>
+        <plural>false</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <caseValues>
+        <caseType>Locative</caseType>
+        <plural>true</plural>
+        <value>Klienci docelowi</value>
+    </caseValues>
+    <gender>Neuter</gender>
+    <nameFieldLabel>Target Prospect Name</nameFieldLabel>
+    <fieldSets>
+        <label><!-- P360TPTxMAlert --></label>
+        <name>P360TPTxMAlert</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- P360TPTxMDashboardAlert --></label>
+        <name>P360TPTxMDashboardAlert</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- P360TPTxMNotification --></label>
+        <name>P360TPTxMNotification</name>
+    </fieldSets>
+    <layouts>
+        <layout>ADMIN Target Prospect Layout</layout>
+        <sections>
+            <label><!-- Assignment Information --></label>
+            <section>Assignment Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Play Information --></label>
+            <section>Marketing Play Information</section>
+        </sections>
+        <sections>
+            <label><!-- Message Display --></label>
+            <section>Message Display</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Collaboration --></label>
+            <section>Partner Collaboration</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Read Only Target Prospect Layout</layout>
+        <sections>
+            <label><!-- Assignment Information --></label>
+            <section>Assignment Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Play Information --></label>
+            <section>Marketing Play Information</section>
+        </sections>
+        <sections>
+            <label><!-- Message Display --></label>
+            <section>Message Display</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Collaboration --></label>
+            <section>Partner Collaboration</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>SCP Communities</layout>
+        <sections>
+            <label>Informacje o przypisaniu</label>
+            <section>Assignment Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informacje o grze rynkowej</label>
+            <section>Marketing Play Information</section>
+        </sections>
+        <sections>
+            <label><!-- Message Display --></label>
+            <section>Message Display</section>
+        </sections>
+        <sections>
+            <label>Dane partnera</label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- hideFieldSection --></label>
+            <section>hideFieldSection</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Target Prospect Layout</layout>
+        <sections>
+            <label><!-- Assignment Information --></label>
+            <section>Assignment Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Play Information --></label>
+            <section>Marketing Play Information</section>
+        </sections>
+        <sections>
+            <label><!-- Message Display --></label>
+            <section>Message Display</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Collaboration --></label>
+            <section>Partner Collaboration</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>ZZ_2B_P360_Target Prospect Layout</layout>
+        <sections>
+            <label><!-- Assignment Information --></label>
+            <section>Assignment Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Visibility --></label>
+            <section>Partner Visibility</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>zzTarget Prospect Layout_Nov_2012</layout>
+        <sections>
+            <label><!-- Assignment Information --></label>
+            <section>Assignment Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Play Information --></label>
+            <section>Marketing Play Information</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Information --></label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Partner Visibility --></label>
+            <section>Partner Visibility</section>
+        </sections>
+    </layouts>
+    <sharingReasons>
+        <label><!-- Sharing With Partner --></label>
+        <name>Sharing_With_Partner</name>
+    </sharingReasons>
+    <webLinks>
+        <label>Link do narzędzia Partner Self Service (PSS)</label>
+        <name>Partner_Self_Service_PSS_Link</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_All_Deals --></label>
+        <name>View_All_Deals</name>
+    </webLinks>
+</CustomObjectTranslation>

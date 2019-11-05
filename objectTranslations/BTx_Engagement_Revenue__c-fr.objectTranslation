@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Offre cloud</label>
+        <name>Cloud_Offer__c</name>
+        <picklistValues>
+            <masterLabel>Cloud Demand</masterLabel>
+            <translation>Demande Cloud</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Supply</masterLabel>
+            <translation>Fourniture Cloud</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>To Be Qualified</masterLabel>
+            <translation>À déterminer</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Combinaison collaboration-réunions (%)</label>
+        <name>Collab_Conferencing_Mix__c</name>
+    </fields>
+    <fields>
+        <label>Collab-Réunions (000 $)</label>
+        <name>Collab_Conferencing_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Combinaison collab-centre de contact (%)</label>
+        <name>Collab_Contact_Center_Mix__c</name>
+    </fields>
+    <fields>
+        <label>Collab-Centre de contact (000 $)</label>
+        <name>Collab_Contact_Center_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Collab-Noyau (000 $)</label>
+        <name>Collab_Core_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Combinaison collaboration-UC (%)</label>
+        <name>Collab_UC_Mix__c</name>
+    </fields>
+    <fields>
+        <label>Collab-UC (000 $)</label>
+        <name>Collab_UC_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Combinaison collaboration-vidéo (%)</label>
+        <name>Collab_Video_Mix__c</name>
+    </fields>
+    <fields>
+        <label>Collaboration-Vidéo (000 $)</label>
+        <name>Collab_Video_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Offre-Autre description</label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label>Systèmes informatiques (000 $)</label>
+        <name>Computing_Systems_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Commutateur/routeur principal (000 $)</label>
+        <name>Core_Route_Switch_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Source de données</label>
+        <name>Data_Source__c</name>
+    </fields>
+    <fields>
+        <help><!-- Opportunity Deal ID --></help>
+        <label><!-- Deal ID --></label>
+        <name>Deal_ID__c</name>
+    </fields>
+    <fields>
+        <label>% combinaison de syst. informatiques</label>
+        <name>Engagement_Total_DC_Mix__c</name>
+    </fields>
+    <fields>
+        <label>Projet</label>
+        <name>Engagement__c</name>
+        <relationshipLabel>Recettes du projet BTx par offre</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Expected Book Date Fiscal Quarter --></label>
+        <name>Expected_Book_Date_Fiscal_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected Book Date Fiscal Year --></label>
+        <name>Expected_Book_Date_Fiscal_Year__c</name>
+    </fields>
+    <fields>
+        <label>Date de réservation attendue</label>
+        <name>Expected_Book_Date__c</name>
+    </fields>
+    <fields>
+        <label>Produit attendu (en milliers)</label>
+        <name>Expected_Product_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Service attendu (en milliers)</label>
+        <name>Expected_Service_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Total escompté (en milliers)</label>
+        <name>Expected_Total_in_K__c</name>
+    </fields>
+    <fields>
+        <help>ENGAGÉ : au moins 80 % de probabilité de réservation à la date prévue
+
+POTENTIEL : au moins 60 % de probabilité de réservation à la date prévue
+
+IMPRÉVISIBLE : moins de 60 % de probabilité de conclure la vente</help>
+        <label>Statut de prévision</label>
+        <name>Forecast_Status__c</name>
+        <picklistValues>
+            <masterLabel>Booked</masterLabel>
+            <translation>Réservée</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commit</masterLabel>
+            <translation>Engagé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Forecastable</masterLabel>
+            <translation>Imprévisible</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upside</masterLabel>
+            <translation>Potentiel</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Est-ce une offre principale ?</label>
+        <name>Is_this_a_Primary_Solution__c</name>
+    </fields>
+    <fields>
+        <help><!-- ALL-IN-ONE - Single implementation project; no opportunity to repeat with customer 
+INITIAL/PILOT - Single geo implementation. Opportunity to repeat with the customer 
+FRANCHISE WIN - Repeated sale of INITIAL/PILOT with customer (same business problem) --></help>
+        <label><!-- Opportunity Type --></label>
+        <name>Opportunity_Type__c</name>
+        <picklistValues>
+            <masterLabel>All-in-one</masterLabel>
+            <translation><!-- All-in-one --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Franchise Win</masterLabel>
+            <translation><!-- Franchise Win --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Initial/Pilot</masterLabel>
+            <translation><!-- Initial/Pilot --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- BTx Project Revenue by Offers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Combinaison collaboration-noyau (%)</label>
+        <name>Project_Total_Collab_Mix__c</name>
+    </fields>
+    <fields>
+        <label>% combinaison de routeurs/commutateurs</label>
+        <name>Project_Total_Core_Route_Switch_Mix__c</name>
+    </fields>
+    <fields>
+        <label>% de combinaison sécurité</label>
+        <name>Project_Total_Security_Mix__c</name>
+    </fields>
+    <fields>
+        <label>% de combinaison sans fil</label>
+        <name>Project_Total_Wireless_Mix__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Order # --></label>
+        <name>Sales_Order__c</name>
+    </fields>
+    <fields>
+        <label>Sécurité (000 $)</label>
+        <name>Security_in_K__c</name>
+    </fields>
+    <fields>
+        <label>Offre logicielle</label>
+        <name>Software_Offer__c</name>
+        <picklistValues>
+            <masterLabel>CiscoOne Access Advanced</masterLabel>
+            <translation>Cisco One - Accès avancé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CiscoOne Access Foundation</masterLabel>
+            <translation>Cisco One Access Foundation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CiscoOne Datacenter Network Advanced</masterLabel>
+            <translation>Cisco One Data Center Network Advanced</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CiscoOne Datacenter Network Foundation</masterLabel>
+            <translation>Cisco One Data Center Network Foundation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CiscoOne UCS Advanced</masterLabel>
+            <translation>Cisco One UCS Advanced</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CiscoOne UCS Foundation</masterLabel>
+            <translation>Cisco One UCS Foundation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CiscoOne WAN Advanced</masterLabel>
+            <translation>Cisco One WAN Advanced</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CiscoOne WAN Foundation</masterLabel>
+            <translation>Cisco One WAN Foundation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collab ELA</masterLabel>
+            <translation><!-- Collab ELA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cross Catalog</masterLabel>
+            <translation>Catalogue croisé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security ELA</masterLabel>
+            <translation>ELA sécurité</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Offres</label>
+        <name>Solution__c</name>
+        <picklistValues>
+            <masterLabel>Agile Agency / Bank / Firm Platform</masterLabel>
+            <translation><!-- Agile Agency / Bank / Firm Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Conferencing and Training</masterLabel>
+            <translation>Réunion d'entreprise et formation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Video</masterLabel>
+            <translation>Vidéo d'entreprise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Agency / Bank / Firm Platform</masterLabel>
+            <translation><!-- Connected Agency / Bank / Firm Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Analytics for Network Deployment</masterLabel>
+            <translation><!-- Connected Analytics for Network Deployment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Analytics for Retail</masterLabel>
+            <translation><!-- Connected Analytics for Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Energy</masterLabel>
+            <translation><!-- Connected Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Manufacturing</masterLabel>
+            <translation>Ops connectées IoT : usine du futur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connected Processes</masterLabel>
+            <translation><!-- Connected Processes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Critical Infrastructure Security</masterLabel>
+            <translation><!-- Critical Infrastructure Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Effort Analytics</masterLabel>
+            <translation><!-- Customer Effort Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cyber Security for Industry</masterLabel>
+            <translation><!-- Cyber Security for Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cyber Security for Insurance / Banking</masterLabel>
+            <translation><!-- Cyber Security for Insurance / Banking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Enterprise</masterLabel>
+            <translation><!-- Digital Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Interactive Experience</masterLabel>
+            <translation><!-- Digital Interactive Experience --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Team Collaboration</masterLabel>
+            <translation><!-- Digital Team Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Center-Future</masterLabel>
+            <translation><!-- Distribution Center-Future --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employee Enablement-Future</masterLabel>
+            <translation><!-- Employee Enablement-Future --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extended Care</masterLabel>
+            <translation><!-- Extended Care --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Flexible Fulfillment</masterLabel>
+            <translation><!-- Flexible Fulfillment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest Loyalty Experience</masterLabel>
+            <translation><!-- Guest Loyalty Experience --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest Mobile Experience</masterLabel>
+            <translation><!-- Guest Mobile Experience --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest Personalized Stay</masterLabel>
+            <translation><!-- Guest Personalized Stay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest and Staff Communications</masterLabel>
+            <translation><!-- Guest and Staff Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intelligent Contact Center</masterLabel>
+            <translation>Centre de contact intelligent</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interactive Kiosks</masterLabel>
+            <translation><!-- Interactive Kiosks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Life Line</masterLabel>
+            <translation><!-- Life Line --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Location Integrated Real Time communications</masterLabel>
+            <translation><!-- Location Integrated Real Time communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Location Services</masterLabel>
+            <translation><!-- Location Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Location-Based Analytics</masterLabel>
+            <translation>Analytique basée sur le site</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logical Data Warehouse</masterLabel>
+            <translation>Entrepôt de données logique</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Loss Prevention</masterLabel>
+            <translation><!-- Loss Prevention --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Match Rate Routing</masterLabel>
+            <translation><!-- Match Rate Routing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile Experiences</masterLabel>
+            <translation>Expériences mobiles</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Omni-Channel for Insurance/Banking</masterLabel>
+            <translation><!-- Omni-Channel for Insurance/Banking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Omnichannel Customer Care</masterLabel>
+            <translation><!-- Omnichannel Customer Care --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Autre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Patient Connect</masterLabel>
+            <translation><!-- Patient Connect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Physical and Cyber Security Integration</masterLabel>
+            <translation><!-- Physical and Cyber Security Integration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product and Services</masterLabel>
+            <translation><!-- Product and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Time Communications</masterLabel>
+            <translation>Communications en temps réel</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remote Advisor Collaborator</masterLabel>
+            <translation><!-- Remote Advisor Collaborator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remote Inspection</masterLabel>
+            <translation><!-- Remote Inspection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remote Video Advisor</masterLabel>
+            <translation><!-- Remote Video Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk Data Aggregation Compliance</masterLabel>
+            <translation><!-- Risk Data Aggregation Compliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secure Network as a Business Enabler</masterLabel>
+            <translation><!-- Secure Network as a Business Enabler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sensor/Edge Analytics</masterLabel>
+            <translation><!-- Sensor/Edge Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Retail Platform</masterLabel>
+            <translation><!-- Unified Retail Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual Care/Telehealth</masterLabel>
+            <translation><!-- Virtual Care/Telehealth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual Claims</masterLabel>
+            <translation><!-- Virtual Claims --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual Expertise</masterLabel>
+            <translation><!-- Virtual Expertise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual Patient Observation</masterLabel>
+            <translation><!-- Virtual Patient Observation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtualized and Cloud Services</masterLabel>
+            <translation><!-- Virtualized and Cloud Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workplace of the Future</masterLabel>
+            <translation><!-- Workplace of the Future --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Spécialité de la cible</label>
+        <name>Specialty_Focus__c</name>
+        <picklistValues>
+            <masterLabel>IoT</masterLabel>
+            <translation><!-- IoT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Autre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Services Platform Group (SPG)</masterLabel>
+            <translation>Groupe Plate-forme de services (SPG)</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Somme de l'ensemble des % BE</label>
+        <name>Sum_of_All_BE__c</name>
+    </fields>
+    <fields>
+        <label>Sans fil (000 $)</label>
+        <name>Wireless_in_K__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- BTx Project Revenue by Offer --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- BTx Project Revenue by Offer --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- BTx Project Revenue --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>BTx Revenue</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Produit attendu par entité commerciale</label>
+            <section>Expected Product by BE</section>
+        </sections>
+        <sections>
+            <label>Champs</label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage>Veuillez saisir la description.</errorMessage>
+        <name>Mandatry_Solution_Description</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Le % doit totaliser 100 % sur l'ensemble des 5 entités commerciales de cette section.</errorMessage>
+        <name>Percentage_must_be_100_across_all_5_BEs</name>
+    </validationRules>
+</CustomObjectTranslation>

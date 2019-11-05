@@ -1,0 +1,68 @@
+<apex:page StandardController="Lead" extensions="psrSearch_CT">
+    
+    <script>
+    
+        init = function(){
+            var inline = 0;
+            var a = parent.document.getElementsByTagName("input");
+            for(var i = 0; i < a.length; i++){
+                if(a[i].title=='Save'){
+                    if(a[i].style.getPropertyValue){
+                        if(a[i].style.getPropertyValue("display") == 'inline'){
+                            inline = 1;
+                            alert('Please Save or Cancel your changes');
+                            break;
+                        }
+                    }
+                    else{
+                        if(a[i].style.getAttribute("display") == 'inline'){
+                            inline = 1;
+                            alert('Please Save or Cancel your changes');
+                            break;
+                        }
+                    }
+                }
+            }
+            if(inline == 0)
+                top.location.href='/apex/psrSearch?psr=4&testId={!Lead.Channel_Partner__c}&apId={!Lead.Id}';
+        }    
+
+    </script>    
+    
+    <apex:form >
+        
+        <apex:outputPanel Id="thePanel">
+        
+        <apex:outputPanel rendered="{!psrRecommended == '' && Lead.Channel_Partner__c != ''}" Id="thePanel2">
+            <u>
+                <a href='#Save' onclick='javascript:init();' title='Click to add a recommended PSR'>Add a Recommended Sales Rep</a>
+            </u>    
+        </apex:outputPanel>
+               
+        <apex:outputPanel rendered="{!psrRecommended != ''}" Id="thePanel3">
+            
+            {!psrRecommended}
+            
+            <apex:outputPanel rendered="{!psrRecommended != ''}">
+                <a href='#Save' onclick='javascript:init();' title='Click to change the PSR'>[Change]</a>
+                <apex:outputPanel onclick="methodOneInJavascript()" id="RemoveIcon" >
+                    <img src="/s.gif" title="Clear" alt="Clear" class="closeIcon" />
+                </apex:outputPanel>
+            </apex:outputPanel>
+            
+                                   
+        </apex:outputPanel>
+            
+        </apex:outputPanel>
+        
+        <input type="text" size="1" style="visibility:hidden;" id="testId" value="{!Lead.Channel_Partner__c}"/>
+        <input type="text" size="1" style="visibility:hidden;" id="apId" value="{!Lead.Id}"/>
+         
+    </apex:form>
+    <apex:form >
+    <apex:actionFunction action="{!methodFour}" name="methodOneInJavascript" reRender="thePanel">
+    </apex:actionFunction>
+    
+    </apex:form>
+    
+</apex:page>

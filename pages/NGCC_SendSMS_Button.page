@@ -1,0 +1,38 @@
+<!--
+Name    : NGCC_SendSMS_Button
+Author  : Ghattamaneni Chaithanya
+Purpose : Inline page to show Send SMS button on lead detail page.
+Created Date: 19 Jan 2018
+
+Modification History: 
+
+Author: Zakeahme
+Purpose: onclick- window size dimension
+Modified Date: 01/24/2018
+-->
+
+<apex:page id="pg" standardController="Lead" extensions="NGCC_SendSMSExtn" showHeader="false" sidebar="false"> 
+    <apex:includeScript value="/support/console/30.0/integration.js" />
+    <script type="text/javascript">
+    var positionWidth = screen.width/2 - 407/2;
+    var positionHeight = screen.height/2 - 440/2;
+    function refreshPage(){
+        if (sforce.console.isInConsole()){
+            sforce.console.getEnclosingTabId(refreshSubTab);
+        } else {
+            window.top.location='/{!Lead.id}';
+        }
+    };
+    var refreshSubTab = function refreshSubTab(result) {
+        var subTabId = result.id; 
+        sforce.console.refreshSubtabById(subTabId, true);
+    }   
+    
+    </script>
+    <apex:form > 
+        <div style="padding-left:370px;" >
+            <apex:CommandButton value="Send SMS" onclick="window.open('/apex/NGCC_SendSMS_Popup?id={!lead.id}','_blank','width=407,height= 443,left='+positionWidth+',top='+positionHeight+',titlebar=0,menubar=No,toolbar=0,status=1,scrollbars=0,resizable=No');"  rendered="{!IsN3Role}" onComplete="return null"/>
+            <apex:CommandButton value="Refresh" onclick="refreshPage()"  rendered="{!IsN3Role}" onComplete="return null"/>
+        </div> 
+    </apex:form>
+</apex:page>

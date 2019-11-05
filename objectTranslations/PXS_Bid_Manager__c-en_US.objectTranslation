@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Bid Manager --></label>
+        <name>Bid_Manager__c</name>
+        <relationshipLabel><!-- PXS Bid Managers --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>PXS Bid Manager</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PXS Bid Managers</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>PXS Bid Manager Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

@@ -1,0 +1,36 @@
+<apex:page standardController="Opportunity">
+  <script type="text/javascript" src="//www.cisco.com/etc/designs/cdc/fw/lib/jQuery/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="//www.cisco.com/c/dam/cdc/t/ctm.js"></script>
+  <script>
+      function myCallback(){
+          alert("Succcess");
+      }
+      
+      /*function activityName(){
+          var forecastLink = '{!URLFOR($Page.Forecast_Tab_10_0)}';
+          console.log(forecastLink);
+          if(window.location.href.indexOf('/006') > -1)
+              return "Opportunity";
+          else if(window.location.href.indexOf('/00Q') > -1)
+              return "Lead";
+          else if(window.location.href.indexOf('/003') > -1)
+              return "Contact";
+          else if(window.location.href.indexOf('/001') > -1)
+              return "Account";
+          else if(window.location.href.indexOf(forecastLink) > -1)
+              return "Forecast";
+          else if(window.location.href.indexOf('/a0S') > -1)
+              return "SAV View";
+      }*/
+      
+      function load(){
+          // alert('Loading');
+           console.log(trackEvent);
+           trackEvent.event('view', {
+             un: '{!$User.UserName}',
+             tabName: 'Classic Opportunity'
+           });
+        }
+        load();
+  </script>
+</apex:page>

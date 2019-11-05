@@ -1,0 +1,112 @@
+<!------------------------------------------------------------------------------------------------------------------
+Name    : NGCC_Program_Event_Assign_SDR
+Author  : Mukesh Srivastava
+Purpose : Page to allow manager select a SDR which need to be assigned to all the selected lead from Program event
+Created Date: 2/7/2014
+Modification History: 
+-------------------------------------------------------------------------------------------------------------------->
+
+<apex:page standardController="Campaign" extensions="NGCC_Program_Event_Assign_SDR_CTE" id="vfassign">
+   <apex:form id="mainfrm">
+		<apex:actionfunction name="filterRecords" action="{!refreshData}" reRender="leadsTable">
+		
+			<apex:param name="query"  assignTo="{!query}" value="true"/>
+		</apex:actionfunction>
+      <apex:pageBlock id="pb" mode="maindetail" >
+      <apex:outputPanel rendered="{!refreshPage}">
+          <script>
+              window.top.location='/{!Campaign.id}';
+          </script>
+      </apex:outputPanel>
+         <apex:pagemessages escape="false"/>
+         <div>
+               <img src="/img/icon/leads24.png" alt="" title=""/>
+               <apex:outputtext value="Leads" style="font-weight:bold;font-size:14px;"/>
+         </div>
+         <apex:outputPanel id="oP" rendered="{!validateUser}" >
+            <apex:selectRadio value="{!filterListView}">
+               <apex:selectOption itemLabel="All" itemValue="All"/>
+               <apex:selectOption itemLabel="Unassigned" itemValue="Unassigned" />
+               <apex:actionSupport event="onclick" status="PleaseWait" action="{!refreshData}" reRender="leadsTable,nav"  >
+                  <apex:param name="query" value="true" assignTo="{!query}"/>
+                </apex:actionSupport>
+            </apex:selectRadio>
+             <apex:actionstatus id="PleaseWait" startText="Please Wait ....."/><br/>
+             <apex:outputPanel >
+                 <apex:outputText value="Call Priority" style="font-weight:bold; padding-left: 30px; padding-right:3px"></apex:outputText>
+                	<apex:inputField value="{!ld.CC_Call_Priority__c}" onchange="filterRecords()"/>
+            </apex:outputPanel><br/>
+             <!--
+            <apex:outputpanel>
+				Select Priority: 
+				<apex:selectList size="1" onchange="filterRecords()" value="{!selectedPriority}">
+					<apex:selectOption Itemvalue="" itemLAbel="-None-"/>
+					<apex:selectOptions value="{!leadPriority}"/>
+				</apex:selectList>
+			</apex:outputPanel>-->
+            <div style="padding-left: 30px;">
+               <apex:outputtext value="Select SDR to Assign" style="font-weight:bold;"/>
+               <input type="hidden" name="newOwn_lkid" id="newOwn_lkid" value="000000000000000"/>
+               <input type="hidden" name="newOwn_lkold" id="newOwn_lkold" value="null"/>
+               <input type="hidden" name="newOwn_lktp" id="newOwn_lktp" value="StandardUserLookup"/>
+               <input type="hidden" name="newOwn_lspf" id="newOwn_lspf" value="0"/>
+               <input type="hidden" name="newOwn_lspfsub" id="newOwn_lspfsub" value="0"/>
+               <input type="hidden" name="newOwn_mod" id="newOwn_mod" value="0"/>
+               <span class="lookupInput">
+               <input id="newOwn" maxlength="255" name="newOwn" onchange="getElementByIdCS('newOwn_lkid').value='';getElementByIdCS('newOwn_mod').value='1';getElementByIdCS('newOwn_mod').value='1';" size="20" tabindex="13" type="text"/>
+               <a href="javascript:%20openLookup%28%27%2F_ui%2Fcommon%2Fdata%2FLookupPage%3Flkfm%3DeditPage%26lknm%3DnewOwn%26lktp%3D%27%20%2B%20getElementByIdCS%28%27newOwn_lktp%27%29.value%2C670%2C%271%27%2C%27%26lksrch%3D%27%20%2B%20escapeUTF%28getElementByIdCS%28%27newOwn%27%29.value.substring%280%2C%2080%29%29%29" 
+                  id="newOwn_lkwgt" onclick="setLastMousePosition(event)" title="Owner name">
+               <img src="/s.gif" alt="Owner Lookup (New Window)" class="lookupIcon" onblur="this.className = 'lookupIcon';" onfocus="this.className = 'lookupIconOn';" onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" 
+                  onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';" title="Owner Lookup (New Window)"/></a>
+               </span>
+               <apex:inputhidden value="{!txtOwnersName}" id="newOwnerVal"/>
+               <apex:commandButton value="Assign SDR" action="{!GetSelected}" onclick="assignOwner();"/>
+            </div>
+         </apex:outputPanel>
+
+         <apex:outputpanel style="overflow:scroll;height:350px;" layout="block" id="leadsTable">
+            <apex:image url="/img/msg_icons/info16.png" rendered="{!IF(noOfRecords<1,true,false)}"/>
+            <apex:outputText value="{!If(noOfRecords<1,'No Record Found','')}" style="font-size:12px;font-weight:bold;"/>
+            <apex:pageBlockTable value="{!leads}" var="l">
+               <apex:column width="5px" >
+                  <apex:facet name="header">
+                     <apex:inputCheckbox >
+                        <apex:actionSupport event="onclick" onsubmit="checkAll(this)" rerender="Selected_PBS"/>
+                     </apex:inputCheckbox>
+                  </apex:facet>
+                  <apex:inputCheckbox value="{!l.selected}" id="checkedone">
+                     <!--<apex:actionSupport event="onclick" action="{!GetSelected}" rerender="Selected_PBS"/>-->
+                  </apex:inputCheckbox>
+               </apex:column>
+               <apex:repeat value="{!$ObjectType.Lead.FieldSets.NGCCLeadSDRAssignment}" var="f">
+                  <apex:column value="{!l.lead[f]}">    
+                  </apex:column>
+               </apex:repeat>
+            </apex:pageBlockTable>
+         </apex:outputPanel>
+         <apex:panelGrid columns="7" id="nav">
+            <apex:commandButton value="First" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" title="First Page" reRender="pb"/>
+            <apex:commandButton value="Previous" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page" reRender="pb"/>
+            <apex:commandButton value="Next" action="{!setCon.next}" disabled="{!!setCon.hasNext}" title="Next Page" reRender="pb"/>
+            <apex:commandButton value="Last" action="{!setCon.last}" disabled="{!!setCon.hasNext}" title="Last Page" reRender="pb"/>
+            <apex:outputText >Page {!setCon.pageNumber} of {!IF((noOfRecords/size)<1,1,CEILING(noOfRecords/size))} (Results {!(size*setCon.pageNumber-(size-1))}-{!IF((size*setCon.pageNumber)>noOfRecords,noOfRecords,size*setCon.pageNumber)} of {!noOfRecords})</apex:outputText>
+         </apex:panelGrid>
+      </apex:pageBlock>
+   </apex:form>
+   <script>
+      function checkAll(cb)
+      {
+          var inputElem = document.getElementsByTagName("input");
+          for(var i=0; i<inputElem.length; i++)
+          {
+              if(inputElem[i].id.indexOf("checkedone")!=-1)
+              inputElem[i].checked = cb.checked;
+          }
+      }
+      
+      function assignOwner()
+      {
+          document.getElementById('{!$Component.vfassign:mainfrm:pb:newOwnerVal}').value = document.getElementById('newOwn_lkid').value;
+      }    
+   </script>
+</apex:page>

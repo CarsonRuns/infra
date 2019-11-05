@@ -1,0 +1,114 @@
+<apex:page standardController="CEE__c" sidebar="false">
+
+    <script>
+        // Getting whole Query String
+        //
+        var query = '{!JSENCODE($CurrentPage.parameters.strURLRedirect)}';
+       
+        if(query !== ''){
+            window.location.href = query;
+        }else{
+        var query = window.location.search.slice(1);
+        // SCAVA FIX
+        var retUrl = '{!JSENCODE($CurrentPage.parameters.retURL)}'.substring(1);
+        console.log('query ===>'+query);
+        //SCAVA FIX
+        var vfRetUrl = '{!JSENCODE($CurrentPage.parameters.vfRetURLInSFX)}';
+        console.log('vfRetUrl===>'+vfRetUrl);
+       
+        //SCAVA FIX
+        var recTypeId = '{!JSENCODE($CurrentPage.parameters.RecordType)}';
+        var jiffRecId = '{!JSENCODE($Setup.ObjectRecordTypeIds__c.CEE_Jiffle_Now_Record_Type_Id__c)}'; // Getting RecordType Id form Custom Settings
+        jiffRecId = jiffRecId.substring(0, 15);
+        var redirectURL;
+        function isLightningDesktop() {
+          //Komal - Lightning 08/10/2018 Release --Change to allow Lightning Desktop and Lightning Console themes
+          return( "{!$User.UIThemeDisplayed }" == "Theme4d" || "{!$User.UIThemeDisplayed }" == "Theme4u");
+        }
+        // Validating if RecordType is Jiffle or Other
+        if (recTypeId != jiffRecId) {   
+            console.log('===11>'+"{!$User.UITheme}");
+            if(isLightningDesktop()){
+                var newQueryStr = '?' + query + '&nooverride=1';
+                var newURL = '/a3M/e';
+                console.log('=========>'+newURL +' '+ newQueryStr);
+                window.location.href = newURL+ newQueryStr;             
+            }else{
+                var newQueryStr = '?' + query + '&nooverride=1';
+                var newURL = '{!URLFOR('/a3M/e ',null)}';
+                console.log('newURL ==>'+newURL+ newQueryStr);
+                redirectURL = removeURLParam(newURL + newQueryStr, 'save_new');            
+                redirectURL = removeURLParam(redirectURL, 'scontrolCaching');           
+                redirectURL = removeURLParam(redirectURL, 'sfdc.override');           
+                redirectURL = removeURLParam(redirectURL, 'com.salesforce.visualforce.ViewStateVersion');            
+                redirectURL = removeURLParam(redirectURL, 'com.salesforce.visualforce.ViewStateCSRF');            
+                window.location.href = redirectURL;
+                console.log('==>'+redirectURL);
+            }   
+        } else {
+       
+       // SCAVA FIX
+            var retUrl1 = '{!JSENCODE($CurrentPage.parameters.vfRetURLInSFX)}';
+            console.log('===>'+retUrl1);
+            console.log('===1>'+"{!$User.UITheme}");
+            if(isLightningDesktop()){
+                //SCAVA FIX
+                var optyId = "{!JSENCODE($CurrentPage.parameters.CF00N80000004zDjm_lkid)}";
+                var accId =  "{!JSENCODE($CurrentPage.parameters.CF00N80000004zDjE_lkid)}";
+                var a2rs =  "{!JSENCODE($CurrentPage.parameters.CF00N80000004zDjm_lkid)}";
+                //console.log('firstIndex==>'+firstIndex);
+                // If Jiffle then validate the initiation point and set the parameters accordingly
+                console.log('===2>'+optyId+'=='+accId+"=="+a2rs);
+                if (accId.substring(0,3) == '001') {
+                    var aUrl1 = accId;
+                    console.log('aUrl1===>'+aUrl1);
+                    var newURL = '/apex/JiffleNowMeetingSchedular';
+                    window.location.href = newURL + '?accId='+aUrl1;
+                } else if (optyId.substring(0,3) == '006') {
+                    var opUrl1 = optyId;
+                    var newURL = '{!URLFOR('/apex/JiffleNowMeetingSchedular',null)}';
+                    window.location.href = newURL + '?opptyId='+opUrl1;
+                } else if (a2rs.substring(0,3) == 'a2r') {
+                    var evnUrl1 = a2rs;
+                    var newURL = '{!URLFOR('/apex/JiffleNowMeetingSchedular',null)}';
+                    window.location.href = newURL + '?EId='+evnUrl1;
+                }
+            }else{
+                // If Jiffle then validate the initiation point and set the parameters accordingly
+                if (retUrl.substring(0, 3) === '001') {
+                    var newURL = '{!URLFOR('/apex/JiffleNowMeetingSchedular ',null)}';
+                    window.location.href = newURL + '?accId=' + retUrl;
+                } else if (retUrl.substring(0, 3) === '006') {
+                    var newURL = '{!URLFOR('/apex/JiffleNowMeetingSchedular ',null)}';
+                    window.location.href = newURL + '?opptyId=' + retUrl;
+                } else if (retUrl.substring(0, 3) === 'a2r') {
+                    var newURL = '{!URLFOR('/apex/JiffleNowMeetingSchedular ',null)}';
+                    window.location.href = newURL + '?EId=' + retUrl;
+                }
+            }
+        }
+        }
+        // function to remove URL Parameter 
+        function removeURLParam(url, param) {
+            var urlparts = url.split('?');
+            if (urlparts.length >= 2) {
+                var prefix = encodeURIComponent(param) + '=';
+                var pars = urlparts[1].split(/[&;]/g);
+                for (var i = pars.length; i-- > 0;)
+                    if (pars[i].indexOf(prefix, 0) == 0)
+                        pars.splice(i, 1);
+                if (pars.length > 0)
+                    return urlparts[0] + '?' + pars.join('&');
+                else
+                    return urlparts[0];
+            } else
+                return url;
+        }
+        
+               
+    </script>
+    <center>Please wait.. <img src="/img/loading32.gif" />
+    </center>
+    <apex:pageMessages ></apex:pageMessages>
+    
+</apex:page>

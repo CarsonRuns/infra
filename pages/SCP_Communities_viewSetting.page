@@ -1,0 +1,142 @@
+<apex:page controller="SCP_Communities_viewSetting_CT" showHeader="false" sidebar="false">
+ <apex:includeScript value="{!$Resource.jQuery1_9}" />
+  <title>{!$Label.PRM_Settings_for} {!$Label[viewName]}</title>
+   <style>
+      div.pbHeader table tbody tr td h2{
+              width:300px;
+      }
+      body{
+              background-color: #f8f8f8;
+              border-bottom: 1px solid #eaeaea;
+              border-left: 1px solid #eaeaea;
+              border-right: 1px solid #eaeaea;
+              border-radius: 4px;
+              overflow-x:hidden;
+       }
+       .mySelectList{
+            width:100%;
+            margin-right:6%; 
+            margin-bottom:2%;
+            margin-left:1%;
+       }
+       .configurePopup{
+           width:96%;
+           margin-left:12%;
+       }
+       input.btn.saveBtn{
+           margin-left: 30%;
+       }
+       .multilist {
+          height: 60%;
+          overflow-y: scroll;
+       }  
+        
+       select.myOrderList option[value="asc"]   {     
+           background-image:&uArr;  
+       }
+       .ascSortImg {
+        background-image: url("{!$Resource.arrow_up}");
+        background-repeat: no-repeat;   
+       }
+       .descSortImg {
+       background-image: url("{!$Resource.arrow_down}");
+        background-repeat: no-repeat;
+       }
+       .bPageBlock {
+        width: 450px;
+        height: 580px
+        overflow: scroll;
+        margin: auto
+       }
+       .infoM2 .msgIcon, .infoLarge{
+         background-image: url("");
+       }
+       .pbSubheader{
+            background-color: #e3e3e3 !important;
+            color : black !important;
+       }
+       .message .messageText{
+            margin: 0px 0px 15px 0px;
+       }
+       .message {
+            height:20px;
+       }
+   </style>
+   <apex:form styleClass="configurePopup">
+    <apex:pageBlock title="{!$Label.PRM_Settings_for} {!$Label[viewName]}" >
+        <apex:pageMessage summary="{!viewSettingMsg}" severity="info" strength="3" />
+        <apex:pageblockSection title="{!$Label.PRM_Column_Options}">
+            <c:MultiselectPicklist leftLabel="{!$Label.PRM_Available_Fields}" 
+                leftOption="{!availableOptions}" 
+                rightLabel="{!$Label.PRM_Selected_Fields}" 
+                rightOption="{!selectedOptions}" 
+                size="14" 
+                width="150px"
+                height="150px"/>
+            </apex:pageblockSection>
+            <apex:pageBlocksection title="{!$Label.PRM_Sorting_Options}" columns="1">
+            <apex:pageBlockSectionItem >
+            <apex:outputpanel layout="none">
+            <table>
+                <tr>
+                    <th>{!$Label.PRM_Sort_Results_By} :</th>
+                    <th>{!$Label.PRM_Sort_Order}</th>
+                </tr>
+                <apex:repeat value="{!sortfieldsUI}" var="s" id="theRepeat">
+                    <tr>
+                        <td width="80%">
+                            <apex:selectList value="{!s.sortfield}" multiselect="false" styleClass="mySelectList" size="1" style="width=100%;">
+                                <apex:selectOptions value="{!availableSortOptions}"/>
+                            </apex:selectList>
+                        </td>
+                        <td align="center">
+                            <apex:image id="asc_img" width="25px" height="20px" style="border: 1px solid gray;border-radius: 3px;" value="{!IF(s.sortOrder = 'desc', $Resource.Arrow_Down, $Resource.Arrow_Up)}" onclick="toggleSort(this);"/>
+                            <apex:inputHidden value="{!s.sortOrder}" id="inputHidden" />
+                        </td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            </apex:outputpanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1">
+            <apex:outputpanel layout="none">
+                <table width="100%">
+                    <tr>
+                        <td width="50%">
+                            <apex:outputlabel style="font-weight:bold">{!$Label.PRM_Save_Settings}</apex:outputlabel>
+                        </td>
+                        <td>
+                            <apex:inputcheckbox value="{!saveForAllViews}" />
+                        </td>
+                    </tr>
+                </table>
+            </apex:outputpanel>         
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons location="bottom">       
+            <apex:commandButton value="{!$Label.PRM_Save}" action="{!SavePreference}" oncomplete="closepopUp();" styleClass="saveBtn"/>
+            <apex:commandButton value="{!$Label.PRM_Cancel}" onclick="javascript:window.close();"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+  </apex:form>
+  <script>        
+    function closepopUp(){        
+        window.opener.location = window.opener.location;
+        window.close();            
+    }
+    function toggleSort(a) {      
+        b = a.id;
+        c= b.replace("asc_img", "inputHidden");
+        d = document.getElementById(c);
+        if(d.value == "desc") {
+            a.src = '{!$Resource.Arrow_Up}';
+            d.value = "asc";
+        }
+        else {
+            a.src = '{!$Resource.Arrow_Down}';
+            d.value = "desc";
+        }            
+        return false;            
+    }         
+   </script>
+</apex:page>

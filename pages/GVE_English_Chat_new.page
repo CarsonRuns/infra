@@ -1,0 +1,39 @@
+<apex:page standardController="Opportunity" tabStyle="Opportunity">
+<html>
+<script type='text/javascript' src='https://c.la2c1cs.salesforceliveagent.com/content/g/js/39.0/deployment.js'></script>
+<body>
+<a id="liveagent_button_online_573e000000001Df" href="javascript://Chat" onclick="liveagent.startChat('573e000000001Df');" style="display: none;">GVE Support</a>
+<div id="liveagent_button_offline_573e000000001Df" style="display: none;">GVE Support Not Available</div>
+<script type="text/javascript">
+onload=loadLiveag;
+function loadLiveag(){
+ if(navigator.userAgent.indexOf("Firefox") != -1){ 
+     console.log('====1========>');  
+     setInterval(callLiveag, 1000);
+  }else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )){
+      console.log('=====2=======>');
+      setInterval(callLiveag, 1000);
+  }else{
+  console.log('======3======>');
+      callLiveag();
+  }   
+}
+function callLiveag(){
+    console.log('============>');
+    liveagent.startChat('573e000000001Df');
+    console.log('============>');     
+    self.close(); 
+}
+
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){
+liveagent.showWhenOnline('573e000000001Df', document.getElementById('liveagent_button_online_573e000000001Df'));
+liveagent.showWhenOffline('573e000000001Df', document.getElementById('liveagent_button_offline_573e000000001Df'));
+});
+</script>
+<script type="text/javascript">
+liveagent.init('https://d.la2c1cs.salesforceliveagent.com/chat', '572340000004Cu2', '00De0000005WRJj');
+</script>
+</body>
+</html>
+</apex:page>

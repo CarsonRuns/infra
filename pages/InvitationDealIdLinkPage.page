@@ -1,0 +1,84 @@
+<!--
+    Release : Q3FY16
+    Author  : Narasimharao
+    Functionality: CCW Deal Id link page on 'Quote Invitations' Object (Opportunity Related Object)
+    
+    Modification History :
+        iTrack#           Date          Author         Change
+                        *******        ********        *******
+                        
+-->
+<apex:page showheader="false" tabstyle="Opportunity" sidebar="true" showHeader="true" standardController="Invitation__c" recordSetVar="Invitation" extensions="ManageDealIdLinkClass" action="{!manageDealIdLink}">
+    <apex:includeScript value="{!$Resource.jquery22}"/>
+    <apex:includeScript value="{!$Resource.Bootstrapmodelwindow}"/>
+    <apex:includeScript value="{!$Resource.BootStrapDialogMinJs}"/>
+    <script src="/soap/ajax/28.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/28.0/apex.js" type="text/javascript"></script>
+    <apex:stylesheet value="/resource/BootstrapUpdateCssModelPosition"/>
+    <apex:stylesheet value="/resource/BootstrapDialogMin"/>
+    
+    <script type="text/javascript">
+       var partnerRequired=true;
+       var isopen = true;
+       var opportunityId = "{!oppty.Id}";
+       var hostname = "https://" + window.location.hostname.toLowerCase(); //taking hostname
+       // SCAVA FIX
+       var OpportunityName = "{!JSENCODE(oppty.Name)}";
+       var name= encodeURIComponent(OpportunityName);
+       var opptyType = 'partnerQuote';
+       // SCAVA FIX
+       var dealType = "{!JSENCODE(dealType)}";//gatting from controller
+       var ccwdealid ="{!JSENCODE(ccwdealid)}";//gatting from controller
+       var quoteid = "{!JSENCODE(quoteid)}";//gatting from controller
+       var baseURL = "{!baseURL}";//gatting from controller
+       var pdrdown = "{!pdrdown}";//gatting from controller
+       var CCWDealIDLinkURL = '';
+       var profilecheckText = "{!profilecheck}";//gatting from controller as text
+       var profilecheck = Boolean(profilecheckText);//converting to boolean
+      // SCAVA FIX 
+       var sfdcmode = "{!JSENCODE($CurrentPage.parameters.mode)}";         //Added mode to send to CCW for navigation back and forth
+        
+        
+        if (sfdcmode == null || sfdcmode == '')
+        {
+            if ('{!$User.UIThemeDisplayed}' == 'Theme3') {
+                sfdcmode = 'cls'; 
+            }
+            else 
+            {
+                sfdcmode = 'lgt';
+            }
+        }
+       
+       //Construction of CCWDealIDLinkURL with all the parameters to navigate CCW UI
+       CCWDealIDLinkURL = baseURL + "/SFDCRequestHandler?at="+opptyType+"&dealType="+dealType+"&optyNumber="+ccwdealid+"&quoteId="+quoteid+"&userid={!$User.Id}&email={!$User.Email}&sessionid={!$Api.Session_ID}&url={!$Api.Enterprise_Server_URL_110}&hostname=" + hostname + "&mode=" + sfdcmode;
+       var dialogInstance = new BootstrapDialog({ //Bootstrap dilog box creation
+            size: BootstrapDialog.SIZE_Large,  
+            title:'',        
+            closable: false, 
+            message: '<div><img src="/resource/loading"/>{!$Label.QuoteDilogLoading}</div>', //Loading Image
+            onshown: function(dilogref){ //Navigating to Opportunity tab
+                    if(pdrdown == 'Yes' && profilecheck == true){
+                       dilogref.setType(BootstrapDialog.TYPE_WARNING); 
+                       dilogref.setMessage("{!$Label.Quoting_unavailable}");  //showing Quoting capabilities not available
+                    }
+                    else{
+                        top.location.href = CCWDealIDLinkURL; // calling CCW URL with all the parameters with top.location method
+                    }
+            },
+            buttons: [{ 
+            label: "{!$Label.QuoteCloseDialog}", 
+            action: function(dialogRef) { 
+                redirectOppty(); //redirecting to Opportunity UI
+            } 
+            }] 
+        }); 
+        if(isopen){
+           isopen=false;
+           dialogInstance.open(); //function to open Model box 
+        }
+       function redirectOppty(){ // Function to return back to Opportunity when click on Model box close button
+            window.top.location =hostname+'/'+opportunityId; 
+       }
+    </script>
+</apex:page>

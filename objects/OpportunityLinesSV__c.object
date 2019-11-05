@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Architecture_Specialist__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SV Architecture Specialist</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>OpportunityLinesSV</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Business_Entity__c</fullName>
+        <description>Get the Business Entity from Product2</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Technology_Service__r.Business_Entity__c)</formula>
+        <label>SV Business Entity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_000_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>SV Expected $(000) Value</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Book_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>SV Expected Book Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Value__c</fullName>
+        <externalId>false</externalId>
+        <formula>Expected_000_Value__c * 1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SV Expected $ Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Incubation_Specialist__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SV Incubation Specialist</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>OpportunityLinesSV1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Line_Item_Reference__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunity Line Item Reference</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Stage__c</fullName>
+        <externalId>false</externalId>
+        <label>SV Expected Stage</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Prospect</fullName>
+                    <default>false</default>
+                    <label>1 - Prospect</label>
+                </value>
+                <value>
+                    <fullName>2 - Qualification</fullName>
+                    <default>false</default>
+                    <label>2 - Qualification</label>
+                </value>
+                <value>
+                    <fullName>3 - Proposal</fullName>
+                    <default>false</default>
+                    <label>3 - Proposal</label>
+                </value>
+                <value>
+                    <fullName>4 - Agreement</fullName>
+                    <default>false</default>
+                    <label>4 - Agreement</label>
+                </value>
+                <value>
+                    <fullName>5 - Closed Won</fullName>
+                    <default>false</default>
+                    <label>5 - Closed Won</label>
+                </value>
+                <value>
+                    <fullName>5 - Closed Cancelled</fullName>
+                    <default>false</default>
+                    <label>5 - Closed Cancelled</label>
+                </value>
+                <value>
+                    <fullName>5 - Closed Lost</fullName>
+                    <default>false</default>
+                    <label>5 - Closed Lost</label>
+                </value>
+                <value>
+                    <fullName>5 - Closed Booked</fullName>
+                    <default>false</default>
+                    <label>5 - Closed Booked</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Specialist Views</relationshipLabel>
+        <relationshipName>OpportunityLinesSV</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>SV Product Code</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Technology</fullName>
+                    <default>false</default>
+                    <label>Technology</label>
+                </value>
+                <value>
+                    <fullName>Service</fullName>
+                    <default>false</default>
+                    <label>Service</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Family_Ref__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Product Family ID</label>
+        <referenceTo>Product_Family__c</referenceTo>
+        <relationshipLabel>Specialist Views</relationshipLabel>
+        <relationshipName>Specialist_Views</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_Family__c</fullName>
+        <externalId>false</externalId>
+        <label>SV Product Family</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>SV Service Category</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Level_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>SV Service Level Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Level_Tech__c</fullName>
+        <externalId>false</externalId>
+        <formula>Service_Level__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SV Service Level Tech</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Level__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Service Level</label>
+        <referenceTo>Service_Level__c</referenceTo>
+        <relationshipName>OpportunityLinesSV</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Service_Program__c</fullName>
+        <externalId>false</externalId>
+        <formula>Technology_Service__r.Service_Program__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SV Service Program</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Software_Specialist__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SV Software Specialist</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Specialist_Views</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Business_Entity__c</fullName>
+        <description>Get the Sub Business Entity from Product 2</description>
+        <externalId>false</externalId>
+        <formula>Technology_Service__r.Sub_Business_Entity__c</formula>
+        <label>SV Sub Business Entity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Technology_Service__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Get the info from Product 2</description>
+        <externalId>false</externalId>
+        <label>Technology &amp; Service</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipName>OpportunityLinesSV</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Pilot Specialist View</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>Specialist View</label>
+    <nameField>
+        <displayFormat>OppLSV-{00000000}</displayFormat>
+        <label>OpportunityLinesSV</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Specialist Views</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Business_Entity__c</columns>
+        <columns>Sub_Business_Entity__c</columns>
+        <columns>Product_Family__c</columns>
+        <columns>Service_Category__c</columns>
+        <columns>Service_Program__c</columns>
+        <columns>Service_Level_Tech__c</columns>
+        <columns>Service_Level_Description__c</columns>
+        <columns>Architecture_Specialist__c</columns>
+        <columns>Incubation_Specialist__c</columns>
+        <columns>Product_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <recordTypes>
+        <fullName>Architecture_and_Incubation_Specialist_Lines</fullName>
+        <active>true</active>
+        <label>Architecture and Incubation Specialist Lines</label>
+        <picklistValues>
+            <picklist>Opportunity_Stage__c</picklist>
+            <values>
+                <fullName>1 - Prospect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 - Qualification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 - Proposal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 - Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 - Closed Booked</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 - Closed Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 - Closed Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 - Closed Won</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Code__c</picklist>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Technology</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Software_Specialist_Lines</fullName>
+        <active>true</active>
+        <label>Software Specialist Lines</label>
+        <picklistValues>
+            <picklist>Opportunity_Stage__c</picklist>
+            <values>
+                <fullName>1 - Prospect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 - Qualification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 - Proposal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4 - Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 - Closed Booked</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 - Closed Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 - Closed Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5 - Closed Won</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Code__c</picklist>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Technology</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+</CustomObject>

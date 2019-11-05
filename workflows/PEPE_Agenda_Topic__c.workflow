@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>PDP_PPL_Agenda_Topic_Delete</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>REC_AGENDA_WITHOUT_DELETE</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>PDP_PPL_Agenda_Topic_Delete</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PDP_PPL_Agenda_Topic_Without_Event_Agend</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>REC_AGENDA</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>PDP_PPL_Agenda_Topic_Without_Event_Agend</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>PDP_PPL_Agenda_ Topic_Without_Event_Agenda</fullName>
+        <actions>
+            <name>PDP_PPL_Agenda_Topic_Without_Event_Agend</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>PEPE_Agenda_Topic__c.Event_Agenda_Count__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </criteriaItems>
+        <description>Agenda Topic can be deleted if Event Agenda is not created for this record</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PDP_PPL_Agenda_Topic_Delete</fullName>
+        <actions>
+            <name>PDP_PPL_Agenda_Topic_Delete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>PEPE_Agenda_Topic__c.Event_Agenda_Count__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>1</value>
+        </criteriaItems>
+        <description>Agenda Topic must not be deleted if Event Agenda is Created for this record</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,10 @@
+<!--
+  @ SO_DCPCaseAttachments VF Page is embedded in Engage Case PageLayout to implement DCP Functionality, 
+  @ calling so_dcpattachmentcomponent VF Components along with Passing required parameter 
+  @ like caseId, OptyId, AccountId etc. Required
+-->
+<apex:page standardController="Case" tabStyle="Case"  >
+<h><b>This tool is NOT authorized to store controlled, unclassified information. For additional information, please 
+  <a href = "https://gcs-web.cisco.com/cuitraining/" target="_blank"> click here </a></b></h>
+   <c:so_dcpattachmentcomponent sfilterKeyword="scOpptyId:{!Case.Opportunity__c};s1CaseId:{!Case.DCP_Case_ID__c}" customerName="{!case.Opportunity__r.Account.CRName__c}" partyID="{!case.Opportunity__r.Account.CSCSiteID__c}" dealID="{!case.Opportunity__r.DealID__c}"></c:so_dcpattachmentcomponent>      
+</apex:page>

@@ -1,0 +1,140 @@
+<apex:page StandardController="Case">
+
+<head>
+<apex:includeScript value="/support/console/22.0/integration.js"/>
+<script>
+
+linkDelay = function() { rlIntervalId = setInterval ( "relatedLoad()", 500 ); }
+
+var delayCount = 0;
+var sendButton;
+
+relatedLoad = function(){
+
+if(top.location.href.indexOf("/p") == -1) {
+
+var a = parent.document.getElementsByTagName("input");
+for(var i = 0; i < a.length; i++){
+a = parent.document.getElementsByTagName("input");
+    if(a[i].title == 'Send an Email' || delayCount > 12){
+        clearInterval(rlIntervalId);
+        sendButton = a[i];
+        init();
+    }
+}
+
+}
+delayCount++;
+
+}
+
+var openSendAnEmailTab = function openSendAnEmailTab(result) {
+var primaryTabId = result.id;
+sforce.console.openSubtab(primaryTabId , sendAnEmailLocationInConsole , true,
+'Send an Email', null, null, 'salesforceSubtab');
+
+};
+
+
+init = function(){
+if(top.location.href.indexOf("/p") == -1) {
+
+// var systemEmail = TSNRemoveCaseDelLinks_CTE.getCiscoCaseMgmtAdd();
+
+var systemEmail = '0D2800000004DKj:cisco_sales_case_management@external.cisco.com:Cisco Case Management';
+
+var anchors = parent.document.getElementsByTagName("a");
+
+
+for (var i = 0; i < anchors.length; i++){
+
+if(anchors[i].title.substring(0,6)=='Delete'){
+anchors[i].style.visibility = "hidden";
+}
+else if((anchors[i].title.substring(0,5)=='Reply' || anchors[i].title.substring(0,6)=='To All')){
+
+if (sforce.console.isInConsole()){
+anchors[i].href=anchors[i].href.replace('%27);','');
+// SCAVA FIX
+anchors[i].href = anchors[i].href + '%26p26%3D' + systemEmail + '%26p24%3D' + '{!JSENCODE(Case.SuppliedEmail)}';
+anchors[i].href=anchors[i].href+'%27);';   
+}
+else{
+// SCAVA FIX
+anchors[i].href = anchors[i].href + '&p26=' + systemEmail + '&p24=' + '{!JSENCODE(Case.SuppliedEmail)}';
+}
+sendButton.style.visibility = "hidden";
+}
+else if(anchors[i].id.indexOf('_RelatedEmailMessageList_link') != -1)
+    anchors[i].style.visibility = "hidden";
+}
+
+
+var inputs = parent.document.getElementsByTagName("input");
+for (var i = 0; i < inputs.length; i++){
+//alert('Check:'+inputs[i].title);
+if(inputs[i].title == 'Send an Email'){
+
+//alert(inputs[i].title);
+var oc = inputs[i].onclick.toString();
+
+var params = '';
+
+//get contact id
+if(oc.toString().indexOf("p2_lkid=") != -1){
+    var nav = oc.toString().split("p2_lkid=");
+    var contactId = nav[1].split("&");
+    params = 'p2_lkid='+contactId[0]+'&';
+    //alert('Chk1:'+params);
+}
+
+//get case id
+var u = oc.toString().split("p3_lkid=");
+var caseId = u[1].split("&");
+params = params + 'p3_lkid='+ caseId[0];
+//alert('Chk2:'+params);
+
+//get web email
+// SCAVA FIX 
+var w = '{!JSENCODE(Case.SuppliedEmail)}';
+//alert('Hello World:'+params);
+//alert('Hello World1:'+w);
+if(w != '')
+{
+    params = params + '&p24=' + w;
+
+}
+
+if (sforce.console.isInConsole())
+                   {
+                    inputs[i].onclick = function onclick(event)
+                      {
+                       sendAnEmailLocationInConsole ='/_ui/core/email/author/EmailAuthor?rtype=003&'+params+'&p26='+systemEmail+'&retURL=%2F'+caseId[0];
+                       sforce.console.getEnclosingPrimaryTabId(openSendAnEmailTab);
+                      }
+                   }
+                   else{
+inputs[i].onclick = function onclick(event) {
+top.location.href='/_ui/core/email/author/EmailAuthor?rtype=003&'+params+'&p26='+systemEmail+'&retURL=%2F'+caseId[0];};
+}
+}
+}
+
+}
+}
+
+if (parent.window.addEventListener)
+{
+window.addEventListener ("load",linkDelay,false);
+}
+else if (parent.window.attachEvent)
+{
+parent.window.attachEvent("onload",linkDelay);
+}
+
+
+
+</script>
+</head>
+
+</apex:page>

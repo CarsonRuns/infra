@@ -1,0 +1,227 @@
+<apex:page standardController="CEE__c" extensions="CPOC_LoadBalanceController">
+    <apex:includeScript value="{!$Resource.jquery22}" />
+    <script>
+          var $j = jQuery.noConflict();
+          function loading(val) {
+            if (val) {
+               $j('#load_scrl').css('top', $j(document).scrollTop() + 100);
+               $j('.loadingBox').show();
+            }
+            else {
+               $j('.loadingBox').hide();
+            }
+        }
+    </script>
+    <style>                     
+    .empty-column-content {
+        display: none;
+    }
+    .overlay {
+            display: none;
+            height: 100%;
+            left: 0;
+            position: fixed;
+            top: 0;
+            opacity: 0.3;
+            -moz-opacity: 0.3;
+            width: 100%;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+            filter: alpha(opacity=30);
+            background: #000;
+            -khtml-opacity: 0.3;
+            z-index: 1000;
+        }
+        .loader {
+            background: url('/img/loading32.gif') scroll no-repeat 0 0;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            left: 50%;
+        }
+    </style> 
+      
+    <apex:form >
+        <apex:pageBlock title="CPOC - Resource Availability ">
+            <div id="load_scrl" class="loadingBox loader" style="display:none"> </div>
+            <div class="loadingBox overlay"> </div>  
+            <!-- Criteria choices -->
+            <apex:pageBlockSection columns="2" showHeader="false">                              
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Month" for="monthList"></apex:outputLabel>
+                    <apex:selectList id="monthList" multiSelect="false" size="1" value="{!selMonth}" title="Month">
+                        <apex:selectOptions value="{!dynMonth}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange" action="{!ShowAvailability}" status="loading"  rerender="allgrids"/> 
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Lab" for="siteList"></apex:outputLabel>
+                    <apex:selectList id="siteList" multiSelect="false" size="1" value="{!selSite}" title="Site" disabled="{!selSiteDisabled}">
+                        <apex:selectOptions value="{!dynSite}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange" action="{!ShowAvailability}" status="loading" rerender="allgrids"/> 
+                    </apex:selectList>
+                </apex:pageBlockSectionItem> 
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Type" for="siteList"></apex:outputLabel>
+                    <apex:selectList id="siteList" multiSelect="false" size="1" value="{!selectedType}" title="Type" disabled="{!selSiteDisabled}">
+                        <apex:selectOption itemValue="All" itemLabel="All"/> 
+                        <apex:selectOption itemValue="CPOC_Request" itemLabel="CPOC Request"/>
+                        <apex:selectOption itemValue="CPOC_Room" itemLabel="CPOC Room"/>
+                        <apex:selectOption itemValue="CPOC_Personal" itemLabel="CPOC Personnel"/>
+                        <apex:selectOption itemValue="CPOC_SharedResource" itemLabel="CPOC Shared Resource"/>
+                        <apex:actionSupport event="onchange" action="{!ShowAvailability}" status="loading" rerender="allgrids"/> 
+                    </apex:selectList>
+                </apex:pageBlockSectionItem> 
+            </apex:pageBlockSection>
+            <table border="1px" width="60%">
+                <tr height="40px" style="text-align:center">
+                   <td><b>Color Legend</b></td>
+                   <apex:repeat var="cl" value="{!AllColourCodes}">
+                   <!-- SCAVA FIX-->
+                    <td style="background-color:{!HTMLENCODE(cl.Architecture_Colour_Code__c)};" align="center"><b>{!cl.Name}</b></td>                   
+                   </apex:repeat>
+                </tr>                               
+            </table>    
+            <br/>
+            <!-- Calendar section -->
+            <apex:outputPanel id="allgrids">
+           <apex:outputPanel id="calendarRender" rendered="{!selectedType == 'CPOC_Request' || selectedType == 'All'}">
+                <apex:pageMessages id="pageMsg" />  
+                <apex:pageblock id="calendarList" title="Event/Project">
+                    <apex:datatable id="calendarTable" value="{!CPOCReqAvailability}" cellpadding="5" border="1" var="i" rendered="{!calendarVisible}">
+                         <apex:column headerValue="Customer Name">                           
+                                <apex:outputText value="{!i.cpocLocData.Primary_Account__r.Name}" />                           
+                        </apex:column> 
+                        <apex:column headerValue="Request ID">
+                            <apex:outputLink title="{!i.cpocLocData.CPOC_Start_Date__c} - {!i.cpocLocData.CPOC_End_Date__c}" value="/{!i.cpocLocData.id}">
+                                <apex:outputText value="{!i.cpocLocData.Name}" />
+                            </apex:outputLink>
+                        </apex:column>            
+                                                
+                        <!-- Dynamic List of Days based on # days in a month -->  
+                        <apex:repeat var="day" value="{!i.days}">                           
+                            <apex:column headerValue="null Day" style="background-color:{!day.display}">
+                                <apex:outputText value="{!If(day.value > 0 ,'','')}"/>
+                            </apex:column>                          
+                        </apex:repeat>      
+                        
+                       <apex:repeat var="header" value="{!headers}">
+                            <apex:column styleClass="empty-column-content">
+                                <apex:facet name="header">
+                                    {!header.top} 
+                                    <br/>
+                                    {!header.bottom}
+                                </apex:facet>
+                                
+                            </apex:column>
+                            <!--<apex:column headerValue="{!header}" styleClass="empty-column-content" />  -->
+                        </apex:repeat>  
+                    </apex:datatable> 
+                   <apex:outputLabel value="No CPOC request for the chosen Site" rendered="{!!calendarVisible}" styleClass="noRowsHeader"></apex:outputLabel>
+                </apex:pageblock>
+            </apex:outputPanel>      
+             <apex:outputPanel id="calendarRender1" rendered="{!selectedType == 'CPOC_Personal' || selectedType == 'All'}">
+                <apex:pageMessages id="pageMsg1" />  
+                <apex:pageblock id="calendarList1" title="Personnel">
+                    <apex:datatable id="calendarTable" value="{!CPOCPersonalAvailability}" cellpadding="5"  border="1" var="i">
+                        <apex:column headerValue="Name">                                                          
+                                <apex:outputText value="{!i.cpocPersonal.FirstName + ' ' + i.cpocPersonal.LastName}" />                            
+                        </apex:column>                               
+                        <apex:column headerValue="Request ID">
+                            <apex:outputLink title="{!i.cpocLocData.CPOC_Start_Date__c} - {!i.cpocLocData.CPOC_End_Date__c}" value="/{!i.cpocLocData.id}">
+                                <apex:outputText value="{!i.ceeRequestId}" />
+                            </apex:outputLink>
+                        </apex:column>     
+                        <!-- Dynamic List of Days based on # days in a month -->  
+                        <apex:repeat var="day" value="{!i.days}">
+                              <apex:column headerValue="null Day" style="background-color:{!day.display};">
+                                <apex:outputText value="{!If(day.value > 0 ,'','')}"/>
+                            </apex:column>      
+                        </apex:repeat>      
+                        
+                       <apex:repeat var="header" value="{!headers}">
+                            <apex:column styleClass="empty-column-content">
+                                <apex:facet name="header">
+                                    {!header.top} 
+                                    <br/>
+                                    {!header.bottom}
+                                </apex:facet>
+                                
+                            </apex:column>
+                            <!--<apex:column headerValue="{!header}" styleClass="empty-column-content" /> -->
+                        </apex:repeat>       
+                    </apex:datatable>                    
+                </apex:pageblock>
+            </apex:outputPanel>
+              <apex:outputPanel id="calendarRender2" rendered="{!selectedType == 'CPOC_Room' || selectedType == 'All'}">
+                <apex:pageMessages id="pageMsg2" />  
+                <apex:pageblock id="calendarList12" title="Rooms">
+                    <apex:datatable id="calendarTable" value="{!CPOCRoomAvailability}"  cellpadding="5" border="1"  var="i">
+                        <apex:column headerValue="Name">                                                          
+                           <apex:outputText value="{!i.cpocRoom.Name}" />                           
+                        </apex:column>      
+                        <apex:column headerValue="Request ID">                                                  
+                             <apex:outputLink title="{!i.cpocLocData.CPOC_Start_Date__c} - {!i.cpocLocData.CPOC_End_Date__c}" value="/{!i.cpocLocData.id}">                                
+                                <apex:outputText value="{!i.ceeRequestId}" />                                    
+                            </apex:outputLink>                                                                                                            
+                        </apex:column>
+                        <!-- Dynamic List of Days based on # days in a month -->  
+                        <apex:repeat var="day" value="{!i.days}">
+                             <apex:column headerValue="null Day" style="background-color:{!day.display};">
+                                <apex:outputText value="{!If(day.value > 0 ,'','')}"/>
+                            </apex:column>      
+                        </apex:repeat>      
+                        
+                       <apex:repeat var="header" value="{!headers}">
+                            <apex:column styleClass="empty-column-content">
+                                <apex:facet name="header">
+                                    {!header.top} 
+                                    <br/>
+                                    {!header.bottom}
+                                </apex:facet>
+                                
+                            </apex:column>
+                            <!--<apex:column headerValue="{!header}" styleClass="empty-column-content" /> -->
+                        </apex:repeat>       
+                    </apex:datatable>                    
+                </apex:pageblock>
+            </apex:outputPanel>                    
+            <apex:outputPanel id="calendarRender3" rendered="{!selectedType == 'CPOC_SharedResource' || selectedType == 'All'}">
+                <apex:pageMessages id="pageMsg3" />  
+                <apex:pageblock id="calendarList13" title="Shared resource">
+                    <apex:datatable id="calendarTable1" value="{!CPOCShareResourceAvailability}"  cellpadding="5" border="1"  var="i" rendered="{!calenderSharedRes}">
+                        <apex:column headerValue="Name">                                                          
+                           <apex:outputText value="{!i.cpocSharedRes.Resource_Name__c}" />                           
+                        </apex:column>      
+                        <apex:column headerValue="Request ID">                                                  
+                             <apex:outputLink title="{!i.cpocLocData.CPOC_Start_Date__c} - {!i.cpocLocData.CPOC_End_Date__c}" value="/{!i.cpocLocData.id}">                                
+                                <apex:outputText value="{!i.ceeRequestId}" />                                    
+                            </apex:outputLink>                                                                                                            
+                        </apex:column>
+                        <!-- Dynamic List of Days based on # days in a month -->  
+                        <apex:repeat var="day" value="{!i.days}">
+                             <apex:column headerValue="null Day" style="background-color:{!day.display};">
+                                <apex:outputText value="{!If(day.value > 0 ,'','')}"/>
+                            </apex:column>      
+                        </apex:repeat>      
+                        
+                       <apex:repeat var="header" value="{!headers}">
+                            <apex:column styleClass="empty-column-content">
+                                <apex:facet name="header">
+                                    {!header.top} 
+                                    <br/>
+                                    {!header.bottom}
+                                </apex:facet>
+                                
+                            </apex:column>
+                            <!--<apex:column headerValue="{!header}" styleClass="empty-column-content" /> -->
+                        </apex:repeat>       
+                    </apex:datatable>  
+                    <apex:outputLabel value="No CPOC Shared resource for the chosen Site" rendered="{!!calenderSharedRes}" styleClass="noRowsHeader"></apex:outputLabel>                    
+                </apex:pageblock>
+            </apex:outputPanel>
+            <apex:actionStatus id="loading" onstart="loading(true)" onstop="loading(false)" /> 
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,418 @@
+<apex:page controller="NGCC_LiveAgentTool_Cls" sidebar="false"  showHeader="true"> 
+    <style>
+        /* This is for the full screen DIV */
+    .popupBackground {
+        /* Background color */
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+    
+        /* Dimensions */
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 998;
+        position: absolute;
+        
+        /* Mouse */
+        cursor:wait;
+    }
+
+    /* This is for the message DIV */
+    .PopupPanel {
+        /* Background color */
+        border: solid 2px blue;
+        background-color: white;
+
+        /* Dimensions */
+        left: 50%;
+        width: 300px;
+        margin-left: -100px;
+        top: 50%;
+        height: 50px;
+        margin-top: -25px;
+        z-index: 999;
+        position: fixed;
+        
+        /* Mouse */
+        cursor:pointer;
+    }
+        div.header {
+            padding: .4em;
+            height: 50px;
+            width: 98%;
+            display: inline-block;
+            margin-right: 15px;
+        }
+        div.customError {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+        }
+        div.subheader {
+            background-color: lightblue;
+            display: inline-block;
+            border: 2px solid #e39321;
+            //border: 2px solid red;
+            width: 80%;
+            height: 400px;
+            border-radius: 0px;
+            padding-top: 15px;
+            padding-right: 20px;
+            padding-bottom: 8px;
+            padding-left: 20px;
+            margin-right: 50px;
+            margin-left: 50px;
+        }
+        .hideTxt {
+            display: none;
+        }
+        .showTxt {
+            display: block;
+        }
+        h3:hover{
+             color:red;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+        a.highlight:hover {
+             color:white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+        font{
+             color:white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+    </style>
+    <br/><br/> 
+    <apex:includeScript value="/support/console/31.0/integration.js" />
+    <script src="/soap/ajax/31.0/connection.js"></script>
+    <apex:includeScript value="{!$Resource.jquery}" />
+    <apex:includeScript value="{!$Resource.utilities}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $j = jQuery.noConflict();
+    </script>
+     <apex:form id="frm">
+     <center><h3><font size="4">Live Agent Tool</font></h3></center><br/>
+     <center>
+     <a id="hide" href="#show" class="highlight"><h3>Chat Skill Assign or Update</h3></a>&nbsp;<span> | </span>&nbsp;<a id="show" href="#show" class="highlight"><h3>Chat Capacity Setting</h3></a>&nbsp;<span> | </span>
+     <a id="showhide" href="#show" class="highlight"><h3>Skill Search Tool</h3></a>&nbsp;
+     <br/><br/>
+     <div id="show3">
+     <div class="header">
+                        <div class="subheader">
+                            <table style="width:100%">
+                                <tr>
+                                    <td width="91%" rowspan="3">
+                                        This tool is mailnly responsible for two things-
+                                        <ol>
+                                            <li>Live agent skills assign to the new users or Update existing user skills or remove existing user skills</li>
+                                            <li>Maximum chat capacity per user</li>
+                                        </ol>
+                                        <h3>STEPS:</h3><br/>
+                                        <ul>
+                                            
+                                            <li>Choose the mode of operation : Chat Skill Assign or Update or Chat Capacity Setting </li>
+                                            <li><h3>Chat Skill Assign or Update</h3></li>
+                                                <ul style="list-style-type:square">
+                                                  <li>Provide user CEC Id and come out from the text box. At the time of come out it will check and show you whether you have entered correct CEC ID or not.</li>
+                                                  <li>It will also tell us the entered CEC ID is existing or not in NGCC salesforce.com database. If already exist then it will show green letters and below two buttons will enable.</li>
+                                                  <li>If it doesn't exist it will show red letter message and buttons will be disabled</li>
+                                                  <li>Check whether user has live agent access or not by clicking on "User Has Live Agent Aceess ?" button</li>
+                                                  <li>User doesn't have live agent access it will show us red mark symbol or exist it will show green tick mark</li>
+                                                  <li>After that search for users skills using mirror person id or already existing user Id by clicking on "Search Skills Chat Capacity"</li>
+                                                  <li>It will display both the current user chat capacity and skills been assigned. once you click on "Id" field system will display the same field in new window and add the user</li>
+                                                </ul>
+                                            <li><h3>Chat Capacity Settings</h3></li>
+                                            <ul style="list-style-type:square">
+                                                <li>Select Chat capacity from drop down</li>
+                                                <li>It will show all the related configurations in tabular format</li>
+                                                <li>Click on configuration Id and it will open the configuration in new window</li>
+                                                <li>Enter user name and click on save button</li>
+                                            </ul>                                            
+                                        </ul>
+                                    </td>                       
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      </div>
+     </center>
+     <apex:outputPanel id="jsonp">
+     <script>
+        var userManagementCode = function userManagementCode(){
+            var userCecValue = $j("*[id*=userValue]").val();
+            if (userCecValue != '' && userCecValue.length > 0){
+                if (isValidUserCode(userCecValue)){
+                    $j(this).css({color: "green"});
+                    $j("*[id*=userHasLiveAgentButton]").toggleClass('btnDisabled', false).attr('disabled', null);
+                    $j("*[id*=searchSkillButton]").toggleClass('btnDisabled', false).attr('disabled', null);
+                    $j(this).next().remove();
+                }else{
+                    $j(this).css({color: "red"});
+                    if ($j(this).next().is("span")) {}else{
+                        $j(this).focus();
+                        $j(this).after("<span id='UserText'><img src='/img/msg_icons/warning16.png'</img>Invalid CEC ID</span>");
+                        $j(this).focus();
+                        $j("*[id*=userHasLiveAgentButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+                        $j("*[id*=searchSkillButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+                    }
+                }
+            }else{
+                $j("*[id*=userHasLiveAgentButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+                $j("*[id*=searchSkillButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+                if ($j(this).next().is("span")) {
+                    $j(this).next().remove();
+                    $j(this).css({
+                    color: ""
+                });
+                }
+            }
+        }
+        $(document).one('ready',function(){
+            sforce.connection.sessionId = "{!$Api.Session_ID}";
+                $("#show2").hide();
+                $("#show1").hide();
+                $("#show4").hide();
+                $("#show3").show();
+                
+                $("#hide").hover(function(){
+                $("#show2").hide();
+                $("#show3").hide();
+                $("#show4").hide(); 
+                $("#show1").show();
+                
+            });
+            $("#show").hover(function(){
+                $("#show2").show();
+                $("#show1").hide();
+                $("#show3").hide();
+                $("#show4").hide();
+            });
+            $("#showhide").hover(function(){
+                $("#show2").hide();
+                $("#show1").hide();
+                $("#show3").hide();
+                $("#show4").show();
+            });
+            $j("*[id*=userHasLiveAgentButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+            $j("*[id*=searchSkillButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+            $j("*[id*=userValue]").on("blur", userManagementCode);
+        });
+
+        function disable(){$j("*[id*=userValue]").val('');}
+        function isValidUserCode(userCecValue){
+            var usernameTemp = userCecValue;
+            var directoryName = "@cisco.com%";
+            var usernameTempMain = userCecValue.concat(directoryName);
+            var userQuery = "Select Id from User where IsActive = True and (Alias = '"+ userCecValue + "' OR userName like '"+usernameTempMain+"')";
+            console.log(userQuery);
+            try {
+                var queryResult = sforce.connection.query(userQuery);
+                var records = queryResult.getArray("records");
+                if (records.length > 0) {
+                return true;
+                }
+            }catch (ex){
+                alert(ex);
+            }
+            return false;
+        }
+    </script>
+</apex:outputPanel>
+        <div id="show1">
+        <apex:outputPanel id="searchBlock">
+         <apex:pageMessages escape="false"></apex:pageMessages>
+         <br/>
+         <apex:pageBlock mode="edit" >
+             <apex:pageBlockSection columns="1" title="NGCC Live Agent Skill Window" id="Section" collapsible="true">
+                <br/>                
+                <apex:panelGrid columns="2" width="40%">
+                    <apex:outputLabel for="userValue" value="User CEC ID" style="font-weight: bold;"/>
+                    <apex:inputText size="34" value="{!userName}" id="userValue"/>
+    
+                    <!--
+                    <apex:outputLabel for="">User ID (18 or 15 Digit)</apex:outputLabel>
+                    <apex:inputText size="34" maxlength="15" value="{!userStringId}" id="userId"/>
+                    <apex:outputLabel />
+                    <apex:outputLabel />
+                    -->
+                </apex:panelGrid>
+                <br/>
+            </apex:pageBlockSection>
+            <br/>
+            <apex:commandButton value="User Has Live Agent Access ?"  action="{!cmdUserHasLiveAgentAccess}" id="userHasLiveAgentButton" rerender="searchBlock,jsonp" status="status"/>
+            <apex:commandButton value="Search Skills & Chat Capacity" action="{!cmdSearchButton}" id="searchSkillButton" rerender="searchBlock,jsonp" status="status"/>
+            <!--<apex:actionStatus id="status" startText="Please Wait...!"></apex:actionStatus>-->
+            <apex:actionStatus id="status">
+                <apex:facet name="start">
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                    &nbsp;
+                </div>
+                <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                    <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px;">
+                        <img src="/img/loading.gif" style="float: left; margin: 8px;" />
+                        <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+                    </div>
+                </div>
+                </apex:facet>
+            </apex:actionStatus>
+            <br/><br/>
+            <apex:outputPanel rendered="{!showTable}">
+            <fieldset>
+                <legend>Dynamic Query</legend>
+                {!strQuery}
+            </fieldset>
+            </apex:outputPanel>
+            <br/>
+            <apex:outputPanel rendered="{!showSkillTable}">
+            <apex:pageBlockSection columns="1">                
+                <apex:pageBlockTable value="{!chatCapacityList}" var="c"> 
+                    <apex:column headerValue="Configuration ID"><apex:outputLink value="/{!c.LiveChatUserConfigId}/e" target="_blank">{!c.LiveChatUserConfigId}</apex:outputLink></apex:column>
+                    <apex:column value="{!c.LiveChatUserConfig.MasterLabel}" headerValue="Configuration Name"/>
+                    <apex:column value="{!c.LiveChatUserConfig.Capacity}" headerValue="Chat Capacity"/>
+                    <apex:column value="{!c.LiveChatUserConfig.Language}" headerValue="Language"/>
+                    <apex:column value="{!c.UserId}" headerValue="User Name"/>
+                </apex:pageBlockTable>
+                <apex:outputText style="color: red !important;font-size: larger !important;" value="{!IF(chatCapacityList != NULL && chatCapacityList.size > 0,'','There are no records to display')}"/>
+                
+                <br/>
+                <apex:pageBlockTable value="{!lis}" var="b">                    
+                    <apex:column headerValue="Skill ID"><apex:outputLink value="/{!b.skillid}/e" target="_blank">{!b.skillid}</apex:outputLink></apex:column>
+                    <apex:column value="{!b.skillid}" headerValue="Skill Name"/>
+                    <apex:column value="{!b.USERID}" headerValue="User Name"/>
+                    <apex:column value="{!b.USER.Marketing_Call_Center__c}" headerValue="Marketing Contact Center Name"/>
+                    <apex:column value="{!b.user.userroleid}" headerValue="User Role"/>
+                </apex:pageBlockTable>
+                <apex:outputText style="color: red !important;font-size: larger !important;" value="{!IF(lis != NULL && lis.size > 0,'','There are no records to display')}"/>                             
+            </apex:pageBlockSection>
+           </apex:outputPanel>
+         </apex:pageBlock>
+         </apex:outputPanel>
+         </div>
+         <div id="show2">
+            <apex:outputPanel id="p0">
+            <center>
+            <apex:actionRegion >
+            <apex:outputLabel for="leadStatusChoice"><h3>Select Chat Capacity :</h3>          
+            <apex:selectList size="1" value="{!choiseOption}">
+                <apex:selectOptions value="{!ConfigOptions}"/>
+                <apex:actionSupport event="onchange" action="{!cmdChoiceConfigBtn}" status="status" rerender="p0"/>
+            </apex:selectList>
+            </apex:outputLabel>
+            </apex:actionRegion>
+            <apex:outputLabel />
+            <apex:outputLabel />
+            <apex:actionStatus id="status">
+                <apex:facet name="start">
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                    &nbsp;
+                </div>
+                <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                    <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px;">
+                        <img src="/img/loading.gif" style="float: left; margin: 8px;" />
+                        <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+                    </div>
+                </div>
+                </apex:facet>
+            </apex:actionStatus>
+            <apex:outputLabel />
+            <apex:outputLabel />
+            <apex:outputLabel />
+            </center>
+            <br/><br/>
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlock rendered="{!showConfigurationValues}" title="Chat Capacity Table" mode="edit">
+                <apex:pageBlockTable value="{!configValues}" var="c"> 
+                    <apex:column headerValue="Configuration ID"><apex:outputLink value="/{!c.Id}/e" target="_blank">{!c.Id}</apex:outputLink></apex:column>
+                    <apex:column headerValue="Configuration Name"><apex:outputLink value="/{!c.Id}/e" target="_blank">{!c.MasterLabel}</apex:outputLink></apex:column>
+                    <apex:column value="{!c.Capacity}" headerValue="Chat Capacity"/>
+                    <apex:column value="{!c.Language}" headerValue="Language"/>
+                </apex:pageBlockTable>
+                <apex:outputText style="color: red !important;font-size: larger !important;" value="{!IF(configValues != NULL && configValues.size > 0,'','There are no records to display')}"/>         
+            </apex:pageBlock>
+            <apex:outputLabel />
+            </apex:outputPanel>
+            </div>
+            <div id="show4">
+      <apex:outputPanel id="frm1"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/JavaScript" />
+    <apex:actionFunction name="refreshPageSize" action="{!refreshPageSize}" status="fetchStatus" reRender="frm1"/>     
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+            searchTable($(this).val());
+            });
+        });
+        function searchTable(searchText){
+            /*get Table using its Id */
+            var table = $('table[id$=tblData]');
+            table.find('tr').each(function(index, row){
+            var allCells = $(row).find('td');
+            if(allCells.length > 0)
+            {
+            var found = false;
+            allCells.each(function(index, td)
+            {
+            var regExp = new RegExp(searchText, 'i');
+            if(regExp.test($(td).text()))
+            {
+            found = true;
+            return false;
+            }
+            });
+            if(found == true)$(row).show();else $(row).hide();
+            }
+            });
+        }                
+    </script>     
+    <apex:sectionHeader title="NGCC" subtitle="Skill Assign Tool" />
+    <apex:pageBlock id="pbId">
+    <table width="100%" border="0">
+        <tr>
+        <td width="250" valign="top">
+        <apex:pageBlock title="" mode="edit" id="criteria">
+        <table cellpadding="2" cellspacing="2">
+            <tr>
+            <td style="font-weight: bold;">
+            <h3>Search by Skill Name</h3> <br /><input type="text" id="search" /></td>                                   
+            </tr>            
+        </table>
+        </apex:pageBlock>
+    </td>
+    <td valign="top">        
+        <apex:pageBlock mode="edit" id="results">
+            <apex:pageBlockTable value="{!ContactsToShow}" var="con" id="tblData" columns="3">
+                <apex:column headerValue="Skill Name" width="300"><apex:outputLink value="/{!con.id}/e" target="_blank">{!con.MasterLabel}</apex:outputLink></apex:column>
+                <apex:column value="{!con.developerName}" width="300"/>
+                <apex:column value="{!con.language}" width="200"/>                                        
+            </apex:pageBlockTable> 
+            
+        </apex:pageBlock>
+        </td>
+        </tr>
+        </table>              
+            <apex:panelGrid columns="10">
+                <apex:selectList value="{!skillSize}" multiselect="false" size="1" onchange="refreshPageSize();">
+                    <apex:selectOptions value="{!paginationSizeOptions}"/>
+                </apex:selectList>
+                <apex:commandButton value="<<" action="{!beginning}" disabled="{!DisablePrevious}" status="fetchStatus" reRender="pbId"/>
+                <apex:commandButton value="< Previous" action="{!previous}" disabled="{!DisablePrevious}" status="fetchStatus" reRender="pbId"/>
+                <apex:commandButton value="Next >" action="{!next}" disabled="{!DisableNext}" status="fetchStatus" reRender="pbId"/>
+                <apex:commandButton value=">>" action="{!last}" disabled="{!DisableNext}" status="fetchStatus" reRender="pbId"/>
+                <apex:outputText >
+                    <b><h3>Total Skills : {!noOfRecords}</h3></b>
+                </apex:outputText>
+                <apex:outputPanel >                      
+                    <apex:actionStatus id="fetchStatus" >
+                        <apex:facet name="start" >
+                            <img src="/img/loading.gif"/>                  
+                        </apex:facet>
+                    </apex:actionStatus>
+                </apex:outputPanel>
+            </apex:panelGrid>      
+    </apex:pageBlock>
+    </apex:outputPanel>
+            </div>
+     </apex:form>
+     <br/><br/><br/><br/><br/>
+</apex:page>

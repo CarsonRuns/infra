@@ -1,0 +1,8 @@
+<apex:page controller="CHINAPieChartController" title="Pie Chart">     
+  <apex:chart animate="false" height="350" width="350" data="{!pieData}" >         
+        <apex:pieSeries dataField="data" showInLegend="true">
+            <apex:chartLabel field="name" display="none"/>     
+        </apex:pieSeries>
+        <apex:legend position="bottom" font="8px Helvetica" />
+    </apex:chart> 
+</apex:page>

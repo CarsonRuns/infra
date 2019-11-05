@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Approx Audio $ --></label>
+        <name>Approx__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Model --></label>
+        <name>Billing_Model__c</name>
+        <picklistValues>
+            <masterLabel>Annual Billing</masterLabel>
+            <translation><!-- Annual Billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monthly Billing</masterLabel>
+            <translation><!-- Monthly Billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prepaid Term</masterLabel>
+            <translation><!-- Prepaid Term --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quarterly Billing</masterLabel>
+            <translation><!-- Quarterly Billing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Buying Program --></label>
+        <name>Buying_Program__c</name>
+        <picklistValues>
+            <masterLabel>Advantage</masterLabel>
+            <translation><!-- Advantage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C1 ELA</masterLabel>
+            <translation><!-- C1 ELA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Service Broker</masterLabel>
+            <translation><!-- Cloud Service Broker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online CSP</masterLabel>
+            <translation><!-- Online CSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Direct</masterLabel>
+            <translation><!-- Online Direct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOW</masterLabel>
+            <translation><!-- SOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPLA</masterLabel>
+            <translation><!-- SPLA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transactional</masterLabel>
+            <translation><!-- Transactional --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- External Opportunity Offer Key --></label>
+        <name>External_Opportunity_Offer_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Initial Term --></label>
+        <name>Initial_Term__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation><!-- 12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24</masterLabel>
+            <translation><!-- 24 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>36</masterLabel>
+            <translation><!-- 36 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>48</masterLabel>
+            <translation><!-- 48 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60</masterLabel>
+            <translation><!-- 60 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Integrated with CCW --></label>
+        <name>Integrated_with_CCW__c</name>
+    </fields>
+    <fields>
+        <label><!-- Monetization Type --></label>
+        <name>Monetization_Type__c</name>
+        <picklistValues>
+            <masterLabel>Perpetual</masterLabel>
+            <translation><!-- Perpetual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Term</masterLabel>
+            <translation><!-- Term --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Usage</masterLabel>
+            <translation><!-- Usage --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- # of Active Hosts --></label>
+        <name>Number_of_Active_Hosts__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Employees --></label>
+        <name>Number_of_Employees__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Named Hosts --></label>
+        <name>Number_of_Named_Hosts__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Named Users (Proposed) --></label>
+        <name>Number_of_Named_Users_Proposed__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Named Users (Current) --></label>
+        <name>Number_of_Named_Users__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of PMP Licenses --></label>
+        <name>Number_of_PMP__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Ports --></label>
+        <name>Number_of_Ports__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Seats --></label>
+        <name>Number_of_Seats__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of TC Hosts --></label>
+        <name>Number_of_TC_Hosts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offer Type --></label>
+        <name>OfferType__c</name>
+        <relationshipLabel><!-- Opportunity Offers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Offer Description --></label>
+        <name>Offer_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offer Type Value --></label>
+        <name>Offer_Type_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Opportunity_Name__c</name>
+        <relationshipLabel><!-- Opportunity Offers --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Value should be in whole dollars --></help>
+        <label><!-- Product Offer Value($) --></label>
+        <name>Product_Offer_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote ID --></label>
+        <name>QuoteId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recurring Charge ($) --></label>
+        <name>Recurring_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recurring Offer --></label>
+        <name>Recurring_Offer_SFDC__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Recurring Offer --></label>
+        <name>Recurring_Offer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Term --></label>
+        <name>Renewal_Term__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation><!-- 12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24</masterLabel>
+            <translation><!-- 24 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>36</masterLabel>
+            <translation><!-- 36 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>48</masterLabel>
+            <translation><!-- 48 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60</masterLabel>
+            <translation><!-- 60 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Requested Start Date --></label>
+        <name>Requested_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Motion --></label>
+        <name>Sales_Motion__c</name>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renew</masterLabel>
+            <translation><!-- Renew --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Value should be in whole dollars --></help>
+        <label><!-- Service Offer Value($) --></label>
+        <name>Service_Offer_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Suite --></label>
+        <name>Suite__c</name>
+        <picklistValues>
+            <masterLabel>Access Wireless</masterLabel>
+            <translation><!-- Access Wireless --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Access-Switching</masterLabel>
+            <translation><!-- Access-Switching --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advantage</masterLabel>
+            <translation><!-- Advantage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Cloud</masterLabel>
+            <translation><!-- Data Center Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Compute</masterLabel>
+            <translation><!-- Data Center Compute --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Networking</masterLabel>
+            <translation><!-- Data Center Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WAN</masterLabel>
+            <translation><!-- WAN --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Term Type --></label>
+        <name>Term_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tier --></label>
+        <name>Tier__c</name>
+        <picklistValues>
+            <masterLabel>ADV</masterLabel>
+            <translation><!-- ADV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add capacity</masterLabel>
+            <translation><!-- Add capacity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adjustment</masterLabel>
+            <translation><!-- Adjustment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advanced</masterLabel>
+            <translation><!-- Advanced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advantage</masterLabel>
+            <translation><!-- Advantage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Essentials</masterLabel>
+            <translation><!-- Essentials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foundation</masterLabel>
+            <translation><!-- Foundation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hardware</masterLabel>
+            <translation><!-- Hardware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MLB</masterLabel>
+            <translation><!-- MLB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>security</masterLabel>
+            <translation><!-- security --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Total Offer Value ($) is the sum of the Product Offer Value ($) and the Service Offer Value ($). --></help>
+        <label><!-- Total Offer Value ($) --></label>
+        <name>Total_Offer__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Opportunity Offer</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Opportunity Offers</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>ADMIN Offers</layout>
+        <sections>
+            <label><!-- Additional WebEx Information --></label>
+            <section>Additional WebEx Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CCW Offers</layout>
+        <sections>
+            <label><!-- Additional WebEx Information --></label>
+            <section>Additional WebEx Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>SFDC Offers</layout>
+        <sections>
+            <label><!-- Additional WebEx Information --></label>
+            <section>Additional WebEx Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- CCW --></label>
+        <name>CCW</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- SFDC --></label>
+        <name>SFDC</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Billing Model is required --></errorMessage>
+        <name>Billing_Model_on_Recurring_charge</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Offer Value cannot be greater than the opportunity Expected Product amount.  Please adjust the Product Offer Value. --></errorMessage>
+        <name>Product_Offer_Cant_GT_Expected_Products</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Service Offer Value cannot be greater than the opportunity Expected Service amount.  Please adjust the Service Offer Value. --></errorMessage>
+        <name>Service_Offer_Cant_GT_Expected_Service</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- New_Opportunity_Offers --></label>
+        <name>New_Opportunity_Offers</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,1370 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>AM_Email_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>AM Email Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Call_Back_Time__c</fullName>
+        <description>NGCC Phase1:Preferred Call Back requested by Customer</description>
+        <externalId>false</externalId>
+        <label>Call Back Time</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Call_Script_Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1:  Flag to indicate if Call Script is completed</description>
+        <externalId>false</externalId>
+        <label>Call Script Completed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Call_Script_Executed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1:Flag to show whether the response is associated to Call Script</description>
+        <externalId>false</externalId>
+        <label>Call Script Executed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Call_Script__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:Call Script Reference for the associated Call Script Q and A</description>
+        <externalId>false</externalId>
+        <label>CC Call Script</label>
+        <referenceTo>CC_Call_Script__c</referenceTo>
+        <relationshipLabel>CC Responses</relationshipLabel>
+        <relationshipName>CC_Responses</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Call_Status__c</fullName>
+        <description>NGCC Phase1:Call Status of the response</description>
+        <externalId>false</externalId>
+        <label>Call Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Open</fullName>
+                    <default>false</default>
+                    <label>Open</label>
+                </value>
+                <value>
+                    <fullName>Call Completed</fullName>
+                    <default>false</default>
+                    <label>Call Completed</label>
+                </value>
+                <value>
+                    <fullName>Call Back Later</fullName>
+                    <default>false</default>
+                    <label>Call Back Later</label>
+                </value>
+                <value>
+                    <fullName>Nuture</fullName>
+                    <default>false</default>
+                    <label>Nuture</label>
+                </value>
+                <value>
+                    <fullName>Invalid</fullName>
+                    <default>false</default>
+                    <label>Invalid</label>
+                </value>
+                <value>
+                    <fullName>Invalid Call Completed</fullName>
+                    <default>false</default>
+                    <label>Invalid Call Completed</label>
+                </value>
+                <value>
+                    <fullName>PE Cancelled/Completed</fullName>
+                    <default>false</default>
+                    <label>PE Cancelled/Completed</label>
+                </value>
+                <value>
+                    <fullName>Max Attempts Reached</fullName>
+                    <default>false</default>
+                    <label>Max Attempts Reached</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Campaign__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:Campaign for which the response was created</description>
+        <externalId>false</externalId>
+        <label>Campaign</label>
+        <referenceTo>Campaign</referenceTo>
+        <relationshipLabel>CC Responses</relationshipLabel>
+        <relationshipName>CC_Responses</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Disposition_Sub_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Project</fullName>
+                    <default>false</default>
+                    <label>New Project</label>
+                </value>
+                <value>
+                    <fullName>Replace/Upgrade</fullName>
+                    <default>false</default>
+                    <label>Replace/Upgrade</label>
+                </value>
+                <value>
+                    <fullName>Optimize</fullName>
+                    <default>false</default>
+                    <label>Optimize</label>
+                </value>
+                <value>
+                    <fullName>Owns Cisco Equipment</fullName>
+                    <default>false</default>
+                    <label>Owns Cisco Equipment</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Lead Follow up</fullName>
+                    <default>false</default>
+                    <label>Lead Follow up</label>
+                </value>
+                <value>
+                    <fullName>Mis-routed into Sales</fullName>
+                    <default>false</default>
+                    <label>Mis-routed into Sales</label>
+                </value>
+                <value>
+                    <fullName>Existing Account</fullName>
+                    <default>false</default>
+                    <label>Existing Account</label>
+                </value>
+                <value>
+                    <fullName>Other/Unknown</fullName>
+                    <default>false</default>
+                    <label>Other/Unknown</label>
+                </value>
+                <value>
+                    <fullName>Nurture</fullName>
+                    <default>false</default>
+                    <label>Nurture</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Long Billing Cycle</controllingFieldValue>
+                <controllingFieldValue>Not in purchasing cycle (Evaluating Vendor-Solution)</controllingFieldValue>
+                <controllingFieldValue>Project Not yet Initiated-Requested Follow Up Info</controllingFieldValue>
+                <valueName>Nurture</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Has a Partner</controllingFieldValue>
+                <controllingFieldValue>Opportunity</controllingFieldValue>
+                <controllingFieldValue>E-commerce</controllingFieldValue>
+                <controllingFieldValue>Unknown-Other Reason Provided</controllingFieldValue>
+                <controllingFieldValue>Consultant did not disclose end user contact info</controllingFieldValue>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Cloud Support</controllingFieldValue>
+                <controllingFieldValue>Residential Support</controllingFieldValue>
+                <valueName>New Project</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Has a Partner</controllingFieldValue>
+                <controllingFieldValue>Opportunity</controllingFieldValue>
+                <controllingFieldValue>E-commerce</controllingFieldValue>
+                <controllingFieldValue>Unknown-Other Reason Provided</controllingFieldValue>
+                <controllingFieldValue>Consultant did not disclose end user contact info</controllingFieldValue>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Residential Support</controllingFieldValue>
+                <valueName>Replace/Upgrade</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Has a Partner</controllingFieldValue>
+                <controllingFieldValue>Opportunity</controllingFieldValue>
+                <controllingFieldValue>E-commerce</controllingFieldValue>
+                <controllingFieldValue>Unknown-Other Reason Provided</controllingFieldValue>
+                <controllingFieldValue>Consultant did not disclose end user contact info</controllingFieldValue>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Residential Support</controllingFieldValue>
+                <valueName>Optimize</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GVE-Partner Support</controllingFieldValue>
+                <controllingFieldValue>Licensing (TAC)</controllingFieldValue>
+                <controllingFieldValue>Order &amp; Billing</controllingFieldValue>
+                <controllingFieldValue>Other Cisco Dept</controllingFieldValue>
+                <controllingFieldValue>Training &amp; Certifications</controllingFieldValue>
+                <controllingFieldValue>TAC</controllingFieldValue>
+                <valueName>Mis-routed into Sales</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Before Convo</controllingFieldValue>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <valueName>Other/Unknown</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Residential Support</controllingFieldValue>
+                <valueName>Owns Cisco Equipment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Residential Support</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud Support</controllingFieldValue>
+                <valueName>Existing Account</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Sent to AM</controllingFieldValue>
+                <controllingFieldValue>Sent to BDR</controllingFieldValue>
+                <controllingFieldValue>Sent to LDR</controllingFieldValue>
+                <controllingFieldValue>Sent to Partner</controllingFieldValue>
+                <controllingFieldValue>Sent to VSS</controllingFieldValue>
+                <valueName>Lead Follow up</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Disposition_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Outcome</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Status__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Contacted via Email</fullName>
+                    <default>false</default>
+                    <label>Contacted via Email</label>
+                </value>
+                <value>
+                    <fullName>Contacted via Phone</fullName>
+                    <default>false</default>
+                    <label>Contacted via Phone</label>
+                </value>
+                <value>
+                    <fullName>Contacted via Email &amp; Phone</fullName>
+                    <default>false</default>
+                    <label>Contacted via Email &amp; Phone</label>
+                </value>
+                <value>
+                    <fullName>Has a Partner</fullName>
+                    <default>false</default>
+                    <label>Has a Partner</label>
+                </value>
+                <value>
+                    <fullName>E-commerce</fullName>
+                    <default>false</default>
+                    <label>E-commerce</label>
+                </value>
+                <value>
+                    <fullName>Unknown-Other Reason Provided</fullName>
+                    <default>false</default>
+                    <label>Unknown-Other Reason Provided</label>
+                </value>
+                <value>
+                    <fullName>Consultant did not disclose end user contact info</fullName>
+                    <default>false</default>
+                    <label>Consultant did not disclose end user contact info</label>
+                </value>
+                <value>
+                    <fullName>Before Convo</fullName>
+                    <default>false</default>
+                    <label>Before Convo</label>
+                </value>
+                <value>
+                    <fullName>Provided General Product info</fullName>
+                    <default>false</default>
+                    <label>Provided General Product info</label>
+                </value>
+                <value>
+                    <fullName>General Product info (Data sheets-Compatability Info-Part Numbers)</fullName>
+                    <default>false</default>
+                    <label>General Product info (Data sheets-Compatability Info-Part Numbers)</label>
+                </value>
+                <value>
+                    <fullName>Residential Support</fullName>
+                    <default>false</default>
+                    <label>Residential Support</label>
+                </value>
+                <value>
+                    <fullName>Duplicate Prospect</fullName>
+                    <default>false</default>
+                    <label>Duplicate Prospect</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>IT Outsource</fullName>
+                    <default>false</default>
+                    <label>IT Outsource</label>
+                </value>
+                <value>
+                    <fullName>No longer with Company</fullName>
+                    <default>false</default>
+                    <label>No longer with Company</label>
+                </value>
+                <value>
+                    <fullName>Not Fit Wrong Contact</fullName>
+                    <default>false</default>
+                    <label>Not Fit Wrong Contact</label>
+                </value>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Sent to AM</fullName>
+                    <default>false</default>
+                    <label>Sent to AM</label>
+                </value>
+                <value>
+                    <fullName>Sent to BDR</fullName>
+                    <default>false</default>
+                    <label>Sent to BDR</label>
+                </value>
+                <value>
+                    <fullName>Sent to LDR</fullName>
+                    <default>false</default>
+                    <label>Sent to LDR</label>
+                </value>
+                <value>
+                    <fullName>Sent to Partner</fullName>
+                    <default>false</default>
+                    <label>Sent to Partner</label>
+                </value>
+                <value>
+                    <fullName>Sent to VSS</fullName>
+                    <default>false</default>
+                    <label>Sent to VSS</label>
+                </value>
+                <value>
+                    <fullName>Long Billing Cycle</fullName>
+                    <default>false</default>
+                    <label>Long Billing Cycle</label>
+                </value>
+                <value>
+                    <fullName>Not in purchasing cycle (Evaluating Vendor-Solution)</fullName>
+                    <default>false</default>
+                    <label>Not in purchasing cycle (Evaluating Vendor-Solution)</label>
+                </value>
+                <value>
+                    <fullName>Project Not yet Initiated-Requested Follow Up Info</fullName>
+                    <default>false</default>
+                    <label>Project Not yet Initiated-Requested Follow Up Info</label>
+                </value>
+                <value>
+                    <fullName>Opportunity</fullName>
+                    <default>false</default>
+                    <label>Opportunity</label>
+                </value>
+                <value>
+                    <fullName>GVE-Partner Support</fullName>
+                    <default>false</default>
+                    <label>GVE-Partner Support</label>
+                </value>
+                <value>
+                    <fullName>Licensing (TAC)</fullName>
+                    <default>false</default>
+                    <label>Licensing (TAC)</label>
+                </value>
+                <value>
+                    <fullName>Order &amp; Billing</fullName>
+                    <default>false</default>
+                    <label>Order &amp; Billing</label>
+                </value>
+                <value>
+                    <fullName>Other Cisco Dept</fullName>
+                    <default>false</default>
+                    <label>Other Cisco Dept</label>
+                </value>
+                <value>
+                    <fullName>TAC</fullName>
+                    <default>false</default>
+                    <label>TAC</label>
+                </value>
+                <value>
+                    <fullName>Training &amp; Certifications</fullName>
+                    <default>false</default>
+                    <label>Training &amp; Certifications</label>
+                </value>
+                <value>
+                    <fullName>Cloud Support</fullName>
+                    <default>false</default>
+                    <label>Cloud Support</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Nurture</controllingFieldValue>
+                <valueName>Long Billing Cycle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Nurture</controllingFieldValue>
+                <valueName>Not in purchasing cycle (Evaluating Vendor-Solution)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Nurture</controllingFieldValue>
+                <valueName>Project Not yet Initiated-Requested Follow Up Info</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Customer Service</controllingFieldValue>
+                <valueName>General Product info (Data sheets-Compatability Info-Part Numbers)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Customer Service</controllingFieldValue>
+                <valueName>Residential Support</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Invalid Info</controllingFieldValue>
+                <valueName>Duplicate Prospect</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Invalid Info</controllingFieldValue>
+                <valueName>Email</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Invalid Info</controllingFieldValue>
+                <valueName>IT Outsource</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Invalid Info</controllingFieldValue>
+                <valueName>No longer with Company</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Invalid Info</controllingFieldValue>
+                <valueName>Not Fit Wrong Contact</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Invalid Info</controllingFieldValue>
+                <valueName>Phone</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transfer out</controllingFieldValue>
+                <valueName>GVE-Partner Support</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transfer out</controllingFieldValue>
+                <valueName>Licensing (TAC)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transfer out</controllingFieldValue>
+                <valueName>Order &amp; Billing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transfer out</controllingFieldValue>
+                <valueName>Other Cisco Dept</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transfer out</controllingFieldValue>
+                <valueName>TAC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transfer out</controllingFieldValue>
+                <valueName>Training &amp; Certifications</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transfer out</controllingFieldValue>
+                <valueName>Cloud Support</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lead Escalation</controllingFieldValue>
+                <valueName>Sent to AM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lead Escalation</controllingFieldValue>
+                <valueName>Sent to BDR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lead Escalation</controllingFieldValue>
+                <valueName>Sent to LDR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lead Escalation</controllingFieldValue>
+                <valueName>Sent to Partner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Lead Escalation</controllingFieldValue>
+                <valueName>Sent to VSS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Customer Dropped Off</controllingFieldValue>
+                <valueName>Before Convo</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Customer Dropped Off</controllingFieldValue>
+                <valueName>Provided General Product info</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Qualified Lead</controllingFieldValue>
+                <valueName>Opportunity</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Back</controllingFieldValue>
+                <valueName>Contacted via Email</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Back</controllingFieldValue>
+                <valueName>Contacted via Phone</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Call Back</controllingFieldValue>
+                <valueName>Contacted via Email &amp; Phone</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cust Prefers a different buying method</controllingFieldValue>
+                <valueName>Has a Partner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cust Prefers a different buying method</controllingFieldValue>
+                <valueName>E-commerce</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cust Prefers a different buying method</controllingFieldValue>
+                <valueName>Unknown-Other Reason Provided</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cust Prefers a different buying method</controllingFieldValue>
+                <valueName>Consultant did not disclose end user contact info</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>External_Source_Contact_Id__c</fullName>
+        <description>NGCC Phase1:Source of the prospect for which response is stored</description>
+        <externalId>true</externalId>
+        <label>External Source Contact Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inbound_Note__c</fullName>
+        <externalId>false</externalId>
+        <label>Inbound Note</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Complaint</fullName>
+                    <default>false</default>
+                    <label>Complaint</label>
+                </value>
+                <value>
+                    <fullName>Customer Dropped Off</fullName>
+                    <default>false</default>
+                    <label>Customer Dropped Off</label>
+                </value>
+                <value>
+                    <fullName>Customer Followed Up</fullName>
+                    <default>false</default>
+                    <label>Customer Followed Up</label>
+                </value>
+                <value>
+                    <fullName>Customer made bad call</fullName>
+                    <default>false</default>
+                    <label>Customer made bad call</label>
+                </value>
+                <value>
+                    <fullName>Customer Service</fullName>
+                    <default>false</default>
+                    <label>Customer Service</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Partner</fullName>
+                    <default>false</default>
+                    <label>Partner</label>
+                </value>
+                <value>
+                    <fullName>System Integrator</fullName>
+                    <default>false</default>
+                    <label>System Integrator</label>
+                </value>
+                <value>
+                    <fullName>Technical Support</fullName>
+                    <default>false</default>
+                    <label>Technical Support</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Key_Code__c</fullName>
+        <description>NGCC Phase1:Program Event Code of the Program even associated to prospect</description>
+        <externalId>false</externalId>
+        <label>Keycode</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Language__c</fullName>
+        <description>NGCC Phase1:Language used to create the response</description>
+        <externalId>false</externalId>
+        <label>Language</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Danish: da</fullName>
+                    <default>false</default>
+                    <label>Danish: da</label>
+                </value>
+                <value>
+                    <fullName>Dutch: nl_NL</fullName>
+                    <default>false</default>
+                    <label>Dutch: nl_NL</label>
+                </value>
+                <value>
+                    <fullName>English: en_US</fullName>
+                    <default>true</default>
+                    <label>English: en_US</label>
+                </value>
+                <value>
+                    <fullName>Finnish: fi</fullName>
+                    <default>false</default>
+                    <label>Finnish: fi</label>
+                </value>
+                <value>
+                    <fullName>French: fr</fullName>
+                    <default>false</default>
+                    <label>French: fr</label>
+                </value>
+                <value>
+                    <fullName>German: de</fullName>
+                    <default>false</default>
+                    <label>German: de</label>
+                </value>
+                <value>
+                    <fullName>Italian: it</fullName>
+                    <default>false</default>
+                    <label>Italian: it</label>
+                </value>
+                <value>
+                    <fullName>Japanese: ja</fullName>
+                    <default>false</default>
+                    <label>Japanese: ja</label>
+                </value>
+                <value>
+                    <fullName>Korean: ko</fullName>
+                    <default>false</default>
+                    <label>Korean: ko</label>
+                </value>
+                <value>
+                    <fullName>Portuguese (Brazil): pt_BR</fullName>
+                    <default>false</default>
+                    <label>Portuguese (Brazil): pt_BR</label>
+                </value>
+                <value>
+                    <fullName>Russian: ru</fullName>
+                    <default>false</default>
+                    <label>Russian: ru</label>
+                </value>
+                <value>
+                    <fullName>Spanish: es</fullName>
+                    <default>false</default>
+                    <label>Spanish: es</label>
+                </value>
+                <value>
+                    <fullName>Swedish: sv</fullName>
+                    <default>false</default>
+                    <label>Swedish: sv</label>
+                </value>
+                <value>
+                    <fullName>Thai: th</fullName>
+                    <default>false</default>
+                    <label>Thai: th</label>
+                </value>
+                <value>
+                    <fullName>Arabic: ar</fullName>
+                    <default>false</default>
+                    <label>Arabic: ar</label>
+                </value>
+                <value>
+                    <fullName>Czech: cs</fullName>
+                    <default>false</default>
+                    <label>Czech: cs</label>
+                </value>
+                <value>
+                    <fullName>Greek: el</fullName>
+                    <default>false</default>
+                    <label>Greek: el</label>
+                </value>
+                <value>
+                    <fullName>Hungarian: hu</fullName>
+                    <default>false</default>
+                    <label>Hungarian: hu</label>
+                </value>
+                <value>
+                    <fullName>Polish: pl</fullName>
+                    <default>false</default>
+                    <label>Polish: pl</label>
+                </value>
+                <value>
+                    <fullName>Turkish: tr</fullName>
+                    <default>false</default>
+                    <label>Turkish: tr</label>
+                </value>
+                <value>
+                    <fullName>Vietnamese: vi</fullName>
+                    <default>false</default>
+                    <label>Vietnamese: vi</label>
+                </value>
+                <value>
+                    <fullName>Chinese (Simplified): zh_CN</fullName>
+                    <default>false</default>
+                    <label>Chinese (Simplified): zh_CN</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Lead_Admin_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead Admin Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Description__c</fullName>
+        <description>NGCC Phase1:New Lead Description captured during the call script</description>
+        <externalId>false</externalId>
+        <label>Lead Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:Lead/Prospect assocaited to response</description>
+        <externalId>false</externalId>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>CC Responses</relationshipLabel>
+        <relationshipName>CC_Responses</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MODS_Contact__c</fullName>
+        <description>NGCC Phase1:MODS Contact Id for the associated Response and Prospect</description>
+        <externalId>true</externalId>
+        <label>MODS Contact</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>No_of_Question__c</fullName>
+        <description>NGCC Phase1:Number of questions the Response was created</description>
+        <externalId>false</externalId>
+        <label>No. of Question</label>
+        <summaryForeignKey>CC_Response_Detail__c.Response_Id__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <description>NGCC Phase1:Agent notes provided by Agent while saving the response</description>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Partner_Contact_Email_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Contact Email Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Persona__c</fullName>
+        <externalId>false</externalId>
+        <label>Persona</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Disposition_Sub_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer/End User</fullName>
+                    <default>false</default>
+                    <label>Customer/End User</label>
+                </value>
+                <value>
+                    <fullName>Consultant/Contractor</fullName>
+                    <default>false</default>
+                    <label>Consultant/Contractor</label>
+                </value>
+                <value>
+                    <fullName>Other/Unknown</fullName>
+                    <default>false</default>
+                    <label>Other/Unknown</label>
+                </value>
+                <value>
+                    <fullName>Cisco Partner</fullName>
+                    <default>false</default>
+                    <label>Cisco Partner</label>
+                </value>
+                <value>
+                    <fullName>Cisco Agent (Other Dept.)</fullName>
+                    <default>false</default>
+                    <label>Cisco Agent (Other Dept.)</label>
+                </value>
+                <value>
+                    <fullName>Home User</fullName>
+                    <default>false</default>
+                    <label>Home User</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                    <label>Unknown</label>
+                </value>
+                <value>
+                    <fullName>Reseller</fullName>
+                    <default>false</default>
+                    <label>Reseller</label>
+                </value>
+                <value>
+                    <fullName>Student</fullName>
+                    <default>false</default>
+                    <label>Student</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Long Billing Cycle</controllingFieldValue>
+                <controllingFieldValue>Not in purchasing cycle (Evaluating Vendor-Solution)</controllingFieldValue>
+                <controllingFieldValue>Project Not yet Initiated-Requested Follow Up Info</controllingFieldValue>
+                <controllingFieldValue>Has a Partner</controllingFieldValue>
+                <controllingFieldValue>Opportunity</controllingFieldValue>
+                <controllingFieldValue>E-commerce</controllingFieldValue>
+                <controllingFieldValue>Unknown-Other Reason Provided</controllingFieldValue>
+                <controllingFieldValue>Licensing (TAC)</controllingFieldValue>
+                <controllingFieldValue>Consultant did not disclose end user contact info</controllingFieldValue>
+                <controllingFieldValue>Order &amp; Billing</controllingFieldValue>
+                <controllingFieldValue>Other Cisco Dept</controllingFieldValue>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>Training &amp; Certifications</controllingFieldValue>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Cloud Support</controllingFieldValue>
+                <controllingFieldValue>Duplicate Prospect</controllingFieldValue>
+                <controllingFieldValue>Email</controllingFieldValue>
+                <controllingFieldValue>IT Outsource</controllingFieldValue>
+                <controllingFieldValue>No longer with Company</controllingFieldValue>
+                <controllingFieldValue>Not Fit Wrong Contact</controllingFieldValue>
+                <controllingFieldValue>Phone</controllingFieldValue>
+                <controllingFieldValue>Sent to AM</controllingFieldValue>
+                <controllingFieldValue>TAC</controllingFieldValue>
+                <controllingFieldValue>Sent to BDR</controllingFieldValue>
+                <controllingFieldValue>Sent to LDR</controllingFieldValue>
+                <controllingFieldValue>Sent to Partner</controllingFieldValue>
+                <controllingFieldValue>Sent to VSS</controllingFieldValue>
+                <valueName>Customer/End User</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Has a Partner</controllingFieldValue>
+                <controllingFieldValue>E-commerce</controllingFieldValue>
+                <controllingFieldValue>Unknown-Other Reason Provided</controllingFieldValue>
+                <controllingFieldValue>Licensing (TAC)</controllingFieldValue>
+                <controllingFieldValue>Consultant did not disclose end user contact info</controllingFieldValue>
+                <controllingFieldValue>Order &amp; Billing</controllingFieldValue>
+                <controllingFieldValue>Other Cisco Dept</controllingFieldValue>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Cloud Support</controllingFieldValue>
+                <controllingFieldValue>Duplicate Prospect</controllingFieldValue>
+                <controllingFieldValue>Email</controllingFieldValue>
+                <controllingFieldValue>IT Outsource</controllingFieldValue>
+                <controllingFieldValue>No longer with Company</controllingFieldValue>
+                <controllingFieldValue>Not Fit Wrong Contact</controllingFieldValue>
+                <controllingFieldValue>Phone</controllingFieldValue>
+                <controllingFieldValue>TAC</controllingFieldValue>
+                <valueName>Consultant/Contractor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GVE-Partner Support</controllingFieldValue>
+                <controllingFieldValue>Licensing (TAC)</controllingFieldValue>
+                <controllingFieldValue>Order &amp; Billing</controllingFieldValue>
+                <controllingFieldValue>Other Cisco Dept</controllingFieldValue>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Cloud Support</controllingFieldValue>
+                <controllingFieldValue>Duplicate Prospect</controllingFieldValue>
+                <controllingFieldValue>Email</controllingFieldValue>
+                <controllingFieldValue>IT Outsource</controllingFieldValue>
+                <controllingFieldValue>No longer with Company</controllingFieldValue>
+                <controllingFieldValue>Not Fit Wrong Contact</controllingFieldValue>
+                <controllingFieldValue>Phone</controllingFieldValue>
+                <controllingFieldValue>TAC</controllingFieldValue>
+                <valueName>Cisco Partner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Licensing (TAC)</controllingFieldValue>
+                <controllingFieldValue>Order &amp; Billing</controllingFieldValue>
+                <controllingFieldValue>Other Cisco Dept</controllingFieldValue>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Cloud Support</controllingFieldValue>
+                <controllingFieldValue>Duplicate Prospect</controllingFieldValue>
+                <controllingFieldValue>Email</controllingFieldValue>
+                <controllingFieldValue>IT Outsource</controllingFieldValue>
+                <controllingFieldValue>No longer with Company</controllingFieldValue>
+                <controllingFieldValue>Not Fit Wrong Contact</controllingFieldValue>
+                <controllingFieldValue>Phone</controllingFieldValue>
+                <controllingFieldValue>TAC</controllingFieldValue>
+                <valueName>Cisco Agent (Other Dept.)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Licensing (TAC)</controllingFieldValue>
+                <controllingFieldValue>Order &amp; Billing</controllingFieldValue>
+                <controllingFieldValue>Other Cisco Dept</controllingFieldValue>
+                <controllingFieldValue>TAC</controllingFieldValue>
+                <valueName>Reseller</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Before Convo</controllingFieldValue>
+                <valueName>Other/Unknown</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>Residential Support</controllingFieldValue>
+                <controllingFieldValue>Duplicate Prospect</controllingFieldValue>
+                <controllingFieldValue>Email</controllingFieldValue>
+                <controllingFieldValue>IT Outsource</controllingFieldValue>
+                <controllingFieldValue>No longer with Company</controllingFieldValue>
+                <controllingFieldValue>Not Fit Wrong Contact</controllingFieldValue>
+                <controllingFieldValue>Phone</controllingFieldValue>
+                <valueName>Home User</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Provided General Product info</controllingFieldValue>
+                <controllingFieldValue>General Product info (Data sheets-Compatability Info-Part Numbers)</controllingFieldValue>
+                <controllingFieldValue>Cloud Support</controllingFieldValue>
+                <controllingFieldValue>Duplicate Prospect</controllingFieldValue>
+                <controllingFieldValue>Email</controllingFieldValue>
+                <controllingFieldValue>IT Outsource</controllingFieldValue>
+                <controllingFieldValue>No longer with Company</controllingFieldValue>
+                <controllingFieldValue>Not Fit Wrong Contact</controllingFieldValue>
+                <controllingFieldValue>Phone</controllingFieldValue>
+                <valueName>Unknown</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Training &amp; Certifications</controllingFieldValue>
+                <valueName>Student</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Response_Date_Time__c</fullName>
+        <description>NGCC Phase1:Response date and time when the response was created</description>
+        <externalId>false</externalId>
+        <label>Response Date Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Response_Type__c</fullName>
+        <description>NGCC Phase1:Response type when the response was created</description>
+        <externalId>false</externalId>
+        <label>Response Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Inbound Call</fullName>
+                    <default>false</default>
+                    <label>Inbound Call</label>
+                </value>
+                <value>
+                    <fullName>Outbound Call</fullName>
+                    <default>false</default>
+                    <label>Outbound Call</label>
+                </value>
+                <value>
+                    <fullName>Inbound Chat</fullName>
+                    <default>false</default>
+                    <label>Inbound Chat</label>
+                </value>
+                <value>
+                    <fullName>Web Inquiry</fullName>
+                    <default>false</default>
+                    <label>Web Inquiry</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Source_Event_Number__c</fullName>
+        <description>NGCC Phase1:Source Event Number assocaite to the response default is SFDC ID</description>
+        <externalId>false</externalId>
+        <label>Source Event Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_System_Name__c</fullName>
+        <defaultValue>"NGCC"</defaultValue>
+        <description>NGCC Phase1:Source system Name assocaite to the response default is NGCC</description>
+        <externalId>false</externalId>
+        <label>Source System Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Date_Time__c</fullName>
+        <description>NGCC Phase1:Response Start Date</description>
+        <externalId>false</externalId>
+        <label>Start Date/Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>NGCC Phase1:Disposition status of the call/response</description>
+        <externalId>false</externalId>
+        <label>Outcome</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Call Back</fullName>
+                    <default>false</default>
+                    <label>Call Back</label>
+                </value>
+                <value>
+                    <fullName>Max Attempts Reached</fullName>
+                    <default>false</default>
+                    <label>Max Attempts Reached</label>
+                </value>
+                <value>
+                    <fullName>Cust Prefers a different buying method</fullName>
+                    <default>false</default>
+                    <label>Cust Prefers a different buying method</label>
+                </value>
+                <value>
+                    <fullName>Customer Dropped Off</fullName>
+                    <default>false</default>
+                    <label>Customer Dropped Off</label>
+                </value>
+                <value>
+                    <fullName>Customer Service</fullName>
+                    <default>false</default>
+                    <label>Customer Service</label>
+                </value>
+                <value>
+                    <fullName>Invalid Info</fullName>
+                    <default>false</default>
+                    <label>Invalid Info</label>
+                </value>
+                <value>
+                    <fullName>Lead Escalation</fullName>
+                    <default>false</default>
+                    <label>Lead Escalation</label>
+                </value>
+                <value>
+                    <fullName>Nurture</fullName>
+                    <default>false</default>
+                    <label>Nurture</label>
+                </value>
+                <value>
+                    <fullName>Qualified Lead</fullName>
+                    <default>false</default>
+                    <label>Qualified Lead</label>
+                </value>
+                <value>
+                    <fullName>Transfer out</fullName>
+                    <default>false</default>
+                    <label>Transfer out</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>NGCC Phase-1: Each customer response will be captured in CC Response object and this defines response detail including the customer disposition values.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>CC Response</label>
+    <nameField>
+        <label>CC Response Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>CC Responses</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <validationRules>
+        <fullName>NGCC_Validate_Call_Back_Date</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(!Call_Script_Executed__c,IF(ISPICKVAL(Status__c,'Call Back'),
+OR(ISNULL(Call_Back_Time__c),Call_Back_Time__c &lt; Now()),false),false)</errorConditionFormula>
+        <errorMessage>Call Back Time must be  future date/time.</errorMessage>
+    </validationRules>
+</CustomObject>

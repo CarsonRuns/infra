@@ -1,0 +1,63 @@
+<!-- *************************************************************************************************************
+    * @author       Suhas Bharadwaj
+    * @since        2019-01-23 (YYYY-MM-DD)
+    * @description  Manually Quote Integration from framework VF Page
+*********************************************************************************************************************-->
+<apex:page showHeader="true" sidebar="true" standardController="Quote__c" recordsetvar="quotes" extensions="GetIntegratedQuoteList" action="{!init}">
+   <style>
+    .contentLoading  {height: 1rem;
+                      visibility:{!spinnerFlag};
+                      }
+   </style>
+   
+   <apex:outputPanel >
+      <apex:slds />
+      <div class="slds-scope">
+ 
+         <div class="contentLoading">
+          <div role="status" class="slds-spinner slds-spinner_medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+          </div>
+        </div>
+         
+         <apex:form >
+             <apex:pageBlock title="Quotes" id="mega" >
+                 <apex:pageMessages ></apex:pageMessages>
+                 <apex:pageBlockTable value="{!wrappedQuotesList}" var="quote" id="quote_table">
+                    <apex:column >
+                    <apex:facet name="header">Select a Quote</apex:facet>
+            <apex:inputCheckbox value="{!quote.selected}" onclick="validateState()" label="Select a Quote" disabled="{!IF(quote.ischeckbox = 'true', false,true)}"   />   
+                    </apex:column>
+                    <apex:column value="{!quote.qt.Name}"/>
+                    <apex:column value="{!quote.qt.Integrated_Quote__c}" headerValue="Integrated Quote"/>
+                   
+                    <apex:column value="{!quote.qt.PartnerAcctId__r.Name}" headerValue="Partner"/>
+                    <apex:column value="{!quote.qt.CCW_Deal_Status_MQ__c}" headerValue="CCW Deal Status"/>
+                    <apex:column value="{!quote.qt.Quote_Summary__c}" headerValue="Quote Summary"/>
+                    <apex:column value="{!quote.qt.Quote_Product_Net_Amount__c}" headerValue="Quote Product Net Amount"/>
+                     <apex:column value="{!quote.qt.Quote_Service_Net_Amount__c}" headerValue="Quote Service Net Amount"/>
+                    <apex:column value="{!quote.qt.Is_Collaborated__c}" headerValue="Quote Collaborated"/>
+                    <apex:column value="{!quote.qt.Initiated_By__c}" headerValue="Initiated By"/>
+                    <apex:column value="{!quote.qt.DM_Quote_ID__c}"/>
+                    
+                 </apex:pageBlockTable>
+         <!--  Integrate Button  -->
+               <apex:outputPanel style="margin-left: 78%;">
+                  <apex:commandButton styleClass="slds-button slds-button--brand slds-not-selected" value="Cancel" action="{!cancel}" disabled="{!IF(spinnerFlag= 'visible', true, false)}" /> 
+                  <apex:commandButton styleClass="slds-button slds-button--brand slds-not-selected" value="Integrate Selected Quote" action="{!processSelected}" 
+                                      disabled="{!IF(disableButton = 'true', true, false)}"  /> 
+               </apex:outputPanel>
+               
+             </apex:pageBlock>
+            
+             <apex:actionFunction action="{!validateState}" name="validateState" rerender="mega" status="loading" >
+            </apex:actionFunction>
+     
+             <apex:actionPoller action="{!CheckReload}"  interval="{!spinnerTimout }" enabled="{!IF(autoreload = 'true', true, false)}" reRender="mega"/> 
+        </apex:form> 
+      </div>
+   </apex:outputPanel>
+   
+</apex:page>

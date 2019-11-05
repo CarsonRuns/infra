@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>NGCC-poland-sales-polish-Chat</name>
+    <queueMembers>
+        <users>
+            <user>jalmawiy@cisco.com</user>
+            <user>lszmidt@cisco.com</user>
+            <user>makubiak@cisco.com</user>
+            <user>mirusu@cisco.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Omnichannel_Routing</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveAgentSession</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

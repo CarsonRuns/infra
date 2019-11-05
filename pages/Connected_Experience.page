@@ -1,0 +1,63 @@
+<apex:page showHeader="true" standardStylesheets="false" docType="html-5.0" applyHtmlTag="true" cache="false" tabStyle="Customer_Install_Base__tab">
+   <div style="padding-top:5px">
+      <iframe src="" id="ib_iframe"  height="800px" width="100%"  frameborder="0" scrolling="no"></iframe>
+   </div>
+   <script type="text/javascript">
+      var dseApp = 'https://rewarddash.cloudapps.cisco.com';
+    
+      function dseEnv(){
+          //console.log('window.parent.location.host: ',window.parent.location.host);
+                    console.log('window.location.hostname: ',window.location.hostname);
+
+          // if(window.parent.location.host != 'ciscosales.my.salesforce.com'){
+              if(window.location.hostname != 'ciscosales.my.salesforce.com'){
+             dseApp = 'https://rewardstg.cloudapps.cisco.com';
+              //dseApp = 'https://rewarddev.cloudapps.cisco.com';     
+              document.getElementById("ib_iframe").src = dseApp;
+          }
+          document.getElementById("ib_iframe").src = dseApp;
+      }
+      
+      function resizeIframenew(h) {
+          var me = window.name;       
+          var iframes = parent.document.getElementsByName(me);
+          if (h != true) {            
+             if (me) {
+                  if (iframes && iframes.length == 1) {
+                      height = document.body.offsetHeight;
+                      if (height <= 50) {
+                          iframes[0].style.height = 100 + "px";
+                      } else {
+                          iframes[0].style.height = height + "px";
+                      }
+                  }
+              }
+          } else {
+              iframes[0].style.height = 0 + "px";
+          }
+      }
+      
+      var ib_resize = function (event) {
+          // console.log('event.origin',event.origin);
+          // console.log('event.data',event.data);
+           if (event.origin !== dseApp) {
+              return;
+          }
+          var ib_iframe = document.getElementById('ib_iframe');
+          console.log('ib_iframe: ', ib_iframe);
+          if (ib_iframe) {
+              ib_iframe.style.height = event.data + 800 + "px";
+              resizeIframenew(false);
+          }
+      };
+      if (window.addEventListener) {
+          window.addEventListener("message", ib_resize, false);
+      } else if (window.attachEvent) {
+          window.attachEvent("onmessage", ib_resize);
+      }
+    
+      //On Load Function
+    dseEnv(); 
+  resizeIframenew(false);
+   </script>
+</apex:page>

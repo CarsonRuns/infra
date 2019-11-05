@@ -1,0 +1,243 @@
+<apex:page docType="html-5.0" standardController="Opportunity" extensions="Opportunity_Forecasting_Position_CT">
+  <html>
+<body style="margin-left: 0px; border-left-width: 0px; padding-left: 0px;">
+  <div id='resultMsg'></div>
+</body>
+  </html>
+  <script type="text/javascript" src="/js/functions.js"></script>
+  <script src="/soap/ajax/8.0/connection.js"></script>
+  <script type="text/javascript">
+      sforce.connection.sessionId = "{!$Api.Session_ID}";
+  
+      var optyId = '{!Opportunity.Id}';
+      var optyAcctId = '{!Opportunity.AccountId}';
+      // SCAVA FIX 
+      var dealId = '{!JSENCODE(Opportunity.DealID__c)}';
+      var OMFAccountID;
+      var acctErrorCode;
+      var acctErrorDescription;
+      var count = 0;
+      var isSf1 = false;
+     
+        // Encoding for SCAVA SCAN
+        var hasInValidTech = {!JSENCODE(redirectTechnology1)};
+        // Encoding for SCAVA SCAN 
+        var hasInValidServ = {!JSENCODE(redirectService1)};
+        // Encoding for SCAVA SCAN 
+        var hasForecastingPosition = {!JSENCODE(hasForecastingPosition1)};
+        
+  
+      if ((typeof sforce != 'undefined') && (sforce != null) && (sforce.one != null)) { 
+          isSf1 = true;
+      }
+  
+      var debugging = false;
+      function debug(msg) {
+          if (debugging)
+              alert(msg);
+      }
+  
+      function jsTime(ts) {
+          //only use w/ timestamps from sforce 
+          var theDate;
+          try {
+              ts = ts.replace('T', ',');
+              ts = ts.replace('Z', ',');
+              ts = ts.replace('.', ',');
+              ts = ts.replace(/-/g, ',');
+              ts = ts.replace(/:/g, ',');
+              pieces = ts.split(',');
+              theDate = new Date(pieces[0], pieces[1] - 1, pieces[2],
+                      pieces[3], pieces[4], pieces[5], pieces[6]);
+          } catch (e) {
+              debug('jsTime ' + e);
+          }
+          return theDate;
+      }
+  
+      function isNewOpty() {
+          var server_result = sforce.connection.getServerTimestamp();
+          var serverDate = jsTime(server_result.timestamp);
+          var prevDate = new Date(serverDate - (20 / 60) * 60 * 1000);//20seconds ago  
+          var returnVal = false;
+          try {
+              var qrStr = "Select LastModifiedDate "
+                      + "FROM Opportunity " + "where id = '" + optyId
+                      + "'";
+  
+              var queryResult = sforce.connection.query(qrStr);
+              var records = queryResult.getArray('records');
+              var LastModifiedDate = records[0].LastModifiedDate;
+              var ModifiedDateJs = jsTime(LastModifiedDate);
+  
+              if (ModifiedDateJs > prevDate)
+                  returnVal = true;
+          } catch (e) {
+              debug('opty query:' + e);
+          }
+  
+          return returnVal;
+      }
+  
+      function acctCheck() {
+  
+          var resultDiv = document.getElementById("resultMsg");
+          // SCAVA FIX 
+          var forecastP = '{!JSENCODE(Opportunity.Position__c)}';
+          // SCAVA FIX 
+          var expProd = '{!JSENCODE(TEXT(Opportunity.Expected_Product__c))}';
+          var lineItem = '{!Opportunity.HasOpportunityLineItem}';
+
+          var prodNum = expProd.split(' ')[1];
+          if (forecastP == '') {
+              resultDiv.innerHTML = '<span title="Select Forecasting Position to get Deal Id"><img src={!$Resource.dotRed}/></span>';
+              if (isSf1) {
+                  resultDiv.innerHTML = '<img src={!$Resource.dotRed}/>Select Forecasting Position to get Deal Id';
+              }
+              dealId = 'None';
+          } else if (hasInValidTech || hasInValidServ) {
+              resultDiv.innerHTML = '<span title="Select Technology or Service to get Deal Id"><img src={!$Resource.dotRed}/></span>';
+              if (isSf1) {
+                  if( hasInValidTech && hasInValidServ ){
+                      resultDiv.innerHTML = '<img src={!$Resource.dotRed}/>Select Technology or Service to get Deal ID.  Click T or S icon at the bottom action bar to add';
+                  } else if ( hasInValidTech && !hasInValidServ ){
+                      resultDiv.innerHTML = '<img src={!$Resource.dotRed}/>Select a Technology to get Deal ID.  Click T icon at the bottom action bar to add';
+                  } else if ( !hasInValidTech && hasInValidServ ){
+                      resultDiv.innerHTML = '<img src={!$Resource.dotRed}/>Select a Service to get Deal ID.  Click S icon at the bottom action bar to add';
+                  }
+              }
+              dealId = 'None';
+          } else {
+  
+              try {
+                  var qrStr = "Select OMF_Account_ID__c, error_code__c, error_description__c "
+                          + "FROM Account "
+                          + "where id = '"
+                          + optyAcctId
+                          + "'";
+  
+                  var queryResult = sforce.connection.query(qrStr);
+                  var records = queryResult.getArray('records');
+                  for (var i = 0; i < records.length; i++) {
+                      OMFAccountID = records[i].OMF_Account_ID__c;
+                      acctErrorCode = records[i].error_code__c;
+                      acctErrorDescription = records[i].error_description__c;
+                  }
+  
+              } catch (ex) {
+                  alert(ex);
+              }
+  
+              if (OMFAccountID == null) {
+                  var resultDiv = document.getElementById("resultMsg");
+                  resultDiv.innerHTML = '<span title="Account Integration Error. Please Check the [ Status Messages ] section on the Account"><img src={!$Resource.dotRed}/></span>';
+                  if (isSf1) {
+                      resultDiv.innerHTML = '-';
+                  }
+                  dealId = 'None';
+              }
+  
+          }
+      }
+  
+      function checkDealId() {
+  
+          var resultDiv = document.getElementById("resultMsg");
+          if (dealId == null || dealId == '') {
+              try {
+  
+                  var qrStr = "Select DealID__c " + "FROM Opportunity "
+                          + "where id = '" + optyId + "'";
+  
+                  var queryResult = sforce.connection.query(qrStr);
+                  var records = queryResult.getArray('records');
+                  dealId = records[0].DealID__c;
+  
+              } catch (e) {
+                  alert('dealId query:' + e);
+              }
+  
+          }
+          if (dealId != '' && dealId != null) {
+              resultDiv.innerHTML = dealId
+                      + ' '
+                      + '<span title="Deal Integrated"><img src={!$Resource.dotGreen}/></span>';
+          }
+  
+          count++;
+          var d = new Date();
+          var n = d.getTime();
+          console.log('count==>' + count + '===>' + d);
+          //add condition to check if dealId is null or blank to display Search timed out message
+          if (count > 14 && (dealId == null || dealId == '')) {
+              resultDiv.innerHTML = '<span title="Search timed out. Please check the [ Messages ] section and try again later."><img src={!$Resource.dotRed}/></span>';
+              if (isSf1) {
+                  resultDiv.innerHTML = '-';
+              }
+          }
+  
+      }
+  
+      function init() {
+          checkDealId();
+          if (dealId == null || dealId == '')
+              acctCheck();
+          if (dealId == null || dealId == '') {
+              if (isNewOpty()) {
+                  var resultDiv = document.getElementById("resultMsg");
+                  resultDiv.innerHTML = '<span title="Searching..."><img src={!$Resource.loading}/></span>';
+                  if (isSf1) {
+                      resultDiv.innerHTML = '<img src={!$Resource.loading}/>Searching...';
+                  }
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 2000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 4000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 6000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 8000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 10000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 12000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 14000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 16000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 18000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 20000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 22000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 24000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 26000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 28000);
+                  if (dealId == null || dealId == '')
+                      window.setTimeout("checkDealId()", 31000);
+              } else {
+                  var resultDiv = document.getElementById("resultMsg");
+                  resultDiv.innerHTML = '<span title="Search timed out. Please check the [ Messages ] section and try again later."><img src={!$Resource.dotRed}/></span>';
+                  if (isSf1) {
+                      resultDiv.innerHTML = '-';
+                  }
+              }
+          }
+      }
+
+      window.onload = function() {
+          init();
+          if ((typeof sforce != 'undefined') && (sforce != null)
+                  && (sforce.one != null)) {
+              var dealId = document.getElementById("resultMsg");
+              dealId.style.fontSize = '14px';
+              dealId.style.fontWeight = 'Normal';
+              dealId.style.color = '#3c3d3e';
+          }
+      };
+  </script>
+</apex:page>

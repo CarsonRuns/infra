@@ -1,0 +1,80 @@
+<apex:page standardController="Lead" extensions="CS_Lead_Accept_Button_Controller" recordSetVar="leads" action="{!getSelectedLeads}" lightningStylesheets="true">  
+    
+    <script>
+    function toastLaunch(){
+        
+        
+        var element = document.getElementById("ToastMessage");
+        element.classList.toggle("slds-hidden");
+        setTimeout(function(){ 
+            updateStatus();
+        },2000); 
+    }
+    
+    function closeToast(){
+        closeTSt();
+    }
+    </script>
+   
+    <apex:slds />
+    
+    <!-- Toast Message Starts-->
+   
+    <div class="demo-only slds-hidden" style="height: 4rem;" id='ToastMessage'>
+        <div class="slds-notify_container slds-is-relative">
+            <div class="slds-notify slds-notify_toast slds-theme_success" role="alert">
+                <span class="slds-assistive-text">success</span>
+                <span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#success')}" />
+                    </svg>
+                </span>
+                <div class="slds-notify__content">
+                    <!-- Toast Message -->
+                    <h2 class="slds-text-heading_small ">Leads are updated successfully!</h2>
+                </div>
+                <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="Close" onclick='closeToast()' rerender="close" >
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#close')}" />
+                    </svg>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Toast Message Ends -->
+    
+    <apex:form >
+        <!-- It will call when click on Accept button -->
+        <apex:actionFunction action="{!cancelUpdateStatus}" name="updateStatus" reRender="accept"/>
+       <!-- It will call when click on Cancel button -->
+        <apex:actionFunction action="{!cancelUpdateStatus}" name="closeTSt" reRender="close" />
+        <apex:pageMessages />
+        <apex:pageBlock title="Leads for Update">
+            <apex:pageBlockButtons location="top">
+                <apex:outputPanel rendered="{!displayTable}">
+                   <apex:commandButton action="{!updateLeadStatus}" value="Accept" onclick="toastLaunch()" reRender="accept,toastId" />
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!NOT(displayTable)}">
+                   <apex:commandButton action="{!cancelUpdateStatus}" value="Accept" />
+                </apex:outputPanel>
+                <apex:commandButton action="{!cancelUpdateStatus}" value="Cancel" />              
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!selected}" var="led" >                    
+                <apex:column value="{!led.id}"/>
+                <apex:column value="{!led.name}"/>
+                <apex:column value="{!led.Title}"/>
+                <apex:column value="{!led.phone}"/>
+                <apex:column value="{!led.Company}"/>
+                <apex:column value="{!led.CustomCountry__c}"/>
+                <apex:column value="{!led.Email}"/>
+                <apex:column value="{!led.Status}"/>
+                <apex:column value="{!led.CreatedDate}"/>
+                <apex:column value="{!led.Campaign_Code__c}"/>                    
+            </apex:pageBlockTable>           
+        </apex:pageBlock>
+    </apex:form> 
+    
+    
+</apex:page>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CEE_OBX_Survey_Location__c</fullName>
+        <description>This field will contain all English Language OBX survey location, We are using this in a formula fields to set the survey flag to trigger email alert. Once survey is implemented for all locations, this field will be removed.</description>
+        <externalId>false</externalId>
+        <label>CEE OBX Survey Location</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPOC_Approval_Process_London__c</fullName>
+        <description>CPOC Approval Process London</description>
+        <externalId>false</externalId>
+        <label>CPOC Approval Process London</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPOC_Approval_RTP_SYDNEY__c</fullName>
+        <description>CPOC Approval RTP SYDNEY</description>
+        <externalId>false</externalId>
+        <label>CPOC Approval RTP SYDNEY</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPOC_Approval__c</fullName>
+        <description>CPOC Approval</description>
+        <externalId>false</externalId>
+        <label>CPOC_Approval</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPOC_Data_Migration_Flag__c</fullName>
+        <description>This is a custom setting for Data Migration. If the flag is false we can migrate CPOC Data.</description>
+        <externalId>false</externalId>
+        <label>CPOC Data Migration Flag</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPOC_RTP_Sydney__c</fullName>
+        <description>CPOC RTP Sydney</description>
+        <externalId>false</externalId>
+        <label>CPOC RTP Sydney</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPOC_Tokyo__c</fullName>
+        <description>CPOC Tokyo</description>
+        <externalId>false</externalId>
+        <label>CPOC Tokyo</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPOC_Type__c</fullName>
+        <description>CPOC type</description>
+        <externalId>false</externalId>
+        <label>CPOC Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requested_Days_Lessthan1__c</fullName>
+        <description>Requested Days Lessthan1</description>
+        <externalId>false</externalId>
+        <label>Requested_Days_Lessthan1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>requested_days_5_plus__c</fullName>
+        <description>requested days 5 plus</description>
+        <externalId>false</externalId>
+        <label>requested_days_5_plus</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>CPOC Related custom setting values</description>
+    <enableFeeds>false</enableFeeds>
+    <label>CPOC_Lab_Request</label>
+    <visibility>Public</visibility>
+</CustomObject>

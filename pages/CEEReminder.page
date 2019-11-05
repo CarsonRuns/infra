@@ -1,0 +1,19 @@
+<!--
+    Author        : Jay Dash
+    Date Created  : 8/31/2015
+    Description   : This visualForce page displays Reminder message in CEE detail page
+-->
+<apex:page standardController="CEE__c" showHeader="false" standardStylesheets="true" >
+    <style>
+        .cs1Text         { font-family: Arial, Helvetica, sans-serif; font-size: small; }
+        .cs1RedBold      { color: black; font-weight: bold; }
+        .cs1FloatLeft    { float: left; }
+    </style>
+      
+    <apex:form id="formid">
+        <apex:outputPanel id="message" layout="block" styleClass="cs1FloatLeft" style="margin-top:5px;" >                    
+              <apex:outputText value="{!$Label.CEE_Reminder}"  styleClass="cs1Text cs1RedBold"/>
+        </apex:outputPanel>
+                     
+    </apex:form>
+</apex:page>

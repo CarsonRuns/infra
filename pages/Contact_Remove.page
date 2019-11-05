@@ -1,0 +1,22 @@
+<!--apex:page standardController="Contact" extensions="Contact_Remove_CTE" action="{!start}"-->
+<!--SCAVA FIX-->
+<apex:page standardController="Contact" extensions="Contact_Remove_CTE" >
+<apex:form id="pg" >
+<apex:actionFunction name="start" action="{!start}" reRender="pg"/> 
+</apex:form>
+ 
+<apex:pageBlock >
+<!--<apex:outputLink value="{!URLFOR($Action.Contact.Tab,$ObjectType.Contact)}">Back to contact list</apex:outputLink>-->
+<apex:outputText value="{!ErrorContent}"></apex:outputText>
+<br></br>
+<br></br>
+<apex:outputLink value="{!pageref}">Click to go back to contact</apex:outputLink>
+<!--SCAVA FIX-->
+<script type = "text/javascript">
+    window.onload=function()       
+    {        
+        start();
+    };
+</script>
+</apex:pageBlock>
+</apex:page>

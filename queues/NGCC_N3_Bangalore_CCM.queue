@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>NGCC-N3-Bangalore-CCM</name>
+    <queueMembers>
+        <roles>
+            <role>NGCC_N3_Bangalore_CCM</role>
+            <role>NGCC_N3_Bangalore_QC</role>
+            <role>NGCC_N3_Bangalore_TS</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

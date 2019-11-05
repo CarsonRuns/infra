@@ -1,0 +1,1799 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddProduct</actionName>
+        <content>QI_ProductUI_New</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddProduct</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddProduct</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ChoosePricebook</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ChoosePricebook</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ChoosePricebook</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <content>QI_PUI_Delete</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>PUI_VF</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>lxOptyLineViewOverride</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EditAllProduct</actionName>
+        <content>QI_ProductUI_New</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EditAllProduct</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EditAllProduct</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>PUI_VF</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>lxOptyLineViewOverride</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Attrition_Reason_Code__c</fullName>
+        <description>Reason for Forecasted Attrition</description>
+        <externalId>false</externalId>
+        <label>Attrition Reason Code</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Adoption - Executive sponsorship</fullName>
+                    <default>false</default>
+                    <label>Adoption - Executive sponsorship</label>
+                </value>
+                <value>
+                    <fullName>Adoption - Investment for change management &amp; training</fullName>
+                    <default>false</default>
+                    <label>Adoption - Investment for change management &amp; training</label>
+                </value>
+                <value>
+                    <fullName>Adoption - Lacking support from Cisco or partner</fullName>
+                    <default>false</default>
+                    <label>Adoption - Lacking support from Cisco or partner</label>
+                </value>
+                <value>
+                    <fullName>Bought more than needed</fullName>
+                    <default>false</default>
+                    <label>Bought more than needed</label>
+                </value>
+                <value>
+                    <fullName>Competition - Competitor with aggressive price</fullName>
+                    <default>false</default>
+                    <label>Competition - Competitor with aggressive price</label>
+                </value>
+                <value>
+                    <fullName>Competition   - Competitor with better capabilities/value</fullName>
+                    <default>false</default>
+                    <label>Competition   - Competitor with better capabilities/value</label>
+                </value>
+                <value>
+                    <fullName>Customer situation - Lack of sponsorship for Cisco</fullName>
+                    <default>false</default>
+                    <label>Customer situation - Lack of sponsorship for Cisco</label>
+                </value>
+                <value>
+                    <fullName>Customer situation   - Internal politics</fullName>
+                    <default>false</default>
+                    <label>Customer situation   - Internal politics</label>
+                </value>
+                <value>
+                    <fullName>Customer situation  - Macro Political</fullName>
+                    <default>false</default>
+                    <label>Customer situation  - Macro Political</label>
+                </value>
+                <value>
+                    <fullName>Customer situation - undergoing significant structural/cost changes</fullName>
+                    <default>false</default>
+                    <label>Customer situation - Undergoing significant structural/cost changes</label>
+                </value>
+                <value>
+                    <fullName>Data issue</fullName>
+                    <default>false</default>
+                    <label>Data issue</label>
+                </value>
+                <value>
+                    <fullName>LDOS</fullName>
+                    <default>false</default>
+                    <label>LDOS</label>
+                </value>
+                <value>
+                    <fullName>Product - missing features</fullName>
+                    <default>false</default>
+                    <label>Product - Missing features</label>
+                </value>
+                <value>
+                    <fullName>Product - Pricing</fullName>
+                    <default>false</default>
+                    <label>Product - Pricing</label>
+                </value>
+                <value>
+                    <fullName>Product  - quality</fullName>
+                    <default>false</default>
+                    <label>Product  - Quality</label>
+                </value>
+                <value>
+                    <fullName>Service - Quality</fullName>
+                    <default>false</default>
+                    <label>Service - Quality</label>
+                </value>
+                <value>
+                    <fullName>Service - Pricing</fullName>
+                    <default>false</default>
+                    <label>Service - Pricing</label>
+                </value>
+                <value>
+                    <fullName>Competition</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Competition</label>
+                </value>
+                <value>
+                    <fullName>Customer not ready</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Customer not ready</label>
+                </value>
+                <value>
+                    <fullName>Customer sat</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Customer sat</label>
+                </value>
+                <value>
+                    <fullName>DNR</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DNR</label>
+                </value>
+                <value>
+                    <fullName>Pricing</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Pricing</label>
+                </value>
+                <value>
+                    <fullName>TBD</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TBD</label>
+                </value>
+                <value>
+                    <fullName>Terminated</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Terminated</label>
+                </value>
+                <value>
+                    <fullName>	LDOS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>	LDOS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Attrition_Reason__c</fullName>
+        <description>Reason for Forecasted Attrition</description>
+        <externalId>false</externalId>
+        <label>Attrition Reason</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>TBD</fullName>
+                    <default>false</default>
+                    <label>TBD</label>
+                </value>
+                <value>
+                    <fullName>Competition</fullName>
+                    <default>false</default>
+                    <label>Competition</label>
+                </value>
+                <value>
+                    <fullName>Customer not ready</fullName>
+                    <default>false</default>
+                    <label>Customer not ready</label>
+                </value>
+                <value>
+                    <fullName>Customer sat</fullName>
+                    <default>false</default>
+                    <label>Customer sat</label>
+                </value>
+                <value>
+                    <fullName>DNR</fullName>
+                    <default>false</default>
+                    <label>DNR</label>
+                </value>
+                <value>
+                    <fullName>LDOS</fullName>
+                    <default>false</default>
+                    <label>LDOS</label>
+                </value>
+                <value>
+                    <fullName>Terminated</fullName>
+                    <default>false</default>
+                    <label>Terminated</label>
+                </value>
+                <value>
+                    <fullName>Pricing</fullName>
+                    <default>false</default>
+                    <label>Pricing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Entity__c</fullName>
+        <description>Business Entity associated with the technology.</description>
+        <externalId>false</externalId>
+        <label>Business Entity</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity.CloseDate  +  Term_in_Months__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contract End Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity.CloseDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contract Start Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Data_Source_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Data Source Name</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deployment_No__c</fullName>
+        <externalId>false</externalId>
+        <label>Deployment No</label>
+        <length>5</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+    </fields>
+    <fields>
+        <fullName>Discount</fullName>
+    </fields>
+    <fields>
+        <fullName>Expected_ATR_000s__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+	NOT(ISBLANK(Term_in_Months__c)),
+	IF(
+		AND(Term_in_Months__c&lt;=12,Term_in_Months__c&gt;=0),
+		Expected_TCV_000s__c,
+		Expected_TCV_000s__c / (Term_in_Months__c/12)),
+	0
+)</formula>
+        <label>Expected ATR ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_ATR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Expected_ATR_000s__c * 1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Expected ATR $</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_TCV_000s__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected TCV ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_TCV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Expected_TCV_000s__c * 1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Expected TCV $</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expired_ATR__c</fullName>
+        <externalId>false</externalId>
+        <label>Expired ATR $</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Extended_Net_Price__c</fullName>
+        <description>Quote Integration: Extended Net Price of Individual Line items assigned to Opportunity</description>
+        <externalId>false</externalId>
+        <label>Extended Net Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Forecasted_ATR__c</fullName>
+        <externalId>false</externalId>
+        <label>Forecasted ATR ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Forecasted_Attrition__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prior_ATR__c-Forecasted_ATR__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Forecasted Attrition ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LDOS_ATR__c</fullName>
+        <externalId>false</externalId>
+        <label>LDOS ATR $</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Line_Item_ID_Copy__c</fullName>
+        <description>Line Item ID</description>
+        <externalId>false</externalId>
+        <formula>CASESAFEID(Id)</formula>
+        <label>Line Item ID Copy</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ListPrice</fullName>
+    </fields>
+    <fields>
+        <fullName>Mix__c</fullName>
+        <externalId>false</externalId>
+        <label>Mix %</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Non_Recurring_Line_000s__c</fullName>
+        <description>old: Annuals Non-Recurring Line ($000s), Annuals_Non_Recurring_Line_000s</description>
+        <externalId>false</externalId>
+        <formula>IF
+( 
+ TEXT(Product_Family_Service_Level_Recurring__c) == 'No' || 
+ ISBLANK(TEXT(Product_Family_Service_Level_Recurring__c)), 
+  Opportunity_Line_Value__c, 
+  Opportunity_Line_Value__c - Recurring_Offer_TCV_Line_000s__c
+ )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Non-Recurring Offer line ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OpportunityId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Expected_Book_Date__c</fullName>
+        <description>Opportunity Expected Book Date</description>
+        <externalId>false</externalId>
+        <formula>Opportunity.CloseDate</formula>
+        <label>Opportunity Expected Book Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Line_Value_Dollars__c</fullName>
+        <description>Opportunity Line value in whole dollar value.</description>
+        <externalId>false</externalId>
+        <formula>Opportunity_Line_Value__c  * 1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Line Value $</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Line_Value__c</fullName>
+        <description>Opportunity Line value in thousands</description>
+        <externalId>false</externalId>
+        <label>Opportunity Line Value ($000s)</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_RecordTypeId__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity.RecordTypeId</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity RecordTypeId</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Status__c</fullName>
+        <description>Opportunity Status</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Opportunity.Opportunity_Status__c)</formula>
+        <label>Opportunity Status</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opty_Services_All_Multiyear__c</fullName>
+        <defaultValue>"False"</defaultValue>
+        <description>Field to mimic value from opty Services All Multiyear field</description>
+        <externalId>false</externalId>
+        <label>Opty Services All Multiyear</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prior_ATR_000s__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prior_ATR__c/1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prior ATR ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Prior_ATR__c</fullName>
+        <description>Prior ATR from Contract grouping</description>
+        <externalId>false</externalId>
+        <label>Prior ATR $</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Prior_TCV_000s__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prior_TCV__c/1000</formula>
+        <label>Prior TCV ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Prior_TCV__c</fullName>
+        <description>Prior TCV from contracts</description>
+        <externalId>false</externalId>
+        <label>Prior TCV $</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Prior_Term__c</fullName>
+        <externalId>false</externalId>
+        <label>Prior Term</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product2Id</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ProductCode</fullName>
+    </fields>
+    <fields>
+        <fullName>Product_Code__c</fullName>
+        <description>Product Code</description>
+        <externalId>false</externalId>
+        <label>Product Code</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Family_Id_18__c</fullName>
+        <description>Product Family Id 18</description>
+        <externalId>false</externalId>
+        <formula>CASESAFEID( Product_Family_Ref__r.Id)</formula>
+        <label>Product Family Id 18</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Family_Ref__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Quote Integration: Individual Product Family associated to Line Items and mapped with product family Master list</description>
+        <externalId>false</externalId>
+        <label>Product Family ID</label>
+        <referenceTo>Product_Family__c</referenceTo>
+        <relationshipLabel>Opportunity Product</relationshipLabel>
+        <relationshipName>Opportunity_Product</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_Family_Service_Level_Recurring__c</fullName>
+        <description>Product Family/Service  Recurring ?</description>
+        <externalId>false</externalId>
+        <label>Product Family/Service Level Recurring ?</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Mixed</fullName>
+                    <default>false</default>
+                    <label>Mixed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Family_US__c</fullName>
+        <description>Quote Integration: Modified Name: As another Product Family got created to enable reporting: Individual Product Family associated to Line Items</description>
+        <externalId>false</externalId>
+        <label>Product Family (OLD)</label>
+        <length>32000</length>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Product_Family__c</fullName>
+        <description>Quote Integration: Individual Product Family associated to Line Items</description>
+        <externalId>false</externalId>
+        <label>Product Family</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity</fullName>
+    </fields>
+    <fields>
+        <fullName>QuoteId__c</fullName>
+        <description>Quote Integration: Quote Id associated to integrated BOM</description>
+        <externalId>true</externalId>
+        <label>Quote ID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recurring_Offer_ARR_Line_000s__c</fullName>
+        <description>Annuals Recurring Line ($000s) 
+old 
+IF(TEXT(Product_Family_Service_Level_Recurring__c) == 'No' || ISBLANK(TEXT(Product_Family_Service_Level_Recurring__c)), 
+  0, 
+  IF( Term_in_Months__c &lt; 12,  
+    Recurring_Amount_000s__c,      
+    (Recurring_Amount_000s__c / Term_in_Months__c )* 12         
+  ) 
+)</description>
+        <externalId>false</externalId>
+        <formula>IF ( 
+   (Product_Code__c == 'Service' &amp;&amp; 
+   Opty_Services_All_Multiyear__c == 'True'), 
+   0, 
+   IF(
+      TEXT(Product_Family_Service_Level_Recurring__c) == 'No' || 
+      TEXT(Product_Family_Service_Level_Recurring__c) == 'Mixed' || 
+      ISBLANK(TEXT(Product_Family_Service_Level_Recurring__c)),
+      0,
+      IF(
+          Term_in_Months__c &lt; 12,
+          Recurring_Offer_TCV_Line_000s__c,
+         (Recurring_Offer_TCV_Line_000s__c /(Term_in_Months__c/12))
+        )
+      )
+   )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Recurring Offer Annual Line ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Recurring_Offer_Multi_Year_Line_000s__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( 
+TEXT(Product_Family_Service_Level_Recurring__c) == 'Mixed',
+0,
+(Recurring_Offer_TCV_Line_000s__c - Recurring_Offer_ARR_Line_000s__c)
+ )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Multi-Year $</inlineHelpText>
+        <label>Recurring Offer Multi-Year Line ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Recurring_Offer_TCV_Line_000s__c</fullName>
+        <description>Recurring Amount ($000s)</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ (TEXT(Product_Family_Service_Level_Recurring__c) == 'Mixed') ||
+ TEXT(Product_Family_Service_Level_Recurring__c) == 'No' ||
+ ISBLANK(TEXT(Product_Family_Service_Level_Recurring__c)) ,
+0,
+Opportunity_Line_Value__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Recurring Offer Line ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Recurring_Percentage__c</fullName>
+        <description>Recurring Percentage</description>
+        <externalId>false</externalId>
+        <label>Recurring %</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>SalesForce1_Created_Updated__c</fullName>
+        <description>This field is used in trigger if technology and services added and updated from mobile we are setting the "SalesForce1_Flag__c" to true for matrics</description>
+        <externalId>false</externalId>
+        <label>SalesForce1 Created Updated</label>
+        <length>5</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SalesForce1_Flag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>True if an opportunityLineItem record is either editted or created from SalesForce1 mobile app</description>
+        <externalId>false</externalId>
+        <label>SalesForce1 Flag</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ServiceDate</fullName>
+    </fields>
+    <fields>
+        <fullName>Service_Category__c</fullName>
+        <description>Allows users to properly categorizing all of the Services opportunities according to Advanced Services or Technical Services.
+
+Integrated with Rightnow tool changes need to be communicated to doo_support@cisco.com.</description>
+        <externalId>false</externalId>
+        <label>Service Category</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AS-C-Advanced Services Configurable</fullName>
+                    <default>false</default>
+                    <label>AS-C-Advanced Services Configurable</label>
+                </value>
+                <value>
+                    <fullName>AS-F-Advanced Services Fixed</fullName>
+                    <default>false</default>
+                    <label>AS-F-Advanced Services Fixed</label>
+                </value>
+                <value>
+                    <fullName>ASS-Advanced Services Subscription</fullName>
+                    <default>false</default>
+                    <label>ASS-Advanced Services Subscription</label>
+                </value>
+                <value>
+                    <fullName>AST-Advanced Services Transactional</fullName>
+                    <default>false</default>
+                    <label>AST-Advanced Services Transactional</label>
+                </value>
+                <value>
+                    <fullName>Collaborative Services-AS Subscription</fullName>
+                    <default>false</default>
+                    <label>Collaborative Services-AS Subscription</label>
+                </value>
+                <value>
+                    <fullName>Collaborative Services-AS Transactional</fullName>
+                    <default>false</default>
+                    <label>Collaborative Services-AS Transactional</label>
+                </value>
+                <value>
+                    <fullName>Collaborative Services-TS Subscription</fullName>
+                    <default>false</default>
+                    <label>Collaborative Services-TS Subscription</label>
+                </value>
+                <value>
+                    <fullName>Collaborative Services-TS Transactional</fullName>
+                    <default>false</default>
+                    <label>Collaborative Services-TS Transactional</label>
+                </value>
+                <value>
+                    <fullName>CSS-Consulting Services Subscription</fullName>
+                    <default>false</default>
+                    <label>CSS-Consulting Services Subscription</label>
+                </value>
+                <value>
+                    <fullName>CST-Consulting Services Transactional</fullName>
+                    <default>false</default>
+                    <label>CST-Consulting Services Transactional</label>
+                </value>
+                <value>
+                    <fullName>Partner Brand Services-TS Subscription</fullName>
+                    <default>false</default>
+                    <label>Partner Brand Services-TS Subscription</label>
+                </value>
+                <value>
+                    <fullName>Partner Brand Services-TS Transaction</fullName>
+                    <default>false</default>
+                    <label>Partner Brand Services-TS Transaction</label>
+                </value>
+                <value>
+                    <fullName>TSS-Technical Services Subscription</fullName>
+                    <default>false</default>
+                    <label>TSS-Technical Services Subscription</label>
+                </value>
+                <value>
+                    <fullName>TST-Technical Services Transactional</fullName>
+                    <default>false</default>
+                    <label>TST-Technical Services Transactional</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Level_Ref__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Service Level table</description>
+        <externalId>false</externalId>
+        <label>Service Level ID</label>
+        <referenceTo>Service_Level__c</referenceTo>
+        <relationshipLabel>Opportunity Product</relationshipLabel>
+        <relationshipName>Opportunity_Product</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Service_Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Level</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Type__c</fullName>
+        <description>Used to store type of service (AS/TS) for service type line items.
+
+Integrated with Rightnow tool changes need to be communicated to doo_support@cisco.com.</description>
+        <externalId>false</externalId>
+        <label>Service Type</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Opp_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Source Opp ID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Opp_Line_Item_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Source Opp Line Item ID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subtotal</fullName>
+    </fields>
+    <fields>
+        <fullName>Technology_Competitor__c</fullName>
+        <description>The Field Captures Competitor at the Technology Level for the Asiapac theatres. Field is visible to the Asiapac and Support Profiles . This is part of ICM Phase 1 release. LOVs are consistent with the existing Competitor LOVs on Opportunity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select Primary Competitor for a Technology</inlineHelpText>
+        <label>Competitor Technology</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Aastra</fullName>
+                    <default>false</default>
+                    <label>Aastra</label>
+                </value>
+                <value>
+                    <fullName>ADC</fullName>
+                    <default>false</default>
+                    <label>ADC</label>
+                </value>
+                <value>
+                    <fullName>Adobe</fullName>
+                    <default>false</default>
+                    <label>Adobe</label>
+                </value>
+                <value>
+                    <fullName>Adtran</fullName>
+                    <default>false</default>
+                    <label>Adtran</label>
+                </value>
+                <value>
+                    <fullName>Adva</fullName>
+                    <default>false</default>
+                    <label>Adva</label>
+                </value>
+                <value>
+                    <fullName>Advanced Digital Broadcast (ADB)</fullName>
+                    <default>false</default>
+                    <label>Advanced Digital Broadcast (ADB)</label>
+                </value>
+                <value>
+                    <fullName>Aerohive</fullName>
+                    <default>false</default>
+                    <label>Aerohive</label>
+                </value>
+                <value>
+                    <fullName>Agere</fullName>
+                    <default>false</default>
+                    <label>Agere</label>
+                </value>
+                <value>
+                    <fullName>Alaxala Networks</fullName>
+                    <default>false</default>
+                    <label>Alaxala Networks</label>
+                </value>
+                <value>
+                    <fullName>Alcatel-Lucent</fullName>
+                    <default>false</default>
+                    <label>Alcatel-Lucent</label>
+                </value>
+                <value>
+                    <fullName>Allied Telesis</fullName>
+                    <default>false</default>
+                    <label>Allied Telesis</label>
+                </value>
+                <value>
+                    <fullName>Alvarion</fullName>
+                    <default>false</default>
+                    <label>Alvarion</label>
+                </value>
+                <value>
+                    <fullName>Ambit</fullName>
+                    <default>false</default>
+                    <label>Ambit</label>
+                </value>
+                <value>
+                    <fullName>Amino</fullName>
+                    <default>false</default>
+                    <label>Amino</label>
+                </value>
+                <value>
+                    <fullName>Apresia</fullName>
+                    <default>false</default>
+                    <label>Apresia</label>
+                </value>
+                <value>
+                    <fullName>Arista</fullName>
+                    <default>false</default>
+                    <label>Arista</label>
+                </value>
+                <value>
+                    <fullName>Arris</fullName>
+                    <default>false</default>
+                    <label>Arris</label>
+                </value>
+                <value>
+                    <fullName>Aruba</fullName>
+                    <default>false</default>
+                    <label>Aruba</label>
+                </value>
+                <value>
+                    <fullName>Atrica</fullName>
+                    <default>false</default>
+                    <label>Atrica</label>
+                </value>
+                <value>
+                    <fullName>Aurora</fullName>
+                    <default>false</default>
+                    <label>Aurora</label>
+                </value>
+                <value>
+                    <fullName>Avail Media</fullName>
+                    <default>false</default>
+                    <label>Avail Media</label>
+                </value>
+                <value>
+                    <fullName>Avaya</fullName>
+                    <default>false</default>
+                    <label>Avaya</label>
+                </value>
+                <value>
+                    <fullName>Avistar</fullName>
+                    <default>false</default>
+                    <label>Avistar</label>
+                </value>
+                <value>
+                    <fullName>B15</fullName>
+                    <default>false</default>
+                    <label>B15</label>
+                </value>
+                <value>
+                    <fullName>BelAir Networks</fullName>
+                    <default>false</default>
+                    <label>BelAir Networks</label>
+                </value>
+                <value>
+                    <fullName>Belden</fullName>
+                    <default>false</default>
+                    <label>Belden</label>
+                </value>
+                <value>
+                    <fullName>BigBand</fullName>
+                    <default>false</default>
+                    <label>BigBand</label>
+                </value>
+                <value>
+                    <fullName>BinTec Communications</fullName>
+                    <default>false</default>
+                    <label>BinTec Communications</label>
+                </value>
+                <value>
+                    <fullName>Blue coat</fullName>
+                    <default>false</default>
+                    <label>Blue coat</label>
+                </value>
+                <value>
+                    <fullName>Brocade</fullName>
+                    <default>false</default>
+                    <label>Brocade</label>
+                </value>
+                <value>
+                    <fullName>BTI</fullName>
+                    <default>false</default>
+                    <label>BTI</label>
+                </value>
+                <value>
+                    <fullName>Carrier Access</fullName>
+                    <default>false</default>
+                    <label>Carrier Access</label>
+                </value>
+                <value>
+                    <fullName>Checkpoint</fullName>
+                    <default>false</default>
+                    <label>Checkpoint</label>
+                </value>
+                <value>
+                    <fullName>Ciena</fullName>
+                    <default>false</default>
+                    <label>Ciena</label>
+                </value>
+                <value>
+                    <fullName>Citrix</fullName>
+                    <default>false</default>
+                    <label>Citrix</label>
+                </value>
+                <value>
+                    <fullName>Competitors</fullName>
+                    <default>false</default>
+                    <label>Competitors</label>
+                </value>
+                <value>
+                    <fullName>Comtrend</fullName>
+                    <default>false</default>
+                    <label>Comtrend</label>
+                </value>
+                <value>
+                    <fullName>Corrigent</fullName>
+                    <default>false</default>
+                    <label>Corrigent</label>
+                </value>
+                <value>
+                    <fullName>Cyan</fullName>
+                    <default>false</default>
+                    <label>Cyan</label>
+                </value>
+                <value>
+                    <fullName>Dell</fullName>
+                    <default>false</default>
+                    <label>Dell</label>
+                </value>
+                <value>
+                    <fullName>Digital China</fullName>
+                    <default>false</default>
+                    <label>Digital China</label>
+                </value>
+                <value>
+                    <fullName>D-Link</fullName>
+                    <default>false</default>
+                    <label>D-Link</label>
+                </value>
+                <value>
+                    <fullName>EMC</fullName>
+                    <default>false</default>
+                    <label>EMC</label>
+                </value>
+                <value>
+                    <fullName>EMC/RSA</fullName>
+                    <default>false</default>
+                    <label>EMC/RSA</label>
+                </value>
+                <value>
+                    <fullName>Enterasys</fullName>
+                    <default>false</default>
+                    <label>Enterasys</label>
+                </value>
+                <value>
+                    <fullName>Entone</fullName>
+                    <default>false</default>
+                    <label>Entone</label>
+                </value>
+                <value>
+                    <fullName>Ericsson</fullName>
+                    <default>false</default>
+                    <label>Ericsson</label>
+                </value>
+                <value>
+                    <fullName>Expand</fullName>
+                    <default>false</default>
+                    <label>Expand</label>
+                </value>
+                <value>
+                    <fullName>Extreme Networks</fullName>
+                    <default>false</default>
+                    <label>Extreme Networks</label>
+                </value>
+                <value>
+                    <fullName>F5</fullName>
+                    <default>false</default>
+                    <label>F5</label>
+                </value>
+                <value>
+                    <fullName>Falcon IP Complete</fullName>
+                    <default>false</default>
+                    <label>Falcon IP Complete</label>
+                </value>
+                <value>
+                    <fullName>Firetide</fullName>
+                    <default>false</default>
+                    <label>Firetide</label>
+                </value>
+                <value>
+                    <fullName>Fortinet</fullName>
+                    <default>false</default>
+                    <label>Fortinet</label>
+                </value>
+                <value>
+                    <fullName>Fujitsu</fullName>
+                    <default>false</default>
+                    <label>Fujitsu</label>
+                </value>
+                <value>
+                    <fullName>Google</fullName>
+                    <default>false</default>
+                    <label>Google</label>
+                </value>
+                <value>
+                    <fullName>Google (Postini)</fullName>
+                    <default>false</default>
+                    <label>Google (Postini)</label>
+                </value>
+                <value>
+                    <fullName>Harmonic</fullName>
+                    <default>false</default>
+                    <label>Harmonic</label>
+                </value>
+                <value>
+                    <fullName>Hitachi</fullName>
+                    <default>false</default>
+                    <label>Hitachi</label>
+                </value>
+                <value>
+                    <fullName>HP</fullName>
+                    <default>false</default>
+                    <label>HP</label>
+                </value>
+                <value>
+                    <fullName>Huawei</fullName>
+                    <default>false</default>
+                    <label>Huawei</label>
+                </value>
+                <value>
+                    <fullName>Humax</fullName>
+                    <default>false</default>
+                    <label>Humax</label>
+                </value>
+                <value>
+                    <fullName>IBM</fullName>
+                    <default>false</default>
+                    <label>IBM</label>
+                </value>
+                <value>
+                    <fullName>IBM-ISS</fullName>
+                    <default>false</default>
+                    <label>IBM-ISS</label>
+                </value>
+                <value>
+                    <fullName>Infinera</fullName>
+                    <default>false</default>
+                    <label>Infinera</label>
+                </value>
+                <value>
+                    <fullName>Interactive Intelligence</fullName>
+                    <default>false</default>
+                    <label>Interactive Intelligence</label>
+                </value>
+                <value>
+                    <fullName>Inter-Tel</fullName>
+                    <default>false</default>
+                    <label>Inter-Tel</label>
+                </value>
+                <value>
+                    <fullName>Juniper</fullName>
+                    <default>false</default>
+                    <label>Juniper</label>
+                </value>
+                <value>
+                    <fullName>Kedacom</fullName>
+                    <default>false</default>
+                    <label>Kedacom</label>
+                </value>
+                <value>
+                    <fullName>LG</fullName>
+                    <default>false</default>
+                    <label>LG</label>
+                </value>
+                <value>
+                    <fullName>LifeSize</fullName>
+                    <default>false</default>
+                    <label>LifeSize</label>
+                </value>
+                <value>
+                    <fullName>Lumeng</fullName>
+                    <default>false</default>
+                    <label>Lumeng</label>
+                </value>
+                <value>
+                    <fullName>Magor</fullName>
+                    <default>false</default>
+                    <label>Magor</label>
+                </value>
+                <value>
+                    <fullName>Maipu</fullName>
+                    <default>false</default>
+                    <label>Maipu</label>
+                </value>
+                <value>
+                    <fullName>McAfee</fullName>
+                    <default>false</default>
+                    <label>McAfee</label>
+                </value>
+                <value>
+                    <fullName>Meraki</fullName>
+                    <default>false</default>
+                    <label>Meraki</label>
+                </value>
+                <value>
+                    <fullName>Meru</fullName>
+                    <default>false</default>
+                    <label>Meru</label>
+                </value>
+                <value>
+                    <fullName>Microsoft</fullName>
+                    <default>false</default>
+                    <label>Microsoft</label>
+                </value>
+                <value>
+                    <fullName>Minerva Networks</fullName>
+                    <default>false</default>
+                    <label>Minerva Networks</label>
+                </value>
+                <value>
+                    <fullName>Mitel Corporation</fullName>
+                    <default>false</default>
+                    <label>Mitel Corporation</label>
+                </value>
+                <value>
+                    <fullName>Motorola</fullName>
+                    <default>false</default>
+                    <label>Motorola</label>
+                </value>
+                <value>
+                    <fullName>NEC</fullName>
+                    <default>false</default>
+                    <label>NEC</label>
+                </value>
+                <value>
+                    <fullName>Netgear</fullName>
+                    <default>false</default>
+                    <label>Netgear</label>
+                </value>
+                <value>
+                    <fullName>NetInsight</fullName>
+                    <default>false</default>
+                    <label>NetInsight</label>
+                </value>
+                <value>
+                    <fullName>Network Appliance</fullName>
+                    <default>false</default>
+                    <label>Network Appliance</label>
+                </value>
+                <value>
+                    <fullName>Nokia-Siemens</fullName>
+                    <default>false</default>
+                    <label>Nokia-Siemens</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>OKI</fullName>
+                    <default>false</default>
+                    <label>OKI</label>
+                </value>
+                <value>
+                    <fullName>Oracle</fullName>
+                    <default>false</default>
+                    <label>Oracle</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Pace</fullName>
+                    <default>false</default>
+                    <label>Pace</label>
+                </value>
+                <value>
+                    <fullName>Palo Alto Networks</fullName>
+                    <default>false</default>
+                    <label>Palo Alto Networks</label>
+                </value>
+                <value>
+                    <fullName>Phillips</fullName>
+                    <default>false</default>
+                    <label>Phillips</label>
+                </value>
+                <value>
+                    <fullName>Polycom</fullName>
+                    <default>false</default>
+                    <label>Polycom</label>
+                </value>
+                <value>
+                    <fullName>Proofpoint</fullName>
+                    <default>false</default>
+                    <label>Proofpoint</label>
+                </value>
+                <value>
+                    <fullName>Proxim</fullName>
+                    <default>false</default>
+                    <label>Proxim</label>
+                </value>
+                <value>
+                    <fullName>Qlogic</fullName>
+                    <default>false</default>
+                    <label>Qlogic</label>
+                </value>
+                <value>
+                    <fullName>Radvision</fullName>
+                    <default>false</default>
+                    <label>Radvision</label>
+                </value>
+                <value>
+                    <fullName>RGB Video</fullName>
+                    <default>false</default>
+                    <label>RGB Video</label>
+                </value>
+                <value>
+                    <fullName>Riverbed</fullName>
+                    <default>false</default>
+                    <label>Riverbed</label>
+                </value>
+                <value>
+                    <fullName>Ruckus</fullName>
+                    <default>false</default>
+                    <label>Ruckus</label>
+                </value>
+                <value>
+                    <fullName>Ruijie</fullName>
+                    <default>false</default>
+                    <label>Ruijie</label>
+                </value>
+                <value>
+                    <fullName>Sagem</fullName>
+                    <default>false</default>
+                    <label>Sagem</label>
+                </value>
+                <value>
+                    <fullName>Samsung</fullName>
+                    <default>false</default>
+                    <label>Samsung</label>
+                </value>
+                <value>
+                    <fullName>SAP</fullName>
+                    <default>false</default>
+                    <label>SAP</label>
+                </value>
+                <value>
+                    <fullName>Scopus</fullName>
+                    <default>false</default>
+                    <label>Scopus</label>
+                </value>
+                <value>
+                    <fullName>SeaChange International</fullName>
+                    <default>false</default>
+                    <label>SeaChange International</label>
+                </value>
+                <value>
+                    <fullName>ShoreTel</fullName>
+                    <default>false</default>
+                    <label>ShoreTel</label>
+                </value>
+                <value>
+                    <fullName>Siemens Enterprise Communications</fullName>
+                    <default>false</default>
+                    <label>Siemens Enterprise Communications</label>
+                </value>
+                <value>
+                    <fullName>Silver Peak</fullName>
+                    <default>false</default>
+                    <label>Silver Peak</label>
+                </value>
+                <value>
+                    <fullName>Skype</fullName>
+                    <default>false</default>
+                    <label>Skype</label>
+                </value>
+                <value>
+                    <fullName>SkyPilot</fullName>
+                    <default>false</default>
+                    <label>SkyPilot</label>
+                </value>
+                <value>
+                    <fullName>SonicWall</fullName>
+                    <default>false</default>
+                    <label>SonicWall</label>
+                </value>
+                <value>
+                    <fullName>Sonus</fullName>
+                    <default>false</default>
+                    <label>Sonus</label>
+                </value>
+                <value>
+                    <fullName>Sony</fullName>
+                    <default>false</default>
+                    <label>Sony</label>
+                </value>
+                <value>
+                    <fullName>Stratacache</fullName>
+                    <default>false</default>
+                    <label>Stratacache</label>
+                </value>
+                <value>
+                    <fullName>Strix Systems</fullName>
+                    <default>false</default>
+                    <label>Strix Systems</label>
+                </value>
+                <value>
+                    <fullName>Symantec</fullName>
+                    <default>false</default>
+                    <label>Symantec</label>
+                </value>
+                <value>
+                    <fullName>Technicolor</fullName>
+                    <default>false</default>
+                    <label>Technicolor</label>
+                </value>
+                <value>
+                    <fullName>TELDAT</fullName>
+                    <default>false</default>
+                    <label>TELDAT</label>
+                </value>
+                <value>
+                    <fullName>Teleste</fullName>
+                    <default>false</default>
+                    <label>Teleste</label>
+                </value>
+                <value>
+                    <fullName>Teliris</fullName>
+                    <default>false</default>
+                    <label>Teliris</label>
+                </value>
+                <value>
+                    <fullName>Tellabs</fullName>
+                    <default>false</default>
+                    <label>Tellabs</label>
+                </value>
+                <value>
+                    <fullName>Thales</fullName>
+                    <default>false</default>
+                    <label>Thales</label>
+                </value>
+                <value>
+                    <fullName>Toshiba</fullName>
+                    <default>false</default>
+                    <label>Toshiba</label>
+                </value>
+                <value>
+                    <fullName>TP-Link</fullName>
+                    <default>false</default>
+                    <label>TP-Link</label>
+                </value>
+                <value>
+                    <fullName>Trendmicro</fullName>
+                    <default>false</default>
+                    <label>Trendmicro</label>
+                </value>
+                <value>
+                    <fullName>Tropos</fullName>
+                    <default>false</default>
+                    <label>Tropos</label>
+                </value>
+                <value>
+                    <fullName>Turin Networks</fullName>
+                    <default>false</default>
+                    <label>Turin Networks</label>
+                </value>
+                <value>
+                    <fullName>UTStarcom</fullName>
+                    <default>false</default>
+                    <label>UTStarcom</label>
+                </value>
+                <value>
+                    <fullName>Vector</fullName>
+                    <default>false</default>
+                    <label>Vector</label>
+                </value>
+                <value>
+                    <fullName>Vidyo</fullName>
+                    <default>false</default>
+                    <label>Vidyo</label>
+                </value>
+                <value>
+                    <fullName>Voltaire</fullName>
+                    <default>false</default>
+                    <label>Voltaire</label>
+                </value>
+                <value>
+                    <fullName>Websense</fullName>
+                    <default>false</default>
+                    <label>Websense</label>
+                </value>
+                <value>
+                    <fullName>Wisi</fullName>
+                    <default>false</default>
+                    <label>Wisi</label>
+                </value>
+                <value>
+                    <fullName>Xirrus</fullName>
+                    <default>false</default>
+                    <label>Xirrus</label>
+                </value>
+                <value>
+                    <fullName>YAMAHA</fullName>
+                    <default>false</default>
+                    <label>YAMAHA</label>
+                </value>
+                <value>
+                    <fullName>Zscaler</fullName>
+                    <default>false</default>
+                    <label>Zscaler</label>
+                </value>
+                <value>
+                    <fullName>ZTE</fullName>
+                    <default>false</default>
+                    <label>ZTE</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Term_in_Months__c</fullName>
+        <description>Term (in Months)</description>
+        <externalId>false</externalId>
+        <label>Term (in Months)</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TotalPrice</fullName>
+    </fields>
+    <fields>
+        <fullName>Total_Attrition_000s__c</fullName>
+        <externalId>false</externalId>
+        <formula>Total_Attrition__c / 1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Attrition ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Attrition__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Prior_ATR__c&gt;Expected_ATR__c,Prior_ATR__c - Expected_ATR__c,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Attrition</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Contract_Value_Line_000s__c</fullName>
+        <description>TCV at line</description>
+        <externalId>false</externalId>
+        <formula>Recurring_Offer_ARR_Line_000s__c + Recurring_Offer_Multi_Year_Line_000s__c + Non_Recurring_Line_000s__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Contract Value Line ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>UnitPrice</fullName>
+    </fields>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <webLinks>
+        <fullName>Add</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Add</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/QI_ProductUI_New?id={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Technology_Service</fullName>
+        <availability>online</availability>
+        <description>Add Technology &amp; Service for pilot</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Add Technology &amp; Service</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/QI_ProductUI_New?id={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Technology_Services</fullName>
+        <availability>online</availability>
+        <description>Renewals Technology Services page</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Add Technology &amp; Services</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/QI_ProductUI_Renew?id={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Edit_All</fullName>
+        <availability>online</availability>
+        <description>Edit All button for Pilot</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Edit All</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/QI2_ProductUI_New?id={!Opportunity.Id}</url>
+    </webLinks>
+</CustomObject>

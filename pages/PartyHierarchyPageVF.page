@@ -1,0 +1,5 @@
+<apex:page standardController="Account" extensions="Party_Hierarchy_CT">
+  
+  <apex:iframe height="600px" src="{!cscURL}CSCId={!Account.HQ_Party_ID__c}&apiServerUrl={!$Api.Enterprise_Server_URL_90}&actionType=ViewRelatedAccounts&sessionId={!$Api.Session_ID}" scrolling="true" id="theIframe"/>  
+
+</apex:page>

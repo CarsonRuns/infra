@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES.  MM/DD/YY + Bullet format required.  Please provide  Executive Level accomplishments for your account
+If more than 1 Accomplishment, please number.  If no content for the week, use N/A. --></help>
+        <label><!-- Accomplishments --></label>
+        <name>Accomplishments__c</name>
+    </fields>
+    <fields>
+        <help><!-- Bullet(s) based on SDM knowledge --></help>
+        <label><!-- Account History --></label>
+        <name>Account_History__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account_Name_Value --></label>
+        <name>Account_Name_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- Matches P&amp;L Customer Name --></help>
+        <label><!-- Master Customer Name --></label>
+        <name>Account_Name__c</name>
+        <relationshipLabel><!-- CRMDB --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Select from Green, Yellow, Red (see Executive Summary Process) --></help>
+        <label><!-- Account State --></label>
+        <name>Account_State__c</name>
+        <picklistValues>
+            <masterLabel>Green</masterLabel>
+            <translation><!-- Green --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Red</masterLabel>
+            <translation><!-- Red --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yellow</masterLabel>
+            <translation><!-- Yellow --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is this customer live (Day 2)? Drop down options:  
+Yes
+Yes-pending disconnect
+No-disconnected
+No-pending activation&quot; --></help>
+        <label><!-- Active Contract --></label>
+        <name>Active_Customer__c</name>
+        <picklistValues>
+            <masterLabel>No – Contract Expired (Other Active CMS Contracts)</masterLabel>
+            <translation><!-- No – Contract Expired (Other Active CMS Contracts) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No-disconnected (No longer a CMS Customer)</masterLabel>
+            <translation><!-- No-disconnected (No longer a CMS Customer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No-pending activation</masterLabel>
+            <translation><!-- No-pending activation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes-pending disconnect</masterLabel>
+            <translation><!-- Yes-pending disconnect --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Adopt --></label>
+        <name>Adopt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Child Record is the sum of  Annual CMS Contract + Annual CRs,  Parent Record is the Sum of all Child record(s) Annual Contract+CRs. --></help>
+        <label><!-- Annual CMS Contract Value + CR(S)($000) --></label>
+        <name>Annual_CMS_Contract_Value_CR_S__c</name>
+    </fields>
+    <fields>
+        <help><!-- Loaded from  Booked Qualification in a Child Record, Summed from Child record(s) to a Parent. --></help>
+        <label><!-- Annual CMS Contract Value($000) --></label>
+        <name>Annual_CMS_Contract_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- Child Record is the sum of Annual Contract CRs, Parent Record is the Sum of CRs for all children. --></help>
+        <label><!-- Annual Customer CR(s) Value($000) --></label>
+        <name>Annual_Child_CMS_CR__c</name>
+    </fields>
+    <fields>
+        <help><!-- Found in Tableau, should include FY to date --></help>
+        <label><!-- Annual Revenue (FY to date) --></label>
+        <name>Annual_Revenue_FY_to_date__c</name>
+    </fields>
+    <fields>
+        <help><!-- THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES.  MM/DD/YY+ Bullet format required. Please identify the background for EACH Accomplishment or Challenge. i.e. Accomplishment #1, Challenge #1.  If no Accomplishments or Challenges for the week, use N/A. --></help>
+        <label><!-- Background of Accomplishments/Challenges --></label>
+        <name>Background_of_Accomplishment_or_Challeng__c</name>
+    </fields>
+    <fields>
+        <label><!-- Brief Summary for Yellow / Red Status --></label>
+        <name>Brief_Summary_for_Red_Yellow_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC - 20&apos;/wk per Region --></label>
+        <name>CALC_20_wk_per_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC - ADOPT Phase effort post-Activate --></label>
+        <name>CALC_ADOPT_Phase_effort_post_Activate__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-AUSE Status Flag --></label>
+        <name>CALC_AUSE_Status_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Active or pending Activation --></label>
+        <name>CALC_Active_or_pending_Activation__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC- CAP Effort / week --></label>
+        <name>CALC_CAP_Effort_week__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-CRs Complex /week --></label>
+        <name>CALC_CRs_Complex_week__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-CRs Simple /week --></label>
+        <name>CALC_CRs_Simple_week__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC - Days Since Live --></label>
+        <name>CALC_Days_Since_Live__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Direct /Indirect Sales --></label>
+        <name>CALC_Direct_Indirect_Sales__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC- Effort for ADOPT phase --></label>
+        <name>CALC_Effort_for_ADOPT_phase__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC - Emerging Technologies Multiplier --></label>
+        <name>CALC_Emerging_Technologies_Multiplier__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Meetings (45&apos; per mtg /week) --></label>
+        <name>CALC_Meetings_45_per_mtg_week__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-NOC Multiplier --></label>
+        <name>CALC_NOC_Multiplier__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Offer Level Complexity Multiplier --></label>
+        <name>CALC_Offer_Level_Complexity_Multiplier__c</name>
+    </fields>
+    <fields>
+        <help><!-- IF(ISPICKVAL(Who_Delivers_Service__c ,&quot;Cisco Only&quot;), 0, 60) --></help>
+        <label><!-- CALC-Partner Delivered --></label>
+        <name>CALC_Partner_Delivered__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Platform Complexity Multiplier --></label>
+        <name>CALC_Platform_Complexity_Multiplier__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Platform Multiplier --></label>
+        <name>CALC_Platform_Multiplier__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Projects Effort Multiplier --></label>
+        <name>CALC_Projects_Effort_Multiplier__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-RENEW --></label>
+        <name>CALC_RENEW__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Renew Days --></label>
+        <name>CALC_Renew_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Renewal Effort Value --></label>
+        <name>CALC_Renewal_Effort_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-SDM Percentage per WebQT --></label>
+        <name>CALC_SDM_Percentage_per_WebQT__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-TODAY --></label>
+        <name>CALC_TODAY__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC- Total SDM % Delivered --></label>
+        <name>CALC_Total_SDM_Delivered__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Total SDM Hours Delivered --></label>
+        <name>CALC_Total_SDM_Hours_Delivered__c</name>
+    </fields>
+    <fields>
+        <label><!-- CALC-Transition effort of complex/simple --></label>
+        <name>CALC_Transition_effort_for_complex_or_si__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is provided by the CAP manager and entered into the CRMDB by the SDM --></help>
+        <label><!-- CAP Case Opened Date --></label>
+        <name>CAP_Case_Opened_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is provided by the CAP manager and entered into the CRMDB by the SDM --></help>
+        <label><!-- CAP Title --></label>
+        <name>CAP_Title__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is provided by the CAP manager and entered into the CRMDB by the SDM --></help>
+        <label><!-- CAP Case Manager Name --></label>
+        <name>CAP_case_Manager_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is provided by the CAP manager and entered into the CRMDB by the SDM --></help>
+        <label><!-- CAP Case Number (Engagement ID) --></label>
+        <name>CAP_case_Number_Engagement_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provided by CMO --></help>
+        <label><!-- CMO Assigned for Billing/Reporting --></label>
+        <name>CMO_Assigned_for_Billing_Reporting__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provided by CMO --></help>
+        <label><!-- CMO Assigned for MSR --></label>
+        <name>CMO_Assigned_for_MSR__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMO Billing % Effort --></label>
+        <name>CMO_Billing_Effort__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMO MSR % Effort --></label>
+        <name>CMO_MSR_Effort__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMSP Migration Date --></label>
+        <name>CMSP_Migration_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Accounts managed by Kurt Hauser&apos;s Team, updated by CET Chief of Staff (CoS) --></help>
+        <label><!-- C-NOC --></label>
+        <name>C_NOC__c</name>
+    </fields>
+    <fields>
+        <help><!-- THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES.  MM/DD/YY + Bullet format required.  Please provide  Executive Level Challenges for your account
+If more than 1 Challenge, please number.  If no content for the week, use N/A. --></help>
+        <label><!-- Challenges --></label>
+        <name>Challenges__c</name>
+    </fields>
+    <fields>
+        <help><!-- Term(s)
+Where we are in the length of the term(s)
+Termination / Transfer Obligations
+Renewal Obligations
+Billing
+Custom Reporting / Other reporting obligations
+Summary of Other Cisco Services (AS/TS) --></help>
+        <label><!-- Commercial Summary --></label>
+        <name>Commercial_Summary__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please enter the contract renewal date (initially entered by Admin) --></help>
+        <label><!-- Contract Renewal Date --></label>
+        <name>Contract_Renewal_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Term in # of months --></help>
+        <label><!-- Contract Term Months --></label>
+        <name>Contract_Term_Months__c</name>
+    </fields>
+    <fields>
+        <label><!-- Count Blank Cells --></label>
+        <name>Count_Blank_Cells__c</name>
+    </fields>
+    <fields>
+        <help><!-- The number of countries the customer does business in. --></help>
+        <label><!-- Countries Served --></label>
+        <name>Countries_Served__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please move all your Crisis Management contacts to the new Crisis Management Contacts tool and stop entering contact information in this field. --></help>
+        <label><!-- Crisis Mgmt - WILL BE DELETED on 4/26 --></label>
+        <name>Crisis_Management__c</name>
+    </fields>
+    <fields>
+        <help><!-- THIS IS BEING USED FOR EXECUTIVE MONTHY REVIEWS. MM/DD/YY + Bullet format required. What should your leader know if there was an escalation or Customer inquiry? --></help>
+        <label><!-- Customer Executive Summary --></label>
+        <name>Customer_Executive_Summary__c</name>
+    </fields>
+    <fields>
+        <help><!-- Bullet(s) describing customer sentiment --></help>
+        <label><!-- Customer Sentiment --></label>
+        <name>Customer_Sentiment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Website --></label>
+        <name>Customer_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customers --></label>
+        <name>Customers__c</name>
+    </fields>
+    <fields>
+        <help><!-- Deal ID for your customer&apos;s contract (can be obtained from Finance, SKU-Active or SOW) --></help>
+        <label><!-- DID --></label>
+        <name>DID__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date of the first CMS contract --></help>
+        <label><!-- Date Customer first became  CMS Customer --></label>
+        <name>Date_Customer_first_became_CMS_Customer__c</name>
+    </fields>
+    <fields>
+        <help><!-- # of NOCs that are delivering service to this Customer (i.e. TP, DCOT, SFNOC, SOC, ect...) --></help>
+        <label><!-- Delivery NOC Count --></label>
+        <name>Delivery_NOC_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- # of devices under CMS management as reported by the platform --></help>
+        <label><!-- Device Count --></label>
+        <name>Device_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select 3rd party integrator, if applicable --></help>
+        <label><!-- Direct / Indirect Sales --></label>
+        <name>Direct_Indirect_Sales__c</name>
+        <picklistValues>
+            <masterLabel>AT&amp;T</masterLabel>
+            <translation><!-- AT&amp;T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Accenture</masterLabel>
+            <translation><!-- Accenture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BT</masterLabel>
+            <translation><!-- BT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CDW</masterLabel>
+            <translation><!-- CDW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dimension Data</masterLabel>
+            <translation><!-- Dimension Data --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EPLUS</masterLabel>
+            <translation><!-- EPLUS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A - Cisco Direct</masterLabel>
+            <translation><!-- N/A - Cisco Direct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rocket IT</masterLabel>
+            <translation><!-- Rocket IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Verizon</masterLabel>
+            <translation><!-- Verizon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yokogowa</masterLabel>
+            <translation><!-- Yokogowa --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disconnect Date --></label>
+        <name>Disconnect_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Emerging Technology --></label>
+        <name>Emerging_Technology__c</name>
+        <picklistValues>
+            <masterLabel>N</masterLabel>
+            <translation><!-- N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Y</masterLabel>
+            <translation><!-- Y --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Employees --></label>
+        <name>Employees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expand --></label>
+        <name>Expand__c</name>
+    </fields>
+    <fields>
+        <help><!-- Based on GES list, updated by CoS
+https://apps.na.collabserv.com/communities/service/html/communitystart?communityUuid=74baff1b-36ae-4dfb-b43a-93903d4869b2 --></help>
+        <label><!-- GES / CGEM / GSP Area --></label>
+        <name>GES_or_CGEM_Area__c</name>
+        <picklistValues>
+            <masterLabel>CGEM_APJC_ANZ</masterLabel>
+            <translation><!-- CGEM_APJC_ANZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CGEM_APJC_ASEAN</masterLabel>
+            <translation><!-- CGEM_APJC_ASEAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CGEM_APJC_India</masterLabel>
+            <translation><!-- CGEM_APJC_India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CGEM_APJC_Japan</masterLabel>
+            <translation><!-- CGEM_APJC_Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CGEM_APJC_Korea</masterLabel>
+            <translation><!-- CGEM_APJC_Korea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CGEM_EMEAR_Central</masterLabel>
+            <translation><!-- CGEM_EMEAR_Central --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CGEM_EMEAR_North</masterLabel>
+            <translation><!-- CGEM_EMEAR_North --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CGEM_France</masterLabel>
+            <translation><!-- CGEM_France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CGEM_Germany</masterLabel>
+            <translation><!-- CGEM_Germany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CGEM_UKI</masterLabel>
+            <translation><!-- CGEM_UKI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GES_IBM</masterLabel>
+            <translation><!-- GES_IBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GES_MWA</masterLabel>
+            <translation><!-- GES_MWA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GES_NE</masterLabel>
+            <translation><!-- GES_NE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GES_South</masterLabel>
+            <translation><!-- GES_South --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GES_West</masterLabel>
+            <translation><!-- GES_West --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GSP_AMER</masterLabel>
+            <translation><!-- GSP_AMER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GSP_APJC</masterLabel>
+            <translation><!-- GSP_APJC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GSP_EMEAR</masterLabel>
+            <translation><!-- GSP_EMEAR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Global Fortune 500 Rank (2018) --></label>
+        <name>Global_Fortune_500_Rank_2018__c</name>
+    </fields>
+    <fields>
+        <label><!-- Headquarter Location --></label>
+        <name>Headquarter_Location__c</name>
+    </fields>
+    <fields>
+        <help><!-- THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES. MM/DD/YY + Bullet format required. Please identify the impact for EACH Accomplishment or Challenge.
+i.e. Accomplishment #1:, Challenge #1, etc. If no Accomplishments or Challenges for the week, use N/A. --></help>
+        <label><!-- Impact of Accomplishments or Challenges --></label>
+        <name>Impact_of_Accomplishments_or_Challenge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industry --></label>
+        <name>Industry__c</name>
+    </fields>
+    <fields>
+        <help><!-- Insert link to Integrated Account Plan --></help>
+        <label><!-- Integrated Account Plan (IAP) - Link --></label>
+        <name>Integrated_Account_Plan_IAP_Link__c</name>
+    </fields>
+    <fields>
+        <help><!-- Does your customer have an Integrated Account Plan? Y/N --></help>
+        <label><!-- Integrated Account Plan (IAP) --></label>
+        <name>Integrated_Account_Plan_IAP__c</name>
+    </fields>
+    <fields>
+        <help><!-- Y/N --></help>
+        <label><!-- Is CAP caused by CMS --></label>
+        <name>Is_CAP_caused_by_CMS__c</name>
+    </fields>
+    <fields>
+        <help><!-- If Customer is NOT on CAP select No in the drop down. If the Customer is on CAP select appropriate CAP type and save. Then complete All fields in the CAP Management Section. --></help>
+        <label><!-- Is Customer on CAP --></label>
+        <name>Is_Customer_on_CAP__c</name>
+        <picklistValues>
+            <masterLabel>CAP - A</masterLabel>
+            <translation><!-- CAP - A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAP - B</masterLabel>
+            <translation><!-- CAP - B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAP - M</masterLabel>
+            <translation><!-- CAP - M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If MSR is required to select Yes and complete the “Last MSR Date” field, if No date field is not required. --></help>
+        <label><!-- Is MSR Required --></label>
+        <name>Is_MSR_Required__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Please move all your Key Contacts to the new Key Contacts tool and stop entering contact information in this field. --></help>
+        <label><!-- Key Contacts - WILL BE DELETED on 4/26 --></label>
+        <name>Key_Contacts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Land --></label>
+        <name>Land__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Face to Face Meeting date --></label>
+        <name>Last_Face_to_Face_Meeting_date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date of Last Monthly Business Review.  MM/DD/YYYY --></help>
+        <label><!-- Last MSR Date --></label>
+        <name>Last_MSR_Date_or_N_A__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date of Last Quarterly Business Review.  MM/DD/YYYY --></help>
+        <label><!-- Last QBR Date --></label>
+        <name>Last_QBR__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please enter the link where to find the quote(s) and/or contract(s) --></help>
+        <label><!-- Links to Quote/ Contract/ SoW --></label>
+        <name>Links_to_Quote_Contract_SoW__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager --></label>
+        <name>Manager__c</name>
+    </fields>
+    <fields>
+        <help><!-- % - found in SKU Active Report --></help>
+        <label><!-- Margin (As sold) --></label>
+        <name>Margin_As_sold__c</name>
+    </fields>
+    <fields>
+        <help><!-- % - found in Tableau, should include FY to Date --></help>
+        <label><!-- Margin (Delivered) --></label>
+        <name>Margin_Delivered__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Customer Contract --></label>
+        <name>Master_Customer_Name__c</name>
+        <relationshipLabel><!-- Child Customer Contracts --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Additional company ranking information, such as size ranking within the customer’s industry. --></help>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Scheduled Meetings Per Quarter --></label>
+        <name>Number_of_Scheduled_Meetings_Per_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Scheduled Meetings per Week --></label>
+        <name>Number_of_Scheduled_Meetings_per_Week__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select Offer Level --></help>
+        <label><!-- Standardization --></label>
+        <name>Offer_Level__c</name>
+        <picklistValues>
+            <masterLabel>Bespoke - &gt; 80% Custom</masterLabel>
+            <translation><!-- Bespoke - &gt; 80% Custom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comprehensive</masterLabel>
+            <translation><!-- Comprehensive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom off Standard Base - b/w 20% to 80% Custom</masterLabel>
+            <translation><!-- Custom off Standard Base - b/w 20% to 80% Custom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foundation</masterLabel>
+            <translation><!-- Foundation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legacy SKUs</masterLabel>
+            <translation><!-- Legacy SKUs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard</masterLabel>
+            <translation><!-- Standard --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Open CONTRACT CRs - Complex --></label>
+        <name>Open_CONTRACT_CRs_Complex__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open CONTRACT CRs - Simple --></label>
+        <name>Open_CONTRACT_CRs_Simple__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of the CSM assigned when a Delivery Partner is engaged (e.g. Optanix, Cognizant, IpSoft) --></help>
+        <label><!-- Partner Delivered CSM Assigned --></label>
+        <name>Partner_Delivered_CSM_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- # of Platforms used to support this Customer (CMSP, Optanix MAP, IPSoft, Centerity, etc...) --></help>
+        <label><!-- Platform Count --></label>
+        <name>Platform_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select all that apply --></help>
+        <label><!-- Platform(s) Type --></label>
+        <name>Platforms_Type__c</name>
+        <picklistValues>
+            <masterLabel>CMSP</masterLabel>
+            <translation><!-- CMSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Centerity</masterLabel>
+            <translation><!-- Centerity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IP Soft</masterLabel>
+            <translation><!-- IP Soft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Platform</masterLabel>
+            <translation><!-- No Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remedy</masterLabel>
+            <translation><!-- Remedy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SG MAP</masterLabel>
+            <translation><!-- SG MAP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Proactive Problem Management --></label>
+        <name>Proactive_Problem_Management__c</name>
+    </fields>
+    <fields>
+        <label><!-- Projects On-going Count --></label>
+        <name>Projects_On_going_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select reason(s) for the account being flagged as Yellow or Red is caused by CMS Delivery performance --></help>
+        <label><!-- Reason for Yellow / Red --></label>
+        <name>Reason_for_Yellow_Red__c</name>
+        <picklistValues>
+            <masterLabel>CMS Offer</masterLabel>
+            <translation><!-- CMS Offer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Product</masterLabel>
+            <translation><!-- Cisco Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commercial</masterLabel>
+            <translation><!-- Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery</masterLabel>
+            <translation><!-- Delivery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform</masterLabel>
+            <translation><!-- Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Selective Transition</masterLabel>
+            <translation><!-- Selective Transition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vendor</masterLabel>
+            <translation><!-- Vendor --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is this customer willing to provide a CMS reference?  Y/N --></help>
+        <label><!-- Reference Account --></label>
+        <name>Reference_Account__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Select all that apply --></help>
+        <label><!-- Regions supported --></label>
+        <name>Regions__c</name>
+        <picklistValues>
+            <masterLabel>AMER</masterLabel>
+            <translation><!-- AMER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJC</masterLabel>
+            <translation><!-- APJC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEAR</masterLabel>
+            <translation><!-- EMEAR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Renew --></label>
+        <name>Renew__c</name>
+    </fields>
+    <fields>
+        <help><!-- % based on SDM knowledge --></help>
+        <label><!-- Renewal Probability --></label>
+        <name>Renewal_Probability__c</name>
+    </fields>
+    <fields>
+        <help><!-- The fiscal year in which the annual revenue was reported. --></help>
+        <label><!-- Revenue Year --></label>
+        <name>Revenue_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue in US $ --></label>
+        <name>Revenue_in_US__c</name>
+    </fields>
+    <fields>
+        <label><!-- SDM % Allocation --></label>
+        <name>SDM_Allocation__c</name>
+    </fields>
+    <fields>
+        <help><!-- Name of the SDM assigned (only one name allowed, additional SDMs should be added to the Contacts Field) --></help>
+        <label><!-- SDM Lead --></label>
+        <name>SDM_Assigned__c</name>
+    </fields>
+    <fields>
+        <help><!-- # of SDMs supporting this Customer --></help>
+        <label><!-- SDM Count --></label>
+        <name>SDM_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- Does this Customer have SLA&apos;s (penalties apply) Y/N --></help>
+        <label><!-- SLA --></label>
+        <name>SLA__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Summay of SLX and KPI obligations and performance by Service (six month trending if available) --></help>
+        <label><!-- SLX and KPI Summary --></label>
+        <name>SLX_and_KPI_Summary__c</name>
+    </fields>
+    <fields>
+        <help><!-- Should be part of a new record create from the DLT notification. --></help>
+        <label><!-- Sales Order Number --></label>
+        <name>Sales_Order_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Based on GES list, updated by CoS 
+https://apps.na.collabserv.com/communities/service/html/communitystart?communityUuid=74baff1b-36ae-4dfb-b43a-93903d4869b2 --></help>
+        <label><!-- Segment --></label>
+        <name>Segment__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter Initial activation date (not the subsequent dates for staged activations or renewals) --></help>
+        <label><!-- Service Transition Date --></label>
+        <name>Service_Transition_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- CET Theater --></help>
+        <label><!-- Theater --></label>
+        <name>Theater__c</name>
+        <picklistValues>
+            <masterLabel>AMER</masterLabel>
+            <translation><!-- AMER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJC</masterLabel>
+            <translation><!-- APJC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEAR</masterLabel>
+            <translation><!-- EMEAR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Child Record is the sum of  Total CMS Contract + CRs,  Parent Record is the Sum of all Child record(s) Contract+CRs. --></help>
+        <label><!-- Total CMS Contract Value + CR(S)($000) --></label>
+        <name>Total_CMS_Contract_Value_CR_S__c</name>
+    </fields>
+    <fields>
+        <help><!-- Loaded from  Booked Qualification in a Child Record, Summed from Child record(s) to a Parent. --></help>
+        <label><!-- Total CMS Contract Value($000) --></label>
+        <name>Total_CMS_Contract_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- Child Record is the sum of Total Contract CRs,  Parent Record is the Sum of CRs for all children. --></help>
+        <label><!-- Total Customer CR(s) Value($000) --></label>
+        <name>Total_Child_CMS_CR__c</name>
+    </fields>
+    <fields>
+        <help><!-- Add Totals from all Services --></help>
+        <label><!-- Total Cisco Contract Value($000) --></label>
+        <name>Total_Cisco_Contract_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- SDM to gather this information with input from the Account Team and SDE --></help>
+        <label><!-- Total Other Cisco Product/Services($000) --></label>
+        <name>Total_Other_Cisco_products_and_services__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type of Transition --></label>
+        <name>Type_of_Transition__c</name>
+        <picklistValues>
+            <masterLabel>Complex</masterLabel>
+            <translation><!-- Complex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simple</masterLabel>
+            <translation><!-- Simple --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- US Fortune 500 Rank (2018) --></label>
+        <name>US_Fortune_500_Rank_2018__c</name>
+    </fields>
+    <fields>
+        <help><!-- Bullet(s) based on SDM knowledge --></help>
+        <label><!-- Upsell Opportunities --></label>
+        <name>Upsell_Opportunities__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select who is delivering the Service --></help>
+        <label><!-- Who Delivers Service --></label>
+        <name>Who_Delivers_Service__c</name>
+        <picklistValues>
+            <masterLabel>CenturyLink</masterLabel>
+            <translation><!-- CenturyLink --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco</masterLabel>
+            <translation><!-- Cisco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cognizant</masterLabel>
+            <translation><!-- Cognizant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>E-Loyalty</masterLabel>
+            <translation><!-- E-Loyalty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GTT</masterLabel>
+            <translation><!-- GTT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Capacity</masterLabel>
+            <translation><!-- Global Capacity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IPSoft</masterLabel>
+            <translation><!-- IPSoft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mindlink</masterLabel>
+            <translation><!-- Mindlink --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optanix</masterLabel>
+            <translation><!-- Optanix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yokogowa</masterLabel>
+            <translation><!-- Yokogowa --></translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CRMDB</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CRMDB</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CRMDB_Layout</layout>
+        <sections>
+            <label><!-- Account Status --></label>
+            <section>Account Status</section>
+        </sections>
+        <sections>
+            <label><!-- CAP Management --></label>
+            <section>CAP Management</section>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <section>Contacts</section>
+        </sections>
+        <sections>
+            <label><!-- Contract and Financials --></label>
+            <section>Contract and Financials</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Details --></label>
+            <section>Customer Details</section>
+        </sections>
+        <sections>
+            <label><!-- Overview --></label>
+            <section>Overview</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Add Crisis Management Contact --></label>
+        <name>Add_Crisis_Management_Contact</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Add Key Contact --></label>
+        <name>Add_Key_Contact</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Add/Edit Offers --></label>
+        <name>Add_Service</name>
+    </quickActions>
+    <recordTypes>
+        <description><!-- Customer Contract can be linked to Parent Customer Contracts --></description>
+        <label><!-- CRMDB_Contracts --></label>
+        <name>CRMDB_Contracts</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Please complete Last MSR Date --></errorMessage>
+        <name>Make_MSR_Date_Mandatory</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Show_Hierarchical_View --></label>
+        <name>Show_Hierarchical_View</name>
+    </webLinks>
+</CustomObjectTranslation>

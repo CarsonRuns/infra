@@ -1,0 +1,84 @@
+<apex:page standardController="Partner_Program_Enrollment__c" extensions="Partner_Search"  showHeader="false" tabStyle="Partner_Program_Enrollment__c" sidebar="false" wizard="true"  recordSetvar="Partner_Program_Enrollment__c"> 
+    <script type="text/javascript">
+                       
+       //This function will populate the data in parent window
+       function setvalue(resultName,resultId)
+       {
+       window.opener.document.getElementById('{!pntrGroup}').value = resultName;
+              
+          if({!partnersFlag})
+          {
+                //alert("partners");
+                window.opener.document.getElementById('{!pntrTypeId}').value = resultId;           
+                //window.opener.setPGIdArr('{!pntrTypeId}',resultId);     
+          }
+          else
+          {
+                //alert("Partner Group");
+                window.opener.document.getElementById('{!pntrGroupId}').value = resultId;
+                //window.opener.setPGIdArr('{!pntrGroupId}',resultId);
+          }              
+        self.close();
+        return false;      
+       }
+                   
+    </script>
+    <apex:form >
+        <apex:pageBlock mode="edit" id="block">
+        <apex:pageMessage id="errorMessage" detail="Please enter atleast two characters"  severity="error"  rendered="{!errorFlag}" title="Error Message"  />  
+        <apex:pageMessage id="limitMessage" detail="There are more than 999 records. You may provide a search string in order to get limited results."  severity="info"  rendered="{!limitFlag}" title="Info Message"  />  
+                <apex:pageBlockSection >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="searchText">Search Partner
+                        </apex:outputLabel>
+                        <apex:panelGroup >
+                            <apex:inputText id="searchText" value="{!searchText}"/>
+                            <p> </p>
+                            <apex:commandButton value="Search" action="{!doSearch}"
+                            rerender="block" status="status"/>
+                        </apex:panelGroup>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:actionStatus id="status" startText="Requesting........."/>
+                <div style="color:red"> {!errorMsg} </div>
+                <apex:pageBlockSection title="Results" id="results1" columns="1" rendered="{!NOT(errorFlag)&& partnerGroupFlag}">
+                    <apex:pageBlockTable value="{!PartnerGroups}" var="l" >
+                        <apex:column >         
+                            <apex:facet name="header"><b>Name</b>
+                            </apex:facet>    
+                            <apex:commandLink id="classtype" onclick="setvalue('{!l.Name}','{!l.Id}');">               
+                                <apex:param name="cid" value="{!l.Name}"/>
+                                <apex:param name="ccode" value="{!l.Active__c}"/>
+                                {!l.Name}      
+                            </apex:commandLink>  
+                        </apex:column>
+                        <apex:column value="{!l.Group_Level__c}"/> 
+                        <apex:column value="{!l.Country_Country_Group__c}"/> 
+                        <apex:column value="{!l.Partner_Group_Type__c }"/>  
+                        <apex:column value="{!l.Enrollment_Period__c}"/>                       
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Results" id="results2" columns="1" rendered="{!NOT(errorFlag)&& partnersFlag}">
+                    <apex:pageBlockTable value="{!Partners}" var="p" >
+                        <apex:column >         
+                            <apex:facet name="header"><b>Name</b>
+                            </apex:facet>    
+                            <apex:commandLink id="classtype" onclick="setvalue('{!p.Partner__r.name}','{!p.Partner__r.Id}');">               
+                                <apex:param name="cid" value="{!p.Partner__c}"/>                                
+                                <apex:param name="ccode" value="{!p.Partner_Enrollment_Status__c}"/>
+                                {!p.Partner__r.name}       
+                            </apex:commandLink>  
+                        </apex:column> 
+                        <apex:column value="{!p.Partner_Enrollment_Status__c}"/>
+                        <apex:column value="{!p.Program_Name__c}"/>        
+                        <apex:column value="{!p.Country_Group__c}"/>
+                        <apex:column value="{!p.Country__c}"/>                        
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                <apex:panelGrid columns="2" id="navigation" >
+                <apex:commandLink value="<-Previous" style="font-weight:bold" rendered="{!hasPrevious}" action="{!previous}"/>
+                <apex:commandLink value="Next->" style="font-weight:bold" rendered="{!hasNext}" action="{!next}"/>
+                </apex:panelGrid>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

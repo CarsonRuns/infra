@@ -1,0 +1,4024 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>ADR_Appointment_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>ADR Appointment Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ADR_Appointment_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>ADR Appointment Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Appointment Attended</fullName>
+                    <default>false</default>
+                    <label>Appointment Attended</label>
+                </value>
+                <value>
+                    <fullName>Appointment Cancelled</fullName>
+                    <default>false</default>
+                    <label>Appointment Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Appointment Scheduled</fullName>
+                    <default>false</default>
+                    <label>Appointment Scheduled</label>
+                </value>
+                <value>
+                    <fullName>SMB Appointment Attended</fullName>
+                    <default>false</default>
+                    <label>SMB Appointment Attended</label>
+                </value>
+                <value>
+                    <fullName>SMB Appointment Scheduled</fullName>
+                    <default>false</default>
+                    <label>SMB Appointment Scheduled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ADR_Meeting_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>ADR Meeting Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Person</fullName>
+                    <default>false</default>
+                    <label>In Person</label>
+                </value>
+                <value>
+                    <fullName>WebEx</fullName>
+                    <default>false</default>
+                    <label>WebEx</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ADR_Next_Activity__c</fullName>
+        <externalId>false</externalId>
+        <label>ADR Next Activity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>ADR_Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>ADR Product Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>C-Series</fullName>
+                    <default>false</default>
+                    <label>C-Series</label>
+                </value>
+                <value>
+                    <fullName>C-Series, S-Series &amp; Encryption</fullName>
+                    <default>false</default>
+                    <label>C-Series, S-Series &amp; Encryption</label>
+                </value>
+                <value>
+                    <fullName>Encryption</fullName>
+                    <default>false</default>
+                    <label>Encryption</label>
+                </value>
+                <value>
+                    <fullName>Hosted E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Hosted E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>Hybrid Hosted Email Security</fullName>
+                    <default>false</default>
+                    <label>Hybrid Hosted Email Security</label>
+                </value>
+                <value>
+                    <fullName>M-Series</fullName>
+                    <default>false</default>
+                    <label>M-Series</label>
+                </value>
+                <value>
+                    <fullName>SaaS Web Security</fullName>
+                    <default>false</default>
+                    <label>SaaS Web Security</label>
+                </value>
+                <value>
+                    <fullName>S-series</fullName>
+                    <default>false</default>
+                    <label>S-series</label>
+                </value>
+                <value>
+                    <fullName>S-series &amp; Encryption</fullName>
+                    <default>false</default>
+                    <label>S-series &amp; Encryption</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ADR__c</fullName>
+        <externalId>false</externalId>
+        <label>ADR</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Adrian Cox</fullName>
+                    <default>false</default>
+                    <label>Adrian Cox</label>
+                </value>
+                <value>
+                    <fullName>Alex Buenning</fullName>
+                    <default>false</default>
+                    <label>Alex Buenning</label>
+                </value>
+                <value>
+                    <fullName>Alex Henkes</fullName>
+                    <default>false</default>
+                    <label>Alex Henkes</label>
+                </value>
+                <value>
+                    <fullName>Alok Anvekar</fullName>
+                    <default>false</default>
+                    <label>Alok Anvekar</label>
+                </value>
+                <value>
+                    <fullName>Amy Feitelberg</fullName>
+                    <default>false</default>
+                    <label>Amy Feitelberg</label>
+                </value>
+                <value>
+                    <fullName>Annabel Revuelta</fullName>
+                    <default>false</default>
+                    <label>Annabel Revuelta</label>
+                </value>
+                <value>
+                    <fullName>Antoine Hutteau D'Origny</fullName>
+                    <default>false</default>
+                    <label>Antoine Hutteau D'Origny</label>
+                </value>
+                <value>
+                    <fullName>Belinda Turnbull</fullName>
+                    <default>false</default>
+                    <label>Belinda Turnbull</label>
+                </value>
+                <value>
+                    <fullName>Bettina Rudolf</fullName>
+                    <default>false</default>
+                    <label>Bettina Rudolf</label>
+                </value>
+                <value>
+                    <fullName>Bianca Stroebel</fullName>
+                    <default>false</default>
+                    <label>Bianca Stroebel</label>
+                </value>
+                <value>
+                    <fullName>Brad Dickinson</fullName>
+                    <default>false</default>
+                    <label>Brad Dickinson</label>
+                </value>
+                <value>
+                    <fullName>Britta Roesler</fullName>
+                    <default>false</default>
+                    <label>Britta Roesler</label>
+                </value>
+                <value>
+                    <fullName>Carol Flores</fullName>
+                    <default>false</default>
+                    <label>Carol Flores</label>
+                </value>
+                <value>
+                    <fullName>Carsten Haase</fullName>
+                    <default>false</default>
+                    <label>Carsten Haase</label>
+                </value>
+                <value>
+                    <fullName>Chris Arsenault</fullName>
+                    <default>false</default>
+                    <label>Chris Arsenault</label>
+                </value>
+                <value>
+                    <fullName>Christina Foley</fullName>
+                    <default>false</default>
+                    <label>Christina Foley</label>
+                </value>
+                <value>
+                    <fullName>Cristina Amezcua</fullName>
+                    <default>false</default>
+                    <label>Cristina Amezcua</label>
+                </value>
+                <value>
+                    <fullName>Dan Carroll</fullName>
+                    <default>false</default>
+                    <label>Dan Carroll</label>
+                </value>
+                <value>
+                    <fullName>Daniela Sieber</fullName>
+                    <default>false</default>
+                    <label>Daniela Sieber</label>
+                </value>
+                <value>
+                    <fullName>Derek Edwards</fullName>
+                    <default>false</default>
+                    <label>Derek Edwards</label>
+                </value>
+                <value>
+                    <fullName>Emel Hüriyet</fullName>
+                    <default>false</default>
+                    <label>Emel Hüriyet</label>
+                </value>
+                <value>
+                    <fullName>Eric Trottier</fullName>
+                    <default>false</default>
+                    <label>Eric Trottier</label>
+                </value>
+                <value>
+                    <fullName>Hegle Lee</fullName>
+                    <default>false</default>
+                    <label>Hegle Lee</label>
+                </value>
+                <value>
+                    <fullName>Ian Levine</fullName>
+                    <default>false</default>
+                    <label>Ian Levine</label>
+                </value>
+                <value>
+                    <fullName>Ines Krause</fullName>
+                    <default>false</default>
+                    <label>Ines Krause</label>
+                </value>
+                <value>
+                    <fullName>Jason Cooley</fullName>
+                    <default>false</default>
+                    <label>Jason Cooley</label>
+                </value>
+                <value>
+                    <fullName>Jason Farrell</fullName>
+                    <default>false</default>
+                    <label>Jason Farrell</label>
+                </value>
+                <value>
+                    <fullName>Jason Jackson</fullName>
+                    <default>false</default>
+                    <label>Jason Jackson</label>
+                </value>
+                <value>
+                    <fullName>Jeanine Antoniol</fullName>
+                    <default>false</default>
+                    <label>Jeanine Antoniol</label>
+                </value>
+                <value>
+                    <fullName>Jeff St. Clair</fullName>
+                    <default>false</default>
+                    <label>Jeff St. Clair</label>
+                </value>
+                <value>
+                    <fullName>John Haderle</fullName>
+                    <default>false</default>
+                    <label>John Haderle</label>
+                </value>
+                <value>
+                    <fullName>Katie Cubillas</fullName>
+                    <default>false</default>
+                    <label>Katie Cubillas</label>
+                </value>
+                <value>
+                    <fullName>Kris Salas</fullName>
+                    <default>false</default>
+                    <label>Kris Salas</label>
+                </value>
+                <value>
+                    <fullName>Lakeith Whitley</fullName>
+                    <default>false</default>
+                    <label>Lakeith Whitley</label>
+                </value>
+                <value>
+                    <fullName>Leticia Gammill</fullName>
+                    <default>false</default>
+                    <label>Leticia Gammill</label>
+                </value>
+                <value>
+                    <fullName>Liz Freitas</fullName>
+                    <default>false</default>
+                    <label>Liz Freitas</label>
+                </value>
+                <value>
+                    <fullName>Luiza Klerner</fullName>
+                    <default>false</default>
+                    <label>Luiza Klerner</label>
+                </value>
+                <value>
+                    <fullName>Maria Lindstrom</fullName>
+                    <default>false</default>
+                    <label>Maria Lindstrom</label>
+                </value>
+                <value>
+                    <fullName>Mark Harrison</fullName>
+                    <default>false</default>
+                    <label>Mark Harrison</label>
+                </value>
+                <value>
+                    <fullName>Matt Pasewark</fullName>
+                    <default>false</default>
+                    <label>Matt Pasewark</label>
+                </value>
+                <value>
+                    <fullName>Megan Murphy</fullName>
+                    <default>false</default>
+                    <label>Megan Murphy</label>
+                </value>
+                <value>
+                    <fullName>Melanie Eicher</fullName>
+                    <default>false</default>
+                    <label>Melanie Eicher</label>
+                </value>
+                <value>
+                    <fullName>Mick Preece</fullName>
+                    <default>false</default>
+                    <label>Mick Preece</label>
+                </value>
+                <value>
+                    <fullName>Noelle Biggs</fullName>
+                    <default>false</default>
+                    <label>Noelle Biggs</label>
+                </value>
+                <value>
+                    <fullName>Noelle Murray</fullName>
+                    <default>false</default>
+                    <label>Noelle Murray</label>
+                </value>
+                <value>
+                    <fullName>Petri Heikkinen</fullName>
+                    <default>false</default>
+                    <label>Petri Heikkinen</label>
+                </value>
+                <value>
+                    <fullName>Rachel Trejgier</fullName>
+                    <default>false</default>
+                    <label>Rachel Trejgier</label>
+                </value>
+                <value>
+                    <fullName>Rebecca Hagen</fullName>
+                    <default>false</default>
+                    <label>Rebecca Hagen</label>
+                </value>
+                <value>
+                    <fullName>Rich Downs</fullName>
+                    <default>false</default>
+                    <label>Rich Downs</label>
+                </value>
+                <value>
+                    <fullName>Rick Castillo</fullName>
+                    <default>false</default>
+                    <label>Rick Castillo</label>
+                </value>
+                <value>
+                    <fullName>Roger Geis</fullName>
+                    <default>false</default>
+                    <label>Roger Geis</label>
+                </value>
+                <value>
+                    <fullName>Sal Gutierrez</fullName>
+                    <default>false</default>
+                    <label>Sal Gutierrez</label>
+                </value>
+                <value>
+                    <fullName>Sandro Herrera</fullName>
+                    <default>false</default>
+                    <label>Sandro Herrera</label>
+                </value>
+                <value>
+                    <fullName>Stephanie Venetis</fullName>
+                    <default>false</default>
+                    <label>Stephanie Venetis</label>
+                </value>
+                <value>
+                    <fullName>Stephen Kelly</fullName>
+                    <default>false</default>
+                    <label>Stephen Kelly</label>
+                </value>
+                <value>
+                    <fullName>Tim Kueppers</fullName>
+                    <default>false</default>
+                    <label>Tim Kueppers</label>
+                </value>
+                <value>
+                    <fullName>Tina Vogel</fullName>
+                    <default>false</default>
+                    <label>Tina Vogel</label>
+                </value>
+                <value>
+                    <fullName>Umang Shah</fullName>
+                    <default>false</default>
+                    <label>Umang Shah</label>
+                </value>
+                <value>
+                    <fullName>Vince Randazzo</fullName>
+                    <default>false</default>
+                    <label>Vince Randazzo</label>
+                </value>
+                <value>
+                    <fullName>Vladimira Chytrackova</fullName>
+                    <default>false</default>
+                    <label>Vladimira Chytrackova</label>
+                </value>
+                <value>
+                    <fullName>Zuleika Phillips</fullName>
+                    <default>false</default>
+                    <label>Zuleika Phillips</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Acquisition_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Name of the user who owned the same opportunity in the acquisition organization</description>
+        <externalId>false</externalId>
+        <label>Acquisition User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Opportunity_Affiliates</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Additional_Opportunity_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Additional Opportunity Details</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Expected_Product__c + Opportunity__r.Expected_Service__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Anywhere_Annual_Total__c</fullName>
+        <externalId>false</externalId>
+        <label>Anywhere + Annual Total</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Budget_Approved_Project__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicator that Budget is approved for the project</description>
+        <externalId>false</externalId>
+        <label>Budget Approved Project</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Contract_Length__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Length</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>12 Months</fullName>
+                    <default>false</default>
+                    <label>12 Months</label>
+                </value>
+                <value>
+                    <fullName>24 Months</fullName>
+                    <default>false</default>
+                    <label>24 Months</label>
+                </value>
+                <value>
+                    <fullName>36 Months</fullName>
+                    <default>false</default>
+                    <label>36 Months</label>
+                </value>
+                <value>
+                    <fullName>Custom</fullName>
+                    <default>false</default>
+                    <label>Custom</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Contract_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cool Off</fullName>
+                    <default>false</default>
+                    <label>Cool Off</label>
+                </value>
+                <value>
+                    <fullName>Subscription</fullName>
+                    <default>false</default>
+                    <label>Subscription</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Country_Renewal__c</fullName>
+        <externalId>false</externalId>
+        <label>Country(Renewal)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Currency__c</fullName>
+        <externalId>false</externalId>
+        <label>Currency</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AUD</fullName>
+                    <default>false</default>
+                    <label>AUD</label>
+                </value>
+                <value>
+                    <fullName>CAD</fullName>
+                    <default>false</default>
+                    <label>CAD</label>
+                </value>
+                <value>
+                    <fullName>USD</fullName>
+                    <default>false</default>
+                    <label>USD</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Custom_Contract_Length_Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Custom Contract Length (Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer ID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DST__c</fullName>
+        <externalId>false</externalId>
+        <label>Distributor</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Disti_PO__c</fullName>
+        <externalId>false</externalId>
+        <label>Disti PO</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ENG_ASR1000_Chassis_Type__c</fullName>
+        <description>ENG-ASR1000 Chassis Type</description>
+        <externalId>false</externalId>
+        <label>ENG-ASR1000 Chassis Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ASR1001</fullName>
+                    <default>false</default>
+                    <label>ASR1001</label>
+                </value>
+                <value>
+                    <fullName>ASR1002</fullName>
+                    <default>false</default>
+                    <label>ASR1002</label>
+                </value>
+                <value>
+                    <fullName>ASR1002-X</fullName>
+                    <default>false</default>
+                    <label>ASR1002-X</label>
+                </value>
+                <value>
+                    <fullName>ASR1004</fullName>
+                    <default>false</default>
+                    <label>ASR1004</label>
+                </value>
+                <value>
+                    <fullName>ASR1006</fullName>
+                    <default>false</default>
+                    <label>ASR1006</label>
+                </value>
+                <value>
+                    <fullName>ASR1013</fullName>
+                    <default>false</default>
+                    <label>ASR1013</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ENG_ASR1000_Feature_Segments__c</fullName>
+        <description>ENG-ASR1000 Feature Segments</description>
+        <externalId>false</externalId>
+        <label>ENG-ASR1000 Feature Segments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AVC</fullName>
+                    <default>false</default>
+                    <label>AVC</label>
+                </value>
+                <value>
+                    <fullName>Broadband</fullName>
+                    <default>false</default>
+                    <label>Broadband</label>
+                </value>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <label>Cloud</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>DCI</fullName>
+                    <default>false</default>
+                    <label>DCI</label>
+                </value>
+                <value>
+                    <fullName>Enterprise Edge</fullName>
+                    <default>false</default>
+                    <label>Enterprise Edge</label>
+                </value>
+                <value>
+                    <fullName>IP Routing</fullName>
+                    <default>false</default>
+                    <label>IP Routing</label>
+                </value>
+                <value>
+                    <fullName>Peering</fullName>
+                    <default>false</default>
+                    <label>Peering</label>
+                </value>
+                <value>
+                    <fullName>Route Reflector</fullName>
+                    <default>false</default>
+                    <label>Route Reflector</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>SP Edge</fullName>
+                    <default>false</default>
+                    <label>SP Edge</label>
+                </value>
+                <value>
+                    <fullName>SP WiFi</fullName>
+                    <default>false</default>
+                    <label>SP WiFi</label>
+                </value>
+                <value>
+                    <fullName>WAN Aggregation</fullName>
+                    <default>false</default>
+                    <label>WAN Aggregation</label>
+                </value>
+                <value>
+                    <fullName>WAN Optimization</fullName>
+                    <default>false</default>
+                    <label>WAN Optimization</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ENG_ASR_Mix__c</fullName>
+        <description>ENG-ASR Mix %</description>
+        <externalId>false</externalId>
+        <label>ENG-ASR Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>ENG_ASR_Value__c</fullName>
+        <description>ENG-ASR Value</description>
+        <externalId>false</externalId>
+        <formula>ENG_Expected_Product_000__c* ENG_ASR_Mix__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ENG-ASR Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ENG_Expected_Product_000__c</fullName>
+        <description>ENG Expected Product ($000)</description>
+        <externalId>false</externalId>
+        <label>ENG Expected Product ($000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ENG_ISR_Mix__c</fullName>
+        <description>ENG-ASR Mix %</description>
+        <externalId>false</externalId>
+        <label>ENG-ISR Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>ENG_ISR_Platform_Category__c</fullName>
+        <description>ENG-ISR Platform Category</description>
+        <externalId>false</externalId>
+        <label>ENG-ISR Platform Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>4451-X</fullName>
+                    <default>false</default>
+                    <label>4451-X</label>
+                </value>
+                <value>
+                    <fullName>Fixed</fullName>
+                    <default>false</default>
+                    <label>Fixed</label>
+                </value>
+                <value>
+                    <fullName>Modular G2</fullName>
+                    <default>false</default>
+                    <label>Modular G2</label>
+                </value>
+                <value>
+                    <fullName>UCS-E</fullName>
+                    <default>false</default>
+                    <label>UCS-E</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ENG_ISR_Product_Families__c</fullName>
+        <description>ENG-ISR Product Families</description>
+        <externalId>false</externalId>
+        <label>ENG-ISR Product Families</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>8xx</fullName>
+                    <default>false</default>
+                    <label>8xx</label>
+                </value>
+                <value>
+                    <fullName>1xxx</fullName>
+                    <default>false</default>
+                    <label>1xxx</label>
+                </value>
+                <value>
+                    <fullName>2xxx</fullName>
+                    <default>false</default>
+                    <label>2xxx</label>
+                </value>
+                <value>
+                    <fullName>3xxx</fullName>
+                    <default>false</default>
+                    <label>3xxx</label>
+                </value>
+                <value>
+                    <fullName>4xxx</fullName>
+                    <default>false</default>
+                    <label>4xxx</label>
+                </value>
+                <value>
+                    <fullName>WAN LAN</fullName>
+                    <default>false</default>
+                    <label>WAN LAN</label>
+                </value>
+                <value>
+                    <fullName>APP</fullName>
+                    <default>false</default>
+                    <label>APP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ENG_ISR_Technology_Attach__c</fullName>
+        <description>ENG-ISR Technology Attach</description>
+        <externalId>false</externalId>
+        <label>ENG-ISR Technology Attach</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AX</fullName>
+                    <default>false</default>
+                    <label>AX</label>
+                </value>
+                <value>
+                    <fullName>UC</fullName>
+                    <default>false</default>
+                    <label>UC</label>
+                </value>
+                <value>
+                    <fullName>WAAS</fullName>
+                    <default>false</default>
+                    <label>WAAS</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Wireless</fullName>
+                    <default>false</default>
+                    <label>Wireless</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ENG_ISR_Value__c</fullName>
+        <description>ENG-ISR Value</description>
+        <externalId>false</externalId>
+        <formula>ENG_Expected_Product_000__c* ENG_ISR_Mix__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ENG-ISR Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ENG_Solutions__c</fullName>
+        <description>ENG_Solutions</description>
+        <externalId>false</externalId>
+        <label>ENG-Solutions</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BYOD</fullName>
+                    <default>false</default>
+                    <label>BYOD</label>
+                </value>
+                <value>
+                    <fullName>IWAN</fullName>
+                    <default>false</default>
+                    <label>IWAN</label>
+                </value>
+                <value>
+                    <fullName>Office-in-a-Box</fullName>
+                    <default>false</default>
+                    <label>Office-in-a-Box</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ENG_WAAS_Mix__c</fullName>
+        <description>ENG-WAAS Mix %</description>
+        <externalId>false</externalId>
+        <label>ENG-WAAS Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>ENG_WAAS_Product__c</fullName>
+        <description>ENG-WAAS Product</description>
+        <externalId>false</externalId>
+        <label>ENG-WAAS Product</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>WAVE294</fullName>
+                    <default>false</default>
+                    <label>WAVE294</label>
+                </value>
+                <value>
+                    <fullName>WAVE474</fullName>
+                    <default>false</default>
+                    <label>WAVE474</label>
+                </value>
+                <value>
+                    <fullName>WAVE574</fullName>
+                    <default>false</default>
+                    <label>WAVE574</label>
+                </value>
+                <value>
+                    <fullName>WAVE594</fullName>
+                    <default>false</default>
+                    <label>WAVE594</label>
+                </value>
+                <value>
+                    <fullName>WAVE694</fullName>
+                    <default>false</default>
+                    <label>WAVE694</label>
+                </value>
+                <value>
+                    <fullName>WAVE7541</fullName>
+                    <default>false</default>
+                    <label>WAVE7541</label>
+                </value>
+                <value>
+                    <fullName>WAVE8541</fullName>
+                    <default>false</default>
+                    <label>WAVE8541</label>
+                </value>
+                <value>
+                    <fullName>vWAAS 200</fullName>
+                    <default>false</default>
+                    <label>vWAAS 200</label>
+                </value>
+                <value>
+                    <fullName>vWAAS 750</fullName>
+                    <default>false</default>
+                    <label>vWAAS 750</label>
+                </value>
+                <value>
+                    <fullName>vWAAS 2500</fullName>
+                    <default>false</default>
+                    <label>vWAAS 2500</label>
+                </value>
+                <value>
+                    <fullName>vWAAS 6000</fullName>
+                    <default>false</default>
+                    <label>vWAAS 6000</label>
+                </value>
+                <value>
+                    <fullName>vWAAS 50000</fullName>
+                    <default>false</default>
+                    <label>vWAAS 50000</label>
+                </value>
+                <value>
+                    <fullName>AppNa</fullName>
+                    <default>false</default>
+                    <label>AppNa</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ENG_WAAS_Type__c</fullName>
+        <description>ENG-WAAS Type</description>
+        <externalId>false</externalId>
+        <label>ENG-WAAS Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>WAAS</fullName>
+                    <default>false</default>
+                    <label>WAAS</label>
+                </value>
+                <value>
+                    <fullName>vWAAS</fullName>
+                    <default>false</default>
+                    <label>vWAAS</label>
+                </value>
+                <value>
+                    <fullName>AppNav</fullName>
+                    <default>false</default>
+                    <label>AppNav</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ENG_WAAS_Value__c</fullName>
+        <description>ENG WAAS Value</description>
+        <externalId>false</externalId>
+        <formula>ENG_Expected_Product_000__c* ENG_WAAS_Mix__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ENG-WAAS Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Email_Annual_Total__c</fullName>
+        <externalId>false</externalId>
+        <label>Email Annual Total</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <description>How is the Email Security implemented</description>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Appliance</fullName>
+                    <default>false</default>
+                    <label>Appliance</label>
+                </value>
+                <value>
+                    <fullName>Hosted</fullName>
+                    <default>false</default>
+                    <label>Hosted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>End_Customer_PO__c</fullName>
+        <externalId>true</externalId>
+        <label>End Customer PO#</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Eval_Stage__c</fullName>
+        <externalId>false</externalId>
+        <label>Eval Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Eval Pending</fullName>
+                    <default>false</default>
+                    <label>Eval Pending</label>
+                </value>
+                <value>
+                    <fullName>Evaluation Agreement signed</fullName>
+                    <default>false</default>
+                    <label>Evaluation Agreement signed</label>
+                </value>
+                <value>
+                    <fullName>Eval Onsite - Awaiting Installation</fullName>
+                    <default>false</default>
+                    <label>Eval Onsite - Awaiting Installation</label>
+                </value>
+                <value>
+                    <fullName>Active Evaluation (Evaluation Installed and Testing)</fullName>
+                    <default>false</default>
+                    <label>Active Evaluation (Evaluation Installed and Testing)</label>
+                </value>
+                <value>
+                    <fullName>Evaluation Completed</fullName>
+                    <default>false</default>
+                    <label>Evaluation Completed</label>
+                </value>
+                <value>
+                    <fullName>Eval Waiting Return</fullName>
+                    <default>false</default>
+                    <label>Eval Waiting Return</label>
+                </value>
+                <value>
+                    <fullName>Evaluation Returned</fullName>
+                    <default>false</default>
+                    <label>Evaluation Returned</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Expected_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Value ($'000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Firewall__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicator that Firewall Security is Deployed</description>
+        <externalId>false</externalId>
+        <label>Firewall</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>From_Sales_Order_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>From Sales Order Number</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_was_the_deal_discovered__c</fullName>
+        <externalId>false</externalId>
+        <label>How was the deal discovered?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Joint effort by Partner and Tandberg</fullName>
+                    <default>false</default>
+                    <label>Joint effort by Partner and Tandberg</label>
+                </value>
+                <value>
+                    <fullName>Partner Discovered</fullName>
+                    <default>false</default>
+                    <label>Partner Discovered</label>
+                </value>
+                <value>
+                    <fullName>Tandberg Discovered</fullName>
+                    <default>false</default>
+                    <label>Tandberg Discovered</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Cisco Engaged Tandberg</fullName>
+                    <default>false</default>
+                    <label>Cisco Engaged Tandberg</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IPS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicator that IPS Security is Deployed</description>
+        <externalId>false</externalId>
+        <label>IPS</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Identity_Solution__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicator that Identity Solution Security is Deployed</description>
+        <externalId>false</externalId>
+        <label>Identity Solution</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>In_Danger_of_Losing__c</fullName>
+        <externalId>false</externalId>
+        <label>In Danger of Losing</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pricing</fullName>
+                    <default>false</default>
+                    <label>Pricing</label>
+                </value>
+                <value>
+                    <fullName>Features</fullName>
+                    <default>false</default>
+                    <label>Features</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Invoice_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Invoice_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice Number</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IronPort_ScanSafe_Opportunity_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>IronPort/ScanSafe Opportunity Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Dom. Opportunity</fullName>
+                    <default>false</default>
+                    <label>Dom. Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Intl. Opportunity</fullName>
+                    <default>false</default>
+                    <label>Intl. Opportunity</label>
+                </value>
+                <value>
+                    <fullName>IronPort Sales Opportunity</fullName>
+                    <default>false</default>
+                    <label>IronPort Sales Opportunity</label>
+                </value>
+                <value>
+                    <fullName>ScanSafe Opps</fullName>
+                    <default>false</default>
+                    <label>ScanSafe Opps</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Ironport_Partner_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Ironport Partner ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Joint_Sell_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Joint Sell ID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Joint_Sell_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Joint Sell Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>IronPort (PL) and Cisco (PL)</fullName>
+                    <default>false</default>
+                    <label>IronPort (PL) and Cisco (PL)</label>
+                </value>
+                <value>
+                    <fullName>IronPort (PL) and ScanSafe (PL)</fullName>
+                    <default>false</default>
+                    <label>IronPort (PL) and ScanSafe (PL)</label>
+                </value>
+                <value>
+                    <fullName>ScanSafe (PL) and Cisco (PL)</fullName>
+                    <default>false</default>
+                    <label>ScanSafe (PL) and Cisco (PL)</label>
+                </value>
+                <value>
+                    <fullName>IronPort (PL) , ScanSafe (PL) and Cisco (PL)</fullName>
+                    <default>false</default>
+                    <label>IronPort (PL) , ScanSafe (PL) and Cisco (PL)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Multi_Site_Order__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Multi-Site Order</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NARR_Total__c</fullName>
+        <externalId>false</externalId>
+        <formula>Web_Annual_Total__c + Anywhere_Annual_Total__c + Email_Annual_Total__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NARR Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>New_Opportunity__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicator that it's a new Opportunity</description>
+        <externalId>false</externalId>
+        <label>New Opportunity</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Next_Steps_Update_Date__c</fullName>
+        <description>This field is added for newScale SFDC Migration, required by the Acquisition Team of newScale.</description>
+        <externalId>false</externalId>
+        <label>Next Steps Update Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Next_Steps__c</fullName>
+        <description>This field is added for newScale SFDC Migration, required by the Acquisition Team of newScale.</description>
+        <externalId>false</externalId>
+        <label>Next Steps</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Opportunity Affiliates</relationshipLabel>
+        <relationshipName>Opportunity_Affiliates</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Oracle_Load_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Oracle Load Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Original_Lead_Classification__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Lead Classification</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A Lead</fullName>
+                    <default>false</default>
+                    <label>A Lead</label>
+                </value>
+                <value>
+                    <fullName>B Lead</fullName>
+                    <default>false</default>
+                    <label>B Lead</label>
+                </value>
+                <value>
+                    <fullName>C+ Lead</fullName>
+                    <default>false</default>
+                    <label>C+ Lead</label>
+                </value>
+                <value>
+                    <fullName>FYI</fullName>
+                    <default>false</default>
+                    <label>FYI</label>
+                </value>
+                <value>
+                    <fullName>Suspect</fullName>
+                    <default>false</default>
+                    <label>Suspect</label>
+                </value>
+                <value>
+                    <fullName>Existing Customer</fullName>
+                    <default>false</default>
+                    <label>Existing Customer</label>
+                </value>
+                <value>
+                    <fullName>Consultant</fullName>
+                    <default>false</default>
+                    <label>Consultant</label>
+                </value>
+                <value>
+                    <fullName>Potential Partner</fullName>
+                    <default>false</default>
+                    <label>Potential Partner</label>
+                </value>
+                <value>
+                    <fullName>Not pre-qualified Lead</fullName>
+                    <default>false</default>
+                    <label>Not pre-qualified Lead</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Original_Order_Sales_Rep__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Order Sales Rep</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Path_to_Closure__c</fullName>
+        <description>This field is added for newScale SFDC Migration, required by the Acquisition Team of newScale.</description>
+        <externalId>false</externalId>
+        <label>Path to Closure</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Payment_Terms__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Terms</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>30 Days</fullName>
+                    <default>false</default>
+                    <label>30 Days</label>
+                </value>
+                <value>
+                    <fullName>45 Days</fullName>
+                    <default>false</default>
+                    <label>45 Days</label>
+                </value>
+                <value>
+                    <fullName>60 Days</fullName>
+                    <default>false</default>
+                    <label>60 Days</label>
+                </value>
+                <value>
+                    <fullName>90 Days</fullName>
+                    <default>false</default>
+                    <label>90 Days</label>
+                </value>
+                <value>
+                    <fullName>120 Days</fullName>
+                    <default>false</default>
+                    <label>120 Days</label>
+                </value>
+                <value>
+                    <fullName>180 Days</fullName>
+                    <default>false</default>
+                    <label>180 Days</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pre_Sales_Engineer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales Engineer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Opportunity_Affiliates1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Product 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SS:Anywhere +</fullName>
+                    <default>false</default>
+                    <label>SS:Anywhere +</label>
+                </value>
+                <value>
+                    <fullName>SS:Connector</fullName>
+                    <default>false</default>
+                    <label>SS:Connector</label>
+                </value>
+                <value>
+                    <fullName>SS:Malware Scanning</fullName>
+                    <default>false</default>
+                    <label>SS:Malware Scanning</label>
+                </value>
+                <value>
+                    <fullName>SS:Message Discovery</fullName>
+                    <default>false</default>
+                    <label>SS:Message Discovery</label>
+                </value>
+                <value>
+                    <fullName>SS:Message Encryption</fullName>
+                    <default>false</default>
+                    <label>SS:Message Encryption</label>
+                </value>
+                <value>
+                    <fullName>SS:Message Security</fullName>
+                    <default>false</default>
+                    <label>SS:Message Security</label>
+                </value>
+                <value>
+                    <fullName>SS:ScanWeb</fullName>
+                    <default>false</default>
+                    <label>SS:ScanWeb</label>
+                </value>
+                <value>
+                    <fullName>SS:Set up: Anywhere+</fullName>
+                    <default>false</default>
+                    <label>SS:Set up: Anywhere+</label>
+                </value>
+                <value>
+                    <fullName>SS:Setup: Email</fullName>
+                    <default>false</default>
+                    <label>SS:Setup: Email</label>
+                </value>
+                <value>
+                    <fullName>SS:Set up: Web</fullName>
+                    <default>false</default>
+                    <label>SS:Set up: Web</label>
+                </value>
+                <value>
+                    <fullName>SS:Web Filtering</fullName>
+                    <default>false</default>
+                    <label>SS:Web Filtering</label>
+                </value>
+                <value>
+                    <fullName>Blocker</fullName>
+                    <default>false</default>
+                    <label>Blocker</label>
+                </value>
+                <value>
+                    <fullName>C150</fullName>
+                    <default>false</default>
+                    <label>C150</label>
+                </value>
+                <value>
+                    <fullName>C160</fullName>
+                    <default>false</default>
+                    <label>C160</label>
+                </value>
+                <value>
+                    <fullName>C160_ETN</fullName>
+                    <default>false</default>
+                    <label>C160_ETN</label>
+                </value>
+                <value>
+                    <fullName>C170</fullName>
+                    <default>false</default>
+                    <label>C170</label>
+                </value>
+                <value>
+                    <fullName>C350</fullName>
+                    <default>false</default>
+                    <label>C350</label>
+                </value>
+                <value>
+                    <fullName>C350D</fullName>
+                    <default>false</default>
+                    <label>C350D</label>
+                </value>
+                <value>
+                    <fullName>C360</fullName>
+                    <default>false</default>
+                    <label>C360</label>
+                </value>
+                <value>
+                    <fullName>C360_ETN</fullName>
+                    <default>false</default>
+                    <label>C360_ETN</label>
+                </value>
+                <value>
+                    <fullName>C360D_ETN</fullName>
+                    <default>false</default>
+                    <label>C360D_ETN</label>
+                </value>
+                <value>
+                    <fullName>C370</fullName>
+                    <default>false</default>
+                    <label>C370</label>
+                </value>
+                <value>
+                    <fullName>C370_ETN</fullName>
+                    <default>false</default>
+                    <label>C370_ETN</label>
+                </value>
+                <value>
+                    <fullName>C650</fullName>
+                    <default>false</default>
+                    <label>C650</label>
+                </value>
+                <value>
+                    <fullName>C660</fullName>
+                    <default>false</default>
+                    <label>C660</label>
+                </value>
+                <value>
+                    <fullName>C660_ETN</fullName>
+                    <default>false</default>
+                    <label>C660_ETN</label>
+                </value>
+                <value>
+                    <fullName>C670</fullName>
+                    <default>false</default>
+                    <label>C670</label>
+                </value>
+                <value>
+                    <fullName>C670_ETN</fullName>
+                    <default>false</default>
+                    <label>C670_ETN</label>
+                </value>
+                <value>
+                    <fullName>Hosted E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Hosted E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>Hybrid Hosted E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Hybrid Hosted E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>IEA</fullName>
+                    <default>false</default>
+                    <label>IEA</label>
+                </value>
+                <value>
+                    <fullName>M1060</fullName>
+                    <default>false</default>
+                    <label>M1060</label>
+                </value>
+                <value>
+                    <fullName>M1060_ETN</fullName>
+                    <default>false</default>
+                    <label>M1060_ETN</label>
+                </value>
+                <value>
+                    <fullName>M1070</fullName>
+                    <default>false</default>
+                    <label>M1070</label>
+                </value>
+                <value>
+                    <fullName>M1070_ETN</fullName>
+                    <default>false</default>
+                    <label>M1070_ETN</label>
+                </value>
+                <value>
+                    <fullName>M160</fullName>
+                    <default>false</default>
+                    <label>M160</label>
+                </value>
+                <value>
+                    <fullName>M160_ETN</fullName>
+                    <default>false</default>
+                    <label>M160_ETN</label>
+                </value>
+                <value>
+                    <fullName>M170</fullName>
+                    <default>false</default>
+                    <label>M170</label>
+                </value>
+                <value>
+                    <fullName>M370</fullName>
+                    <default>false</default>
+                    <label>M370</label>
+                </value>
+                <value>
+                    <fullName>M370_ETN</fullName>
+                    <default>false</default>
+                    <label>M370_ETN</label>
+                </value>
+                <value>
+                    <fullName>M650</fullName>
+                    <default>false</default>
+                    <label>M650</label>
+                </value>
+                <value>
+                    <fullName>M660</fullName>
+                    <default>false</default>
+                    <label>M660</label>
+                </value>
+                <value>
+                    <fullName>M660_ETN</fullName>
+                    <default>false</default>
+                    <label>M660_ETN</label>
+                </value>
+                <value>
+                    <fullName>M670</fullName>
+                    <default>false</default>
+                    <label>M670</label>
+                </value>
+                <value>
+                    <fullName>M670_ETN</fullName>
+                    <default>false</default>
+                    <label>M670_ETN</label>
+                </value>
+                <value>
+                    <fullName>Managed E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Managed E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>PostX License</fullName>
+                    <default>false</default>
+                    <label>PostX License</label>
+                </value>
+                <value>
+                    <fullName>PostX Support</fullName>
+                    <default>false</default>
+                    <label>PostX Support</label>
+                </value>
+                <value>
+                    <fullName>S1070_ETN</fullName>
+                    <default>false</default>
+                    <label>S1070_ETN</label>
+                </value>
+                <value>
+                    <fullName>S160</fullName>
+                    <default>false</default>
+                    <label>S160</label>
+                </value>
+                <value>
+                    <fullName>S160_ETN</fullName>
+                    <default>false</default>
+                    <label>S160_ETN</label>
+                </value>
+                <value>
+                    <fullName>S170</fullName>
+                    <default>false</default>
+                    <label>S170</label>
+                </value>
+                <value>
+                    <fullName>S350</fullName>
+                    <default>false</default>
+                    <label>S350</label>
+                </value>
+                <value>
+                    <fullName>S360</fullName>
+                    <default>false</default>
+                    <label>S360</label>
+                </value>
+                <value>
+                    <fullName>S360_ETN</fullName>
+                    <default>false</default>
+                    <label>S360_ETN</label>
+                </value>
+                <value>
+                    <fullName>S370</fullName>
+                    <default>false</default>
+                    <label>S370</label>
+                </value>
+                <value>
+                    <fullName>S370_ETN</fullName>
+                    <default>false</default>
+                    <label>S370_ETN</label>
+                </value>
+                <value>
+                    <fullName>S650</fullName>
+                    <default>false</default>
+                    <label>S650</label>
+                </value>
+                <value>
+                    <fullName>S660</fullName>
+                    <default>false</default>
+                    <label>S660</label>
+                </value>
+                <value>
+                    <fullName>S660_ETN</fullName>
+                    <default>false</default>
+                    <label>S660_ETN</label>
+                </value>
+                <value>
+                    <fullName>S670</fullName>
+                    <default>false</default>
+                    <label>S670</label>
+                </value>
+                <value>
+                    <fullName>S670_ETN</fullName>
+                    <default>false</default>
+                    <label>S670_ETN</label>
+                </value>
+                <value>
+                    <fullName>S670 F</fullName>
+                    <default>false</default>
+                    <label>S670 F</label>
+                </value>
+                <value>
+                    <fullName>Support</fullName>
+                    <default>false</default>
+                    <label>Support</label>
+                </value>
+                <value>
+                    <fullName>X1060</fullName>
+                    <default>false</default>
+                    <label>X1060</label>
+                </value>
+                <value>
+                    <fullName>X1060_ETN</fullName>
+                    <default>false</default>
+                    <label>X1060_ETN</label>
+                </value>
+                <value>
+                    <fullName>X1070</fullName>
+                    <default>false</default>
+                    <label>X1070</label>
+                </value>
+                <value>
+                    <fullName>X1070_ETN</fullName>
+                    <default>false</default>
+                    <label>X1070_ETN</label>
+                </value>
+                <value>
+                    <fullName>X1070 F</fullName>
+                    <default>false</default>
+                    <label>X1070 F</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Product 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SS:Anywhere +</fullName>
+                    <default>false</default>
+                    <label>SS:Anywhere +</label>
+                </value>
+                <value>
+                    <fullName>SS:Connector</fullName>
+                    <default>false</default>
+                    <label>SS:Connector</label>
+                </value>
+                <value>
+                    <fullName>SS:Malware Scanning</fullName>
+                    <default>false</default>
+                    <label>SS:Malware Scanning</label>
+                </value>
+                <value>
+                    <fullName>SS:Message Discovery</fullName>
+                    <default>false</default>
+                    <label>SS:Message Discovery</label>
+                </value>
+                <value>
+                    <fullName>SS:Message Encryption</fullName>
+                    <default>false</default>
+                    <label>SS:Message Encryption</label>
+                </value>
+                <value>
+                    <fullName>SS:Message Security</fullName>
+                    <default>false</default>
+                    <label>SS:Message Security</label>
+                </value>
+                <value>
+                    <fullName>SS:ScanWeb</fullName>
+                    <default>false</default>
+                    <label>SS:ScanWeb</label>
+                </value>
+                <value>
+                    <fullName>SS:Set up: Anywhere+</fullName>
+                    <default>false</default>
+                    <label>SS:Set up: Anywhere+</label>
+                </value>
+                <value>
+                    <fullName>SS:Setup: Email</fullName>
+                    <default>false</default>
+                    <label>SS:Setup: Email</label>
+                </value>
+                <value>
+                    <fullName>SS:Set up: Web</fullName>
+                    <default>false</default>
+                    <label>SS:Set up: Web</label>
+                </value>
+                <value>
+                    <fullName>SS:Web Filtering</fullName>
+                    <default>false</default>
+                    <label>SS:Web Filtering</label>
+                </value>
+                <value>
+                    <fullName>Blocker</fullName>
+                    <default>false</default>
+                    <label>Blocker</label>
+                </value>
+                <value>
+                    <fullName>C150</fullName>
+                    <default>false</default>
+                    <label>C150</label>
+                </value>
+                <value>
+                    <fullName>C160</fullName>
+                    <default>false</default>
+                    <label>C160</label>
+                </value>
+                <value>
+                    <fullName>C160_ETN</fullName>
+                    <default>false</default>
+                    <label>C160_ETN</label>
+                </value>
+                <value>
+                    <fullName>C170</fullName>
+                    <default>false</default>
+                    <label>C170</label>
+                </value>
+                <value>
+                    <fullName>C350</fullName>
+                    <default>false</default>
+                    <label>C350</label>
+                </value>
+                <value>
+                    <fullName>C350D</fullName>
+                    <default>false</default>
+                    <label>C350D</label>
+                </value>
+                <value>
+                    <fullName>C360</fullName>
+                    <default>false</default>
+                    <label>C360</label>
+                </value>
+                <value>
+                    <fullName>C360_ETN</fullName>
+                    <default>false</default>
+                    <label>C360_ETN</label>
+                </value>
+                <value>
+                    <fullName>C360D_ETN</fullName>
+                    <default>false</default>
+                    <label>C360D_ETN</label>
+                </value>
+                <value>
+                    <fullName>C370</fullName>
+                    <default>false</default>
+                    <label>C370</label>
+                </value>
+                <value>
+                    <fullName>C370_ETN</fullName>
+                    <default>false</default>
+                    <label>C370_ETN</label>
+                </value>
+                <value>
+                    <fullName>C650</fullName>
+                    <default>false</default>
+                    <label>C650</label>
+                </value>
+                <value>
+                    <fullName>C660</fullName>
+                    <default>false</default>
+                    <label>C660</label>
+                </value>
+                <value>
+                    <fullName>C660_ETN</fullName>
+                    <default>false</default>
+                    <label>C660_ETN</label>
+                </value>
+                <value>
+                    <fullName>C670</fullName>
+                    <default>false</default>
+                    <label>C670</label>
+                </value>
+                <value>
+                    <fullName>C670_ETN</fullName>
+                    <default>false</default>
+                    <label>C670_ETN</label>
+                </value>
+                <value>
+                    <fullName>Hosted E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Hosted E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>Hybrid Hosted E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Hybrid Hosted E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>IEA</fullName>
+                    <default>false</default>
+                    <label>IEA</label>
+                </value>
+                <value>
+                    <fullName>M1060</fullName>
+                    <default>false</default>
+                    <label>M1060</label>
+                </value>
+                <value>
+                    <fullName>M1060_ETN</fullName>
+                    <default>false</default>
+                    <label>M1060_ETN</label>
+                </value>
+                <value>
+                    <fullName>M1070</fullName>
+                    <default>false</default>
+                    <label>M1070</label>
+                </value>
+                <value>
+                    <fullName>M1070_ETN</fullName>
+                    <default>false</default>
+                    <label>M1070_ETN</label>
+                </value>
+                <value>
+                    <fullName>M160</fullName>
+                    <default>false</default>
+                    <label>M160</label>
+                </value>
+                <value>
+                    <fullName>M160_ETN</fullName>
+                    <default>false</default>
+                    <label>M160_ETN</label>
+                </value>
+                <value>
+                    <fullName>M170</fullName>
+                    <default>false</default>
+                    <label>M170</label>
+                </value>
+                <value>
+                    <fullName>M370</fullName>
+                    <default>false</default>
+                    <label>M370</label>
+                </value>
+                <value>
+                    <fullName>M370_ETN</fullName>
+                    <default>false</default>
+                    <label>M370_ETN</label>
+                </value>
+                <value>
+                    <fullName>M650</fullName>
+                    <default>false</default>
+                    <label>M650</label>
+                </value>
+                <value>
+                    <fullName>M660</fullName>
+                    <default>false</default>
+                    <label>M660</label>
+                </value>
+                <value>
+                    <fullName>M660_ETN</fullName>
+                    <default>false</default>
+                    <label>M660_ETN</label>
+                </value>
+                <value>
+                    <fullName>M670</fullName>
+                    <default>false</default>
+                    <label>M670</label>
+                </value>
+                <value>
+                    <fullName>M670_ETN</fullName>
+                    <default>false</default>
+                    <label>M670_ETN</label>
+                </value>
+                <value>
+                    <fullName>Managed E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Managed E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>PostX License</fullName>
+                    <default>false</default>
+                    <label>PostX License</label>
+                </value>
+                <value>
+                    <fullName>PostX Support</fullName>
+                    <default>false</default>
+                    <label>PostX Support</label>
+                </value>
+                <value>
+                    <fullName>S1070_ETN</fullName>
+                    <default>false</default>
+                    <label>S1070_ETN</label>
+                </value>
+                <value>
+                    <fullName>S160</fullName>
+                    <default>false</default>
+                    <label>S160</label>
+                </value>
+                <value>
+                    <fullName>S160_ETN</fullName>
+                    <default>false</default>
+                    <label>S160_ETN</label>
+                </value>
+                <value>
+                    <fullName>S170</fullName>
+                    <default>false</default>
+                    <label>S170</label>
+                </value>
+                <value>
+                    <fullName>S350</fullName>
+                    <default>false</default>
+                    <label>S350</label>
+                </value>
+                <value>
+                    <fullName>S360</fullName>
+                    <default>false</default>
+                    <label>S360</label>
+                </value>
+                <value>
+                    <fullName>S360_ETN</fullName>
+                    <default>false</default>
+                    <label>S360_ETN</label>
+                </value>
+                <value>
+                    <fullName>S370</fullName>
+                    <default>false</default>
+                    <label>S370</label>
+                </value>
+                <value>
+                    <fullName>S370_ETN</fullName>
+                    <default>false</default>
+                    <label>S370_ETN</label>
+                </value>
+                <value>
+                    <fullName>S650</fullName>
+                    <default>false</default>
+                    <label>S650</label>
+                </value>
+                <value>
+                    <fullName>S660</fullName>
+                    <default>false</default>
+                    <label>S660</label>
+                </value>
+                <value>
+                    <fullName>S660_ETN</fullName>
+                    <default>false</default>
+                    <label>S660_ETN</label>
+                </value>
+                <value>
+                    <fullName>S670</fullName>
+                    <default>false</default>
+                    <label>S670</label>
+                </value>
+                <value>
+                    <fullName>S670_ETN</fullName>
+                    <default>false</default>
+                    <label>S670_ETN</label>
+                </value>
+                <value>
+                    <fullName>S670 F</fullName>
+                    <default>false</default>
+                    <label>S670 F</label>
+                </value>
+                <value>
+                    <fullName>Support</fullName>
+                    <default>false</default>
+                    <label>Support</label>
+                </value>
+                <value>
+                    <fullName>X1060</fullName>
+                    <default>false</default>
+                    <label>X1060</label>
+                </value>
+                <value>
+                    <fullName>X1060_ETN</fullName>
+                    <default>false</default>
+                    <label>X1060_ETN</label>
+                </value>
+                <value>
+                    <fullName>X1070</fullName>
+                    <default>false</default>
+                    <label>X1070</label>
+                </value>
+                <value>
+                    <fullName>X1070_ETN</fullName>
+                    <default>false</default>
+                    <label>X1070_ETN</label>
+                </value>
+                <value>
+                    <fullName>X1070 F</fullName>
+                    <default>false</default>
+                    <label>X1070 F</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SS:Anywhere +</fullName>
+                    <default>false</default>
+                    <label>SS:Anywhere +</label>
+                </value>
+                <value>
+                    <fullName>SS:Connector</fullName>
+                    <default>false</default>
+                    <label>SS:Connector</label>
+                </value>
+                <value>
+                    <fullName>SS:Malware Scanning</fullName>
+                    <default>false</default>
+                    <label>SS:Malware Scanning</label>
+                </value>
+                <value>
+                    <fullName>SS:Message Discovery</fullName>
+                    <default>false</default>
+                    <label>SS:Message Discovery</label>
+                </value>
+                <value>
+                    <fullName>SS:Message Encryption</fullName>
+                    <default>false</default>
+                    <label>SS:Message Encryption</label>
+                </value>
+                <value>
+                    <fullName>SS:Message Security</fullName>
+                    <default>false</default>
+                    <label>SS:Message Security</label>
+                </value>
+                <value>
+                    <fullName>SS:ScanWeb</fullName>
+                    <default>false</default>
+                    <label>SS:ScanWeb</label>
+                </value>
+                <value>
+                    <fullName>SS:Set up: Anywhere+</fullName>
+                    <default>false</default>
+                    <label>SS:Set up: Anywhere+</label>
+                </value>
+                <value>
+                    <fullName>SS:Setup: Email</fullName>
+                    <default>false</default>
+                    <label>SS:Setup: Email</label>
+                </value>
+                <value>
+                    <fullName>SS:Set up: Web</fullName>
+                    <default>false</default>
+                    <label>SS:Set up: Web</label>
+                </value>
+                <value>
+                    <fullName>SS:Web Filtering</fullName>
+                    <default>false</default>
+                    <label>SS:Web Filtering</label>
+                </value>
+                <value>
+                    <fullName>Blocker</fullName>
+                    <default>false</default>
+                    <label>Blocker</label>
+                </value>
+                <value>
+                    <fullName>C150</fullName>
+                    <default>false</default>
+                    <label>C150</label>
+                </value>
+                <value>
+                    <fullName>C160</fullName>
+                    <default>false</default>
+                    <label>C160</label>
+                </value>
+                <value>
+                    <fullName>C160_ETN</fullName>
+                    <default>false</default>
+                    <label>C160_ETN</label>
+                </value>
+                <value>
+                    <fullName>C170</fullName>
+                    <default>false</default>
+                    <label>C170</label>
+                </value>
+                <value>
+                    <fullName>C350</fullName>
+                    <default>false</default>
+                    <label>C350</label>
+                </value>
+                <value>
+                    <fullName>C350D</fullName>
+                    <default>false</default>
+                    <label>C350D</label>
+                </value>
+                <value>
+                    <fullName>C360</fullName>
+                    <default>false</default>
+                    <label>C360</label>
+                </value>
+                <value>
+                    <fullName>C360_ETN</fullName>
+                    <default>false</default>
+                    <label>C360_ETN</label>
+                </value>
+                <value>
+                    <fullName>C360D_ETN</fullName>
+                    <default>false</default>
+                    <label>C360D_ETN</label>
+                </value>
+                <value>
+                    <fullName>C370</fullName>
+                    <default>false</default>
+                    <label>C370</label>
+                </value>
+                <value>
+                    <fullName>C370_ETN</fullName>
+                    <default>false</default>
+                    <label>C370_ETN</label>
+                </value>
+                <value>
+                    <fullName>C650</fullName>
+                    <default>false</default>
+                    <label>C650</label>
+                </value>
+                <value>
+                    <fullName>C660</fullName>
+                    <default>false</default>
+                    <label>C660</label>
+                </value>
+                <value>
+                    <fullName>C660_ETN</fullName>
+                    <default>false</default>
+                    <label>C660_ETN</label>
+                </value>
+                <value>
+                    <fullName>C670</fullName>
+                    <default>false</default>
+                    <label>C670</label>
+                </value>
+                <value>
+                    <fullName>C670_ETN</fullName>
+                    <default>false</default>
+                    <label>C670_ETN</label>
+                </value>
+                <value>
+                    <fullName>Hosted E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Hosted E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>Hybrid Hosted E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Hybrid Hosted E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>IEA</fullName>
+                    <default>false</default>
+                    <label>IEA</label>
+                </value>
+                <value>
+                    <fullName>M1060</fullName>
+                    <default>false</default>
+                    <label>M1060</label>
+                </value>
+                <value>
+                    <fullName>M1060_ETN</fullName>
+                    <default>false</default>
+                    <label>M1060_ETN</label>
+                </value>
+                <value>
+                    <fullName>M1070</fullName>
+                    <default>false</default>
+                    <label>M1070</label>
+                </value>
+                <value>
+                    <fullName>M1070_ETN</fullName>
+                    <default>false</default>
+                    <label>M1070_ETN</label>
+                </value>
+                <value>
+                    <fullName>M160</fullName>
+                    <default>false</default>
+                    <label>M160</label>
+                </value>
+                <value>
+                    <fullName>M160_ETN</fullName>
+                    <default>false</default>
+                    <label>M160_ETN</label>
+                </value>
+                <value>
+                    <fullName>M170</fullName>
+                    <default>false</default>
+                    <label>M170</label>
+                </value>
+                <value>
+                    <fullName>M370</fullName>
+                    <default>false</default>
+                    <label>M370</label>
+                </value>
+                <value>
+                    <fullName>M370_ETN</fullName>
+                    <default>false</default>
+                    <label>M370_ETN</label>
+                </value>
+                <value>
+                    <fullName>M650</fullName>
+                    <default>false</default>
+                    <label>M650</label>
+                </value>
+                <value>
+                    <fullName>M660</fullName>
+                    <default>false</default>
+                    <label>M660</label>
+                </value>
+                <value>
+                    <fullName>M660_ETN</fullName>
+                    <default>false</default>
+                    <label>M660_ETN</label>
+                </value>
+                <value>
+                    <fullName>M670</fullName>
+                    <default>false</default>
+                    <label>M670</label>
+                </value>
+                <value>
+                    <fullName>M670_ETN</fullName>
+                    <default>false</default>
+                    <label>M670_ETN</label>
+                </value>
+                <value>
+                    <fullName>Managed E-mail Security</fullName>
+                    <default>false</default>
+                    <label>Managed E-mail Security</label>
+                </value>
+                <value>
+                    <fullName>PostX License</fullName>
+                    <default>false</default>
+                    <label>PostX License</label>
+                </value>
+                <value>
+                    <fullName>PostX Support</fullName>
+                    <default>false</default>
+                    <label>PostX Support</label>
+                </value>
+                <value>
+                    <fullName>S1070_ETN</fullName>
+                    <default>false</default>
+                    <label>S1070_ETN</label>
+                </value>
+                <value>
+                    <fullName>S160</fullName>
+                    <default>false</default>
+                    <label>S160</label>
+                </value>
+                <value>
+                    <fullName>S160_ETN</fullName>
+                    <default>false</default>
+                    <label>S160_ETN</label>
+                </value>
+                <value>
+                    <fullName>S170</fullName>
+                    <default>false</default>
+                    <label>S170</label>
+                </value>
+                <value>
+                    <fullName>S350</fullName>
+                    <default>false</default>
+                    <label>S350</label>
+                </value>
+                <value>
+                    <fullName>S360</fullName>
+                    <default>false</default>
+                    <label>S360</label>
+                </value>
+                <value>
+                    <fullName>S360_ETN</fullName>
+                    <default>false</default>
+                    <label>S360_ETN</label>
+                </value>
+                <value>
+                    <fullName>S370</fullName>
+                    <default>false</default>
+                    <label>S370</label>
+                </value>
+                <value>
+                    <fullName>S370_ETN</fullName>
+                    <default>false</default>
+                    <label>S370_ETN</label>
+                </value>
+                <value>
+                    <fullName>S650</fullName>
+                    <default>false</default>
+                    <label>S650</label>
+                </value>
+                <value>
+                    <fullName>S660</fullName>
+                    <default>false</default>
+                    <label>S660</label>
+                </value>
+                <value>
+                    <fullName>S660_ETN</fullName>
+                    <default>false</default>
+                    <label>S660_ETN</label>
+                </value>
+                <value>
+                    <fullName>S670</fullName>
+                    <default>false</default>
+                    <label>S670</label>
+                </value>
+                <value>
+                    <fullName>S670_ETN</fullName>
+                    <default>false</default>
+                    <label>S670_ETN</label>
+                </value>
+                <value>
+                    <fullName>S670 F</fullName>
+                    <default>false</default>
+                    <label>S670 F</label>
+                </value>
+                <value>
+                    <fullName>Support</fullName>
+                    <default>false</default>
+                    <label>Support</label>
+                </value>
+                <value>
+                    <fullName>X1060</fullName>
+                    <default>false</default>
+                    <label>X1060</label>
+                </value>
+                <value>
+                    <fullName>X1060_ETN</fullName>
+                    <default>false</default>
+                    <label>X1060_ETN</label>
+                </value>
+                <value>
+                    <fullName>X1070</fullName>
+                    <default>false</default>
+                    <label>X1070</label>
+                </value>
+                <value>
+                    <fullName>X1070_ETN</fullName>
+                    <default>false</default>
+                    <label>X1070_ETN</label>
+                </value>
+                <value>
+                    <fullName>X1070 F</fullName>
+                    <default>false</default>
+                    <label>X1070 F</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Project_Timeline__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Timeline</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1-2 Months</fullName>
+                    <default>false</default>
+                    <label>1-2 Months</label>
+                </value>
+                <value>
+                    <fullName>3-5 Months</fullName>
+                    <default>false</default>
+                    <label>3-5 Months</label>
+                </value>
+                <value>
+                    <fullName>6+ Months</fullName>
+                    <default>false</default>
+                    <label>6+ Months</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Protocol_Inquiry_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Protocol Inquiry ID</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantity 2</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantity 3</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantity</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Renewal_Expected_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Renewal Expected Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_Expected_Close_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Renewal Expected Close Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_Primary_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Renewal Primary Contact</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Opportunity_Affiliates2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Renewal_Team_Rep_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Renewal Team Rep Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Renewal_Territory_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Renewal Territory Number</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Renewal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Renewal</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Acceleration_Program__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Acceleration Program</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Accelerate Success Program</fullName>
+                    <default>false</default>
+                    <label>Accelerate Success Program</label>
+                </value>
+                <value>
+                    <fullName>Experience Enablement Program</fullName>
+                    <default>false</default>
+                    <label>Experience Enablement Program</label>
+                </value>
+                <value>
+                    <fullName>Sales Innovation Program</fullName>
+                    <default>false</default>
+                    <label>Sales Innovation Program</label>
+                </value>
+                <value>
+                    <fullName>TelePresence Acceleration Program</fullName>
+                    <default>false</default>
+                    <label>TelePresence Acceleration Program</label>
+                </value>
+                <value>
+                    <fullName>Stall Opportunity Acceleration Program</fullName>
+                    <default>false</default>
+                    <label>Stall Opportunity Acceleration Program</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Development_Rep__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Development Rep</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>true</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Anthony Pomorski</fullName>
+                    <default>false</default>
+                    <label>Anthony Pomorski</label>
+                </value>
+                <value>
+                    <fullName>Brian DiLoreto</fullName>
+                    <default>false</default>
+                    <label>Brian DiLoreto</label>
+                </value>
+                <value>
+                    <fullName>Kevin Janke</fullName>
+                    <default>false</default>
+                    <label>Kevin Janke</label>
+                </value>
+                <value>
+                    <fullName>Mike Klazas</fullName>
+                    <default>false</default>
+                    <label>Mike Klazas</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Security_PSS_Primary__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary Security PSS user</description>
+        <externalId>false</externalId>
+        <label>Security PSS (Primary)</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Opportunity_Affiliates3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Security_PSS_Secondary__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Secondary Security PSS user</description>
+        <externalId>false</externalId>
+        <label>Security PSS (Secondary)</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Opportunity_Affiliates4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Security_SE_Primary__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary Security SE user</description>
+        <externalId>false</externalId>
+        <label>Security SE (Primary)</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Opportunity_Affiliates5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Security_SE_Secondary__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Secondary Security SE user</description>
+        <externalId>false</externalId>
+        <label>Security SE (Secondary)</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Opportunity_Affiliates6</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>State_Renewal__c</fullName>
+        <externalId>false</externalId>
+        <label>State(Renewal)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Engineer__c</fullName>
+        <externalId>false</externalId>
+        <label>System Engineer</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Adam Pulsakowski</fullName>
+                    <default>false</default>
+                    <label>Adam Pulsakowski</label>
+                </value>
+                <value>
+                    <fullName>Adrian Larsen</fullName>
+                    <default>false</default>
+                    <label>Adrian Larsen</label>
+                </value>
+                <value>
+                    <fullName>Ajay Sood</fullName>
+                    <default>false</default>
+                    <label>Ajay Sood</label>
+                </value>
+                <value>
+                    <fullName>Akinobu Kadan</fullName>
+                    <default>false</default>
+                    <label>Akinobu Kadan</label>
+                </value>
+                <value>
+                    <fullName>Alan Rivas</fullName>
+                    <default>false</default>
+                    <label>Alan Rivas</label>
+                </value>
+                <value>
+                    <fullName>Alberto Torralba</fullName>
+                    <default>false</default>
+                    <label>Alberto Torralba</label>
+                </value>
+                <value>
+                    <fullName>Allistair Scott</fullName>
+                    <default>false</default>
+                    <label>Allistair Scott</label>
+                </value>
+                <value>
+                    <fullName>Alvaro García</fullName>
+                    <default>false</default>
+                    <label>Alvaro García</label>
+                </value>
+                <value>
+                    <fullName>Andrew Sciaroni</fullName>
+                    <default>false</default>
+                    <label>Andrew Sciaroni</label>
+                </value>
+                <value>
+                    <fullName>Andy Edwards</fullName>
+                    <default>false</default>
+                    <label>Andy Edwards</label>
+                </value>
+                <value>
+                    <fullName>Andy Ryan</fullName>
+                    <default>false</default>
+                    <label>Andy Ryan</label>
+                </value>
+                <value>
+                    <fullName>Anthony Smyth</fullName>
+                    <default>false</default>
+                    <label>Anthony Smyth</label>
+                </value>
+                <value>
+                    <fullName>Antonio Ierano</fullName>
+                    <default>false</default>
+                    <label>Antonio Ierano</label>
+                </value>
+                <value>
+                    <fullName>Anurak Chuetanapinyo</fullName>
+                    <default>false</default>
+                    <label>Anurak Chuetanapinyo</label>
+                </value>
+                <value>
+                    <fullName>Arnaud Kopp</fullName>
+                    <default>false</default>
+                    <label>Arnaud Kopp</label>
+                </value>
+                <value>
+                    <fullName>Carlo Beronio</fullName>
+                    <default>false</default>
+                    <label>Carlo Beronio</label>
+                </value>
+                <value>
+                    <fullName>Cedo Vicente</fullName>
+                    <default>false</default>
+                    <label>Cedo Vicente</label>
+                </value>
+                <value>
+                    <fullName>Charles Rami</fullName>
+                    <default>false</default>
+                    <label>Charles Rami</label>
+                </value>
+                <value>
+                    <fullName>Chris Porter</fullName>
+                    <default>false</default>
+                    <label>Chris Porter</label>
+                </value>
+                <value>
+                    <fullName>Christian Boessler</fullName>
+                    <default>false</default>
+                    <label>Christian Boessler</label>
+                </value>
+                <value>
+                    <fullName>Christian Etzold</fullName>
+                    <default>false</default>
+                    <label>Christian Etzold</label>
+                </value>
+                <value>
+                    <fullName>Dalton Hamilton</fullName>
+                    <default>false</default>
+                    <label>Dalton Hamilton</label>
+                </value>
+                <value>
+                    <fullName>Dan Griffin</fullName>
+                    <default>false</default>
+                    <label>Dan Griffin</label>
+                </value>
+                <value>
+                    <fullName>Daniele Nicita</fullName>
+                    <default>false</default>
+                    <label>Daniele Nicita</label>
+                </value>
+                <value>
+                    <fullName>Dan Lukas</fullName>
+                    <default>false</default>
+                    <label>Dan Lukas</label>
+                </value>
+                <value>
+                    <fullName>Dannie Palatosa</fullName>
+                    <default>false</default>
+                    <label>Dannie Palatosa</label>
+                </value>
+                <value>
+                    <fullName>Dan Walters</fullName>
+                    <default>false</default>
+                    <label>Dan Walters</label>
+                </value>
+                <value>
+                    <fullName>Dario Opezzo</fullName>
+                    <default>false</default>
+                    <label>Dario Opezzo</label>
+                </value>
+                <value>
+                    <fullName>David Wu</fullName>
+                    <default>false</default>
+                    <label>David Wu</label>
+                </value>
+                <value>
+                    <fullName>Dirk Beste</fullName>
+                    <default>false</default>
+                    <label>Dirk Beste</label>
+                </value>
+                <value>
+                    <fullName>Dominic Yip</fullName>
+                    <default>false</default>
+                    <label>Dominic Yip</label>
+                </value>
+                <value>
+                    <fullName>Emmanuel Tacheau</fullName>
+                    <default>false</default>
+                    <label>Emmanuel Tacheau</label>
+                </value>
+                <value>
+                    <fullName>Erich Stokes</fullName>
+                    <default>false</default>
+                    <label>Erich Stokes</label>
+                </value>
+                <value>
+                    <fullName>Erick Mechler</fullName>
+                    <default>false</default>
+                    <label>Erick Mechler</label>
+                </value>
+                <value>
+                    <fullName>Eric Ng</fullName>
+                    <default>false</default>
+                    <label>Eric Ng</label>
+                </value>
+                <value>
+                    <fullName>Finn Ramsland</fullName>
+                    <default>false</default>
+                    <label>Finn Ramsland</label>
+                </value>
+                <value>
+                    <fullName>Frederic Her</fullName>
+                    <default>false</default>
+                    <label>Frederic Her</label>
+                </value>
+                <value>
+                    <fullName>Fredrik Myrelid</fullName>
+                    <default>false</default>
+                    <label>Fredrik Myrelid</label>
+                </value>
+                <value>
+                    <fullName>Garett Redelings</fullName>
+                    <default>false</default>
+                    <label>Garett Redelings</label>
+                </value>
+                <value>
+                    <fullName>George Nazarey</fullName>
+                    <default>false</default>
+                    <label>George Nazarey</label>
+                </value>
+                <value>
+                    <fullName>Gregory Chew</fullName>
+                    <default>false</default>
+                    <label>Gregory Chew</label>
+                </value>
+                <value>
+                    <fullName>Hrvoje Dogan</fullName>
+                    <default>false</default>
+                    <label>Hrvoje Dogan</label>
+                </value>
+                <value>
+                    <fullName>James Todd</fullName>
+                    <default>false</default>
+                    <label>James Todd</label>
+                </value>
+                <value>
+                    <fullName>Jari Salmi</fullName>
+                    <default>false</default>
+                    <label>Jari Salmi</label>
+                </value>
+                <value>
+                    <fullName>Jason Sikorski</fullName>
+                    <default>false</default>
+                    <label>Jason Sikorski</label>
+                </value>
+                <value>
+                    <fullName>Jay Bivens</fullName>
+                    <default>false</default>
+                    <label>Jay Bivens</label>
+                </value>
+                <value>
+                    <fullName>Jeff Owens</fullName>
+                    <default>false</default>
+                    <label>Jeff Owens</label>
+                </value>
+                <value>
+                    <fullName>Jens Monrad</fullName>
+                    <default>false</default>
+                    <label>Jens Monrad</label>
+                </value>
+                <value>
+                    <fullName>Jeroen Arends</fullName>
+                    <default>false</default>
+                    <label>Jeroen Arends</label>
+                </value>
+                <value>
+                    <fullName>Jim Nowak</fullName>
+                    <default>false</default>
+                    <label>Jim Nowak</label>
+                </value>
+                <value>
+                    <fullName>Joe Montes</fullName>
+                    <default>false</default>
+                    <label>Joe Montes</label>
+                </value>
+                <value>
+                    <fullName>John Bolger</fullName>
+                    <default>false</default>
+                    <label>John Bolger</label>
+                </value>
+                <value>
+                    <fullName>John Nguyen</fullName>
+                    <default>false</default>
+                    <label>John Nguyen</label>
+                </value>
+                <value>
+                    <fullName>Jon Noel</fullName>
+                    <default>false</default>
+                    <label>Jon Noel</label>
+                </value>
+                <value>
+                    <fullName>Jose Enrique Diaz Jolly</fullName>
+                    <default>false</default>
+                    <label>Jose Enrique Diaz Jolly</label>
+                </value>
+                <value>
+                    <fullName>Kevin Roeder</fullName>
+                    <default>false</default>
+                    <label>Kevin Roeder</label>
+                </value>
+                <value>
+                    <fullName>Lau Boon Peng</fullName>
+                    <default>false</default>
+                    <label>Lau Boon Peng</label>
+                </value>
+                <value>
+                    <fullName>Lennart van den Ende</fullName>
+                    <default>false</default>
+                    <label>Lennart van den Ende</label>
+                </value>
+                <value>
+                    <fullName>Liso (Lu Li Xiao)</fullName>
+                    <default>false</default>
+                    <label>Liso (Lu Li Xiao)</label>
+                </value>
+                <value>
+                    <fullName>Mark Jones</fullName>
+                    <default>false</default>
+                    <label>Mark Jones</label>
+                </value>
+                <value>
+                    <fullName>Martin Zeitler</fullName>
+                    <default>false</default>
+                    <label>Martin Zeitler</label>
+                </value>
+                <value>
+                    <fullName>Michael Martinek</fullName>
+                    <default>false</default>
+                    <label>Michael Martinek</label>
+                </value>
+                <value>
+                    <fullName>Michele Hardwick</fullName>
+                    <default>false</default>
+                    <label>Michele Hardwick</label>
+                </value>
+                <value>
+                    <fullName>Mike Bessey</fullName>
+                    <default>false</default>
+                    <label>Mike Bessey</label>
+                </value>
+                <value>
+                    <fullName>Mitch Turner</fullName>
+                    <default>false</default>
+                    <label>Mitch Turner</label>
+                </value>
+                <value>
+                    <fullName>Nathan Kwong</fullName>
+                    <default>false</default>
+                    <label>Nathan Kwong</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Nycholas Szucko</fullName>
+                    <default>false</default>
+                    <label>Nycholas Szucko</label>
+                </value>
+                <value>
+                    <fullName>Pablo Garcia</fullName>
+                    <default>false</default>
+                    <label>Pablo Garcia</label>
+                </value>
+                <value>
+                    <fullName>Patrice Robert</fullName>
+                    <default>false</default>
+                    <label>Patrice Robert</label>
+                </value>
+                <value>
+                    <fullName>Pavel Rodionov</fullName>
+                    <default>false</default>
+                    <label>Pavel Rodionov</label>
+                </value>
+                <value>
+                    <fullName>Pradeep Saluja</fullName>
+                    <default>false</default>
+                    <label>Pradeep Saluja</label>
+                </value>
+                <value>
+                    <fullName>Rasheed Darras</fullName>
+                    <default>false</default>
+                    <label>Rasheed Darras</label>
+                </value>
+                <value>
+                    <fullName>Reseller SE</fullName>
+                    <default>false</default>
+                    <label>Reseller SE</label>
+                </value>
+                <value>
+                    <fullName>Rich Corboy</fullName>
+                    <default>false</default>
+                    <label>Rich Corboy</label>
+                </value>
+                <value>
+                    <fullName>Robin Sundin</fullName>
+                    <default>false</default>
+                    <label>Robin Sundin</label>
+                </value>
+                <value>
+                    <fullName>Scott Bower</fullName>
+                    <default>false</default>
+                    <label>Scott Bower</label>
+                </value>
+                <value>
+                    <fullName>Scott DeLelys</fullName>
+                    <default>false</default>
+                    <label>Scott DeLelys</label>
+                </value>
+                <value>
+                    <fullName>Scott Howard</fullName>
+                    <default>false</default>
+                    <label>Scott Howard</label>
+                </value>
+                <value>
+                    <fullName>Sean Taylor</fullName>
+                    <default>false</default>
+                    <label>Sean Taylor</label>
+                </value>
+                <value>
+                    <fullName>Shane Speering</fullName>
+                    <default>false</default>
+                    <label>Shane Speering</label>
+                </value>
+                <value>
+                    <fullName>Sonny Aulakh</fullName>
+                    <default>false</default>
+                    <label>Sonny Aulakh</label>
+                </value>
+                <value>
+                    <fullName>Stephen Gillies</fullName>
+                    <default>false</default>
+                    <label>Stephen Gillies</label>
+                </value>
+                <value>
+                    <fullName>Steve Balmer</fullName>
+                    <default>false</default>
+                    <label>Steve Balmer</label>
+                </value>
+                <value>
+                    <fullName>Thomas Jankowsky</fullName>
+                    <default>false</default>
+                    <label>Thomas Jankowsky</label>
+                </value>
+                <value>
+                    <fullName>Tim Davidson</fullName>
+                    <default>false</default>
+                    <label>Tim Davidson</label>
+                </value>
+                <value>
+                    <fullName>Tom Foucha</fullName>
+                    <default>false</default>
+                    <label>Tom Foucha</label>
+                </value>
+                <value>
+                    <fullName>Tomki Camp</fullName>
+                    <default>false</default>
+                    <label>Tomki Camp</label>
+                </value>
+                <value>
+                    <fullName>Tom Lyons</fullName>
+                    <default>false</default>
+                    <label>Tom Lyons</label>
+                </value>
+                <value>
+                    <fullName>Tommy Mak</fullName>
+                    <default>false</default>
+                    <label>Tommy Mak</label>
+                </value>
+                <value>
+                    <fullName>Trevor Pirman</fullName>
+                    <default>false</default>
+                    <label>Trevor Pirman</label>
+                </value>
+                <value>
+                    <fullName>Ulrich Siegrist</fullName>
+                    <default>false</default>
+                    <label>Ulrich Siegrist</label>
+                </value>
+                <value>
+                    <fullName>Valter Pereira da Costa</fullName>
+                    <default>false</default>
+                    <label>Valter Pereira da Costa</label>
+                </value>
+                <value>
+                    <fullName>Wind Wan</fullName>
+                    <default>false</default>
+                    <label>Wind Wan</label>
+                </value>
+                <value>
+                    <fullName>Wu Qing Wei</fullName>
+                    <default>false</default>
+                    <label>Wu Qing Wei</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Term__c</fullName>
+        <externalId>false</externalId>
+        <label>Term</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>5 Year</fullName>
+                    <default>false</default>
+                    <label>5 Year</label>
+                </value>
+                <value>
+                    <fullName>3 Year</fullName>
+                    <default>false</default>
+                    <label>3 Year</label>
+                </value>
+                <value>
+                    <fullName>1 Year</fullName>
+                    <default>false</default>
+                    <label>1 Year</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Customer - 1st Time Usage of Technol</fullName>
+                    <default>false</default>
+                    <label>New Customer - 1st Time Usage of Technol</label>
+                </value>
+                <value>
+                    <fullName>New Customer - Competitive Replacement</fullName>
+                    <default>false</default>
+                    <label>New Customer - Competitive Replacement</label>
+                </value>
+                <value>
+                    <fullName>Existing Customer - Upgrade/Add on</fullName>
+                    <default>false</default>
+                    <label>Existing Customer - Upgrade/Add on</label>
+                </value>
+                <value>
+                    <fullName>Existing Customer Technology Refresh</fullName>
+                    <default>false</default>
+                    <label>Existing Customer Technology Refresh</label>
+                </value>
+                <value>
+                    <fullName>Existing Customer - New Business</fullName>
+                    <default>false</default>
+                    <label>Existing Customer - New Business</label>
+                </value>
+                <value>
+                    <fullName>New Business</fullName>
+                    <default>false</default>
+                    <label>New Business</label>
+                </value>
+                <value>
+                    <fullName>Existing Business</fullName>
+                    <default>false</default>
+                    <label>Existing Business</label>
+                </value>
+                <value>
+                    <fullName>Partner Demo Kit purchase</fullName>
+                    <default>false</default>
+                    <label>Partner Demo Kit purchase</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Upsell__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Upsell</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>VPN__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicator that VPN Security is Deployed</description>
+        <externalId>false</externalId>
+        <label>VPN</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Web_Annual_Total__c</fullName>
+        <externalId>false</externalId>
+        <label>Web Annual Total</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Web__c</fullName>
+        <description>How is the Web Security implemented</description>
+        <externalId>false</externalId>
+        <label>Web</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Appliance</fullName>
+                    <default>false</default>
+                    <label>Appliance</label>
+                </value>
+                <value>
+                    <fullName>Hosted</fullName>
+                    <default>false</default>
+                    <label>Hosted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>What_is_the_pain_Why_buy_now__c</fullName>
+        <description>This field is added for newScale SFDC Migration, required by the Acquisition Team of newScale.</description>
+        <externalId>false</externalId>
+        <label>What is the pain?/ Why buy now?</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Win_Loss_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Win Loss Comments</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Years_Paid_Up_Front__c</fullName>
+        <externalId>false</externalId>
+        <label>Years Paid Up Front</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Annual</fullName>
+                    <default>false</default>
+                    <label>Annual</label>
+                </value>
+                <value>
+                    <fullName>2 years Upfront</fullName>
+                    <default>false</default>
+                    <label>2 years Upfront</label>
+                </value>
+                <value>
+                    <fullName>3 years Upfront</fullName>
+                    <default>false</default>
+                    <label>3 years Upfront</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This Object is created to store additional information from Acquisition instances of Salesforce.com</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Opportunity Affiliate</label>
+    <nameField>
+        <displayFormat>O-{000000000}</displayFormat>
+        <label>Opportunity Affiliate Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Opportunity Affiliates</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <validationRules>
+        <fullName>Enter_Mandatory_Affiliate_Record_Info</fullName>
+        <active>true</active>
+        <description>Validates whether all the mandatory information is filled by user</description>
+        <errorConditionFormula>$User.Deployment_No__c = 'TAN' &amp;&amp; ISPICKVAL(How_was_the_deal_discovered__c, '') &amp;&amp; $User.Id !='00530000000fW0AAAU'</errorConditionFormula>
+        <errorDisplayField>How_was_the_deal_discovered__c</errorDisplayField>
+        <errorMessage>Enter the value in this field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Enter_Mandatory_Affiliate_Record_Info_1</fullName>
+        <active>true</active>
+        <description>Validates whether all the mandatory information is filled by user</description>
+        <errorConditionFormula>$User.Deployment_No__c = 'TAN' &amp;&amp; ISPICKVAL(Type__c, '') &amp;&amp; $User.Id !='00530000000fW0AAAU'</errorConditionFormula>
+        <errorDisplayField>Type__c</errorDisplayField>
+        <errorMessage>Enter the value in this field</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>IronPort_Jester_for_Renewal_Opps</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>IronPort - Jester for Renewal Opps</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://keys.sbr.ironport.com/licensekeys/login.php</url>
+    </webLinks>
+    <webLinks>
+        <fullName>IronPort_Oracle_Search_Contracts</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>IronPort - Oracle Search Contracts</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://vmdsxawo05.ironport.com:8000/OA_HTML/csiSearchSysMain.jsp?F=ZG4C2CCBE210975451B44EB61D4C87E12C28C66039AA04400C43D20857881F4CB584466B7C108BB21B0509E11C5B5906F602&amp;resp_appl_id=542&amp;language_code=US&amp;security_group_id=0&amp;params=2D0n8JJVkvTLCVMjJbi05eaQ2ury5dn7uT6DXvCdK4c&amp;resp_id=50289&amp;oas=m6PrjxhhDGV3MyMWDiguFA..&amp;lang_code=US&amp;JSPNAME=csiSearchSysMain.jsp&amp;transactionid=528769064&amp;OAFMID=72557&amp;OAPB=_OAFMID&amp;function_id=9860</url>
+    </webLinks>
+    <webLinks>
+        <fullName>IronPort_Oracle_Search_Orders</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>IronPort - Oracle Search Orders</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://vmdsxawo05.ironport.com:8000/OA_HTML/RF.jsp?function_id=9050&amp;resp_id=22480&amp;resp_appl_id=660&amp;security_group_id=0&amp;lang_code=US&amp;params=UJh.e-aoUpY6VfMVMVH1HffElDgjMb16n07-91Xu5KM&amp;oas=-y712tudCsZrKBt7Xo7LbQ</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Opportunity_Affiliate</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New Opportunity Affiliate</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!requireScript("/soap/ajax/20.0/connection.js")}
+var hostname = window.location.hostname.toLowerCase(); 
+
+var r = sforce.connection.query("Select Id,name from Opportunity_Affiliate__c where Opportunity_Affiliate__c.Opportunity__c='{!Opportunity.Id}' ");
+var q=r.getArray("records");
+
+
+if(q.length &gt;= 1)
+{
+alert('Opportunity Affiliate already exists for this Opportunity.You can not create second record');
+
+}
+
+else
+{
+var OpportunityName = "{!URLENCODE(Opportunity.Name)}"; 
+var regExp = /&amp;/ ;
+
+while(OpportunityName.search(regExp) &gt; -1){
+OpportunityName=OpportunityName.replace(regExp,"%26");
+} 
+
+window.top.location.href ="https://"+hostname+"/a1M/e?CF00N80000004Ry8v="+OpportunityName+"&amp;CF00N80000004Ry8v_lkid={!Opportunity.Id}&amp;retURL={!Opportunity.Id}" ;
+}</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,473 @@
+<!--
+   Name    : NGCC_MODS_SFDC_Contact_Search
+   Author  : 
+   Purpose : 
+   Created Date: 
+   Modification History: 
+   1. Author  : Ghattamaneni Chaithanya
+        Purpose : Adding Dispostion Sub Type field to page
+                    added markup to display Disposition Sub Type field in the page Line No#333-336
+                    Notes field is removed and disposition field added in the page Line No#324-331
+        date    : July 19,2018
+
+    2. Author: Zakeahme
+        Purpose: Scava fixes
+        Date: Sep-6-2018
+
+	3. Author    : Ghattamaneni Chaithanya
+       Purpose   : Adding Contact Reason and Persona fields to page US291144
+                   added markup to display Contact Reason and Persona fields in the page Line No#354-369
+       date      : June 12,2019
+-->
+<apex:page standardController="Lead"
+           extensions="NGCC_MODS_SFDC_Contact_Search_CTE"
+           tabstyle="Inbound_Call__tab">
+    
+    <apex:includeScript value="/support/console/31.0/integration.js" />
+    <!--Loading JQuery Plugins and Parser class from Static Resources-->
+    <script src="/soap/ajax/31.0/connection.js"></script>
+    <apex:includeScript value="{!$Resource.jquery}" />
+        <apex:includeScript value="{!$Resource.utilities}" />     
+            <script type="text/javascript">
+                $j = jQuery.noConflict();
+    </script>
+    
+    <apex:form id="form">
+        <apex:pageMessages id="msg">
+        </apex:pageMessages>
+        <apex:pageBlock id="block">
+            <!-- Error Messages Block -->
+            <apex:pageBlockSection id="errors">
+                <apex:pageMessage id="errorMessage"
+                                  detail="Invalid search combination.  Please refer to training document for valid combinations."
+                                  severity="error" rendered="{!errorFlag}" title="Error Message" />
+                <apex:pageMessage id="noResultsMessage" detail="No Results Found."
+                                  severity="error" rendered="{!noResultsFlag}" title="Error Message" />
+                <apex:pageMessage id="genericMessage" detail="{!error}"
+                                  severity="error" rendered="{!invalidInput}" title="Error Message" />
+                <apex:pageMessage id="responseSaved" detail="Response Saved."
+                                  severity="Success" rendered="{!responseDisplayed}"
+                                  title="Notification" />
+                <apex:pageMessage id="connectionFailed" detail="Your browser session has expired. Please log in again."
+                                  severity="error" rendered="{!serviceErrorFlag}"
+                                  title="Notification" />
+                <apex:messages />
+            </apex:pageBlockSection>
+            
+            <!-- JavaScript function to send the request to the MODS Service -->
+            <apex:outputPanel id="jsonp">
+                <script>
+                var campaignCodeManagement = function campaignCodeManagement() {
+                    var campaign = $j("*[id*=campaignCode]").val();
+                    if (campaign != 0 && campaign.length > 2) {
+                        if (isValidCampaignCode(campaign)) {
+                            $j(this).css({
+                                color: ""
+                            });
+                            $j("*[id*=GhostCallButton]").toggleClass('btnDisabled', false).attr('disabled', null);
+                            $j("*[id*=GhostChatButton]").toggleClass('btnDisabled', false).attr('disabled', null);                            
+                            $j(this).next().remove();
+                        } else {
+                            $j(this).css({
+                                color: "red"
+                            });
+                            if ($j(this).next().is("span")) {} else {
+                                $j(this).focus();
+                                $j(this).after("<span id='campaignText'><img src='/img/msg_icons/warning16.png'</img> Invalid Code.</span>");
+                                $j("*[id*=GhostCallButton]").toggleClass('btnDisabled', true).attr('disabled', null);
+                                $j("*[id*=GhostChatButton]").toggleClass('btnDisabled', true).attr('disabled', null);
+                                $j(this).focus();
+                            }
+                        }
+                    } else {
+                        $j("*[id*=GhostCallButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+                        $j("*[id*=GhostChatButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+                        if ($j(this).next().is("span")) {
+                            $j(this).next().remove();
+                            $j(this).css({
+                                color: ""
+                            });
+                        }
+                    }
+                }
+                $j(document).ready(function() {
+                    sforce.connection.sessionId = "{!$Api.Session_ID}";
+                    $j("*[id*=GhostCallButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+                    $j("*[id*=GhostChatButton]").toggleClass('btnDisabled', true).attr('disabled', 'disabled');
+                    $j("*[id*=campaignCode]").on("keyup", campaignCodeManagement);
+                    $j("*[id*=dispositionInput]").on("change", campaignCodeManagement);
+                });
+                function disable() {
+                    $j("*[id*=campaignCode]")
+                    .val('');
+                }
+                function isValidCampaignCode(campaign) {
+                    if(campaign.length >8){
+                        var campaignQuery = "Select Id from Campaign where IsActive = True and Program_Event_Code__c = '"
+                        + campaign + "'";
+                    }
+                    else{
+                        var campaignQuery = "Select Id from Campaign where IsActive = True and Campaign_source__c ='Global Eloqua' and Program_Event_Code__c = '"
+                        + campaign + "'";
+                    }
+                    try {
+                        var queryResult = sforce.connection
+                        .query(campaignQuery);
+                        //alert(queryResult);
+                        var records = queryResult.getArray("records");
+                        if (records.length > 0) {
+                            return true;
+                        }
+                    } catch (ex) {
+                        alert(ex);
+                    }
+                    return false;
+                }
+                // Scava Fix
+                var displayUSStateString = '{!JSENCODE(displayComponent)}';
+                var displayUSState = false;
+                if(displayUSState == 'true') {
+                     displayUSState = true;
+                }
+                var invalidInput = new Boolean();
+                var validInput = new Boolean();
+                function validation() {
+                    Validation();
+                }
+                function MODS_Search(searchEmailAddress, searchFirstName,
+                                     searchLastName, searchCompany, searchCity,
+                                     searchState, searchCountryName, searchPostalCode,
+                                     searchPhoneNumber) {
+                    sforce.connection.sessionId = "{!$Api.Session_ID}";
+                    var url = getConstant('NGCC MODS Contact Service','URL')
+                    + '?appid=MCC&email='
+                    + searchEmailAddress
+                    + '&firstname='
+                    + searchFirstName
+                    + '&lastname='
+                    + searchLastName
+                    + '&orgname='
+                    + searchCompany
+                    + '&city='
+                    + searchCity
+                    + '&state='
+                    + searchState
+                    + '&ccode='
+                    + searchCountryName
+                    + '&postalcode='
+                    + searchPostalCode
+                    + '&phone='
+                    + searchPhoneNumber + '&callbackFunction=?';
+                    console.log(url);
+                    $j.ajax({
+                        url : url,
+                        type : 'get',
+                        dataType : "jsonp",
+                        callback : 'Test',
+                        jsonpCallback : 'Test',
+                        success : function(response) {
+                            MODSSearch(JSON.stringify(response));
+                        },
+                        error : function(x, e) {
+                            ServiceErrorFlag();
+                        }
+                    });
+                }
+                function findById(source, id) {
+                    for (var i = 0; i < source.length; i++) {
+                        if (source[i].label === id) {
+                            return source[i].value;
+                        }
+                    }
+                }
+                function openNewTab(){
+                    sforce.console.openPrimaryTab(null, '{!JSENCODE(consoleChangeURL)}', true, '{!JSENCODE(Lead.Name)}');
+                }
+                function getDetailsSuccess(result) {
+                    //Report whether accepting the chat was succesful
+                    if (result.success == true) {
+                        console.log(result.details);
+                        var firstName = findById(result.details.customDetails, 'FirstName');
+                        var lastName = findById(result.details.customDetails, 'LastName');
+                        var keycode = findById(result.details.customDetails, 'Keycode');
+                        var ccid = findById(result.details.customDetails,'data-c2c-ccid');
+                        var oid = findById(result.details.customDetails, 'data-c2c-oid');
+                        var ecid= findById(result.details.customDetails, 'data-c2c-ecid');
+                        var dtid= findById(result.details.customDetails, 'data-c2c-dtid');
+                        if(ecid !="" && ecid != null & ecid !="undefined"){
+                            sforce.console.setTabTitle(ecid + ' ' + firstName + ' ' + lastName, primaryId);
+                        }
+                        else{
+                            sforce.console.setTabTitle(keycode + ' ' + firstName + ' ' + lastName, primaryId);  
+                        }
+                        document
+                        .getElementById('j_id0:form:block:Section:ccid').value = ccid;
+                        //Zak: added Regex for ECID for blank spaces AND also used TRIM for ecid & keycode
+                        if(ecid !="" && ecid != null && ecid !="undefined" && !(/^\s*$/.test(ecid)) ){
+                            document
+                            .getElementById('j_id0:form:block:GhostCall:campaignCode').value = ecid.trim();
+                        }
+                        else {
+                            document
+                            .getElementById('j_id0:form:block:GhostCall:campaignCode').value = keycode.trim();
+                        }    
+                        document
+                        .getElementById('j_id0:form:block:Section:searchPhoneNumber').value = findById(
+                            result.details.customDetails, 'Phone');
+                        document
+                        .getElementById('j_id0:form:block:Section:oid').value = oid;
+                        document
+                        .getElementById('j_id0:form:block:Section:dtid').value = dtid;
+                        document
+                        .getElementById('j_id0:form:block:Section:searchFirstName').value = firstName;
+                        document
+                        .getElementById('j_id0:form:block:Section:origLastName').value = lastName;        
+                        if (lastName == 'Please Update' || lastName==' '){
+                            document
+                            .getElementById('j_id0:form:block:Section:searchLastName').value = '';
+                        } else {
+                            document
+                            .getElementById('j_id0:form:block:Section:searchLastName').value = lastName                
+                        }
+                        document
+                        .getElementById('j_id0:form:block:Section:searchEmailAddress').value = findById(
+                            result.details.customDetails,
+                            'EmailAddress');
+                        document
+                        .getElementById('j_id0:form:block:Section:searchCountryName').value = findById(
+                            result.details.customDetails,
+                            'countryName');
+                        var countryInput = findById(
+                            result.details.customDetails,
+                            'CompanyName');                        
+                        if (countryInput == 'Please Update'){
+                            document.getElementById('j_id0:form:block:Section:searchCompany').value = '';
+                        } else {
+                            document.getElementById('j_id0:form:block:Section:searchCompany').value = countryInput;
+                        }        
+                        document
+                        .getElementById('j_id0:form:block:Section:isAutomatic').value = 'true';
+                        document
+                        .getElementById('j_id0:form:block:Section:keycode').value = findById(result.details.customDetails, 'Keycode');
+                        document
+                        .getElementById('j_id0:form:block:Section:ecid').value = findById(result.details.customDetails, 'data-c2c-ecid');
+                        validation();
+                    } else {
+                        //alert('Getting the details was not successful');
+                    }
+                };
+                var showChatId = function showChatId(result) {
+                    if (result.success) {
+                        sforce.console.chat.getDetailsByChatKey(
+                            result.details.chatKey, getDetailsSuccess);
+                    }
+                };
+                var primaryId;
+                var showTabId = function showTabId(result) {
+                    if (result.success == true) {
+                        primaryId = result.id;
+                        //alert('primaryId -> '+ primaryId );
+                        if (primaryId == 'null' || primaryId== null){
+                            setConsoleView();
+                        } else {
+                            sforce.console.chat.getDetailsByPrimaryTabId(result.id,showChatId);
+                        }
+                    }else {
+                        setConsoleView();
+                    }
+                };
+                // Function responsible for input validation.
+                function stateOption(country) {
+                    if (country == "US") {
+                        displayUSState = true;
+                    } else {
+                        displayUSState = false;
+                    }
+                    flipVisible(displayUSState);
+                }
+                window.onload = function isInConsole() {
+                    console.log(sforce.console.isInConsole());
+                    if (sforce.console.isInConsole() && window.location.href.indexOf("ResponseId") == -1 && showTabId != null) {
+                        //sforce.console.getFocusedPrimaryTabId(showTabId);
+                        sforce.console.getEnclosingPrimaryTabId(showTabId);
+                    }
+                };
+                </script>
+            </apex:outputPanel>
+            
+            <!-- Functions responsible for setting variables in controllers. -->            
+            <apex:actionFunction name="Validation" action="{!validation}"
+                                 reRender="block,errorMessage">
+            </apex:actionFunction>
+            <apex:actionFunction name="MODSSearch" action="{!MODS_Search}"
+                                 reRender="block,errors,genericMessage,noResultsMessage,errorMessage">
+                <apex:param name="node" value="" />
+            </apex:actionFunction>
+            <apex:actionFunction name="setConsoleView" action="{!setConsoleView}"
+                                 reRender="errors,errorMessage">
+            </apex:actionFunction>
+            <apex:actionFunction name="ErrorFlag" action="{!setErrorFlag}"
+                                 reRender="errors,errorMessage">
+            </apex:actionFunction>
+            <apex:actionFunction name="ServiceErrorFlag"
+                                 action="{!setServiceErrorFlag}" reRender="errors,errorMessage">
+            </apex:actionFunction>
+            <apex:actionFunction name="BlockFlag" action="{!setBlockFlag}"
+                                 reRender="errors,errorMessage">
+            </apex:actionFunction>
+            <apex:actionFunction name="flipVisible"
+                                 rerender="block,searchUSState">
+                <apex:param name="node" assignto="{!displayComponent}" value="" />
+            </apex:actionFunction>
+            
+            <apex:actionFunction name="validateData" rerender="errors,genericMessage">
+                <apex:param name="anode" assignto="{!error}" value="" />
+                <apex:param name="bnode" assignto="{!invalidInput}" value="" />
+            </apex:actionFunction>
+            
+            <!-- Section responsible for displaying Search Fields -->
+            <apex:pageBlockSection title="Create Response Disposition Inquiry- Call or Chat" collapsible="true" columns="1" id="GhostCall">
+                <apex:panelGrid columns="4" width="50%">
+                    <apex:outputLabel for="campaignCode">Program Event Code</apex:outputLabel>
+                    <apex:inputText id="campaignCode" value="{!campaignCode}" />
+                    <apex:outputLabel />
+                    <apex:outputLabel />
+                    <!---- Added by Bapu -->
+                    <!-- changed by gchaitha from Notes field to Disposition field--->
+                        <apex:outputLabel for="disposition"> Outcome </apex:outputLabel>
+                        <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredInput" layout="block" id="pwPanel" >
+                            <apex:outputPanel styleClass="requiredBlock"/>
+                            <apex:selectList id="dispositionInput" value="{!disposition}" size="1" required="true" >
+                                <apex:selectOptions value="{!items}"/>
+                                <apex:actionSupport event="onchange" action="{!statusUpdate}" reRender="GhostCall,pwPanel1,CR,PR"/>
+                            </apex:selectList>                           
+                        </apex:outputPanel>
+                         </apex:actionRegion>                   
+                        <apex:outputLabel for="disposition" rendered="{!showDispSubtype}"> Sub-Outcome </apex:outputLabel>
+                        <apex:outputPanel styleClass="requiredInput" layout="block" id="pwPanel1" rendered="{!showDispSubtype}">
+                            <apex:outputPanel styleClass="requiredBlock"/>
+                                <apex:inputfield value="{!response.Disposition_Sub_Type__c}" required="true" >
+                                    <apex:actionSupport event="onchange" status="hello" action="{!DispositionChange}" rerender="GhostCall,CR,PR" />
+                                </apex:inputfield>
+                        </apex:outputPanel>
+                    <!-- Added by gchaitha to display Contact Reason and Persona fields  US291144--> 
+                        <apex:outputLabel for="disposition" rendered="{!showContactReason}"> Contact Reason </apex:outputLabel>
+                        <apex:outputPanel styleClass="requiredInput" layout="block" id="CR" rendered="{!showContactReason}">
+                            <apex:outputPanel styleClass="requiredBlock"/>
+                            <apex:inputfield value="{!response.Contact_Reason__c}" required="true" />
+                        </apex:outputPanel>
+                        <apex:outputLabel for="disposition" rendered="{!showPersona}"> Persona </apex:outputLabel>
+                        <apex:outputPanel styleClass="requiredInput" layout="block" id="PR" rendered="{!showPersona}">
+                            <apex:outputPanel styleClass="requiredBlock"/>
+                            <apex:inputfield value="{!response.Persona__c}" required="true" />
+                        </apex:outputPanel>
+                    <!--end -->
+                        <apex:actionRegion >
+                            <apex:outputPanel >
+                                <apex:inputfield value="{!response.Status__c}" style="display:none;"/>
+                             <!--   <apex:inputfield value="{!response.Disposition_Sub_Type__c}" style="display:none;"/>  -->
+                            </apex:outputPanel>
+                        </apex:actionRegion>
+                </apex:panelGrid>
+                <apex:actionStatus id="responseStatus" startText="Saving the Response........." />
+                <apex:pageBlockSectionItem id="GhostControl">
+                    <apex:outputPanel layout="block">
+                        <apex:commandButton value="Submit Call Disposition" rendered="{!NOT(isAutomatic=='true')}"
+                                            action="{!createGhostResponse}" status="responseStatus"
+                                            rerender="block,msg,dispositionInput,DispositionSubType" oncomplete="disable()" id="GhostCallButton">
+                            <apex:param name="ghostCallStatus" value="Disposition Call" assignTo="{!ghostStatus}" />
+                        </apex:commandButton>
+                        <apex:commandButton value="Submit Chat Disposition"
+                                            action="{!createGhostResponse}" status="responseStatus"
+                                            rerender="block,msg,dispositionInput,DispositionSubType" oncomplete="disable()" id="GhostChatButton">
+                            <apex:param name="ghostChatStatus" value="Disposition Chat"  assignTo="{!ghostStatus}" />
+                        </apex:commandButton>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>           
+            <apex:pageBlockSection title="Search Lead" collapsible="true" columns="1" id="Section">
+                <apex:panelGrid columns="4" width="70%">
+                    <apex:outputLabel for="searchEmailAddress">Email Address </apex:outputLabel>
+                    <apex:inputText id="searchEmailAddress" value="{!searchEmailAddress}" />
+                    <apex:outputLabel />
+                    <apex:outputLabel />
+                    <apex:outputLabel for="searchFirstName">First Name</apex:outputLabel>
+                    <apex:inputText id="searchFirstName" value="{!searchFirstName}" />
+                    <apex:outputLabel for="searchLastName">Last Name</apex:outputLabel>
+                    <apex:inputText id="searchLastName" value="{!searchLastName}" />
+                    <apex:outputLabel for="searchCompany">Company</apex:outputLabel>
+                    <apex:inputText id="searchCompany" value="{!searchCompany}" />
+                    <apex:outputLabel />
+                    <apex:outputLabel />
+                    <apex:outputLabel for="searchCity">City </apex:outputLabel>
+                    <apex:inputText id="searchCity" value="{!searchCity}" />
+                    <apex:outputLabel for="searchState">State</apex:outputLabel>                    
+                    <apex:inputText id="searchState" value="{!searchState}"
+                                    rendered="{!NOT(if(displayComponent=='true',true,false))}" />
+                    <apex:selectList id="searchUSState" value="{!searchState}" size="1"
+                                      rendered="{!if(displayComponent=='true',true,false)}">
+                        <apex:selectOption value="{!emptyItem}" />
+                        <apex:selectOptions value="{!states}" />
+                    </apex:selectList>
+                    <apex:outputLabel for="searchCountryName">Country Name</apex:outputLabel>
+                    <apex:selectList id="searchCountryName"
+                                     value="{!searchCountryName}" size="1"
+                                     onchange="stateOption(this.value)">
+                        <apex:selectOption value="{!emptyItem}" />
+                        <apex:selectOptions value="{!countries}" />
+                    </apex:selectList>
+                    <apex:outputLabel for="searchPostalCode">Postal Code </apex:outputLabel>
+                    <apex:inputText id="searchPostalCode" value="{!searchPostalCode}" />
+                    <apex:outputLabel for="searchPhoneNumber">Phone Number</apex:outputLabel>
+                    <apex:inputText id="searchPhoneNumber" value="{!searchPhoneNumber}" />
+                    <apex:outputText value="{!outputText}" escape="false" />
+                    <apex:inputHidden value="{!isAutomatic}" id="isAutomatic" />
+                    <apex:inputHidden value="{!origLastName}" id="origLastName" />
+                    <apex:inputHidden value="{!keycode}" id="keycode" />
+                    <apex:inputHidden value="{!ccid}" id="ccid"/>
+                    <apex:inputHidden value="{!ecid}" id="ecid"/>
+                    <apex:inputHidden value="{!oid}" id="oid"/>
+                    <apex:inputHidden value="{!dtid}" id="dtid"/>
+                </apex:panelGrid>
+                
+                <!--  Section responsible for displaying the buttons -->
+                <apex:pageBlockSectionItem >
+                    <apex:outputPanel layout="block">
+                        <apex:commandButton value="Search" oncomplete="validation()"
+                                            rerender="errors,errorMessage,genericMessage,noResultsMessage,responseSaved"
+                                            status="status" />
+                        <apex:commandButton value="New Prospect" action="{!newProspect}"
+                                            rerender="errors,errorMessage,genericMessage,noResultsMessage,responseSaved,block" status="status" />
+                        <apex:commandButton value="Clear" action="{!clearInput}"
+                                            rerender="block" status="status" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>   
+                <apex:actionStatus id="status" startText="Searching........." />
+                <apex:actionStatus id="createStatus" startText="Creating the Lead. Please Wait........." />
+                
+                <!-- Section responsible for returning the results -->
+                <apex:pageBlockSection title="Results : {!ResultSize}" collapsible="false" columns="1" rendered="{!resultBlockFlag}">
+                    <apex:pageBlockTable value="{!results}" var="l"  rendered="{!resultBlockFlag}">                        
+                        <apex:column headerValue="Lead Name">
+                            <apex:commandLink id="LeadName" onclick=""
+                                              action="{!prepopulatedProspect}" rerender="block"
+                                              immediate="true" status="createStatus">
+                                <apex:param name="index" value="{!l.index}" />          
+                                {!l.FIRST_NAME} {!l.Last_Name}
+                            </apex:commandLink> 
+                        </apex:column>
+                        <apex:column value="{!l.EMAIL_ADDRESS}" headerValue="Email" />
+                        <apex:column value="{!l.PHONE_NUMBER}" headerValue="Phone" />
+                        <apex:column value="{!l.reported_company_name}" headerValue="Account Name" />
+                        <apex:column value="{!l.City}" headerValue="City" />
+                        <apex:column value="{!l.ISO_COUNTRY_NAME}" headerValue="Country" /> 
+                    </apex:pageBlockTable>
+                    <apex:pageBlockSectionItem >
+                        <apex:commandButton value="Clear" action="{!clearResults}" rerender="block,responseSaved" />
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlockSection>           
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

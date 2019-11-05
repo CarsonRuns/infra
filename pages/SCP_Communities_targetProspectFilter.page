@@ -1,0 +1,826 @@
+<apex:page tabstyle="Assigned_Partner__c" sidebar="false"
+	showHeader="true" showChat="true"
+	controller="SCP_Communities_TPFilter_CT" id="tppage"
+	language="{!$CurrentPage.parameters.lang}">
+	
+	<apex:includeScript value="{!$Resource.jQuery1_9}" />
+	
+	  <apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery-ui.min.js')}" />
+	   <apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.js')}" />
+	<apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.filter.js')}" /> 
+	<apex:stylesheet value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.filter.css')}" />
+
+
+	<!-- <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}" />
+	<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}" /> -->
+
+	<!-- <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}" /> -->
+	<apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/themes/ui-lightness/jquery.ui.all.css')}" />
+	<apex:stylesheet value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.css')}" />
+	<!-- <apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.js')}" /> -->
+	<apex:stylesheet value="{!URLFOR($Resource.extjs_css)}" />
+		
+	
+
+	 <apex:includeScript value="{!URLFOR($Resource.jquery_datatable, 'jquery/js/jquery.dataTables.js')}" /> 
+	<apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/dataTables.tableTools.css')}" />
+	<apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/jquery.dataTables.css')}" />
+	
+	<style>
+	.hidefilter{
+		display:none;
+	}
+	</style>
+	
+	<script type="text/javascript">
+		var refresh = 0;
+		var js$ = $.noConflict(true);
+		var chCounter = 0;
+		var SearchPageUrl;
+		var userTable;
+		var m1, m2, m3, m4;
+		var assignPSRBtn;
+		var colIdx = -1;
+		var rowIdx = -1;
+		var libCount =2;
+		   js$(window).load(function() {
+			console.log('**before loadApp***');
+			 js$("body").addClass("tpfilterstyle");
+			loadLibraries();
+			console.log('After loadApp ***');
+		});
+		
+		function init() {
+			if (refresh == 0) {
+				bindEvents();
+			} else {
+				refreshMultiSelect();
+				bindEvents();
+			}
+			
+			SearchPageUrl = '{!SearchPageUrl}';
+			chCounter = 0;
+					
+			// Apply onclick event for Work Prospect button
+			
+			js$("[id$='work-prospects']").unbind("click").on('click',function () {
+			
+				console.log('##### Inside onclick of work-prospects button ####');
+				console.log('##### Counter = '+ chCounter+' ####');
+				if(chCounter<= 0 ) {
+					alert("{!$Label.PRM_UncoveredProspectsGridMsg}");
+					return false;
+				}
+			})
+			
+			js$("[id$='psrblk']").css({
+				"display" : "none"
+			});
+				
+			js$(document).on('click', '#select_all', function() {
+				bval = js$(this).val();
+				if (this.checked) {
+					js$('.chkbox').each(function(i, row) {
+						if (js$(this).prop('checked') == false) {
+							js$(this).prop("checked", true);
+							chCounter = chCounter + 1;
+						}
+					})
+				} else {
+					js$('.chkbox').each(function(i, row) {
+						if (js$(this).prop('checked') == true) {
+							js$(this).prop("checked", false);
+							chCounter = chCounter - 1;
+						}
+					})
+				}
+				showHidePSRBlock();
+			});
+			
+			js$(".onechkbox").on('change', function () {
+				if(this.checked) {
+					b = this;
+					js$(".onechkbox").each(function(i,row) {
+						//alert(b+' :: '+(this));
+						if( (b) !== (this)) {
+							this.checked = false;
+						}
+					})
+					chCounter = 1;
+				}
+				else {
+					chCounter = 0;
+				}
+				
+			})
+			
+			js$(".chkbox").on('change', function() {
+				if (this.checked) {
+					chCounter = chCounter + 1;
+				} else {
+					chCounter = chCounter - 1;
+				}
+				showHidePSRBlock();
+			})
+			return false;
+
+		}
+
+		var refreshMultiSelect = function() {
+				m1.multiselectfilter("destroy");
+                m1.multiselect('destroy');
+                m2.multiselectfilter("destroy");
+                m2.multiselect('destroy');
+                m3.multiselectfilter("destroy");
+                m3.multiselect('destroy');
+                m4.multiselect('destroy');  
+             	m4.multiselectfilter('destroy');
+             	
+              
+             	   
+                
+			/* if( typeof m1 != 'undefined' && m1.hasClass('tpfiltermutliselect')) {
+            	m1.multiselectfilter("destroy");
+                m1.multiselect('destroy');
+            }
+            
+            if( typeof m2 != 'undefined' && m2.hasClass('tpfiltermutliselect')) {
+           		 m2.multiselectfilter("destroy");
+                m2.multiselect('destroy');
+            }
+            
+            if( typeof m3 != 'undefined' && m3.hasClass('tpfiltermutliselect')) {
+            	m3.multiselectfilter("destroy");
+                m3.multiselect('destroy');
+            }
+            if( typeof m4 != 'undefined' && m4.hasClass('tpfiltermutliselect')) {
+            	m4.multiselectfilter("destroy");
+            	m4.mutliselect('destroy');
+            } */
+           // return false;
+		};
+		var bindEvents = function() {
+			if(userTable != null) {
+				userTable.destroy();
+			}
+			userTable = js$('.tptable').DataTable({
+				"aaSorting" : [],
+				"jQueryUI" : true,
+				"autoWidth" : false,
+				"scrollY" : "400px",
+				"scrollX" : "1024px",
+				"scrollCollapse" : true,
+				"processing" : true,
+				"dom" : 'Rlfrtip',
+				"language" : {
+					"loadingRecords" : "{!$Label.PRM_datatable_processing}",
+					"lengthMenu" : "{!$Label.PRM_datatbl_display_num_records}",
+					"zeroRecords" : "{!$Label.PRM_datatbl_zeroRecords}",
+					"info" : "{!$Label.PRM_datatbl_info}",
+					"infoEmpty" : "{!$Label.PRM_datatbl_info_empty}",
+					"infoFiltered" : "{!$Label.PRM_datatbl_info_filtered}",
+					"search" : "{!$Label.PRM_datatbl_search}",
+					"paginate" : {
+						"first" : "{!$Label.PRM_datatbl_first}",
+						"last" : "{!$Label.PRM_datatbl_last}",
+						"next" : "{!$Label.PRM_datatbl_next}",
+						"previous" : "{!$Label.PRM_datatbl_previous}"
+					}
+				}
+
+			});
+			js$("input[type='search']").filter(":visible").unbind("onkeyup").on("keyup", function() {
+				console.log(this.value+' #### ');
+				var val = this.value.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\\\$&");
+				console.log('After val : '+ val);
+    			userTable.search( val,true,false,true ).draw();
+			})
+			
+			//userTable.columns.adjust().draw();
+
+			/*** Row Col Highlight start**/
+			var totalcols;
+			totalrows = userTable.rows().nodes().length;
+			totalcols = userTable.columns().nodes().length;
+
+			js$(
+					'#page1\\:form1\\:block1\\:pg2\\:Assigned_Partner__c_table  tbody')
+					.on(
+							'mouseover',
+							'td',
+							function() {
+								for (var j = 0; j < totalcols; j++) {
+									js$(userTable.cells(rowIdx, j).nodes())
+											.removeClass('highlight');
+								}
+
+								js$(userTable.column(colIdx).nodes())
+										.removeClass('highlight');
+								colIdx = userTable.cell(this).index().column;
+								rowIdx = userTable.cell(this).index().row;
+								lastIdx = null;
+								//Column Highlight
+								for (var i = 0; i < totalrows; i++) {
+									js$(userTable.cells(i, colIdx).nodes())
+											.removeClass('highlight');
+									js$(userTable.cells(i, colIdx).nodes())
+											.addClass('highlight');
+								}
+								//Row Highlight
+								for (var j = 1; j < totalcols; j++) {
+									js$(userTable.cells(rowIdx, j).nodes())
+											.removeClass('highlight');
+									js$(userTable.cells(rowIdx, j).nodes())
+											.addClass('highlight');
+								}
+
+							})
+					.on(
+							'mouseleave',
+							function() {
+								var totalrows = userTable.rows().nodes().length;
+								var totalcols = userTable.columns().nodes().length;
+
+								for (var i = 0; i < totalrows; i++) {
+									js$(userTable.cells(i, colIdx).nodes())
+											.removeClass('highlight');
+								}
+								//Row Highlight
+								for (var j = 1; j < totalcols; j++) {
+									js$(userTable.cells(rowIdx, j).nodes())
+											.removeClass('highlight');
+								}
+							});
+
+			/*** Row Col Highlight End**/
+
+			m1 = js$('.uiMultiSelect').multiselect({
+				selectedList : js$('.uiMultiSelect').find('option').length,
+				header : true,
+				noneSelectedText : "{!$Label.PRM_multiselect_droplist_val}",
+				//height : 175,
+				//minWidth : 125,
+				classes : 'uiMultiSelect'
+			});
+			m1.multiselect().multiselectfilter({
+				placeHolder : ' ',
+				autoReset : true
+
+			});
+			m2 = js$('.uiMultiSelectMain').multiselect({
+				//height : 150,
+				//minWidth : 125,
+				header : true,
+				noneSelectedText : "{!$Label.PRM_Picklist_Value_Select_options}",
+				multiple : false,
+				selectedList : 1,
+				classes : 'uiMultiSelectMainComp uiuiMultiSelectMainMenu'
+			});
+			m2.multiselect().multiselectfilter({
+				placeHolder : ' ',
+				autoReset : true
+
+			});
+			m3 = js$('.uiMultiSelectCRPSR').multiselect({
+				//height : 150,
+				//minWidth : 125,
+				multiple : false,
+				noneSelectedText : "{!$Label.PRM_Picklist_Value_Select_options}",
+				selectedList : 1,
+				header : true,
+				classes : 'uiMultiSelectMainCRPSR uiuiMultiSelectMainMenu'
+			});
+			m3.multiselect().multiselectfilter({
+				placeHolder : ' ',
+				autoReset : true
+
+			});
+			
+			 m4 = js$('.selectOpenOpp').multiselect({
+				header : true,
+				noneSelectedText: "{!$Label.PRM_Picklist_Value_Select_options}",
+				selectedList : 1,
+				multiple: false,
+				classes : 'selectOpenOpp uiuiMultiSelectMainMenu'
+			})
+			
+			m4.multiselect().multiselectfilter({
+				placeHolder : ' ',
+				autoReset : true 
+
+			}); 
+			js$(m1).addClass('tpfiltermultiselect');
+		   	js$(m2).addClass('tpfiltermultiselect');
+		   	js$(m3).addClass('tpfiltermultiselect');
+		  	js$(m4).addClass('tpfiltermutliselect');
+		   	// return false;
+		};
+		function showHidePSRBlock() {
+			//alert(chCounter);
+			if (chCounter > 0) {
+				//alert(js$("[id*='psrblk']"));
+				js$("[id$='psrblk']").css({
+					"display" : "block"
+				});
+				//assignPSRBtn.removeAttr("disabled");
+
+			} else {
+				js$("[id$='psrblk']").css({
+					"display" : "none"
+				});
+				//	assignPSRBtn.attr("disabled","disabled");
+			}
+			return false;
+		}
+
+		function getSelectedUserId(psr, userid, username) {
+			//alert('psr : '+psr+' userid : '+userid+' username : '+username);
+			if (psr == 'psr1') {
+				js$("[id$='psr1_name']").val(username);
+				js$("[id$='psr1_id']").val(userid);
+			}
+			if (psr == 'psr2') {
+				js$("[id$='psr2_name']").val(username);
+				js$("[id$='psr2_id']").val(userid);
+			}
+			if (psr == 'psr3') {
+				js$("[id$='psr3_name']").val(username);
+				js$("[id$='psr3_id']").val(userid);
+			}
+			//alert('In Parent : psr : '+psr+' userId : '+userid+' username : '+username);
+		}
+		function openPopUpWindow(psr) {
+			//alert('inside this');
+			uid = '';
+			psr1_Id = js$("[id$='psr1_id']").val();
+			psr2_Id = js$("[id$='psr2_id']").val();
+			psr3_Id = js$("[id$='psr3_id']").val();
+
+			uid = 'uid1=' + psr1_Id + '&uid2=' + psr2_Id + '&uid3=' + psr3_Id;
+			//alert('before open');
+			//alert('uid [] ='+uid);
+			if (SearchPageUrl == '') {
+				SearchPageUrl = '{!SearchPageUrl}';
+			}
+			//alert('SearchPageUrl : '+SearchPageUrl);
+			sUrl = SearchPageUrl + '?psrId=' + psr + '&' + uid
+					+ '&core.apexpages.devmode.url=0';
+			//alert('TP : '+sUrl);
+			window
+					.open(sUrl, '',
+							'width=400,height=400,dependent=yes,scrollbars=yes,resizable=no');
+			return false;
+		}
+		
+		
+		 function hideComp(){
+		  js$('div[id$="Assigned_Partner__c_table_wrapper"]').css('display','none');
+	      js$('div[id$="loading"]').css("display:block");
+			  
+		   return false;
+		}
+		
+		 function showComp(){
+			init();
+			
+			// Below are the lines to hide the filterplugin checkAll and uncheckAll text 
+			 js$('.ui-icon-check').next().hide()
+		 	js$('.ui-icon-closethick').next().hide()
+			//js$('.ui-multiselect-filter').empty();
+			js$('.ui-multiselect-filter').addClass('fa fa-filter');
+			//js$('.ui-multiselect-filter').append('<input placeholder="" type="search">');
+			
+		//	 js$('div.pbSubsection').children('table.detailList').fadeIn(5000);
+			js$('div[id$="loading"]').css("display:none");
+			js$('div.pbSubsection').children('table.detailList').css('display','block');
+			js$('div[id$="Assigned_Partner__c_table_wrapper"]').css('display','block');
+			 js$('div[id$="filterpanel"]').removeClass("hidefilter");
+		  return false;
+		}
+		
+		
+		
+		
+	  function loadLibraries(){
+  	
+	  js$.getScript( "{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}" )
+    .done(function( script, textStatus ) { 
+    	console.log( 'jquery.ui.core.js' );
+	    console.log(libCount);
+    	chkLoad();		
+	    
+	})  
+	 .fail(function( jqxhr, settings, exception ) {
+		console.log('jquery.ui.core:\t'+exception);
+		});
+	
+	   js$.getScript( "{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}" )
+    .done(function( script, textStatus ) {
+   		 console.log( 'ui.widget.js' );
+	    console.log(libCount);
+    	chkLoad();	
+	    
+	})  
+	 .fail(function( jqxhr, settings, exception ) {
+		console.log('jquery.ui.widget:\t'+exception);
+		});
+	
+ 	/*     js$.getScript( "{!URLFOR($Resource.jquery_datatable, 'jquery/js/jquery.dataTables.js')}" )
+    .done(function( script, textStatus ) { 
+     console.log( 'jquery.dataTables.js' );
+	   console.log(libCount);
+    	chkLoad();	 
+	   
+	}) 
+	 .fail(function( jqxhr, settings, exception ) {
+		console.log('jquery.dataTables:\t'+exception);
+		}); */
+   
+   }
+   
+  
+    
+    function chkLoad(){
+   		 libCount--;
+   		 
+	    if(libCount==0){
+	    	showComp();
+	    	 refresh =1;	
+	    }
+	    return false;
+	    
+    }
+    
+		
+		
+		
+	</script>
+	<apex:panelGrid columns="2" id="pg1">
+		<apex:form id="form1" styleClass="prmviewFilterTable tppageclass">
+			<apex:pageBlock title="{!$Label.PRM_TargetProspectList}" id="block1">
+				<apex:pageMessages />
+				<apex:panelGrid columns="4">
+					<apex:outputPanel >
+						<apex:outputLabel styleclass="x-form-item-label labelCol"
+							value="{!$Label.PRM_View}:" />
+						<apex:dynamicComponent componentValue="{!viewListComponent}" />
+						<apex:outputpanel rendered="{!isUncoveredProspects}" layout="none">
+							<!-- <apex:commandButton value="Click Me " rerender="" id="clickme" />-->
+							<!-- <button  id="work-prospects">{!$Label.PRM_WorkProspects}</button> -->
+							<apex:commandbutton id="work-prospects" value="{!$Label.PRM_WorkProspects}" action="{!openWorkProspectPage}" />
+						</apex:outputpanel>
+						
+						<apex:outputpanel rendered="{!isUncoveredProspects}" >
+							<apex:outputlabel styleclass="x-form-item-label tpmsgclass" 
+							value="{!uncoveredProspectsMsg}" />
+						</apex:outputpanel>
+						<!-- <apex:selectList id="viewList"
+							styleClass="view_list_class dataCol uiMultiSelectMain"
+							value="{!selectedView}" size="1">
+							<apex:actionSupport event="onchange" action="{!doSearch}"
+								status="searching"/>
+							<apex:selectOptions value="{!viewOptions}" />
+						</apex:selectList>
+						-->
+						<apex:actionStatus id="searching" onstart="js$('#loading').show();hideComp();"
+							onstop="js$('#loading').hide();showComp();" />
+					</apex:outputPanel>
+					&nbsp;&nbsp;
+
+					<apex:panelGroup id="panel_group_1"
+						rendered="{!NOT(isUncoveredProspects)}">
+						<apex:outputLabel styleclass="x-form-item-label labelCol">{!$ObjectType.Assigned_Partner__c.fields.Marketing_Play_Name__c.label}:</apex:outputLabel>
+						<apex:selectList styleclass="uiMultiSelectMain"
+							value="{!marketingPlay}" size="1">
+							<apex:actionSupport event="onchange" action="{!doSearch}"
+								 status="searching"/>
+							<apex:SelectOptions value="{!marketingPlayList}" />
+						</apex:selectList>
+					</apex:panelGroup>
+
+				</apex:panelGrid>
+
+				<apex:outputpanel id="filterpanel"  layout="block" styleclass="hidefilter">
+				<apex:pageblocksection title="{!$Label.PRM_Filter}" columns="3"
+					id="filterList">
+					<apex:pageBlockSectionItem dataStyleClass="tableCellData1"
+						labelStyleClass="tableCellLabel1">
+						<apex:outputLabel styleclass="x-form-item-label"
+							value="{!$Label.PRM_Customer_Name}:" for="ext-gen1110;" />
+						<apex:inputText value="{!customerName}"
+							styleClass="x-form-field x-form-text" />
+					</apex:pageBlockSectionItem>
+
+					<apex:pageBlockSectionItem rendered="{!(isUncoveredProspects)}" />
+					<apex:pageBlockSectionitem dataStyleClass="tableCellData1"
+						labelStyleClass="tableCellLabel1"
+						rendered="{!NOT(isUncoveredProspects)}">
+
+						<apex:outputLabel value="{!$ObjectType.Assigned_Partner__c.fields.Target_Architecture__c.label}:"
+							styleclass="x-form-item-label" for="ext-gen1110;" />
+
+						<apex:selectList value="{!selectedTagetArchitecture}" size="5"
+							multiselect="true"
+							styleclass="dataCol uiMultiSelect tableCellData1">
+
+							<apex:selectOptions value="{!targetArchitectureList}" />
+
+						</apex:selectList>
+					</apex:pageBlockSectionitem>
+
+					<apex:pageBlockSectionItem rendered="{!(isUncoveredProspects)}" />
+
+					<apex:pageBlockSectionItem dataStyleclass="tableCellData1"
+						labelStyleClass="tableCellLabel1"
+						rendered="{!NOT(isUncoveredProspects)}">
+						<apex:outputpanel >
+							<apex:outputLabel value="{!$ObjectType.Assigned_Partner__c.fields.Cisco_Recomended_Partner_Sales_Rep__c.label}:"
+							rendered="{!AND(isPA,isNewlyAssignedProspect)}" styleclass="x-form-item-label"
+							for="ext-gen1110;" />
+							<apex:outputLabel value="PSR 1:"
+							rendered="{!AND(isPA,NOT(isNewlyAssignedProspect))}" styleclass="x-form-item-label"
+							for="ext-gen1110;" />
+						</apex:outputpanel>
+						<apex:selectList value="{!ciscoRecommendedPSR}" rendered="{!isPA}"
+							size="5" multiselect="false"
+							styleclass="dataCol selectOpenOpp">
+
+							<apex:selectOptions value="{!CRPSRList}" />
+
+						</apex:selectList>
+					</apex:pageBlockSectionItem>
+
+					<apex:pageBlockSectionItem >
+						<apex:outputLabel value="{!$ObjectType.Account.fields.Industry.label}:"
+							styleclass="x-form-item-label" for="ext-gen1110;" />
+						<apex:selectList value="{!selectedIndustry}" size="5"
+							multiselect="true" styleclass="dataCol uiMultiSelect">
+							<apex:selectOptions value="{!industryList}" />
+						</apex:selectList>
+					</apex:pageBlockSectionItem>
+
+					<apex:pageBlockSectionItem >
+						<apex:outputLabel value="{!$Label.PRM_Technology}:"
+							styleclass="x-form-item-label" for="ext-gen1110;" />
+						<apex:selectList id="viewList"
+							styleclass="dataCol uiMultiSelectCRPSR"
+							value="{!selectedTechnology}" multiselect="false" size="5">
+							
+							<apex:selectOptions value="{!technologyList}" />
+						</apex:selectList>
+					</apex:pageBlockSectionItem>
+
+					<apex:pageBlockSectionItem />
+
+
+					<apex:pageBlockSectionItem >
+						<apex:outputLabel value="{!$ObjectType.Account.fields.Country__c.Label}:"
+							styleclass="x-form-item-label" for="ext-gen1110;" />
+						<apex:selectList value="{!selectedCountry}" size="5"
+							multiselect="true" styleclass="dataCol uiMultiSelect">
+							<apex:selectOptions value="{!countryList}" />
+						</apex:selectList>
+					</apex:pageBlockSectionItem>
+
+					<apex:pageBlockSectionItem >
+						<apex:outputLabel value="{!$ObjectType.Account.fields.State__c.Label}:"
+							styleclass="x-form-item-label" for="ext-gen1110;" />
+						<apex:inputText value="{!stateorProvince}"
+							styleClass="x-form-field x-form-text" />
+					</apex:pageBlockSectionItem>
+
+					<apex:pageBlockSectionItem >
+						<apex:outputLabel value="{!$ObjectType.Account.fields.City__c.Label}:"
+							styleclass="x-form-item-label" for="ext-gen1110;" />
+						<apex:inputText value="{!city}"
+							styleClass="x-form-field x-form-text" style="width:120px;" />
+					</apex:pageBlockSectionItem>
+
+					<apex:panelGrid columns="3">
+						<apex:commandButton value="{!$Label.PRM_Apply_Filter}"
+							action="{!doSearch}" status="searching"
+							 />
+
+						<apex:commandButton value="{!$Label.PRM_Clear_Filter}"
+							action="{!clearFields}" />
+					</apex:panelGrid>
+
+					<div id="loading" style="display: none;">
+						<img src="{!$Resource.Processingicon}" alt="" />
+					</div>
+
+				</apex:pageblocksection>
+				</apex:outputpanel>
+			</apex:pageBlock>
+
+
+			<apex:pageBlock mode="edit" id="pg2"
+				rendered="{!NOT(isUncoveredProspects)}">
+
+				<apex:outputpanel id="psr_panel" style="display:none;" layout="none">
+					<c:SCP_Communities_PSRBulkAssignment pageCon="{!this}"
+						componentKey="{!psrKey}" />
+				</apex:outputpanel>
+				
+				<!-- <div id="tbadiv" style="overflow: auto; width: 100%;"> -->
+					<apex:pageBlockTable styleclass="display dataTable tptable"
+						value="{!pageRecords}" var="ap"
+						id="Assigned_Partner__c_table">
+						
+						
+						<apex:column rendered="{! AND(isPA, isNewlyAssignedProspect)}" >
+							<apex:facet name="header">
+								<input type="checkbox" id="select_all" />
+							</apex:facet>
+							<apex:inputCheckBox styleclass="chkbox" value="{!ap.isSelected}" />
+						</apex:column>
+
+						<apex:column >
+							<apex:facet name="header"></apex:facet>
+							<apex:outputpanel id="i_red"
+								rendered="{!ap.tp.Customer_Account__r.Incumbent_Partner_Status__c=='RED'}">
+								<apex:image value="{!URLFOR($Resource.SCP_Communities_partnerstatus,'/images/RedAccountIcon.png')}"
+									width="12" />
+							</apex:outputpanel>
+							<apex:outputpanel id="i_yellow"
+								rendered="{!ap.tp.Customer_Account__r.Incumbent_Partner_Status__c=='YELLOW'}">
+								<apex:image value="{!URLFOR($Resource.SCP_Communities_partnerstatus,'/images/YellowAccountIcon.png')}"
+									width="12" />
+							</apex:outputpanel>
+							<apex:outputpanel id="i_green"
+								rendered="{!ap.tp.Customer_Account__r.Incumbent_Partner_Status__c=='GREEN'}">
+								<apex:image value="{!URLFOR($Resource.SCP_Communities_partnerstatus,'/images/GreenAccountIcon.png')}"
+									width="12" />
+							</apex:outputpanel>
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.PRM_Customer_Name}">
+							<apex:outputLink value="{!URLFOR($Action.Assigned_Partner__c.View, ap.tp.Id, null)}"
+								id="theLink">{!ap.hyperlink}</apex:outputLink>
+							<br />
+							<apex:outputpanel rendered="{! NOT(isEnglish)}">
+									{!ap.cname_en}
+								</apex:outputpanel>
+						</apex:column>
+
+						<apex:column >
+							<apex:facet name="header">{!$Label.PRM_Expiring_On}</apex:facet>
+							
+							<apex:outputpanel id="expDate1" styleclass="expDate1" rendered="{!ap.isExpDateIn7Days}">
+								<apex:outputfield value="{!ap.tp.Expiration_Date__c}" />
+							</apex:outputpanel>
+							
+							<apex:outputpanel id="expDate2" styleclass="expDate2" rendered="{!NOT(ap.isExpDateIn7Days)}">
+								<apex:outputfield value="{!ap.tp.Expiration_Date__c}" />
+							</apex:outputpanel>
+						</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Assigned_Partner__c.fields.Prospect_Age__c.label}</apex:facet>
+								{!ap.tp.Prospect_Age__c}
+							</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.Industry.label}</apex:facet>
+								{!ap.tp.Customer_Account__r.Industry}
+							</apex:column>
+
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Assigned_Partner__c.fields.Partner_Status__c.label}</apex:facet>
+							<apex:outputfield value="{!ap.tp.Partner_Status__c}" />
+						</apex:column>
+
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Assigned_Partner__c.fields.Assigned_Partner_Sales_Rep__c.label}</apex:facet>
+							<apex:outputField value="{!ap.tp.Assigned_Partner_Sales_Rep__c}" />
+						</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Assigned_Partner__c.fields.Date_Added__c.label}</apex:facet>
+							<apex:outputfield value="{!ap.tp.Date_Added__c}" />
+						</apex:column>
+
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Assigned_Partner__c.fields.Target_Architecture__c.label}</apex:facet>
+								{!ap.tp.Target_Architecture__c}
+							</apex:column>
+						<apex:column rendered="{!isPA}">
+							<apex:facet name="header">{!$ObjectType.Assigned_Partner__c.fields.Cisco_Recomended_Partner_Sales_Rep__c.label}</apex:facet>
+								<apex:outputfield value="{!ap.tp.Cisco_Recomended_Partner_Sales_Rep__c}" />
+							</apex:column>
+
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Assigned_Partner__c.fields.Target_Description__c.label}</apex:facet>
+								{!ap.tp.Target_Description__c}
+							</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Assigned_Partner__c.fields.Marketing_Play_Name__c.label}</apex:facet>
+								{!ap.tp.Marketing_Play_Name__c}
+							</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$Label.PRM_AccountOwner}</apex:facet>
+								{!ap.tp.Customer_Account__r.Owner.Name}
+							</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.AddressLine1__c.Label}</apex:facet>
+							<apex:outputpanel rendered="{! NOT(isEnglish)}">
+									{!ap.address_loc}<br />
+							</apex:outputpanel>
+								{!ap.address_en}
+						</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.City__c.Label}</apex:facet>
+							<apex:outputpanel rendered="{! NOT(isEnglish)}">
+									{!ap.city_loc}<br />
+							</apex:outputpanel>
+								{!ap.city_en}
+						</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.State__c.Label}</apex:facet>
+							<apex:outputpanel rendered="{! NOT(isEnglish)}">
+									{!ap.state_loc}<br />
+							</apex:outputpanel>
+								{!ap.state_en}
+						</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.ZipPostalCode__c.Label}</apex:facet>
+								{!ap.tp.Customer_Account__r.CRZipPostalCode__c}
+							</apex:column>
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.Country__c.Label}</apex:facet>
+							<apex:outputpanel rendered="{! NOT(isEnglish)}">
+									{!ap.country_loc}<br />
+							</apex:outputpanel>
+								{!ap.country_en}
+						</apex:column>
+					</apex:pageBlockTable>
+				<!-- </div> -->
+			</apex:pageBlock>
+
+			<!-- TP Uncovered Prospects view -->
+			<apex:pageBlock mode="edit" id="pg3"
+				rendered="{!isUncoveredProspects}">
+				
+				<!-- <div id="tbadiv2" style="overflow: auto; width: 100%;"> -->
+					<apex:pageBlockTable styleclass="display dataTable tptable"
+						value="{!pageRecords}" var="a"
+						id="Account_table">
+						<apex:column >
+							<apex:facet name="header">
+							</apex:facet>
+							<apex:inputCheckBox id="AccChkBox" styleclass="onechkbox" value="{!a.isSelected}" />
+						</apex:column>
+						
+						<apex:column >
+							<apex:facet name="header">{!$Label.PRM_Customer_Name}</apex:facet>
+							<apex:outputLink value="{!URLFOR($Action.Account.View, a.acc.Id, null)}"
+								id="theLink">{!a.hyperlink}</apex:outputLink>
+							<br />
+							<apex:outputpanel rendered="{! NOT(isEnglish)}">
+									{!a.cname_en}
+								</apex:outputpanel>
+						</apex:column>
+						
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.Industry.Label}</apex:facet>
+							<apex:outputtext value="{!a.acc.Industry}"/>
+						</apex:column>
+						
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.Current_FY_Wallet_Total_000__c.Label}</apex:facet>
+							<apex:outputText value="{!a.acc.Current_FY_Wallet_Total_000__c}" />
+						</apex:column>
+						
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.City__c.Label}</apex:facet>
+							<apex:outputpanel rendered="{! NOT(isEnglish)}">
+									{!a.city_loc}<br />
+							</apex:outputpanel>
+								{!a.city_en}
+						</apex:column>
+						
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.State__c.Label}</apex:facet>
+							<apex:outputpanel rendered="{! NOT(isEnglish)}">
+									{!a.state_loc}<br />
+							</apex:outputpanel>
+								{!a.state_en}
+						</apex:column>
+						
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.ZipPostalCode__c.Label}</apex:facet>
+								{!a.acc.CRZipPostalCode__c}
+						</apex:column>
+						
+						<apex:column >
+							<apex:facet name="header">{!$ObjectType.Account.fields.Country__c.Label}</apex:facet>
+							<apex:outputpanel rendered="{! NOT(isEnglish)}">
+									{!a.country_loc}<br />
+							</apex:outputpanel>
+								{!a.country_en}
+						</apex:column>
+					</apex:pageBlockTable>
+<!-- 				</div> -->
+				<!-- <apex:outputlabel value="{!q_finalQuery}" />-->
+			</apex:pageBlock>
+			
+		</apex:form>
+	</apex:panelGrid>
+</apex:page>

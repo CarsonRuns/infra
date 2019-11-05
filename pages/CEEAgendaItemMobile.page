@@ -1,0 +1,42 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0" standardController="CEE__c"  extensions="CEEAgendaItemModalController" standardStylesheets="false">
+    <apex:stylesheet value="{!URLFOR($Resource.SFBootstrap, '/dist/css/bootstrap.css')}"  />
+    <apex:stylesheet value="{!URLFOR($Resource.MobileTemplates,'common/css/app.min.css')}"/>
+    <apex:includeScript value="{!$Resource.jquery22}" />
+    <apex:includeScript value="{!URLFOR($Resource.angular, '/angular/angular.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jqmobile,'/jqueryMobile/jquery.mobile-1.4.5.min.js')}"/>
+    <apex:stylesheet value="{!$Resource.MobileAppCss}"/>
+    <apex:stylesheet value="{!$Resource.CEE_CSSStyles}" />
+    <style>
+    </style>
+    <div class="app-wrapper container" ng-app="ceeAgendaItemApp" id="ceeAgendaItemApplication" data-role="page" ng-controller="ceeAgendaItemEditCtrl" style="padding-left:2px;padding-right:2px;">    
+        <div class="app-content" data-role="main"  style="margin:40px 10px 0px 0px;  padding-top: 0px;">
+        <span class="glyphicon glyphicon-camera" style="float:left;font-size:25px;color:#53B6D7;margin-left:20px;margin-top:12px;"></span><div class="agendaItemMainLabel"><label class="agendaLabel" style="padding-top:5px;margin-top:12px;">Agenda Items</label></div>       
+            <ul class="list-view right-one-icons touch" id="list" data-role="listview" data-icon="false">
+                <apex:repeat rendered="{!AgendaItemsData.size != 0}" value="{!AgendaItemsData}" var="AI" id="theRepeat">
+                    <li class="forceActionRow uiInfiniteListRow" ng-click="agendaItemClick('{!AI.Id}',$event);" data-index="$index" style="padding:15px;">
+                       <div class="ceeAgendaItemNameClass" ng-cloak="true" style="font-weight:bold;">{!AI.name}</div> 
+                       <div class="ceeAgendaItemClassName" ng-cloak="true"><div class="ceeAgendaItemLabel" style="font-weight:bold;">Topic:</div>{!AI.Topic_Name__c}</div>
+                        <div class="ceeAgendaItemClassName" ng-cloak="true"><div class="ceeAgendaItemLabel" style="font-weight:bold;">StartDate:</div><apex:outputField value="{!AI.Start_Date_Time__c}" /></div>
+                        <div class="ceeAgendaItemClassName" ng-cloak="true"><div class="ceeAgendaItemLabel" style="font-weight:bold;">EndDate:</div><apex:outputField value="{!AI.End_Date_Time__c}" /></div> 
+                    </li>
+                </apex:repeat>
+                <apex:repeat rendered="{!AgendaItemsData.size = 0}" value="{!AgendaItemsData}">
+                    <div class="emptyRecords" style="display:block;">There are no records in the list</div>
+                </apex:repeat>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">  
+    $(function(){
+            $('.ui-loader').hide();
+    });  
+        var ceeAgendaItemApp = angular.module("ceeAgendaItemApp",[]);// creating the angular js module
+        /* CEE Agenda Items Controller */
+        ceeAgendaItemApp.controller("ceeAgendaItemEditCtrl",['$scope','$timeout',function($scope,$timeout){// creating angular js controller                    
+            $scope.agendaItemClick = function(id,event){               
+                sforce.one.navigateToURL('/'+id);
+            };
+            
+        }]);                     
+    </script>
+</apex:page>

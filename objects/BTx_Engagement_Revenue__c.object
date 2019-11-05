@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>BTx_Solution</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Cloud_Offer__c</fullName>
+        <description>Cloud Offer</description>
+        <externalId>false</externalId>
+        <label>Cloud Offer</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cloud Demand</fullName>
+                    <default>false</default>
+                    <label>Cloud Demand</label>
+                </value>
+                <value>
+                    <fullName>Cloud Supply</fullName>
+                    <default>false</default>
+                    <label>Cloud Supply</label>
+                </value>
+                <value>
+                    <fullName>To Be Qualified</fullName>
+                    <default>false</default>
+                    <label>To Be Qualified</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Collab_Conferencing_Mix__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Collab-WebEx Mix %</description>
+        <externalId>false</externalId>
+        <label>Collab-Conferencing Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Collab_Conferencing_in_K__c</fullName>
+        <description>Collab Conferencing $ in K</description>
+        <externalId>false</externalId>
+        <formula>Collab_Conferencing_Mix__c  * Expected_Product_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Collab-Conferencing $ in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Collab_Contact_Center_Mix__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Collab-Contact Center Mix %</description>
+        <externalId>false</externalId>
+        <label>Collab-Contact Center Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Collab_Contact_Center_in_K__c</fullName>
+        <description>Collab-Contact Center $ in K</description>
+        <externalId>false</externalId>
+        <formula>Collab_Contact_Center_Mix__c *  Expected_Product_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Collab-Contact Center $ in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Collab_Core_in_K__c</fullName>
+        <description>Collab Core $ in K</description>
+        <externalId>false</externalId>
+        <formula>Project_Total_Collab_Mix__c * Expected_Product_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Collab-Core $ in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Collab_UC_Mix__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Collab-UC Mix %</description>
+        <externalId>false</externalId>
+        <label>Collab-UC Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Collab_UC_in_K__c</fullName>
+        <description>Collab_UC$ in K</description>
+        <externalId>false</externalId>
+        <formula>Collab_UC_Mix__c *  Expected_Product_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Collab-UC $ in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Collab_Video_Mix__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Collab-Video Mix %</description>
+        <externalId>false</externalId>
+        <label>Collab-Video Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Collab_Video_in_K__c</fullName>
+        <description>Collab_Video $ in K</description>
+        <externalId>false</externalId>
+        <formula>Collab_Video_Mix__c  * Expected_Product_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Collab-Video $ in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <description>Comments associated with revenue</description>
+        <externalId>false</externalId>
+        <label>Offer-Other Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Computing_Systems_in_K__c</fullName>
+        <description>Computing Systems $ in K</description>
+        <externalId>false</externalId>
+        <formula>Engagement_Total_DC_Mix__c * Expected_Product_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Computing Systems $ in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Route_Switch_in_K__c</fullName>
+        <description>Core_Route_Switch $ in K</description>
+        <externalId>false</externalId>
+        <formula>Project_Total_Core_Route_Switch_Mix__c * Expected_Product_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Core Route Switch $ in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Data_Source__c</fullName>
+        <externalId>false</externalId>
+        <label>Data Source</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deal_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.DealID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Opportunity Deal ID</inlineHelpText>
+        <label>Deal ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Engagement_Total_DC_Mix__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Computing Systems Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Engagement__c</fullName>
+        <description>BTx Engagement for which revenue is being captured.</description>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>BTx_Engagement_Activity__c</referenceTo>
+        <relationshipLabel>BTx Project Revenue by Offers</relationshipLabel>
+        <relationshipName>BTx_Engagement_Revenue</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Expected_Book_Date_Fiscal_Quarter__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Book Date Fiscal Quarter</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Book_Date_Fiscal_Year__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Book Date Fiscal Year</label>
+        <length>5</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Book_Date__c</fullName>
+        <description>Expected Book Date</description>
+        <externalId>false</externalId>
+        <label>Expected Book Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Product_in_K__c</fullName>
+        <description>Expected Product in K</description>
+        <externalId>false</externalId>
+        <label>Expected Product in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Service_in_K__c</fullName>
+        <description>Expected Service in K</description>
+        <externalId>false</externalId>
+        <label>Expected Service in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Total_in_K__c</fullName>
+        <description>Expected Total $ in K</description>
+        <externalId>false</externalId>
+        <formula>Expected_Product_in_K__c +
+Expected_Service_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Expected Total in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Forecast_Status__c</fullName>
+        <description>Forecast_Status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>COMMIT: At least 80% probability for the expected book date
+
+UPSIDE: At least 60% probability for the expected book date
+
+NON-FORECASTABLE: Less than 60% probability of closing</inlineHelpText>
+        <label>Forecast Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Forecastable</fullName>
+                    <default>false</default>
+                    <label>Not Forecastable</label>
+                </value>
+                <value>
+                    <fullName>Upside</fullName>
+                    <default>false</default>
+                    <label>Upside</label>
+                </value>
+                <value>
+                    <fullName>Commit</fullName>
+                    <default>false</default>
+                    <label>Commit</label>
+                </value>
+                <value>
+                    <fullName>Booked</fullName>
+                    <default>false</default>
+                    <label>Booked</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_this_a_Primary_Solution__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is this a Primary Offer?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Type__c</fullName>
+        <description>We need to track replicated successes of our projects. To this end, we need to be able to designate which revenue streams are initial vs "franchise"</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ALL-IN-ONE - Single implementation project; no opportunity to repeat with customer 
+INITIAL/PILOT - Single geo implementation. Opportunity to repeat with the customer 
+FRANCHISE WIN - Repeated sale of INITIAL/PILOT with customer (same business problem)</inlineHelpText>
+        <label>Opportunity Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>All-in-one</fullName>
+                    <default>false</default>
+                    <label>All-in-one</label>
+                </value>
+                <value>
+                    <fullName>Initial/Pilot</fullName>
+                    <default>false</default>
+                    <label>Initial/Pilot</label>
+                </value>
+                <value>
+                    <fullName>Franchise Win</fullName>
+                    <default>false</default>
+                    <label>Franchise Win</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>BTx Project Revenue by Offers</relationshipLabel>
+        <relationshipName>BTx_Project_Revenue_by_Offers</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Project_Total_Collab_Mix__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Collab-Core Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Project_Total_Core_Route_Switch_Mix__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Core Route/Switch Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Project_Total_Security_Mix__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Security Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Project_Total_Wireless_Mix__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Wireless Mix %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Order__c</fullName>
+        <description>Sales Order #</description>
+        <externalId>false</externalId>
+        <label>Sales Order #</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Security_in_K__c</fullName>
+        <description>Security $ in K</description>
+        <externalId>false</externalId>
+        <formula>Project_Total_Security_Mix__c * Expected_Product_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Security $ in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Software_Offer__c</fullName>
+        <description>Software Offer</description>
+        <externalId>false</externalId>
+        <label>Software Offer</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Security ELA</fullName>
+                    <default>false</default>
+                    <label>Security ELA</label>
+                </value>
+                <value>
+                    <fullName>Collab ELA</fullName>
+                    <default>false</default>
+                    <label>Collab ELA</label>
+                </value>
+                <value>
+                    <fullName>CiscoOne Datacenter Network Foundation</fullName>
+                    <default>false</default>
+                    <label>CiscoOne Datacenter Network Foundation</label>
+                </value>
+                <value>
+                    <fullName>CiscoOne Datacenter Network Advanced</fullName>
+                    <default>false</default>
+                    <label>CiscoOne Datacenter Network Advanced</label>
+                </value>
+                <value>
+                    <fullName>CiscoOne UCS Foundation</fullName>
+                    <default>false</default>
+                    <label>CiscoOne UCS Foundation</label>
+                </value>
+                <value>
+                    <fullName>CiscoOne UCS Advanced</fullName>
+                    <default>false</default>
+                    <label>CiscoOne UCS Advanced</label>
+                </value>
+                <value>
+                    <fullName>CiscoOne WAN Foundation</fullName>
+                    <default>false</default>
+                    <label>CiscoOne WAN Foundation</label>
+                </value>
+                <value>
+                    <fullName>CiscoOne WAN Advanced</fullName>
+                    <default>false</default>
+                    <label>CiscoOne WAN Advanced</label>
+                </value>
+                <value>
+                    <fullName>CiscoOne Access Foundation</fullName>
+                    <default>false</default>
+                    <label>CiscoOne Access Foundation</label>
+                </value>
+                <value>
+                    <fullName>CiscoOne Access Advanced</fullName>
+                    <default>false</default>
+                    <label>CiscoOne Access Advanced</label>
+                </value>
+                <value>
+                    <fullName>Cross Catalog</fullName>
+                    <default>false</default>
+                    <label>Cross Catalog</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Solution__c</fullName>
+        <externalId>false</externalId>
+        <label>Offers</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Agile Agency / Bank / Firm Platform</fullName>
+                    <default>false</default>
+                    <label>Agile Agency / Bank / Firm Platform</label>
+                </value>
+                <value>
+                    <fullName>Business Conferencing and Training</fullName>
+                    <default>false</default>
+                    <label>Business Conferencing and Training</label>
+                </value>
+                <value>
+                    <fullName>Business Video</fullName>
+                    <default>false</default>
+                    <label>Business Video</label>
+                </value>
+                <value>
+                    <fullName>Connected Agency / Bank / Firm Platform</fullName>
+                    <default>false</default>
+                    <label>Connected Agency / Bank / Firm Platform</label>
+                </value>
+                <value>
+                    <fullName>Connected Analytics for Network Deployment</fullName>
+                    <default>false</default>
+                    <label>Connected Analytics for Network Deployment</label>
+                </value>
+                <value>
+                    <fullName>Connected Analytics for Retail</fullName>
+                    <default>false</default>
+                    <label>Connected Analytics for Retail</label>
+                </value>
+                <value>
+                    <fullName>Connected Energy</fullName>
+                    <default>false</default>
+                    <label>Connected Energy</label>
+                </value>
+                <value>
+                    <fullName>Connected Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Connected Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Connected Processes</fullName>
+                    <default>false</default>
+                    <label>Connected Processes</label>
+                </value>
+                <value>
+                    <fullName>Critical Infrastructure Security</fullName>
+                    <default>false</default>
+                    <label>Critical Infrastructure Security</label>
+                </value>
+                <value>
+                    <fullName>Customer Effort Analytics</fullName>
+                    <default>false</default>
+                    <label>Customer Effort Analytics</label>
+                </value>
+                <value>
+                    <fullName>Cyber Security for Industry</fullName>
+                    <default>false</default>
+                    <label>Cyber Security for Industry</label>
+                </value>
+                <value>
+                    <fullName>Cyber Security for Insurance / Banking</fullName>
+                    <default>false</default>
+                    <label>Cyber Security for Insurance / Banking</label>
+                </value>
+                <value>
+                    <fullName>Digital Enterprise</fullName>
+                    <default>false</default>
+                    <label>Digital Enterprise</label>
+                </value>
+                <value>
+                    <fullName>Digital Interactive Experience</fullName>
+                    <default>false</default>
+                    <label>Digital Interactive Experience</label>
+                </value>
+                <value>
+                    <fullName>Digital Team Collaboration</fullName>
+                    <default>false</default>
+                    <label>Digital Team Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Distribution Center-Future</fullName>
+                    <default>false</default>
+                    <label>Distribution Center-Future</label>
+                </value>
+                <value>
+                    <fullName>Employee Enablement-Future</fullName>
+                    <default>false</default>
+                    <label>Employee Enablement-Future</label>
+                </value>
+                <value>
+                    <fullName>Extended Care</fullName>
+                    <default>false</default>
+                    <label>Extended Care</label>
+                </value>
+                <value>
+                    <fullName>Flexible Fulfillment</fullName>
+                    <default>false</default>
+                    <label>Flexible Fulfillment</label>
+                </value>
+                <value>
+                    <fullName>Guest and Staff Communications</fullName>
+                    <default>false</default>
+                    <label>Guest and Staff Communications</label>
+                </value>
+                <value>
+                    <fullName>Guest Loyalty Experience</fullName>
+                    <default>false</default>
+                    <label>Guest Loyalty Experience</label>
+                </value>
+                <value>
+                    <fullName>Guest Mobile Experience</fullName>
+                    <default>false</default>
+                    <label>Guest Mobile Experience</label>
+                </value>
+                <value>
+                    <fullName>Guest Personalized Stay</fullName>
+                    <default>false</default>
+                    <label>Guest Personalized Stay</label>
+                </value>
+                <value>
+                    <fullName>Intelligent Contact Center</fullName>
+                    <default>false</default>
+                    <label>Intelligent Contact Center</label>
+                </value>
+                <value>
+                    <fullName>Interactive Kiosks</fullName>
+                    <default>false</default>
+                    <label>Interactive Kiosks</label>
+                </value>
+                <value>
+                    <fullName>Life Line</fullName>
+                    <default>false</default>
+                    <label>Life Line</label>
+                </value>
+                <value>
+                    <fullName>Location-Based Analytics</fullName>
+                    <default>false</default>
+                    <label>Location-Based Analytics</label>
+                </value>
+                <value>
+                    <fullName>Location Integrated Real Time communications</fullName>
+                    <default>false</default>
+                    <label>Location Integrated Real Time communications</label>
+                </value>
+                <value>
+                    <fullName>Location Services</fullName>
+                    <default>false</default>
+                    <label>Location Services</label>
+                </value>
+                <value>
+                    <fullName>Logical Data Warehouse</fullName>
+                    <default>false</default>
+                    <label>Logical Data Warehouse</label>
+                </value>
+                <value>
+                    <fullName>Loss Prevention</fullName>
+                    <default>false</default>
+                    <label>Loss Prevention</label>
+                </value>
+                <value>
+                    <fullName>Match Rate Routing</fullName>
+                    <default>false</default>
+                    <label>Match Rate Routing</label>
+                </value>
+                <value>
+                    <fullName>Mobile Experiences</fullName>
+                    <default>false</default>
+                    <label>Mobile Experiences</label>
+                </value>
+                <value>
+                    <fullName>Omnichannel Customer Care</fullName>
+                    <default>false</default>
+                    <label>Omnichannel Customer Care</label>
+                </value>
+                <value>
+                    <fullName>Omni-Channel for Insurance/Banking</fullName>
+                    <default>false</default>
+                    <label>Omni-Channel for Insurance/Banking</label>
+                </value>
+                <value>
+                    <fullName>Patient Connect</fullName>
+                    <default>false</default>
+                    <label>Patient Connect</label>
+                </value>
+                <value>
+                    <fullName>Physical and Cyber Security Integration</fullName>
+                    <default>false</default>
+                    <label>Physical and Cyber Security Integration</label>
+                </value>
+                <value>
+                    <fullName>Product and Services</fullName>
+                    <default>false</default>
+                    <label>Product and Services</label>
+                </value>
+                <value>
+                    <fullName>Real Time Communications</fullName>
+                    <default>false</default>
+                    <label>Real Time Communications</label>
+                </value>
+                <value>
+                    <fullName>Remote Advisor Collaborator</fullName>
+                    <default>false</default>
+                    <label>Remote Advisor Collaborator</label>
+                </value>
+                <value>
+                    <fullName>Remote Inspection</fullName>
+                    <default>false</default>
+                    <label>Remote Inspection</label>
+                </value>
+                <value>
+                    <fullName>Remote Video Advisor</fullName>
+                    <default>false</default>
+                    <label>Remote Video Advisor</label>
+                </value>
+                <value>
+                    <fullName>Risk Data Aggregation Compliance</fullName>
+                    <default>false</default>
+                    <label>Risk Data Aggregation Compliance</label>
+                </value>
+                <value>
+                    <fullName>Secure Network as a Business Enabler</fullName>
+                    <default>false</default>
+                    <label>Secure Network as a Business Enabler</label>
+                </value>
+                <value>
+                    <fullName>Sensor/Edge Analytics</fullName>
+                    <default>false</default>
+                    <label>Sensor/Edge Analytics</label>
+                </value>
+                <value>
+                    <fullName>Unified Retail Platform</fullName>
+                    <default>false</default>
+                    <label>Unified Retail Platform</label>
+                </value>
+                <value>
+                    <fullName>Virtual Care/Telehealth</fullName>
+                    <default>false</default>
+                    <label>Virtual Care/Telehealth</label>
+                </value>
+                <value>
+                    <fullName>Virtual Claims</fullName>
+                    <default>false</default>
+                    <label>Virtual Claims</label>
+                </value>
+                <value>
+                    <fullName>Virtual Expertise</fullName>
+                    <default>false</default>
+                    <label>Virtual Expertise</label>
+                </value>
+                <value>
+                    <fullName>Virtualized and Cloud Services</fullName>
+                    <default>false</default>
+                    <label>Virtualized and Cloud Services</label>
+                </value>
+                <value>
+                    <fullName>Virtual Patient Observation</fullName>
+                    <default>false</default>
+                    <label>Virtual Patient Observation</label>
+                </value>
+                <value>
+                    <fullName>Workplace of the Future</fullName>
+                    <default>false</default>
+                    <label>Workplace of the Future</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Specialty_Focus__c</fullName>
+        <description>Specialty Focus</description>
+        <externalId>false</externalId>
+        <label>Specialty Focus</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Services Platform Group (SPG)</fullName>
+                    <default>false</default>
+                    <label>Services Platform Group (SPG)</label>
+                </value>
+                <value>
+                    <fullName>IoT</fullName>
+                    <default>false</default>
+                    <label>IoT</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sum_of_All_BE__c</fullName>
+        <externalId>false</externalId>
+        <formula>Collab_Contact_Center_Mix__c +
+Collab_UC_Mix__c +
+Collab_Video_Mix__c +
+Collab_Conferencing_Mix__c +
+Project_Total_Collab_Mix__c +
+Engagement_Total_DC_Mix__c  +   
+Project_Total_Security_Mix__c +
+Project_Total_Wireless_Mix__c +
+Project_Total_Core_Route_Switch_Mix__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sum of All BE %</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Wireless_in_K__c</fullName>
+        <description>Wireless $ in K</description>
+        <externalId>false</externalId>
+        <formula>Project_Total_Wireless_Mix__c * Expected_Product_in_K__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Wireless $ in K</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Used to record revenue and pipeline information for a BTx Engagement</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>BTx Project Revenue by Offer</label>
+    <nameField>
+        <displayFormat>BTx Revenue-{0}</displayFormat>
+        <label>BTx Project Revenue</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>BTx Project Revenue by Offers</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Engagement__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Comments__c</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Engagement__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Comments__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Engagement__c</searchFilterFields>
+        <searchFilterFields>Comments__c</searchFilterFields>
+        <searchResultsAdditionalFields>Engagement__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Comments__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <validationRules>
+        <fullName>Mandatry_Solution_Description</fullName>
+        <active>true</active>
+        <description>Solution-Description is mandatory if Other is selected as the Solution</description>
+        <errorConditionFormula>TEXT( Solution__c )  = 'Other (provide description below)' &amp;&amp; 
+ Comments__c  = ''</errorConditionFormula>
+        <errorDisplayField>Comments__c</errorDisplayField>
+        <errorMessage>Kindly enter the Description</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Percentage_must_be_100_across_all_5_BEs</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(CONTAINS( $User.Username, 'sfdc_apex_user@cisco.com'))
+&amp;&amp;
+ Expected_Product_in_K__c &gt;0
+&amp;&amp;
+Sum_of_All_BE__c  &lt;&gt; 1.0</errorConditionFormula>
+        <errorDisplayField>Collab_Contact_Center_Mix__c</errorDisplayField>
+        <errorMessage>Total % must add up to 100% across all 5 BEs in this section</errorMessage>
+    </validationRules>
+</CustomObject>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- IsModified --></label>
+        <name>IsModified__c</name>
+        <picklistValues>
+            <masterLabel>NO</masterLabel>
+            <translation>Non</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YES</masterLabel>
+            <translation>Oui</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MBO --></label>
+        <name>MBO__c</name>
+        <relationshipLabel><!-- MBO Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Measure Unit --></label>
+        <name>Measure_Unit__c</name>
+        <picklistValues>
+            <masterLabel>%</masterLabel>
+            <translation><!-- % --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Measure --></label>
+        <name>Measure__c</name>
+    </fields>
+    <fields>
+        <label><!-- Objective --></label>
+        <name>Objective__c</name>
+        <picklistValues>
+            <masterLabel>Sales Growth</masterLabel>
+            <translation>Croissance des ventes</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Group --></label>
+        <name>Partner_Group__c</name>
+        <relationshipLabel><!-- MBO Item&apos;s --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Id Set_III --></label>
+        <name>Partner_Id_Set_III__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Id Set_II --></label>
+        <name>Partner_Id_Set_II__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Id Set_IV --></label>
+        <name>Partner_Id_Set_IV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Id Set_I --></label>
+        <name>Partner_Id_Set_I__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Id Set_V --></label>
+        <name>Partner_Id_Set_V__c</name>
+    </fields>
+    <fields>
+        <label>Coordonnées du partenaire</label>
+        <name>Partner_Information__c</name>
+    </fields>
+    <fields>
+        <label>Partenaire</label>
+        <name>Partner__c</name>
+        <relationshipLabel><!-- MBO Item&apos;s --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Q1 Target Percent --></label>
+        <name>Q1_Target_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q2 Target Percent --></label>
+        <name>Q2_Target_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q3 Target Percent --></label>
+        <name>Q3_Target_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q4 Target Percent --></label>
+        <name>Q4_Target_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Segment --></label>
+        <name>Segment__c</name>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation>Vente</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Statut</label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation>Planifié</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Target --></label>
+        <name>Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Partner Group</masterLabel>
+            <translation><!-- Partner Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partners</masterLabel>
+            <translation>Partenaires</translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- MBO Item --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- MBO Item --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Item Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>MBO Item Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

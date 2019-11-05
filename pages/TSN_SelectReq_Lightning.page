@@ -1,0 +1,129 @@
+<apex:page standardController="Case" extensions="TSN_SelectReq_CTE" tabStyle="Case" showheader="true">
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script src="/soap/ajax/40.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/40.0/apex.js" type="text/javascript"/>
+    <script src="/sforce/one/40.0/api.js" type="text/javascript"></script>    
+    <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+    <script> 
+       function CloseTab(){
+         //modified by Kavya for Defect DE257154
+        // sforce.console.getFocusedSubtabId(closeSubtab); 
+        sforce.console.getEnclosingTabId(closeSubtab);   
+    }
+    var closeSubtab = function closeSubtab(result) {
+        var tabId = result.id;
+        console.log(tabId);
+        sforce.console.closeTab(tabId);
+    };
+    </script>
+    <script>
+    
+    function isLightningDesktop() { 
+        var setThemeFromVF = localStorage.getItem("userTheme"); //Komal - 08/10/18 Lightning Release - Get/Set Theme from LocalStorage to fix navigation back and forth
+        if (setThemeFromVF != null ){
+            //alert("Loading from storage: "+ setThemeFromVF);
+            return setThemeFromVF;
+        }
+        else {
+            return( "{!$User.UIThemeDisplayed }" == "Theme4d" || "{!$User.UIThemeDisplayed }" == "Theme4u");
+        }
+    }
+    var hostname = window.location.hostname.toLowerCase(); 
+    window.onload = function(){
+        console.log('====1==============>');
+        // console.log('inside onload');   
+        // alert( "TSN_Selec" + setThemeFromVF);
+        if(isLightningDesktop()){  
+            console.log('==================>');
+            <!--SCAVA_FIX-->
+            var rType = "{!JSENCODE($CurrentPage.parameters.RecordType)}";
+            var retURL = "{!JSENCODE($CurrentPage.parameters.retURL)}";
+            var ctName = "{!JSENCODE($CurrentPage.parameters.ciscoCntName)}";
+            var Title = "{!JSENCODE($CurrentPage.parameters.Title)}";
+            var Org = "{!JSENCODE($CurrentPage.parameters.org)}";
+            var wpn = "{!JSENCODE($CurrentPage.parameters.wpn)}";
+            var ipn = "{!JSENCODE($CurrentPage.parameters.ipn)}";
+            var mn = "{!JSENCODE($CurrentPage.parameters.mn)}";
+            var contype = "{!JSENCODE($CurrentPage.parameters.contype)}";
+            console.log('contype===>'+contype);
+            var def_contact_id = "{!JSENCODE($CurrentPage.parameters.def_contact_id)}";
+            var Cecid = "{!JSENCODE($CurrentPage.parameters.Cecid)}";
+            var optyname = "{!JSENCODE($CurrentPage.parameters.optyname)}";
+            var optyid = "{!JSENCODE($CurrentPage.parameters.optyid)}";
+            var def_parent_id= "{!JSENCODE($CurrentPage.parameters.def_parent_id)}";
+            var country= "{!JSENCODE($CurrentPage.parameters.country)}";
+            var def_account_id= "{!JSENCODE($CurrentPage.parameters.def_account_id)}";
+            var ent= "{!JSENCODE($CurrentPage.parameters.ent)}";
+            var defaults = {};
+            console.log(ctName);
+            if(ctName != ''){
+                defaults.Cisco_Contact_Name__c = ctName;
+            }
+            if(contype != ''){
+                defaults.Contact_Type__c = contype;
+            }
+            if(def_contact_id != ''){
+                defaults.ContactId = def_contact_id;
+            }
+            console.log('def_account_id== >'+def_account_id);
+            if(def_account_id != ''){
+                defaults.AccountId = def_account_id;
+            }
+            if(country != ''){
+                defaults.Cisco_Country__c = country;
+            }
+            if(Org != ''){
+                defaults.Cisco_Contact_Organization__c = Org;
+            }
+            if(Cecid != ''){
+                defaults.Cisco_Contact__c = Cecid;
+            }
+            console.log('optyid ==>'+optyid);
+            if(optyid != ''){
+                defaults.Opportunity__c = optyid;
+            }
+            if(def_parent_id != ''){
+                defaults.ParentID = def_parent_id;
+            }   
+            if(wpn != ''){
+                defaults.Cisco_Contact_Work_Phone_Number__c = wpn;
+            }
+            if(ipn != ''){
+                defaults.Cisco_Contact_Internal_Phone_Number__c = ipn;
+            }   
+            if(mn != ''){
+                defaults.Cisco_Contact_Mobile_Number__c = mn;
+            }           
+            if(Title != ''){
+                defaults.Cisco_Contact_Title__c = Title;
+            }
+            console.log('===========rType=======>'+rType);
+            // window.location.href= '/500/e?RecordType='+rType+'&retURL='+retURL+'&00N80000004w7Ah='+ctName+'&00N80000004w7Aj='+Title+'&00N80000004w7Ai='+Org+'&00N80000004w7Ak='+wpn+'&00N80000004w7Af='+ipn+'&00N80000004w7Ag='+mn+'&00N80000004S02v='+contype+'&def_contact_id='+def_contact_id+'&00N80000004S02p='+Cecid+'&CF00N80000004w7Ao='+optyname+'&CF00N80000004w7Ao_lkid='+optyid+'&def_parent_id='+def_parent_id+'&00N80000004w7Al='+country+'&def_account_id='+def_account_id+'&nooverride=1';
+            
+            
+            console.log('optyid ===> '+optyid);          
+            if(optyid != null && optyid != ''){
+                console.log(defaults);
+                if( (typeof sforce != 'undefined') && sforce && (!!sforce.one) ) {
+                    CloseTab(); //Added by Komal for Dec 2018 release to resolve stray tab issue.
+                    sforce.one.createRecord('Case',rType,defaults);
+                    
+                }
+                else
+                {
+                    var newCaseURL = 'https://'+hostname + '/lightning/o/Case/new?RecordType='+rType+'&retURL='+retURL+'&ciscoCntName='+ctName+'&Title='+Title+'&org='+Org+'&wpn='+wpn+'&ipn='+ipn+'&mn='+mn+'&contype='+contype+'&def_contact_id='+def_contact_id+'&Cecid='+Cecid+'&optyname='+optyname+'&optyid='+optyid+'&def_parent_id='+def_parent_id+'&country='+country+'&def_account_id='+def_account_id+'&nooverride=1';
+                    
+                    // CloseTab(); 
+                    window.location.href = newCaseURL;
+                }            
+            } 
+            else{               
+                console.log('not LE');
+                //var newCaseURL = 'https://'+hostname + '/lightning/o/Case/new?RecordType='+rType+'&retURL='+retURL+'&ciscoCntName='+ctName+'&Title='+Title+'&org='+Org+'&wpn='+wpn+'&ipn='+ipn+'&mn='+mn+'&contype='+contype+'&def_contact_id='+def_contact_id+'&Cecid='+Cecid+'&optyname='+optyname+'&optyid='+optyid+'&def_parent_id='+def_parent_id+'&country='+country+'&def_account_id='+def_account_id+'&nooverride=1';
+                //window.location.href = newCaseURL;
+                CloseTab();   //added by Kavya
+                sforce.one.createRecord('Case',rType,defaults);
+            }
+        }}
+    </script>
+</apex:page>

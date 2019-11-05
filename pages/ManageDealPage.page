@@ -1,0 +1,111 @@
+<!--
+    Release : Q3FY16
+    Author  : Narasimharao
+    Functionality: Manage Deal button from Opportunity related object (Quote Invitations object)
+   
+    Modification History :
+        iTrack#           Date          Author         Change
+                        *******        ********        *******
+                        
+-->
+<apex:page showheader="false" tabstyle="Opportunity" sidebar="true" showHeader="true" standardController="Invitation__c" recordSetVar="Invitation" extensions="ManageDealController" action="{!manageDealinfo}">
+    <apex:includeScript value="{!$Resource.jquery22}"/>
+    <apex:includeScript value="{!$Resource.Bootstrapmodelwindow}"/>
+    <apex:includeScript value="{!$Resource.BootStrapDialogMinJs}"/>
+    <script src="/soap/ajax/28.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/28.0/apex.js" type="text/javascript"></script>
+    <apex:stylesheet value="/resource/BootstrapUpdateCssModelPosition"/>
+    <apex:stylesheet value="/resource/BootstrapDialogMin"/>
+    <apex:pageblock >
+        <apex:outputLabel style="background-color: transparent;font-family: Arial;color: #000">Opportunity<br/><font size="3">{!oppty.Name}</font></apex:outputLabel>
+        <br/><b>Deal Id</b> <br/> <font size="2">{!oppty.DealID__c}</font><br/>
+        <apex:detail subject="{!oppty.id}" relatedList="false" title="false" inlineEdit="false" />
+    </apex:pageblock>
+    <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+    <script type="text/javascript">
+       var partnerRequired=true;
+       var isopen = true;
+       var opportunityId = "{!oppty.Id}";
+       var hostname = "https://" + window.location.hostname.toLowerCase(); //taking hostname
+       <!-- SCAVA FIX -->
+       <!--var OpportunityName = "{!oppty.Name}";-->
+       var OpportunityName = "{!JSENCODE(oppty.Name)}"
+       var name= encodeURIComponent(OpportunityName);
+       <!-- SCAVA FIX -->
+       <!--var parentOpptyRT = "{!$Setup.ObjectRecordTypeIds__c.Opportunity_Parent_RecordTypeId__c}"; //taking Parent Opportunity recordtype from custom setting to variable-->
+       var parentOpptyRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Parent_RecordTypeId__c)}"; //taking Parent Opportunity recordtype from custom setting to variable
+       var opptyRecordTypeId = "{!oppty.RecordTypeId}";
+       var parentrecordtypeTrim = opptyRecordTypeId.substring(0,15); //Trimmed 18 digit of opportunity recordtypeId to 15 digit as existing production recordtypes having 15 digit Id placed in custom setting
+       <!-- SCAVA FIX -->
+       <!--var strQuoteCount = "{!oppty.Quote_Count__c}"; //taking Quote count into a variable-->
+       var strQuoteCount = "{!JSENCODE(TEXT(oppty.Quote_Count__c))}"; //taking Quote count into a variable
+       var quoteCount = + strQuoteCount; //converting quote count from string to number
+       <!-- SCAVA FIX-->
+       <!--var PhaseOpptyRT = "{!$Setup.ObjectRecordTypeIds__c.Opportunity_Phase_RecordTypeId__c}"; //taking Phase opportunity recordtype from custom setting to variable-->
+       var PhaseOpptyRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Phase_RecordTypeId__c)}"; //taking Phase opportunity recordtype from custom setting to variable
+       <!-- SCAVA FIX-->
+       <!--var globalopty = "{!oppty.Global_Opportunity__c}"; //getting global opty info on a record GDM Q3FY17-->
+       var globalopty = "{!JSENCODE(oppty.Global_Opportunity__c)}"; //getting global opty info on a record GDM Q3FY17
+       
+      
+       /*Lightning infinite loop override - Start (Angela, 30/05/2018)*/
+       var type = '{!$User.UIThemeDisplayed}';
+   
+              function CloseTab() {
+            sforce.console.getEnclosingPrimaryTabId(closeSubtab);
+        }
+       
+        var closeSubtab = function closeSubtab(result) {
+            var tabId = result.id;
+            sforce.console.closeTab(tabId);
+        };
+              /*Lightning infinite loop override - Start (Angela, 30/05/2018)*/
+   
+       var dialogInstance = new BootstrapDialog({ //Bootstrap dilog box creation
+            size: BootstrapDialog.SIZE_Large,
+            closable: false,
+            message: '<div><img src="/resource/loading"/>{!$Label.QuoteDilogLoading}</div>', //Loading Image
+            onshown: function(dilogref){ //Navigating to Opportunity tab
+                    dilogref.setTitle("{!$Label.QuoteManageDeal}");
+                    dilogref.setType(BootstrapDialog.TYPE_PRIMARY);
+                    //GDM change Q3FY17
+                if(quoteCount > 0 && globalopty != '' && parentrecordtypeTrim == parentOpptyRT){ //GDM Enhancement change March_2017. checking Local opportunity is associated with global Opty and Quotecount is one
+                    dilogref.setTitle("{!$Label.QuoteDialogTitleError}");
+                    dilogref.setType(BootstrapDialog.TYPE_WARNING);
+                    dilogref.setMessage("{!$Label.Quote_ParterOpty_NA_LocalOptys}"); //Partner opportunities are not allowed on Local Opportunities linked to a Global Opportunity
+                }
+                else{
+                    /*Lightning infinite loop override - Start (Angela, 30/05/2018)*/
+                    if (type == 'Theme4d' )
+                            {  
+                                          console.log("Theme 4d - manage deal");
+                                          <!--SCAVA FIX -->
+                       <!-- top.location.href ="{!$Site.BaseUrl}/apex/OpportunityTabOverride?id={!oppty.Id}&opptyName="+name+"&dealId={!oppty.DealID__c}&manageDeal="+partnerRequired; //redirecting to Opportunity tab VF page-->
+                        top.location.href ="{!$Site.BaseUrl}/apex/OpportunityTabOverride?id={!oppty.Id}&opptyName="+name+"&dealId={!JSENCODE(oppty.DealID__c)}&manageDeal="+partnerRequired; //redirecting to Opportunity tab VF page
+                                          CloseTab();
+                            }
+                    else
+                    {
+                    <!--SCAVA FIX -->
+                            <!--top.location.href ="{!$Site.BaseUrl}/apex/OpportunityTabOverride?id={!oppty.Id}&opptyName="+name+"&dealId={!oppty.DealID__c}&manageDeal="+partnerRequired; //redirecting to Opportunity tab VF page-->
+                            top.location.href ="{!$Site.BaseUrl}/apex/OpportunityTabOverride?id={!oppty.Id}&opptyName="+name+"&dealId={!JSENCODE(oppty.DealID__c)}&manageDeal="+partnerRequired; //redirecting to Opportunity tab VF page
+                    }
+                    /*Lightning infinite loop override - Start (Angela, 30/05/2018)*/
+                }
+            },
+            buttons: [{
+            label: "{!$Label.QuoteCloseDialog}",
+            action: function(dialogRef) {
+                redirectOppty(); //redirecting to Opportunity UI
+            }
+            }]
+        });
+        if(isopen){
+           isopen=false;
+           dialogInstance.open(); //function to open Model box
+        }
+       function redirectOppty(){ // Function to return back to Opportunity when click on Model box close button
+            window.top.location =hostname+'/'+opportunityId;
+       }
+    </script>
+</apex:page>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>SFDC-OMF Integration Down Time</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SFPCCiscoLetterhead</letterhead>
+    <name>May 13 End User Downtime</name>
+    <style>freeForm</style>
+    <subject>Scheduled down time between SFPC and OMF Integration May 13th 5pm(PST)</subject>
+    <textOnly>Dear {!Receiving_User.Name},
+
+You are receiving this notification because the Sales Force and Partner Collaboration (SFPC) system is being upgraded.  While the SaleForce.com (SFDC) application will not be down during this time, the integration between SFDC and OMF will.   Any changes made in SFDC will not flow to OMF while the application is down.  They will however, queue up and be processed after the application is back up.
+ 
+Please note the dates and times of the down time:
+ 
+Start Time: Fri 13-May-2005 17:00 PST 
+Stop Time: Fri 13-May-2005 19:00 PST
+ 
+The integration will be down for approximately 30-60 minutes within this 2-hour window.
+ 
+If you have any questions or need support, please open a case on line with the GSTS: http://wwwin.cisco.com/CustAdv/InfoSys/CAIS/ICC-IT/srt/bin/srtmain.html
+ 
+Or if your situation is URGENT, please call one of the GSTS numbers listed below:
+ 
+Americas +1 408 526 8888 option 4 then 4
+EMEA +31 20 485 4888 option 3
+AsiaPac Local Extension X68888 (Int&apos;l +61 2 8446 8888) option 2
+Japan Local Extension X6888 option 1 (Int&apos;l +81 3 5549 6888) option 2
+ 
+ 
+Thank you for your continued support.
+ 
+
+World Wide Sales Productivity
+
+
+For corporate legal information please click here: http://www.cisco.com/web/about/doing_business/legal/cri/index.html.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

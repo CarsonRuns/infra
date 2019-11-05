@@ -1,0 +1,259 @@
+<apex:page showHeader="false" sidebar="false"
+    standardStylesheets="false" language="{!language}" id="page"
+    controller="GCS_LiveAgent_PreChat_CTL" docType="html-5.0">
+    <LINK REL="icon" type="image/png"
+        HREF="{!URLFOR($Resource.ciscofaviconNGCC)}" />
+    <html>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,IE=11" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<LINK REL="icon" type="image/x-icon"
+    HREF="{!URLFOR($Resource.ciscofaviconNGCC)}" />
+<title>{!$Label.GCS_PreChat_Header}</title>
+
+<!-- Bootstrap core CSS -->
+<apex:includeScript value="https://code.jquery.com/jquery-1.7.2.js" />
+<apex:stylesheet value="{!URLFOR($Resource.bootstrapNGCC, '/css/bootstrap.min.css')}" />
+<apex:stylesheet value="{!URLFOR($Resource.Pre_Chat_NGCC)}" />
+<apex:includeScript value="{!URLFOR($Resource.bootstrapNGCC, 'js/bootstrap.min.js')}" />
+
+</head>
+
+
+<script type='text/javascript'
+    src='https://c.la4-c2-was.salesforceliveagent.com/content/g/js/45.0/prechat.js'></script>
+
+<script type="text/javascript">
+    
+       var detailCallback = function (details){
+           var labels = [
+           "FirstNameInput",
+           "LastNameInput",
+           "PhoneInput",
+           "EmailAddressInput",
+           "CookieInput",
+           "CountryInput",
+           "CompanyInput",
+           "OriginatingURL",
+           "data-c2c-ecid","data-c2c-ccid","data-c2c-dtid","data-c2c-oid","chan","camp","date","ReferrerURL","CrPartyIdInput","CampaignNameInput","OfferNameInput","SourceInput","ContractNumberInput","SerialNumberInput"]
+           initData(JSON.stringify(details.customDetails));
+           console.log(JSON.stringify(details.customDetails));
+
+           for (var i = 0; i < details.customDetails.length; i++) {
+           
+               if (labels.indexOf(details.customDetails[i].label) != -1){
+                   console.log(details.customDetails[i].label +" -- "+details.customDetails[i].value);
+                   jQuery("*[id*="+details.customDetails[i].label+"]").val(details.customDetails[i].value);
+               }
+           } 
+        };
+       
+       window.onload = function (){
+
+           liveagent.details.preChatInit('https://d.la4-c2-was.salesforceliveagent.com/chat','detailCallback');
+        }
+   </script>
+
+<body>
+
+    <apex:form >
+        <apex:actionFunction name="initData" action="{!initDataParse}"
+            rerender="prechatFormInput">
+            <apex:param name="node" value="" />
+        </apex:actionFunction>
+    </apex:form>
+
+    <div class="container-fluid ">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <apex:form id="prechatFormInput">
+                    <apex:pageBlock id="inputForm">
+                        <apex:outputPanel styleClass="row bottom-buffer">
+                            <div class="col-xs-4">
+                                <img src="{!$Resource.CiscoLogoWhite}" class="img-responsive"
+                                    alt="Responsive image" />
+                            </div>
+                            <div class="col-xs-8">
+                                <h3>{!$Label.GCS_PreChat_Header}</h3>
+                            </div>
+                        </apex:outputPanel>
+                        <apex:inputText id="OriginatingURL" value="{!originatingInput}"
+                            styleClass="hidden" />                          
+                        <apex:outputPanel id="block" rendered="{!preSalesVisitor}">
+                            <apex:outputPanel styleClass="row bottom-buffer">
+                                <div class="row bottom-buffer">
+                                    <apex:pageBlockSection html-class="alert alert-danger"
+                                        rendered="{!renderError}">
+                                        <apex:pagemessages />
+                                    </apex:pageBlockSection>
+                                </div>
+                            </apex:outputPanel>
+
+                            <apex:outputPanel styleClass="row bottom-buffer"
+                                rendered="{!optionsVisibility}">
+                                <div style="text-align: justify">
+                                    <apex:outputLabel id="outputLabel"
+                                        value="{!$Label.GCS_PreChat_Interest}" for="laOptions" />
+                                </div>
+
+                                <apex:selectList id="laOptions" value="{!optionsInput}" size="1"
+                                    lang="{!language}" styleClass="form-control">
+                                    <apex:selectOptions value="{!optionsList}" />
+                                </apex:selectList>
+                            </apex:outputPanel>
+
+                            <apex:outputPanel styleClass="row bottom-buffer"
+                                rendered="{!firstNameRequested}">
+                                <div id='FirstNameTemplate'>
+                                    <apex:inputText id="FirstNameInput" value="{!firstNameInput}"
+                                        styleClass="form-control"
+                                        html-placeholder="{!$Label.NGCC_PreChat_FirstName}" />
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel styleClass="row bottom-buffer"
+                                rendered="{!lastNameRequested}">
+                                <div id='LastNameTemplate'>
+                                    <apex:inputText id="LastNameInput" value="{!lastNameInput}"
+                                        styleClass="form-control"
+                                        html-placeholder="{!$Label.NGCC_PreChat_LastName}" />
+                                </div>
+                            </apex:outputPanel>
+
+                            <apex:outputPanel styleClass="row bottom-buffer"
+                                rendered="{!emailRequested}">
+                                <div id='EmailTemplate'>
+                                    <apex:inputText id="EmailAddressInput" value="{!emailInput}"
+                                        styleClass="form-control"
+                                        html-placeholder="{!$Label.NGCC_PreChat_Email}" />
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel styleClass="row "
+                                rendered="{!companyRequested}">
+                                <div id='CompanyTemplate'>
+                                    <apex:inputText id="CompanyInput" value="{!companyInput}"
+                                        styleClass="form-control"
+                                        html-placeholder="{!$Label.NGCC_PreChat_Company}" />
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel styleClass="row" rendered="{!countryRequested}">
+                                <div id='CountryTemplate'>
+                                    <apex:selectList id="CountryInput" value="{!countryInput}"
+                                        size="1" styleClass="form-control">
+                                        <apex:selectOptions value="{!countries}" />
+                                    </apex:selectList>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel styleClass="row" rendered="{!phoneRequested}">
+                                <div id='PhoneTemplate'>
+                                    <apex:input type="tel" id="PhoneInput" value="{!phoneInput}"
+                                        styleClass="form-control"
+                                        html-placeholder="{!$Label.NGCC_PreChat_Phone}" />
+                                </div>
+                            </apex:outputPanel>
+
+                            <div class="row">
+                                <apex:commandButton styleClass="btn btn-block btn-primary"
+                                    reRender="prechatFormInput,block,redirect,prechatFormPanel,prechatJS"
+                                    action="{!validation}" value="{!$Label.NGCC_ChatNow}"
+                                    id="prechat-Submit" />
+                            </div>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="redirect" rendered="{!NOT(preSalesVisitor)}">
+                            <apex:outputText value="{!redirectResult}" escape="false" />
+                        </apex:outputPanel>
+                    </apex:pageBlock>
+                </apex:form>
+            </div>
+        </div>
+    </div>
+
+    <apex:outputPanel id="prechatFormPanel" layout="none"
+        rendered="{!success}">
+        <form method="post" id="prechatForm" action="{!endpoint}">
+            <input type="hidden" name="liveagent.prechat.name" value="{!firstNameInput}{!IF(lastNameInput != 'Please Update',' '+lastNameInput,'')}" />
+            <input type="hidden" name='liveagent.prechat:Interested' id='laOptions1' value="{!optionsInput}" />
+            <input type="hidden" name='liveagent.prechat:FirstName' id='FirstNameInput1' value="{!firstNameInput}" />
+            <input type="hidden" name='liveagent.prechat:LastName' id='LastNameInput1' value="{!lastNameInput}" /> 
+            <input type="hidden" name='liveagent.prechat:EmailAddress' id='EmailAddressInput1' value="{!emailInput}" /> 
+            <input type="hidden" name='liveagent.prechat:Phone' id='PhoneInput1' value="{!phoneInput}" /> 
+            <input type="hidden" name="liveagent.prechat:CompanyName" id="CompanyName1" value="{!companyInput}" /> 
+            <input type="hidden" name="liveagent.prechat:CountryName" value="{!countryInput}" /> 
+            <input type="hidden" name="liveagent.prechat:recordType" value="{!recordType}" />
+            <input type="hidden" name="liveagent.prechat:LabeledInterest" value="{!labeledInterest}"/> 
+            <input type="hidden" name="liveagent.prechat:status" value="Active" /> 
+            <input type="hidden" name="liveagent.prechat:OriginatingURL" value="{!originatingInput}" /> 
+            <input type="hidden" name="liveagent.prechat:ChannelName" id="prechat_Channel" value="{!channelName}"/>
+            <input type="hidden" name="liveagent.prechat.save:ChannelName" value="Channel__c" />
+            <input type="hidden" name="liveagent.prechat:CampaignName" id="prechat_Campaign" value="{!campName}"/>
+            <input type="hidden" name="liveagent.prechat.save:CampaignName" value="Campaign__c" />
+            <input type="hidden" name="liveagent.prechat:ChannelDate" id="prechat_ChanDate" value="{!channelDate}"/>
+            <input type="hidden" name="liveagent.prechat.save:ChannelDate" value="Channel_Date__c" />
+            <!--Zakeahme: Adding new custom details as per #US214808 for Button ID:57334000000PBbI,57334000000PBbK,57334000000PBbJ from Line#194-213 -->
+            <input type="hidden" name="liveagent.prechat.save:FirstName" value="First_Name__c" />
+            <input type="hidden" name="liveagent.prechat.save:CompanyName" value="Company__c" />
+            <input type="hidden" name="liveagent.prechat.save:CountryName" value="Country__c" />
+            <input type="hidden" name="liveagent.prechat.save:OriginatingURL" value="Originating_Url__c" />
+            <input type="hidden" name="liveagent.prechat.save:LabeledInterest" value="Interested__c"/> 
+            
+            <input type="hidden" name="liveagent.prechat:CampaignNameInput" id="prechat_Campaign" value="{!campaignNameInput}"/>
+            <input type="hidden" name="liveagent.prechat.save:CampaignNameInput" value="Campaign_Name__c" />
+            <input type="hidden" name="liveagent.prechat:ReferrerURL" value="{!referrerURLInput}" /> 
+            <input type="hidden" name="liveagent.prechat.save:ReferrerURL" value="ReferrerUri" />
+            <input type="hidden" name="liveagent.prechat:CRPartyIdInput" value="{!crPartyIdInput}" /> 
+            <input type="hidden" name="liveagent.prechat.save:CRPartyIdInput" value="CR_Party_Id__c" />
+            <input type="hidden" name="liveagent.prechat:OfferNameInput" value="{!offerNameInput}" /> 
+            <input type="hidden" name="liveagent.prechat.save:OfferNameInput" value="Offer_Name__c" />
+            <input type="hidden" name="liveagent.prechat:SourceInput" value="{!sourceInput}" /> 
+            <input type="hidden" name="liveagent.prechat.save:SourceInput" value="Source__c" />
+            <input type="hidden" name="liveagent.prechat:ContractNumberInput" value="{!contractNumberInput}" /> 
+            <input type="hidden" name="liveagent.prechat.save:ContractNumberInput" value="Contract_Numbers__c" />
+            <input type="hidden" name="liveagent.prechat:SerialNum" value="{!serialNumberInput}" /> 
+            <input type="hidden" name="liveagent.prechat.save:SerialNum" value="Serial_Numbers__c" />
+            
+            <input type="hidden" name="liveagent.prechat.findorcreate.map:Contact"
+                value="FirstName,FirstName;
+                       LastName,LastName;
+                       Phone,Phone;
+                       Email,EmailAddress; 
+                       RecordTypeId, recordType;
+                       ContactStatus__c,status;" />
+                       
+             <input type="hidden"
+                name="liveagent.prechat.findorcreate.map.isExactMatch:Contact"
+                value="ContactStatus__c,true;Email,true;" />          
+            <input type="hidden"
+                name="liveagent.prechat.findorcreate.map.doFind:Contact"
+                value="ContactStatus__c,true;Email,true;" />
+            <input type="hidden"
+                name="liveagent.prechat.findorcreate.map.doCreate:Contact"
+                value="FirstName,true;
+                       LastName,true;
+                       Phone,true;
+                       Email,true;
+                       RecordTypeId, true;
+                       ContactStatus__c,true;" />
+                       
+            <input type="hidden"
+                name="liveagent.prechat.findorcreate.saveToTranscript:Contact"
+                value="ContactId" />    
+            
+            <input type= "hidden" name= "liveagent.prechat.findorcreate.showOnCreate:Contact" value= "true" />
+        </form>
+
+    </apex:outputPanel>
+    <apex:outputPanel id="prechatJS">
+        <script>
+            jQuery.noConflict();
+            jQuery(function(){
+               {!submitFunction}
+            });
+          </script>
+
+
+    </apex:outputPanel>
+
+</body>
+    </html>
+</apex:page>

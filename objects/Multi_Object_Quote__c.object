@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Displays the related Account Name for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>CCW Deals and Quotes (Account Name)</relationshipLabel>
+        <relationshipName>Multi_Object_Quotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Address_Line_1__c</fullName>
+        <description>Displays the related Account Address for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Address Line 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address_Line_2__c</fullName>
+        <description>Displays the related Account Address for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Address Line 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address_Line_3__c</fullName>
+        <description>Displays the related Account Address for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Address Line 3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BEC_ID__c</fullName>
+        <description>BEC ID for the partner account associated to this Deal</description>
+        <externalId>false</externalId>
+        <label>BEC ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CBN_Status__c</fullName>
+        <description>Describes CBN Status for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>CBN Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CCW_Deal_Status__c</fullName>
+        <description>Displays the Deal status as it appears in CCW</description>
+        <externalId>false</externalId>
+        <label>CCW Deal Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CR_Party_ID__c</fullName>
+        <description>The Party site ID from CR for the Account related to this Quote</description>
+        <externalId>false</externalId>
+        <label>CR Party ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Displays the Case that this Deal or Quote is related to</description>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>CCW Deals and Quotes</relationshipLabel>
+        <relationshipName>Multi_Object_Quotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <description>Displays the related Account City for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <description>Displays the related Account Country for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DM_Quote_ID__c</fullName>
+        <description>ID of the quotes from DM</description>
+        <externalId>true</externalId>
+        <label>Quote ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deal_Create_Date_Time__c</fullName>
+        <description>Displays the Date/time that this Deal was Created</description>
+        <externalId>false</externalId>
+        <label>Deal Create Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Deal_Create_Date__c</fullName>
+        <description>Displays the Date that this Deal was Created</description>
+        <externalId>false</externalId>
+        <label>Deal Create Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Deal_Expiration_Date__c</fullName>
+        <description>Displays the Date that this Deal will expire</description>
+        <externalId>false</externalId>
+        <label>Deal Expiration Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Deal_ID__c</fullName>
+        <description>Displays the CCW Deal ID for this Deal</description>
+        <externalId>false</externalId>
+        <label>Deal ID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deal_Name__c</fullName>
+        <description>Displays the Deal Name for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Opportunity Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deal_Status__c</fullName>
+        <description>Displays the Deal Desk Status as it is displayed in CCW</description>
+        <externalId>false</externalId>
+        <label>Deal Desk Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Discount_Type__c</fullName>
+        <description>Displays whether the Deal has a trade-in, promotion or multiple discount.</description>
+        <externalId>false</externalId>
+        <label>Discount Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Eligible_for_NS__c</fullName>
+        <description>Displays whether the Deal is eligible for Non-standard requests</description>
+        <externalId>false</externalId>
+        <label>Eligible for NS</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>End_Customer_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer Account Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Product_List_Amount__c</fullName>
+        <description>The expected list amounts from the deal in Partner Workspace.</description>
+        <externalId>false</externalId>
+        <label>Expected Product List Amount (000)</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Service_List_Amount__c</fullName>
+        <description>The expected list amounts from the deal in Partner Workspace.</description>
+        <externalId>false</externalId>
+        <label>Expected Service List Amount (000)</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Is_Dummy_Quote__c</fullName>
+        <description>checks if the quote is dummy or not.</description>
+        <externalId>false</externalId>
+        <label>Is Dummy Quote</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Finalized__c</fullName>
+        <description>Created during MQ Release for Getting finalized quote count in the homepage mes section</description>
+        <externalId>false</externalId>
+        <label>Is Finalized</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Displays the Lead that this Deal or Quote is related to</description>
+        <externalId>false</externalId>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>CCW Deals and Quotes</relationshipLabel>
+        <relationshipName>Multi_Object_Quotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Old_Deal_ID__c</fullName>
+        <description>Stores the Opty Id of the Quote which is deleted</description>
+        <externalId>false</externalId>
+        <label>Old Deal ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Old_Partner_Account_ID__c</fullName>
+        <description>Field will be created to save old partner account ID on the deleted Quote</description>
+        <externalId>false</externalId>
+        <label>Old Partner Account ID</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Displays the related Opportunity for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Opportunity Name</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>CCW Deals and Quotes</relationshipLabel>
+        <relationshipName>Multi_Object_Quotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Displays the related Partner Account ID for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Partner Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>CCW Deals and Quotes (Partner Account)</relationshipLabel>
+        <relationshipName>Multi_Object_Quotes1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Program_Name__c</fullName>
+        <description>Data field to house the program name</description>
+        <externalId>false</externalId>
+        <label>Program Name</label>
+        <length>90</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Program_Promotion__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR(Program_Name__c = "", Promotion_Name__c = ""),"" , Program_Name__c &amp; " " &amp; "/ " &amp; Promotion_Name__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Program/Promotion</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Promotion_Name__c</fullName>
+        <description>Data field to house the promotion name</description>
+        <externalId>false</externalId>
+        <label>Promotion Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Province__c</fullName>
+        <description>Displays the related Account State or Province for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Province</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quote_Last_Modified_By__c</fullName>
+        <description>The last user to update this deal or quote</description>
+        <externalId>false</externalId>
+        <label>Quote Last Modified By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quote_Last_Updated__c</fullName>
+        <defaultValue>now()</defaultValue>
+        <description>The date.time that this deal was last modified</description>
+        <externalId>false</externalId>
+        <label>Quote Last Updated</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Product_List_Amount__c</fullName>
+        <description>The list amount for this quote</description>
+        <externalId>false</externalId>
+        <label>Quote Product List Amount</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Product_Net_Price__c</fullName>
+        <description>The Net amount for this quote</description>
+        <externalId>false</externalId>
+        <label>Quote Product Net Price (000)</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Service_List_Amount__c</fullName>
+        <description>The list amount for this quote</description>
+        <externalId>false</externalId>
+        <label>Quote Service List Amount</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Service_Net_Price__c</fullName>
+        <description>The Net amount for this quote</description>
+        <externalId>false</externalId>
+        <label>Quote Service Net Price (000)</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Quote_Status__c</fullName>
+        <description>Displays the Quote Status as it appears in CCW</description>
+        <externalId>false</externalId>
+        <label>CCW Quote Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Finalized</fullName>
+                    <default>false</default>
+                    <label>Finalized</label>
+                </value>
+                <value>
+                    <fullName>Unfinilized</fullName>
+                    <default>false</default>
+                    <label>Unfinilized</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Quote_Summary__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Displays the Quote Summary that this Deal or Quote is related to</description>
+        <externalId>false</externalId>
+        <label>Quote Summary</label>
+        <referenceTo>Quote_Summary__c</referenceTo>
+        <relationshipLabel>CCW Deals and Quotes</relationshipLabel>
+        <relationshipName>Multi_Object_Quotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quote__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Displays the Quote that this Deal or Quote is related to</description>
+        <externalId>false</externalId>
+        <label>Quote</label>
+        <referenceTo>Quote__c</referenceTo>
+        <relationshipLabel>CCW Deals and Quotes</relationshipLabel>
+        <relationshipName>CCW_Deals_and_Quotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Target_Prospect__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Displays the Target Prospect that this Deal or Quote is related to</description>
+        <externalId>false</externalId>
+        <label>Target Prospect</label>
+        <referenceTo>Assigned_Partner__c</referenceTo>
+        <relationshipLabel>CCW Deals and Quotes</relationshipLabel>
+        <relationshipName>Multi_Object_Quotes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Total_Quote_List_Amount__c</fullName>
+        <description>The total list amount for this quote</description>
+        <externalId>false</externalId>
+        <formula>Quote_Product_List_Amount__c +  Quote_Service_List_Amount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Quote List Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Quote_Net_Price__c</fullName>
+        <description>The Total Net amount for this quote</description>
+        <externalId>false</externalId>
+        <formula>Quote_Product_Net_Price__c + Quote_Service_Net_Price__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Quote Net Price (000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zip_Postal_Code__c</fullName>
+        <description>Displays the related Account Zip code for the Deal or Quote</description>
+        <externalId>false</externalId>
+        <label>Zip/Postal Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>CCW deals and Quotes are stored in this object when they are associated to Leads, Target Prospects or Cases. The record is used to attach deal data to Leads Target Prospects and Cases including Deal Status, Deal ID, Quote Net Price, Quote List price</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>CCW Deal or Quote</label>
+    <nameField>
+        <label>Multi Object Quote Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>CCW Deals and Quotes</pluralLabel>
+    <searchLayouts />
+    <sharingModel>Private</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Deal_ID__c</columns>
+        <columns>Deal_Create_Date__c</columns>
+        <columns>Deal_Expiration_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Partner_Owned_Lead_Queue_Multi_Object_Quote</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Partner Owned Lead Queue</label>
+        <queue>Partner_Owned_Lead_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+</CustomObject>

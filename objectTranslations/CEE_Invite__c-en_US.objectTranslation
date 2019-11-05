@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Parent Agenda Item --></label>
+        <name>Agenda_Item__c</name>
+        <relationshipLabel><!-- CEE Invites --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CEE Attendee --></label>
+        <name>CEE_Attendee__c</name>
+        <relationshipLabel><!-- CEE Invites --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date/Time --></label>
+        <name>End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location --></label>
+        <name>Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outlook Invite ID --></label>
+        <name>Outlook_Invite_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outlook Status --></label>
+        <name>Outlook_Status__c</name>
+        <picklistValues>
+            <masterLabel>Accepted</masterLabel>
+            <translation><!-- Accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined</masterLabel>
+            <translation><!-- Declined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invited</masterLabel>
+            <translation><!-- Invited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Invited</masterLabel>
+            <translation><!-- Not Invited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tentative</masterLabel>
+            <translation><!-- Tentative --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Room --></label>
+        <name>Room__c</name>
+        <relationshipLabel><!-- CEE Invites --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Date/Time --></label>
+        <name>Start_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Telepresence Enabled --></label>
+        <name>Telepresence_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update Selected --></label>
+        <name>Update_Selected__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CEE Invite</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CEE Invites</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CEE Invite Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Need at least one recipient for a given invitation. --></errorMessage>
+        <name>CEE_Invite_Need_Recipient</name>
+    </validationRules>
+</CustomObjectTranslation>

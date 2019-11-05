@@ -1,0 +1,1609 @@
+<!-------------------------------------------------------------------------------------
+    HISTORY
+    Date                   Developer                   Description
+    ------                 -----------                --------------
+    30 Nov 2012            Brijesh/Arif             Visual force page code for Jabber Call Center Application
+---------------------------------------------------------------------------------------->
+
+<apex:page showHeader="false" controller="JabberControllerExt_popUp_Final" id="myPage">
+<script src="/support/api/27.0/interaction.js"></script>
+<script src="/soap/ajax/27.0/connection.js" type="text/javascript"></script>
+<apex:includeScript value="{!$Resource.jquery}"/>
+
+<script type="text/javascript">
+sforce.connection.sessionId = "{!$Api.Session_ID}";
+
+    var phoneNumberOnClick = '';
+    var callConnect = false;
+    //460 
+   // var phoneHeight = 350;
+    var phoneHeight = 36;
+    var clickToCallResponse = null;
+    var interval;
+    var cucmServerIP;
+    var userID;
+    var password;
+    var isPageRefereshed = false;
+    /* @Method <1.method which gets invoked when local storage value has been set
+                from other window of same browser.>
+       @param <object of local storage>
+       @return <boolean> - <NA>
+    */
+        function storageEventHandler(e){
+             if (e.key == 'Registered' && e.newValue == 'Yes') {
+                 phoneHeight = phoneHeight + 370;
+                 sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+                $('#otherthanURL').show();
+                $('#URL').hide();
+                $('#dialpadCallMode').hide();
+                $('#number_input_IVRS').hide();
+                $('#red').hide();
+                $('#yellow').hide();
+                $('#registrationStatus').text("Available");
+                initDialPad($(".dialpad"), $("#numberInput"));
+                initDialPadforIVRS($(".dialpadCallModeClass"), $("#numberInputIVRS"));
+             }
+             if (e.key == 'Registered' && (e.newValue == null || e.newValue == 'null' || e.newValue == 'No')) 
+             {
+                $('#otherthanURL').hide();
+                $('#URL').show();
+                phoneHeight = 36;
+                sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+             }
+
+             if (e.key == 'CallState') {
+                console.log('*** CallState has been changed, new value: '+ e.newValue);
+                if(e.newValue != null && e.newValue != "null"){ 
+                    updateUIhandlerInParent(e.newValue,
+                                            localStorage.getItem('CallId'), 
+                                            localStorage.getItem('Caller'),
+                                            localStorage.getItem('Mute'),
+                                            localStorage.getItem('Hold'));
+                 }
+             }
+             if(e.key == 'Mute' && e.newValue != null && e.newValue != "null"){
+                 updateUIhandlerInParent(localStorage.getItem('CallState'),
+                                            localStorage.getItem('CallId'), 
+                                            localStorage.getItem('Caller'),
+                                            localStorage.getItem('Mute'),
+                                            localStorage.getItem('Hold'));
+             }
+             if(e.key == 'Hold' && e.newValue != null && e.newValue != "null"){
+                 updateUIhandlerInParent(localStorage.getItem('CallState'),
+                                            localStorage.getItem('CallId'), 
+                                            localStorage.getItem('Caller'),
+                                            localStorage.getItem('Mute'),
+                                            localStorage.getItem('Hold'));
+             }
+        }
+        
+    var isConnectionAlive = function ()
+    {
+        var currentDate = new Date();
+        var currentTimeInMS = currentDate.getTime();
+        
+        if(localStorage.getItem('InterfaceTimeStamp') != 'null' && localStorage.getItem('InterfaceTimeStamp') != '')
+        {
+            var interfaceTimeInMS = JSON.parse(localStorage.getItem('InterfaceTimeStamp'));
+            if((currentTimeInMS - interfaceTimeInMS) > 120000){
+                
+                localStorage.setItem('Registered','No');
+                $('#otherthanURL').hide();
+                $('#URL').show();
+                phoneHeight = 36;
+                sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+            }
+        }
+        else if (localStorage.getItem('Registered') == 'Yes')
+        {
+            localStorage.setItem('Registered','No');
+            $('#otherthanURL').hide();
+            $('#URL').show();
+            phoneHeight = 36;
+            sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+        }
+        setTimeout(function(){ isConnectionAlive(); },60000);
+    }
+        
+    /* @Method <1.method initialize the dialpad for capturing numbers >
+       @param <dialpad div,text field id>
+       @return <NA> - <void>
+    */
+        function initDialPad(dialpad, numberField) {
+            dialpad.find("td").on("click", function(e) {
+                e.stopPropagation();
+                $(dialpad).data("fn").processClick($(this).data("value"));
+            });
+        
+            dialpad.data("fn", {
+                processClick : function(digit) {
+                    numberField.val(numberField.val() + digit);
+            }
+        });
+        }
+     
+     /* @Method <1.method initialize the dialpad for capturing numbers for IVRS>
+       @param <dialpad div,text field id>
+       @return <NA> - <void>
+    */
+        function initDialPadforIVRS(dialpad, numberField) {
+            dialpad.find("td").on("click", function(e) {
+                e.stopPropagation();
+                $(dialpad).data("fn").processClick($(this).data("value"));
+            });
+        
+            dialpad.data("fn", {
+                processClick : function(digit) {
+                    numberField.val(digit);
+                    localStorage.setItem('IVRNumber','null');
+                    localStorage.setItem('IVRNumber',digit);
+                    //alert('---------->'+localstorage.getItem('IVRNumber'));
+            }
+        });
+        }
+        
+    /* @Method <1.method used to set value in local storage >
+       @param <name,value>
+       @return <NA> - <void>
+    */
+        function setLocalStorageValue(name,value){
+            localStorage.setItem(name, value);
+        }
+        
+    /* @Method <1.method used to get value from local storage >
+       @param <name>
+       @return <text> - <value>
+    */
+
+        function getLocalStorageValue(name){
+            return localStorage.getItem(name);
+        }
+
+     /* @Method <1.method used to set object in local storage >
+       @param <name,value>
+       @return <NA> - <void>
+    */
+        function setLocalStorageObject(key, value) {
+            setLocalStorageValue(key, JSON.stringify(value));
+        }
+    
+    /* @Method <1.method used to get object from local storage >
+       @param <key>
+       @return <object> - <value>
+    */
+        function getLocalStorageObject(key) {
+            var value = getLocalStorageValue(key);
+            return value && JSON.parse(value);
+        }
+    window.addEventListener("storage", storageEventHandler, false);
+
+    /* @Method <1.used to populate the username,cucm field.
+                2.get values from user object.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    
+
+    /* @Method <1.used to call fnConnect2 function which is present in 'softphone.js'.
+                2.set the value of soft phone height.
+                3.enable the dial image for calling.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+     function connectCUCM()
+     {
+        //fnConnect2(userID,password,cucmServerIP);
+        phoneHeight = phoneHeight+180;
+        sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+        //sforce.interaction.cti.enableClickToDial(function(response) {});
+       //  $("#phoneModeSelect").val(readCookie("phoneMode"));
+     }
+
+
+    $(document).ready(function() {
+        
+        sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+        sforce.interaction.cti.enableClickToDial();
+        localStorage.setItem('Time',null);
+        $('#otherthanURL').hide();
+        if(localStorage.getItem('Registered') != 'Yes'){
+            $('#otherthanURL').hide();
+        }else{
+            phoneHeight = phoneHeight + 370;
+            sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+            $('#otherthanURL').show();
+            $('#URL').hide();
+            $('#number_input_IVRS').hide();
+            $('#yellow').hide();
+            $('#green').show();
+            $('#red').hide();
+            $('#dialpadCallMode').hide();
+            $('#registrationStatus').text("Available");
+            initDialPad($(".dialpad"), $("#numberInput"));
+            initDialPadforIVRS($(".dialpadCallModeClass"), $("#numberInputIVRS"));
+            if(localStorage.getItem('continuingCall') == 'Yes'){ 
+                isPageRefereshed = true;   
+                $('#green').hide();
+                $('#red').show();
+                $('#registrationStatus').text("Busy");
+                //$('#registrationStatus').hide(); 
+                $('#dialpadCallMode').show();   
+                $('#dialpadNoCallMode').hide();
+                initDialPadforIVRS($(".dialpadCallModeClass"), $("#numberInputIVRS"));
+                updateUIhandlerInParent(localStorage.getItem('CallState'),
+                                        localStorage.getItem('CallId'), 
+                                        localStorage.getItem('Caller'),
+                                        localStorage.getItem('Mute'),
+                                        localStorage.getItem('Hold'));
+             }
+         }
+         
+         isConnectionAlive();
+         
+         $('select[id="myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp"],select[id="myPage:myForm:pageBlock:pageBlockSection:RelatedObjectWho_mlktp"],select[id="myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObject1_mlktp"],select[id="myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObjectWho1_mlktp"]').live('change',function(){
+            var msgId = this.id.substring(this.id.length-10, this.id.length-1)+'_phone_msg_id';
+            $(this).parent('div').find('span.lookupInput input[type=text]').val('');
+            //$(this).parent('div').find('span.lookupInput').after("<div id="+msgId+" class='message'> Select Name from lookup. </div>");
+            if(!$(this).closest('tr').next('tr').find('td').hasClass('phoneMsgDummyClass'))
+            {
+                $(this).closest('tr').after("<tr><td colspan='2' class='phoneMsgDummyClass'><div id="+msgId+" class='message'> Select name from lookup. </div></td></tr>")
+                setTimeout(function(){$('#'+msgId).parent('td').parent('tr').remove()},2000);
+            }
+         });
+         
+    });
+
+    /* @Method <1.used to call changeSizeCurrentCall,populateRelatedObject,populatePhone function.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function onCallConnectDisplay()
+
+    {
+        changeSizeCurrentCall();
+        try
+        {
+            var relatedToObj = document.getElementById( "myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp");
+            if(relatedToObj != '' && relatedToObj != null)
+            {
+                // remove unwanted options from RelatedTo field
+                resetRelatedToOptions("myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp");
+                
+                
+            }
+        }
+        catch (e)
+        {
+         alert('onCallConnectDisplay'+ e);
+        }
+        populateRelatedObject();
+        populatePhone(phoneNumberOnClick);
+        setEventIdToLocalStorage();
+        
+        fnExpand();
+        console.log("New Timer has been started...");
+        var startTimeMS = document.getElementById("myPage:myForm:startTimeId").value;
+        currentTimeInMS = document.getElementById("myPage:myForm:currentTimeId").value;
+        if(myVar)
+        {
+            console.log("existing timer has been cleared");
+            clearInterval(myVar);
+        }
+        myVar=setInterval(function(){populateDuration(startTimeMS)},1000);
+        
+    }
+    
+    /* @Method <1.used to set eventid in local storage.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function setEventIdToLocalStorage(){
+        var EventId = document.getElementById( "myPage:myForm:Id").value;
+        localStorage.setItem('eventId',EventId);
+    }
+    /* @Method <1.used to populate 'Related To,Name,Phone Number' field if some one is trying onclickToCall option.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+   function populateRelatedObject()
+   {
+          if(clickToCallResponse == null) 
+          {
+              try
+              {
+                 // set 'None' to  RelatedTo field when call is initiated from dial pad 
+                 // Note: '701' is a value for 'None' option
+                 $('select[name="myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp"]').val("{!$Label.Related_To_Default_Option}");
+                 document.getElementById("myPage:myForm:pageBlock:pageBlockSection:RelatedObject_lktp").value = "{!$Label.Related_To_Default_Option}";
+              }
+              catch (e)
+              {
+              
+              }
+              return;
+          }
+          
+          var callerObject = localStorage.getItem('ObjectIdentifier');
+          var callerParentId = localStorage.getItem('ParentRecordId');
+          var callerObjectId = localStorage.getItem('RecordId');
+
+          if((callerObject == 'Lead' ||  callerObject == 'Contact') && 
+          (callerParentId == 'null' ||callerParentId == null || 
+            callerParentId == '' || callerParentId == callerObjectId))
+          {
+             $('select[name="myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp"]').val("{!$Label.Related_To_Default_Option}");
+             document.getElementById("myPage:myForm:pageBlock:pageBlockSection:RelatedObject_lktp").value = "{!$Label.Related_To_Default_Option}";
+          }
+
+           // resetting click2call response object          
+           clickToCallResponse = null;
+   }
+
+  
+   function populateRelatedObjectAfterRefresh()
+   {
+        var callerObject = localStorage.getItem('ObjectIdentifier');
+        var callerParentId = localStorage.getItem('ParentRecordId');
+        var callerObjectId = localStorage.getItem('RecordId');
+        
+        // set default value when call is initaited by clicking the ph number
+        if((callerObject == 'Lead' ||  callerObject == 'Contact') && 
+          (callerParentId == 'null' ||callerParentId == null || 
+           callerParentId == '' || callerParentId == callerObjectId))
+        {
+             $('select[name="myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp"]').val("{!$Label.Related_To_Default_Option}");
+             document.getElementById("myPage:myForm:pageBlock:pageBlockSection:RelatedObject_lktp").value="{!$Label.Related_To_Default_Option}";
+        }
+        // set default value for D2C 
+        else if(callerObject == 'null' || callerObject == '')
+        {
+            $('select[name="myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp"]').val("{!$Label.Related_To_Default_Option}");
+            document.getElementById("myPage:myForm:pageBlock:pageBlockSection:RelatedObject_lktp").value="{!$Label.Related_To_Default_Option}";
+        }
+        var startTimeMS = document.getElementById("myPage:myForm:startTimeId").value;
+        currentTimeInMS = document.getElementById("myPage:myForm:currentTimeId").value;
+        myVar=setInterval(function(){populateDuration(startTimeMS)},1000);
+   }
+
+    var myVar;
+
+    /* @Method <1.used to invoke method which will start the duration clock.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    
+    function callConnected(){
+        
+        document.getElementById("myPage:myForm:callingFrom").value = localStorage.getItem('callingFrom');
+        //fnExpand();
+        var currentDate = new Date();
+        $('#dialpadNoCallMode').hide();
+        $('#dialpadCallMode').show();
+        //initDialPadforIVRS($(".dialpadCallModeClass"), $("#numberInputIVRS"));
+        document.getElementById( "myPage:myForm:startTimeHidden").value = currentDate.getTime();
+        try
+        {   
+            document.getElementById("myPage:myForm:line").click();
+        }
+        catch (e)
+        {
+            alert("Error on Call Connected"+ e);
+        }
+        
+        
+        
+        //alert("timer in action");
+        //phoneNumberOnClick = conservation.participant.recipient;
+        
+        
+    }
+
+    function callConnectedTest(){
+        fnExpand();
+        var currentDate = new Date();
+        document.getElementById( "myPage:myForm:startTimeHidden").value = currentDate.getTime();
+
+        document.getElementById('myPage:myForm:j_id10').click();
+        myVar=setInterval(function(){populateDuration()},1000);
+        if(clickToCallResponse != null)
+        {
+           var responseResult = JSON.parse(clickToCallResponse.result);
+           phoneNumberOnClick = responseResult.number.replace(/[-()+\s]/g, '');
+           //populateRelatedObject(clickToCallResponse);
+        }
+        clickToCallResponse = null;
+        //changeSizeCurrentCall();
+    }
+    //6 Dec Added By Arif Ends
+
+    function testCallButton(){
+        var currentDate = new Date();
+        document.getElementById( "myPage:myForm:startTimeHidden").value = currentDate.getTime();
+        //document.getElementById('{!$Component.myPage.myForm.durationT}').readOnly=true;
+        myVar=setInterval(function(){populateDuration()},1000);
+    }
+
+    /* @Method <1.populate duration field.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    var currentTimeInMS = 0;
+    function populateDuration(startTimeInMS)
+    {
+        
+        
+        startTimeInMS = isNaN(startTimeInMS) ? 0: parseInt(startTimeInMS);
+        currentTimeInMS = isNaN(currentTimeInMS) ? 0 : parseInt(currentTimeInMS);
+        
+        // calculate duration of the call
+        var durationInMS = (currentTimeInMS/1000) -(startTimeInMS/1000);
+        // find minutes and secs
+        if(durationInMS.toFixed(0)>60){
+            minutes = Math.floor(durationInMS.toFixed(0)/60);
+            seconds = (durationInMS.toFixed(0)%60);
+        }else{
+            minutes = 0;
+            seconds = (durationInMS.toFixed(0));
+        }
+        currentTimeInMS = currentTimeInMS + 1000;
+        // populate calculated duration in UI field.
+         document.getElementById("myPage:myForm:Duration").value=minutes+':'+seconds;
+         $('#div_duration').html('Duration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+minutes+':'+seconds);
+    }
+
+    /* @Method <1.used to stop the duration clock.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function stopTimer(){
+        clearInterval(myVar);
+        var currentDate = new Date();
+        document.getElementById( "myPage:myForm:pageBlock:pageBlockSection:EndDate").value = currentDate.getTime();
+    }
+
+    /* @Method <1.used to change the width of 'Related To,Name' field of 'Current Call' section.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function changeSizeCurrentCall(){
+        var changeWidth = document.getElementById("myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp");
+        var changeWidth1 = document.getElementById("myPage:myForm:pageBlock:pageBlockSection:RelatedObject");
+        var changeWidthWho = document.getElementById("myPage:myForm:pageBlock:pageBlockSection:RelatedObjectWho_mlktp");
+        var changeWidthWho1 = document.getElementById("myPage:myForm:pageBlock:pageBlockSection:RelatedObjectWho");
+
+        
+        if(changeWidth != '' && changeWidth1 != '' && changeWidth != null && changeWidth1 != null)
+        {
+            changeWidth.style.width = "75px";
+            changeWidth1.style.width = "65px";
+        }
+        if(changeWidthWho != '' && changeWidthWho1 != '' && changeWidthWho != null && changeWidthWho1 != null)
+        {
+            changeWidthWho.style.width = "75px";
+            changeWidthWho1.style.width = "65px";
+        }
+       }
+
+    /* @Method <1.used to change the width of 'Related To,Name' field of 'Last 3 Calls' section.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function changeSizeEdit(){
+        var changeWidth1 = document.getElementById("myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObject1");
+        var changeWidth = document.getElementById("myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObject1_mlktp");
+        var changeWidthWho1 = document.getElementById("myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObjectWho1");
+        var changeWidthWho = document.getElementById("myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObjectWho1_mlktp");
+        
+        var whatId = document.getElementById("myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObject1_lkid");
+        //remove unwanted options from RelatedTo field
+        resetRelatedToOptions("myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObject1_mlktp");
+
+        if(whatId != '' && whatId != null)
+        {
+            if(whatId.value == '' || whatId.value == null || whatId.value == "000000000000000")
+            {
+                $('select[name="myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObject1_mlktp"]').val("{!$Label.Related_To_Default_Option}");
+                document.getElementById("myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObject1_lktp").value = "{!$Label.Related_To_Default_Option}";
+            }
+        }
+        if(changeWidth != '' && changeWidth1 != '' && changeWidth != null && changeWidth1 != null)
+        {
+            changeWidth.style.width = "75px";
+            changeWidth1.style.width = "65px";
+        }
+        if(changeWidthWho != '' && changeWidthWho1 != '' && changeWidthWho != null && changeWidthWho1 != null)
+        {
+            changeWidthWho.style.width = "75px";
+            changeWidthWho1.style.width = "65px";
+        }
+    }
+     
+    function resetRelatedToOptions(fieldId)
+    {
+        //alert('reset fns called');
+        var objSelectList = document.getElementById(fieldId);
+        
+        if(objSelectList == '' || objSelectList == null )
+        {
+            return;
+        }
+        for (var i=0;i<objSelectList.length;i++)
+        {
+          if(objSelectList.options[i].value != "001" && objSelectList.options[i].value != "006")
+          {
+              objSelectList.remove(i);
+              i--;
+          }
+        }
+        var newOption = document.createElement("option");
+        newOption.text = '--None--';
+        newOption.value = "{!$Label.Related_To_Default_Option}";
+        var optionReference = objSelectList.options[0];  
+        objSelectList.add(newOption,optionReference);
+        
+    }
+    
+    /* @Method <1.used to change the height of softphone.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+     function fnExpand()
+    {
+        //twistSection(document.getElementById('img_j_id0:myForm:pageBlock:pageBlockSection'));
+         phoneHeight = phoneHeight + 320;
+         sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+    }
+
+    /* @Method <1.used to change the height of softphone.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+     function fnCollapse_CurrentCall()
+    {   
+         //alert('phoneHeight current Call Save/Cancel'+phoneHeight );
+         
+         // reset field size once again so that picklist options will be same even, if any error occurs while save
+         changeSizeCurrentCall();
+         // remove unwanted options from RelatedTo field
+         resetRelatedToOptions("myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp");
+         // phoneHeight = phoneHeight - 320;
+         sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+    }
+
+    /* @Method <1.used to change the height of softphone.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function fnExpand_Last3Call_CallDetails()
+    {   if(phoneHeight <= 500 || phoneHeight == 820){
+            phoneHeight = phoneHeight + 400;
+            sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+        }
+    }
+
+    /* @Method <1.used to change the height of softphone.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function fnCollapse_Last3Call_CallDetails()
+    {
+        
+        //phoneHeight = phoneHeight - 400;
+        // reset field size once again so that picklist options will be same even, if any error occurs while save
+         changeSizeEdit();
+         // remove unwanted options from RelatedTo field
+         //remove unwanted options from RelatedTo field
+        resetRelatedToOptions("myPage:myForm:pageBlock:pageBlockSection1:pageBlockSection2:RelatedObject1_mlktp");
+        sforce.interaction.cti.setSoftphoneHeight(phoneHeight);
+    }
+    
+    function currentOngoingCall(){
+        //var currentDate = new Date();
+        //document.getElementById( "myPage:myForm:startTimeHidden").value = currentDate.getTime();
+        document.getElementById( "myPage:myForm:Id").value = localStorage.getItem('eventId');
+        document.getElementById("myPage:myForm:callingFrom").value = localStorage.getItem('callingFrom');
+        
+        setFieldVisibility();
+        document.getElementById('myPage:myForm:CurrentCall').click();
+        //alert('Time-->'+document.getElementById("myPage:myForm:CallStartTimeHidden").value);
+        // Raj Apr 25
+        //myVar=setInterval(function(){populateDuration(document.getElementById("myPage:myForm:CallStartTimeHidden").value)},1000);
+    }
+    /* @Method <1.used to check the initiated call and generate the different action accordingly.>
+       @param <current call object,activeCallContainer>
+       @return <NA> - <NA>
+    */
+    function updateUIhandlerInParent(status,callId,caller,mute,hold)
+    {    
+        if (status == "Connected" || status == "Hold")
+        {
+            if ($('#active_calls > #active_call_'+callId).length == 0)
+            {
+                $('#offhook_buttons').hide();
+                $('#number_input_div').hide();
+                $('#connected_buttons').show();
+                $('#yellow').hide();
+                $('#green').hide();
+                $('#red').show();
+                $('#registrationStatus').text("Busy...");
+
+                //window.phoneHeight =window.phoneHeight + 30;
+                //sforce.interaction.cti.setSoftphoneHeight(window.phoneHeight);
+                $('#active_calls').html('');
+                $('#active_calls').append('<div id="active_call_'+callId+'" class="active_call round"></div>');
+                $('#active_calls > #active_call_'+callId).append('<div id="caller_id_div">'+caller+'</div>');
+
+                $('#connected_buttons').html('<div id="endcall_button_div"> <a href="javascript:endInitiatedCall();">'+endBtn+'</a>&nbsp;&nbsp;</div>');
+                $('#connected_buttons').find('#endcall_button_div').append(' <a id="hold_button" href="javascript:holdCall();">'+ holdBtn +' </a>');
+                $('#connected_buttons').find('#endcall_button_div').append(' <a id="unhold_button" href="javascript:unholdCall();">' +unHoldBtn+ '</a>');
+                
+                
+                //call function to populate the UI.
+                //alert('local --->'+localStorage.getItem('eventId'));
+                var eventId = localStorage.getItem('eventId');
+                if(eventId != 'null' && eventId != '' && eventId != null && isPageRefereshed == true){
+                    isPageRefereshed = false;
+                    currentOngoingCall();           
+                }else{
+                    // Apr 24 - Raj
+                    // callConnected();
+                }
+            }
+            if (mute == 'true')
+            {   
+                $('#yellow').hide();
+                $('#green').hide();
+                $('#red').show();
+                $('#registrationStatus').text("Muted...");
+            }
+            else
+            {   
+                $('#yellow').hide();
+                $('#green').hide();
+                $('#red').show();
+                $('#registrationStatus').text("Busy...");
+            }
+            if (hold == 'true')
+            {   
+                $('#yellow').hide();
+                $('#green').hide();
+                $('#red').show();
+                $('#registrationStatus').text("Busy...");
+                $('#connected_buttons').find('#unhold_button').show();
+                $('#connected_buttons').find('#hold_button').hide();
+            }
+            else
+            {
+                $('#yellow').hide();
+                $('#green').hide();
+                $('#red').show();
+                $('#registrationStatus').text("Busy...");
+                $('#connected_buttons').find('#unhold_button').hide();
+                $('#connected_buttons').find('#hold_button').show();
+            }
+        }
+        else if (status == "Proceed")
+        {   
+            $('#yellow').show();
+            $('#green').hide();
+            $('#red').hide();
+            $('#registrationStatus').text("Calling...");
+            $('#offhook_buttons').hide();
+            $('#number_input_div').hide();
+            $('#connected_buttons').show();
+
+            //window.phoneHeight =window.phoneHeight + 30;
+            //sforce.interaction.cti.setSoftphoneHeight(window.phoneHeight);
+
+            $('#active_calls').html('<div id="pending_call_'+callId+'" class="active_call round"><div id="caller_id_div">'+caller+'...</div></div>');
+            $('#connected_buttons').html('<div id="endcall_button_div"><a href="javascript:endInitiatedCall();">'+endBtn+'</a></div>');
+            
+            var eventId = localStorage.getItem('eventId');
+            if(eventId == 'null' || eventId == null || eventId == '' )          
+            {
+                // Apr 24 - Raj
+                callConnected();
+            }
+            else if(isPageRefereshed == true)
+            {
+                isPageRefereshed = false;
+                currentOngoingCall();
+            }
+                   
+        }
+        else if (status == "Reorder")
+        {   
+            $('#yellow').hide();
+            $('#green').hide();
+            $('#red').show();
+            $('#registrationStatus').text("Failed");
+            $('#offhook_buttons').hide();
+            $('#number_input_div').hide();
+            $('#connected_buttons').show();
+
+            //window.phoneHeight =window.phoneHeight + 30;
+            //sforce.interaction.cti.setSoftphoneHeight(window.phoneHeight);
+
+            $('#connected_buttons').html('<div id="endcall_button_div"><a href="javascript:endInitiatedCall();">'+ endBtn +'</a></div>');
+        }
+        else if (status == "OnHook" || status == "OffHook")
+        {
+            if ($('#active_calls > #active_call_'+callId).length != 0)
+            {
+                //window.phoneHeight = window.phoneHeight - 30;
+                //sforce.interaction.cti.setSoftphoneHeight(window.phoneHeight);
+                $('#active_calls > #active_call_'+callId).remove();
+                $('#numberInput').val('');
+            }
+            //alert(status);
+            if(status == "OnHook")
+            {
+                $('#active_calls').html('');
+                $('#yellow').hide();
+                $('#green').show();
+                $('#red').hide();
+                $('#registrationStatus').text("Available");
+                //end Call function
+                callEnded();
+            }
+
+            if ($('#active_calls > #pending_call_'+callId).length != 0)
+                $('#active_calls > #pending_call_'+callId).remove();
+
+           $('#offhook_buttons').show();
+           $('#number_input_div').show();
+           $('#endcall_button_div').remove();
+
+        }
+        else if (status == "Hold")
+        {
+
+
+        }
+        else if (status == "Ringin")
+        {   
+            $('#yellow').hide();
+            $('#green').show();
+            $('#red').hide();
+            $('#registrationStatus').text("Calling...");
+            $('#offhook_buttons').hide();
+            $('#number_input_div').hide();
+            $('#connected_buttons').show();
+
+            //window.phoneHeight =window.phoneHeight + 30;
+            //sforce.interaction.cti.setSoftphoneHeight(window.phoneHeight);
+
+            $('#active_calls').html('<div id="pending_call_'+callId+'" class="active_call round"><div id="caller_id_div">Incoming Call '+caller+'...</div></div>');
+            $('#connected_buttons').html('<div id="endcall_button_div"><a href="javascript:answerCall(\'#\');"><img border="0" src="/resource/1354285763000/answerBtn"></a></div>');
+        }
+    }
+    
+    /* @Method <1.used to set value of 'Mute' variable in local storage to mute the call.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function muteCall()
+    {
+        setLocalStorageValue('Mute','true');
+        $('#connected_buttons').find('#unmute_button').show();
+        $('#connected_buttons').find('#mute_button').hide();
+    }
+    
+    /* @Method <1.used to set value of 'Mute' variable in local storage to unmute the call.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function unMuteCall()
+    {
+        setLocalStorageValue('Mute','false');
+
+        $('#connected_buttons').find('#unmute_button').hide();
+        $('#connected_buttons').find('#mute_button').show();
+
+    }
+    
+    /* @Method <1.used to set value of 'Hold' variable in local storage to hold the call.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function holdCall()
+    {
+        setLocalStorageValue('Hold','true');
+        $('#connected_buttons').find('#unhold_button').show();
+        $('#connected_buttons').find('#hold_button').hide();
+    }
+    
+    /* @Method <1.used to set value of 'Hold' variable in local storage to unhold the call.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function unholdCall()
+    {
+        setLocalStorageValue('Hold','false');
+        $('#connected_buttons').find('#unhold_button').hide();
+        $('#connected_buttons').find('#hold_button').show();
+    }
+    /* @Method <1.used to delete the number entered in text box using LIFO.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function deleteLastChar(str)
+    {
+        var newStr = str.substring(0, str.length-1);
+        $('#numberInput').val(newStr);
+    }
+
+    /* @Method <1.used to make a call when user is using onClickToCall functionality>
+       @param <jQuery Object>
+       @return <NA> - <NA>
+    */
+    sforce.interaction.cti.onClickToDial(function(response) {
+        if (response.result) {
+           //alert('User clicked on a phone number.' + response.result);
+          
+            var result = JSON.parse(response.result);
+            var countryCode;
+            //alert(result.objectId);
+            sforce.connection.sessionId = '{!$Api.Session_ID}';
+            var xmlHttp = null;
+            xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", "{!$Label.Jabber_Country_Code_Search_URL}" +result.objectId, false );
+            xmlHttp.setRequestHeader('Authorization', 'OAuth ' +sforce.connection.sessionId);  
+            xmlHttp.setRequestHeader('X-PrettyPrint', 'true'); 
+            xmlHttp.setRequestHeader('Cache-Control','no-cache,no-store'); //added for IE issue
+            xmlHttp.send( null );
+            var xmlResponse = xmlHttp.responseText;
+            //alert(xmlHttp.responseText);
+            //alert(window.navigator.appName);
+            if(window.navigator.appName == 'Netscape'){
+                if(xmlResponse.indexOf('<response>') != -1){
+                    countryCode = xmlResponse.substring(xmlResponse.indexOf('<response>')+11,xmlResponse.indexOf('</response>'));
+                }else{
+                    countryCode = xmlResponse.replace(/"/g,"");
+                }    
+            }else{
+                countryCode = xmlResponse.replace(/"/g,"");
+            }    
+            var phoneNum = jQuery.parseJSON(response.result).number;
+            phoneNum  = parsePhoneNumber(phoneNum);
+            
+            if(phoneNum.indexOf(countryCode) != 0)
+            {
+                phoneNum = countryCode+phoneNum;
+            }
+            phoneNum = '+'+phoneNum;
+            
+            //alert('After-->'+phoneNum);
+            document.getElementById("numberInput").value = phoneNum;
+            //phoneNum = phoneNum.replace(/[-()+\s]/g, '');
+            document.getElementById("numberInput").value = phoneNum;
+            document.getElementById("myPage:myForm:PhoneNumber").value = phoneNum;
+            
+            // Reset call state to null before making a call
+            resetLocalStorage();
+            setLocalStorageValue('phoneNumber',phoneNum);
+            
+
+            clickToCallResponse = response;
+            // populate even fields
+            setC2ClocalStorage();
+
+        }
+    });
+    
+    /* @Method <1.used to get parent id from URL in case of click to call and set the value to local storage.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function setC2ClocalStorage()
+    {
+        if (clickToCallResponse.result) 
+        {
+              var result = JSON.parse(clickToCallResponse.result);
+              localStorage.setItem('ObjectIdentifier',result.object);
+              localStorage.setItem('RecordId',result.objectId);
+              
+              //sforce.interaction.getPageInfo(pagecallback);
+              // get parent record id.
+                var parentPath = window.parent.location.pathname;
+
+                if(parentPath != null && parentPath.length == 16)
+                {
+                    var parentRecId = parentPath.substring(1,16);
+                    if(parentRecId.indexOf('/') == -1)
+                    {
+                        localStorage.setItem('ParentRecordId',parentRecId); 
+                    }
+                }
+
+              setFieldVisibility();
+         }
+    }
+
+    /* @Method <1.used to set visibility of 'Related to' and 'Name' field.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function setFieldVisibility()
+    {
+        if(localStorage.getItem('ObjectIdentifier') == null || localStorage.getItem('ObjectIdentifier') == '' ||
+            localStorage.getItem('RecordId') == null || localStorage.getItem('RecordId') == '' ||
+            localStorage.getItem('ObjectIdentifier') == 'null' || localStorage.getItem('RecordId') == 'null')
+        {
+            return;
+        }
+        
+        // reset parent record it to null
+        document.getElementById("myPage:myForm:sfdcParentRecordId").value = null;
+              
+        var C2CObject = localStorage.getItem('ObjectIdentifier');
+        var C2CRecordId = localStorage.getItem('RecordId');
+        var C2CParentRecordId = localStorage.getItem('ParentRecordId');
+        
+        document.getElementById("myPage:myForm:sfdcObjectName").value = C2CObject;
+        document.getElementById("myPage:myForm:sfdcRecordId").value = C2CRecordId;
+        
+        // set flag to identify the mode of call in controller class
+        document.getElementById("myPage:myForm:clicktoCallStatus").value = true;
+        
+        if(C2CParentRecordId != '' && C2CParentRecordId != null && C2CParentRecordId != 'null')
+        {
+            document.getElementById("myPage:myForm:sfdcParentRecordId").value = C2CParentRecordId;
+        }
+        /*if(C2CObject == "Contact" || C2CObject == "Lead")
+        {
+            document.getElementById("myPage:myForm:whoVisibility").value = true;
+            document.getElementById("myPage:myForm:whatVisibility").value = false;
+        }
+        else
+        {
+           document.getElementById("myPage:myForm:whoVisibility").value = false;
+           document.getElementById("myPage:myForm:whatVisibility").value = true;
+        }*/
+        
+              
+        //setEventLookups();
+    }
+    
+    /* @Method <1.used to parse phone number and eliminate special characters etc.>
+       @param <phone number>
+       @return <text> - <parsed number>
+    */
+    function parsePhoneNumber(phoneNumber)
+    {   
+        // exlude extension numbers from phone number. 
+        // Consider any first identified alpha character as separator for identify the extension number.
+        var extensionIndex = phoneNumber.search(/[a-z]/i);
+        if(extensionIndex > -1)
+        {
+            phoneNumber = phoneNumber.substring(0, extensionIndex);
+        }
+        // also consider '*' as a separator to identify the extension number
+        extensionIndex = phoneNumber.search(/\*/i);
+        if(extensionIndex > -1)
+        {
+            phoneNumber = phoneNumber.substring(0, extensionIndex);
+        }
+        // remove all special chars and alpha chars from the selected phone number
+        var parsedNumber = phoneNumber.replace(/[^\d]/g,"");
+        return parsedNumber;
+    }
+    
+    /* @Method <1.used to open popup window.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function openJabberPhoneWindow(){
+           window.open('/apex/JabberPopUp_Final','JabberPhone','width=260,height=160');
+    }
+    
+    function populatePhone1(){
+        var phone = document.getElementById("numberInput").value;
+        document.getElementById("myPage:myForm:PhoneNumber").value = phone ;
+       //  $('#div_phone').html('Phone #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+phone );
+        //document.getElementById("myPage:myForm:pageBlock:pageBlockSection:PhoneNumber").readOnly = true;
+      }
+
+    /* @Method <1.used to end call>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function callEnded()
+    {   
+        try
+        {
+            changeSizeCurrentCall();
+            $('#dialpadCallMode').hide();
+            $('#dialpadNoCallMode').show();
+            //call end call href to submit the current call section.
+            document.getElementById('myPage:myForm:dot').click();
+            stopTimer();
+        }
+        catch (e)
+        {
+              //alert("**** Exception during end call "+ e);
+        }
+        localStorage.setItem('CallState',null);
+        localStorage.setItem('endCall','false');
+        localStorage.setItem('Mute','false');
+        localStorage.setItem('Hold','false');
+        localStorage.setItem('eventId',null);
+        localStorage.setItem('ObjectIdentifier',null);
+        localStorage.setItem('RecordId',null);
+        localStorage.setItem('RecordName',null);
+        localStorage.setItem('ParentRecordId',null); 
+        localStorage.setItem('isConference',null);
+    }
+
+    /* @Method <1.used to populate phone number in output mode in 'Current Call' section>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function populatePhone(phoneVal){
+        document.getElementById("myPage:myForm:PhoneNumber").value = phoneVal ;
+         //$('#div_phone').html('Phone #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+phoneVal );
+
+    }
+    
+    /* @Method <1.used to set phone number in local storage to initiate a call.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function initiateCall(){
+        // reset 'click to call' flag to identify the mode of call in controller class
+        document.getElementById("myPage:myForm:clicktoCallStatus").value = false;
+        document.getElementById("myPage:myForm:PhoneNumber").value = $('#numberInput').val();
+        
+        // Reset call state to null before making a call
+        resetLocalStorage();
+        setLocalStorageValue('phoneNumber',$('#numberInput').val());
+    }     
+    
+    /* @Method <1.used to set 'endCall' variable in local storage to end a call.>
+       @param <NA>
+       @return <NA> - <NA>
+    */
+    function endInitiatedCall(){
+        setLocalStorageValue('endCall','true');
+    }
+    
+    function resetLocalStorage()
+    {
+            localStorage.setItem('phoneNumber', null);
+            localStorage.setItem('IVRNumber', null);
+            localStorage.setItem('CallId', null);
+            localStorage.setItem('callingFrom', null);
+            localStorage.setItem('CallState',null);
+            localStorage.setItem('Caller', null);
+            localStorage.setItem('Mute',null);
+            localStorage.setItem('Hold',null);
+            localStorage.setItem('endCall', null);
+            localStorage.setItem('continuingCall',null);
+            localStorage.setItem('eventId',null);
+            localStorage.setItem('ObjectIdentifier',null);
+            localStorage.setItem('RecordId',null);
+            localStorage.setItem('ParentRecordId',null);
+            localStorage.setItem('RecordName',null);
+            localStorage.setItem('isConference',null);
+    }
+ </script>
+<style>
+
+    [id*=myForm] { font-size: 90%; }
+    [id*=pageBlock] {  font-size: 98%;}
+     .pbSubheader {
+            background-color: #1797C0 !important;
+            font-weight: bold;
+            font-size: 91%;
+            padding: 2px 2px 2px 5px !important;
+            margin-top: 15px;
+            overflow: hidden;
+            margin-bottom: 2px;
+        }
+    .headerRow .headerStyle{
+        background-color:#638658;
+        color:#FFFFFF;
+        font-weight: bold;
+     }
+    #dot_div{
+       display:none;
+    }
+    #runningCall_div{
+       display:none;
+    }
+    #line_div{
+       display:none;
+    }
+    #PhoneNumber{
+       readonly: true;
+    }
+
+#calllist {
+    padding: 0px;
+    margin: 0px;
+}
+
+#calllist li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.call_div {
+    visibility:hidden;
+    position: relative;
+    width: 0px;
+    height: 0px;
+}
+
+body {
+    font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    font-size: 12px;
+    background-color:transparent;
+}
+
+.call-control {
+    margin-left: 3px;
+}
+
+a.call-control:visited
+{
+    color: #0000ff;
+}
+
+#registrationIndicator {
+    background-image: url("/resource/1354285763000/loading");
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    margin-top: 5px;
+    height: 18px;
+}
+
+.dialpad {
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: separate;
+    border-spacing: 2px;
+    *border-collapse: expression('separate', cellSpacing = '2px');
+    width:100%;
+
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dialpad tr {
+    height: 20px;
+    margin: 1px;
+}
+
+.dialpad td {
+    width: 20px;
+    border: 1px solid black;
+    color: #000;
+    background-color:#CCC;
+    font-weight: bold;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.round {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    text-align: left;
+    font-weight: bold;
+}
+
+
+input {
+    font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    font-size: 12px;
+}
+
+#number_input_div {
+    position:relative;
+    background-color:transparent;
+    bottom:5px;
+}
+
+#phone_mode_div {
+    position:relative;
+    background-color:transparent;
+    left:0px;
+    right:0px;
+}
+
+#active_calls {
+    position:relative;
+    background-color:transparent;
+    left:0px;
+    right:0px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+
+.active_call {
+    position:relative;
+    background-color:#3db5dc;
+    color:#FFF;
+    padding:5px;
+    font-weight:bold;
+    height: 16px;
+    left:0px;
+    right:0px;
+}
+
+
+
+#softphone_header_div {
+    position:relative;
+    background-color:#1797c0;
+    color:#FFF;
+    font-weight:bold;
+    padding-top:3px;
+    padding-left:10px;
+    height: 23px;
+    margin-bottom:10px;
+}
+
+#caller_id_div {
+    position:relative;
+    float:left;
+    height: 23px;
+}
+
+#hold_button_div {
+    position:relative;
+    float:right;
+}
+
+#unhold_button_div {
+    position:relative;
+    float:right;
+}
+
+#endcall_button_div {
+    position:relative;
+    top:5px;
+    left:0px;
+    right:0px;
+}
+
+#mute_button_div {
+    position:relative;
+    float:right;
+}
+
+#unmute_button_div {
+    position:relative;
+    float:right;
+}
+
+
+#dialpad_div {
+    position:relative;
+    text-align:center;
+    left:0px;
+    right:0px;
+}
+.dialpadCallModeClass td {
+    width: 20px;
+    border: 1px solid black;
+    color: #000;
+    background-color:#CCC;
+    font-weight: bold;
+    padding: 5px;
+    cursor: pointer;
+}
+.dialpadCallModeClass tr {
+    height: 20px;
+    margin: 1px;
+}
+.dialpadCallModeClass{
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: separate;
+    border-spacing: 2px;
+    *border-collapse: expression('separate', cellSpacing = '2px');
+    width:100%;
+
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#offhook_buttons {
+    position:relative;
+    top:5px;
+    left:20px;
+    right:0px;
+}
+
+#connected_buttons{
+    position:relative;
+    top:5px;
+    left:20px;
+    right:0px;
+}
+#console {
+    position:relative;
+    left:0px;
+    right:0px;
+    display:hidden;
+}
+
+#URL{
+background-color:#3db5dc;
+font-weight:bolder;
+position: relative;
+}
+
+.round a:hover{
+    font-size: 1.083em;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFFFFF; 
+}
+
+</style>
+
+
+    <div id="URL" class="round">
+        <br/>
+        <a onclick="javascript:openJabberPhoneWindow();">
+          <font color="white"> &nbsp;&nbsp; {!$Label.Jabber_Login} </font>
+        </a>
+        
+    </div>
+    <apex:form id="myForm">
+    <div id="otherthanURL">
+    <div id="softphone_header_div" class="round" style="text-align:left">{!$Label.Jabber_Call_Center}
+        
+            <a href="{!$Label.Help_Training}" target="_new" style="float: right;padding-right:10px;">
+                <img src="/s.gif" alt="" class="helpIcon" title="" />
+            </a>
+        
+    </div> 
+    <img src="{!$Resource.GreenBubble}" alt="Available" id="green" width="11px" height="11px"/>
+    <img src="{!$Resource.YellowBubble}" alt="Calling" id="yellow" width="11px" height="11px"/>
+    <img src="{!$Resource.RedBubble}" alt="Busy" id="red" width="11px" height="11px"/>
+    <span id="registrationStatus"></span>
+    <div id="dialPad">
+
+    <div id="phone_mode_div">
+    <!--<select id="phoneModeSelect" name="phoneModeSelect" onChange="switchPhoneMode( $('#phoneModeSelect').val())">
+        <option value="SoftPhone">Soft phone</option>
+        <option value="DeskPhone" >Desk phone</option>
+    </select>  -->
+    
+    </div>
+
+
+    <div id="active_calls"></div>
+    <div id="phonecontainer"></div>
+
+        <div id="dialpad_div" class="currentCallPanel">
+
+    <div id="number_input_div">
+      <input id="numberInput" name="number" type="text" size="33"></input>
+      
+
+        </div>
+    <div id="number_input_IVRS">
+      <input id="numberInputIVRS" name="number" type="text" size="33"></input>
+      
+
+     </div> 
+        <div id="dialpadNoCallMode">
+            <table class="dialpad">
+                <tr>
+                    <td data-value="1">1</td>
+                    <td data-value="2">2</td>
+                    <td data-value="3">3</td>
+                </tr>
+                <tr>
+                    <td data-value="4">4</td>
+                    <td data-value="5">5</td>
+                    <td data-value="6">6</td>
+                </tr>
+                <tr>
+                    <td data-value="7">7</td>
+                    <td data-value="8">8</td>
+                    <td data-value="9">9</td>
+                </tr>
+                <tr>
+                    <td data-value="*">*</td>
+                    <td data-value="0">0</td>
+                    <td data-value="#">#</td>
+                </tr>
+            </table>
+        </div>
+        <div id="dialpadCallMode">
+            <table class="dialpadCallModeClass">
+                <tr>
+                    <td data-value="1">1</td>
+                    <td data-value="2">2</td>
+                    <td data-value="3">3</td>
+                </tr>
+                <tr>
+                    <td data-value="4">4</td>
+                    <td data-value="5">5</td>
+                    <td data-value="6">6</td>
+                </tr>
+                <tr>
+                    <td data-value="7">7</td>
+                    <td data-value="8">8</td>
+                    <td data-value="9">9</td>
+                </tr>
+                <tr>
+                    <td data-value="*">*</td>
+                    <td data-value="0">0</td>
+                    <td data-value="#">#</td>
+                </tr>
+            </table>
+        </div>
+</div>
+    <div id="offhook_buttons">
+        <a href="javascript:initiateCall();"><apex:image url="{!$Resource.callBtn}" /></a>&nbsp;&nbsp;
+     <div id="line_div">
+        <apex:commandbutton oncomplete="onCallConnectDisplay();" action="{!insertEvent}" rerender="thePanel,panelEventId,CallStartTimeHidden,startTimeId, currentTimeId" id="line"/>
+     </div>
+        <a href="javascript:deleteLastChar($('#numberInput').val());">
+            <apex:image url="{!$Resource.deleteBtn}" />
+      </a>
+      <div id="dot_div">
+          <apex:commandbutton value="." action="{!endButton}"  rerender="EndDate,thePanelForCurrentCallButton,save,discard,pageBlockSection1" id="dot"/>
+      </div>
+      
+      <div id="runningCall_div">
+      <apex:commandbutton value="" action="{!getCurrentCall}" oncomplete="resetRelatedToOptions('myPage:myForm:pageBlock:pageBlockSection:RelatedObject_mlktp');populateRelatedObjectAfterRefresh();fnExpand();changeSizeCurrentCall();" rerender="panelEventId,thePanel,CallStartTimeHidden,startTimeId,currentTimeId" id="CurrentCall"/>
+      </div>
+      
+    </div>
+    
+    <div id="connected_buttons"></div>
+    
+</div>
+
+
+<br/>
+    <!--   <apex:commandButton value="Call" onclick="javascript:makeCall($('#numberInput').val());" oncomplete="changeSizeCurrentCall();populatePhone1();fnExpand();testCallButton();" action="{!insertEvent}" rerender="thePanel" /> -->
+    <!--  <apex:commandButton value="End" onclick="stopTimer();" action="{!endButton}" oncomplete="changeSizeCurrentCall();changeSizeEdit();" rerender="EndDate,save,discard,pageBlockSection1" style="Width: 45px"/> -->
+  <!--  <div style="position:absolute;left:0px;">-->
+       <apex:pageBlock id="pageBlock" >
+      <!-- <div id="CurrentCall">-->
+           <apex:outputPanel id="thePanel">
+                <apex:pageBlockSection title="{!$Label.Current_Call}" columns="1" id="pageBlockSection" rendered="{!isShowCurrentCallOPPanel}" collapsible="true">
+                   <apex:pageblocksectionItem >
+                   <apex:outputLabel > Subject </apex:outputLabel>
+                   <apex:inputText value="{!Event.Subject}" id="Subject" style="Width: 70px;"/> 
+                   </apex:pageblocksectionItem>
+                  <!--  <div id="div_phone">Phone#</div> -->
+                       <apex:inputField value="{!Event.WhatId}" id="RelatedObject"  style="Width: 35px;white-space: wrap"/>
+                       <apex:inputField value="{!Event.WhoId}" id="RelatedObjectWho"   style="Width: 30px;white-space: wrap"/>
+                    <apex:outputField value="{!Event.StartDateTime}" id="StartDate" style="Width: 70px;"/>
+                    <div id="div_duration">Duration&nbsp;&nbsp;</div>
+                    <apex:outputField value="{!Event.EndDateTime}" id="EndDate" style="Width: 70px;"/>
+                    <apex:inputField value="{!Event.Comments__c}" id="Comments" style="Width: 70px;background-color: white;"/> 
+                    <apex:outputField value="{!Event.Phone_Number__c}" id="PhoneNumber" style="Width: 70px;"/>
+                    <apex:outputField value="{!Event.Call_Type__c}" id="CallType" style="Width: 70px;"/>
+                 <!--   <apex:outputField value="{!Event.Caller__c}" id="Caller" style="Width: 70px;"/>
+                    <apex:outputField value="{!Event.Caller_Id__c}" id="CallerId" style="Width: 70px;"/>   -->
+                    <apex:outputField value="{!Event.Call_Results__c}" id="CallResults" style="Width: 70px;"/>
+                    <!--<apex:inputText value="{!Id}" id="Id"/>-->
+                    <apex:outputPanel id="thePanelForCurrentCallButton">
+                        <apex:commandButton action="{!updateEvent}" oncomplete="fnCollapse_CurrentCall();" value="Save" id="save" disabled="{!saved}" rerender="thePanel,pageBlockSection1,msgStatusId" rendered="{!isSaveVisible}" style="Width: 45px" />
+                        <apex:commandButton action="{!delEvent}" oncomplete="fnCollapse_CurrentCall();" value="Cancel" id="discard" disabled="{!discard}" rendered="{!isSaveVisible}" reRender="thePanel,pageBlockSection1,msgStatusId" style="Width: 60px"/>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+
+            </apex:outputPanel>
+        <apex:pageBlockSection title="{!$Label.Recent_Calls}" columns="1" id="pageBlockSection1" collapsible="true">
+            <apex:dataTable value="{!lstLastCall}" var="lastCall">
+                <apex:column >
+                         <apex:commandLink action="{!openEvent}" value="{!lastCall.eventWrapperVar.Phone_Number__c}" style="{!lastCall.strLinkColor}" oncomplete="changeSizeEdit();fnExpand_Last3Call_CallDetails();" rerender="pageBlockSection1,thePanel2" id="theCommandLink">
+                            <apex:param name="eventId" value="{!lastCall.eventWrapperVar.Id}"/>
+                        </apex:commandLink>
+                </apex:column>
+                <apex:column value="{!lastCall.phoneNoAndCallTime}"></apex:column>
+            </apex:dataTable>
+                 <apex:pageBlockSection columns="1" rendered="{!isShowEdit}" id="pageBlockSection2">
+                    <apex:pageblocksectionItem >
+                   <apex:outputLabel > Subject </apex:outputLabel>
+                   <apex:inputText value="{!EventToEdit.Subject}" id="Subject" style="Width: 70px;"/> 
+                   </apex:pageblocksectionItem>
+                    <apex:inputField value="{!EventToEdit.WhatId}" id="RelatedObject1" style="Width: 35px;white-space: wrap"/>
+                    <apex:inputField value="{!EventToEdit.WhoId}" id="RelatedObjectWho1" style="Width: 30px;white-space: wrap"/>
+                    <apex:outputField value="{!EventToEdit.StartDateTime}" id="StartDate" style="Width: 70px;"/>
+                    <apex:outputText value="{!EventToEdit.Duration__c}" id="Duration" style="Width: 70px;"/>
+                    <apex:outputField value="{!EventToEdit.EndDateTime}" id="EndDate" style="Width: 70px;"/>
+                    <apex:inputField value="{!EventToEdit.Comments__c}" id="Comments" style="Width: 70px;background-color: white;"/>
+                    <apex:outputField value="{!EventToEdit.Phone_Number__c}" id="PhoneNumber" style="Width: 70px;"/>
+                    <apex:outputField value="{!EventToEdit.Call_Type__c}" id="CallType" style="Width: 70px;"/>
+              <!--      <apex:outputField value="{!EventToEdit.Caller__c}" id="Caller" style="Width: 70px;"/>
+                    <apex:outputField value="{!EventToEdit.Caller_Id__c}" id="CallerId" style="Width: 70px;"/>   -->
+                    <apex:outputField value="{!EventToEdit.Call_Results__c}" id="CallResults" style="Width: 70px;"/>
+                 </apex:pageBlockSection>
+             <apex:outputPanel id="thePanel2" rendered="{!isShowEdit}">
+                 <apex:commandButton action="{!updateOpenedEvent}" oncomplete="fnCollapse_Last3Call_CallDetails();" rerender="pageBlockSection1,thePanel2,pageBlockSection2" disabled="{!saved1}" value="Save" id="save1" style="Width: 45px"/>
+                 <apex:commandButton action="{!delOpenedEvent}" oncomplete="fnCollapse_Last3Call_CallDetails();" rerender="pageBlockSection1,thePanel2,pageBlockSection2" disabled="{!discard1}" value="Cancel" id="discard1" style="Width: 60px"/>
+             </apex:outputPanel>
+        </apex:pageBlockSection> 
+        <apex:pageBlockSection title="{!$Label.Call_History}" columns="1" collapsible="true">
+        <apex:outputPanel >
+        <table  style="border-spacing: 10px">
+        <tr>
+            <td> 
+                <apex:outputLink value="{!$Label.Today_s_Call}" id="TodayLink" target="_new">{!$Label.TODAY}</apex:outputLink>
+            </td>
+            
+            <td>
+                <apex:outputLink value="{!$Label.This_Week_s_Call}" id="WeekLink" target="_new">{!$Label.X7_DAYS}</apex:outputLink>
+            </td>
+            
+            <td>
+                <apex:outputLink value="{!$Label.This_Month_s_Call}" id="MonthLink" target="_new">{!$Label.X30_DAYS}</apex:outputLink>
+            </td>
+        </tr>
+        <tr>
+            <!--  It will be available from Release 2 onwards
+             <td colspan="3" style="text-align:center">
+                <apex:outputLink value="{!$Label.Dashboard_Id}" id="DashboardLink" target="_new">{!$Label.Dashboard}</apex:outputLink>
+            </td> 
+            -->
+        </tr>
+        
+        </table>
+        </apex:outputPanel>
+        </apex:pageBlockSection>
+
+       <!-- </div>-->
+       </apex:pageBlock>
+   <!-- </div>-->
+
+            <apex:inputHidden value="{!statehidden}" id="State"/>
+            <apex:inputHidden value="{!callORnotcall}" id="CallOrNot"/>
+            <apex:inputHidden value="{!startTimeHidden}" id="startTimeHidden"/>
+            <apex:inputHidden value="{!Event.Duration__c}" id="Duration" />
+            <apex:inputHidden value="{!Event.Phone_Number__c}" id="PhoneNumber"/>
+            <apex:inputHidden value="{!Event.Caller_Id__c}" id="callingFrom"/>
+            
+            <apex:inputHidden value="{!isNameLookupVisible}" id="whoVisibility"/>
+            <apex:inputHidden value="{!isRelatedToVisible}" id="whatVisibility"/>
+            <apex:inputHidden value="{!strObject}" id="sfdcObjectName"/>
+            <apex:inputHidden value="{!strRecordId}" id="sfdcRecordId"/>
+            <apex:inputHidden value="{!strParentRecordId}" id="sfdcParentRecordId"/>
+            <apex:inputHidden value="{!isClickToCall}" id="clicktoCallStatus"/>
+            <apex:inputHidden value="{!Event.Call_Start_Time_Hidden__c}" id="CallStartTimeHidden" /> 
+            <apex:inputHidden value="{!strStartTimeInMS}" id="startTimeId" /> 
+            <apex:inputHidden value="{!strCurrentTimeInMS}" id="currentTimeId" /> 
+
+            <apex:outputPanel id="panelEventId">
+                <apex:inputHidden value="{!Id}" id="Id"/>
+            </apex:outputPanel> 
+            <!--apex:inputText id="Duration1"/-->
+        </div>
+    </apex:form>
+    
+    <script>
+        var holdBtn = '<apex:image id="theHold" value="{!$Resource.New_Hold}" alt="Hold" width="30px" height="30px"/>';
+        var unHoldBtn = '<apex:image id="theUnHold" value="{!$Resource.New_Resume}" alt="Resume" width="30px" height="30px"/>';
+        var muteBtn = '<apex:image id="theMute" value="{!$Resource.New_Mute}" alt="Mute Call" width="30px" height="30px"/>';
+        var unMuteBtn = '<apex:image id="theUnMute" value="{!$Resource.New_Unmute}" alt="UnMute Call" width="30px" height="30px"/>';
+        var endBtn = '<apex:image id="theEnd" value="{!$Resource.endBtn}" width="68px" height="30px"/>';
+    </script>
+
+</apex:page>

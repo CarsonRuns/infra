@@ -1,0 +1,310 @@
+<!--  
+Author:- zakeahme
+CreatedBy:Zakeahme
+Date: June-4-2019
+Purpose: to serve chat functionality on Webex.com sites
+***************************************************
+MODIFICATION HISTORY:
+***************************************************      
+-->
+
+<apex:page showHeader="false" sidebar="false"
+    standardStylesheets="false" language="{!language}" id="page"
+    controller="NGCC_Pre_Chat_Form_Webex_CTL" docType="html-5.0" action="{!selectedOption}">
+<LINK REL="icon" type="image/png" HREF="{!URLFOR($Resource.ciscofaviconNGCC)}"/>
+    <script language='javascript'>
+    function enableDisableChatBtn(){
+        var optionInVal = document.getElementById('page:prechatFormInput:inputForm:laOptions').value;
+            if(optionInVal=="Accepted1"){
+                console.log(optionInVal+ ">>>>>>");
+                document.getElementById('page:prechatFormInput:inputForm:prechat-Submit').disabled=true;
+            }else{
+               var testStyle = document.querySelector("#page\\:prechatFormInput\\:inputForm\\:redirect > span > span > span > span > span").style.fontFamily="CiscoSans";
+                console.log("Changing the style" +testStyle);
+            }
+            var fN = document.getElementById('page:prechatFormInput:inputForm:FirstNameInput').value;
+            var lN = document.getElementById('page:prechatFormInput:inputForm:LastNameInput').value;
+            var eM = document.getElementById('page:prechatFormInput:inputForm:EmailAddressInput').value;
+                if(fN && lN && eM){ 
+                    document.getElementById('page:prechatFormInput:inputForm:prechat-Submit').disabled=false;
+                }else { 
+                    document.getElementById('page:prechatFormInput:inputForm:prechat-Submit').disabled=true;
+                }
+    }
+    
+    </script>    
+   <script type='text/javascript' src='https://c.la4-c2-was.salesforceliveagent.com/content/g/js/42.0/deployment.js'></script>
+    <script type='text/javascript'>
+        liveagent.init('https://d.la4-c2-was.salesforceliveagent.com/chat', '572340000004Cu2', '00D300000000QUu');
+    </script>
+    
+    
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <LINK REL="icon" type="image/x-icon" HREF="{!URLFOR($Resource.ciscofaviconNGCC)}"/>
+            <title>Welcome to Cisco Webex</title>
+            
+            <!-- Bootstrap core CSS -->
+            <apex:includeScript value="https://code.jquery.com/jquery-1.7.2.js" />
+            <apex:stylesheet value="{!URLFOR($Resource.bootstrapNGCC, '/css/bootstrap.min.css')}" />
+            <apex:stylesheet value="{!URLFOR($Resource.NGCCWebexPreChatCss)}"/>
+            <apex:includeScript value="{!URLFOR($Resource.bootstrapNGCC, 'js/bootstrap.min.js')}" />
+            <script type='text/javascript' src='//www.cisco.com/c/dam/cdc/t/ctm.js'> </script>    
+        </head>
+
+        <script type='text/javascript' src='https://d.la4-c2-chi.salesforceliveagent.com/content/g/js/39.0/prechat.js'></script>
+        <script type="text/javascript">
+           var detailCallback = function (details){
+           var labels = ["FirstNameInput","LastNameInput","CCOIDInput","PhoneInput","EmailAddressInput","Keycode","CookieInput","CountryInput","CompanyInput","OriginatingURL","data-c2c-ecid","data-c2c-ccid","data-c2c-dtid","data-c2c-oid"]
+           initData(JSON.stringify(details.customDetails));
+           console.log(JSON.stringify(details.customDetails));
+           for (var i = 0; i < details.customDetails.length; i++){
+               console.log(details.customDetails[i].label);               
+               if (labels.indexOf(details.customDetails[i].label) != -1){
+                   console.log(details.customDetails[i].label +" -- "+details.customDetails[i].value);
+                   jQuery("*[id*="+details.customDetails[i].label+"]").val(details.customDetails[i].value);
+               } // added by gchaitha to get cCiscoID
+               if(details.customDetails[i].label == 'cCiscoID'){
+                   document.getElementsByName("liveagent.prechat:CCOID")[0].value = details.customDetails[i].value;
+               }
+            } 
+         };      
+         window.onload = function (){
+            liveagent.details.preChatInit('https://d.la4-c2-chi.salesforceliveagent.com/chat','detailCallback');
+         }
+        </script>
+
+    <body>        
+        <apex:form >
+            <apex:actionFunction name="initData" action="{!initDataParse}" rerender="prechatFormInput">
+                <apex:param name="node" value="" />
+            </apex:actionFunction>
+         </apex:form>
+     
+    <div class="container-fluid ">
+        <div class="panel panel-primary" >
+            <div class="panel-body" >
+                <apex:form id="prechatFormInput" >
+                <apex:pageBlock id="inputForm">
+                        <apex:outputPanel styleClass="row bottom-buffer" rendered="{!headingLogo}">
+                            <div class="col-xs-4">
+                                <img src="{!$Resource.NGCCWebexLogo}" class="img-responsive"
+                                    alt="Responsive image" />
+                            </div>
+                            <apex:outputPanel rendered="{!showDynamic}">
+                                <div class="col-xs-8">
+                                    <h3>{!$Label.NGCC_Adv_PreChat_Header}</h3>
+                                </div>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                        <apex:outputPanel styleClass="row bottom-buffer" rendered="{!NOT(headingLogo)}">
+                            <div class="col-xs-4">
+                                <img src="{!$Resource.NGCCWebexLogo}" class="img-responsive"
+                                    alt="Responsive image" />
+                            </div>
+                            <div class="col-xs-8">
+                                <h3>{!$Label.NGCC_Adv_PreChat_Header}</h3>
+                            </div>
+                        </apex:outputPanel>
+                        <apex:inputText id="OriginatingURL" value="{!originatingInput}" styleClass="hidden"/>
+                        <apex:outputPanel id="block" rendered="{!preSalesVisitor}">
+                            <apex:outputPanel styleClass="row bottom-buffer">
+                                <div class="row bottom-buffer">
+                                    <apex:pageBlockSection html-class="alert alert-danger"
+                                        rendered="{!renderError}">
+                                        <apex:pagemessages />
+                                    </apex:pageBlockSection>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel styleClass="row bottom-buffer"
+                                rendered="{!optionsVisibility}">
+                                <apex:outputLabel id="outputLabel"
+                                    value="{!$Label.NGCC_PreChat_Interest}" for="laOptions" rendered="true"/>
+                                 <br/>
+                                        <apex:selectList id="laOptions" value="{!optionsInput}" size="1"
+                                                         lang="{!language}" styleClass="form-control" onclick="optionSelect()">
+                                            <apex:actionSupport event="onchange" action="{!selectedOption}" reRender="prechatFormInput,block,redirect" oncomplete="enableDisableChatBtn()"/>
+                                            <apex:selectOptions value="{!optionsList}"/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>
+                           
+
+                            <apex:outputPanel styleClass="row bottom-buffer "
+                                rendered="{!firstNameRequested}" >
+                                <div id='FirstNameTemplate' >
+                                    <apex:inputText id="FirstNameInput" value="{!firstNameInput}"
+                                        styleClass="form-control"
+                                        html-placeholder="{!$Label.NGCC_PreChat_FirstName}{!' *'}" onkeyup="enableDisableChatBtn()"/>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel styleClass="row bottom-buffer"
+                                rendered="{!lastNameRequested}">
+                                <div id='LastNameTemplate'>
+                                    <apex:inputText id="LastNameInput" value="{!lastNameInput}"
+                                        styleClass="form-control"
+                                        html-placeholder="{!$Label.NGCC_PreChat_LastName}{!' *'}" onkeyup="enableDisableChatBtn()"/>
+                                </div>
+                            </apex:outputPanel>
+
+                            <apex:outputPanel styleClass="row bottom-buffer"
+                                rendered="{!emailRequested}" >
+                                <div id='EmailTemplate' >
+                                    <apex:inputText id="EmailAddressInput" value="{!emailInput}"
+                                        styleClass="form-control"
+                                        html-placeholder="{!$Label.NGCC_PreChat_Email}{!' *'}" onkeyup="enableDisableChatBtn()"/>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="redirect" rendered="{!showText}" style="font-family: CiscoSans;">
+                              <apex:outputText value="{!redirectResult}" escape="false" style="font-family: CiscoSans;"/>
+                            </apex:outputPanel>
+                        
+                            <div class="row">
+                                <apex:commandButton styleClass="btn btn-block btn-primary"
+                                    reRender="prechatFormInput,block,redirect,prechatFormPanel,prechatJS"
+                                                    action="{!validation}" value="{!$Label.NGCC_ChatNow}" id="prechat-Submit" rendered="{!chatBtnDisplay}"/> 
+                            </div>
+                        </apex:outputPanel>
+                        
+                       <!-- <apex:outputPanel id="redirect" rendered="{!(preSalesVisitor)}" > {!NOT(preSalesVisitor)}-->
+                          <!--  <apex:outputText value="{!redirectResult}" escape="false"/>
+                        </apex:outputPanel>  -->
+                    </apex:pageBlock>
+                </apex:form>
+            </div>
+        </div>
+    </div>
+        
+    
+    
+    <apex:outputPanel id="prechatFormPanel" layout="none"
+        rendered="{!success}">
+        <form method="post" id="prechatForm" action="{!endpoint}">
+          <input type="hidden" name="liveagent.prechat.name" value="{!firstNameInput}{!IF(lastNameInput != 'Please Update',' '+lastNameInput,'')}" />
+            <input type="hidden"
+                name='liveagent.prechat:Interested' id='laOptions1'
+                value="{!labeledInterest}" />
+                <input type="hidden" name="liveagent.prechat.save:Interested" value="Interested__c"/>
+                <input type="hidden"
+                name='liveagent.prechat:FirstName' id='FirstNameInput1'
+                value="{!firstNameInput}" /> <input type="hidden"
+                name='liveagent.prechat:LastName' id='LastNameInput1'
+                value="{!lastNameInput}" /> <input type="hidden"
+                name='liveagent.prechat:EmailAddress' id='EmailAddressInput1'
+                value="{!emailInput}" /> <input type="hidden"
+                name='liveagent.prechat:Phone' id='PhoneInput1'
+                value="{!phoneInput}" /> <input type="hidden"
+                name="liveagent.prechat:CompanyName" id="CompanyName1"
+                value="{!companyInput}" /> <input type="hidden"
+                name="liveagent.prechat:countryName" value="{!countryInput}" />
+                <!--<input type="hidden" 
+                name="liveagent.prechat:LabeledInterest" value="{!labeledInterest}"/> -->
+
+                <input type="hidden"
+                name="liveagent.prechat:recordType" value="{!recordType}" />
+                <input type="hidden"
+                name="liveagent.prechat:status" value="New Prospect" />
+                <input type="hidden" name="liveagent.prechat:OriginatingURLInput" value="{!originatingInput}"/>
+                <input type="hidden" name="liveagent.prechat.save:OriginatingURLInput" value="Originating_URL__c"/>
+                 <input
+                type="hidden" name="liveagent.prechat.findorcreate.map:Lead"
+                value="FirstName,FirstName;
+                       Country,countryName;
+                       Company,CompanyName;
+                       LastName,LastName;
+                       Phone,Phone;
+                       Email,EmailAddress;
+                       GUTC_COOKIE_ID__c,CookieInput;
+                       Referring_URL__c,OriginatingURL;
+                       RecordTypeId, recordType;
+                       Status,status;
+                       Chat_Keycode__c,Keycode;
+                       Program_Event_Code__c,data-c2c-ecid;
+                       Eloqua_CC_Id__c,data-c2c-ccid;
+                       Eloqua_Drive_To_ID__c,data-c2c-dtid;
+                       Eloqua_Offer_Id__c,data-c2c-oid;" />
+            <input type="hidden"
+                name="liveagent.prechat.findorcreate.map.doCreate:Lead"
+                value="FirstName,true;
+                       LastName,true;
+                       Country,true;
+                       Company,true;
+                       Phone,true;
+                       Email,true;
+                       GUTC_COOKIE_ID__c,true;
+                       Referring_URL__c,true;
+                       RecordTypeId,true;
+                       Status,true;
+                       Chat_Keycode__c,true; 
+                       Program_Event_Code__c,true;
+                       Eloqua_CC_Id__c,true;
+                       Eloqua_Drive_To_ID__c,true;
+                       Eloqua_Offer_Id__c,true;" />
+            <input type="hidden"
+                name="liveagent.prechat.findorcreate.saveToTranscript:Lead"
+                value="LeadId" />
+        </form>
+
+    </apex:outputPanel>
+    <apex:outputPanel id="prechatJS">
+        <script type='text/javascript' src='//www.cisco.com/c/dam/cdc/t/ctm.js'> </script>
+        <script>
+            var buttonIdUS='{!buttonIdParse}';
+            var optionInpt='';
+            
+            jQuery(function(){
+                {!submitFunction}
+                console.log("SUCCESS PRINT " +{!success});
+            jQuery(document).ready(function() {
+            cdc.util.addMetricsRule(jQuery("input[type='button'], input[type='submit'], input[type='image'], button[type='button'], button[type='submit'],button"), {
+            onDemand: true
+                     });
+                cdc.util.addMetricsRule("input.btn", function(e) {
+                        return validatingTagsData();
+                });
+            });
+            });
+        function optionSelect(id){
+            optionInpt= document.getElementById("page:prechatFormInput:inputForm:laOptions").value;
+        }
+        function validatingTagsData(){
+            if(buttonIdUS=='573340000004DIs' || buttonIdUS=='573340000004DIt' || buttonIdUS=='573340000004DGq' || buttonIdUS=='573340000004DGr'||buttonIdUS=='573340000004DGs'||buttonIdUS=='573340000004DGt'){
+                if(optionInpt=='Accepted1'){
+                    console.log("purchase_chat");
+                    return tagAssignment("purchase_chat");
+                }else if(optionInpt=='Accepted3'){
+                    console.log("reseller");
+                    return tagAssignment("reseller");
+                }else if(optionInpt=='Option-0000'){
+                    console.log("product_help");
+                    return tagAssignment("product_help");
+                }else if(optionInpt=='Option-0001'){
+                    console.log("partner");
+                    return tagAssignment("partner");
+                }else if(optionInpt=='Option-0147'){
+                    console.log("tech_support");
+                    return tagAssignment("partner_tech_support");
+                    
+                }else{
+                    console.log('NOT US Button ID'); 
+                }
+            }
+        }
+        function tagAssignment(inputLinkTxt){
+            var lpos = "pre_chat_form";
+            var lid = "prechat_selection";
+            console.log("Tag_Assignment method: " +inputLinkTxt);
+            return {
+                          "linktext": inputLinkTxt,
+                          "lpos": lpos,
+                          "lid": lid
+                   };
+          }
+       
+          </script>
+    </apex:outputPanel>
+</body>
+    </html>
+</apex:page>

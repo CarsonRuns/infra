@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Completed Date --></label>
+        <name>Completed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Environment --></label>
+        <name>Environment__c</name>
+        <picklistValues>
+            <masterLabel>Production</masterLabel>
+            <translation><!-- Production --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sandbox</masterLabel>
+            <translation><!-- Sandbox --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Escalated --></label>
+        <name>Escalated__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Functional Area --></label>
+        <name>Functional_Area__c</name>
+        <picklistValues>
+            <masterLabel>Account Management</masterLabel>
+            <translation><!-- Account Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case Management</masterLabel>
+            <translation><!-- Case Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Management</masterLabel>
+            <translation><!-- Contact Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Management</masterLabel>
+            <translation><!-- Lead Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Management</masterLabel>
+            <translation><!-- Opportunity Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Management</masterLabel>
+            <translation><!-- Partner Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Management</masterLabel>
+            <translation><!-- User Management --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Request Category --></label>
+        <name>Request_Category__c</name>
+        <picklistValues>
+            <masterLabel>Access/Password</masterLabel>
+            <translation><!-- Access/Password --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bug</masterLabel>
+            <translation><!-- Bug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Update</masterLabel>
+            <translation><!-- Data Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Upload</masterLabel>
+            <translation><!-- Data Upload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inquiry/Question</masterLabel>
+            <translation><!-- Inquiry/Question --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POC Support</masterLabel>
+            <translation><!-- POC Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Release Support</masterLabel>
+            <translation><!-- Release Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reports</masterLabel>
+            <translation><!-- Reports --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Setup</masterLabel>
+            <translation><!-- Setup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Admin</masterLabel>
+            <translation><!-- User Admin --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Request Count --></label>
+        <name>Request_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Source --></label>
+        <name>Request_Source__c</name>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incident</masterLabel>
+            <translation><!-- Incident --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Request Status --></label>
+        <name>Request_Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Progress</masterLabel>
+            <translation><!-- In-Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Requested Date --></label>
+        <name>Requested_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Time Spent on Hours --></help>
+        <label><!-- Time Spent --></label>
+        <name>Time_Spent__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Config Support Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Config Support Requests</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Config Task Tracking Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

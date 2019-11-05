@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Customer Deployment Date --></label>
+        <name>Customer_Deployment_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Customer Deployment Tracking --></label>
+        <name>Partner_Customer_Deployment_Tracking__c</name>
+        <relationshipLabel><!-- Customer Deployed by Partners --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Customer Deployed by Partner</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Customer Deployed by Partners</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Customer Name Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

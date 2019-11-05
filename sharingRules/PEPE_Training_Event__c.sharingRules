@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?><SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Admins_getting_read_only_on_TC</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Admins getting read only on TC</label>
+        <sharedTo>
+            <group>PDP_PLED_Admin_EMEAR_Read</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Published,Withdrawn,Submitted</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_ARCH_Admin_EMEAR_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Used for arch TE records sharing with other arch admins</description>
+        <label>PEPE: ARCH Admin EMEAR Share</label>
+        <sharedTo>
+            <group>PEPE_ARCH_EMEAR_ADMIN</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Published,Delivered,Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Architectures</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Arch_Hosts_access_to_Published_TE_READ_ONLY</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Architecture hosts gets access to Training events which are published and delivered for them by arch or pepe admins.</description>
+        <label>PEPE: Arch Hosts access to Published TE READ ONLY</label>
+        <sharedTo>
+            <group>PEPE_ARCH_EMEAR_Country_Hosts</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Published,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Architectures</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_CCW_Arch_Hosts</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>For Oct2016 Release (CCW)</description>
+        <label>PEPE: CCW Arch Hosts</label>
+        <sharedTo>
+            <group>PEPE_CCW_ARCH_Country_Hosts</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Created,Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Architectures</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Projects_or_Campaigns__c</field>
+            <operation>equals</operation>
+            <value>CCW Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_PIW_SMEs_access_to_Published_TE_READ_ONLY</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>SMEs gets access to Training events which are published for them by PIW or pepe admins.</description>
+        <label>PEPE: PIW SMEs access to Published TE READ ONLY</label>
+        <sharedTo>
+            <group>PEPE_SME_PIW_EMEAR_for_SMEs</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Published,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>PIW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_PVT_Admin_EMEAR_share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Used for sharing the PVT TE records with other PVT Admins</description>
+        <label>PEPE: PVT Admin EMEAR share</label>
+        <sharedTo>
+            <group>PEPE_CAL_PVT_Admins_EMEAR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Published,Closed for Registration,Delivered,Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>PVT</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Share_TE_when_submitted_and_published</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PEPE: Share TE when submitted and published</label>
+        <sharedTo>
+            <group>PEPE_PLED_Admin_APJC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>APJC</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Share_published_TE_with_RLs_APJC</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PEPE:Share published TE with RLs APJC</label>
+        <sharedTo>
+            <group>PEPE_Leads_Hosts_SMEs_APJC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>APJC</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Share_withdrawn_with_Admin_Group_EPJC</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PEPE:Share withdrawn with Admin Group EPJC</label>
+        <sharedTo>
+            <group>PEPE_PLED_Admin_APJC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Withdrawn</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>APJC</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PPL_Admins_getting_read_only_on_TC</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PPL Admins getting read only on TC</label>
+        <sharedTo>
+            <group>PDP_PPL_PLED_Admin_EMEAR_Read</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Withdrawn,Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PPL_Published_share_with_Regional_Lead_EMEAR_Group</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Published and Delivered are seen by regional leads</description>
+        <label>PPL Published share with Regional Lead EMEAR Group</label>
+        <sharedTo>
+            <group>PDP_PPL_Regional_Leads_EMEAR</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Delivered,Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Partner Plus Lounge</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PPL_Share_Admin_EMEAR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This is for visibility on TE with submitted, published and delivered</description>
+        <label>PPL Share Admin EMEAR</label>
+        <sharedTo>
+            <group>PDP_PPL_PLED_Admin_EMEAR</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Delivered,Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Partner Plus Lounge</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PPL_Share_withdrawn_with_Admin_Group_EMEAR</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PPL Share withdrawn with Admin Group EMEAR</label>
+        <sharedTo>
+            <group>PDP_PPL_PLED_Admin_EMEAR</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Withdrawn</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Partner Plus Lounge</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PVT_hosts_see_only_pvt_training_events</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>PVT Country hosts would see only pvt published/delivered events and will create TRs</description>
+        <label>PVT hosts see only pvt training events</label>
+        <sharedTo>
+            <group>PEPE_CAL_PVT_EMEAR_Country_Hosts</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Closed for Registration,Published,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>PVT</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Published_share_with_Regional_Lead_EMEAR_Group</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Published and Delivered are seen by regional leads</description>
+        <label>Published share with Regional Lead EMEAR Group</label>
+        <sharedTo>
+            <group>PDP_PP_Regional_Leads_EMEAR</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Published,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Partner Plus</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Admin_CCW_Arch</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>For Oct Release 2016 (CCW)</description>
+        <label>Share Admin CCW Arch</label>
+        <sharedTo>
+            <group>PEPE_CCW_ARCH_ADMIN</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Created,Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Architectures</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Projects_or_Campaigns__c</field>
+            <operation>equals</operation>
+            <value>CCW Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Admin_CCW_PIW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>For Oct 2016 Release ( CCW)</description>
+        <label>Share Admin CCW PIW</label>
+        <sharedTo>
+            <group>PEPE_CCW_SME_PIW_Admin_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Created,Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>PIW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Projects_or_Campaigns__c</field>
+            <operation>equals</operation>
+            <value>CCW Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Admin_CCW_PP</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>For Oct 2016 Release (CCW)</description>
+        <label>Share Admin CCW PP</label>
+        <sharedTo>
+            <group>PEPE_CCW_PP_Admin</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Created,Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Partner Plus</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Projects_or_Campaigns__c</field>
+            <operation>equals</operation>
+            <value>CCW Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Admin_CCW_PVT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>For Oct 2016 Release ( CCW )</description>
+        <label>Share Admin CCW PVT</label>
+        <sharedTo>
+            <group>PEPE_CCW_PVT_Admins</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted,Created,Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>PVT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Projects_or_Campaigns__c</field>
+            <operation>equals</operation>
+            <value>CCW Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Admin_EMEAR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This is for visibility on TE with submitted, published and delivered</description>
+        <label>Share Admin EMEAR</label>
+        <sharedTo>
+            <group>PDP_PLED_Admin_EMEAR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Published,Delivered,Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Partner Plus</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_PIW_TE_when_submitted_and_published</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share the submitted or published or delivered PIW Training Events with all the other piw admins</description>
+        <label>Share PIW TE when submitted and published</label>
+        <sharedTo>
+            <group>PEPE_SME_PIW_EMEAR_Admin_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Published,Delivered,Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>PIW</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_PVT_SME_CCW</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>For Oct 2016 Release( CCW)</description>
+        <label>Share PVT SME CCW</label>
+        <sharedTo>
+            <group>PEPE_CCW_PVT_Country_Hosts</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Created,Published,Submitted,Delivered,Closed for Registration</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>PVT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Projects_or_Campaigns__c</field>
+            <operation>equals</operation>
+            <value>CCW Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Regional_Lead_CCW_PP</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>For Oct 2016 Release (CCW)</description>
+        <label>Share Regional Lead CCW PP</label>
+        <sharedTo>
+            <group>PEPE_CCW_PP_Regional_Lead</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Created,Published,Submitted,Delivered,Closed for Registration</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>Partner Plus</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Projects_or_Campaigns__c</field>
+            <operation>equals</operation>
+            <value>CCW Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_SME_CCW_PIW</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>For Oct 2016 Release ( CCW)</description>
+        <label>Share SME CCW PIW</label>
+        <sharedTo>
+            <group>PEPE_CCW_SME_PIW_for_SMEs</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Created,Published,Submitted,Delivered,Closed for Registration</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Platform__c</field>
+            <operation>equals</operation>
+            <value>PIW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Projects_or_Campaigns__c</field>
+            <operation>equals</operation>
+            <value>CCW Renewal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_withdrawn_with_Admin_Group_EMEAR</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share withdrawn with Admin Group EMEAR</label>
+        <sharedTo>
+            <group>PDP_PLED_Admin_EMEAR</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Withdrawn</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>

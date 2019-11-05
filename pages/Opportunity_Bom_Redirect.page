@@ -1,0 +1,105 @@
+<apex:page standardController="Opportunity" sidebar="false">
+    <apex:includeScript value="{!$Resource.angular_min_js}" />
+    <apex:slds />
+    <style>
+        html, 
+        body {
+            height: 100%;
+        }        
+    </style>    
+    <script>
+    // SCAVA FIX
+        var sfdcmode = "{!JSENCODE($CurrentPage.parameters.mode)}";         //Added mode to send to CCW for navigation back and forth
+        
+        
+        if (sfdcmode == null || sfdcmode == '')
+        {
+            if ('{!$User.UIThemeDisplayed}' == 'Theme3') {
+                sfdcmode = 'cls'; 
+            }
+            else 
+            {
+                sfdcmode = 'lgt';
+            }
+        }
+        console.log('sfdcmode = ',sfdcmode);
+        angular.module('quoteApp', [])
+            .controller('quoteRedirectionCtrl', function($scope, $http) {
+                $scope.message = 'Please wait...';
+                var paramQuoteId = '{!JSENCODE($CurrentPage.parameters.quoteId)}';
+               
+                var recordTypeId = '{!Opportunity.RecordTypeId}';
+                // SCAVA FIX
+                var optyNumber = '{!JSENCODE(Opportunity.DealID__c)}';
+                var quoteId = paramQuoteId;
+                var recordTypeId15 = recordTypeId.substring(0, 15);
+                var recordTypeList = '0123000000003yk, 012300000000CDL';
+                var salesforceBaseURL = 'https://' + window.location.host;
+                
+                var orgId = '{!$Organization.Id}';
+                var endpointUrl = salesforceBaseURL + '/services/Soap/c/11.0/' + orgId.substring(1, 15);
+
+                var profileName = '{!$Profile.Name}';
+                var profileId = '{!$Profile.Id}';
+                var userId = '{!$User.Id}';
+                var email = '{!$User.Email}';
+                var pdrURL = '';
+                var pdrDown = '';
+                var opptyType = 'partnerQuote';                
+                var env = 'prod_value__c';
+                
+                //Validating Salesforce Env
+                if (window.location.host !== 'ciscosales.my.salesforce.com') {
+                    env = 'non_prod_value__c';
+                }
+                console.log('$scope.message = ',$scope.message);
+                
+
+                //Getting Org Constant for CCW URL
+                $http.defaults.headers.common['Authorization'] = 'Bearer {!$Api.Session_ID}';
+                $http.get("/services/data/v28.0/query?q=Select+Key__c,non_prod_value__c,prod_value__c,Id+from+Org_Constants__c+Where+Key__c='PDR URL'+OR+Key__c ='PDR Down'+LIMIT+2")
+                    .then(function(response) {
+                        $scope.data = response.data.records;
+                        angular.forEach($scope.data, function(record, key) {
+                            if (record.Key__c === 'PDR URL') {
+                                pdrURL = record[env];
+                            } else {
+                                pdrDown = record[env];
+                            }
+                            console.log('pdrURL  = ',pdrURL);
+                            console.log('pdrDown = ',pdrDown);
+                        });
+
+
+                        if (recordTypeList.search(recordTypeId15) > -1) {
+                            opptyType = 'fieldQuote';
+                        }
+                        
+                        var redirectURL = pdrURL + '/SFDCRequestHandler';
+                        if (pdrDown == 'Yes') {
+                            $scope.message = 'Quoting capabilities are currently unavailable due to CCW scheduled maintenance and upgrades'
+                        } else {
+                            redirectURL += '?at=' + opptyType + '&optyNumber=' + optyNumber + '&quoteId=' + quoteId + '&userid=' + userId + '&email=' + email;
+                            redirectURL += '&sessionid=' + '{!$Api.Session_ID}' + '&url=' + endpointUrl + '&hostname=' + salesforceBaseURL + '&mode=' + sfdcmode;
+                            console.log('redirectURL = ',redirectURL);
+                            window.location.href = redirectURL;
+                        }
+                    });
+            });
+    </script>
+   <div id="mainPage" ng-app="quoteApp" ng-controller="quoteRedirectionCtrl">
+        <center>
+         <div class="demo-only" style="height: 6rem;">
+            <div role="status" class="slds-spinner slds-spinner_large">
+                <span class="slds-assistive-text">Please Wait</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+         </div>
+         <br/>
+         {{message}}
+         <br/>
+         <apex:outputLink value="javascript:history.back()">Back</apex:outputLink>
+         </center>
+    </div>
+</apex:page>

@@ -1,0 +1,263 @@
+<apex:page sidebar="false" showheader="false" doctype="html-5.0" cache="false" >
+<apex:includeScript value="/support/console/45.0/integration.js"/>
+<apex:includeScript value="/soap/ajax/44.0/connection.js"/>
+    <apex:includescript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js" />
+    <apex:includeScript value="{!URLFOR($Resource.cnx__CnxSfdcResources,'js/ConnectsIntegrationAPI.min.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.cnx__CnxSfdcResources,'addons/RealtimeView/css/RealtimeView.min.css')}"/>
+
+        <script type="text/javascript">
+        sforce.console.addEventListener(sforce.console.ConsoleEvent.OPEN_TAB, listener);
+       
+        var channelType = ConnectsIntegrationAPI.CHANNEL.TYPE.OVERALL;
+        var channelState = ConnectsIntegrationAPI.CHANNEL.STATE.NOT_READY;
+        var channelStateReady = ConnectsIntegrationAPI.CHANNEL.STATE.READY;
+        var notReadyReason = "160";
+        var readyReason = "0";
+        var channelStateCallBack;
+        
+        var listener = sforce.console.presence.getAgentWorkload(function(result) {
+        if (result.success) {
+        console.log('WorkAccepted'+result.configuredCapacity + result.currentWorkload);
+            if(result.configuredCapacity <= result.currentWorkload){
+            ConnectsIntegrationAPI.setAgentState(channelType, channelState, notReadyReason, function (response) {
+                if(response.success){
+                console.log("*****NotReadyState-Success*****");
+                }else if(!response.success) {
+                ConnectsIntegrationAPI.showError("USER","Go to Agent Not Ready State Failed ", response.error);
+                }
+            });
+            }
+            } 
+            });
+            
+        var listenerClose = function getPrimaryTabs(){
+        sforce.console.getEnclosingPrimaryTabId(showTabId);
+        console.log(sforce.console.getEnclosingPrimaryTabId(showTabId));
+        sforce.console.getPrimaryTabIds(showTabId1);
+        sforce.console.presence.getAgentWorkload(function(result) {
+        if (result.success) {
+        console.log("Line39:" +channelStateCallBack);
+            if(channelStateCallBack != 'Call Back' && result.configuredCapacity > (result.currentWorkload-1)){
+            ConnectsIntegrationAPI.setAgentState(channelType, channelStateReady, 0, function (response) {
+                if(response.success){
+                console.log("*****ReadyState-Success*****");
+                }
+                else if(!response.success) {
+                ConnectsIntegrationAPI.showError("USER","Go to Agent READY State Failed ", response.error);
+            }
+            });
+            }
+            }
+            });   
+            }
+        var showTabId = function showTabId(result) {
+         //console.log('enclosingTabID****' +result.id);
+        };
+        var showTabId1 = function showTabId1(result) {
+         //console.log('TabIDsCount****' +result.ids.length);
+        };
+        
+        sforce.console.addEventListener(sforce.console.ConsoleEvent.CLOSE_TAB, listenerClose);
+    </script>
+    
+    <script>
+        var reasonCodes = {};
+         // ******08102016 - ktagdiwa - Reason Codes from Finesse ************
+        reasonCodes['10'] = "Break";
+        reasonCodes['20'] = "Call Back";
+        reasonCodes['30'] = "Call Wrap Up";
+        reasonCodes['40'] = "Case Inquiry";
+        reasonCodes['45'] = "Case Work";
+        reasonCodes['50'] = "Case Wrap Up";
+        reasonCodes['55'] = "End Of Shift";
+        reasonCodes['60'] = "Escalation";
+        reasonCodes['70'] = "Logout";
+        reasonCodes['80'] = "Lunch";
+        reasonCodes['90'] = "Meeting";
+        reasonCodes['100'] = "Other";
+        reasonCodes['110'] = "Personal";
+        reasonCodes['115'] = "Project 1";
+        reasonCodes['116'] = "Project 2";
+        reasonCodes['117'] = "Project 3";
+        reasonCodes['118'] = "Project 4";                        
+        reasonCodes['120'] = "System Problems";        
+        reasonCodes['130'] = "Training - Provide";
+        reasonCodes['131'] = "Training - Receive";
+        reasonCodes['140'] = "Troubleshooting";        
+        // ************** End of reason code from Finesse **********
+        
+        var channelStates = {};
+        var channelTimers = {};
+        
+        function delta(channel) {
+            var now = Date.now(),
+                d = now - channelTimers[channel].offset;
+
+            channelTimers[channel].offset = now;
+            return d;
+        }
+        
+        function startStateTimer(channel) {
+            if (!channelTimers.hasOwnProperty(channel)) {
+                channelTimers[channel] = {};
+            }
+            
+            channelTimers[channel].clock = 0;
+            channelTimers[channel].offset = channelStates[channel].time;
+            channelTimers[channel].interval = setInterval(updateTime, 100);
+        }
+        
+        function updateTime() {
+            for (var key in channelTimers) {
+                if (channelTimers.hasOwnProperty(key)) {
+                    channelTimers[key].clock = channelTimers[key].clock + delta(key);
+                    var reasonText = getReasonText(channelStates[key].reason);
+                    
+                    if (reasonText !== "") {
+                        reasonText = " - " + reasonText;// ktagdiwa - Replaced the parenthesis with a hyphen
+                    }
+                                        
+                    $("#" + key + "ChannelCell").text(key.charAt(0).toUpperCase() + key.slice(1).toLowerCase() + ": ");
+                    $("#" + key + "StateCell").text(getAgentStateText(channelStates[key].state));
+                    $("#" + key + "ReasonCell").text(reasonText);
+                    $("#" + key + "TimeCell").text(render(key));
+                }
+            }
+        }
+        
+        function render(channel) {
+            if (channelTimers[channel].clock === undefined || isNaN(channelTimers[channel].clock)) {
+                return "";
+            }
+            
+            var time = Math.floor(channelTimers[channel].clock / 1000);
+
+            var sec = time % 60;
+            var min = ((time - sec) / 60) % 60;
+            var hour = ((time - sec) / 60 - min) / 60;
+
+            if (hour > 0) {
+                return " (" + ('0' + hour).slice(-2) + ':' + ('0' + min).slice(-2) + ")";
+            } else {
+                return " (" + ('0' + min).slice(-2) + ':' + ('0' + sec).slice(-2) + ")";
+            }
+        }
+        
+        function writeStatesToStorage() {
+            if(typeof(Storage) !== "undefined") {
+                sessionStorage.cnx_sfdc_agentStateVizStates = JSON.stringify(channelStates);
+            }
+        }
+        
+        function readStatesFromStorage() {
+            if(typeof(Storage) !== "undefined" && sessionStorage.cnx_sfdc_agentStateVizStates !== undefined) {
+                try {
+                    return JSON.parse(sessionStorage.cnx_sfdc_agentStateVizStates);
+                }
+                catch(ex) {
+                    return {};
+                }
+            }
+        }
+        
+        //ktagdiwa - Added a separate Case for "Talking"
+        function getAgentStateText(agentState) {
+            switch (agentState) {
+                case "READY":
+                    return "Ready";
+                case "NOTREADY":
+                    return "Not Ready";
+                case "LOGOUT":
+                    return "Logout";
+                case "TALKING":
+                    return "Talking";
+                case "WORKREADY":
+                    return "Wrap Up";                    
+                default:
+                    if (agentState === undefined) {
+                        return "";
+                    }
+                    
+                    return agentState.toLowerCase();
+            }
+        }
+        
+        function getReasonText(reasonCode) {
+            if (reasonCodes[reasonCode] !== undefined) {
+                return reasonCodes[reasonCode];
+            }
+                                               
+                return "";
+        }
+
+        
+        function onAgentStateChange(event) {
+            if (!channelStates.hasOwnProperty(event.channelType)) {
+                console.log("evenType Line 148" +event.channelType);
+                channelStates[event.channelType] = {};
+                
+                $("#agentStatesTable").append("<tr id=\"" + event.channelType + "TableRow\"/>");
+                $("#" + event.channelType + "TableRow").append("<td id=\"" + event.channelType + "ChannelCell\">");
+                $("#" + event.channelType + "TableRow").append("<td id=\"" + event.channelType + "StateCell\">");
+                $("#" + event.channelType + "TableRow").append("<td id=\"" + event.channelType + "ReasonCell\">");
+                $("#" + event.channelType + "TableRow").append("<td id=\"" + event.channelType + "TimeCell\">");
+                
+                var itemCount = Object.keys(channelStates).length;
+                ConnectsIntegrationAPI.setCustomToolbarSize(ConnectsIntegrationAPI.GENERAL.TOOLBAR_POSITION.TOP, itemCount * 19);
+
+            }
+            
+            var channelStateChanged = channelStates[event.channelType].state !== event.newState.State;
+            channelStates[event.channelType].state = event.newState.State;
+            console.log("Line164" +channelStateChanged);
+            console.log("Line165" +event.newState.State);
+            console.log("Line166" +channelStates[event.channelType].state);
+            channelStates[event.channelType].reason = event.newState.ReasonCode;
+            channelStates[event.channelType].time = Date.now();
+                startStateTimer(event.channelType);
+            
+            if (channelStateChanged) {
+                writeStatesToStorage();
+            }
+        }
+        
+        ConnectsIntegrationAPI.onAgentStateChange = function (event) {
+        channelStateCallBack = event.newState.ReasonCodeLabel;
+        console.log(channelStateCallBack+ "CallBack Status");
+        onAgentStateChange(event);
+        };
+        
+        $(function() {
+            channelStates = readStatesFromStorage();
+            
+            if (channelStates === undefined) {
+                channelStates = {};
+            }
+            
+            var itemCount = Object.keys(channelStates).length;
+            ConnectsIntegrationAPI.setCustomToolbarSize(ConnectsIntegrationAPI.GENERAL.TOOLBAR_POSITION.TOP, itemCount * 15);
+
+            for (var key in channelStates) {
+                if (channelStates.hasOwnProperty(key)) {
+                    $("#agentStatesTable").append("<tr id=\"" + key + "TableRow\"/>");
+                    $("#" + key + "TableRow").append("<td id=\"" + key + "ChannelCell\">");
+                    $("#" + key + "TableRow").append("<td id=\"" + key + "StateCell\">");
+                    $("#" + key + "TableRow").append("<td id=\"" + key + "ReasonCell\">");
+                    $("#" + key + "TableRow").append("<td id=\"" + key + "TimeCell\">");
+                                   
+                    startStateTimer(key);
+                }
+            }
+        });
+
+    </script>
+    
+    <div id="container">
+        <div id="content">
+            <div id="agentStateDiv">
+                <!-- ktagdiwa - Added the title for tooltip" -->
+                <table id="agentStatesTable" title="Elapsed time is unofficial. Use only as an approximate duration of current status. Talking duration includes Ring Time + Talk Time." />
+            </div>
+        </div>
+    </div>
+</apex:page>

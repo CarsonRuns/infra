@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>DT_DailyEmailNotification__c</fullName>
+        <externalId>false</externalId>
+        <label>DT DailyEmailNotification</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>JobEmailAlerts__c</fullName>
+        <description>JobEmailAlerts</description>
+        <externalId>false</externalId>
+        <label>JobEmailAlerts</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>Used for P360 Daily Email Job</description>
+    <enableFeeds>false</enableFeeds>
+    <label>P360 Apex Batch Job Detail</label>
+    <visibility>Public</visibility>
+</CustomObject>

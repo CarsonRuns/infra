@@ -1,0 +1,5 @@
+<apex:page standardController="Agenda_Item__c" extensions="CEE_AgendaItemViewController">
+    <apex:messages />
+    <apex:detail relatedList="true" />
+    <c:CEE_InviteList agendaItemValue="{!agendaItem}" rootURL="{!redirectURL}" objectType="Agenda_Item__c" />
+</apex:page>

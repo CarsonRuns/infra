@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Archive_Days__c</fullName>
+        <description>This field will hold the number which determine the Archive lead period for LnP.</description>
+        <externalId>false</externalId>
+        <label>Archive Days</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reset_Date__c</fullName>
+        <description>This field will hold the date when the LnP TnC are last reset.</description>
+        <externalId>false</externalId>
+        <label>Reset Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>This custom setting will hold the static values for LnP</description>
+    <enableFeeds>false</enableFeeds>
+    <label>LnP_Constants</label>
+    <visibility>Public</visibility>
+</CustomObject>

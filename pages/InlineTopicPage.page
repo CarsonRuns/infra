@@ -1,0 +1,21 @@
+<!--
+    Story - US6281
+    Release - November 2014
+    Author - Bramha, Accenture
+    Functionality -  Presenter -- Profile.
+-->
+<apex:page standardcontroller="Presenter__c" showHeader="false" sidebar="false"  extensions="PresenterController">
+    <apex:form >
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <apex:commandLink style="text-align:center;color:blue;" value="Add/Modify Topic" onClick="openAddModify()" id="theButton"/>
+        <table><tr><td></td></tr></table>
+        <apex:dataTable value="{!topics}" var="h" >
+            <apex:column >{!h}</apex:column>
+        </apex:dataTable>
+    </apex:form>
+    <script>
+        function openAddModify(){  
+           window.open("/apex/AddModifyTopic?id={!Presenter__c.Id}" ,"", 'left=20,top=20,width=600,height=600,toolbar=1,resizable=0,scrollbars=yes' ); 
+        }
+    </script>
+</apex:page>

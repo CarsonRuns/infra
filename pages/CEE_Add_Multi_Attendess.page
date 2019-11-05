@@ -1,0 +1,167 @@
+<!-------------------------------------------------------------------------------
+   @Author :Sudi
+   @name :CEE_Add_Multi_Attendess
+   @CreateDate : 01/18/2016
+   @Description :This page used to add multiple CEE attendees in single pages
+   @Version :1.0
+   Changes:
+   Date        Author       Description
+   6/6/2016    nmuppall    Added title field to the "Add Multiple attendees" button
+   6/6/2016    Sudi		   Enable the non SFDc user checkbox for presenters type
+  ------------------------------------------------------------------------------->
+<apex:page controller="CEE_Add_Multi_Attendees" id="pg">
+ <apex:includeScript value="{!$Resource.jquery22}" />
+    <script>
+     var $j = jQuery.noConflict();
+       $j(document).ready(function(){
+             $j("[id*='userId_mlktp']").hide();                       
+             $j("[id*='recName']").attr("style", "display:none");
+             $j("[id*='recEmail']").attr("style", "display:none");
+             $j("[id*='recTitle']").attr("style", "display:none");
+        });     
+    getSelectedRecordType = function(recordType){
+           var recordId= recordType.id;
+           var index = recordId.split(':'); 
+           var splitValue = recordId.slice(0,-10);                
+           var recordValue = recordType.value;                    
+           var lookupId = document.getElementById(recordUserCheckValue).parentNode.nextElementSibling.childNodes[1];   
+               
+           if(recordValue === "Presenter"){                  
+                $j("[id*='"+index[5]+":recName']").attr("style", "display:none");
+                $j("[id*='"+index[5]+":recEmail']").attr("style", "display:none"); 
+                $j("[id*='"+index[5]+":recTitle']").attr("style", "display:none"); 
+                lookupId.style.display="block"; 
+           }
+           else if(recordValue !== "Presenter" && document.getElementById(recordUserCheckValue).checked){                
+                $j("[id*='"+index[5]+":recName']").attr("style", "display:block");
+                $j("[id*='"+index[5]+":recEmail']").attr("style", "display:block"); 
+                $j("[id*='"+index[5]+":recTitle']").attr("style", "display:block"); 
+                lookupId.style.display="none";  
+           }          
+     }   
+    DisableEmailName = function(CheckBoxId){
+        var rowId = CheckBoxId.id;             
+        var index = rowId.split(':');              
+        var lookupId = CheckBoxId.parentNode.nextElementSibling.childNodes[1]; 
+        if(CheckBoxId.checked){           
+            lookupId.style.display="none";
+            $j("[id*='"+index[5]+":recName']").attr("style", "display:block");
+            $j("[id*='"+index[5]+":recEmail']").attr("style", "display:block");  
+            $j("[id*='"+index[5]+":recTitle']").attr("style", "display:block");
+        }
+        else{
+             lookupId.style.display="block";
+             $j("[id*='"+index[5]+":recName']").attr("style", "display:none");
+             $j("[id*='"+index[5]+":recEmail']").attr("style", "display:none");
+             $j("[id*='"+index[5]+":recTitle']").attr("style", "display:none");
+        }
+    }
+    addNewbtn = function(){
+        var size = document.getElementById("pg:form:pgblock:pgBlockSec:rows").rows.length;           
+        $j("[id*='userId_mlktp']").hide();
+        for(var cnt=0; cnt < size - 1; cnt++){                    
+           var checkbox = document.getElementById('pg:form:pgblock:pgBlockSec:rows:'+cnt+':userCheck');  
+            var lookupDiv = checkbox.parentNode.nextElementSibling.childNodes[1];                    
+           if(checkbox.checked){
+              $j("[id*='"+cnt+":recName']").attr("style","display:block");
+              $j("[id*='"+cnt+":recEmail']").attr("style","display:block");
+              $j("[id*='"+cnt+":recTitle']").attr("style","display:block");
+              lookupDiv.style.display = "none";               
+           }
+           else{
+              $j("[id*='"+cnt+":recName']").attr("style","display:none");
+              $j("[id*='"+cnt+":recEmail']").attr("style","display:none");
+              $j("[id*='"+cnt+":recTitle']").attr("style","display:none");
+              lookupDiv.style.display = "block"; 
+           }
+        }
+        
+    }      
+        function loading(val) {
+            if (val) {
+               $j('#load_scrl').css('top', $j(document).scrollTop() + 100);
+               $j('.loadingBox').show();
+            }
+            else {
+               $j('.loadingBox').hide();
+            }
+        }
+   </script>  
+    <style>
+     .overlay {
+            display: none;
+            height: 100%;
+            left: 0;
+            position: fixed;
+            top: 0;
+            opacity: 0.3;
+            -moz-opacity: 0.3;
+            width: 100%;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+            filter: alpha(opacity=30);
+            background: #000;
+            -khtml-opacity: 0.3;
+            z-index: 1000;
+        }
+        .loader {
+            background: url('/img/loading32.gif') scroll no-repeat 0 0;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            left: 50%;
+        }
+    </style>
+   <apex:form id="form">
+        <apex:pageMessages id="pageMsg" />      
+        <apex:pageBlock title="Add CEE Attendees" id="pgblock">             
+            <apex:outputPanel id="att"> 
+            <div id="load_scrl" class="loadingBox loader" style="display:none"> </div>
+            <div class="loadingBox overlay"> </div>  
+             <apex:variable value="{!0}" var="rowNum"/>  
+             <apex:pageBlockSection columns="1" id="pgBlockSec">             
+             <apex:commandButton value="Add Row" action="{!addNewRowToAttList}" rerender="att" status="loading" oncomplete="addNewbtn()"/>                
+             <apex:pageBlockTable value="{!waAccList}" var="ce" id="rows" cellPadding="4" border="0" width="100%" >               
+                <apex:column style="width:5%">                   
+                   <apex:commandlink value="Del" action="{!removeRowFromAttList}" rerender="att"  status="loading" oncomplete="addNewbtn()">                      
+                          <apex:param value="{!rowNum}" name="rowToRemove" assignTo="{!rowToRemove}"/>                                       
+                    </apex:commandlink>
+                    <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                </apex:column>
+                <apex:column headerValue="Customer Engagement & Events" style="width:10%">
+                     <apex:outputField value="{!ce.record.Customer_Engagement_Events__c}" style="width:50px" />
+                </apex:column>
+                <apex:column headerValue="Agenda Item" style="width:10%">
+                    <apex:selectlist id="arch" value="{!ce.agendaItemId}" size="1">
+                        <apex:selectOptions value="{!agendaOptions}" />
+                    </apex:selectlist>
+                </apex:column>
+                <apex:column headerValue="Type" style="width:10%">                                      
+                    <apex:inputField id="recordType" value="{!ce.record.Type__c}" onchange="getSelectedRecordType(this)"/>
+                </apex:column>
+                <apex:column headerValue="Salesforce User Not Available?" style="width:10%">                    
+                    <apex:inputField id="userCheck" value="{!ce.record.Salesforce_User_Not_Available__c}" onchange="DisableEmailName(this)">                                      
+                    </apex:inputField>
+                </apex:column>          
+                <apex:column headerValue="Salesforce User" style="width:10%">
+                 <apex:inputField value="{!ce.record.Salesforce_User__c}"  id="userId"/>
+                </apex:column>
+                <apex:column headerValue="Name" style="width:10%">
+                 <apex:inputField value="{!ce.record.Name}" id="recName"/>
+                </apex:column>
+                <apex:column headerValue="Email" style="width:10%" >
+                 <apex:inputField value="{!ce.record.Email__c}" id="recEmail"/>
+                </apex:column>  
+                <apex:column headerValue="Title" style="width:10%" >
+                 <apex:inputField value="{!ce.record.Title__c}" id="recTitle"/>
+                </apex:column>              
+             </apex:pageBlockTable>           
+        </apex:pageBlockSection> 
+        </apex:outputPanel>     
+        <apex:actionStatus id="loading" onstart="loading(true)" onstop="loading(false)" />           
+        <apex:pageBlockButtons style="bottom" >
+               <apex:commandButton id="saveId" action="{!SaveMultipleAttendes}" rerender="pageMsg,att" status="loading" oncomplete="addNewbtn()" value="Save" />
+               <apex:commandbutton action="{!cancelBtn}" value="Cancel"/>        
+        </apex:pageBlockButtons> 
+    </apex:pageBlock>
+   </apex:form>     
+</apex:page>

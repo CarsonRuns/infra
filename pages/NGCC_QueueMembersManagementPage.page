@@ -1,0 +1,95 @@
+<!--
+Name    : NGCC_QueueMembersManagementPage
+Author  : Ghattamaneni Chaithanya
+Purpose : Main Page to handle overall Queue members management tool functionality.
+Created Date: 08 March 2019
+Modification History:  
+	Author  : Ghattamaneni Chaithanya
+	Purpose : extended to Chat Queues.
+	Date	: 25 May 2019
+-->
+<apex:page controller="NGCC_QueueMembersManagementController" title="Queue Members" lightningStylesheets="true"> 
+    <script>
+    function Prevententer(e){
+        var key = e.charCode || e.keyCode || 0;     
+        if (key == 13) {
+            e.preventDefault();
+        }
+    }
+    </script>
+    <apex:form id="mainForm">       
+        <apex:pageBlock id="mainPageBlock" title="Queue Members Management Tool">             
+            <apex:pageMessages />           
+            <apex:pageBlockButtons >                
+                <apex:commandButton value="Export Details"
+                                    onclick="window.open('{!URLFOR($Page.NGCC_QueueMembersExportPage, null, [ selectedGroupId = selectedGroupId ])}');"
+                                    rendered="{!(selectedGroupId != null)}"  />               
+            </apex:pageBlockButtons>            
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem >
+                    <b>Queue Type:</b>
+                    <apex:selectList value="{!selectedQueueType}" size="1">
+                        <apex:selectOptions value="{!QueueType}"/>
+                        <apex:actionSupport event="onchange" action="{!refreshgroup}" reRender="mainForm"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    1. Choose queue type Callback Queue/Chat Queue
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem rendered="{!(selectedQueueType != null)}">
+                    <b>Queue:</b>
+                    <apex:selectList value="{!selectedGroupId}" size="1">
+                        <apex:selectOptions value="{!groupOptions}"/>
+                        <apex:actionSupport event="onchange" action="{!refresh}" reRender="mainForm"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem rendered="{!(selectedQueueType != null)}">
+                    2. Choose a queue to view, add, or remove members
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem rendered="{!(selectedQueueType != null && selectedGroupId != null)}">
+                    <b>User:</b>
+                    <apex:inputField value="{!memberToAdd.userOrGroupId}"  required="false" onkeypress="Prevententer(event);"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem rendered="{!(selectedQueueType != null && selectedGroupId != null)}">
+                    3. To add a user, enter their name in input field then click Add button
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem rendered="{!(selectedQueueType != null && selectedGroupId != null)}">
+                    <b></b>
+                    <apex:commandButton action="{!addUserToGroup}" value="Add User"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem rendered="{!(selectedQueueType != null && selectedGroupId != null)}">
+                    4. To remove a user, click the Remove link next to the user's name in the table below
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockTable value="{!groupUsers}" var="user" rendered="{!(selectedQueueType != null && selectedGroupId != null)}">
+                <apex:column headerValue="Action">
+                    <apex:commandLink action="{!removeUserFromGroup}" value="Remove"
+                                      onclick="return confirm('Are you sure?');">
+                        <apex:param name="bugfix" assignTo="{!userIdToRemove}" value="{!user.id}"/>
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="Name">
+                    <apex:outputLink value="/{!user.id}">
+                        <apex:outputText value="{0} {1}">
+                            <apex:param value="{!user.firstName}"/>
+                            <apex:param value="{!user.lastName}"/>
+                        </apex:outputText>
+                    </apex:outputLink>
+                </apex:column>
+                <apex:column value="{!user.email}"/>
+                <apex:column value="{!user.username}"/>
+                <apex:column value="{!user.isActive}"/>
+            </apex:pageBlockTable>
+            
+        </apex:pageBlock>       
+    </apex:form> 
+</apex:page>

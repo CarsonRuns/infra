@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Please use this hyperlink to see the agenda for this event day --></help>
+        <label><!-- Event Day --></label>
+        <name>Event_Day__c</name>
+        <relationshipLabel><!-- Event Day Selection Request --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Please Insert &quot;Host - First Name Last Name (ID@cisco.com)&quot; eg Host - John Doe (johndoe@cisco.com) --></help>
+        <label><!-- Host Details --></label>
+        <name>Host_Details__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please add valid emails in the format &apos;ID@cisco.com&apos; --></help>
+        <label><!-- Host Email --></label>
+        <name>Host_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please add First and Last Name --></help>
+        <label><!-- Host Name --></label>
+        <name>Host_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- PEPE Record Type --></label>
+        <name>PEPE_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform Selected --></label>
+        <name>Platform_Selected__c</name>
+    </fields>
+    <fields>
+        <label><!-- Room Capacity --></label>
+        <name>Room_Capacity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Session Slots --></label>
+        <name>Session_Slots__c</name>
+        <relationshipLabel><!-- Training Sessions Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- TP Room Name --></label>
+        <name>TP_Room_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Event Id --></label>
+        <name>Training_Event_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Event Name --></label>
+        <name>Training_Event_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Request --></label>
+        <lookupFilter>
+            <errorMessage><!-- Choose the actual request id you created for the event day selection. --></errorMessage>
+            <informationalMessage><!-- Make sure you selecting the correct training request id for your request --></informationalMessage>
+        </lookupFilter>
+        <name>Training_Request__c</name>
+        <relationshipLabel><!-- Training Sessions Requests --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Training Sessions Requested</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Training Sessions Requests</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Architecture Based Request</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Calendar Based Request</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description><!-- Architecture based session requests --></description>
+        <label><!-- Architecture --></label>
+        <name>Architecture</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- PVT based session requests --></description>
+        <label><!-- PVT --></label>
+        <name>PVT</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Standard event will have NO session slots to requests. --></errorMessage>
+        <name>Cannot_request_if_ARCH_is_not_multiple</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the DAY lookup and Training Request lookup you selected have the same parent. --></errorMessage>
+        <name>Catch_correct_TE_for_DAY_TR_Creation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the correct session slot for the correct training request you selected. --></errorMessage>
+        <name>Catch_correct_Training_Event_for_SS_TR</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Training Event is delivered , you cannot add/edit Training requests or Training sessions requested for delivered events --></errorMessage>
+        <name>Is_TE_delivered_no_change_on_TSR</name>
+    </validationRules>
+</CustomObjectTranslation>

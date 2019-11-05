@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Business_Unit_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Business Unit Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Key Stakeholders (Business Account)</relationshipLabel>
+        <relationshipName>Key_Stakeholders_Business_Account</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Related Contact</label>
+        <lookupFilter>
+            <active>false</active>
+            <booleanFilter>1</booleanFilter>
+            <filterItems>
+                <field>Contact.RecordType.Name</field>
+                <operation>contains</operation>
+                <value>Manual</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Key Stakeholders</relationshipLabel>
+        <relationshipName>Key_Stakeholders</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Customer Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Key Stakeholders (Customer Account)</relationshipLabel>
+        <relationshipName>Key_Stakeholders_Customer</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Customer_BU_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Business_Unit_Account__c), HYPERLINK("/"+ Customer_Account__c , Customer_Account__r.Name, '_self'), HYPERLINK("/"+ Business_Unit_Account__c, Business_Unit_Account__r.Name, '_self'))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer/BU Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Functional_Role__c</fullName>
+        <externalId>false</externalId>
+        <label>Functional Role</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Global CIO</fullName>
+                    <default>false</default>
+                    <label>Global CIO</label>
+                </value>
+                <value>
+                    <fullName>Cisco Sponsor</fullName>
+                    <default>false</default>
+                    <label>Cisco Sponsor</label>
+                </value>
+                <value>
+                    <fullName>Head of Architecture</fullName>
+                    <default>false</default>
+                    <label>Head of Architecture</label>
+                </value>
+                <value>
+                    <fullName>Head of Engineering</fullName>
+                    <default>false</default>
+                    <label>Head of Engineering</label>
+                </value>
+                <value>
+                    <fullName>Head of Operations</fullName>
+                    <default>false</default>
+                    <label>Head of Operations</label>
+                </value>
+                <value>
+                    <fullName>Head of DevOps</fullName>
+                    <default>false</default>
+                    <label>Head of DevOps</label>
+                </value>
+                <value>
+                    <fullName>Head of Apps</fullName>
+                    <default>false</default>
+                    <label>Head of Apps</label>
+                </value>
+                <value>
+                    <fullName>Success Lead</fullName>
+                    <default>false</default>
+                    <label>Success Lead</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Job_Function__c</fullName>
+        <externalId>false</externalId>
+        <label>Job Function</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Business Development</fullName>
+                    <default>false</default>
+                    <label>Business Development</label>
+                </value>
+                <value>
+                    <fullName>Consultant/Contractor</fullName>
+                    <default>false</default>
+                    <label>Consultant/Contractor</label>
+                </value>
+                <value>
+                    <fullName>Customer Service</fullName>
+                    <default>false</default>
+                    <label>Customer Service</label>
+                </value>
+                <value>
+                    <fullName>E-Commerce</fullName>
+                    <default>false</default>
+                    <label>E-Commerce</label>
+                </value>
+                <value>
+                    <fullName>Engineering</fullName>
+                    <default>false</default>
+                    <label>Engineering</label>
+                </value>
+                <value>
+                    <fullName>Executive Management</fullName>
+                    <default>false</default>
+                    <label>Executive Management</label>
+                </value>
+                <value>
+                    <fullName>Finance/Accounting/Legal</fullName>
+                    <default>false</default>
+                    <label>Finance/Accounting/Legal</label>
+                </value>
+                <value>
+                    <fullName>HR/Recruitment</fullName>
+                    <default>false</default>
+                    <label>HR/Recruitment</label>
+                </value>
+                <value>
+                    <fullName>Journalism</fullName>
+                    <default>false</default>
+                    <label>Journalism</label>
+                </value>
+                <value>
+                    <fullName>Legal</fullName>
+                    <default>false</default>
+                    <label>Legal</label>
+                </value>
+                <value>
+                    <fullName>Logistics</fullName>
+                    <default>false</default>
+                    <label>Logistics</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Marketing/PR/Advertising</fullName>
+                    <default>false</default>
+                    <label>Marketing/PR/Advertising</label>
+                </value>
+                <value>
+                    <fullName>MIS/IT - Applications Dev</fullName>
+                    <default>false</default>
+                    <label>MIS/IT - Applications Dev</label>
+                </value>
+                <value>
+                    <fullName>MIS/IT - Data Center</fullName>
+                    <default>false</default>
+                    <label>MIS/IT - Data Center</label>
+                </value>
+                <value>
+                    <fullName>MIS/IT - Operations</fullName>
+                    <default>false</default>
+                    <label>MIS/IT - Operations</label>
+                </value>
+                <value>
+                    <fullName>MIS/IT - Security</fullName>
+                    <default>false</default>
+                    <label>MIS/IT - Security</label>
+                </value>
+                <value>
+                    <fullName>MIS/IT - Storage</fullName>
+                    <default>false</default>
+                    <label>MIS/IT - Storage</label>
+                </value>
+                <value>
+                    <fullName>MIS/IT - Telecom</fullName>
+                    <default>false</default>
+                    <label>MIS/IT - Telecom</label>
+                </value>
+                <value>
+                    <fullName>Network Management</fullName>
+                    <default>false</default>
+                    <label>Network Management</label>
+                </value>
+                <value>
+                    <fullName>Operations/Administration</fullName>
+                    <default>false</default>
+                    <label>Operations/Administration</label>
+                </value>
+                <value>
+                    <fullName>Operations/Administration - Security</fullName>
+                    <default>false</default>
+                    <label>Operations/Administration - Security</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Product Management</fullName>
+                    <default>false</default>
+                    <label>Product Management</label>
+                </value>
+                <value>
+                    <fullName>Purchasing/Procurement</fullName>
+                    <default>false</default>
+                    <label>Purchasing/Procurement</label>
+                </value>
+                <value>
+                    <fullName>Research/Development</fullName>
+                    <default>false</default>
+                    <label>Research/Development</label>
+                </value>
+                <value>
+                    <fullName>Sales</fullName>
+                    <default>false</default>
+                    <label>Sales</label>
+                </value>
+                <value>
+                    <fullName>Technical Support</fullName>
+                    <default>false</default>
+                    <label>Technical Support</label>
+                </value>
+                <value>
+                    <fullName>Telephone Management</fullName>
+                    <default>false</default>
+                    <label>Telephone Management</label>
+                </value>
+                <value>
+                    <fullName>Training/Education</fullName>
+                    <default>false</default>
+                    <label>Training/Education</label>
+                </value>
+                <value>
+                    <fullName>Corporate Communications</fullName>
+                    <default>false</default>
+                    <label>Corporate Communications</label>
+                </value>
+                <value>
+                    <fullName>Facilities/Estates Manager</fullName>
+                    <default>false</default>
+                    <label>Facilities/Estates Manager</label>
+                </value>
+                <value>
+                    <fullName>MIS/IT-Server</fullName>
+                    <default>false</default>
+                    <label>MIS/IT-Server</label>
+                </value>
+                <value>
+                    <fullName>Security Engineer</fullName>
+                    <default>false</default>
+                    <label>Security Engineer</label>
+                </value>
+                <value>
+                    <fullName>Security Manager</fullName>
+                    <default>false</default>
+                    <label>Security Manager</label>
+                </value>
+                <value>
+                    <fullName>Pre-Sales Engineering</fullName>
+                    <default>false</default>
+                    <label>Pre-Sales Engineering</label>
+                </value>
+                <value>
+                    <fullName>Post-Sales Engineering</fullName>
+                    <default>false</default>
+                    <label>Post-Sales Engineering</label>
+                </value>
+                <value>
+                    <fullName>Demand/Supply Planning</fullName>
+                    <default>false</default>
+                    <label>Demand/Supply Planning</label>
+                </value>
+                <value>
+                    <fullName>Quality/Reliability</fullName>
+                    <default>false</default>
+                    <label>Quality/Reliability</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Business_Driver__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary Business Driver</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Primary_Contact__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>C360 Checkbox use by Marketing Cloud</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checking this box will start the digital journey for this key stakeholder.</inlineHelpText>
+        <label>Primary Use Case Contact</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Success_Plan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Success Plan</label>
+        <referenceTo>Success_Plan__c</referenceTo>
+        <relationshipLabel>Key Stakeholders</relationshipLabel>
+        <relationshipName>Key_Stakeholders</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Title</label>
+        <length>150</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>Key Stakeholders</label>
+    <nameField>
+        <label>Key Stakeholder</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Key Stakeholders</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Primary_Business_Driver__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <validationRules>
+        <fullName>Name_is_not_editable</fullName>
+        <active>true</active>
+        <errorConditionFormula>( Name  != PRIORVALUE( Name ))</errorConditionFormula>
+        <errorMessage>Key Stakeholder's Name is not editable</errorMessage>
+    </validationRules>
+</CustomObject>

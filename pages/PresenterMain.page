@@ -1,0 +1,19 @@
+<!--
+    Story - US6281
+    Release - November 2014
+    Author - Bramha, Accenture
+    Functionality -  Presenter -- Profile.
+-->
+<!--apex:page StandardController="Presenter__c" showHeader="false" sidebar="false" extensions="PresenterController" action="{!saveExp}" -->
+<!-- SCAVA FIX -->
+<apex:page StandardController="Presenter__c" showHeader="false" sidebar="false" extensions="PresenterController" id="pg">
+<script type = "text/javascript">
+    window.onload=function()       
+    {        
+        saveExp();
+    };
+</script>
+<apex:form >
+   <apex:actionFunction name="saveExp" action="{!saveExp}" reRender="pg"/>
+</apex:form>
+</apex:page>

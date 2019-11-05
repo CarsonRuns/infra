@@ -1,0 +1,45 @@
+<apex:page standardController="Workspace_Technology__c" showheader="false"  sidebar="false">
+<apex:includeScript value="{!$Resource.jquery}"/>
+<apex:includeScript value="{!$Resource.jQuery_flyout}"/> 
+<apex:form >
+<apex:pageBlock >       
+    <apex:pageBlockSection id="workspace_technologies" columns="1" title="Workspace Technologies" collapsible="false">
+        <apex:inputField value="{!Workspace_Technology__c.Model__c}" id="wt_md"/>       
+        <apex:inputField value="{!Workspace_Technology__c.Partner__c}" id="wt_prt"/>
+        <apex:inputField value="{!Workspace_Technology__c.Distibutor__c}" id="wt_dist"/>        
+        <apex:inputField value="{!Workspace_Technology__c.Comments__c}" id="wt_cmt"/>
+        <apex:commandButton value="Ok" onclick="closeWindow()" /> 
+ </apex:pageBlockSection>   
+</apex:pageBlock>       
+</apex:form>
+<script>
+ var $j = jQuery.noConflict();
+ document.onreadystatechange = function(){
+ if(document.readyState === 'complete'){ 
+      // SCAVA FIX
+       var rowid = "{!JSENCODE($CurrentPage.parameters.rowid)}"-1;       
+       var md= window.parent.document.getElementById('j_id0:MainForm:MainPB:workspace_technologies:rows:'+rowid+':f_modnmhid').value;      
+       var cmnts = window.parent.document.getElementById('j_id0:MainForm:MainPB:workspace_technologies:rows:'+rowid+':f_commentshid').value; 
+       var dist = window.parent.document.getElementById('j_id0:MainForm:MainPB:workspace_technologies:rows:'+rowid+':f_Disthid').value; 
+       var patner = window.parent.document.getElementById('j_id0:MainForm:MainPB:workspace_technologies:rows:'+rowid+':f_Partnerhid').value;       
+       $j("[id*='wt_md']").val(md);      
+       $j("[id*='wt_prt']").val(patner);
+       $j("[id*='wt_dist']").val(dist);
+       $j("[id*='wt_cmt']").val(cmnts);       
+   }
+}
+function closeWindow(){
+// SCAVA FIX
+    var rowid = "{!JSENCODE($CurrentPage.parameters.rowid)}"-1;       
+    var md =  $j("[id*='wt_md']").val();   
+    var patner = $j("[id*='wt_prt']").val();   
+    var dist = $j("[id*='wt_dist']").val();    
+    var cmnts = $j("[id*='wt_cmt']").val();        
+    window.parent.document.getElementById('j_id0:MainForm:MainPB:workspace_technologies:rows:'+rowid+':f_modnmhid').value = md;     
+    window.parent.document.getElementById('j_id0:MainForm:MainPB:workspace_technologies:rows:'+rowid+':f_Disthid').value = dist;    
+    window.parent.document.getElementById('j_id0:MainForm:MainPB:workspace_technologies:rows:'+rowid+':f_Partnerhid').value = patner;   
+    window.parent.document.getElementById('j_id0:MainForm:MainPB:workspace_technologies:rows:'+rowid+':f_commentshid').value = cmnts;   
+    parent.j$modalDialog.dialog('close');
+}      
+</script>
+</apex:page>

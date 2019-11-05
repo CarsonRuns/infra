@@ -1,0 +1,280 @@
+<!--
+   Name    : NGCC_CallScript
+   Author  : Mukesh Srivastava
+   Purpose : Main Call Script to handle overall call script solution.
+   Created Date: 3/30/2014
+   Modification History: 
+        User    : Ghattamaneni Chaithanya
+        Purpose : added "Send SMS" button in the page.
+        date    : Jan 19,2018 
+
+        User    : Ghattamaneni Chaithanya
+        Purpose : Adding Dispostion Sub Type field to page
+                    added markup to display Disposition Sub Type field in the page Line No#235-237
+        date    : July 16,2018
+
+ 		User    : Ghattamaneni Chaithanya
+        Purpose : Adding Contact Reason and Persona fields to page US291144
+                   added markup to display Contact Reason and Persona fields in the page Line No#248-255
+        date    : June 12,2019
+
+-->
+<apex:page standardController="Lead" extensions="NGCC_CallScript_CTE"  showHeader="false" sidebar="false" tabStyle="lead" docType="html-5.0" id="callScript">
+   <apex:includeScript value="/support/console/29.0/integration.js" />
+   <apex:includeScript value="{!$Resource.jquery}"/>
+   <apex:includeScript value="{!$Resource.NGCC_CallScript_JS}"/>    
+   <script type="text/javascript">
+    // Added by Ghattamaneni Chaithanya for send SMS button
+    var positionWidth = screen.width/2 - 407/2;
+    var positionHeight = screen.height/2 - 440/2;
+    
+        var $j = jQuery.noConflict(); //Ensuring there is no conflict with any other Jquery      
+
+        // Ready to perform operations
+        $j(document).ready(function() {
+        // Variables to hold all the Multi-Select selected value from the Controller
+            var selectedOptions = new Array();
+            selectedOptions = '{!JSENCODE(setResponse1)}';
+            
+        // Marking checkmark to all the options already selected if any for Multi-Select Questions
+            $j(":checkbox").each(function() {
+                var attrib = $j(this).attr("value");
+                if (selectedOptions.indexOf(attrib) > -1) {
+                    //In the array!
+                    $j(this).attr("checked", "checked");
+                }
+            });
+        
+        // Validating Address with CR database using a Web Service call out
+
+            $j("#cmdValidateAddress").click(function() {
+                $j(this).next().remove()
+                $j(this).after("<span id='emailText'><img src='/img/msg_icons/warning16.png'</img>Please wait</span>");
+                leadObj.Id = '{!lead.Id}';
+                var add1 = $j("[id*=Contact_Site_Address1_FF_V1]").val();
+                var add2 = $j("[id*=Contact_Site_Address2_FF_V1]").val();
+                var city =$j("[id*=Contact_Site_City_FF_V1]").val();
+                var stte =$j("[id*=Contact_Site_County_FF_V1]").val();
+                var country =$j("[id*=Contact_Site_Country_FF_V1]").val();
+                var zip = $j("[id*=Contact_Site_Postcode_FF_V1]").val();
+                
+                if (typeof add1 !=='undefined') {
+                    leadObj.Address_Line_1__c = $j("[id*=Contact_Site_Address1_FF_V1]").val();
+
+                } else {
+                    leadObj.Address_Line_1__c = $j("[id*=ADDRESS_1]").val();
+                }
+
+                if (typeof add2 !=='undefined') {
+                    leadObj.Address_Line_2__c = $j("[id*=Contact_Site_Address2_FF_V1]").val();
+                } else {
+                    leadObj.Address_Line_2__c = $j("[id*=ADDRESS_2]").val();
+                }
+
+                if (typeof city !=='undefined') {
+                    leadObj.CustomCity__c = $j("[id*=Contact_Site_City_FF_V1]").val();
+                } else {
+                    leadObj.CustomCity__c = $j("[id*=CITY]").val();
+                }
+
+                if (typeof stte !=='undefined') {
+                    leadObj.CustomState__c = $j("[id*=Contact_Site_County_FF_V1]").val();
+                } else {
+                    leadObj.CustomState__c = $j("[id*=STATE]").val();
+                }
+
+                if (typeof country !=='undefined') {
+                    leadObj.CustomCountry__c = $j("[id*=Contact_Site_Country_FF_V1]").val();
+                } else {
+                    leadObj.CustomCountry__c = $j("[id*=COUNTRY]").val();
+                }
+
+                if (typeof zip !=='undefined') {
+                    leadObj.CustomZip__c = $j("[id*=Contact_Site_Postcode_FF_V1]").val();
+                } else {
+                    leadObj.CustomZip__c = $j("[id*=POSTAL_CODE]").val();
+                }
+                getAddressValidate();
+                
+            });
+
+            $j("#cmdValidateAddress").on('blur mouseout keypress', function() {
+                $j(this).next().remove()
+            });
+        });
+        // Lead object to be passed of address validation
+        function lead() {
+            this.Id = null;
+            this.Company = null;
+            this.Address_Line_1__c = null;
+            this.Address_Line_2__c = null;
+            this.CustomCity__c = null;
+            this.CustomState__c = null;
+            this.CustomCountry__c = null;
+            this.CustomZip__c = null;
+        }
+        var leadObj = new lead();
+
+        // Function to valid Email address format
+
+        function isValidEmailAddress(emailAddress) {
+            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+            return pattern.test(emailAddress);
+        }
+
+        //Function to valida the Address against CR database using Java Remoting.
+        function getAddressValidate() {
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.NGCC_CallScript_CTE.validateAddress}',
+                leadObj,
+                function(result, event) {
+                    alert(result);
+                    document.getElementById("callScript:frm:status").focus();
+                    console.log(result);
+                }
+            );
+        }
+        
+        var textdata;
+        function agentQuery(data) {
+              //First find the ID of the primary tab to put the new subtab in
+              textdata = data;
+              sforce.console.getEnclosingPrimaryTabId(showTabId);
+        };
+        
+        var showTabId = function showTabId(result) {
+            sforce.console.chat.getDetailsByPrimaryTabId(result.id,
+                    setChatText);
+        };
+                    
+        var setChatText = function setChatText(result){
+            //Get the value for 'myChatKey'from the sforce.console.chat.getDetailsByPrimaryTabId() or other chat methods. 
+            //These values are for example purposes only
+            sforce.console.chat.setAgentInput(result.details.chatKey, textdata, setAgentInputSuccess);
+        };
+        
+        function setAgentInputSuccess(result) {
+        };
+   
+        var leadHandler = function (result) {
+            SfdcApp.LiveAgent.Console.ChatLog.TranscriptAttach.attachRecord(this, 'LeadId', '{!Lead.Id}');
+        };
+        
+        sforce.console.chat.onChatEnded(leadHandler);
+    
+   </script>
+       
+   <style>
+      .activeTab {
+      background-color: #1797C0;
+      font-weight:bold;
+      box-shadow: 5px 5px 2px #888888;
+      color:#FFFFFF !important;
+      font-size:12px;
+      height:25px;
+      cursor:pointer;
+      border:0px solid #FFFFFF !important;
+      background-image:none}
+      .inactiveTab {
+      background-color: #e2f1f6;
+      font-weight:bold;
+      color:#000000!important;
+      font-size:12px;
+      height:20px;
+      cursor:pointer;
+      border:0px;
+      border-radius:1px;      
+      background-image:none}
+      .headerDataList {
+      background-color: #e2f1f6;
+      color: black;
+      font-weight: bold;
+      }
+      div.header {
+      background-color: #e2f1f6;
+      border: 2px solid #FF8C00;
+      font-weight: bold;
+      color: #000000;
+      padding: .4em;
+      opacity: 1;
+      transition: opacity 1s, height 0;
+      height: 450px;
+      width: 20%;
+      display: inline-block;
+      margin-left: 20px;
+      border-radius: 5px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      }
+   </style>
+   <div style="display:inline-block;">
+      <img src="/img/icon/leads32.png" alt="" title="" style="margin-left:10px;margin-top:10px;"/>
+   </div>
+   <div style="display:inline-block;">
+      <apex:outputtext value="Leads" style="font-weight:bold;font-size:12px;"/>
+      <br/>
+      <apex:outputText value="{!lead.name}" style="font-size:23px;"/>
+   </div>
+   <apex:form id="frm">
+      <input id="hiddenElement" type="hidden" />
+      <apex:pageMessages id="messages" escape="false" />
+      <div style="width:75%;float:left;display:inline-block;">
+         <span id="theBlock" style="overflow-y: auto; overflow-x: none;height:450px;display:block;border:2px solid #FF8C00; border-top-color:#FFFFFF">
+            <apex:dynamicComponent componentValue="{!CreateDynamicComponent}" />
+         </span>
+          <center>
+              <apex:panelGrid columns="20" id="theBlock2">        
+                  <apex:outputText value="Outcome: "/>
+                  <!--<apex:panelGrid columns="10">-->
+                  <apex:actionRegion >
+                      <apex:outputPanel id="pb2" >
+                          <apex:inputfield id="status" value="{!responseObj.Status__c}" required="true"/>                
+                          <apex:actionSupport event="onchange" action="{!statusUpdate}" rerender="theBlock2,theBlock3" status="wait" />                               
+                      </apex:outputPanel>  
+                  </apex:actionRegion>              
+                  <!--</apex:panelGrid > -->
+                  <apex:actionStatus startText="Please wait..." id="wait" />                
+                  <apex:outputText value="Call Back Time:" rendered="{!showComment}"></apex:outputText>
+                  <apex:inputtext value="{!callBackTime}" id="aName" onfocus="DatePicker.pickDate(false, '{!$Component.aName}' , true);" rendered="{!showComment}" />             
+                  
+                  <!-- Added by gchaitha to display Disposition Sub Type field Dynamically -->
+                  <apex:outputText value="Sub-Outcome: " rendered="{!showDispSubtype}"></apex:outputText>
+                  <apex:inputfield value="{!responseObj.Disposition_Sub_Type__c}" rendered="{!showDispSubtype}" id="dp" style="width:150px;border-left: 3px solid red;" required="true" />
+                  
+                  <apex:inputText value="{!notesStorage}" rendered="{!IF(responseObj.Status__c=='Other',true,false)}" required="{!IF(responseObj.Status__c=='Other',true,false)}"/>
+                  <apex:commandButton value="Submit" action="{!cmdSubmitCallScript}" immediate="false" id="submit" status="submitting" />
+                  <input type="button" value="Validate Address" id="cmdValidateAddress" class="btn"/>                  
+                  </apex:panelGrid>
+              <!-- Added by gchaitha to display Contact Reason and Persona fields  US291144-->
+              <apex:panelGrid columns="20" id="theBlock3">
+                <apex:outputText value="Contact Reason:" rendered="{!showDispSubtype}"></apex:outputText>
+                  <apex:inputfield value="{!responseObj.Contact_Reason__c}" rendered="{!showDispSubtype}" id="CR" style="width:150px;border-left: 3px solid red;" required="true" />
+                  <apex:outputText value="Persona:" rendered="{!showDispSubtype}"></apex:outputText>
+                  <apex:inputfield value="{!responseObj.Persona__c}" rendered="{!showDispSubtype}" id="PR" style="width:150px;border-left: 3px solid red;" required="true" />
+              </apex:panelGrid>
+              <!-- end -->
+          </center>
+         <div>
+            <center>
+               <!-- <apex:commandButton value="Back to Lead Detail" oncomplete="window.top.location='/{!$CurrentPage.parameters.Id}';" id="callscriptbacking"/> -->
+               <apex:commandButton value="Back to Lead Detail" action="{!returnToLead}" id="callscriptbacking"/> 
+                
+                <!-- Added by Ghattamaneni Chaithanya for Send SMS button    -->
+                <apex:CommandButton value="Send SMS" onclick="window.open('/apex/NGCC_SendSMS_Popup?id={!lead.id}','_blank','width=407,height= 443,left='+positionWidth+',top='+positionHeight+',titlebar=0,menubar=No,toolbar=0,status=1,scrollbars=0,resizable=No');"  rendered="{!IF($UserRole.Name =='NGCC-N3-Atlanta-SDR',true,false)}" onComplete="return null;" />
+                <!--   End of Send SMS button  -->
+                
+            </center>
+         </div>
+      </div>
+      <div class="header">
+         <apex:outputText value="Lead Description" style="font-size:14px;margin-left:10px;" />
+         <br/>
+         <apex:inputField value="{!lead.Description}" style="margin-left:10px;width:90%;height:90%;"/>
+      </div>
+      <apex:inputHidden value="{!strRouteToPartnerTXT}" id="RouteToPartnerTXT"/>
+      <apex:inputHidden value="{!strRouteToAMTXT}" id="RouteToAMTXT"/>
+      <apex:inputHidden value="{!strRouteToPSRTXT}" id="RouteToPSRTXT"/>
+      <apex:inputHidden value="{!strPreferredPartnerTXT}" id="PreferredPartnerTXT"/>
+   </apex:form>
+   <iframe src="/apex/NGCC_LeadScreenMashup?Id={!leadId}" height="400px" width="100%" scrolling="true" style="margin-top: 20px;" seamless="" frameborder="0" />
+</apex:page>

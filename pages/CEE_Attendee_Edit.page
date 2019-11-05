@@ -1,0 +1,109 @@
+<!-------------------------------------------------------------------------------
+   @Author : Eric
+   @name :CEE_Attendee_Edit
+   @CreateDate : 01/18/2016
+   @Description :This page used to add/Edit CEE attendees
+   @Version :1.0
+   Changes:
+   Date        Author       Description   
+   6/6/2016    Sudi        Enable the non SFDc user checkbox for presenters type
+   5/30/2017   Aditya      Added Shadow functionality
+  ------------------------------------------------------------------------------->
+<apex:page standardController="CEE_Attendee__c" extensions="CEE_AttendeeController" lightningStyleSheets="true">
+    <!-- Cancel override for Lightning (Angela 05/26/2018) -->
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+    <script> 
+    function CloseTab(){
+        sforce.console.getEnclosingPrimaryTabId(closeSubtab);        
+    }
+    var closeSubtab = function closeSubtab(result) {
+        var tabId = result.id;
+        sforce.console.closeTab(tabId);
+    };
+    </script>
+    <!-- End of cancel override for lightning -->
+    <apex:pageMessages id="pageMsg" />
+    <apex:sectionHeader title="CEE Attendee Edit" subtitle="{!pageDisplay}"/>
+    <apex:form >
+        <apex:pageBlock title="CEE Attendee Edit">
+        
+            <!-- <apex:outputText label="Url" value="{!pageUrl}"/> -->
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!doSave}" value="Save" rendered="{!!enableShadow}"/>
+                <apex:commandButton action="{!doSave}" value="Submit" rendered="{!enableShadow}"/>
+                <apex:commandButton action="{!doSaveNew}" value="Save & New" rendered="{!isNew && !enableShadow}"/>
+                                                <apex:outputPanel rendered="{! $User.UIThemeDisplayed == 'Theme3' }"> 
+                <apex:commandButton action="{!cancel}" value="Cancel" rendered="{!!enableShadow}"/>
+                <apex:commandButton action="{!doCancel}" value="Cancel" immediate="true" html-formnovalidate="formnovalidate" rendered="{!enableShadow}"/> 
+
+
+                 </apex:outputPanel> 
+                 
+			<!-- Komal - Lightning 08/10/2018 Release --Change to allow Lightning Desktop and Lightning Console themes -->
+               <apex:outputPanel rendered="{! ($User.UIThemeDisplayed == 'Theme4d' ||$User.UIThemeDisplayed == 'Theme4u' ) }" >
+                <apex:commandButton onclick="CloseTab()" value="Cancel"/>
+                 </apex:outputPanel> 
+            </apex:pageBlockButtons>
+            <apex:outputPanel id="briefingRender">
+            <apex:pageBlockSection title="Briefing" columns="2">
+                <apex:inputField value="{!CEE_Attendee__c.Customer_Engagement_Events__c}" rendered="{! ($User.UIThemeDisplayed == 'Theme4d' ||$User.UIThemeDisplayed == 'Theme4u' )}"/>
+                <apex:outputField value="{!CEE_Attendee__c.Customer_Engagement_Events__c}" rendered="{!($User.UIThemeDisplayed == 'Theme4d' ||$User.UIThemeDisplayed == 'Theme4u' )}"/>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Agenda Item"/>
+                    <apex:selectlist id="arch" value="{!selAgenda}" size="1">
+                        <apex:selectOptions value="{!agendaOptions}" />
+                    </apex:selectlist>
+                </apex:pageBlockSectionItem>
+                
+                <apex:inputField value="{!CEE_Attendee__c.Type__c}" rendered="{!!enableShadow}">
+                    <apex:actionSupport event="onchange" action="{!checkType}" rerender="checkRender, userRender, manualRender,shadowRenderAuto,shadowRenderManual,briefingRender"/>
+                </apex:inputField>
+                 <apex:outputField value="{!CEE_Attendee__c.Type__c}" rendered="{!enableShadow}"/>
+                    
+              
+                <apex:pageBlockSectionItem rendered="{!!enableShadow}">
+                    <apex:outputLabel value="Salesforce User Not Available?" for="userCheck" />
+                    <apex:outputPanel id="checkRender">
+                        <apex:inputCheckbox id="userCheck" value="{!userNotAvailable}">
+                            <apex:actionSupport event="onchange" rerender="userRender, manualRender"/> 
+                        </apex:inputCheckbox>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            </apex:outputPanel>
+            <apex:outputPanel id="userRender">
+                <apex:pageBlockSection title="User Input" rendered="{!!userNotAvailable && !enableShadow}" columns="2">
+                    <apex:inputField value="{!CEE_Attendee__c.Salesforce_User__c}">
+                        <apex:actionSupport event="onchange" action="{!popUser}" rerender="userRender"/>
+                    </apex:inputField>     
+                    <apex:outputText label="Name" value="{!attendeeName}"/>                    
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="manualRender">
+                <apex:pageBlockSection title="Manual Input" rendered="{!userNotAvailable}" columns="2">
+                    <apex:inputField value="{!CEE_Attendee__c.Name}"/>
+                    <apex:inputField value="{!CEE_Attendee__c.Email__c}"/>
+                    <apex:inputField value="{!CEE_Attendee__c.Title__c}"/>                    
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            
+            <!-- panel for Showing Auto populated fields when Attendee Type is Shadow -->
+            <apex:outputPanel id="shadowRenderAuto">
+                <apex:pageBlockSection rendered="{!enableShadow}" columns="2">
+                    <apex:outputField value="{!CEE_Attendee__c.Salesforce_User__c}"/>
+                    <apex:outputField value="{!CEE_Attendee__c.Presenter__c}"/>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            
+            <!-- panel for showing manual fields to be entered by the shadower when Attendee Type is Shadow -->
+            <apex:outputPanel id="shadowRenderManual">
+                <apex:pageBlockSection rendered="{!enableShadow}" columns="2">
+                    <apex:inputField value="{!CEE_Attendee__c.Shadow_Justification__c}" required="true"/>
+                    <apex:inputField value="{!CEE_Attendee__c.Briefing_Theater__c}" required="true"/>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>BLP_User_Email__c</fullName>
+        <description>Capture blp user email information to send alerts based on platform - (tbi)</description>
+        <externalId>false</externalId>
+        <label>BLP User Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email_Alias__c</fullName>
+        <description>Learning Partner Email Alias</description>
+        <externalId>false</externalId>
+        <label>Email Alias</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Learning_Partner_Group__c</fullName>
+        <description>Learning Partner Company as group details</description>
+        <externalId>false</externalId>
+        <label>Learning Partner Group</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Platform__c</fullName>
+        <description>Enter platform that user would use it for the BLP workflow</description>
+        <externalId>false</externalId>
+        <label>Platform</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sandbox_Email_ALias__c</fullName>
+        <description>This email alias is used when org is sandbox</description>
+        <externalId>false</externalId>
+        <label>Sandbox Email ALias</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>username__c</fullName>
+        <description>BLP user name</description>
+        <externalId>false</externalId>
+        <label>User Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>We will capture all the learning partners and their email aliases</description>
+    <enableFeeds>false</enableFeeds>
+    <label>PEPE Learning Partners</label>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>With_email_list_view</fullName>
+        <columns>NAME</columns>
+        <columns>Learning_Partner_Group__c</columns>
+        <columns>Email_Alias__c</columns>
+        <columns>BLP_User_Email__c</columns>
+        <columns>Platform__c</columns>
+        <columns>Sandbox_Email_ALias__c</columns>
+        <columns>username__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>With email list view</label>
+        <language>en_US</language>
+    </listViews>
+</CustomObject>

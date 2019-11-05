@@ -1,0 +1,288 @@
+<apex:page contentType="javascript">
+    angular.module('directives.DSE_D3', [])
+        .directive('stbarLegend', function () {
+                function link(scope, el, attr) {
+                    var w = scope.width;
+                    var h = scope.height;
+
+                    var dataset = scope.data;
+
+                    var xScale = d3.scale.ordinal()
+                        .domain(d3.range(dataset.length))
+                        .rangeRoundBands([0, w], .90);
+
+                    var yScale = d3.scale.linear()
+                        .domain([0, d3.max(dataset, function (d) {
+                            return d.value;
+                        })])
+                        .range([0, h]);
+
+                    var key = function (d) {
+                        return d.key;
+                    };
+
+                    //Create SVG element
+                    var svg = d3.select(el[0])
+                        .append("svg")
+                        .attr("width", w)
+                        .attr("height", h);
+                    var colours = d3.scale.category10();
+                    //Create bars
+                    svg.selectAll("rect")
+                        .data(dataset, key)
+                        .enter()
+                        .append("rect")
+                        .attr("x", function (d, i) {
+                            return xScale(i) - 70;
+                            
+                        })
+                        .attr("y", function (d) {
+                            return h - yScale(d.value) + 10;
+                            
+                        })
+                        .attr("width", xScale.rangeBand())
+                        .attr("height", function (d) {
+                            if (yScale(d.value) - 10 > 0) { //need to update
+                                return yScale(d.value) - 10;
+                            } else {
+                                return 0;
+                            }
+
+                        })
+                        .style('fill', function (d, i) {
+                            return colours(i);
+                        })
+
+                    //Create labels
+                    svg.selectAll("text")
+                        .data(dataset, key)
+                        .enter()
+                        .append("text")
+                        .text(function (d) {
+                            return d.key;
+                        })
+                        .attr("x", function (d, i) {
+                            return xScale(i) + xScale.rangeBand() / 2 - 60;
+                        })
+                        .attr("y", function (d) {
+                            return h - yScale(d.value) + 18;
+                        })
+                        .attr("font-family", "CiscoSans")
+                        .attr("font-size", "8px")
+                        .attr("fill", "black");
+
+                }
+                return {
+                    link: link,
+                    restrict: 'E',
+                    scope: {
+                        data: '=',
+                        width: '=',
+                        height: '='
+                    }
+                };
+
+
+            })
+        
+        .directive('stDonut', function () {
+            function link(scope, el, attr){
+                    var w = scope.width;
+                    var h = scope.height;
+
+                    var dataset = scope.data;
+                    
+                    var radius = Math.min(w, h) / 2;
+                    var donutWidth = 20;
+                    var legendRectSize = 5;
+                    var legendSpacing = 10;
+                    
+                    var color = d3.scale.category20();
+                    
+                    //Create SVG element
+                    var svg = d3.select(el[0])
+                     .append('svg')
+                    .attr('width', w)
+                    .attr('height', h+10)
+                    .append('g')
+                    .attr('transform', 'translate(' + ((h+10)/ 2) +
+                        ',' + ((h+10)/ 2) + ')');
+
+                var arc = d3.svg.arc()
+                    .innerRadius(radius - donutWidth)
+                    .outerRadius(radius);
+
+                var pie = d3.layout.pie()
+                    .value(function (d) {
+                        return d.count;
+                    })
+                    .sort(null);
+
+                var path = svg.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .on("click", function (d) {
+                        console.log(d.data.label);
+                    })
+                    .attr('fill', function (d, i) {
+                        return color(d.data.label);
+                    });
+
+
+                svg
+                    .append("text")
+                    .attr("class", "donutCenter")
+                    .attr("transform", function (d) {
+                        var x = -2;
+                        var y = 0;
+                        return "translate(" + x + "," + y + ")";
+                    })
+                    .attr("dy", "0.35em")
+                    .attr("text-anchor", "middle")
+                    //.classed('blue', true)
+                    .text(function (d) {
+                        return ("15");
+                    });
+
+                }
+                return {
+                    link: link,
+                    restrict: 'E',
+                    scope: {
+                        data: '=',
+                        width: '=',
+                        height: '='
+                    }
+                };
+        
+        })
+        
+        .directive('stbarChart', function () {
+           
+             function link(scope, el, attr) {                
+                if(scope.data.lineitemstatus === undefined){}else{
+                var dataset= scope.data.lineitemstatus;
+                var colors = ['#0229bf','#1999FC','#78FDFE','#0A5591','#159192','#FE4728','#2c2cff','#0f9200'];
+        
+                /*var xscale = d3.scale.linear()
+                                .domain([0,50])
+                                .range([0,250]);*/
+                                
+                var xscale = d3.scale.linear()
+                                .domain([0,d3.max(dataset, function(d) {return parseInt(d.value);})])
+                                .range([0,60]);
+        
+                var yscale = d3.scale.linear()
+                                .domain([0,dataset.length],15)
+                                .range([0,120]);
+        
+                var colorScale = d3.scale.quantize()
+                                .domain([0,dataset.length])
+                                .range(colors);
+        
+                var canvas = d3.select(el[0])
+                                .append('svg')
+                                .attr({'height':150})
+        
+                var valueData =[],xaxisData =[];
+                for(var j=0;j&lt;dataset.length;j++){
+                      valueData[j]= dataset[j].value;
+                      xaxisData[j]= dataset[j].key;
+                }
+                var xAxis = d3.svg.axis()
+                        .orient('bottom')
+                        .scale(xscale);
+                      
+                var yAxis = d3.svg.axis()
+                        .orient('left')
+                        .scale(yscale)
+                        .tickSize(0)
+                        .tickFormat(function(d,i){ 
+                            var t= xaxisData[i];
+                            if(t === 'inprogress'){
+                                t= 'In Progress';
+                            }
+                            return t; 
+                        })
+                        .tickValues(d3.range(dataset.length));
+        
+                var y_xis = canvas.append('g')
+                                  .attr("transform", "translate(70,0)")
+                                  .attr('id','yaxis')
+                                  .attr('class','axis-transform')                                  
+                                  .call(yAxis);
+                               canvas.selectAll("g.tick > text")
+                               .attr("x", 20)
+                               .attr("dy", '.75em');
+                           
+                           
+                    
+                var chart = canvas.append('g')
+                                .attr("transform", "translate(70,0)")
+                                .attr('id','bars')
+                                .selectAll('rect')
+                                .data(valueData)
+                                .enter()
+                                .append('rect')
+                                .attr('height',10)
+                                .attr({'x':30,'y':function(d,i){ return yscale(i); }})
+                                .style('fill',function(d,i){ return '#a9bbd7'; })
+                                .attr('width',function(d){ return 0; });
+        
+        
+                var transit = d3.select("svg").selectAll("rect")
+                                    .data(valueData)
+                                    //.transition()
+                                    //.duration(1000) 
+                                    .attr("rx", 6)
+                                    .attr("ry", 6)
+                                    .attr("width", function(d) {
+                                    var xdata = xscale(d);
+                                        if (xdata &lt; 0) {
+                                          xdata = 0;
+                                        }
+                                    return xdata;
+                                   });
+        
+                var transitext = d3.select('#bars')
+                                  .selectAll('text')
+                                  .data(valueData)
+                                  .enter()
+                                  .append('text')
+                                  .attr({
+                                    'x': function(d) {
+                                      var xdata = xscale(d);
+                                      if (xdata &lt; 0) {
+                                        xdata = 0;
+                                      } else {
+                                        xdata = xdata +30;
+                                      }
+                                      return xdata;
+                                    },
+                                    'y': function(d, i) {
+                                      return yscale(i) + 8;
+                                    }
+                                  })
+                                  .text(function(d) {
+                                    return d;
+                                  }).style({
+                                    'fill': 'black',
+                                    'font-size': '10px'
+                                  });
+                }
+                }
+                return {
+                    link: link,
+                    restrict: 'E',
+                    scope: {
+                        data: '=',
+                        width: '=',
+                        height: '='
+                    }
+                
+                };
+            });
+          
+</apex:page>

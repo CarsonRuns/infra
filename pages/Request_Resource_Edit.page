@@ -1,0 +1,6 @@
+<apex:page standardController="Resource_Request_Assignment__c" extensions="Request_Resource_Edit_CTE">
+    <div style="width:100%;height:100%;position:relative;">
+        <apex:iframe rendered="{!!error}" src="{!iframeUrl}" height="1650" width="100%" id="iFramLoad" frameborder="0" />
+        <apex:pageMessages rendered="{!error}" />
+    </div>
+</apex:page>

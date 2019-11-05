@@ -1,0 +1,342 @@
+<apex:page standardController="Account">
+<title>Cisco SBC Web Tab Redirect</title> 
+<apex:includeScript value="/support/console/22.0/integration.js"/>
+<script type="text/javascript" src="/js/functions.js"></script> 
+<script src="/soap/ajax/10.0/connection.js"></script> 
+<script src="/soap/ajax/10.0/apex.js"></script> 
+<script language="javascript" type="text/javascript"> 
+</script> 
+
+<script id="clientEventHandlersJS" language="javascript"> 
+sforce.connection.sessionId = "{!$Api.Session_ID}";
+
+var userCountry = ""; 
+var org_id = '{!$Organization.Id}'; 
+//var ccxApp_redirectURL = "http://tools-stage.cisco.com/SALESIT/SFINT/Sfdcaction.do"; 
+var ccxApp_redirectURL = getConstant('SBC Redirect','URL'); 
+
+var rTypeNameChannel = "Channel"; 
+var rTypeNameCompetitor = "Competitor"; 
+var rTypeNameEndUser = "End-User"; 
+var rTypeUnregisteredReseller = "Unregistered Reseller"; 
+var IdChannel; 
+var IdCompetitor; 
+var IdEndUser; 
+var IdUnregisteredResller;
+function getRecordTypeIds(){ 
+var recType = 'Account'; 
+var qrStr = "Select Name, Id From RecordType where sObjectType = '" + recType + "' and isactive = true"; 
+var queryResult=sforce.connection.query(qrStr); 
+var records = queryResult.getArray('records'); 
+var Name; 
+var Id; 
+
+
+for (var i= 0; i < records.length; i++){ 
+Name = records[i].Name; 
+Id = records[i].Id; 
+
+if (Name == rTypeNameChannel){ 
+IdChannel = Id; 
+} else if (Name == rTypeNameCompetitor){ 
+IdCompetitor = Id; 
+} else if (Name == rTypeNameEndUser){ 
+IdEndUser = Id; 
+} else if (Name == rTypeUnregisteredReseller){ 
+IdUnregisteredReseller = Id; 
+} 
+} 
+} 
+
+
+function redirect(){ 
+
+
+// var that holds the value coming in from lead detail page 
+var leadId_detail = getQuerystring('leadId_detail'); 
+// var that holds the value from the lead conversion page 
+var leadId = getQuerystring('leadId'); 
+var recordTypeId  = "{!Account.RecordTypeId}";
+var AccRecordTypeName = getOptyRecordTypeName(recordTypeId );
+
+//document.write("<center>Redirecting to Search Before Create Application.........</center> <center><img src=\"/img/waiting_dots.gif\"></center>"); 
+//document.getElementById('errorId').innerHTML = '<center>Redirecting to Search Before Create Application.........</center> <center><img src=\"/img/waiting_dots.gif\"></center>'; 
+//alert(document.getElementById('errorId').innerHTML);
+getRecordTypeIds(); 
+
+if(AccRecordTypeName == "Competitor"){ 
+parent.parent.location.href="/001/e?RecordType="+IdCompetitor+"&rt=Account&nooverride=1"; 
+return; 
+} 
+
+
+//Get Users Language 
+var usersLanguage = getUserLanguage(); 
+
+//Get Cancel URL out of URL string 
+var cancelURL = parseCancelURL(); 
+
+//Get Profile Name 
+var profileId = '{!$User.ProfileId}'; 
+
+
+if(AccRecordTypeName == "End-User") { 
+ccxApp_redirectURL += "?recordType="+AccRecordTypeName + "&recordTypeId="+ IdEndUser+"&userId={!$User.Id}&userLang="+usersLanguage + "&userCountry="+escape(userCountry)+"&profile="+profileId+"&userState=" +escape('{!$User.State}') + "&sessionId={!$API.Session_ID}&apiServerUrl={!$API.Enterprise_Server_URL_80}&cancelURL=" +cancelURL+"&userAlias={!$User.Alias}"+"&userEmail={!$User.Email}"; 
+
+if (leadId_detail != '' || leadId_detail != null) 
+{ 
+ccxApp_redirectURL += "&leadId_detail=" + leadId_detail+"&fromLead=yes"; 
+} 
+if (leadId != '' || leadId != null) 
+{ 
+ccxApp_redirectURL += "&leadId=" + leadId +"&fromLead=yes"; 
+} 
+
+
+} 
+else if(AccRecordTypeName == "Unregistered Reseller") { 
+ccxApp_redirectURL += "?recordType="+AccRecordTypeName+ "&recordTypeId="+ IdUnregisteredReseller+"&userId={!$User.Id}&userLang="+usersLanguage + "&userCountry="+escape(userCountry)+"&profile="+profileId+"&userState=" +escape('{!$User.State}') + "&sessionId={!$API.Session_ID}&apiServerUrl={!$API.Enterprise_Server_URL_80}&cancelURL=" +cancelURL; 
+} 
+else { 
+ccxApp_redirectURL += "?recordType="+AccRecordTypeName+ "&recordTypeId="+ IdChannel+"&userId={!$User.Id}&userLang="+usersLanguage + "&userCountry="+escape(userCountry)+"&profile="+profileId+"&userState=" +escape('{!$User.State}') + "&sessionId={!$API.Session_ID}&apiServerUrl={!$API.Enterprise_Server_URL_80}&cancelURL=" +cancelURL; 
+} 
+
+//alert(ccxApp_redirectURL); 
+document.getElementById('showImage').style.visibility = "hidden";
+document.getElementById('iFramLoad').src = ccxApp_redirectURL;
+//self.location.href = ccxApp_redirectURL; 
+} 
+
+
+function getUserLanguage(){ 
+var getUserInfoResult = sforce.connection.getUserInfo(); 
+var userId = getUserInfoResult.get("userId"); 
+var userResult = sforce.connection.query("Select Country from User Where Id = '" + userId + "'"); 
+var userRecord = userResult.getArray('records')[0]; 
+if(userRecord.get("Country")){ 
+userCountry= userRecord.get("Country"); 
+userCountry = userCountry.toUpperCase(); 
+} 
+
+var userlang = getUserInfoResult.get("userLanguage"); 
+
+if (userlang == "zh_CN") 
+userlang = "zh-CN"; 
+else if (userlang == "cz") 
+userlang = "cs-CZ"; 
+else if (userlang == "fr") 
+userlang = "fr-FR"; 
+else if (userlang == "de") 
+userlang = "de-DE"; 
+else if (userlang == "it") 
+userlang = "it-IT"; 
+else if (userlang == "ja") 
+userlang = "ja-JP"; 
+else if (userlang == "ko") 
+userlang = "ko-KR"; 
+else if (userlang == "pt_BR") 
+userlang = "pt-BR"; 
+else if (userlang == "ru") 
+userlang = "ru-RU"; 
+else if (userlang == "es") 
+userlang = "es-ES"; 
+else if (userlang == "th") 
+userlang = "th-TH"; 
+else if (userlang == "pl") 
+userlang = "pl-PL"; 
+else if (userlang == "tr") 
+userlang = "tr-TR"; 
+else if (userlang == "vi") 
+userlang = "vi-VN"; 
+else if (userlang == "fi") 
+userlang = "fi-FI"; 
+else 
+userlang = "en-US"; 
+
+return userlang; 
+} 
+
+
+function parseCancelURL(){ 
+var fullURL = parent.parent.location.href 
+// alert(fullURL); 
+var startCancelURLIndex = fullURL.toString().indexOf("cancelURL=")+10; 
+//alert(startCancelURLIndex); 
+var startCancelURL = fullURL.substring(startCancelURLIndex); 
+//alert(startCancelURL); 
+
+var endCancelURLIndex = startCancelURL.indexOf("&"); 
+
+var cancelURLString = fullURL.substring(startCancelURLIndex,endCancelURLIndex+startCancelURLIndex); 
+
+var returnVal = unescape(cancelURLString); 
+return returnVal; 
+
+} 
+
+function getpermission() 
+{ 
+
+// alert('In the accnt creation premission function'); 
+
+// alert("Please note as of 9:30 AM PST (10/7/2011) Channel/Partner Account creation has been disabled as a part of the 
+// Partner 360 release. \n\nAs of Monday (10/10/2011) all Cisco Registered Partners will be in SFDC represented at a Country 
+// level. \n\nEnd User/Customer Account creation will remain as-is"); 
+
+var Profile_id = '{!$User.ProfileId}'; 
+var recordTypeId  = "{!Account.RecordTypeId}";
+var record_type = getOptyRecordTypeName(recordTypeId);
+
+// alert(record_type); 
+// alert('before switch'); 
+switch(record_type) 
+{ 
+case 'Channel': 
+// alert('Channel'); 
+var permi = 'Enable Channel ACCTCreation'; 
+break; 
+case 'End-User': 
+// alert('End-User'); 
+var permi = 'Enable EndUser ACCTCreation'; 
+break; 
+case 'UnregisteredReseller': 
+// alert('UnregisteredReseller'); 
+var permi = 'Enable UnregisteredReseller ACCTCreation'; 
+break; 
+default: 
+break; 
+} 
+
+var Profile_id = '{!$Profile.Id}'; 
+var Profile_ids = getConstant('ProfileIDTest','URL'); 
+var split_vals = Profile_ids.split(","); 
+var profile_flag = false; 
+for (var i= 0; i < split_vals.length; i++){ 
+if (Profile_id == split_vals[i]) { 
+profile_flag = true; 
+} 
+} 
+
+if (profile_flag) { 
+var permission_flag = AdditionalCheckUserPermission(permi); 
+if(permission_flag) 
+{ 
+redirect(); 
+} 
+else { 
+var browserName=navigator.appName; 
+var hostname = window.location.hostname.toLowerCase(); 
+<!--SCAVA FIX-->
+var host = encodeURI(hostname); 
+    if (browserName=="Netscape") { 
+    document.write('<font face = Arial><h3> Insufficient Privileges </h3> </font> <font face = Arial size = 2>You do not have the level of access necessary to perform Account Creation.</font> <font face = Arial size = 2> </> <a href="https://' + host + '/servlet/servlet.FileDownload?file=01580000000gQOk" target="_blank"><b><font color="blue">More Information on the Account creation process </font></b></a> <br> <br> <u><b><a href="#" onclick="history.go(-1);return false;"></b><font color="blue"><u> Go Back to Previous Page. </u></font> </b></a> </font>'); 
+    } 
+    else if (browserName=="Microsoft Internet Explorer") { 
+    document.write('<font face = Arial><h3> Insufficient Privileges </h3> </font> <font face = Arial size = 2>You do not have the level of access necessary to perform Account Creation.</font> <font face = Arial size = 2> </> <a href="https://' + host + '/servlet/servlet.FileDownload?file=01580000000gQOk" target="_blank"><b><font color="blue">More Information on the Account creation process </font></b></a> <br> <br> <u><b><a href="javascript:history.back();" onclick="history.back();"></b><font color="blue"><u> Go Back to Previous Page. </u></font> </b></a> </font>'); 
+    } 
+    else if (browserName=="Google Chrome") { 
+    document.write('<font face = Arial><h3> Insufficient Privileges </h3> </font> <font face = Arial size = 2>You do not have the level of access necessary to perform Account Creation.</font> <font face = Arial size = 2> </> <a href="https://' + host + '/servlet/servlet.FileDownload?file=01580000000gQOk" target="_blank"><b><font color="blue">More Information on the Account creation process </font></b></a> <br> <br> <u><b><a href="" onclick="history.go(-1); return false;"></b><font color="blue"><u> Go Back to Previous Page. </u></font> </b></a> </font>'); 
+    } 
+} 
+} 
+else 
+redirect(); 
+} 
+function getConstant(i_key, i_oType) 
+{ 
+
+var qrStr = "SELECT prod_value__c, non_prod_value__c " + 
+"FROM Org_Constants__c " + 
+"WHERE Key__c = '" + i_key + "'"; 
+try { 
+var queryResult=sforce.connection.query(qrStr); 
+var records = queryResult.getArray('records'); 
+var q_value; 
+
+
+if (records.length > 0) 
+{ 
+var hostname = window.location.hostname.toLowerCase(); 
+//org_id = '00D300000000QUu'; 
+// 00D300000000QUuEAM
+if (org_id == '00D300000000QUuEAM' && ((hostname.indexOf('ww') && hostname.indexOf('na')) != -1)) 
+{ 
+q_value = records[0].prod_value__c; 
+} 
+else 
+{ 
+q_value = records[0].non_prod_value__c; 
+} 
+} 
+else if (records.length == 0) 
+alert('No value defined for ' + i_key +', ' + i_oType); 
+
+if (q_value == null) alert(i_key +', ' + i_oType + ' has a null value'); 
+return q_value; 
+} 
+catch(ex) { 
+alert(ex); 
+} 
+}
+function getOptyRecordTypeName(RctTypeId){
+if(RctTypeId == ''){
+    var newRecordType = '';
+    var result = sforce.connection.describeSObject("Account");
+    for (var i=0; i<result.recordTypeInfos.length; i++) {
+        var rt = result.recordTypeInfos[i];         
+        if(rt.defaultRecordTypeMapping == 'true'){          
+            newRecordType = rt.name;            
+        }       
+  }  
+  return newRecordType;
+}
+else{
+var qrStr = "Select Name, Id From RecordType where " +
+"sObjectType = 'Account' and isactive = true and Id ='" + RctTypeId + "'";
+var qrOptyRecordTypes=sforce.connection.query(qrStr);
+var records = qrOptyRecordTypes.getArray('records'); 
+return records[0].get("Name");
+}
+
+}
+function getQuerystring(key, default_) 
+{ 
+if (default_==null) default_=""; 
+key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]"); 
+var regex = new RegExp("[\\?&]"+key+"=([^&#]*)"); 
+var qs = regex.exec(parent.window.location.href); 
+if(qs == null) 
+return default_; 
+else 
+return qs[1]; 
+} 
+function AdditionalCheckUserPermission(val_perm_to_check)
+{
+    var permission_flag = false;
+    var user_id = '{!$User.Id}';
+    var qrStr = "Select u.additional_user_permissions__c From User u where u.Id = '" +user_id+ "'";
+    var queryResult=sforce.connection.query(qrStr);
+    var records = queryResult.getArray('records');
+    if (records[0].Additional_User_Permissions__c == null) {
+        permission_flag = false;
+    }
+    else {
+        var split_val = records[0].Additional_User_Permissions__c;
+        split_val = split_val.split(";");
+        for (var i=0; i< split_val.length; i++) {
+            if(split_val[i] == val_perm_to_check) {
+                permission_flag = true;
+                break;
+            }
+         }
+    }
+     return permission_flag;
+}
+</script> 
+<body>
+<div id="showImage" style="position: absolute; top: 0px; z-index: 1000; display: block; margin: 0px auto; width: 84%;"><div style="width: 100%; margin: 0px auto;"><center >Redirecting to Search Before Create Application.........</center> <center><img src="/img/waiting_dots.gif"/></center></div></div>
+<div style="width:100%;height:100%;position:relative;"><iframe id="iFramLoad" frameborder="0" height="1110" style="width:100%;"></iframe></div> <!--style="min-height: 1120px;min-width: 1052px;padding: 0 10px;position: absolute;top: 10px;" -->
+<div id="errorId"> </div> 
+</body> 
+<script>getpermission()</script> 
+</apex:page>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>apj-pepe-archadmin@cisco.com</email>
+    <name>PEPE: PLED ADMIN APJC Queue</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>PEPE_PLED_Admin_APJC</publicGroup>
+        </publicGroups>
+        <users>
+            <user>swshivan@cisco.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PEPE_Training_Event__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>PEPE_Training_Request__c</sobjectType>
+    </queueSobject>
+</Queue>

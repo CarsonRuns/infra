@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- EmailID --></label>
+        <name>EmailID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gadget Language Code --></label>
+        <name>Gadget_Language_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- NewLeadCount --></label>
+        <name>NewLeadCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- NewTargetProspectCount --></label>
+        <name>NewTargetProspectCount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Overdue Leads Count --></label>
+        <name>Overdue_Leads_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recipient Language --></label>
+        <name>Recipient_Language__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recipient --></label>
+        <name>Recipient__c</name>
+        <relationshipLabel><!-- P360_PA_PSR_Daily_Email_Notification --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- tobeTriggered --></label>
+        <name>tobeTriggered__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>P360_PA_PSR_Daily_Email_Notification</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>P360_PA_PSR_Daily_Email_Notification</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>P360_PA_PSR_Daily_Email_Notification Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

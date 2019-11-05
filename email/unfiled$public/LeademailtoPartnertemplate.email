@@ -1,0 +1,32 @@
+We have identified a New Lead for you and your company.  
+
+The details of the lead are as follows:
+
+Lead Info:
+Date of Creation: {!Lead.Lead_Qualified_Date__c}
+Lead ID: {!Lead.Id}
+Company: {!Lead.Company}
+Industry: {!Lead.Industry}
+
+Lead Name: {!Lead.Name}
+Lead Title: {!Lead.Title}
+Lead phone number: {!Lead.Phone}
+Lead email: {!Lead.Email}
+Lead City: {!Lead.City}
+
+Products of Interest: {!Lead.ProductsOfInterest__c}
+Project Budget listed: {!Lead.QABudget__c}
+Total Value: {!Lead.TotalValue__c}
+Description: {!Lead.Description}
+
+Please reply to this email and answer the following questions:
+1. Are you interested in pursuing this lead?
+2. Have you already contacted the customer?
+3. Any comments or notes about this lead?
+
+Please contact me directly at: {!Lead.OwnerEmail} or {!Lead.OwnerPhone}
+
+Thank you!
+
+{!Lead.OwnerFullName}
+Cisco Systems, Inc.

@@ -1,0 +1,26 @@
+<apex:page showHeader="false" sidebar="false"> 
+
+<apex:includeScript value="/support/console/29.0/integration.js"/> 
+<script type="text/javascript"> 
+var landingPage = '/00Q2800000KvBnV'; 
+// if not in console redirect user to landing page 
+if (!(sforce.console.isInConsole())) { 
+window.location.replace('/'+'{!$CurrentPage.parameters.ID}'+'/e'); 
+} 
+
+// override subtab with the landing page requested 
+sforce.console.getEnclosingPrimaryTabId(getPrimaryTabId); 
+
+function getPrimaryTabId(result) { 
+primaryTabId = result.id; 
+sforce.console.getEnclosingTabId(getSubTabId); 
+}; 
+
+function getSubTabId(result) { 
+subTabId = result.id; 
+sforce.console.openSubtab(primaryTabId, '/'+'{!$CurrentPage.parameters.ID}'+'/e', true, 'New Lead', subTabId); 
+}; 
+
+</script> 
+
+</apex:page>

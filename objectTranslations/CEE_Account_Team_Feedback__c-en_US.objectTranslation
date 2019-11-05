@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- % Accelerate Sales Cycle - V/R Demo --></label>
+        <name>Accelerate_Sales_Cycle_Virtual_Remote__c</name>
+    </fields>
+    <fields>
+        <label><!-- Additional Feedback --></label>
+        <name>Additional_Feedback__c</name>
+    </fields>
+    <fields>
+        <label><!-- Additional Opportunity Details --></label>
+        <name>Additional_Opportunity_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attributed to CPOC in Closing Deal (%) --></label>
+        <name>Attributed_to_CPOC_in_Closing_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attributed to CXC in Closing Deal(%) --></label>
+        <name>Attributed_to_CXC_in_Closing_Deal__c</name>
+    </fields>
+    <fields>
+        <label><!-- CEC ID --></label>
+        <name>CEC_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- CEE --></label>
+        <name>CEE__c</name>
+        <relationshipLabel><!-- Account Team Feedback --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CPOC helped create addtl Opportunities --></label>
+        <name>CPOC_helped_create_addtl_Opportunities__c</name>
+    </fields>
+    <fields>
+        <label><!-- CXC helped create addtl opportunities --></label>
+        <name>CXC_helped_to_create_addl_opportunities__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Confidence Increase(%) --></label>
+        <name>Customer_Confidence_Increase__c</name>
+    </fields>
+    <fields>
+        <label><!-- DLS order Mgmt. Time Saved (in Days) --></label>
+        <name>DLP_order_Mgmt_Time_Saved_in_Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated Spend on DLS ($K USD) --></label>
+        <name>Estimated_Spend_on_DLP_K_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSAT Recommendation Type --></label>
+        <name>FSAT_Recommendation_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSAT Survey Project Type --></label>
+        <name>FSAT_Survey_Project_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hrs Saved - CXC vs 1st time Demo Setup --></label>
+        <name>Hours_Saved_using_CXC_vs_First_time_Demo__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hrs Saved - CPOC vs 1st time Demo Setup --></label>
+        <name>Hrs_Saved_CPOC_vs_1st_time_Demo_Setup__c</name>
+    </fields>
+    <fields>
+        <label><!-- NPS Rating --></label>
+        <name>NPS_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason for NPS Rating --></label>
+        <name>Reason_for_NPS_Rating__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reduction in Sales Cycle using CPOC --></label>
+        <name>Reduction_in_Sales_Cycle_using_CPOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reduction in Sales Cycle using CXC --></label>
+        <name>Reduction_in_sales_cycle_using_CXC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted Date Time --></label>
+        <name>Submitted_Date_Time__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Team Feedback</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Team Feedback</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>FSAT_CPOC_Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>FSAT_CXC_Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description><!-- This will save the CEE Acounts Team Feedback for CPOC request --></description>
+        <label><!-- CPOC CEE Accounts Team Feedback --></label>
+        <name>CPOC_CEE_Accounts_Team_Feedback</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This will save the CEE Account Team Feedback for OBX request --></description>
+        <label><!-- CXC CEE Account Team Feedback --></label>
+        <name>CXC_CEE_Account_Team_Feedback</name>
+    </recordTypes>
+</CustomObjectTranslation>

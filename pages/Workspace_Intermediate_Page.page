@@ -1,0 +1,9 @@
+<apex:page standardController="AT_Workspace__c"  tabStyle="AT_Workspace__c" recordSetVar="Opportunity Workspaces">
+<script>
+    window.onload = function(){
+         var optyId= '{!$CurrentPage.parameters.id}';
+        var hostname = window.location.hostname.toLowerCase(); 
+       window.location.href ="https://"+hostname+"/apex/PSSUserMultiTech?mtOpptyId="+optyId;
+    }
+</script>   
+</apex:page>

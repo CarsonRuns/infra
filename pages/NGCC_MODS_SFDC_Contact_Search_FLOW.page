@@ -1,0 +1,79 @@
+<!--
+   Name    : NGCC_MODS_SFDC_Contact_Search
+   Author  : Gaurav Singh
+   Purpose : Resposible for MODS search
+   Date	   : 29-Nov-2018
+   Modification History: 
+
+-->
+<apex:page controller="NGCC_MODS_SFDC_Contact_Search_Flow_CTE" showHeader="false" sidebar="false">
+    <apex:includeScript value="{!$Resource.jquery}"/>	
+    
+    <apex:form id="form">
+        <apex:pageBlock id="block">
+            <!-- JavaScript function to send the request to the MODS Service -->
+            <apex:outputPanel id="jsonp">
+                <script>
+                $(document).ready(function() {
+                    MODS_Search();
+                });
+                
+                function MODS_Search() {
+                    var url = '{!modsSearchUrl}'
+                    + '?appid=MCC&email={!searchEmailAddress}'
+                    + '&firstname={!searchFirstName}'
+                    + '&lastname={!searchLastName}'
+                    + '&orgname={!searchCompany}'
+                    + '&city={!searchCity}'
+                    + '&state={!searchState}'
+                    + '&ccode={!searchCountryName}'
+                    + '&postalcode={!searchPostalCode}'
+                    + '&phone={!searchPhoneNumber}&callbackFunction=?';
+                    console.log(url);
+                    $.ajax({
+                        url : url,
+                        type : 'get',
+                        dataType : "jsonp",
+                        callback : 'Test',
+                        jsonpCallback : 'test',
+                        success : function(response) {
+                            console.log( JSON.stringify(response) );
+                            MODSSearch(JSON.stringify(response));
+                        },
+                        error : function(x, e) {
+                            var leadListJON = {};
+                            leadListJON.isSuccess = false;
+                            leadListJON.leadList = [];
+                            
+                            var message = {
+                                name: "mods_Search_result.message",
+                                payload: leadListJON
+                            };
+                            parent.postMessage(message, "{!lightningUrl}");
+                        }
+                    });
+                }
+                </script>
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="modsSearchResultScript">
+            	<script>
+                function setModsSearchResult(){
+                    var leadListJON = JSON.stringify( {!leadListJSON} );
+                    var message = {
+                        name: "mods_Search_result.message",
+                        payload: leadListJON
+                    };
+                    parent.postMessage(message, "{!lightningUrl}");
+                }
+                </script>
+            </apex:outputPanel>
+            <div id="lightning"> Hello world VF ..!!! </div>
+            
+            <apex:actionFunction name="MODSSearch" action="{!MODS_Search}"
+                                 rerender="modsSearchResultScript" oncomplete="setModsSearchResult();">
+                <apex:param name="node" value="" />
+            </apex:actionFunction>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Acquisitions__c</fullName>
+        <externalId>false</externalId>
+        <label>Acquisitions</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alfresco_Create_Date__c</fullName>
+        <description>Alfresco Content Creation Date. Format for date is yyyy-mm-dd hh:mm:ss.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Alfresco Creation Date</inlineHelpText>
+        <label>Alfresco Create Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Alfresco_Org_Version__c</fullName>
+        <description>Alfresco Original  content version number.</description>
+        <externalId>false</externalId>
+        <label>Alfresco Org Version</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Alfresco_Version__c</fullName>
+        <description>Alfresco DBS Content version number</description>
+        <externalId>false</externalId>
+        <label>Alfresco Version</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Architectures__c</fullName>
+        <externalId>false</externalId>
+        <label>Architectures</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Audience_Security__c</fullName>
+        <description>Audience and access levels allowed to view content item.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Content's access level</inlineHelpText>
+        <label>Audience / Security</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Author_Group__c</fullName>
+        <description>Alfresco Author Group. The Author group / creator of the content item.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Author group or creator of the content item</inlineHelpText>
+        <label>Author Group</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Buyer_Type_Additional_Info_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Buyer Type Additional Info 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Buyer_Type__c</fullName>
+        <description>The Buyer Type(s) associated to the content item.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Associated Buyer Type(s)</inlineHelpText>
+        <label>Buyer Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Certified__c</fullName>
+        <description>Alfresco indicator that signifies that the content is Certified.</description>
+        <externalId>false</externalId>
+        <label>Certified</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Competitive__c</fullName>
+        <externalId>false</externalId>
+        <label>Competitive</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ContentSize</fullName>
+    </fields>
+    <fields>
+        <fullName>Content_Archive__c</fullName>
+        <description>Alfresco's value that Indicates the length of  the content item should be retained.</description>
+        <externalId>false</externalId>
+        <label>Content Archive</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Content_Types__c</fullName>
+        <externalId>false</externalId>
+        <label>Content Types</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <description>Alfresco's country and language code for the content item.</description>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CurrencyIsoCode</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Delivery_Method_Additional_Info_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery Method Additional Info 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Delivery_Method__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery Method</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Doc_ID__c</fullName>
+        <description>The Alfresco unique identifier for the content.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Alfresco Document ID</inlineHelpText>
+        <label>Doc ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>DownloadCount__c</fullName>
+        <externalId>false</externalId>
+        <label>DownloadCount</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expiration_Date_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATEVALUE(LEFT(Expiration_Date__c, 10))</formula>
+        <label>Expiration Date Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Expiration_Date__c</fullName>
+        <description>Alfresco content expiration date for when the content should be deleted in Salesforce. Format for date is yyyy-mm-dd hh:mm:ss</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Deletion Date</inlineHelpText>
+        <label>Expiration Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>FileExtension</fullName>
+    </fields>
+    <fields>
+        <fullName>FileType</fullName>
+    </fields>
+    <fields>
+        <fullName>Geo_Region__c</fullName>
+        <description>The associated GEO / Region for the content item.</description>
+        <externalId>false</externalId>
+        <label>Geo / Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Industry_Type_Additional_Info_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Industry Type Additional Info 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Industry_Type_Additional_Info_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Industry Type Additional Info 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Industry_Type__c</fullName>
+        <description>The Industry associated to the content item</description>
+        <externalId>false</externalId>
+        <label>Industry Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>IsAssetEnabled</fullName>
+    </fields>
+    <fields>
+        <fullName>Language</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Machine_Generated_Tags_Additional_Info_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Machine Generated Tags Additional Info 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Machine_Generated_Tags_Additional_Info_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Machine Generated Tags Additional Info 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Machine_Generated_Tags__c</fullName>
+        <description>Tags or keywords generated from the Alfresco for the content item.</description>
+        <externalId>false</externalId>
+        <label>Machine Generated Tags</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Market_Industry_Trend__c</fullName>
+        <externalId>false</externalId>
+        <label>Market Industry Trend</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Market_Segment__c</fullName>
+        <externalId>false</externalId>
+        <label>Market Segment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Offering_Additional_Info_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Offering Additional Info 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Offering_Additional_Info_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Offering Additional Info 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Offering_Category__c</fullName>
+        <description>The overall category for the Product, Service, Solution, and/or Architectures associated with the content item.</description>
+        <externalId>false</externalId>
+        <label>Offering Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Offering__c</fullName>
+        <description>Identifies the Product, Service, Solution, and/or Architectures associated with the content item. Offering will contain 4 child tags that will be combined into this field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Associated Product, Service, Solution, and/or Architectures</inlineHelpText>
+        <label>Offering</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PID__c</fullName>
+        <description>The Alfresco unique identifier for Product(s) that are associated to the content item.</description>
+        <externalId>false</externalId>
+        <label>PIDs</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Posted_to_Opportunities__c</fullName>
+        <externalId>false</externalId>
+        <label>Posted to Opportunities</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Products__c</fullName>
+        <externalId>false</externalId>
+        <label>Products</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Publish_Date__c</fullName>
+        <description>Alfresco content published date.Format for date is yyyy-mm-dd hh:mm:ss</description>
+        <externalId>false</externalId>
+        <label>Publish Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Role_Based_Development__c</fullName>
+        <externalId>false</externalId>
+        <label>Role Based Development</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Route_to_Market__c</fullName>
+        <description>Indicates the market introduction of the associated products.</description>
+        <externalId>false</externalId>
+        <label>Route to Market</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SE_Tags_Additional_Info_1__c</fullName>
+        <externalId>false</externalId>
+        <label>SE Tags Additional Info 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SE_Tags_Additional_Info_2__c</fullName>
+        <externalId>false</externalId>
+        <label>SE Tags Additional Info 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SE_Tags__c</fullName>
+        <description>Tags and keywords from Alfresco that were created by the author of the content item.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Author tags</inlineHelpText>
+        <label>SE Tags</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Services__c</fullName>
+        <externalId>false</externalId>
+        <label>Services</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SharingOption</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>SharingPrivacy</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Site__c</fullName>
+        <description>The targeted location for the content item's associated offering.</description>
+        <externalId>false</externalId>
+        <label>Site</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Solutions__c</fullName>
+        <externalId>false</externalId>
+        <label>Solutions</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>TagCsv</fullName>
+    </fields>
+    <fields>
+        <fullName>Target_Persona_Additional_Info_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Target Persona Additional Info 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Target_Persona__c</fullName>
+        <externalId>false</externalId>
+        <label>Target Persona (Sellers)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Target_Sales_Motion__c</fullName>
+        <description>The targeted stage of the sales process to use the content item.</description>
+        <externalId>false</externalId>
+        <label>Target Sales Motion</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Technology__c</fullName>
+        <externalId>false</externalId>
+        <label>Technology</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Theater__c</fullName>
+        <description>The targeted theatre location for the content item's associated offering.</description>
+        <externalId>false</externalId>
+        <label>zzTheater_Old</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Theatre_picklist__c</fullName>
+        <externalId>false</externalId>
+        <label>Theater</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Thought_Leadership__c</fullName>
+        <externalId>false</externalId>
+        <label>Thought Leadership</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Title</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <searchLayouts>
+        <searchResultsAdditionalFields>VERSION.TITLE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VERSION.CONTENT_SIZE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VERSION.FILE_EXTENSION</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VERSION.LAST_UPDATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>VERSION.OWNER</searchResultsAdditionalFields>
+    </searchLayouts>
+</CustomObject>

@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>CEE__c</fullName>
+        <description>It is the master-detail relationship with Customer Engagements Event object.</description>
+        <externalId>false</externalId>
+        <label>CEE</label>
+        <referenceTo>CEE__c</referenceTo>
+        <relationshipLabel>Customer Feedback</relationshipLabel>
+        <relationshipName>Customer_Feedbacks</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Cisco_Improvement_Opportunity__c</fullName>
+        <description>This field is used to store the below feedback question answer from Surveys
+What is the one action we could take to improve your relationship with Cisco?</description>
+        <externalId>false</externalId>
+        <label>Cisco Improvement Opportunity</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Confidence_Level__c</fullName>
+        <description>This field is used for OBX and CPOC to store the below value of the survey question
+Do you feel more or less confident...?</description>
+        <externalId>false</externalId>
+        <label>Confidence Level</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Content_Score__c</fullName>
+        <description>The above field is used to store the OBX and CPOC survey answers
+Please rate how well the content is addressed.</description>
+        <externalId>false</externalId>
+        <label>Content Score</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Experience__c</fullName>
+        <description>This field is used to store the Survey response of CPOC and OBX</description>
+        <externalId>false</externalId>
+        <label>Customer Experience</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Effectiveness_of_virtual_tool__c</fullName>
+        <description>How effective was the CPOC engineer utilizing these virtual tools?</description>
+        <externalId>false</externalId>
+        <label>Effectiveness of virtual tool</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email_Address__c</fullName>
+        <description>This field is used to store the survey response of OBX and CPOC for the Email address.</description>
+        <externalId>false</externalId>
+        <label>Email Address</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Encourage_Future_CPOC_Test_Engagements__c</fullName>
+        <description>Would you encourage future CPOC test engagements for you and your company be conducted virtually?</description>
+        <externalId>false</externalId>
+        <label>Encourage Future CPOC Test Engagements</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_and_Last_Name__c</fullName>
+        <description>This field is used to store the Survey feedback for OBX and CPOC</description>
+        <externalId>false</externalId>
+        <label>First and Last Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IP_Cameras__c</fullName>
+        <externalId>false</externalId>
+        <label>IP Cameras</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Improvement_Opportunity__c</fullName>
+        <description>This field is used to store survey values for OBX and CPOC</description>
+        <externalId>false</externalId>
+        <label>Improvement Opportunity</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Persons_Travel_saved_using_CPOC__c</fullName>
+        <description>Persons travel  saved using Virtual CPOC?</description>
+        <externalId>false</externalId>
+        <label>Persons Travel saved using CPOC</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Presenter_Feedback__c</fullName>
+        <description>This field is for storing answer for CPOC survey question as "Please enter any comments you have regarding your CPOC Engineer or overall CPOC support"</description>
+        <externalId>false</externalId>
+        <label>CPOC Feedback</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Recommendation_Feedback__c</fullName>
+        <description>This field is used to store the Survey feedback for OBX and CPOC</description>
+        <externalId>false</externalId>
+        <label>Recommendation Feedback</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Recommendation_Score__c</fullName>
+        <description>This field is used to Store the Survey feedback for CPOC and OBX</description>
+        <externalId>false</externalId>
+        <label>Recommendation Score</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recommendation_Type__c</fullName>
+        <description>This field is used to store Survey feedback for OBX and CPOC. Calculation based below .
+1. 0-6 Range (Detractors)
+2. 7-8 Range (Passives)
+3. 9-10 Range (Promoters)</description>
+        <externalId>false</externalId>
+        <formula>IF(Recommendation_Score__c &lt;&gt; '',
+IF(VALUE(Recommendation_Score__c)  &lt;= 6 , 'Detractors', 
+IF(AND(VALUE(Recommendation_Score__c) &gt;=7,VALUE(Recommendation_Score__c) &lt;= 8), 'Passives', 
+'Promoters')),'')</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Recommendation Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Speaker_Feedback__c</fullName>
+        <description>It is used to store the Survey feedback for OBX and CPOC</description>
+        <externalId>false</externalId>
+        <label>Speaker Feedback</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Survey_Project_Type__c</fullName>
+        <description>This is used to set record type in CEE Customer Feedback object</description>
+        <externalId>false</externalId>
+        <formula>IF(CEE__r.RecordTypeId = $Setup.ObjectRecordTypeIds__c.CEE_CPOC_Record_Type_ID__c, 'CPOC', 
+IF(CEE__r.RecordTypeId = TRIM(LEFT($Setup.ObjectRecordTypeIds__c.CEE_OBX_Record_Type_ID__c, 15)), 'OBX', 
+NULL))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Survey Project Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TITLE__c</fullName>
+        <description>Title of the User in  CSAT Survey</description>
+        <externalId>false</externalId>
+        <label>TITLE</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Telepresence_Video_Conferencing__c</fullName>
+        <description>Telepresence/Video Conferencing for CPOC CSAT Survey</description>
+        <externalId>false</externalId>
+        <label>Telepresence/Video Conferencing</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Virtual_Whiteboard__c</fullName>
+        <description>Virtual Whiteboard field for CPOC CSAT Survey</description>
+        <externalId>false</externalId>
+        <label>Virtual Whiteboard</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Webex__c</fullName>
+        <description>Webex for CSAT CPOC Report Type</description>
+        <externalId>false</externalId>
+        <label>Webex</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is created to store the survey information for OBX and CPOC</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Customer Feedback</label>
+    <nameField>
+        <displayFormat>A-{0000}</displayFormat>
+        <label>Customer Feedback Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>CEE Customer Feedbacks</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>CEE__c</columns>
+        <columns>OBJECT_ID</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <recordTypes>
+        <fullName>CPOC_Customer_Feedback</fullName>
+        <active>true</active>
+        <description>This will save the customer feedback for CPOC request</description>
+        <label>CPOC Customer Feedback</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>OBX_Customer_Feedback</fullName>
+        <active>true</active>
+        <description>This will save the customer feedback for OBX request</description>
+        <label>OBX Customer Feedback</label>
+    </recordTypes>
+</CustomObject>

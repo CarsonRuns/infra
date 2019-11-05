@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>ID BEGEO du partenaire de distribution</label>
+        <name>Channel_Partner_Disti_BEGEO_Id__c</name>
+    </fields>
+    <fields>
+        <label>Partenaire de distribution</label>
+        <name>Channel_Partner__c</name>
+    </fields>
+    <fields>
+        <label>IDPartenaireDistri</label>
+        <name>DistiPartnetId__c</name>
+    </fields>
+    <fields>
+        <label>ID BEGEO du compte distributeur</label>
+        <name>Distributor_Account_BEGEO_ID__c</name>
+    </fields>
+    <fields>
+        <label>ID BEGEO du distributeur</label>
+        <name>Distributor_BEGEO_ID__c</name>
+    </fields>
+    <fields>
+        <label>Distributeur</label>
+        <lookupFilter>
+            <errorMessage>Le partenaire sélectionné n'est pas un distributeur actif enregistré SCP ou figure sur la liste des distributeurs refusés, veuillez sélectionner un distributeur enregistré SCP valide.</errorMessage>
+            <informationalMessage>Cette recherche renverra uniquement les distributeurs inscrits au programme SCP. Toutefois, si vous souhaitez référencer des comptes admissibles pour l'affectation de lead, reportez-vous au lien des partenaires inscrits P360 sur le côté gauche de l'écran.</informationalMessage>
+        </lookupFilter>
+        <name>Distributor__c</name>
+        <relationshipLabel>Partenaires</relationshipLabel>
+    </fields>
+    <fields>
+        <label>ID BEGEO du partenaire</label>
+        <name>Partner_BEGEO_ID__c</name>
+    </fields>
+    <fields>
+        <label>Partenaire</label>
+        <lookupFilter>
+            <errorMessage>Le partenaire sélectionné n'est pas un partenaire actif agréé SCP ou figure sur la liste des partenaires refusés. Sélectionnez un partenaire SCP agréé valide.</errorMessage>
+            <informationalMessage>Cette recherche renverra uniquement les partenaires inscrits dans le programme SCP. Toutefois, si vous souhaitez référencer des comptes admissibles pour l'affectation de lead, reportez-vous au lien des partenaires inscrits P360 à gauche de l'écran.</informationalMessage>
+        </lookupFilter>
+        <name>Partner__c</name>
+        <relationshipLabel>Distributeurs</relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Distibutor &amp; Partner Mapping --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Distibutor &amp; Partner Mapping --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Disti Partner Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Distibutor &amp; Partner Mapping Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Max__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>True if the Lead with this combination need only one time requalification for multiple requalification then mark it as False</description>
+        <externalId>false</externalId>
+        <label>Max</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>OwnerId__c</fullName>
+        <description>If can have Lead.SDR_Lead_Owner_New__c or Queue Id. If any new field to be referenced then the format will be Lead.API_NAME</description>
+        <externalId>false</externalId>
+        <label>OwnerId</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner__c</fullName>
+        <description>Just the reference to whom the lead need to assigned</description>
+        <externalId>false</externalId>
+        <label>Owner</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>Lead requalification specific settings have been managed in this custom setting object which maps different requalification criteria with desired set of owner to be assigned.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>NGCC Requalification Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

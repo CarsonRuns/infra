@@ -1,0 +1,11 @@
+<apex:page standardController="Assigned_Partner__c">
+  <style>
+        .cs1Text         { font-family: Arial, Helvetica, sans-serif; font-size: small; }
+        .cs1RedBold      { color: red; font-weight: bold; }
+        .cs1FloatLeft    { float: left; }
+    </style>
+    
+    <apex:outputPanel styleClass="cs1FloatLeft" rendered="{!(AND(Assigned_Partner__c.Assigned_Partner__c != null, Assigned_Partner__c.Assignment_Activated__c))}">
+        <apex:outputText styleClass="cs1Text cs1RedBold" value="Prospect is assigned and visible to Partner - {!Assigned_Partner__c.Assigned_Partner__r.name}"/>
+    </apex:outputPanel>
+</apex:page>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticSnapshot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Snapshot of APIusage Report</description>
+    <groupColumn>TIME_SEGMENT</groupColumn>
+    <mappings>
+        <sourceField>JobName</sourceField>
+        <sourceType>snapshot</sourceType>
+        <targetField>snapshot__c.Name</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>TIME_SEGMENT</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>snapshot__c.APIusageSummary_Day_Of_Week__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>ExecutionTime</sourceField>
+        <sourceType>snapshot</sourceType>
+        <targetField>snapshot__c.snapshot_Execution_Time__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>RowCount</sourceField>
+        <sourceType>summary</sourceType>
+        <targetField>snapshot__c.noOfRecords__c</targetField>
+    </mappings>
+    <mappings>
+        <aggregateType>Sum</aggregateType>
+        <sourceField>CALL_COUNT</sourceField>
+        <sourceType>summary</sourceType>
+        <targetField>snapshot__c.sum__c</targetField>
+    </mappings>
+    <mappings>
+        <aggregateType>Average</aggregateType>
+        <sourceField>CALL_COUNT</sourceField>
+        <sourceType>summary</sourceType>
+        <targetField>snapshot__c.avg__c</targetField>
+    </mappings>
+    <mappings>
+        <aggregateType>Maximum</aggregateType>
+        <sourceField>CALL_COUNT</sourceField>
+        <sourceType>summary</sourceType>
+        <targetField>snapshot__c.max__c</targetField>
+    </mappings>
+    <name>APIusage</name>
+    <runningUser>sfdc_apex_user@cisco.com</runningUser>
+    <sourceReport>AdminUseOnly/APIusageSummary</sourceReport>
+    <targetObject>snapshot__c</targetObject>
+</AnalyticSnapshot>

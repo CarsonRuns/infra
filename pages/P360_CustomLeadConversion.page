@@ -1,0 +1,223 @@
+<apex:page standardController="Lead" showHeader="true" extensions="P360_Custom_Lead_Conversion_CTE" standardStylesheets="true" Id="LeadConversionPage" title="Convert Lead: {!Lead.name} ~salesforce.com - Unlimited Edition" >
+
+<script language="javascript">
+
+
+/*var HostName = window.location.hostname.toLowerCase();
+function DisplayContact()
+{
+    var ContactId = document.getElementById("{!$Component.ContactForm.ContactPageBlock.ContactPageBlockSection1.ContactNamePBSectionItem.ContactName}");
+
+    if(ContactId.value!=''){
+        var ContactUrl = "https://" + HostName + "/" + ContactId.value;
+        var newwindow = window.open(ContactUrl,"lookup","width=800,height=500,scrollbars=yes,resizable=yes,alwaysRaised=yes"); 
+    }
+    else
+    alert("You can view only existing Contacts");
+    return false;
+}
+*/
+
+
+function Disable()
+{
+    var a = document.getElementById("{!$Component.MainForm.MainPageBlock.MainPageBlockSection.DoNotPBSectionItem.DoNot}");
+    var b = document.getElementById("{!$Component.MainForm.MainPageBlock.MainPageBlockSection.OpportunityNamePBSectionItem.OpportunityName}")
+    b.disabled = a.checked;
+}
+
+
+function ValidateConvert()
+{
+    var HasError = false;
+
+    var TopError = document.getElementById('{!$Component.MainForm.MainPageBlock.TopErrorText}');
+    var RecordOwnerError = document.getElementById('{!$Component.MainForm.MainPageBlock.MainPageBlockSection.RecordOwnerPBSectionItem.RecordOwnerError}');
+    var AccountLookupError = document.getElementById('{!$Component.MainForm.MainPageBlock.MainPageBlockSection.AccountLookUpPBSectionItem.AccountLookUpError}');
+    var OpportunityNameError = document.getElementById('{!$Component.MainForm.MainPageBlock.MainPageBlockSection.OpportunityNamePBSectionItem.OpportunityNameError}');
+    var StatusError = document.getElementById('{!$Component.MainForm.MainPageBlock.MainPageBlockSection.StatusPBSectionItem.StatusError}');
+
+    TopError.innerHTML ='';
+    RecordOwnerError.innerHTML ='';
+    AccountLookupError.innerHTML ='';
+    OpportunityNameError.innerHTML ='';
+    StatusError.innerHTML ='';
+
+    var RecordOwner = document.getElementById('{!$Component.MainForm.MainPageBlock.MainPageBlockSection.RecordOwnerPBSectionItem.RecordOwner}');
+    var AccountLookup = document.getElementById('{!$Component.MainForm.MainPageBlock.MainPageBlockSection.AccountLookUpPBSectionItem.AccountLookUp}');
+    var OpportunityName = document.getElementById('{!$Component.MainForm.MainPageBlock.MainPageBlockSection.OpportunityNamePBSectionItem.OpportunityName}');
+    var Status = document.getElementById('{!$Component.MainForm.MainPageBlock.MainPageBlockSection.StatusPBSectionItem.Status}');
+    var DoNot = document.getElementById("{!$Component.MainForm.MainPageBlock.MainPageBlockSection.DoNotPBSectionItem.DoNot}");
+
+    if(RecordOwner.value == null || RecordOwner.value =='' )
+    {       
+        RecordOwnerError.innerHTML = '<b>Error:</b> You must enter a value';
+        HasError = true;
+    }
+      if(AccountLookup.value == null || AccountLookup.value =='' )
+    {       
+        AccountLookupError.innerHTML = '<b>Error:</b> You must enter a value';
+        HasError = true;
+    }
+      if(!DoNot.checked && (OpportunityName.value == null || OpportunityName.value =='') )
+    {       
+        OpportunityNameError.innerHTML = '<b>Error:</b> You must enter a value';
+        HasError = true;
+    }
+      if(Status.value == null || Status.value =='' )
+    {       
+        StatusError.innerHTML = '<b>Error:</b> You must enter a value';
+        HasError = true;
+    }
+    if(HasError)
+    {
+        TopError.innerHTML = 'Error: Invalid Data.Review all error messages below to correct your data';
+        return false;
+    }
+    else
+    return true;
+}
+
+</script>
+
+<apex:pagemessages ></apex:pagemessages>
+
+<apex:form id="ErrorOnLeadForm" rendered="{!ErrorOnLead}">
+    <apex:sectionHeader subtitle="{!Lead.name}" title="Convert Lead"/>
+        <apex:outputPanel >
+            <apex:outputText >
+                <font face = "Calibri" size = "4"><b>{!ErrorHead}</b></font><br/>
+                <font face = "Calibri" style="font-size: 12pt">{!ErrorContent} Click
+                <apex:commandLink value="here" action="{!Cancel}"/> Go Back to Previous Page.</font>
+            </apex:outputText>
+        </apex:outputPanel>
+</apex:form>
+
+
+<apex:form id="MainForm" rendered="{!(not(ErrorOnLead))}"  > 
+    <apex:sectionHeader subtitle="{!Lead.name}" title="Convert Lead" help="help"/>
+    Leads can be converted to accounts, contacts, opportunities, and followup tasks.<Br></Br>
+    You should only convert a lead once you have identified it as qualified.<Br></Br>
+    After this lead has been converted, it can no longer be viewed or edited as a lead, but can be viewed in lead reports.<Br></Br>
+    <Br></Br>
+    <apex:pageBlock id="MainPageBlock"  mode="edit">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Convert" onclick="return ValidateConvert();" action="{!Convert}"  />
+            <apex:commandButton value="Create Account" action="{!LaunchSBC}"  />
+            <apex:commandButton value="Cancel" action="{!Cancel}"/>
+        </apex:pageBlockButtons>
+
+        <apex:panelGroup id="TopErrorPanelGroup">
+        <apex:outputText id="TopErrorText" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+        </apex:panelGroup>
+
+        <apex:pageBlockSection id="MainPageBlockSection" title="Convert Lead"  collapsible="False">
+            <apex:pageBlockSectionItem id="RecordOwnerPBSectionItem">
+               <apex:outputLabel >Record Owner</apex:outputLabel>
+                <apex:panelGroup id="RecordOwnerPanelGroup">
+                    <div  style="border-left:3px solid #CC0000">
+                        <apex:inputField id="RecordOwner" value="{!AccountForOwnerField.OwnerId}"/>
+                    </div>
+                    <apex:outputText id="RecordOwnerError" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+                </apex:panelGroup>
+             </apex:pageBlockSectionItem><br></br>
+              
+              
+             <apex:pageBlockSectionItem id="SendEmailPBSectionItem">
+                <apex:outputLabel >Send Email to the Owner</apex:outputLabel>
+                    <apex:panelGroup >
+                         <apex:inputCheckbox value="{!SendEmailToRecordOwner}"/>  
+                    </apex:panelGroup>
+              </apex:pageBlockSectionItem><br></br>
+              
+     
+             <apex:pageBlockSectionItem id="AccountLookUpPBSectionItem">
+                <apex:outputLabel >Account Name</apex:outputLabel>
+                <apex:panelGroup id="AccountLookUpPanelGroup" >
+                    <div  style="border-left:3px solid #CC0000">
+                    <apex:inputfield id="AccountLookUp"  value="{!Lead.End_Customer_Account__c}">
+                    </apex:inputfield>
+                    </div>
+                     <apex:outputText id="AccountLookUpError" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+               </apex:panelGroup>
+             </apex:pageBlockSectionItem>  <br></br><br></br>
+       
+          
+             <apex:pageBlockSectionItem id="OpportunityNamePBSectionItem">
+                <apex:outputLabel >Opportunity Name</apex:outputLabel>
+                <apex:panelGroup id="OpportunityNamePanelGroup">
+                    <div  style="border-left:3px solid #CC0000">
+                    <apex:inputText id="OpportunityName" value="{!Opportunity.Name}" disabled="{!DoNotCreateOpportunity}" />
+                    </div>
+                     <apex:outputText id="OpportunityNameError" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+                </apex:panelGroup>
+            </apex:pageBlockSectionItem><br></br>
+
+             
+             <apex:pageBlockSectionItem id="DoNotPBSectionItem"><t></t><t></t><t></t>
+               <apex:panelGroup >
+                 <apex:inputCheckbox id="DoNot" value="{!DoNotCreateOpportunity}" onchange="Disable()" />
+                  Do not create a new opportunity upon conversion.         
+               </apex:panelGroup>
+            </apex:pageBlockSectionItem> <br></br>
+           
+            
+             <apex:pageBlockSectionItem id="StatusPBSectionItem">
+               <apex:outputLabel >Converted Status</apex:outputLabel>
+                 <apex:panelGroup id="StatusPanelGroup">
+                    <div  style="border-left:3px solid #CC0000">
+                        <apex:selectList id="Status" value="{!Lead.Status}" size="1">
+                            <apex:selectOptions value="{!StatusOptions}"/>
+                        </apex:selectList>
+                    <apex:outputText id="StatusError" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+                     </div>
+                 </apex:panelGroup>
+             </apex:pageBlockSectionItem>
+
+    </apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+
+<!---
+<apex:form id="ContactForm" rendered="{!And(ContactForm,Not(ErrorOnLead))}">
+<apex:sectionHeader subtitle="{!Lead.name}" title="Convert Lead"/>
+To avoid creating duplicate contacts, select from the options below. When an existing contact is selected, all open activities from the lead will be added to the contact and all new data will be added. Lead data will not overwrite existing contact data.<br></br><br></br>
+<apex:pageBlock id="ContactPageBlock" mode="edit">
+<apex:pageBlockButtons >
+<apex:commandButton value="Convert" action="{!Convert}"/>
+<apex:commandButton value="Cancel" action="{!Cancel}"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection id="ContactPageBlockSection1" title="Convert Lead">
+            <apex:pageBlockSectionItem >
+               <apex:outputLabel >Account Name</apex:outputLabel>
+               <apex:panelGroup >
+                  <apex:outputLabel value="Account.name" />
+               </apex:panelGroup>
+            </apex:pageBlockSectionItem>
+            <br></br>
+             <apex:pageBlockSectionItem id="ContactNamePBSectionItem" >
+                 <apex:outputLabel >Contact Name</apex:outputLabel>
+                 <apex:panelGroup layout="Block" >
+                  <apex:selectList id="ContactName" value="{!Contact.Id}" size="1">
+                     <apex:selectOptions value="{!ContactOptions}"/>
+                     </apex:selectList>
+                     <apex:commandLink onclick="return DisplayContact();" value="View"/> 
+                </apex:panelGroup>
+             </apex:pageBlockSectionItem>
+</apex:pageBlockSection>             
+ <apex:pageBlockSection id="ContactPageBlockSection2" title="Overwrite Lead Source">
+             <apex:pageBlockSectionItem id="LeadSourcePBSectionItem"  >
+                <apex:panelGroup >
+                <apex:inputCheckbox value="{!OverrideLeadSource}"/>
+                  Replace existing Lead Source with the value from this lead
+               </apex:panelGroup>
+            </apex:pageBlockSectionItem>
+            <br></br>
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:form>
+
+-->
+
+</apex:page>

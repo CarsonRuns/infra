@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label>Date de fin</label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label>Motif</label>
+        <name>Reason__c</name>
+        <picklistValues>
+            <masterLabel>Holiday</masterLabel>
+            <translation>Jour férié</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Autre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PTO</masterLabel>
+            <translation>Congés</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Date de début</label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label>Utilisateur</label>
+        <name>User__c</name>
+        <relationshipLabel>Calendriers CEE</relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- CEE Calendar --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- CEE Calendar --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Calendar Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>CEE Calendar Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

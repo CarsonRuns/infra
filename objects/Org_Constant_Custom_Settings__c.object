@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>daysCount__c</fullName>
+        <externalId>false</externalId>
+        <label>daysCount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>enddate__c</fullName>
+        <externalId>false</externalId>
+        <label>enddate</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>recordTypeId__c</fullName>
+        <externalId>false</externalId>
+        <label>recordTypeId</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>startDate__c</fullName>
+        <externalId>false</externalId>
+        <label>startDate</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>For the Batch Class</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Org Constant Custom Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

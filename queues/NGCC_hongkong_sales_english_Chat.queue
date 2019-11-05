@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>NGCC-hongkong-sales-english-Chat</name>
+    <queueMembers>
+        <users>
+            <user>andyzha@cisco.com</user>
+            <user>cocshan@cisco.com</user>
+            <user>galei@cisco.com</user>
+            <user>ivhuang@cisco.com</user>
+            <user>jasonhu2@cisco.com</user>
+            <user>jesslin@cisco.com</user>
+            <user>jessiezh@cisco.com</user>
+            <user>raymwang@cisco.com</user>
+            <user>sevyan@cisco.com</user>
+            <user>sitlin@cisco.com</user>
+            <user>sirchen@cisco.com</user>
+            <user>sueyu@cisco.com</user>
+            <user>suntian@cisco.com</user>
+            <user>yuanzhen@cisco.com</user>
+            <user>jinsyang@cisco.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Omnichannel_Routing</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveAgentSession</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

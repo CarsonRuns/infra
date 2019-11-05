@@ -1,0 +1,227 @@
+<apex:page contentType="text/css">
+.status
+{
+    width:20px;
+    word-break:normal;
+
+}
+.table>thead>tr
+{
+    border-bottom:1px !important;
+}
+
+.table>thead>tr>th:nth-child(n+2):before
+{
+border-right: 0px;
+}
+.table>thead>tr>th:first-child
+{
+    position: absolute;
+    display: inline-block;
+    background-color:#fff; 
+    line-height: 1;
+    padding-top: 5px !important;
+
+    z-index:2;
+ 
+}
+
+ .resp-table > .table > thead > tr > th 
+ {
+     white-space: nowrap;
+     border-top: 1px #ccc solid !important; 
+ } 
+ 
+.table> tbody > tr > td:first-child
+{
+    position: absolute;
+    display: inline-block;
+    background-color:#fff;
+    
+}
+.table> tbody > tr > td:nth-child(2)
+{
+    padding-left :90px !important;
+
+}
+.table> thead > tr > th:nth-child(2)
+{
+    padding-left :90px !important;
+    padding-top: 12px !important;
+   
+}
+   
+     body,
+     table {
+     background-color: white;
+     }
+      .stform-control
+      {
+      max-width:90px !important;
+      margin:2px;
+      }
+      .btn-xs
+      {
+          font-size: 10px;
+      }
+      .table-legend {
+      max-width: 100%;
+      color: white;
+      }
+      .td-legend
+      {
+      padding:10px;
+      font-weight: bold;
+      }
+      .stdropbtn {
+      color: grey;
+      background-color: white;
+      border: none;
+      cursor: pointer;
+      margin-left: -5px;
+      }
+      .stdropdown {
+      position: relative;
+      display: inline-block;
+      }
+      .stcard-dropdown {
+      float: right;
+      margin-right: 10px;
+      margin-top: 10px;
+      }
+      .stdropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      z-index: 9999;
+      background-color: #f9f9f9;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      }
+      .stdropdown-contentlong {
+      display: none;
+      position: absolute;
+      right: 0;
+      z-index: 9999;
+      background-color: #0096d6;
+      color: white;
+      min-width: 300px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 5px;
+      height: 100px;
+      overflow: auto;
+      }
+      .stdropdown-content a {
+      color: black;
+      padding: 5px 5px;
+      text-decoration: none;
+      display: block;
+      }
+      .stdropdown-content a:hover {
+      background-color: #f1f1f1
+      }
+      .stdropdown-contentlong a {
+      color: black;
+      padding: 5px 5px;
+      text-decoration: none;
+      display: block;
+      }
+      .stdropdown-contentlong a:hover {
+      background-color: #f1f1f1
+      }
+      .stdropdown:hover .stdropdown-content {
+      display: block;
+      }
+      .stdropdown:hover .stdropdown-contentlong {
+      display: block;
+      }
+      .stmargin {
+      margin-top: 10px;
+      }
+      td {
+      vertical-align: middle !important;
+      }
+      .status {
+      color: orange;
+      }
+      .stcard {
+    /*  border: 1px solid #EEE; */
+      max-width: 100%;
+      height: 100%;
+      width: 100%;
+      }
+      .header {
+    /*  height: 120px !important;*/
+      border-bottom: 1px solid #EEE;
+      background-color: #ffffff;
+      padding: 5px;
+      }
+      .headerExtn {
+    /* height: 140px !important;*/
+      border-bottom: 1px solid #EEE;
+      background-color: #ffffff;
+      padding: 5px;
+      }
+      .headerTitle {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px;
+      }
+      .glyphicon-option-horizontal,
+      .glyphicon-search {
+      color: grey;
+      float: right;
+      font-size: 14px;
+      top: 5px;
+      padding: 5px;
+      }
+      .stcard-dropdown {
+      float: right;
+      margin-right: 10px;
+      margin-top: 10px;
+      }
+      .stform-control {
+      width: 180px !important;
+      font-size: 90%;
+      }
+      .table {
+      width: 100%;
+      *margin-left: -100px;/*ie7*/
+      }
+      .order-status {
+      position:absolute;
+      width:20%;
+      left:0px;
+      }
+      .outer {
+      position:relative;
+      }
+      .inner {
+      overflow-x:auto;
+      overflow-y:auto;
+      width:80%; 
+      margin-left:20%;
+      }
+      .fade-hide, .fade-show {
+      -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+      -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+      -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+      transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+      }
+      .fade-hide {
+      opacity:1;
+      }
+      .fade-hide.fade-hide-active {
+      opacity:0;
+      }
+      .fade-show {
+      opacity:0;
+      }
+      .fade-show.fade-show-active {
+      opacity:1;
+      }
+      .content > * {
+    width: 100vw;
+
+}
+</apex:page>

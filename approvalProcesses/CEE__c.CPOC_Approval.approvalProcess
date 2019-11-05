@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Preferred_Lab__c</field>
+        <field>Service_type__c</field>
+        <field>CPOC_Start_Date__c</field>
+        <field>CPOC_End_Date__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Primary_Scheduler__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Approve the request</label>
+        <name>Approve_the_request</name>
+    </approvalStep>
+    <description>Approval process for CPOC request</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>(1 AND 2 AND 3)</booleanFilter>
+        <criteriaItems>
+            <field>CEE__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Preferred_Lab__c</field>
+            <operation>equals</operation>
+            <value>CPOC Tokyo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>&quot;Saved, not Submitted&quot;,Lab Redirect,Returned by Scheduler</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Change_status_to_schduled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Change_status_to_cancel</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Change_status_to_Submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Submitted_Date_CPOC</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>CPOC Approval</label>
+    <recallActions>
+        <action>
+            <name>Request_Status_updated_to_Saved_not</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

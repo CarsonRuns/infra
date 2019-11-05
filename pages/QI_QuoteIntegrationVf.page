@@ -1,0 +1,32 @@
+<!--
+* @author       Sampoorna Bacha
+* @version      Intial version (1.0)
+* @since        2019-04-12 (YYYY-MM-DD)
+* @description  Visualforce page for lightning out(Integrate Quote button)
+* @modification log
+* iTrack#                         Date                       Author               Change
+-->
+<apex:page standardController="Quote__c" recordSetVar="QuoteVar" >
+    <apex:includeLightning />
+   <!--Using lightningout, rendering the lightning component.-->
+    <div id="QI_IntegrateQuoteBtn"></div> 
+    
+    <script>
+      
+    $Lightning.use("c:QuoteIntegrationDependencyApp", function() {
+      
+    $Lightning.createComponent("c:QI_IntegrateQuoteBtn",
+    { 
+       recordId : '{!$CurrentPage.parameters.Id}'
+ 	},
+   "QI_IntegrateQuoteBtn",
+    function(component) {
+        
+    });
+ });
+ </script>
+    <style>
+        #auraErrorMessage {
+        display:none !important;
+    </style>
+</apex:page>

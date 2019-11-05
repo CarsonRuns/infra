@@ -1,0 +1,104 @@
+<apex:page showheader="true" standardStylesheets="false" title="Account: {!OEAccount.Name}" standardController="account" extensions="DSE_Main_CTE">
+<!--
+Change History
+    06092017 - Updated to include DSE iframe for TAC details
+-->
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="max-age=0" />
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache" />
+    <META http-equiv="expires" content="0" />
+    <link rel="stylesheet" href="/apex/DSE_Main_CSS" />
+    <apex:stylesheet value="{!URLFOR($Resource.ciscobootstrap, '/css/bootstrap.css')}" />
+    <!--<apex:stylesheet value="{!URLFOR($Resource.newbootstrap, '/boot/css/bootstrap.css')}" />-->
+    <!--<apex:stylesheet value="{!URLFOR($Resource.ciscobootstrap, '/css/bootstrap-theme.css')}" />-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
+   <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    
+    <script src="/apex/DSE_Tabular_Directives_v2"></script>
+    <script src="/apex/DSE_D3_Directives"></script>
+    <script>
+        angular.module('myApp', ['ui.bootstrap', 'directives.DSE_table','directives.DSE_D3']);
+        
+    </script>
+    <div class="dse-st" ng-app="myApp">
+   
+        <div>
+            <div >
+                <div class="row">
+                    <div class="col-md-8" style="padding:10px">
+                        <div>
+                            <h3><small><a href="/{!$CurrentPage.parameters.childAccId}"><span class="glyphicon glyphicon-chevron-left"></span></a></small>&nbsp;{!OEAccount.Name}
+                           <br/>                           
+                           <span class="stMain-span">ORGANIZATION ENTITY</span>                           
+                        </h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="row" style="width:97%;margin:20px;padding:10px;border-bottom: 2px #eee solid;">
+
+                    <table class="sttable" style="background-color:white;border-color:white;">
+                        <thead align="left">
+                            <th><h5><small>NAME:</small></h5></th>
+                            <th><h5><small>OE ID:</small></h5></th>
+                            <th><h5><small>NUMBER OF SITES:</small></h5></th>
+                            <th><h5><small>TYPE:</small></h5></th>
+                            <th><h5><small>COUNTRY:</small></h5></th>                            
+                        </thead>
+                        <tbody align="left">
+                            <tr>
+                                <td>
+                                    <h5>{!OEAccount.Name}</h5></td>
+                                <td>
+                                    <h5>{!OEAccount.OE_Id__c}</h5></td>
+                                <td>
+                                    <h5>{!OEAccount.Number_of_Sites_under_OE__c}</h5></td>
+                                <td>
+                                    <h5>{!OEAccount.OE_Type__c}</H5></td>
+                                <td>
+                                    <h5>{!OEAccount.OE_Country__c}</h5></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+            <!------Header------>
+            <stss-Table apipath="allaccounts" timezone="{!tzCode}" apitype="SFDC" mtoken="{!mtoken}" apiobject="account" localeformat="{!localeformat}" sectitle="Account Sites" locale="{!locale}" oeid="{!OEAccount.OE_Id__c}" partyid="{!OEAccount.CSCSiteID__c}">
+                        </stss-Table>        
+            <!-- 
+                <hr/>
+            <stss-Table view-name="oeview" apipath="oecaseorderapi/v1.0/cases/tech" apitype="external" mtoken="{!mtoken}" apiobject="taccase" timezone="{!tzCode}" localeformat="{!localeformat}" sectitle="TAC Cases" locale="{!locale}" oeid="[{!OEAccount.OE_Id__c}]">
+            </stss-Table> 
+            -->
+            <div>
+                 <iframe src="" id="ib_iframe" width="101%" height="400px" frameborder="0" style="margin-left: -5px;"></iframe>
+            </div>
+        </div>
+    </div>
+</html>
+<script type="text/javascript">
+    var SFDCBaseURL = 'https://' + window.parent.location.host;
+    var iframeURLString = '&baseURL='+SFDCBaseURL;
+    var userName = '{!$user.userName}'.split("@")[0];
+    var dseApp = 'https://dse.cloudapps.cisco.com';
+    var param = window.parent.location.search;
+    function dseEnv(){
+            if(window.parent.location.host !== 'ciscosales.my.salesforce.com'){
+            dseApp = 'https://dse-fpr.cloudapps.cisco.com';
+        }
+    }
+    dseEnv();
+    if(param === ''){
+    //SCAVA FIX    
+    document.getElementById("ib_iframe").src = dseApp+'/dse/tac/detail?un='+userName+'&view=tac&sourceName=OrgEntity&pid={!$CurrentPage.parameters.id}&childAcctID={!JSENCODE($CurrentPage.parameters.childAccId)}&oeId={!JSENCODE(OEAccount.OE_Id__c)}'+iframeURLString;    
+    } else {
+     //SCAVA FIX
+     document.getElementById("ib_iframe").src = dseApp+'/dse/tac/detail?un='+userName+'&view=tac&sourceName=OrgEntity&pid={!$CurrentPage.parameters.id}&childAcctID={!JSENCODE($CurrentPage.parameters.childAccId)}&oeId={!JSENCODE(OEAccount.OE_Id__c)}'+iframeURLString+'&'+param.substring(1, param.length);
+    }
+</script>
+</apex:page>

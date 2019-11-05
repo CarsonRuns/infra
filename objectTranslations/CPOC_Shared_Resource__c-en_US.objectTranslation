@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- CPOC All Shared Resource --></label>
+        <name>CPOC_All_Shared_Resource__c</name>
+        <relationshipLabel><!-- CPOC Shared Resources --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Shared Resource End Date --></label>
+        <name>CPOC_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shared Resource Start Date --></label>
+        <name>CPOC_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Engagements &amp; Events --></label>
+        <name>Customer_Engagements_Events__c</name>
+        <relationshipLabel><!-- CPOC Shared Resources --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CPOC Shared Resource</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CPOC Shared Resources</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- CPOC Start date should be less than CPOC End date --></errorMessage>
+        <name>Visit_End_date_should_be_more</name>
+    </validationRules>
+</CustomObjectTranslation>

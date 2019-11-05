@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Ajouter à l'audit de conformité</label>
+        <name>Add_to_Compliance_Audit__c</name>
+    </fields>
+    <fields>
+        <help>Saisissez votre expression régulière ici. En renseignant ce champ, celui du mot se vide.
+N'oubliez pas d'ajouter \b au début et à la fin si vous voulez trouver un mot complet.</help>
+        <label>Expression personnalisée</label>
+        <name>Custom_Expression__c</name>
+    </fields>
+    <fields>
+        <label>Mots entiers seulement</label>
+        <name>Match_Whole_Words_Only__c</name>
+    </fields>
+    <fields>
+        <label>Éviter la publicat. d'une vulnérabilité</label>
+        <name>Prevent_Post_on_Breach__c</name>
+    </fields>
+    <fields>
+        <label>Valeur Regex</label>
+        <name>RegexValue__c</name>
+    </fields>
+    <fields>
+        <help>Saisissez une brève description du mot, de l'expression ou de la phrase sur liste noire, ce qui peut être particulièrement utile pour décrire une expression personnalisée.</help>
+        <label>Courte description</label>
+        <name>Short_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Substitution --></label>
+        <name>Substitution__c</name>
+    </fields>
+    <fields>
+        <label>Mot ou phrase</label>
+        <name>Word__c</name>
+    </fields>
+    <fields>
+        <label>Est actif</label>
+        <name>is_Active__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Blacklisted Word --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Blacklisted Word --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- BlacklistedWord Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Blacklisted Word Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

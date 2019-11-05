@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Cloud Partner offer service</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>DO NOT USE 09</label>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Cloud_Demand_Partner_Service_Offer__c.Cloud_Demand_Model__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Cloud_Demand_Partner_Service_Offer__c.Cloud_Demand_Offer__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Cloud_Demand_Partner_Service_Offer__c.Cloud_Demand_Partner_BE_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Cloud_Demand_Partner_Service_Offer__c.Cloud_Demand_Partner__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Cloud_Demand_Partner_Service_Offer__c.Cloud_Demand_Proxy__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Cloud_Demand_Partner_Service_Offer__c.Cloud_Demand_Units__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Cloud_Demand_Partner_Service_Offer__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <tabSettings>
+        <tab>Cloud_Demand_Partner_Service_Offer__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

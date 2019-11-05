@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>GSSO - SFDC Update</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Cisco_Logo</letterhead>
+    <name>GSSO - SFDC Update</name>
+    <style>freeForm</style>
+    <subject>GSSO SFDC Status Update - Fri July 31, 2015</subject>
+    <textOnly>GSSO Salesforce.com (SFDC) Current Status
+
+As of 11am EST, Friday, July 31, 2015
+
+
+
+General SFDC Availability
+
+
+Salesforce.com is up and running, and has been since late Monday, July 27.
+
+
+
+Accounts &amp; Visibility
+
+
+Corporate re-alignment of Territories and Accounts for the FY16 Structure was in place Monday, July 27. We can expect a few minor changes, but nothing major.
+The FY16 GSSO SHARE hierarchy has been loaded into SFDC.
+Your visibility to accounts depends on your SHARE hierarchy being aligned to your Account’s Territory Hierarchy. If they match (at any level), you can see the account and related Opportunities and Workspaces. If they don’t match, you may not be able to see the account.
+IMPORTANT: All GSSO SFDC Reports and Dashboards that key off Sales Level 1, 2 and 3 should be accurate at this point.
+
+
+
+Workspace User &amp; Forecast Position Assignment
+
+
+GSSO Sales Ops built a process to review open Security Workspaces, compare the Territory Node they were aligned to, and look up the lowest level (most specific) Security AM and Forecast Position aligned to that Territory Node.
+If the Security AM and Forecast Position were the same as FY15, we left it alone.
+If it changed, we have submitted for that Workspace to be updated.
+Approximately 6,000 Workspaces will remain the same as FY15.
+Approximately 3,000 Workspaces have been updated so far. We are reviewing the final 2,000 Workspaces and those will be update early next week.
+While this automated process will correct most records, some will need further review by Sales Managers. GSSO Sales Ops will be reaching out to each Sales Manager next week to ensure all Workspaces are properly assigned.
+
+
+
+Sub-BE (Business Entity) and Product Family Update
+
+
+
+Will occur the week of August 3, as previously communicated.
+
+
+
+
+Please direct any questions to our Support Email address at gsso_sfdc_support@cisco.com
+
+
+Thank you.
+
+
+
+
+Thanks for you cooperation!
+
+GSSO Sales Operations</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

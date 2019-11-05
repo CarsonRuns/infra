@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>PDP_Rec_Typ_to_Cal_Based</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>PDP_Requested_to_Event_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>PEPE_PVT_EMEAR_Admin_notifies_hosts_on_TR_Approved</name>
+                <type>Alert</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>PEPE_PVT_ADMIN_QUEUE</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>This app step is to req for lpbc.</description>
+        <entryCriteria>
+            <formula>AND(ISPICKVAL( Training_Offering_Id__r.Platform__c, &apos;PVT&apos;),
+(TEXT(Status__c) == &apos;Requested&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>RejectRecord</ifCriteriaNotMet>
+        <label>Step 1</label>
+        <name>Step_1</name>
+        <rejectionActions>
+            <action>
+                <name>PDP_Requested_to_Request_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>PEPE_PVT_TR_rejected_by_admin_sends_notification_to_host</name>
+                <type>Alert</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>This Approval Process is to have a business workflow automation behind the HOSTS and PLED team. PLED Team either approves or rejects the record based on the details provided in the record.</description>
+    <emailTemplate>PEPE_Email_Template_Notifications/PEPE_Hosts_Submits_TR_to_PVT_Admin_EMEAR</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Added into cart</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.Training_Event_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.RecordType</field>
+            <operation>equals</operation>
+            <value>PVT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.Count_TSR__c</field>
+            <operation>greaterThan</operation>
+            <value>0.0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>PDP_Added_into_cart_to_Requested</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PEPE_Calendar_changd_to_Requestd_layout</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>PVT Hosts Submits to PLED Admin EMEAR</label>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

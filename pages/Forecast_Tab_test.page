@@ -1,0 +1,55 @@
+<apex:page showHeader="true" sidebar="true" tabStyle="Forecast__tab" controller="Forecast_Tab_10_0_CT">
+
+    <script language='JavaScript'>
+
+
+    var fcstRedirect =  '/servlet/OpmgmtControllerNoAuth?SOURCE_APP=SFDC&nextPageCode=MYFCST';
+
+    var hostname = window.location.hostname.toLowerCase();
+
+    var urlToOpen = '{!link}&SFDCSess={!$API.Session_ID}';
+
+
+/***********Nov/12/2016 Added by Prashanth as a temporary workaround, looks like we dont have the label */
+
+    var vpnErrMsg = '{!$Label.Forecast_Tab_unavialable_error_message}';
+
+/************Nov/12/2016 Added by Prashanth as a temporary workaround, looks like we dont have the label */
+
+
+    var appErrMsg = '{!$Label.Forecast_Tab_unavialable_error_message}';
+
+
+    var app = '<html><head><style>div {visibility:hidden;}</style></head><body>' +
+         '<div id="errmsg">'+vpnErrMsg+'</div>' +
+         '<div id="apperrmsg">'+appErrMsg+'</div>' +
+         '<br><br><center><p id="chking">Checking Connection.....</p></center><br><center><img id=wd src="https://'+hostname+'/img/waiting_dots.gif"></img></center>' +
+         '<image src="{!VPN}" id=chk width=0 height=0 onload="parent.onVpn()" onerror="parent.error()" />' +
+         '<image id="appChk" width=0 height=0 onload="parent.appAvail()" onerror="parent.appError()" />' +
+         '</body></html>';
+
+    function onVpn(){
+        appFrame.document.getElementById("appChk").src = '{!appImgUrl}';
+    }
+
+    function error(){
+        appFrame.document.getElementById("chking").style.visibility="hidden";
+        appFrame.document.getElementById("wd").style.visibility="hidden";
+        appFrame.document.getElementById("errmsg").style.visibility="visible";
+    }
+
+    function appAvail(){
+
+        //appFrame.location.href=urlToOpen;
+            top.location.href=urlToOpen;
+    }
+    function appError(){
+        appFrame.document.getElementById("chking").style.visibility="hidden";
+        appFrame.document.getElementById("wd").style.visibility="hidden";
+        appFrame.document.getElementById("apperrmsg").style.visibility="visible";
+    }
+
+
+    </script>
+    <iframe name="appFrame" frameborder="0" width="100%" height="600px" src="javascript:parent.app" />
+</apex:page>

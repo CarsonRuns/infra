@@ -1,0 +1,822 @@
+<!-- ********** Change History **********
+ 01 - 03/13/2016 - WR-01521 - Added logic to check if user has accepted the TnC for LnP Access
+********** Change History ********** 
+ 02 - 23-May-2019 - gchaitha - US305721 - Added DRT Lead field in the filter
+-->
+
+<apex:page tabstyle="lead" sidebar="false" showHeader="true"
+    showChat="true" controller="SCP_Communities_leadFilter_CT_Clone" language="{!$CurrentPage.parameters.lang}">
+    <apex:includeScript value="{!$Resource.jQuery1_9}" />
+    <apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery-ui.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.filter.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.filter.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/themes/ui-lightness/jquery.ui.all.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.extjs_css)}" />
+    <apex:includeScript value="{!URLFOR($Resource.jquery_datatable, 'jquery/js/jquery.dataTables.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.datatable)}" />
+    <!-- <apex:includeScript value="{!URLFOR($Resource.jquery_datatable, 'jquery/js/jquery.dataTables.js')}" /> -->
+    <apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/dataTables.tableTools.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/jquery.dataTables.css')}" />
+    <apex:includeScript value="{!$Resource.lnp_tnc_popup}"/>
+    <style>
+        .ui-widget {
+        font-size: 100%;
+        z-index: 1500;
+        }
+    </style>
+    <script type="text/javascript">     
+    //WR-01521 - Fatching the Custom labels to be used for popup message 
+    var header = '{!JSENCODE($Label.LnP_TnC_Popup_Header)}';
+    var accesscheck = '{!JSENCODE($Label.LnP_TnC_Popup_Text1)}';
+    var accesscheck1 = '{!JSENCODE($Label.LnP_TnC_Popup_Text2)}';
+    var accesscheck2 = '{!JSENCODE($Label.LnP_TnC_Popup_Text3)}';
+    var accesscheck3 = '{!JSENCODE($Label.LnP_TnC_Popup_Text4)}';
+    var accept = '{!JSENCODE($Label.LnP_TnC_Popup_Accept)}';
+    var cancel = '{!JSENCODE($Label.LnP_TnC_Popup_Cancel)}';
+    
+    
+        var jqd$ =  $;
+        jQuery(function ($) {
+        //WR-01521 - Call the popup message form the static resource JS by passing Custom Label texts.
+            if('{!isChekAccesLead}' != 'true'){
+                checkAccessLP_leadTab(header, accesscheck, accesscheck1, accesscheck2, accesscheck3, accept, cancel);
+            } 
+            "use strict";
+             hideComp();
+            $('body').addClass('leadfilterstyle');
+            $('verfID').addClass('ui-widget');
+             showComp();
+        }); 
+        
+        var searchPageUrl;
+        var userTable;
+        var m1,m2,m3,m4;
+        var colIdx =  -1;
+        var rowIdx =  -1;
+        var libCount = 0;
+                
+        function _applyMutliselct() {
+            if (typeof m1 != 'undefined') {
+                m1.multiselectfilter('destroy');
+                m1.multiselect('destroy');
+            }
+
+            if (typeof m2 != 'undefined') {
+                m2.multiselectfilter('destroy');
+                m2.multiselect('destroy');
+            }
+
+            if (typeof m3 != 'undefined') {
+                m3.multiselectfilter('destroy');
+                m3.multiselect('destroy');
+            }
+
+            if (typeof m4 != 'undefined') {
+                m4.multiselectfilter('destroy');
+                m4.multiselect('destroy');
+              }
+              /*****/
+            
+            m1 = $('.uiMultiSelect').multiselect({
+                selectedList: $('.uiMultiSelect').find('option').length,                
+                header: true,
+                noneSelectedText: '{!$Label.PRM_multiselect_droplist_val}',                                
+                classes: 'uiMultiSelect'
+            });
+            m1.multiselect().multiselectfilter({
+                placeholder: ' ',
+                autoReset: true
+
+            });            
+            m2 = $('.uiMultiSelectMain').multiselect({
+                header: true,
+                noneSelectedText: '{!$Label.PRM_multiselect_droplist_val}',                
+                multiple: false,
+                selectedList: 1,
+                classes: 'uiMultiSelectMainComp uiuiMultiSelectMainMenu'
+            });
+            m2.multiselect().multiselectfilter({
+                placeholder: ' ',
+                autoReset: true
+              });
+
+            m3 = $('.selectOpenOpp').multiselect({
+                header: true,
+                noneSelectedText: "{!$Label.PRM_multiselect_droplist_val}",
+                multiple: true,
+                selectedList: 1,
+                classes: 'uiMultiSelect selectOpenOpp'
+
+            });
+            m3.multiselect().multiselectfilter({
+                placeholder: ' ',
+                autoReset: true
+            });
+            
+            m4 = $('.uiMultiSelect2').multiselect({
+                header : true,
+                nonSelectedText: "{!$Label.PRM_multiselect_droplist_val}",
+                multiple : false,
+                selectedList: 1,
+                classes : 'uiMultiSelect2'
+                
+            });
+            m4.multiselect().multiselectfilter({
+                placeholder: ' ', 
+                autoReset:true
+            });
+            
+            $('.uiMultiSelect2').css({
+                'width': '150px'
+            });
+            $('.uiMultiSelect2').find('span:eq(1)').css({
+                'white-space': 'nowrap',
+                'width': '119px',
+                'position': 'absolute',
+                'overflow': 'hidden',
+                'text-overflow': 'ellipsis'
+              });
+            $('.uiMultiSelect').css({
+                'width': '150px'
+              });
+            $('button.uiMultiSelectMainComp').css({
+                'width': '200px',
+                'margin-left': '20px',
+                'margin-bottom': '12px'
+            });
+            $('.uiMultiSelect').find('span:eq(1)').css({
+                'white-space': 'nowrap',
+                'width': '119px',
+                'position': 'absolute',
+                'overflow': 'hidden',
+                'text-overflow': 'ellipsis'
+            });
+            $('.ui-multiselect-menu').css({
+                'width': '380px'
+            });
+            $('.uiMultiSelectMainComp').css({
+                'width': '380px'
+            });
+            $('.ui-multiselect-menu ul li').css({
+                'margin': '2px'
+            });
+
+            $('.ui-multiselect-menu ul li').css({
+                'margin': '2px'
+            });
+
+            $('.ui-multiselect-menu ul li input[type=checkbox]').css({
+                'margin': '0px 2px 0px 2px'
+            });
+
+            /*****/
+        }
+        function hideComp() {         
+            destoryDT();
+            $('#j_id0\\:filterform\\:block1\\:pgbk2').css("display", "none");
+            $('div[id$="pgbk3"]').css("display", "none"); 
+            $('div[id$="loading"]').css("display", "block"); 
+        }
+        
+        function showComp() {
+            init();
+            // Below are the lines to hide the checkAll and uncheckAll from the filter plugin
+            $('.ui-icon-check').next().hide()
+            $('.ui-icon-closethick').next().hide()            
+            $('.ui-multiselect-filter').addClass('fa fa-filter');
+            $('.ui-multiselect-filter').addClass('filtericonsize');           
+            $('div[id$="loading"]').hide();
+            $('div[id$="pgbk3"]').css("display","block");
+            $('div[id$="filterpanel"]').removeClass("hidefilter");             
+                              
+        }
+              
+        function bindEvents() {                       
+            $(document).on('click', '[id$="select_all"]', function () {                       
+                bval = $(this).val();              
+                if (this.checked) {
+                    $('.chkbox').each(function (i, row) {
+                    if ($(this).prop('checked') == false) {
+                        $(this).prop('checked', true);
+                        chCounter = chCounter + 1;
+                    }                    
+                }) 
+                toggelPSR();               
+            }
+            else {
+                $('.chkbox').each(function (i, row) {
+                    if ($(this).prop('checked') == true) {
+                        $(this).prop('checked', false);
+                        chCounter = chCounter - 1;
+                    }
+                })
+                toggelPSR();                 
+            }                              
+        }) 
+        $(document).on('click', '.chkbox', function () {    
+            toggelPSR();
+            if (this.checked) {             
+                chCounter = chCounter + 1;
+            } 
+            else {
+                chCounter = chCounter - 1;
+            }         
+        })         
+        
+        /*
+        * Code added by SADUVVUR on 10/22/2014
+        * Modified for : US7050
+        */
+        $(document).on('click', '#select_all2', function () {           
+            bval2 = $(this).val();
+            if (this.checked) {
+                $('.chkbox2').each(function (i, row) {
+                    if ($(this).prop('checked') == false) {
+                        $(this).prop('checked', true);
+                        chCounter = chCounter + 1;
+                    }
+                })
+            } 
+            else {
+                $('.chkbox2').each(function (i, row) {
+                    if ($(this).prop('checked') == true) {
+                        $(this).prop('checked', false);
+                        chCounter = chCounter - 1;
+                    }
+                })
+                chCounter = 0;
+            }                       
+        })
+        
+        $('.chkbox2').on('change', function () {
+            if (this.checked) {             
+                chCounter = chCounter + 1;
+            } 
+            else {
+                chCounter = chCounter - 1;
+            }
+        })
+    }
+        
+    function init() {
+        _applyMutliselct();
+        chCounter = 0;
+        initlizeUserTable();        
+        bindEvents();        
+        searchPageUrl = '{!SearchPageUrl}';
+    }   
+      function initlizeUserTable() {
+            i=0;
+            if (userTable != null) {
+                userTable.destroy();
+            }
+            userTable =  jqd$('.leadTB').DataTable({       
+            "bJQueryUI": true,
+            "autoWidth": true,
+            "ordering": true,        
+            "scrollY": "400px",
+            "scrollX": true,
+            "info":false,                               
+            "lengthChange":false,   
+            "aaSorting" : [],
+            "paging":false,
+            "searching":false,                 
+            "filter": false,
+            "destroy": true,
+            "retrieve": true,
+            "oColReorder": false,
+             "drawCallback": function( settings ) {
+                jqd$(".dataTables_scrollHeadInner").css("width","100%");
+                jqd$(".no-footer").css("width","100%")             
+                if(i== 0) {
+                    i++;
+                    setTimeout(function(){
+                        $("[id$='lead_table']").css("width","96%");
+                        // $("[id$='_0header']").click();                                             
+                    }, 200);
+                    
+                }
+            }      
+           });       
+           userTable.draw(false);                           
+        }            
+    
+    function destoryDT() {      
+        if(typeof dt != "undefined")
+            $("[id$='lead_table']").DataTable().destroy();                 
+    }    
+    function openPSRWindow() {
+        $('#j_id0\\:filterComp\\:j_id8\\:j_id11\\:block1\\:pgbk2\\:psrop').css({
+            'display': 'block',
+            'z-index': '1000 !important',
+            'modal': 'true'
+        });
+    }
+
+    function getSelectedUserId(psr, userid, username) {
+        if(psr=='psr1') {
+            $("[id$='psr1_name']").val(username);
+            $("[id$='psr1_id']").val(userid);
+        }
+        if(psr=='psr2') {
+            $("[id$='psr2_name']").val(username);
+            $("[id$='psr2_id']").val(userid);
+        }
+        if(psr=='psr3') {
+            $("[id$='psr3_name']").val(username);
+            $("[id$='psr3_id']").val(userid);
+        }
+    }
+    
+    function openPopUpWindow(psr) {
+        uid = '';
+        psr1_Id = $('[id$=\'psr1_id\']').val();
+        psr2_Id = $('[id$=\'psr2_id\']').val();
+        psr3_Id = $('[id$=\'psr3_id\']').val();
+        uid = 'uid1=' + psr1_Id + '&uid2=' + psr2_Id + '&uid3=' + psr3_Id;
+        
+        var SearchPageUrl = '{!SearchPageUrl}';
+        if (SearchPageUrl == '') {
+            SearchPageUrl = '../lp/apex/SCP_Communities_psrSearch';
+        }
+        
+        sUrl = SearchPageUrl + '?psrId=' + psr + '&' + uid + '&core.apexpages.devmode.url=0';
+        window.open(sUrl, '', 'width=400,height=400,dependent=yes,scrollbars=yes,resizable=no');
+        return false;
+    }  
+    function loadLibraries() {
+        $.getScript("{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}").done(function (script, textStatus) {
+            console.log('jquery.ui.core.js');
+            console.log(libCount);
+            chkLoad();
+        }).fail(function (jqxhr, settings, exception) {
+            console.log('jquery.ui.core:\t' + exception);
+        });
+
+        $.getScript("{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}").done(function (script, textStatus) {
+            console.log('ui.widget.js');
+            console.log(libCount);
+            chkLoad();
+        }).fail(function (jqxhr, settings, exception) {
+            console.log('jquery.ui.widget:\t' + exception);
+        });
+    }
+
+    function chkLoad() {
+      libCount--;
+      if (libCount == 0)
+      showComp();
+      return false;
+    }
+
+    function openWindow() {
+        leftOffset = (screen.width / 2) - 900 / 2;
+        topOffset = (screen.height / 2) - 300 / 2;
+        // SCAVA FIX      
+        var URI = '{!JSENCODE($Setup.P360_urls__c.Lead_upload__c)}';        
+        var ccoid = $("label[id$='ccoid']");
+        var acccId = $("label[id$='parentAccId']");
+        var uid = $("label[id$='Uid']");
+        var prefLang = $("label[id$='prefLang']");
+        var channelAccount = $("label[id$='channelAccount']");
+        URI = URI + '?ccoId=' + ccoid.text() + '&parentAccountId=' + acccId.text() + '&userId=' + uid.text() + '&prefLang=' + prefLang.text() + '&channelAccount=' + channelAccount.text();
+        window.open(URI, 'myWindow', 'width=500,height=300,resizable=no');        
+        return false;
+    }
+    
+    function openFieldWindow(){
+        leftOffset = (screen.width / 2) - 700 / 2;
+        topOffset = (screen.height / 2) - 750 / 2;
+        var pageurl = '{!ViewSettingsUrl}';        
+        window.open(pageurl+'?view={!selectedview}','test', 'left='+leftOffset+',top='+topOffset+',width=600,height=600,scrollbars=yes,resizable=no');                
+    }
+    function exportLeads(){                                                                     
+        var isDisti = "{!isDisti}";
+        var prefLang=  $("label[id$='prefLang']").text();
+        var ccoid = $("label[id$='ccoid']").text();                 
+        var custName = $("[id*=custName]").val().trim();
+        var state=$("[id*=leadState]").val().trim();
+        var lstView = $("[id*=viewList] option:selected").val();    
+        var ldCategory = ($("[id*=ldCategory]").val() != null) ? $("[id*=ldCategory]").val() : '';
+        var ldSource = ($("[id*=ldSource]").val() != null) ?$("[id*=ldSource]").val() : '';
+        var ldIndustry = ($("[id*=ldIndustry]").val() != null) ? $("[id*=ldIndustry]").val() : '';
+        var ldMainTech = ($("[id*=ldMainTech]").val() != null) ? $("[id*=ldMainTech]").val() : '';
+        var progEventName = $("[id*=progEventName]").val().trim();
+        var ldCountry = ($("[id*=ldCountry]").val() != null) ? $("[id*=ldCountry]").val() : '';         
+        var city= $("[id*=leadCity]").val().trim();                 
+        var partnerName = ($("[id*=ldPartnerName]").val() != null) ? $("[id*=ldPartnerName]").val() : '';  
+        // SCAVA FIX                
+        var URI = "{!JSENCODE($Setup.P360_urls__c.Lead_Export_Url__c)}" + "?";
+        var archDays = "{!archiveDays}";
+        var isArchive = false;
+        var viewName='';
+         if(lstView!=null && lstView!='' && lstView.length>15){
+            lstView = lstView.substring(0,15);
+        }
+        console.log('lstView ## '+lstView);
+        if(lstView=='a3U340000000Z97'){
+            viewName = 'archiveViewID';
+        }
+        if(lstView=='a3U80000000DIom'){
+            viewName = 'activeViewID';
+        } 
+        if(lstView=='a3U80000000DIon'){
+            viewName = 'acceptedViewID';
+        }
+        if(lstView=='a3U80000000DIol'){
+            viewName = 'newlyAssignedViewID';
+        }
+        
+        SCP_Communities_leadFilter_CT_Clone.getListViewStatus(lstView, function(result, event){
+            URI = URI + 'view='+result+'&custName='+custName +'&state='+state+'&city=' + city+'&ldCategory=' +ldCategory+'&ldSource=' + ldSource+'&ldIndustry=' + ldIndustry+'&ldMainTech=' + ldMainTech+'&progEventName=' +progEventName+'&ldCountry='+ldCountry+'&ccoId='+ccoid+ '&PtName='+partnerName+'&archiveDays='+archDays +'&prefLang='+prefLang+'&selectedView='+viewName+'&isPA='+"{!isPA}";
+            console.log('URI## '+URI);                             
+            window.open(URI,'myWindow','width=500,height=300,resizable=no');
+        },{escape: false});           
+    }
+    function downLeadTempDocuments(){
+        var DocId = "{!DocId}";
+        if(DocId != null && DocId != '') {
+            var urlDoc ="{!URLFOR($Action.Document.Download,DocId)}";
+            window.location.href= urlDoc;
+            return false;
+        }
+    }
+    </script>
+   <style>
+   
+   .lnPButton {
+            text-align: center;
+            border-radius: 3px;
+            font: bold 12px/1em "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Nimbus Sans L", sans-serif;
+            align-items: flex-start;
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: #dfdfdf;
+            background-origin: padding-box;
+            background-size: auto;
+            background-image: none;
+            border: 1px solid #b5b5b5;
+            border-bottom-color: #7f7f7f;
+            box-sizing: border-box;
+            color: #666;
+            cursor: pointer;
+            /* display: block; */
+            /* float: left; */
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: bold;
+            min-height: 20px;
+            letter-spacing: normal;
+            line-height: normal;
+            margin: 2px;
+            overflow: visible;
+            padding: 4px 6px;
+            text-indent: 0;
+            text-shadow: none;
+            text-transform: none;
+            visibility: visible;
+            white-space: pre;
+            width: auto;
+            word-spacing: 0;
+              -webkit-appearance: none;
+            -moz-appearance: none;
+            -webkit-background-clip: border-box;
+            -webkit-background-origin: padding-box;
+            -webkit-background-size: auto;
+            -webkit-rtl-ordering: logical;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-writing-mode: horizontal-tb;
+    }
+    
+    .newLine{
+        display: block;
+        clear:both;
+    }  
+    .tableHeader{
+        
+    }
+    .show {
+        float:"left";
+        display:"block";
+    }
+    .hidden {
+        display:none;
+   }     
+    td.dataCell {
+        word-wrap: break-word !important;
+        white-space: normal !important;
+        max-width: 0px !important;
+    }
+    body .pbBody table.list tr.dataRow th, body .pbBody table.list tr.dataRow td{
+         padding: 8px 4px !important;
+    }
+    
+    #loading {
+   width: 100%;
+   height: 100%;
+   top: 0px;
+   left: 0px;
+   position: fixed;
+   display: block;
+   opacity: 0.7;
+   background-color: #fff;
+   z-index: 900;
+   text-align: center;
+}
+
+#loading-image {
+  position: absolute;
+  top: 290px;
+  left: 560px;
+  z-index: 999;
+  width: 50px;
+}
+body .pbBody table.list tr.last>th, body .pbBody table.list tr.last>td, .bPageBlock.bEditBlock .bRelatedList tr.dataRow.last>td, 
+.bPageBlock.bEditBlock .bRelatedList tr.dataRow.last>th {
+        border-bottom-width: 1px !important;
+}
+    
+   </style>
+    <apex:form id="filterform"
+               styleClass="prmviewFilterTable leadpageclass">        
+        <apex:actionfunction action="{!toggelPSR}" name="toggelPSR" reRender="pgbk2,showCount"></apex:actionfunction>                
+        <apex:pageBlock title="{!$ObjectType.Lead.labelPlural}" id="block1">
+            
+            <apex:pageMessages />
+            
+            
+            <apex:outputLabel styleclass="labelCol">{!$Label.PRM_View}:</apex:outputLabel>
+            
+            <apex:dynamicComponent componentValue="{!viewListComponent}" />
+            <button type="button" onclick="openFieldWindow();" title="{!$label.SCP_communities_viewSettingMsg}" id="leadConfigbtn">{!$label.SCP_communities_viewSettingButton}</button>
+            
+            <apex:actionStatus id="searching"
+                               onstart="$('#loading').show();hideComp();"
+                               onstop="$('#loading').hide();showComp();" />
+            
+            <apex:outputpanel id="leadbtns" styleclass="LeadBtns">
+                                
+                
+                <!--  Lead Upload Integration start -->
+                <apex:outputLabel id="Uid" style="display:none">{!$User.Id}</apex:outputLabel>
+                <apex:outputLabel id="ccoid" style="display:none">{!CCOId}</apex:outputLabel>
+                <apex:outputlabel id="prefLang" style="display:none">{!Userlang}</apex:outputlabel>
+                <apex:outputLabel id="parentAccId" style="display:none">{!Currentuseraccount}</apex:outputLabel>
+                <apex:outputLabel id="channelAccount" style="display:none">{!channelAccount}</apex:outputLabel>
+                 <!-- Modified By : Sudi 10 Oct 2014 
+                     Release : November Sprint 2 
+                     User Story : US7048
+                     Added new button export in lead filter view -->
+                <button type="button" target="_blank" onclick="exportLeads();">{!$Label.PRM_ExportLeads}</button>
+                <button type="button" onclick="openWindow();" id="leaduploadbtn">{!$Label.PRM_UploadLeads}</button>
+                <!--  Lead Upload Integration End -->
+                
+                
+                <apex:outputpanel rendered="{!IF(DocId != null, true, false)}">
+                    <input id="theLink" type="button"
+                           onclick="downLeadTempDocuments(); return false;"
+                           value="{!$Label.PRM_DownloadLeadTemplate}" />
+                </apex:outputpanel>
+            </apex:outputpanel>
+            <apex:outputpanel id="filterpanel" layout="block"
+                              styleclass="hidefilter">
+                <apex:pageblocksection title="{!$Label.PRM_Filter}" columns="3"
+                                       id="filterList">
+                    <apex:pageblockSectionItem dataStyleClass="tableCellData1"
+                                               labelStyleClass="tableCellLabel1">
+                        <apex:outputLabel styleclass="x-form-item-label"
+                                          value="{!$Label.PRM_Customer_Name}:" for="ext-gen1110;" />
+                        <apex:inputText id="custName" value="{!customerName}"
+                                        styleClass="x-form-field x-form-text" />
+                    </apex:pageblockSectionItem>
+                    
+                    <apex:pageblocksectionItem dataStyleClass="tableCellData2"
+                                               labelStyleClass="tableCellLabel2">
+                        <apex:outputLabel value="{!$ObjectType.Lead.fields.Lead_Category__c.Label}:"
+                                          styleclass="x-form-item-label " />                        
+                        <apex:selectList value="{!selectedLeadCategory}" id="ldCategory" size="5"
+                                         multiselect="true" styleClass="dataCol uiMultiSelect">
+                            <apex:selectOptions value="{!leadCategoryList}" />
+                        </apex:selectList> 
+                    </apex:pageblocksectionItem>
+                    
+                    <apex:pageblocksectionItem dataStyleClass="tableCellData3"
+                                               labelStyleClass="tableCellLabel3">
+                        <apex:outputLabel value="{!$ObjectType.Lead.fields.LeadSource.Label}:"
+                                          styleClass="x-form-item-label " />
+                        <apex:selectList value="{!selectedLeadSource}" id="ldSource" size="5"
+                                         multiselect="true" styleclass="dataCol selectOpenOpp">
+                            <apex:selectOptions value="{!leadSourceList}" />
+                        </apex:selectList>
+                    </apex:pageblocksectionItem>
+                    
+                    <!---<apex:pageblocksectionItem dataStyleClass="tableCellData1"
+                                               labelStyleClass="tableCellLabel1">
+                        <apex:outputLabel value="{!$ObjectType.Lead.fields.Industry.Label}:"
+                                          styleclass="x-form-item-label " />
+                        <apex:selectList value="{!selectedIndustries}" id="ldIndustry" size="5"
+                                         multiselect="true" styleclass="dataCol uiMultiSelect ">
+                            <apex:selectOptions value="{!leadIndustryList}" />
+                        </apex:selectList>
+                    </apex:pageblocksectionItem>-->
+                    
+                    <apex:pageblocksectionItem dataStyleClass="tableCellData1"
+                                               labelStyleClass="tableCellLabel1">
+                        <apex:outputLabel value="{!$ObjectType.Lead.fields.Main_Technology__c.Label}:"
+                                          styleclass="x-form-item-label " />                        
+                        <apex:selectList value="{!selectedMainTechnology}" id="ldMainTech" size="5"
+                                         multiselect="true" styleclass="dataCol uiMultiSelect ">
+                            <apex:selectOptions value="{!leadMainTechnologyList}" />
+                        </apex:selectList>                        
+                    </apex:pageblocksectionItem>
+                    
+                    <apex:pageblocksectionItem dataStyleClass="tableCellData2"
+                                               labelStyleClass="tableCellLabel2">
+                        <apex:outputLabel value="{!$ObjectType.Lead.fields.Program_Event_Name__c.Label}:"
+                                          styleclass="x-form-item-label " />
+                        <apex:inputText value="{!programEventName}" id="progEventName"
+                                        styleclass="x-form-field x-form-text" />
+                    </apex:pageblocksectionItem>
+                    
+                    <apex:pageblocksectionItem dataStyleClass="tableCellData3"
+                                               labelStyleClass="tableCellLabel3">
+                         <apex:outputLabel value="{!$ObjectType.Lead.fields.Campaign_Description__c.Label}:"
+                                          styleclass="x-form-item-label " />
+                        <apex:inputText value="{!campaignDescription}" id="progEventName"
+                                        styleclass="x-form-field x-form-text" />
+                    </apex:pageblocksectionItem>
+                    
+                    <apex:pageblocksectionItem dataStyleClass="tableCellData1"
+                                               labelStyleClass="tableCellLabel1">
+                        <apex:outputLabel value="{!$ObjectType.Lead.fields.CustomCountry__c.Label}:"
+                                          styleclass="x-form-item-label " />
+                        <apex:selectList value="{!selectedCountries}" size="5" id="ldCountry"
+                                         multiselect="true" styleclass="dataCol uiMultiSelect ">
+                            <apex:selectOptions value="{!countryList}" />
+                        </apex:selectList>
+                    </apex:pageblocksectionItem>
+                    
+                    <apex:pageblockSectionItem dataStyleClass="tableCellData2"
+                                               labelStyleClass="tableCellLabel2">
+                        <apex:outputLabel value="{!$ObjectType.Lead.fields.CustomState__c.Label}:"
+                                          styleclass="x-form-item-label " />
+                        <apex:inputText id="leadState" value="{!stateProvince}" 
+                                        styleclass="x-form-field x-form-text" />
+                    </apex:pageblockSectionItem>
+                    
+                    <apex:pageblocksectionItem dataStyleClass="tableCellData3"
+                                               labelStyleClass="tableCellLabel3">
+                        <apex:outputLabel value="{!$ObjectType.Lead.fields.CustomCity__c.Label}:"
+                                          styleclass="x-form-item-label" />
+                        <apex:inputText value="{!city}" id="leadCity"
+                                        styleclass="x-form-field x-form-text" />
+                    </apex:pageblocksectionItem>
+                    
+                    <!-- added by gchaitha for US305721 -->
+                     <apex:pageblocksectionItem dataStyleClass="tableCellData1"
+                                               labelStyleClass="tableCellLabel1">
+                        <apex:outputLabel value="{!$ObjectType.Lead.fields.DRT_Lead__c.Label}:"
+                                          styleclass="x-form-item-label" />
+                        <apex:inputCheckbox value="{!DRTLead}" id="DRTLead"
+                                        styleclass="x-form-field" />
+                    </apex:pageblocksectionItem>
+                    <!-- end -->
+                    <apex:pageblocksectionItem dataStyleClass="tableCellData2"
+                                               labelStyleClass="tableCellLabel2">
+                    </apex:pageblocksectionItem>
+                    <apex:pageblocksectionItem dataStyleClass="tableCellData3"
+                                               labelStyleClass="tableCellLabel3">
+                    </apex:pageblocksectionItem>                   
+                    
+                    <apex:panelGrid columns="3">
+                        <apex:commandButton action="{!doSearch}"
+                                            value="{!$Label.PRM_Apply_Filter}"
+                                            status="searching" />
+                        <apex:commandButton action="{!clearFields}"
+                                            value="{!$Label.PRM_Clear_Filter}" />
+                    </apex:panelGrid>
+                    <div id="loading">
+                        <img id="loading-image" src="{!$Resource.Processingicon}" />
+                    </div>
+                   <apex:pageblocksectionItem dataStyleClass="tableCellData3" rendered="{!AND(isDisti,isPA)}"
+                    labelStyleClass="tableCellLabel3">
+                    <apex:outputLabel value="{!$Label.PRM_Partner_Name}:"
+                        styleclass="x-form-item-label " />
+                    <apex:selectList value="{!selectedPartnerName}"  id="ldPartnerName" size="5"
+                        multiselect="true"
+                        styleclass="dataCol selectOpenOpp">
+                        <apex:selectOptions value="{!partnerNameList}" />
+                    </apex:selectList>
+                </apex:pageblocksectionItem>
+                </apex:pageblocksection>
+            </apex:outputpanel>
+            <apex:pageBlock id="pgbk2">
+                <c:SCP_Communities_PSRBulkAssignment rendered="{!renderPSR}" isLeadComp="true" pageCon="{!this}"
+                        componentKey="{!psrKey}" />
+            </apex:pageBlock>
+            
+            <apex:pageBlock id="pgbk3">
+                <apex:outputPanel rendered="{!NOT(isMassEdit)}">
+                <!-- Added below table to show show page size select drop down box -->
+                <table width="100%">
+                    <tr style="font-weight:bold">
+                        <td>
+                        {!$Label.PRM_Show} <apex:selectList value="{!sizeStr}" size="1" multiselect="false">
+                                <apex:selectoption itemValue="10" itemLabel="10"/>
+                                <apex:selectoption itemValue="25" itemLabel="25"/>
+                                <apex:selectoption itemValue="50" itemLabel="50"/>
+                                <apex:selectoption itemValue="100" itemLabel="100"/>
+                                <apex:actionsupport action="{!refresh}" event="onchange" status="fetchStatus"/>
+                            </apex:selectList> {!$label.PRM_entries}</td>
+                        <td>&nbsp;</td>
+                        </tr>
+                </table>
+                </apex:outputPanel>
+                <!-- reRender="lead_table,pageButtons,pgbk2" -->
+                                
+                <apex:commandButton rendered="{!isMassEdit}" value="{!$Label.PRM_Save}" action="{!massUpdate}"/>
+                <apex:commandButton rendered="{!isMassEdit}" value="{!$Label.PRM_Cancel}" action="{!cancelMassUpdate}" />  
+                <!-- Removed the Apex pageblocktable and dynamic component to bind the dynamic columns  -->
+                <apex:outputPanel layout="block" id="tablePannel" styleClass="tableContainer" rendered="{!NOT(isMassEdit)}">             
+                <apex:dynamicComponent componentValue="{!DataTableComponent}" rendered="{!NOT(isMassEdit)}"/>
+                </apex:outputPanel> 
+                <!-- Below Panelgrid is for show pagination buttons and page information -->
+                <apex:panelGrid columns="10" width="100%" id="pageButtons" rendered="{!NOT(isMassEdit)}">
+                <apex:outputpanel layout="block" style="float:left">                    
+                    <b><apex:outputLabel id="showCount" value="{!showSelectedCount}"></apex:outputLabel></b><br/>
+                    <apex:outputpanel id="p1"><apex:outputlabel style="font-weight:bold"> {!$Label.PRM_Showing} {!startNo} {!$Label.PRM_To} {!endNo} {!$Label.PRM_Of} {!noOfRecords} {!$Label.PRM_entries} </apex:outputlabel></apex:outputpanel>                  
+                </apex:outputpanel>
+                 <apex:outputpanel layout="block" style="margin-left:10%">
+                 <apex:outputlabel style="font-weight:bold">{!$Label.PRM_Page} #</apex:outputlabel>
+                    <apex:inputText style="font-weight:bold" maxlength="4" size="1" value="{!pageNumber}"></apex:inputText>
+                    <apex:outputlabel style="font-weight:bold"> {!$Label.PRM_Of} {!totalPages}</apex:outputlabel>&nbsp;
+                    <apex:commandButton status="fetchStatus" value="{!$Label.PRM_Go}" action="{!setPageNum}" title="{!$Label.PRM_Go}"/>
+                    <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                        <apex:actionStatus id="fetching" startText="Fetching Records..." stopText="" />
+                        <apex:actionStatus id="fetchStatus"
+                                onstart="$('#loading').show();"
+                                onstop="$('#loading').hide();applyDTStyles();" />
+                    </apex:outputPanel>
+                </apex:outputpanel>
+                <apex:outputpanel layout="block" style="float:right">
+                    <apex:commandButton status="fetchStatus" value="{!$Label.PRM_datatbl_first}" action="{!first}" disabled="{!!hasPrevious}" title="{!$Label.PRM_datatbl_first} {!$Label.PRM_Page}"/>
+                    <apex:commandButton status="fetchStatus" value="{!$Label.PRM_datatbl_previous}" action="{!previous}" disabled="{!!hasPrevious}" title="{!$Label.PRM_datatbl_previous} {!$Label.PRM_Page}"/>
+                    <apex:commandButton status="fetchStatus" value="{!$Label.PRM_datatbl_next}"  action="{!next}" disabled="{!!hasNext}" title="{!$Label.PRM_datatbl_next} {!$Label.PRM_Page}"/>
+                    <apex:commandButton status="fetchStatus" value="{!$Label.PRM_datatbl_last}"  action="{!last}" disabled="{!!hasNext}" title="{!$Label.PRM_datatbl_last} {!$Label.PRM_Page}"/>
+                </apex:outputpanel>
+              
+             </apex:panelGrid>
+                
+                <!-- Page Block table for edit mode -->
+                
+                 <apex:pageBlockTable rendered="{!isMassEdit}" styleClass="leadTB2" value="{!editPageRecords}"
+                                     var="l" id="lead_table2">
+                    <apex:column rendered="{!isSelectedChekBox}">
+                        <apex:facet name="header">
+                            <input type="checkbox" id="select_all2" />
+                        </apex:facet>
+                        <apex:inputCheckBox styleclass="chkbox2" value="{!l.isSelected}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$Label.PRM_Customer_Name}</apex:facet>
+                        <apex:outputLink value="{!URLFOR($Action.Lead.View, l.leadRec.Id, null)}"
+                                         id="theLink">{!l.hyperlink}</apex:outputLink>
+                        <br />
+                        <apex:outputpanel rendered="{! NOT(isEnglish)}">
+                            {!l.cname_en}
+                        </apex:outputpanel>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Program_Event_Name__c.Label}</apex:facet>
+                        {!l.leadRec.Program_Event_Name__c}
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.ProductAmount__c.Label}</apex:facet>
+                        <apex:inputfield id="prodAmt" value="{!l.leadRec.ProductAmount__c}"/>
+                        <script>document.getElementById('{!$Component.prodAmt}').disabled = {!l.disableAmt}; </script>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.ServicesAmount__c.Label}</apex:facet>
+                        <apex:inputfield id="serAmt" value="{!l.leadRec.ServicesAmount__c}"/>
+                        <script>document.getElementById('{!$Component.serAmt}').disabled = {!l.disableAmt}; </script>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Distributor_Name__c.Label}</apex:facet>
+                        <apex:inputfield id="disName" value="{!l.leadRec.Distributor_Name__c}"/>
+                        <script>document.getElementById('{!$Component.disName}').disabled = {!l.disableName}; </script>
+                    </apex:column>
+                </apex:pageBlockTable>
+                <!-- </div> -->
+            </apex:pageBlock>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

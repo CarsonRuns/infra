@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Address_Line_1__c</field>
+        <field>Address_Line_2__c</field>
+        <field>AnnualRevenue</field>
+        <field>Call_Center_Vendor__c</field>
+        <field>Lead_Type__c</field>
+        <field>Status</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_DCR_EMEAR</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>OR(
+TEXT($User.Marketing_Call_Center__c)=&apos;DCR EMEAR&apos;,
+CONTAINS( $UserRole.Name ,&apos;NGCC-SDR DCR(EMEAR)&apos;),
+CONTAINS( $UserRole.Name ,&apos;NGCC-Senior Agent DCR(EMEAR)&apos;)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC DCR EMEAR</label>
+        <name>NGCC_DCR_EMEAR</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Concentrix_Bulgaria</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>OR(
+TEXT($User.Marketing_Call_Center__c)=&apos;Concentrix Sofia Bulgaria&apos;,
+CONTAINS( $UserRole.Name ,&apos;NGCC-SDR Concentrix Sofia (Bulgaria)&apos;),
+CONTAINS( $UserRole.Name ,&apos;NGCC-Senior Agent Concentrix Sofia (Bulgaria)&apos;)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC Concentrix Sofia Bulgaria</label>
+        <name>NGCC_Concentrix_Sofia_Bulgaria</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Raya_Warsaw_Poland</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>OR(
+TEXT($User.Marketing_Call_Center__c)=&apos;Raya Warsaw Poland&apos;,
+CONTAINS( $UserRole.Name ,&apos;NGCC-SDR Raya Warsaw (Poland)&apos;),
+CONTAINS( $UserRole.Name ,&apos;NGCC-Senior Agent Raya Warsaw (Poland)&apos;)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC Raya Warsaw Poland</label>
+        <name>NGCC_Raya_Warsaw_Poland</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Convergys_Newcastle_UK</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>OR(
+TEXT($User.Marketing_Call_Center__c)=&apos;Convergys Newcastle UK&apos;,
+CONTAINS( $UserRole.Name ,&apos;NGCC-SDR Convergys (Newcastle-UK)&apos;)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC Convergys Newcastle UK</label>
+        <name>NGCC_Convergys_Newcastle_UK</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_SellbyTel_EMEAR</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>OR(
+TEXT($User.Marketing_Call_Center__c)=&apos;Sellbytel Moscow Russia&apos;,
+CONTAINS( $UserRole.Name ,&apos;NGCC-SDR SellbyTel (Russia)&apos;),
+CONTAINS( $UserRole.Name ,&apos;NGCC-Senior Agent SellbyTel (Russia)&apos;)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC Sellbytel Moscow Russia</label>
+        <name>NGCC_Sellbytel_Moscow_Russia</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Concentrix_EMEAR</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>OR(
+     
+     TEXT($User.Marketing_Call_Center__c)=&apos;Concentrix Belfast Northern Ireland&apos;,
+     CONTAINS( $UserRole.Name ,&apos;NGCC-SDR Concentrix (Northern Ireland)&apos;),
+     CONTAINS( $UserRole.Name ,&apos;NGCC-Senior Agent Concentrix (Northern Ireland)&apos;)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC Concentrix Belfast Northern Ireland</label>
+        <name>NGCC_Concentrix_Belfast_Northern_Ireland</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Raya_Egypt</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>OR(
+	TEXT($User.Marketing_Call_Center__c)=&apos;Raya Cairo Egypt&apos;,
+	CONTAINS( $UserRole.Name ,&apos;NGCC-SDR Raya (Egypt)&apos;),
+	CONTAINS( $UserRole.Name ,&apos;NGCC-Senior Agent Raya (Egypt)&apos;)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC Raya Cairo Egypt</label>
+        <name>NGCC_Raya_Cairo_Egypt</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Cisco_Contact_Center_Manager1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Cisco_Contact_Center_Manager2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>NGCC - CCM Approval step</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Lead.Originating_Marketing_Pipeline__c</field>
+                <operation>greaterThan</operation>
+                <value>500000.0</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>EMEAR Mktg Cisco CCM Concentrix Belfast Northern Ireland</label>
+        <name>EMEAR_Mktg_Cisco_CCM_Concentrix_Belfast_Northern_Ireland1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>NGCC: New Approval process for EMEAR theater and it will allow both SDR and Senior Agent for sending leads for approval to respective Queues/Roles</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>OR(
+   AND(
+	RecordType.Name  = &apos;Prospect&apos;,
+	Theater__c = &apos;EMEAR&apos;,
+	CONTAINS( $UserRole.Name ,&apos;Senior Agent&apos;), 
+	OR(
+		TEXT(Status) = &apos;Rejected&apos;,
+		TEXT(Status) = &apos;Marketing Qualified&apos;
+	)  
+   ),
+   AND(
+       RecordType.Name  = &apos;Prospect&apos;,
+       Theater__c = &apos;EMEAR&apos;,
+       OR(
+           TEXT(Status) = &apos;Rejected&apos;,
+	   TEXT(Status) = &apos;Marketing Qualified&apos;
+       )
+   )
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>NGCC_Approval_Submission_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Approval_Submission_Mktg_Qualified</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>NGCC_Approval_Submission_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Notify_Lead_Owner_with_Rejection_Reason</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>NGCC_Requalification_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>NGCC_Approval_Submission</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>NGCC_EMEAR_SDR_SeniorAgent_Approval 2/16</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <recallActions>
+        <action>
+            <name>NGCC_Approval_Submission_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

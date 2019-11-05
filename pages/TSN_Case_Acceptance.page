@@ -1,0 +1,12 @@
+<apex:page standardController="Case" extensions="TSN_Case_Acceptance_CTE" recordSetVar="record" action="{!getCaseAcceptanceUpdation}">
+<apex:form >
+  <apex:pageBlock title="Accepted Cases">
+  <apex:pageMessages />
+
+    <apex:pageBlockSection columns="1" >
+      <apex:outputText value="{!results}"></apex:outputText> 
+    </apex:pageBlockSection>
+  </apex:pageBlock>
+   <apex:commandLink value="Back to List View"  action="{!cancel}"></apex:commandLink>
+  </apex:form>
+</apex:page>

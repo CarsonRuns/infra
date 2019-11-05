@@ -1,0 +1,40 @@
+Estimado Partner, 
+
+Hemos identificado una Oportunidad para su empresa. Los detalles de esta Oportunidad aparecen a continuación: 
+
+ID Oportunidad: {!Opportunity.Id} 
+Nombre la Oportunidad: {!Opportunity.Name} 
+Descripción: {!Opportunity.Description} 
+Compañía: {!Opportunity.Account} 
+Sector: {!Account.Industry} 
+Valor de productos estimado de la oportunidad ('000): {!Opportunity_Expected_Product_($'000)} 
+Valor de servicios estimado de la oportunidad ('000): {!Opportunity_Expected_Service_($'000)} 
+Valor total ('000): {!Opportunity_Total_Value_($'000)} 
+Nombre del Producto: {!Opportunity_LineItem_ProductName} 
+Productos de interés: {!Opportunity.Products_of_Interest__c} 
+Localidad: {!Account.City__c} 
+Fecha de creación: {!Opportunity.CreatedDate} 
+
+
+Información sobre la persona de contacto 
+Nombre y Apellido: {!Contact.Name} 
+Telefóno: {!Contact.Phone} 
+Cargo: {!Contact.Title} 
+Departamento: {!Contact.JobFunction__c} 
+Nivel de cargo: {!Contact.JobLevel__c} 
+
+Por favor, reenvíenos este e-mail contestando a las siguientes preguntas: 
+
+1 ¿Está interesado en esta oportunidad? 
+2 ¿Se ha puesto en contacto con el cliente? 
+3 Comentarios sobre la oportunidad 
+
+Por favor, póngase en contacto conmigo vía e-mail en: {!User.Alias}@cisco.com or {!User.Phone}
+
+
+
+Muchas gracias 
+Atentamente, 
+
+Cisco Systems España 
+http://www.cisco.es

@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Answer_Options__c</fullName>
+        <description>NGCC Phase1: Stores SFDC Ids of Answer Options associated Question and should only be updated ETL or Through inline UI</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Do Not Edit. This should be edited.</inlineHelpText>
+        <label>Answer Options</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CC_Master_Question_Bank__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1: Reference to Master Question Answer Bank.Will be used for provide translation support</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Master Question Record Reference used in Call Script Q&amp;A</inlineHelpText>
+        <label>CC Master Question Bank</label>
+        <referenceTo>CC_Master_Question_Answer_Bank__c</referenceTo>
+        <relationshipLabel>CC Call Scripts Q/A</relationshipLabel>
+        <relationshipName>CC_Call_Scripts_Q_A</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Call_Script__c</fullName>
+        <description>NGCC Phase1: Reference to the Call Script to the Call Script Q&amp;A is associated.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Call Script Reference for the associated Call Script Q&amp;A</inlineHelpText>
+        <label>CC Call Script</label>
+        <referenceTo>CC_Call_Script__c</referenceTo>
+        <relationshipLabel>CC Call Scripts Q/A</relationshipLabel>
+        <relationshipName>CC_Call_Scripts_Q_A</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Conditionally_Required_Criteria__c</fullName>
+        <description>NGCC Phase1: Conditionally Required Validation can be applied in 3 ways. This Stores all three sceanrios and provide enhanced validation flexibility.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide Valid Critieria for Conditional Validation: 1) NULL: Dependent Question Answer is NULL 2) NOT NULL: Dependent Question Answer is Populated 3) Others: Dependent Question Answer is Specific to the Text.</inlineHelpText>
+        <label>Conditionally Required Criteria</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>NULL</fullName>
+                    <default>false</default>
+                    <label>NULL</label>
+                </value>
+                <value>
+                    <fullName>NOT NULL</fullName>
+                    <default>false</default>
+                    <label>NOT NULL</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Conditionaly_Required_If__c</fullName>
+        <description>NGCC Phase1: Defines the value excepted in the dependent Question. Multiple Options can be Provided using Comma</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide exact value expected from Dependent question on which this question is required. Multiple Options cacn be provided using Comma</inlineHelpText>
+        <label>Conditionally Required Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Dependent_Question__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1: Reference to the Dependent question on which this question become Required</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide the Dependent Question on which the Question is required</inlineHelpText>
+        <label>CC Call Script Q/A</label>
+        <referenceTo>CC_Call_Script_Q_A__c</referenceTo>
+        <relationshipLabel>CC Call Scripts Q/A</relationshipLabel>
+        <relationshipName>CC_Call_Scripts_Q_A</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Help_Text__c</fullName>
+        <description>NGCC Phase1: Help text used for providing detail about the dependent question</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide Help Text to help agent to get reference on dependent questions</inlineHelpText>
+        <label>Help Text</label>
+        <length>500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Local_to_SFDC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1: Define a question Local to SFDC and the question will not be integrated to MODS</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define if the Question need to be integrated with MODS</inlineHelpText>
+        <label>Local to SFDC</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_If_Number_Validation__c</fullName>
+        <description>NGCC Phase1: Define Number validation question and provide the maximum number to be input</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide Maximum Number which can not be exceeded</inlineHelpText>
+        <label>Maximum(If Number Validation)</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minimum_If_Number_Validation__c</fullName>
+        <description>NGCC Phase1: Define Number validation question and provide the minimum number to be expected</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide Minimum Number which can not be exceeded</inlineHelpText>
+        <label>Minimum(If Number Validation)</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Question_Category__c</fullName>
+        <description>NGCC Phase1: Define the Tab where the question will be shown in call script</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide the Tab name for the Call Script</inlineHelpText>
+        <label>Question Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>1:Contact Information</fullName>
+                    <default>false</default>
+                    <label>1:Contact Information</label>
+                </value>
+                <value>
+                    <fullName>2:Account Information</fullName>
+                    <default>false</default>
+                    <label>2:Account Information</label>
+                </value>
+                <value>
+                    <fullName>3:Lead Information</fullName>
+                    <default>false</default>
+                    <label>3:Lead Information</label>
+                </value>
+                <value>
+                    <fullName>4:Additional Information</fullName>
+                    <default>false</default>
+                    <label>4:Additional Information</label>
+                </value>
+                <value>
+                    <fullName>5:Campaign Information</fullName>
+                    <default>false</default>
+                    <label>5:Campaign Information</label>
+                </value>
+                <value>
+                    <fullName>6:Partner Information</fullName>
+                    <default>false</default>
+                    <label>6:Partner Information</label>
+                </value>
+                <value>
+                    <fullName>7:Call Information</fullName>
+                    <default>false</default>
+                    <label>7:Call Information</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Question_Required__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1: Define the Dependent Question based on which the question will be conditionally required</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Conditionally required question for which the question will be required</inlineHelpText>
+        <label>Conditionally Required on Question</label>
+        <referenceTo>CC_Master_Question_Answer_Bank__c</referenceTo>
+        <relationshipLabel>CC Call Scripts Q/A (Question Required)</relationshipLabel>
+        <relationshipName>CC_Call_Scripts_Q_A1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Question_Text__c</fullName>
+        <description>NGCC Phase1: Question Text as per Call Script requirement</description>
+        <externalId>false</externalId>
+        <inlineHelpText>English Question Text for the Call Script</inlineHelpText>
+        <label>Question Text</label>
+        <length>3000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Question_Type__c</fullName>
+        <description>NGCC Phase1: Question Type for the Question. Define how Question will be Presented in Call Script</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Question Type how the Question will be presented in Call Script</inlineHelpText>
+        <label>Question Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Text</fullName>
+                    <default>false</default>
+                    <label>Text</label>
+                </value>
+                <value>
+                    <fullName>Long Text</fullName>
+                    <default>false</default>
+                    <label>Long Text</label>
+                </value>
+                <value>
+                    <fullName>Radio</fullName>
+                    <default>false</default>
+                    <label>Radio</label>
+                </value>
+                <value>
+                    <fullName>Picklist</fullName>
+                    <default>false</default>
+                    <label>Picklist</label>
+                </value>
+                <value>
+                    <fullName>MultiSelect</fullName>
+                    <default>false</default>
+                    <label>MultiSelect</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>DateTime</fullName>
+                    <default>false</default>
+                    <label>DateTime</label>
+                </value>
+                <value>
+                    <fullName>Number</fullName>
+                    <default>false</default>
+                    <label>Number</label>
+                </value>
+                <value>
+                    <fullName>Country</fullName>
+                    <default>false</default>
+                    <label>Country</label>
+                </value>
+                <value>
+                    <fullName>Route To Partner</fullName>
+                    <default>false</default>
+                    <label>Route To Partner</label>
+                </value>
+                <value>
+                    <fullName>Route To AM</fullName>
+                    <default>false</default>
+                    <label>Route To AM</label>
+                </value>
+                <value>
+                    <fullName>Route To PSR</fullName>
+                    <default>false</default>
+                    <label>Route To PSR</label>
+                </value>
+                <value>
+                    <fullName>Preferred Partner</fullName>
+                    <default>false</default>
+                    <label>Preferred Partner</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1: Define the Question as Mandatory Required</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define the Question as Mandatory Required</inlineHelpText>
+        <label>Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Required_on_Lead_Description__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1: Define the Questions which need to appended to Lead Description after Call Script Completion</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define the Questions which need to appended to Lead Description after Call Script Completion</inlineHelpText>
+        <label>Required on Lead Description</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sequence__c</fullName>
+        <description>NGCC Phase1: Define the Sequence of the Question with Call Script Specific Tab</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define the Sequence of the Question with Call Script Specific Tab</inlineHelpText>
+        <label>Sequence</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Validation_Both_Conditional_or_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1: Define if any of the validation is need</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define if any of the Validation is needed</inlineHelpText>
+        <label>Validation(Both Conditional or Required)</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>NGCC Phase1: All Call Script will have list of questionnaire which will be presented to users. Call Script Q&amp;A will be the replica of CC master Question/Answer Bank and customizable at this Call Script Q&amp;A level.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>CC Call Script Q/A</label>
+    <nameField>
+        <label>CC Call Script Q/A Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>CC Call Scripts Q/A</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <validationRules>
+        <fullName>NGCC_Validate_Conditional_and_Reqd</fullName>
+        <active>true</active>
+        <description>US5775 - Call Script Validations Sprint 4
+
+If Validation(Both Conditional or Required) = true	Required or (Question Required AND Conditional Required If) or (Min AND Max) must be filled in</description>
+        <errorConditionFormula>IF(
+   Validation_Both_Conditional_or_Required__c=true,
+      IF(Required__c=false,
+         IF(
+            OR(
+               ISBLANK(Maximum_If_Number_Validation__c), 
+               ISBLANK(Minimum_If_Number_Validation__c)
+               ),
+            IF(
+               OR(
+                  AND(ISBLANK(Conditionaly_Required_If__c),ISPICKVAL(Conditionally_Required_Criteria__c,'Others')),  
+                  ISBLANK(Question_Required__c)
+                 ),
+               true,false),
+            false
+         ),
+      false),
+  false)</errorConditionFormula>
+        <errorMessage>Please enter valid criteria for validation.
+Mandatory  Required OR Number Validation: Minimum(If Number Validation) and Maximum(If Number Validation) OR
+Conditionally Required: Question Required and Conditionaly Required If</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>NGCC_Validate_Min_and_Max_Values</fullName>
+        <active>true</active>
+        <description>US5775 - Call Script Validations Sprint 4 
+
+If Min and Max NOT NULL, Min must be &lt; Max OR Max must be &gt; Min</description>
+        <errorConditionFormula>IF(  AND(NOT(ISNULL( Maximum_If_Number_Validation__c  )),
+         NOT(ISNULL( Minimum_If_Number_Validation__c))),
+
+     Minimum_If_Number_Validation__c &gt;  Maximum_If_Number_Validation__c, 
+
+false )</errorConditionFormula>
+        <errorMessage>Maximum Value should be greater than Minimum value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>NGCC_Validation_Answer_Options</fullName>
+        <active>true</active>
+        <description>US5775 - Call Script Validations Sprint 4
+
+If Question Type is Picklist,MultiSelect,Radio, Answer Option must be filled</description>
+        <errorConditionFormula>AND
+(
+  ISBLANK(Answer_Options__c),
+  OR(
+     ISPICKVAL(Question_Type__c,'Picklist'),
+     ISPICKVAL(Question_Type__c ,'MultiSelect'),
+     ISPICKVAL(Question_Type__c,'Radio')
+     )
+)</errorConditionFormula>
+        <errorMessage>Please assign valid options to the Question</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>NGCC_Validation_for_Call_Script_Status</fullName>
+        <active>true</active>
+        <description>US5775 - Call Script Validations Sprint 4
+
+If CC Call Script is Active , Call Script Q/A cannot be modified</description>
+        <errorConditionFormula>Text(Call_Script__r.Status__c) = 'Active'</errorConditionFormula>
+        <errorMessage>You cant update Q&amp;A for active Call Script</errorMessage>
+    </validationRules>
+</CustomObject>

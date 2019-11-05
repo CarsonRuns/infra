@@ -1,0 +1,11 @@
+<apex:page showHeader="False" sidebar="false" >
+<script>
+var hostname = window.location.hostname.toLowerCase();
+
+window.document.location.href="http://wwwin-tools.cisco.com/1CF/index.dll?appId=sfdc&sessionId={!$Api.Session_ID}&SFDCValidateURL={!$Api.Enterprise_Server_URL_90}&userId={!$User.Id}&userName={!$User.Username}&alias={!$User.Alias}&profile={!$User.ProfileId}";
+//top.location.href="https://" + hostname + "/home/home.jsp";
+
+
+</script>
+
+</apex:page>

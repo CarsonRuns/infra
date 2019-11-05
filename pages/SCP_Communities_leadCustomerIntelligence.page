@@ -1,0 +1,4 @@
+<apex:page standardController="Lead">
+(<apex:outputLabel rendered="{!NOT lead.has_Customer_Intelligence__c}" value="{!$Label.Prm_noCiData}"/>
+<apex:outputLink target="_parent" rendered="{!lead.has_Customer_Intelligence__c}" style="color: #007fc5; cursor: pointer;" value="../{!lead.End_Customer_Account__c}">{!$Label.Prm_customIntelligence}</apex:outputLink>)<br/>
+</apex:page>

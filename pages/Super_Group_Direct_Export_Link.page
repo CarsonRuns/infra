@@ -1,0 +1,34 @@
+<apex:page showHeader="false" sidebar="false" StandardController="Super_Group__c" extensions="Super_Group_Direct_Export_Link_CTE">
+
+<script language="javascript">
+function CloseAndRefresh(){
+        window.top.location='/{!Super_Group__c.Id}';
+   }
+</script>
+<table cellspacing = "0" cellpadding = "0" width = "100%">
+<tr>
+<td align = "right"> 
+<apex:form id="page" >
+<apex:pageMessages />
+            <apex:commandLink target="_top" action="{!Save}" value="[ Excel Export ]" oncomplete="CloseAndRefresh();" title="Export Data is limited to 15 MB"/>
+</apex:form>
+</td>
+</tr>
+</table>
+<script language = "javascript">
+function resizeIframe() {
+    var me = window.name;
+    if (me) {
+      var iframes = parent.document.getElementsByName(me);
+      if (iframes && iframes.length == 1) {
+        height = document.body.offsetHeight;
+        //if (height <= 300) 
+            iframes[0].style.height = height + "px";
+        
+      }
+    }
+  }
+ resizeIframe(); 
+</script>
+
+</apex:page>

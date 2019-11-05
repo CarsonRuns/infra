@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Additional Info --></label>
+        <name>Additional_Info__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days Left --></label>
+        <name>Days_Left__c</name>
+    </fields>
+    <fields>
+        <help>Affiché dans le fuseau horaire local de l'utilisateur</help>
+        <label>Date/heure de fin</label>
+        <name>End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label>Nom d'événement</label>
+        <name>Event_Name__c</name>
+    </fields>
+    <fields>
+        <label>URL de modification externe</label>
+        <name>External_Edit_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- JiffleNow Agenda Item --></label>
+        <name>Jiffle_Agenda_Item__c</name>
+        <relationshipLabel><!-- JiffleNow Meeting --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Jiffle Event End Date --></label>
+        <name>Jiffle_Event_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Jiffle Event Start Date --></label>
+        <name>Jiffle_Event_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Jiffle Meeting Location --></label>
+        <name>Jiffle_Meeting_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Jifflenow Meeting/Session Id --></label>
+        <name>Jifflenow_Session_Id__c</name>
+    </fields>
+    <fields>
+        <label>Durée de la réunion (en minutes)</label>
+        <name>Meeting_Duration__c</name>
+    </fields>
+    <fields>
+        <label>Type de réunion</label>
+        <name>Meeting_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- JiffleNow Meeting UUID --></label>
+        <name>Meeting_UUID__c</name>
+    </fields>
+    <fields>
+        <help>Nombre de participants Cisco attendus pour cet engagement</help>
+        <label>Nombre de participants Cisco</label>
+        <name>Number_of_Cisco_Attendees__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de dirigeants Cisco</label>
+        <name>Number_of_Cisco_Executives__c</name>
+    </fields>
+    <fields>
+        <help>Nombre de participants du client attendus pour cet engagement</help>
+        <label>Nombre de participants du client</label>
+        <name>Number_of_Customer_Attendees__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de participants du partenaire</label>
+        <name>Number_of_Partner_Attendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Session(PowerOne) --></label>
+        <name>Number_of_Session_PowerOne__c</name>
+    </fields>
+    <fields>
+        <help>Étape actuelle de la demande de briefing</help>
+        <label>Statut de demande</label>
+        <name>Request_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation>Approuvé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assigned</masterLabel>
+            <translation>Affecté</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation>Annulé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deleted</masterLabel>
+            <translation>Supprimé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold</masterLabel>
+            <translation>Mise en attente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation>Non applicable</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation>En attente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation>Demandé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Returned</masterLabel>
+            <translation>Renvoyé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation>Planifié</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation>Envoyé</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Affiché dans le fuseau horaire local de l'utilisateur</help>
+        <label>Date/Heure de début</label>
+        <name>Start_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of Attendees --></label>
+        <name>Total_Number_Attendees__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- JiffleNow Meeting --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- JiffleNow Meeting --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Salesforce Meeting Id --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Jiffle Session Layout</layout>
+        <sections>
+            <label><!-- Attendee Count --></label>
+            <section>Attendee Count</section>
+        </sections>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>JiffleNow Meeting Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- Edit_Meeting --></label>
+        <name>Edit_Meeting</name>
+    </webLinks>
+</CustomObjectTranslation>

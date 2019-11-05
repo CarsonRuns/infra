@@ -1,0 +1,45 @@
+<!------------------------------------------------------------------------------------------------------------------
+Name    : NGCC Items to Approve
+Author  : Mukesh Srivastava
+Purpose : Side bar component to show notification to SDR and Managers for lead waiting for approval and rejected leads
+Created Date: 1/14/2014
+Modification History: 
+-------------------------------------------------------------------------------------------------------------------->
+
+<apex:page Controller="NGCC_Items_To_Approve_CTL" showHeader="false" sidebar="false" cache="true">
+   <style type="text/css" media="all">
+      body{margin: 0; padding: 0; color: #000000; background-color: #CFEEF8;}
+      div.header {
+      background-color: #36558a;border:2px solid #FFFFFF;border-radius:5px;font-weight: bold;color: #FFFFFF;padding: .2em;
+      }
+   </style>
+   <apex:form >
+      <apex:outputPanel rendered="{!ValidateUser}">
+         <div>
+            <div class="header">
+               Items to Approve
+               <apex:outputtext id="approvalCount" value="{!IF(ApprovalRecord=0,
+                   '<font color=white>',
+                   '<img src=/img/msg_icons/error16.png width=12 height=12> <font color=red>')}
+                   ({!IF((ApprovalRecord==101),'100+',ApprovalRecord)})</font>" 
+                   style="font-weight:bold;font-size:14px;float:right;" escape="false"/>
+            </div>
+            <apex:outputlink value="{!strItemToApprove}" target="_top" style="font-weight:bold;color: #0000FF;"> Manage All</apex:outputlink>
+            Leads waiting for your approval.                  
+         </div>
+         <br/>
+      </apex:outputPanel>
+      <div>
+         <div class="header">
+            Rejected Leads
+            <apex:outputtext id="rejectCount" value="{!IF(RejectedRecord=0,
+                '<font color=white>',
+                '<img src=/img/msg_icons/error16.png width=12 height=12> <font color=red>')}
+                ({!IF((RejectedRecord==101),'100+',RejectedRecord)})</font>" 
+                style="font-weight:bold;font-size:14px;float:right;" escape="false"/>
+         </div>
+         <apex:outputlink value="{!strRejected}" target="_top" style="font-weight:bold;color: #0000FF;"> Manage All</apex:outputlink>
+         rejected Leads and need additional information.                  
+      </div>
+   </apex:form>
+</apex:page>

@@ -1,0 +1,291 @@
+<apex:page docType="html-5.0" standardController="opportunity" extensions="lxToMakePUIReadOnlyForPSS">
+    <style>
+        b, strong { font-weight: bold; }
+        ul, ol {margin-top: 0;margin-bottom: 10px; }
+        ul li, ol li {margin-left: 1.5em;padding-left: 0;}
+        .typeahead {z-index: 1051;}
+        .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,.table>tbody>tr>td, .table>tfoot>tr>td {padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #cfd0d2;}
+        .table-condensed>thead>tr>th, .table-condensed>tbody>tr>th,.table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td,.table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td {padding: 5px;}
+        .dropdown-menu {position: absolute;top: 100%;left: 0;z-index: 1000;display: none;float: left;min-width: 160px;padding: 5px 0;margin: 2px 0 0;list-style: none;font-size: 14px;background-color: #ffffff;border: 1px solid #cccccc;border: 1px solid rgba(0, 0, 0, 0.15);border-radius: 4px;-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);background-clip: padding-box;}
+        .typeahead li {margin-left: 0px !important;}
+        .dropdown-menu>li>a {display: block;padding: 3px 20px;clear: both;font-weight: normal;line-height: 1.42857143;color: #525354;white-space: nowrap;text-decoration: none;}
+        .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{color: #ffffff;text-decoration: none;outline: 0;background-color: #2a94d6;}
+        .typeahead {z-index: 1051;}
+        .typeahead li {margin-left: 0px !important;}
+        .s1utility {color: #557FFF !important;padding-right: 10px;}
+        .list tr th,.list tr td{padding: 4px 2px 0px 5px!important;color: #333!important;border-bottom: 1px solid #e3deb8!important;}
+        .list tr th div,.list tr td span{font-family: Arial,Helvetica,sans-serif;font-size: 0.9em;}
+        #totalTech{ font-weight:normal; }
+        /* Styles for Show All technologies window */
+        span.showall { padding: 2px 2px; margin: 5px 5px;}        
+        .dataCell {font-size: 12px;}
+        .blueLink{color:blue!important;}
+        .red{color:#c00!important;font-weight:bold;}        
+        .well {
+        background-color: rgb(132, 109, 209) !important;
+        border: 1px solid rgb(19, 61, 141) !important;
+        }
+        .serviceCategory:hover {
+        color: #0000ff;
+        text-decoration: underline;
+        }
+        .helpIconWrapper + .tooltip > .tooltip-inner {
+        background-color: #FEFDBA;
+        color: #000000;
+        border: 1px solid #F3A205;
+        }
+        .helpIconWrapper .tooltiptextservice{
+        visibility: hidden;
+        background-color: #FEFDBA;
+        color: #000000;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 11px;
+        padding: 5px 0;
+        border: 1px solid #F3A205;
+        position: absolute;
+        width: 300px;
+        left: 75%;
+        margin-top: -55px;
+        }
+        .helpIconWrapper:hover .tooltiptextservice {
+        visibility: visible;
+        }
+        .helpIconWrapper .tooltiptext1{
+        visibility: hidden;
+        background-color: #FEFDBA;
+        color: #000000;
+        border-radius: 4px;
+        text-align: center;
+        padding: 5px 0;
+        border: 1px solid #F3A205;
+        position: absolute;
+        width: 190px;
+        left: 29%;
+        margin-top: -55px;
+        }
+        .helpIconWrapper:hover .tooltiptext1 {
+        visibility: visible;
+        }
+        .cartlink .tooltiptext1{
+        visibility: hidden;
+        background-color: #FEFDBA;
+        color: #000000;
+        border-radius: 4px;
+        text-align: center;
+        padding: 5px 0;
+        border: 1px solid #F3A205;
+        position: absolute;
+        width: 190px;
+        left: 34%;
+        margin-top: -55px;
+        }
+        .cartlink:hover .tooltiptext1 {
+        visibility: visible;
+        }
+    </style>
+    <script id="paginationService.html" type="text/ng-template">
+    <ul class="pagination" style="margin:10px 0 10px 0px !important">              
+        <li ng-if="directionLinks" ng-class="{disabled: noPrevious()}">
+            <a href ng-click="selectPage(page - 1)" title="Previous Page">
+                <span class="glyphicon glyphicon-triangle-left"></span>Previous
+                </a>
+                </li>               
+                <li ng-if="directionLinks" ng-class="{disabled: noNext()}"><a href ng-click="selectPage(page + 1)" title="Next Page">Next<span class="glyphicon glyphicon-triangle-right"></span></a></li>                
+                </ul>
+                </script>
+    <div id="serviceApp" ng-init="initServices();" style="position:relative;">
+        <apex:remoteObjects jsNamespace="RemoteObjectModel">        
+            <apex:remoteObjectModel name="OpportunityLineItem" fields="Id,Mix__c,Product_Family_US__c,PricebookEntryId,OpportunityId">                        
+            </apex:remoteObjectModel>        
+        </apex:remoteObjects>
+        
+        <!-- <div style="margin : 20px 0px;" class="pbSubsection" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">    -->
+        <div style="margin : 20px 0px;" class="pbSubsection" ng-if="isServiceIntegrated === 'Yes'">
+            <span style="font-weight:bold;">Services were integrated with a CCW BOM on &nbsp;<apex:outputField value="{!Opportunity.CCW_BOM_Integrated_Date__c}"/>.  <span ng-if = "'{!Opportunity.CCW_BOM_Integrated_Quote_Id__c}'" >Please click on quote link above to make changes to your technologies.</span></span>
+            <div style="color: rgb(204, 0, 0); font-weight: bold;" ng-cloak="true">{{service_quote_error_message}}<br/></div>
+        </div>
+        
+        <!-- <div style="margin : 20px 0px;" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'"> -->
+        <div style="margin : 20px 0px;" ng-if="isServiceIntegrated === 'No' || isServiceIntegrated === 'null' || isServiceIntegrated === ''">
+            <!--  <input type="Text" size="50" class="smallInputService" placeholder="Search & Add Service Program" />  &nbsp;            -->
+            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                <input type="text" class="servicesmallInput" ng-model="tempService" placeholder="Search & Add Service Category/Program/Level" uib-typeahead="service as service.name for service in getServices($viewValue)" typeahead-on-select="setSearchService($item,$event,tempService)" style="width:35%;"/>                    
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!isPSSEditable}">
+                <input type="text" disabled="disabled" class="servicesmallInput" ng-model="tempService" placeholder="Search & Add Service Category/Program/Level" uib-typeahead="service as service.name for service in getServices($viewValue)" typeahead-on-select="setSearchService($item,$event,tempService)" style="width:35%;"/>                    
+            </apex:outputPanel>
+            <div class="helpIconWrapper" data-toggle="tooltip" data-placement="top"><span class="tooltiptext1">Type the Service information you are looking for</span></div> &nbsp;
+            <span class="cartlink" style="marign: 20px 0px " data-toggle="tooltip" data-placement="top"><span class="tooltiptext1">Select from the complete list of Services</span>
+                <apex:outputPanel rendered="{!isPSSEditable}">
+                    <button type="button" disabled="disabled" data-toggle="modal" data-target="#myModal3">Show All</button>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                    <button type="button" data-toggle="modal" data-target="#myModal3">Show All</button>
+                </apex:outputPanel>
+            </span>
+            <span style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px;width:450px;" ng-cloak="true">
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; width: 500px;" ng-cloak="true">{{saveServiceErrorMessage}}<br/></div><!-- QI2_Edit_utr: Service error display in the service section -->
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block;width:100%;" ng-cloak="true">{{mixServicePercentValid}}</div>
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block;width:100%;" ng-cloak="true" ng-if="recurringServiceTermFlag">{{recurringServiceTermValid}}</div>
+                <!--<div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block;width:100%;" ng-cloak="true" >recurringServiceTermValid}}</div> -->
+            </span>
+        </div>
+        <div >
+            <table class="table table-condensed list" border="1" width="100%" style="margin-bottom:0px !important;" id="technologyTable">
+                <colgroup span="4"></colgroup>
+                <thead>
+                    <tr class="headerRow">
+                        <th width="5%" class="headerRow" ng-if = "isServiceIntegrated === 'No' || isServiceIntegrated === 'null' || isServiceIntegrated === ''">Action</th>
+                        <th width="18%" class="headerRow">Service Category</th>                           
+                        <th width="15%" class="headerRow">Service Program / Service Name</th>
+                        <th width="15%" class="headerRow">Service Level / Technology</th>
+                        <th width="15%" class="headerRow">Service Level Description / Offer Name</th>
+                        <th width="8%" class="headerRow" style="text-align: center;">Mix%</th>                                                        
+                        <!-- <th width="10%" class="headerRow" style="text-align: center;">{!$ObjectType.Opportunity.Fields.Expected_Service__c.Label}</th> -->
+                        <th width="10%" class="headerRow" style="text-align: center;">Expected Line Value ($000s)</th>
+                        <th width="8%" class="headerRow" style="text-align: center;"><span style="vertical-align: top;">Recurring Service Category?</span>&nbsp;<div class="helpIconWrapper" data-toggle="tooltip" data-placement="top"><span class="tooltiptextservice">Indicates whether the Service Category is RO in nature</span></div></th>
+                        <th width="6%" class="headerRow" style="text-align:center;">Term (Months)</th>
+                    </tr>
+                </thead>
+                <tbody class="mainTbody">
+                    <tr class="dataRow even first last" data-ng-repeat="serviceObj in scopeserviceobj | limitTo:itemsPerPage:itemsPerPageService*(currentPageService-1) track by $index" style="height: 31px;">
+                        <td width="5%" ng-if = "isServiceIntegrated === 'No' || isServiceIntegrated === 'null' || isServiceIntegrated === ''" style="border:0px;vertical-align: top;" class="dataCell">
+                            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                                <a href="javascript:void(0);" class="del s1utility" ng-click="deleteServiceLineItem((itemsPerPageService*(currentPageService-1))+$index,$event);">Del</a>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!isPSSEditable}">
+                                <a class="del s1utility" ng-click="return false;">Del</a>
+                            </apex:outputPanel>
+                        </td>
+                        <td width="18%" style="vertical-align: top;" class="dataCell">
+                            <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 300px;" title="{{serviceObj.serviceCategory}}">{{serviceObj.serviceCategory}}</div>
+                        </td>
+                        <td style="border:0px;vertical-align: top;" class="dataCell" width="15%">
+                            <div ng-class="(serviceObj.isActive==false)?'red':''" style="font-size:12px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 200px;" ng-cloak="true" title="{{serviceObj.program}}">{{serviceObj.program}}<span class="red" ng-if="serviceObj.isActive==false" style="padding-left:10px;" ng-cloak="true">Inactive</span></div>
+                        </td>
+                        <td width="15%" style="vertical-align: top;" class="dataCell">
+                            <div  style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 200px;" title="{{serviceObj.service_level_name}}">{{serviceObj.service_level_name}}</div>
+                        </td>
+                        <td width="15%" style="vertical-align: top;" class="dataCell">
+                            <div  style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 200px;" title="{{serviceObj.serviceLevel}}">{{serviceObj.serviceLevel}}</div>
+                        </td>
+                        
+                        <td width="8%" style="border:0px;vertical-align: top;clear:left;" class="dataCell">
+                            <!--added by Kavya to make fields read only for pss user-->
+                            <apex:outputPanel rendered="{!isPSSEditable}">
+                                <div >
+                                    <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div>
+                                    <input disabled="disabled" class="mixClass inputSelect" id="mixPercentageServiceId_{{$index}}" max="100" min="0" ng-class="indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100;"  ng-init="checkServiceTotal($index);" ng-blur="checkValidPercentage($index,serviceObj)" ng-click="removePercentageZero($index,serviceObj)" ng-keydown="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100;" ng-keyup="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100;" ng-model="serviceObj.mixPercentage" ng-size="5" onkeypress="return checkServiceDecimal(this,this.id,event)" step="0.01" type="number" value="serviceObj.mixPercentage" style="width:43px;margin-left: 5px;"></input>
+                            </div>
+                        </apex:outputPanel>
+                    <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                        <div  style="text-align: center" ng-show="isServiceIntegrated === 'Yes'">
+                            <div class="mixClass inputSelect" id="mixPercentageServiceId_NonEditable_{{$index}}" max="100" min="0" ng-class="indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100;"  ng-init="checkServiceTotal($index);" ng-blur="checkValidPercentage($index,serviceObj)" ng-click="removePercentageZero($index,serviceObj)" ng-keydown="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100;" ng-keyup="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100;" ng-model="serviceObj.mixPercentage" ng-size="5" onkeypress="return checkServiceDecimal(this,this.id,event)" step="0.01" type="number" value="serviceObj.mixPercentage" style="margin-left: 5px;">{{serviceObj.mixPercentage | number:2}}</div>
+                        </div>
+                        
+                        <div ng-show=" isServiceIntegrated === 'No' || isServiceIntegrated === 'null' || isServiceIntegrated === ''">
+                            <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div>
+                            <input class="mixClass inputSelect" id="mixPercentageServiceId_{{$index}}" max="100" min="0" ng-class="indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100;"  ng-init="checkServiceTotal($index);" ng-blur="checkValidPercentage($index,serviceObj)" ng-click="removePercentageZero($index,serviceObj)" ng-keydown="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100;" ng-keyup="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100;" ng-model="serviceObj.mixPercentage" ng-size="5" onkeypress="return checkServiceDecimal(this,this.id,event)" step="0.01" type="number" value="serviceObj.mixPercentage" style="width:43px;margin-left: 5px;"></input>
+                    </div>
+                </apex:outputPanel>
+            <!--ends here-->
+        </td>
+        <td width="10%" style="border:0px;vertical-align: top;" align="center" class="dataCell showTotal" ng-class="setServiceTotal();" ng-cloak="true">{{(indvidualServiceCost)| number:2}}</td>
+        <td ng-if= "isServiceIntegrated === 'Yes'" width="8%" style="text-align: left;">{{serviceObj.flagFromOpptyLine}}</td>
+        <td ng-if= "isServiceIntegrated !== 'Yes' && serviceObj.flagForMixed !== 'Mixed'" width="8%" style="text-align: left;">{{serviceObj.ACVFlag}}</td>
+        <!--added by Kavya to make fields read only for pss user-->
+        <apex:outputPanel rendered="{!NOT(isPSSEditable)}">                
+            <td ng-if= "serviceObj.flagForMixed === 'Mixed' && isServiceIntegrated !== 'Yes'" width="8%" style="text-align: left;">
+                <select ng-options="item for item in acvFlagSelection" ng-model="serviceObj.ACVFlag" ng-selected="serviceObj.ACVFlag"></select>
+            </td>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!isPSSEditable}"> 
+            <td ng-if= "serviceObj.flagForMixed === 'Mixed' && isServiceIntegrated !== 'Yes'" width="8%" style="text-align: left;">
+                <select disabled="disabled" ng-options="item for item in acvFlagSelection" ng-model="serviceObj.ACVFlag" ng-selected="serviceObj.ACVFlag"></select>
+            </td>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!isPSSEditable}">
+            <td width="6%" >
+                <div>
+                    <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#fff;width: 3px;height: 22px;margin-right: 2px;"></div>
+                    <input style="width:43px; margin-left: 5px; text-align: right;" id="termServiceMonths_{{$index}}" class="inputSelect" ng-model="serviceObj.term" ng-class="setServiceTotal();" value="serviceObj.term" onkeypress="return isNumberKey(event)"  step="1" min="1" max="120" type="number" disabled="disabled"></input>   
+            </div>
+    </td>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!NOT(isPSSEditable)}"> 
+    <!--<td width="6%" ng-if="serviceObj.ACVFlag === 'Yes' && !'{!Opportunity.CCW_BOM_Integrated_Date__c}'" style="text-align: left;"> -->
+    <td width="6%" ng-if="serviceObj.ACVFlag === 'Yes' && isServiceIntegrated !== 'Yes'" style="text-align: left;">
+        <div>
+            <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div>
+            <input style="width:43px; margin-left: 5px; text-align: right;" id="termServiceMonths_{{$index}}" class="inputSelect" ng-model="serviceObj.term" ng-class="setServiceTotal();" ng-init="checkServiceTerm($index);" ng-change="checkServiceTerm($index);" value="serviceObj.term" onkeypress="return isNumberKey(event)"  step="1" type="number" ng-blur="checkServiceTerm($index);"></input>   
+    </div>
+</td>
+<!--<td width="6%" ng-if="serviceObj.ACVFlag === 'Yes' && '{!Opportunity.CCW_BOM_Integrated_Date__c}'" > -->
+<td width="6%" ng-if="serviceObj.ACVFlag === 'Yes' && isServiceIntegrated === 'Yes'" >
+    <div>
+        <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#fff;width: 3px;height: 22px;margin-right: 2px;"></div>
+        <input style="width:43px; margin-left: 5px; text-align: right;" id="termServiceMonths_{{$index}}" class="inputSelect" ng-model="serviceObj.term" ng-class="setServiceTotal();" value="serviceObj.term" onkeypress="return isNumberKey(event)"  step="1" min="1" max="120" type="number" disabled="disabled"></input>   
+</div>
+</td>
+<td width="6%" ng-if="serviceObj.ACVFlag !== 'Yes'" >
+    <div>
+        <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#fff;width: 3px;height: 22px;margin-right: 2px;"></div>
+        <input style="width:43px; margin-left: 5px; text-align: right;" id="termServiceMonths_{{$index}}" class="inputSelect" ng-class="setServiceTotal();" onkeypress="return isNumberKey(event)"  step="1" min="1" max="120" type="number" disabled="disabled"/>   
+    </div>
+</td>
+</apex:outputPanel>
+<!--ends here-->
+
+</tr>
+<tr>
+    <td ng-if="isServiceIntegrated !== 'Yes'" width="5%" style="border:0px;" class="dataCell">&nbsp;</td>
+    <td  width="18%" style="border:0px;" class="dataCell">&nbsp;</td>
+    <td width="15%" style="border:0px;" class="dataCell">&nbsp;</td>
+    <td width="15%" style="border:0px;" class="dataCell">&nbsp;</td>
+    <td width="15%" style="border:0px;text-align:right;" class="dataCell"><span>Grand Total :</span></td>
+    <td width="8%" style="border:0px;padding-left:12px!important;text-align: center" class="dataCell"><label id="totalTech" ng-cloak="true">{{totalService| number:2}}</label></td>
+    <td width="10%" style="border:0px;text-align:center;" class="dataCell"><label id="totalTech" ng-class="totalServiceCost = expectedServiceCost*totalService/100;" ng-cloak="true">{{(totalServiceCost)| number:2}}</label></td>
+    <td width="8%" style="border:0px;" class="dataCell">&nbsp;</td>
+    <td width="6%" style="border:0px;" class="dataCell">&nbsp;</td>
+</tr>
+
+</tbody>
+</table>         
+<ul uib-pagination="true" total-items="scopeserviceobj.length" template-url="paginationService.html" ng-model="currentPageService" items-per-page="itemsPerPageService" class="pagination-sm pull-right" style="margin:0px;"></ul>
+</div>
+
+
+
+<div id="myModal3" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">All Service Programs</h4>
+            </div>
+            <div class="modal-body">
+                <div class="well" style="width:100%; padding: 8px 0;">
+                    <div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">
+                        <ul class="nav nav-list">
+                            <li ng-repeat="servFamily in serviceFamilies track by $index" class="mainCategory"><label class="tree-toggler nav-header">
+                                <div><div class="glyphicon glyphicon-triangle-right" ng-class="accordionOpenIndex === $index?'glyphicon glyphicon-triangle-bottom':'glyphicon glyphicon-triangle-right'" ng-click="doToggleService($event,servFamily.name,$index);" style="cursor:pointer;font-size: 12px;padding-right: 5px;"></div>
+                                    <div class="serviceCategory" href="" id="servNameToExpand" ng-class="(checkServiceisActive(servFamily.name) == false)?'blue':''" ng-click="doToggleService($event,servFamily.name,$index);" style="padding: 2px 15px 2px 30px; margin-top: -20px;" >{{servFamily.name}}</div></div></label>                                                
+                                <ul class="nav nav-list tree" ng-if="accordionOpenIndex === $index">
+                                    <li ng-repeat="listServiceFamily in serviceFamiliesToggle">
+                                        <a href="javascript:void(0);" style="padding: 2px 15px 2px 15px;" ng-click="addServiceLineItem(listServiceFamily.id,listServiceFamily.name,listServiceFamily.service,listServiceFamily.category,listServiceFamily.program, listServiceFamily.serviceName, listServiceFamily.alloSerGrp)">{{listServiceFamily.serviceName}} - {{listServiceFamily.service}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</apex:page>

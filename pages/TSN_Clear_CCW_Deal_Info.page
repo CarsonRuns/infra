@@ -1,0 +1,6 @@
+<apex:page standardController="Case" extensions="TSN_Attach_Opportunity_CTE" id="clear">
+
+<apex:form >
+ <apex:commandLink action="{!ClearDeal}" title="Clear CCW Deal Information" value="Clear CCW Deal Details" oncomplete="top.location.reload(true);" />
+ </apex:form>
+</apex:page>

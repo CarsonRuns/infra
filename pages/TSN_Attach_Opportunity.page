@@ -1,0 +1,193 @@
+<apex:page standardController="Case" extensions="TSN_Attach_Opportunity_CTE" showHeader="false" sidebar="false" >
+<!--Loading JQuery Plugins and Parser class from Static Resources-->
+<script src="http://malsup.github.com/jquery.blockUI.js" />
+<apex:includeScript value="{!$Resource.JSONParser}"/>
+<apex:includeScript value="{!$Resource.Json}"/>
+<apex:includeScript value="{!$Resource.CCW}"/>
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.PUI_SR,'pui.css')}" />
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.yui241,'build/container/assets/container.css')}" />
+<script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/yahoo-dom-event/yahoo-dom-event.js')}"></script> 
+<script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/animation/animation-min.js')}"></script> 
+<script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/container/container-min.js')}"></script> 
+<script type="text/javascript"> 
+                        
+function CloseAndRefresh(){     
+    window.opener.location.reload();
+}
+function callClose(){
+     self.close();
+}
+
+j$ = jQuery.noConflict();
+</script>
+<apex:form id="form" >
+  <apex:pageBlock id="block">
+        <apex:pageMessage id="errorMessage" detail="Please enter atleast two characters or atleast one criteria"  severity="error"  rendered="{!errorFlag}" title="Error Message"  /> 
+        <apex:pageMessage id="limitMessage" detail="The search result has returned more than one thousand record. Please redefine the search criteria if required."  severity="info"  rendered="{!limitFlag}" title="Info Message"  /> 
+        <!--<apex:pageMessage id="opptyAttachMessage" detail="You cannot attach an opportunity because you do not belong to Cisco_Sales_Cases Profile"  severity="info"  rendered="{!opptyAttachMessage}" title="Info Message" />-->         
+        <apex:pageMessage id="ownerGroupMessage" detail="This case is assigned to a group.You cannot attach an opportunity which is associated to a group"  severity="info"  rendered="{!ownerGroupMessage}" title="Info Message" />
+        <apex:pageMessage id="statusMessage" detail="You cannot add an opportunity to a closed case"  severity="error"  rendered="{!statusMessage}" title="Error Message" />                
+        <apex:pageMessage id="DealNotAvailable" detail="Deal ID is currently not available." severity="error" title="Info Message" rendered="{!invalidDeal}"></apex:pageMessage>
+        <apex:messages /> 
+        
+         <!-- JavaScript function to send the request to CCW application-->
+        <apex:outputPanel id="jsonp">
+        <script>
+         var INTER_URL = "{!URLFOR($Resource.yui241,'assets/rel_interstitial_loading.gif')}";
+            var processingDialog = new YAHOO.widget.SimpleDialog("PROCESSING_DLG", {  
+                fixedcenter:true,
+                modal:true, 
+                close:false,
+                visible:false, 
+                draggable:false
+            });           
+
+            function showhideProcessingDialog(val)
+            {   
+                processingDialog.setBody('<center> Searching in CCW...</center><BR><image src="'+ INTER_URL +'" />'); 
+                processingDialog.render(document.body);
+                if(val){
+                    processingDialog.show();
+                }else{
+                    processingDialog.hide();
+                }   
+            }
+            function hideProcessDialog(){
+                processingDialog.hide();
+            }
+            
+            function loading(val)
+            {   
+                processingDialog.setBody('<center>Searcing in SFDC...</center><BR><image src="'+ INTER_URL +'" />'); 
+                processingDialog.render(document.body);
+                if(val){
+                    processingDialog.show();
+                }
+            }
+
+            function CCW(){         
+                showhideProcessingDialog(true);
+                var dealid = document.getElementById('{!$Component.form.block.Section.searchDealId}').value;
+                var caseid = '{!Case.Id}';
+                <!--SCAVA FIX-->
+                var caseid1 = '{!JSENCODE(Case.CaseNumber)}';
+                var sessionid = '{!GETSESSIONID()}';
+                var userid = '{!$User.Id}';
+                var email = '{!$User.Email}';
+                var url1 = 'https://'+window.location.hostname+'/services/Soap/c/11.0/'+sessionid.substring(0,15);
+                var hostname = 'https://'+window.location.hostname;
+                <!--SCAVA FIX-->
+                var url = "{!JSENCODE(CCW_URL)}";         
+                url += '?at=caseInfo&userid='+userid+'&email='+email+'&sessionid='+sessionid+'&url='+url1+'&hostname='+hostname+'&caseId='+caseid1+'&dealId='+dealid+'&requestId=';          
+                <!-- CCW1 method is called from the CCW JavaScript in Static Resource-->            
+                j$.ajax({
+                        url: url,
+                        type: 'get',
+                        dataType: 'jsonp',
+                        callback: 'callBackMethodName',
+                        success: function(data, textStatus, jqXHR){
+                            var jsonObject=eval(data);
+                            if(jsonObject){
+                                var alert99 = "'"+JSON.stringify(data)+"'";
+                                paraFunction(JSON.stringify(data));                         
+                            }
+                            showhideProcessingDialog(false); 
+                        },
+                        error: function (data,jqXHR, exception) {
+                            alert('Service is unavilable.Please try after some time.');
+                            
+                            showhideProcessingDialog(false);
+                        }
+                 }); 
+                             
+            }
+        </script>
+        </apex:outputPanel>
+        
+        <apex:actionFunction name="paraFunction" action="{!IWantToDebug}" reRender="block,errorMessage">       
+             <apex:param id="anode" name="node" value=""/>
+        </apex:actionFunction>
+
+        <!-- This section do the searching for opprtunity according to the search criterion provided by the user-->
+        <apex:pageBlockSection title="Advance Search Opportunity" collapsible="true" columns="1" rendered="{!NOT(SearchBlockFlag)}" id="Section">          
+            <apex:panelGrid columns="2"  width="50%">
+                <apex:outputLabel for="searchDealId">Deal Id </apex:outputLabel> 
+                <apex:inputText id="searchDealId" value="{!searchDealId}" />
+                <apex:outputLabel for="searchOptyName" >Opportunity Name </apex:outputLabel> 
+                <apex:inputText id="searchOptyName" value="{!searchOptyName}" />
+                <apex:outputLabel for="searchOptyOwner" >Opportunity Owner</apex:outputLabel> 
+                <apex:inputText id="searchOptyOwner" value="{!searchOptyOwner}" />
+            </apex:panelGrid>
+            <apex:pageBlockSectionItem >
+               <apex:commandButton value="Search" action="{!doAdvanceSearch}" oncomplete="if({!Jsonresp}){CCW();}else{hideProcessDialog();}" rerender="block,errorMessage" status="status"/>
+           </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>        
+        <apex:actionStatus id="status" onstart="loading(true)" />
+        <!-- This block section shows  search result for opportunity and do pagination. Show 50 opprtunies at a time -->
+        <apex:pageBlockSection title="Results : {!ResultSize}" collapsible="false" columns="1" rendered="{!AND(NOT(ResultBlockFlag),NOT(Moqflag))}">
+            <apex:pageBlockTable value="{!results}" var="oppty" rendered="{!NOT(errorFlag)}">
+            <apex:column headerValue="Deal Id">
+                <apex:commandLink id="DealId" onclick="" action="{!save}" oncomplete="CloseAndRefresh();" rerender="block" immediate="true">
+                   <apex:param name="opptyId" value="{!oppty.Id}"/>
+                   <apex:param name="opptyName" value="{!oppty.Name}"/>          
+                    {!oppty.DealID__c} 
+                </apex:commandLink>
+            </apex:column>
+            <apex:column value="{!oppty.name}" headerValue="Opportunity Name"/>
+            <apex:column value="{!oppty.Owner.Name}" headerValue="Opportunity Owner"/>
+            <apex:column value="{!oppty.StageName}" headerValue="Opportunity Stage"/>
+            <apex:column value="{!oppty.Opportunity_Status__c}" headerValue="Opportunity Status"/>
+            <apex:column value="{!oppty.CloseDate}" headerValue="Expected Book Date"/>
+            </apex:pageBlockTable>
+         </apex:pageBlockSection>
+                
+        <apex:pageBlockSection title="Deal Results : {!ResultSize}" collapsible="false" columns="1" rendered="{!AND(NOT(ResultBlockFlag),Moqflag)}" id="Block2">
+            <apex:pageBlockTable value="{!MOQResults}" var="quote">
+                <apex:column headerValue="Deal Id">
+                 <apex:commandLink id="DealId" action="{!save}" oncomplete="CloseAndRefresh();" rerender="block" immediate="true"> 
+                       <apex:param name="QuoteId" value="{!quote.Id}"/>
+                       <apex:param name="DealId" value="{!quote.Deal_ID__c}"/>
+                       <apex:param name="DealStatus" value="{!quote.Deal_Status__c}"/>
+                       <apex:param name="DealName" value="{!quote.Deal_Name__c}"/>
+                       <apex:param name="QuoteProdListAmt" value="{!quote.Quote_Product_List_Amount__c}"/>
+                       <apex:param name="QuoteServListAmt" value="{!quote.Quote_Service_List_Amount__c}"/>
+                       <apex:param name="QuoteStatus" value="{!quote.Quote_Status__c}"/>
+                       <apex:param name="ExpProdListAmt" value="{!quote.Expected_Product_List_Amount__c}"/>
+                       <apex:param name="ExpServListAmt" value="{!quote.Expected_Service_List_Amount__c}"/>
+                       <apex:param name="ExpCustAccName" value="{!quote.End_Customer_Name__c}"/>
+                       <apex:param name="EndCustAddr1" value="{!quote.Address_Line_1__c}"/>
+                       <apex:param name="EndCustAddr2" value="{!quote.Address_Line_2__c}"/>
+                       <apex:param name="EndCustAddr3" value="{!quote.Address_Line_3__c}"/>
+                       <apex:param name="EndCustCity" value="{!quote.City__c}"/>
+                       <apex:param name="EndCustCounty" value="{!quote.Country__c}"/>
+                       <apex:param name="QuoteProdNetAmt" value="{!quote.Quote_Product_Net_Price__c}"/>
+                       <apex:param name="QuoteServNetAmt" value="{!quote.Quote_Service_Net_Price__c}"/>
+                       <apex:param name="DealCreatedOn" value="{!quote.CR_Party_ID__c}"/>
+                       <apex:param name="DealExpirationDate" value="{!quote.Is_Dummy_Quote__c}"/>
+                       <apex:param name="ProgramName" value="{!quote.Program_Name__c}"/>
+                       <apex:param name="PromotionName" value="{!quote.Promotion_Name__c}"/>
+                       <apex:param name="DiscountType" value="{!quote.Discount_Type__c}"/>
+                       <apex:param name="EligibleforNS" value="{!quote.Eligible_for_NS__c}"/>
+                       <apex:param name="Quote" value="{!quote.DM_Quote_ID__c}"/>                               
+                        {!quote.Deal_ID__c}  
+                   </apex:commandLink>
+                </apex:column>              
+                <apex:column value="{!quote.name}" headerValue="Quote Name"/>
+                <apex:column value="{!quote.Deal_Name__c}" headerValue="Opportunity Name"/>             
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection collapsible="false" rendered="{!SuccessBlockFlag}">
+            <apex:pageBlockSectionItem >
+                 <apex:outputLabel >Deal/Opportunity has been added.</apex:outputLabel>
+                 <apex:commandButton value="close" onclick="callClose();"></apex:commandButton>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+        <apex:panelGrid columns="2" id="navigation" rendered="{!NOT(PanelBlockFlag)}">
+            <apex:commandLink value="<-Previous" style="font-weight:bold" rendered="{!hasPrevious}" action="{!previous}"/>
+            <apex:commandLink value="Next->" style="font-weight:bold" rendered="{!hasNext}" action="{!next}"/>
+        </apex:panelGrid>
+   </apex:pageBlock>
+  </apex:form>       
+</apex:page>

@@ -1,0 +1,135 @@
+<!-- ************************* Change History *************************
+WR-01199 - Added FP consideration for PUI page redirection.
+************************* Change History ************************* -->
+<apex:page showHeader="false" sidebar="false" standardController="Opportunity" extensions="Product_UI_Redirect_Skip_Stage1_CTE" >
+<script type="text/javascript" src="/js/functions.js"></script> 
+<script src="/soap/ajax/10.0/connection.js"></script> 
+<script src="/soap/ajax/10.0/apex.js"></script> 
+    <script>
+          function inLightningExperience() {
+        return ['Theme4d', 'Theme4u'].indexOf('{!$User.UIThemeDisplayed}') > -1; 
+    }
+    
+    var doFPRedirect = "{!JSENCODE(ForcastRedirect1)}"; //Encoding for SCAVA scan
+    var doProdRedirect = "{!JSENCODE(ProductRedirect1)}"; //Encoding for SCAVA scan
+    var Stage5Name = "{!JSENCODE(stage5)}";
+    var oppOwner = "{!JSENCODE(Opportunity.OwnerId)}"; //Encoding for SCAVA scan
+    var postn;
+    var post = [];
+    var cnt =0;
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    var buyingProg = "{!JSENCODE(Opportunity.Buying_Program__c)}";//Encoding for SCAVA scan
+    var eaFlag = "{!JSENCODE(Opportunity.Enterprise_Agreement_Opportunity__c)}"; //Encoding for SCAVA scan
+    
+    var _urlPUI;   
+    var _urlFP;     
+    _urlPUI = "{!JSENCODE(PUI_URL1)}"; //Encoding for SCAVA scan
+    _urlFP = "{!JSENCODE(FP_URL1)}"; //Encoding for SCAVA scan
+  
+    var doCheckService = parseFloat("{!(JSENCODE(TEXT(Opportunity.Expected_Service__c)))}");   //Encoding for SCAVA scan 
+    
+    var doCheckMix = parseFloat("{!(JSENCODE(TEXT(Opportunity.Service_Total_Mix__c)))}");//Encoding for SCAVA scan
+  
+    var doCheckProduct = parseFloat("{!(JSENCODE(TEXT(Opportunity.Expected_Product__c)))}"); //Encoding for SCAVA scan
+    
+    var doCheckProdMix = parseFloat("{!(JSENCODE(TEXT(Opportunity.Technology_Total_Mix__c)))}"); //Encoding for SCAVA scan
+    
+    var checkOptyStage = "{!JSENCODE(Opportunity.StageName)}"; //Encoding for SCAVA scan
+    var opptyStage;
+    console.log(doCheckService);
+    console.log('checkOptyStage -->'+checkOptyStage);
+    console.log('Stage5Name -->'+Stage5Name);
+    console.log('doProdRedirect --->'+doProdRedirect);
+    
+       
+     if(doFPRedirect === 'false' && doProdRedirect === 'false') {
+        console.log('Navigating to MPUI 1 ---');
+            
+       if(checkOptyStage === '1 - Prospect' ){
+           
+               console.log('Inside oppty stage --->');
+              if (inLightningExperience()) {
+                  // window.location.reload();
+                  // sforce.one.navigateToURL(_urlPUI);
+                  console.log('Redirecting to MPUI --->');
+            
+              }
+        }
+       
+       else {
+             console.log('Inside oppty stageccx --->');
+             
+             if (inLightningExperience()) {
+             //sforce.one.navigateToURL(_urlPUI);
+             doProdRedirect == 'true';
+             console.log('Redirecting to MPUI ccx--->');
+          } 
+      
+       }
+      }
+    
+    else if(doFPRedirect === 'true'){
+        try{ 
+       var query = "Select Id, Position_1__c From User Where Id ='" + oppOwner + "' " 
+       var records = sforce.connection.query(query); 
+       var records1 = records.getArray('records'); 
+       var  positionArr = records1.Position_1__c;
+       for (var i=0; i<records1.length; i++) {
+           var recordname = records1[i];
+           post.push(recordname.Position_1__c);
+            
+       }
+       var str = post.toString();
+       var str1 =str.split('\n');
+       console.log('Str 1 --->'+str1);
+       console.log('Length of string :---->'+str1.length);
+       console.log('Position -->'+postn);
+       console.log('Count --->'+cnt);
+      }catch(e){ 
+         alert('An Error has Occured. Error:' +e); 
+      }
+      
+      if(str1.length > 1) {
+        
+        if(doProdRedirect === 'true' && {!(Opportunity.CCW_BOM_Integrated_Date__c == null)}){
+            if (inLightningExperience()){
+                sforce.one.navigateToURL(_urlPUI);
+            }
+            else{
+                top.location.href= _urlPUI;
+            }    
+        }else{
+            if (inLightningExperience()){
+               
+                sforce.one.navigateToURL(_urlFP);
+            }
+            else{
+                top.location.href= _urlFP;
+            }
+        }
+      }
+    }else if(doProdRedirect == 'true'  && checkOptyStage != Stage5Name &&
+             (({!(Opportunity.CCW_BOM_Integrated_Date__c == null)} && ((doCheckService > 0 && doCheckMix != 100) || (doCheckService == 0 && doCheckMix == 100)))
+             || 
+             ({!(Opportunity.CCW_BOM_Integrated_Date__c == null)} && ((doCheckProduct > 0 && doCheckProdMix != 100) || (doCheckProduct == 0 && doCheckProdMix == 100))) 
+             ||
+             ({!(Opportunity.CCW_BOM_Integrated_Date__c != null)} && {!(Opportunity.Is_Service_Quote_Integrated__c!='Yes')} && ((doCheckService > 0 && doCheckMix != 100) || (doCheckService == 0 && doCheckMix == 100)))
+            )){
+                if (inLightningExperience()){
+                sforce.one.navigateToURL(_urlPUI);
+                }
+                else{
+                top.location.href= _urlPUI;
+                 } 
+    }else if(doProdRedirect == 'true' && eaFlag == 'Yes' &&  
+            (buyingProg == null || buyingProg == 'No' || buyingProg == '' || buyingProg == '__' || buyingProg == '--None--' )){
+            console.log('Entered the redirect section for buying program --> ');
+            if (inLightningExperience()){
+                sforce.one.navigateToURL(_urlPUI);
+                }
+                else{
+                top.location.href= _urlPUI;
+                 } 
+    }
+    </script>
+</apex:page>

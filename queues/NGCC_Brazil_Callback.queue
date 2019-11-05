@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>NGCC_Brazil_Callback</name>
+    <queueMembers>
+        <users>
+            <user>lcoutinh@cisco.com</user>
+            <user>pdecamar@cisco.com</user>
+            <user>ybeisert@cisco.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Routing_Callback</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveAgentSession</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

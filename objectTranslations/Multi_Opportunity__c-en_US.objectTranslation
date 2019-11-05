@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Customer Engagements &amp; Events --></label>
+        <name>Customer_Engagements_Events__c</name>
+        <relationshipLabel><!-- Multi Opportunities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deal ID --></label>
+        <name>Deal_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Stage --></label>
+        <name>Deal_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Value(000s) --></label>
+        <name>Deal_Value_000s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Value --></label>
+        <name>Deal_Value_Summary_000s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Multi Opportunities --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Multi Opportunity</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Multi Opportunities</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Multi Opportunity Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>CustomCountry__c</field>
+        <field>Originating_Marketing_Pipeline__c</field>
+        <field>Call_Center_Vendor__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_N3_Atlanta_TC_QC</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>N3 Atlanta approval step 1</description>
+        <entryCriteria>
+            <formula>OR(
+		CONTAINS( $UserRole.Name ,&apos;N3-Atlanta-SDR&apos;),
+		CONTAINS( $UserRole.Name ,&apos;N3-Atlanta-TS&apos;),
+		CONTAINS( $UserRole.Name ,&apos;N3-Atlanta-QC&apos;),
+		Lead_Qualifier_Call_Center__c = &apos;N3 Atlanta&apos;, 
+		Call_Center_Vendor__c = &apos;N3 Atlanta&apos;,
+		TEXT(Owner:User.Marketing_Call_Center__c)=&apos;N3 Atlanta&apos; 
+	)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Americas Americas Mktg Lead Approval N3 Atlanta</label>
+        <name>Americas_Americas_Mktg_Lead_Approval_N3_Atlanta</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_Approval_Submission</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Cisco_Contact_Center_Manager2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Cisco_Contact_Center_Manager1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>High value approver step 2</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Lead.Originating_Marketing_Pipeline__c</field>
+                <operation>greaterOrEqual</operation>
+                <value>100000</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>Americas N3 Atlanta High Value Approver</label>
+        <name>Americas_N3_Atlanta_High_Value_Approver</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>NGCC : This approval process is responsible for handling all N3 users. Anyone from N3 Atlanta can submit the leads for approval.</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(
+	RecordType.Name = &apos;Prospect&apos;,
+	OR(
+		Theater__c = &apos;Americas&apos;,
+		Theater__c = &apos;Greater China&apos;,
+		Theater__c = &apos;EMEAR&apos;,
+		Theater__c = &apos;APJ&apos;
+	),
+	OR(
+		 TRIM(Lead_Qualifier_Call_Center__c) = &apos;N3 Atlanta&apos;,
+		 TRIM(Call_Center_Vendor__c) = &apos;N3 Atlanta&apos;,
+                 TEXT(Owner:User.Marketing_Call_Center__c)=&apos;N3 Atlanta&apos;	
+	),
+	OR(
+		TEXT(Status) = &apos;Rejected&apos;,
+		TEXT(Status) = &apos;Marketing Qualified&apos;
+	)
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>NGCC_Approval_Submission_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Approval_Submission_Mktg_Qualified</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>NGCC_Approval_Submission_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Notify_Lead_Owner_with_Rejection_Reason_APJ</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>NGCC_Requalification_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>NGCC_Approval_Submission</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>NGCC N3 Atlanta Approval Prcess 1/17</label>
+    <recallActions>
+        <action>
+            <name>NGCC_Approval_Submission_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

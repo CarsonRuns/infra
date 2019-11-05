@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>lxRequestResourceEdit</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>Request_Resource_Edit</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>lxRequestResourceNew</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>Request_SE_Resource</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <content>SE_Workspace</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Scontrol</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>lxRequestResourceView</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>Request_Resource_View</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <description>This formula is to copy Account Name of the opportunity 	into this Object</description>
+        <externalId>false</externalId>
+        <formula>Opportunity_Name__r.Account.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assignment_Status__c</fullName>
+        <description>This field is for SE/SEM to update the status of the Assigned SE.</description>
+        <externalId>false</externalId>
+        <label>Assignment Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Closed-Reassigned</fullName>
+                    <default>false</default>
+                    <label>Closed-Reassigned</label>
+                </value>
+                <value>
+                    <fullName>Complete</fullName>
+                    <default>false</default>
+                    <label>Complete</label>
+                </value>
+                <value>
+                    <fullName>Error</fullName>
+                    <default>false</default>
+                    <label>Error</label>
+                </value>
+                <value>
+                    <fullName>On-Hold</fullName>
+                    <default>false</default>
+                    <label>On-Hold</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Assignment_Type__c</fullName>
+        <description>This field provides the Type of SE leading the opportunity. (Cisco or Partner)</description>
+        <externalId>false</externalId>
+        <label>Assignment Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Partner Primary</fullName>
+                    <default>false</default>
+                    <label>Partner Primary</label>
+                </value>
+                <value>
+                    <fullName>Partner Secondary</fullName>
+                    <default>false</default>
+                    <label>Partner Secondary</label>
+                </value>
+                <value>
+                    <fullName>Primary</fullName>
+                    <default>false</default>
+                    <label>Primary</label>
+                </value>
+                <value>
+                    <fullName>Secondary</fullName>
+                    <default>false</default>
+                    <label>Secondary</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Competitor__c</fullName>
+        <description>Competitor selected by SE</description>
+        <externalId>false</externalId>
+        <label>Competitor</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contribution_Percentage__c</fullName>
+        <description>This Field defines the contribution % of the request</description>
+        <externalId>false</externalId>
+        <label>Contribution %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Days_SE_Assigned__c</fullName>
+        <description>This Field stores the number of days between Involvement Start and SLA start</description>
+        <externalId>false</externalId>
+        <formula>ROUND(SE_Involvement_Start__c- SLA_Start_Date__c , 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>No. of Days to Assignment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_SE_Requested__c</fullName>
+        <description>This Field stores the number of days after the SLA of the request id expired</description>
+        <externalId>false</externalId>
+        <formula>ROUND( CreatedDate - Opportunity_Name__r.CreatedDate , 0 )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>No. of Days to Request</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Decline_Reason__c</fullName>
+        <description>The field contains the reason for the decline of the request</description>
+        <externalId>false</externalId>
+        <label>Decline Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Alternate Escalation Team</fullName>
+                    <default>false</default>
+                    <label>Alternate Escalation Team</label>
+                </value>
+                <value>
+                    <fullName>No Escalation Team Required</fullName>
+                    <default>false</default>
+                    <label>No Escalation Team Required</label>
+                </value>
+                <value>
+                    <fullName>No Escalation Team Capacity</fullName>
+                    <default>false</default>
+                    <label>No Escalation Team Capacity</label>
+                </value>
+                <value>
+                    <fullName>Not Qualified</fullName>
+                    <default>false</default>
+                    <label>Not Qualified</label>
+                </value>
+                <value>
+                    <fullName>Error</fullName>
+                    <default>false</default>
+                    <label>Error</label>
+                </value>
+                <value>
+                    <fullName>Alternate Resource</fullName>
+                    <default>false</default>
+                    <label>Alternate Resource</label>
+                </value>
+                <value>
+                    <fullName>No Capacity</fullName>
+                    <default>false</default>
+                    <label>No Capacity</label>
+                </value>
+                <value>
+                    <fullName>No Resource Required</fullName>
+                    <default>false</default>
+                    <label>No Resource Required</label>
+                </value>
+                <value>
+                    <fullName>Alternate</fullName>
+                    <default>false</default>
+                    <label>Alternate</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Email_Notify__c</fullName>
+        <description>This field is used to store Partner SE Name assigned to the opportunity.</description>
+        <externalId>false</externalId>
+        <label>Email Notify</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Focus_Area__c</fullName>
+        <description>This field stores the focus area of the engaged SE Team</description>
+        <externalId>false</externalId>
+        <label>Focus Area</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MyRequests_Assignments_Manager__c</fullName>
+        <description>Used in reports to display the records created by the Manager's(logged-in user) subordinates.</description>
+        <externalId>false</externalId>
+        <formula>IF(  CONTAINS (Resource_Name__r.Reporting_Up_Manager_Chain__c,$User.Alias) ,'True', 'False')</formula>
+        <label>MyRequests-Assignments:Manager</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Name__c</fullName>
+        <description>This Field defines the opportunity for which the request was raised</description>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Resource Requests and Assignments</relationshipLabel>
+        <relationshipName>Requests_and_Assignments</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Territory__c</fullName>
+        <description>This field derives the territory of the corresponding Opportunity.</description>
+        <externalId>false</externalId>
+        <formula>Opportunity_Name__r.Territory2.DeveloperName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Territory</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_SE_Name__c</fullName>
+        <description>This field is used to store Partner SE Name assigned to the opportunity.</description>
+        <externalId>false</externalId>
+        <label>Partner SE Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_SE_Status__c</fullName>
+        <description>This field defines the status of an individual SE on the opportunity</description>
+        <externalId>false</externalId>
+        <label>Primary SE Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Technical Close</fullName>
+                    <default>false</default>
+                    <label>Technical Close</label>
+                </value>
+                <value>
+                    <fullName>Technical On-hold</fullName>
+                    <default>false</default>
+                    <label>Technical On-hold</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Request_Comments__c</fullName>
+        <description>This Field captures the comments entered about the request</description>
+        <externalId>false</externalId>
+        <label>Request Comments</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Request_Escalated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>A flag indicating the request has been escalated for SEP escalations</description>
+        <externalId>false</externalId>
+        <label>Request Escalated</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Requested_By_Me__c</fullName>
+        <description>Used in reports to fetch all the records associated to the logged-in user.</description>
+        <externalId>false</externalId>
+        <formula>IF( Resource_Name__r.Username  =  $User.Username,'True','False')</formula>
+        <label>MyRequests-Assignments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requested_Territory_ID__c</fullName>
+        <description>This field is populated with Territory ID request has been submitted for at the submit of Request.</description>
+        <externalId>false</externalId>
+        <label>Requested Territory ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requested_Territory_Name__c</fullName>
+        <description>This field is to store the territory name entered during request submission</description>
+        <externalId>false</externalId>
+        <label>Requested Territory Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requester_Email_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Requester Email ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Resource_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This Field defines the name of the resource assigned to the request</description>
+        <externalId>false</externalId>
+        <label>Resource</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Resource_Requests_and_Assignments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Resource_Status__c</fullName>
+        <description>This field defines the status of the Requested Resource.</description>
+        <externalId>false</externalId>
+        <label>Resource Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Assigned</fullName>
+                    <default>false</default>
+                    <label>Assigned</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+                <value>
+                    <fullName>Declined - Approved</fullName>
+                    <default>false</default>
+                    <label>Declined - Approved</label>
+                </value>
+                <value>
+                    <fullName>Declined - Pending</fullName>
+                    <default>false</default>
+                    <label>Declined - Pending</label>
+                </value>
+                <value>
+                    <fullName>Direct Assignment</fullName>
+                    <default>false</default>
+                    <label>Direct Assignment</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>true</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Requested</fullName>
+                    <default>false</default>
+                    <label>Requested</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Resource_Username__c</fullName>
+        <description>Resource Username</description>
+        <externalId>false</externalId>
+        <formula>Resource_Name__r.Username</formula>
+        <label>Resource Username</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SEM_Email_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>SEM Email ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SE_Involvement_End__c</fullName>
+        <description>This Field defines the End date of SE Involvement for the request</description>
+        <externalId>false</externalId>
+        <label>SE Involvement End</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>SE_Involvement_Start__c</fullName>
+        <description>This Field defines the Start date of SE Involvement for the request</description>
+        <externalId>false</externalId>
+        <label>SE Involvement Start</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>SE_Role__c</fullName>
+        <description>This field stores SE Role submitted during request.</description>
+        <externalId>false</externalId>
+        <label>zzSE Role DO NOT USE</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SE_SAGE_Role__c</fullName>
+        <description>Helps us to get the SE Role from user record - US328604</description>
+        <externalId>false</externalId>
+        <formula>Resource_Name__r.SE_SAGE_Role__c</formula>
+        <label>SE Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SE_Team_Id__c</fullName>
+        <description>This field stores the Id of the requested SE Team</description>
+        <externalId>false</externalId>
+        <label>SE Team Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SE_USD_Contribution__c</fullName>
+        <description>This field calculates the SE contribution in dollar amount from the contribution percentage</description>
+        <externalId>false</externalId>
+        <formula>Contribution_Percentage__c * Opportunity_Name__r.Expected_Product__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total SE Contribution($'000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SLA_Expired__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is to determine if the request record in SE 	workspace should be highlighted as SLA Expired</description>
+        <externalId>false</externalId>
+        <label>SLA Expired</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SLA_Start_Date__c</fullName>
+        <description>This Field defines the SLA Start date for the request</description>
+        <externalId>false</externalId>
+        <label>SLA Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Secondary_SE_Status__c</fullName>
+        <description>This field defines the status of an individual SE on the opportunity</description>
+        <externalId>false</externalId>
+        <label>Secondary SE Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+                <value>
+                    <fullName>Closed-Reassign</fullName>
+                    <default>false</default>
+                    <label>Closed-Reassign</label>
+                </value>
+                <value>
+                    <fullName>PTO</fullName>
+                    <default>false</default>
+                    <label>PTO</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Type__c</fullName>
+        <description>This field stores the service type required for the engagement.</description>
+        <externalId>false</externalId>
+        <label>Service Type</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Specialization__c</fullName>
+        <description>This Field defines the specialization of the request</description>
+        <externalId>false</externalId>
+        <label>Specialization</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_App_Code__c</fullName>
+        <description>The field contains the Application code of the team</description>
+        <externalId>false</externalId>
+        <label>Team App Code</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Level__c</fullName>
+        <description>This field is for Emerging Markets only. It stores the team level L0, L1, L2 and L3.</description>
+        <externalId>false</externalId>
+        <formula>IF( Team_App_Code__c="EMER_TEAM",TRIM(LEFT(Team_Name__c, 2)),"")</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Team Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Name__c</fullName>
+        <description>This field defines the name of the requested team</description>
+        <externalId>false</externalId>
+        <label>Team Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Type__c</fullName>
+        <description>This field contains the type of the requested team</description>
+        <externalId>false</externalId>
+        <label>Team Type</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is used to store SE Requests and SE Assignments from the SE Workspace</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Resource Request/Assignment</label>
+    <nameField>
+        <displayFormat>{0}</displayFormat>
+        <label>Resource Request/Assignments Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Resource Requests and Assignments</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

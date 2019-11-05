@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Renewal Console Access</label>
+    <pageAccesses>
+        <apexPage>MyProfilePage</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <applicationVisibilities>
+        <application>Renewals_Console</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <tabSettings>
+        <tab>Home_Portfolio</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

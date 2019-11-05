@@ -1,0 +1,9 @@
+<apex:component controller="Case_Email" access="Global">
+<apex:attribute name="case_id" type="String" description="Case Number" assignTo="{!CaseId}"/>
+<apex:repeat value="{!Body}" var="item" id="bodyRepeat" >
+<apex:outputText value="{!item.caseDate}"></apex:outputText>
+&nbsp;&nbsp;
+<apex:outputText value="{!item.caseText}" escape="false"></apex:outputText>
+<br/><br/>
+</apex:repeat>
+</apex:component>

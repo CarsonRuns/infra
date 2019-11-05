@@ -1,0 +1,12 @@
+<!--
+Name    : NGCC_TableauReports
+Author  : Daniel Pisciottano (dpisciot)
+Purpose : Reports page that contains an iframe that displays the tableau reports for SFDC
+Created Date: 7/10/2014
+Modification History: 8/19/2014 (dpisciot) - added custom setting reference
+-->
+
+<apex:page sidebar="false">
+    <h1>Tableau Reports</h1>
+    <apex:iframe height="600px" src="{!$Setup.NGCC_Tableau_Reports_URL__c.URL__c}" width="100%"/>
+</apex:page>

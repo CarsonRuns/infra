@@ -1,0 +1,204 @@
+<apex:page contentType="text/text">
+   <div>
+   <style>
+   .sttdnew{text-align: center;}
+   </style>
+   <div class="stcard">
+         <div class="headerClass">
+            <div ng-hide="hidden==true" ng-animate="'fade'">
+               <sttable-legend></sttable-legend>
+            </div>
+         </div>
+         <div class="stdropdown stcard-dropdown"  ng-show="searchToggle">
+            <button class="stdropbtn"><span class="glyphicon glyphicon-option-horizontal"></span></button>
+            <div class="stdropdown-content">
+               <a href="#" ng-click="popupHelpWindow()">Help&nbsp;<span class="glyphicon glyphicon-question-sign"></span></a>
+               <!--              <a href="#">CCW &nbsp;<span class="glyphicon glyphicon-new-window"></span></a>-->
+            </div>
+         </div>
+         <small>
+               <!--     <div ng-show="!searchToggle" style="height:32px;">-->
+               <div>
+                  <!--<div ng-if="searchToggle" style="height:25px"></div>-->
+                  <div style="height:32px;font-size:80%;padding:1px;" ng-class="{'stmenucolor':!searchToggle}">
+                     <center>
+                        <span class="glyphicon glyphicon-search stcard-dropdown" ng-click="searchToggleBtn()" ng-show="searchToggle"></span>
+                        <span class="stcard-dropdown" ng-show="!searchToggle" ng-click="searchToggleBtn()">
+                        <img src="{!$Resource.DSE_Cross}" width="20px" height="20px" style="margin-top: -5px;"/>
+                        </span>
+                        <span class="input-group" style="background-color: white;border: #00C5CD;border-style: solid;border-width: 1px;border-radius: 5px;" >
+                           <span ng-hide="searchToggle">
+                              <span class="glyphicon glyphicon-search" style="float:left;margin-top: -2px;padding-left:5px;"></span>
+                              <select class="stform-control dse-searchselect" ng-model="queryBy" ng-change="resetFilters(queryBy)" style="vertical-align: super;border:none;height: 20px;box-shadow: none;border-radius: 3px;width: 20px !important;padding-top: 1px;">
+                                 <option data-ng-repeat="cell in mycolumns" ng-if="cell.searchable != false" value="{{cell.fieldname}}@{{cell.caption}}">{{cell.caption}}</option>
+                              </select>
+                              <input ng-hide="searchToggle" class="stform-control" ng-model="searchText" style="vertical-align: super;border: none;border-right:solid;border-color:#00C5CD;border-width:1px;border-radius:3px 0px 0px 3px;padding-top:2px;" type="text" placeholder="Search by {{queryByText}}" enter-Press="search(queryBy,searchText)" />
+                              <button class="btn btn-primary btn-xs" style="    margin-left: 5px;margin-top: -10px;margin-right: 10px;" ng-hide="searchToggle"  ng-click="search(queryBy,searchText)" ng-disabled="searchText == '' || queryBy == '$'">Search</button>
+                           </span>
+                        </span>
+                     </center>
+                  </div>
+               </div>
+               <!--     </div>-->
+            </small>
+         <div class="headerTitle">
+            <div class="headerTitle" style="margin-top:-10px">
+               <span ng-class="{'glyphicon glyphicon-menu-down': hidden, 'glyphicon glyphicon-menu-up': !hidden}" ng-click="hidden = !hidden;changeClass()">
+               </span>
+               <h4>
+                  {{sectitle}}
+                  <br/>
+                  <small>{{lastUpdatedDate}}</small>
+               </h4>
+            </div>
+         </div>
+         <span style="display:block;text-align:right;font-size:90%;color: #acacac;margin-right:10px;">{{totalrecords}} items</span>
+   </div>
+
+
+   <div  class="content" style="overflow: scroll;">
+      <div class="resp-table">
+         <table class="table">
+            <!--<caption>Optional table caption.</caption>-->
+                <thead>
+               <tr>
+                  <th class="stth" data-ng-repeat="cell in mycolumns" data-ng-init="cellvisible=getcolumnShow(cell);" ng-show="cellvisible && cell.icontype != 'date'" ng-class="cell.fieldname != 'ordernumber'? 'stAutoWidth' : 'stwidth'" scope="col">
+                                    
+                                                <div ng-if="cell.combinewith =='' " ng-style="cell.fieldname == 'lineitemstatus' && {'cursor':'default'}">
+                                       {{cell.caption}}&nbsp;
+                                                    
+                                                </div>
+                                                <div ng-if="cell.combinewith !='' " ng-class="sectitle === 'ORDER STATUS'? 'dsewrappedheader':'' ">
+                                        {{cell.caption}}&nbsp;
+                                                    <span ng-if="apipath != 'oecaseorderapi/v1.0/cases/tech'" style="color:orange;font-weight:normal;font-size:8px;"><br/>Order Status</span>
+                                                    
+                                            
+                                                </div>
+                                        </th>
+
+                                        <th class="stth" ng-show="clientside == true"><div style="margin-left:-10px;">CREATED
+                                        </div></th>
+                                        <th class="stth" ng-show="clientside == false"><div style="margin-left:-10px;">CREATED
+                                        </div></th>
+                                        <th class="stth"></th>
+               </tr>
+               </thead>
+               <tbody ng-if="message==''">
+                    <tr data-ng-repeat="record in valData | limitTo: pageLimit" ng-click="fnRowClick(record,mycolumns)" ng-if="!clientside">
+                                        <td data-ng-repeat="cell in mycolumns" ng-class="cell.charttype == stbar-chart? 'sttd' : 'sttdnew'" data-ng-init="cellvisible=getcolumnShow(cell);" ng-show="cellvisible && cell.icontype != 'date'" data-label="{{record[mycol]}}">
+                                            <div data-ng-init="mycol=getcolumnname(cell);" data-ng-model="record[mycol]" ng-href="{{record[mycol]}}"></div>
+                                            <div ng-if="cell.icontype == '' && cell.combinewith == '' && !cell.truncation && cell.charttype==''">{{record[mycol]}}
+                                 
+                                 </div>
+                                            <div ng-if="cell.icontype == '' && cell.combinewith == '' && !cell.truncation && cell.charttype=='stbar-chart'">
+                                                <stbar-chart width="100" height="40" data="record[mycol]" style="padding:0px !important"></stbar-chart>
+                                            </div>
+                                            <div class="stdropdown">
+                                                <div ng-show="cell.combinewith !='' || cell.truncation " ng-class="{'sttrucText':cell.truncation}">
+                                                    <span ng-repeat="i in legends">
+                                                        <span ng-show="record[cell.combinewith] == {{i.value}}" class="{{i.type}}" style="color:{{i.color}}"></span>
+                                                        <!--<span ng-show="record[cell.combinewith] == '2'" class="icon-circle" style="color:#0096d6"></span>-->
+                                                    </span>
+                                       <span ng-class="sectitle == 'ORDER STATUS'? '':'dsepadding-left'">
+                                       {{record[mycol]}}</span>
+                                       <br/><span style="color:orange;font-weight:normal;padding-top:10px !important;font-size:80%;">{{record['orderstatus']}}</span><br/>&nbsp;<br/>&nbsp;
+                                    
+                                                </div>
+                                                <div class="stdropdown-contentlong" ng-if="cell.truncation">
+                                       {{record[mycol]}}
+                                    </div>
+                                            </div>
+                                        </td>
+                                        <td>{{record['createddate'] || record['created_date'] | date}}</td>
+                                        <td class="sttd">
+                                            <div class="stdropdown">
+                                                <button class="stdropbtn">
+                                                    <span class="glyphicon">
+                                                        <img src="{!$Resource.DSE_Share}" height="15px"></img>
+                                                    </span>
+                                                </button>
+                                                <div class="stdropdown-content">
+                                                    <span>
+                                                    <a href="#" ng-click="shareEmail(subject,body,punchout,record[primarykey])">Share via email&nbsp;
+                                                        <span class="glyphicon glyphicon-envelope"></span>
+                                                    </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!--------------------------Client Side------------------------------------------------->
+                                    
+                                    <tr data-ng-repeat="record in valData | orderBy:predicate:reverse | limitTo: pageLimit" ng-click="fnRowClick(record,mycolumns)" ng-if="clientside">
+                                        <td data-ng-repeat="cell in mycolumns" ng-class="cell.charttype == stbar-chart? 'sttd' : 'sttdnew'" data-ng-init="cellvisible=getcolumnShow(cell);" ng-show="cellvisible && cell.icontype != 'date'" data-label="{{record[mycol]}}">
+                                            <div data-ng-init="mycol=getcolumnname(cell);" data-ng-model="record[mycol]" ng-href="{{record[mycol]}}"></div>
+                                            <div ng-if="cell.icontype == '' && cell.combinewith == '' && !cell.truncation && cell.charttype==''">{{record[mycol]}}
+                                 
+                                 </div>
+                                            <div ng-if="cell.icontype == '' && cell.combinewith == '' && !cell.truncation && cell.charttype=='stbar-chart'">
+                                                <stbar-chart width="100" height="40" data="record[mycol]" style="padding:0px !important"></stbar-chart>
+                                            </div>
+                                            <div class="stdropdown">
+                                                <div ng-if="cell.combinewith !='' || cell.truncation " ng-class="{'sttrucText':cell.truncation}">
+                                                    <span ng-repeat="i in legends">
+                                                        <span ng-show="record[cell.combinewith] == {{i.value}}" class="{{i.type}}" style="color:{{i.color}};vertical-align: top;"></span>
+                                                        <!--<span ng-show="record[cell.combinewith] == '2'" class="icon-circle" style="color:#0096d6"></span>-->
+                                                    </span>
+                                                    <span ng-class="sectitle == 'ORDER STATUS'? '':'dsepadding-left'">
+                                       {{record[mycol]}}</span>
+                                       <br/><span style="color:orange;font-weight:normal;padding-top:10px !important;font-size:80%;">{{record['orderstatus']}}</span><br/>&nbsp;<br/>&nbsp;
+                                    
+                                                </div>
+                                                <div class="stdropdown-contentlong" ng-if="cell.truncation">
+                                       {{record[mycol]}}
+                                    </div>
+                                            </div>
+                                        </td>
+                                        <td>{{(record['createddate'] || record['created_date']) | date}}</td>
+                                        <td class="sttd">
+                                            <div class="stdropdown">
+                                                <button class="stdropbtn">
+                                                    <span class="glyphicon">
+                                                        <img src="{!$Resource.DSE_Share}" height="15px"></img>
+                                                    </span>
+                                                </button>
+                                                <div class="stdropdown-content">
+                                                    <span>
+                                                    <a href="#" ng-click="shareEmail(subject,body,punchout,record[primarykey])">Share via email&nbsp;
+                                                        <span class="glyphicon glyphicon-envelope"></span>
+                                                    </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+               </tbody>
+               <tbody ng-if="message!=''"  style="background-color:white !important;">
+                                    <tr align="center">
+                                        <td colspan="{{nofieldvisible}}" align="center">
+                                            <div style="padding:20px;">{{message}}</div>
+                                        </td>
+                                    </tr>
+               </tbody>
+      
+         </table>
+
+         
+      </div>
+               
+   </div>
+   <center>
+           <div class="loading-dots loading-dots-warning" ng-show="loading">
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+           </div>
+   </center>
+           <div class="pull-right" style="top:10px;">
+                  <a class="btn btn-default btn-xs"  ng-click="show_more()" ng-if="!loading && showmoredisable">
+                  <span>{{paginationmessage}}</span></a>
+                  <a class="btn btn-default btn-xs" ng-disabled="!showmoredisable" ng-if="!loading && !showmoredisable && paginationmessage != 'Show More' && pageLimit >= 100">
+                  <span>{{paginationmessage}}</span></a>
+           </div>
+  </div>
+</apex:page>

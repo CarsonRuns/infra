@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CloseDate__c</fullName>
+        <externalId>false</externalId>
+        <label>CloseDate</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Territory_Level_01__c</fullName>
+        <externalId>false</externalId>
+        <label>Territory Level 01</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>This value we are using for restricting the opportunity sharing when opportunity close date is greater than 7/30/2017</description>
+    <enableFeeds>false</enableFeeds>
+    <label>SO_OpportunityS2SFilter</label>
+    <visibility>Public</visibility>
+</CustomObject>

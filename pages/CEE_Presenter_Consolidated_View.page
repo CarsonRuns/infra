@@ -1,0 +1,88 @@
+<apex:page standardController="CEE__c" extensions="CEE_PresenterViewController" showHeader="false" sidebar="false">
+<apex:form >
+<head>
+<style>
+
+    @page {
+    size: landscape;
+    }
+    
+    table {
+    border-collapse: collapse;
+}
+table, td, th {
+    border: 1px solid black;
+}
+    table.gridtable {
+        font-family: verdana,arial,sans-serif;
+        font-size:8px;
+        color:#333333;
+        border-width: 1px;
+        border-color: #666666;
+    }
+    
+    table.gridtable th {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        font-weight:bold;
+    }
+    
+    table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+    }
+   input.btn.dwnldButton {
+      margin-right: 1%;
+      margin-bottom: 3%;
+      float:right;
+   }
+   
+</style> 
+</head>
+<apex:image url="{!$Resource.ciscologo}" width="10%"/> <br /> <br />
+<!--<apex:image url="{!$Label.Cisco_Url}"  width="20%"/>-->
+<!--<img src="https://ciscosales--qtr--c.cs15.content.force.com/servlet/servlet.ImageServer?id=01580000001efhK&oid=00DM0000001YGqQ"/><br /> <br />-->
+
+<h1 style="margin-left: 1%;">Presenter Consolidated Agenda</h1>
+<br>
+</br>
+<h1 style="margin-left: 1%;">Account Name : {!AccountName}</h1><br>
+</br>
+<h1 style="margin-left: 1%;">Engagement Contact : {!EngagementContact}</h1><br>
+</br>
+<h3 style="margin-left: 1%;">Request Id : {!briefing.Name}</h3><br>
+</br>
+
+<table  Id="header" style="width: 100%; " border ="1">  
+<apex:commandButton value="Download" styleClass="dwnldButton" action="{!download}"/> <br> </br> 
+     <tr>
+    <td>Start Time </td>
+    <td>End Time </td>
+    <td>Location</td>
+    <td>Presentation Title </td>
+    <td>Delivery</td>
+    <td>Presenters</td>
+    </tr>
+    <apex:repeat value="{!lstAgendaItems}" var="agenda">
+    <tr>
+    <td><apex:outputtext rendered="{!IF(isOBX,true,false)}" value="{!attendeeStartMap[agenda]}"> </apex:outputtext><apex:outputtext rendered="{!IF(isOBX,false,true)}" value="{!itceStartMap[agenda]}"> </apex:outputtext></td>
+    <td><apex:outputtext rendered="{!IF(isOBX,true,false)}" value="{!attendeeEndMap[agenda]}"> </apex:outputtext><apex:outputtext rendered="{!IF(isOBX,false,true)}" value="{!itceEndMap[agenda]}"> </apex:outputtext></td>
+    <td><apex:outputText >{!agenda.Selected_Rooms_Display__c}</apex:outputText></td>
+    <td><apex:outputText >{!agenda.Name}</apex:outputText></td>
+    <td><apex:outputText >{!agenda.Delivery_Method__c}</apex:outputText></td>
+    <td><apex:outputText >{!attendeeMap[agenda]}</apex:outputText></td>
+   <!-- <td><apex:outputText >{!agenda.Sales_Objectives__c}</apex:outputText></td> -->
+    </tr>
+    </apex:repeat>
+    </table> <br>
+    </br>
+    
+    <apex:iframe src="/apex/CEE_Presenter_downlod?id={!briefId}" height="1" width="1" rendered="{!downloadword}"/>
+    
+</apex:form>
+</apex:page>

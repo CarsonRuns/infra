@@ -1,0 +1,481 @@
+<apex:page standardController="CEE__c" extensions="JiffleNowMeetingSchedular_CTE" id="jnShdler" sidebar="false" tabStyle="CEE__c">
+    <apex:includeScript value="{!$Resource.jquery}" />
+    <script src="/soap/ajax/31.0/connection.js"></script>
+    <script type="text/javascript">
+        //Declaring Variables
+        var g_strIframeSrc;
+        var g_selAccId;
+        var g_selOppId;
+        var g_selEvtId;
+        var g_OpptyName;
+        var selOppty;
+        var iframeMode = 0;
+        var InactiveMessage = "{!$Label.JiffleInactiveMessage}";
+        var PastMessage = "{!$Label.JifflePastMessage}";
+        
+        // Reset the Page and Open a new meeting request page when in Edit mode
+            function getSelectedOptions() {
+            <!--SCAVA FIX-->
+            var strResetURL = '/apex/JiffleNowMeetingSchedular?eventId=' + '{!JSENCODE(CEE__c.Jiffle_Event__r.Event_UUID__c)}' 
+            strResetURL =strResetURL  + '&accId=' + '{!JSENCODE(CEE__c.Primary_Account__c)}' + '&opptyId=' + '{!JSENCODE(CEE__c.Opportunity__c)}' 
+            strResetURL =strResetURL  + '&opptyName=' + encodeURIComponent('{!CEE__c.Opportunity__r.Name}').replace(/%20/g, "+");
+            window.location.href = strResetURL;
+            }
+
+        // Reset the Opportunity Selected value
+        function newOppty(opptyname) {
+            selOppty = opptyname;
+            document.getElementById('jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI3:opptyval').value=opptyname;
+            refreshIframe();
+        }
+
+        // Based on User Selection Reset the Iframe and its parameters
+        function resetIframe(opName) {       
+                sforce.connection.sessionId = "{!$Api.Session_ID}";
+                var selOptyName = encodeURIComponent(opName.substring(18)); // Opportunity List options contains Id + Name therefore substring to get Id and Name
+                var selAccName = encodeURIComponent(document.getElementById('jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI2:jnAccount_lkold').value);
+                console.log('opName' + opName);
+                g_OpptyName = opName.substring(18); // Opportunity List options contains Id + Name therefore substring to get Id and Name
+                g_selAccId = document.getElementById('jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI2:jnAccount_lkid').value;
+                g_selOppId = opName.substring(0, 18); // Opportunity List options contains Id + Name therefore substring to get Id and Name
+                g_selEvtId = document.getElementById('jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI1:jnEvent_lkid').value;
+                g_strIframeSrc = '';
+                var statusCheck = sforce.connection.query("select Schedule_Meeting__c,Event_Status__c from  Jiffle_Event__c where id=\'"+g_selEvtId+"\' limit 1");
+                var evtRecords = statusCheck.getArray("records");
+                var evtStatus = evtRecords[0].get("Schedule_Meeting__c");
+                var evtActivityStatus = evtRecords[0].get("Event_Status__c");// Added by Mohammed for PBI000000052301.
+                // Validating all the three fields are populated before proceeding further to load the iframe
+               
+                if (g_selEvtId != '000000000000000' && g_selAccId != '000000000000000' && g_selOppId != '') {
+                if(evtActivityStatus  === 'Inactive'){
+                    document.getElementById("progress").classList.remove('showTxt');
+                    document.getElementById("progress").classList.add('hideTxt');
+                   // document.getElementById("errMsg").innerHTML = '<img src=/img/msg_icons/warning16.png/> Meeting cannot be scheduled for Inactive Event.';
+                    document.getElementById("errMsg").innerHTML = '<img src=/img/msg_icons/warning16.png/> '+ InactiveMessage ;
+                    }
+                else if (evtStatus === 'Event Completed'){
+                    document.getElementById("progress").classList.remove('showTxt');
+                    document.getElementById("progress").classList.add('hideTxt');
+                  //  document.getElementById("errMsg").innerHTML = '<img src=/img/msg_icons/warning16.png/> Meeting cannot be scheduled for the Past Event.';
+                    document.getElementById("errMsg").innerHTML = '<img src=/img/msg_icons/warning16.png/> '+ PastMessage ;
+                    }
+                else {
+                    var strOptyName = "&sfdc_params[opp_name]=" + selOptyName;
+                    var strAccName = "&sfdc_params[acc_name]=" + selAccName;
+                    var strAccId = "?sfdc_params[acc]=" + convertIdTo18(g_selAccId);
+                    var strEvtId = convertIdTo18(g_selEvtId);
+                    getCEERecord(); // Get the CEE Record with Same Combinations
+                    g_strIframeSrc = strAccId + strAccName + strOptyName;
+                    document.getElementById("errMsg").innerHTML = '';
+                    iframeMode = 1;
+                    }
+                } else {
+                    document.getElementById("progress").classList.remove('showTxt');
+                    document.getElementById("progress").classList.add('hideTxt');
+                    document.getElementById("errMsg").innerHTML = '<img src=/img/msg_icons/warning16.png/> Please select all mandatory fields';
+                }
+            }
+            // Seting New Iframe and its Parameters
+        function newiframe() {
+            document.getElementById("progress").classList.add('showTxt');            
+            document.getElementById("progress").classList.remove('hideTxt');
+            var txtAccount = document.getElementById('jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI2:jnAccount').value;
+            var txtEvent = document.getElementById('jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI1:jnEvent').value;
+               
+            selOppty = document.getElementById('jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI3:opptyval').value;
+
+            if (typeof selOppty != "undefined" && selOppty != ' ' && txtAccount != '' && txtEvent != '') {
+                resetIframe(selOppty);
+            } else { 
+                <!--SCAVA FIX-->            
+                if ('{!JSENCODE(selectedOppty)}' != '' && txtAccount != '' && txtEvent != '') {                   
+                    resetIframe('{!JSENCODE(selectedOppty)}');
+                } else {
+                    document.getElementById("progress").classList.remove('showTxt');
+                    document.getElementById("progress").classList.add('hideTxt');
+                    document.getElementById("errMsg").innerHTML = '<img src=/img/msg_icons/warning16.png/> Please select all mandatory fields';
+                    //document.getElementById("{!$Component.f.pb1.msg}").textContent;
+                }
+            }
+        }
+
+        // If the Account or Opportunity is changed the reset the iframe again
+        function refreshIframe() {
+            var i = document.getElementById('jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI2:jnAccount').value
+            console.log(i);
+            document.getElementById("jiffleIframe").src = '';
+            //document.getElementById("jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI4:jnEngLabel").classList.remove('showTxt');
+            //document.getElementById("jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI4:jnEngData").classList.remove('showTxt');
+            
+            //document.getElementById("jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI4:jnEngLabel").classList.add('hideTxt');
+            //document.getElementById("jnShdler:jnShdFrom:CEEDetail:jnShdlPgb:jnShdlPgbSI4:jnEngData").classList.add('hideTxt');
+                        
+        }
+
+        // Getting the CEE record with Same Object of Event,Account and Opportunity
+        function getCEERecord() {
+            uniqueAss = convertIdTo18(g_selEvtId) + convertIdTo18(g_selAccId) + g_OpptyName;
+            var CEEExisting = new SObjectModel.CEE__c();
+            CEEExisting.retrieve({
+                where: {
+                    Unique_Association__c: {
+                        eq: uniqueAss
+                    }
+                }
+            }, function(err, records, event) {
+                if (err) {
+                    alert(err);
+                } else {
+                    console.log(records.length);
+                    // Rerender iframe when we existing Combination 
+                    if (records.length != 0) {
+                        var CEEAssId = records[0].get("Id");
+                        var eventCode = records[0].get("Jiffle_Event_UUID__c");
+                        var CEEName = records[0].get("Name");
+                        g_strIframeSrc = '{!jiffleURL}'+records[0].get("Jifflenow_Event_URL1__c") + g_strIframeSrc;
+                        document.getElementById("jiffleIframe").src = g_strIframeSrc + '&sfdc_params[acc_opp_association]=' + CEEAssId + '&sfdc_params[event_uuid]=' + eventCode + '&sfdc_params[acc_opp_association_Name]='+CEEName;
+                        console.log(g_strIframeSrc + '&sfdc_params[acc_opp_association]=' + CEEAssId + '&sfdc_params[event_uuid]=' + eventCode);
+                        document.getElementById("progress").classList.remove('showTxt');
+                        document.getElementById("progress").classList.add('hideTxt');
+                       
+                    } else {
+                        // Create the New CEE record with new Combination
+                        createCEERecord();
+                    }
+                }
+            });
+        }
+
+        // Creating New Combination 
+        function createCEERecord() {
+            var CEEDetails;
+            console.log('+++' + g_OpptyName);
+            var jiffRecId = '{!idOfJiffleRec}'; // Getting RecordType Id form Custom Settings
+            if (g_OpptyName === 'No Related Opportunity') {
+                CEEDetails = {
+                    RecordTypeId: jiffRecId , 
+                    Primary_Account__c: g_selAccId,
+                    Jiffle_Event__c: g_selEvtId,
+                    Jiffle_Opportunity_Type__c : 'Existing',
+                    Unique_Association__c: convertIdTo18(g_selEvtId) + convertIdTo18(g_selAccId) + g_OpptyName
+                };
+                console.log('No Opportunity');
+            } else {
+                CEEDetails = {
+                    RecordTypeId: jiffRecId ,
+                    Primary_Account__c: g_selAccId,
+                    Jiffle_Event__c: g_selEvtId,
+                    Opportunity__c: g_selOppId,
+                    Jiffle_Opportunity_Type__c : 'Existing',
+                    Unique_Association__c: convertIdTo18(g_selEvtId) + convertIdTo18(g_selAccId) + g_OpptyName
+                };
+                console.log('With Opportunity');
+            }
+
+            var CEENew = new SObjectModel.CEE__c();
+            CEENew.create(CEEDetails, function(err) {
+                if (err) {
+                    console.log(err);
+                    //alert(err.message);
+                } else {
+                    //console.log(CEENew.log());
+                    //console.log(CEENew.get('Id'));
+                    getCEERecord();
+                }
+            });
+        }
+        
+        function convertIdTo18(id) {
+            if (id === null) return id;
+            id = id.replace(/\"/g, '');
+            if (id.length != 15) {
+                return null;
+            }
+            var suffix = "";
+            for (var i = 0; i < 3; i++) {
+                var flags = 0;
+                for (var j = 0; j < 5; j++) {
+                    var c = id.charAt(i * 5 + j);
+                    if (c >= 'A' && c <= 'Z') {
+                        flags += 1 << j;
+                    }
+                }
+                if (flags <= 25) {
+                    suffix += "ABCDEFGHIJKLMNOPQRSTUVWXYZ".charAt(flags);
+                } else {
+                    suffix += "012345".charAt(flags - 26);
+                }
+            }
+            return id + suffix;
+        }
+        
+              
+        var $j = jQuery.noConflict(); //Ensuring there is no conflict with any other Jquery 
+        // While Editing the CEE if multiple Meetings are scheduled then allowing user to select the one which they want to modify
+        $j(document).ready(function() {
+            var meetingLst = $j('[id$=meetingLst]').find('input:radio');
+            meetingLst.click(function() {
+             <!--SCAVA FIX-->
+                 var aId = '?sfdc_params[acc]=' + encodeURIComponent('{!JSENCODE(CEE__c.Primary_Account__c)}');
+                 var aName = '&sfdc_params[acc_name]=' + encodeURIComponent('{!CEE__c.Primary_Account__r.Name}');
+                var opptyname = encodeURIComponent('{!CEE__c.Opportunity__r.Name}');
+                if( opptyname == ''){
+                opptyname = 'No%20Related%20Opportunity%20';
+                }
+                var oName = '&sfdc_params[opp_name]=' +opptyname;
+                 <!--SCAVA FIX-->
+                var evtId = '&sfdc_params[event_uuid]=' + encodeURIComponent('{!JSENCODE(CEE__c.Jiffle_Event__r.Event_UUID__c)}');
+                var assId = '&sfdc_params[acc_opp_association]=' + '{!CEE__c.Id}';
+                var ceeName = '&sfdc_params[acc_opp_association_Name]=' + '{!CEE__c.Name}'; // Added by Mohammed for PBI000000053189    
+                document.getElementById("jiffleIframeEdit").src = '{!jiffleURL}' + $j(this).val() + aId + aName + oName + evtId + assId + ceeName  ;
+                //document.getElementById("jiffleIframeURL").innerHTML = $j(this).val() + aId + aName + oName + evtId + assId;
+            });
+             <!--SCAVA FIX-->
+            var sessionEditId = "{!JSENCODE(sessionEditId)}";
+            $j(sessionEditId ).prop("checked", true);
+            $j(sessionEditId ).trigger("click");
+        });
+    </script>
+    <style>
+        div.header {
+            padding: .4em;
+            height: 50px;
+            width: 98%;
+            display: inline-block;
+            margin-right: 15px;
+        }
+        div.customError {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+        }
+        div.subheader {
+            background-color: #e2f1f6;
+            display: inline-block;
+            border: 2px solid #8AB64E;
+            width: 90%;
+            height: 40px;
+            border-radius: 10px;
+            padding-top: 5px;
+            padding-right: 20px;
+            padding-bottom: 8px;
+            padding-left: 20px;
+            margin-right: 50px;
+            margin-left: 50px;
+        }
+ 
+        .hideTxt {
+            display: none;
+        }
+        .showTxt {
+            display: block;
+        }
+    </style>
+    <apex:form id="jnShdFrom">
+        <apex:outputPanel rendered="{!!eMode}">
+        <div class="header">
+      
+            <div class="subheader">
+               <table style="width:100%">
+                   <tr>
+                        <td width="91%" rowspan="3">
+                           <strong>ATTENTION Non-Salesforce Quoting Users:</strong> You have been redirected to this page because the system has recognized you as having an access to Salesforce.com. 
+                           <br/>Please contact <a href="mailto:cisco-jifflenow-support@cisco.com?subject=Please provide me direct access to JiffleNow&body=Please provide direct access to JiffleNow.%0D%0A%0D%0AFull Name:%0D%0AEmail:%0D%0AOrganization:%0D%0AEvent Name:%0D%0AReason:%0D%0A">
+                           cisco-jifflenow-support@cisco.com<img src="/img/func_icons/util/mailCloseEnv16.gif"/></a>
+                           and provide your Full Name, Email, Organization, Event Name and Reason for direct access to Jifflenow.  
+                       </td>
+                       <td width="3%" rowspan="3">
+                            <a href="{!$Label.JiffleNowHelpGuideURL}" style="text-decoration:none;" target="_blank"><img src="{!HelpGuideImageLink}" style="width:40px;height:40px;" border="0"/></a>
+                      </td > 
+                      <td rowspan="2">
+                            <a href="{!$Label.JiffleNowHelpGuideURL}" style="text-decoration:none;" target="_blank"><B>Help Guide</B></a>
+                       </td>
+                   </tr>
+               </table>
+                
+                
+            </div>
+        </div>
+        <br/>
+        <br/>
+        </apex:outputPanel>        
+        <div id="errMsg" class="customError ">
+        <apex:pageMessages ></apex:pageMessages>
+        </div>
+        <apex:pageBlock id="CEEDetail" rendered="{!!eMode}" mode="edit">
+            <apex:pageBlockSection columns="1" id="jnShdlPgb" collapsible="false" title=" Jifflenow Tool – Schedule Customer Meeting at Global Events">
+                <apex:pageBlockSectionItem id="jnShdlPgbSI1">
+                    <apex:outputPanel style="width:600px">
+                    <apex:outputLabel Id="Events" style="display:block;width:400px;">Search/Select an Event 
+                    <span class="helpButtonOn" style="float:right;" id="Events-_help">
+                                      <img src="/s.gif" alt="" class="helpOrb" title=""/> &nbsp;&nbsp;
+                                      <script type="text/javascript">
+                                      sfdcPage.setHelp('Events', 'Select from your Recent Search or Search by the keyword using the * as a wildcard next to other characters to improve your search results');</script>
+                             </span>
+                             </apex:outputLabel>
+                             
+                    </apex:outputPanel>
+                    <apex:inputField value="{!CEENew.Jiffle_Event__c}" id="jnEvent" required="true" style="width:50%;">
+                        <apex:actionSupport event="onchange" reRender="CEELst" oncomplete="refreshIframe()" />
+                    </apex:inputField>
+
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="jnShdlPgbSI2">
+                    <apex:outputPanel style="width:600px">
+                        <apex:outputLabel id="Name" style="display:block;width:400px;">Search/Select an Account name
+                        <span class="helpButtonOn" style="float:right;" id="Name-_help">
+                                      <img src="/s.gif" alt="" class="helpOrb" title=""/>&nbsp;&nbsp;
+                                      <script type="text/javascript">
+                                      sfdcPage.setHelp('Name', 'Option 1: Type the Account Name from your Recent Searches and Account will be prompted <br/>Option 2:  Click on the Search icon and Select from your Recent Search or Search by the keyword using the * as a wildcard next to other characters to improve your search results.');
+                                      </script>
+                             </span>
+                             </apex:outputLabel>
+                            
+                    </apex:outputPanel>
+
+                        <apex:inputField value="{!CEENew.Primary_Account__c}" id="jnAccount" required="true" style="width:50%;">
+                        <apex:actionSupport event="onchange" action="{!readAccount}" reRender="CEELst" oncomplete="refreshIframe()" />
+                    </apex:inputField>
+
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem id="jnShdlPgbSI3">
+                    <apex:outputPanel style="width:600px">
+                    <apex:outputlabel id="oppty" style="font-weight: bold;color:#4a4a56;display:block;width:400px;" escape="false" value="Select an Opportunity">
+                    <span class="helpButtonOn" style="float:right;" id="oppty-_help">
+                                      <img src="/s.gif" alt="" class="helpOrb" title=""/>&nbsp;&nbsp;
+                                      <script type="text/javascript">sfdcPage.setHelp('oppty', 'Select an opportunity from the drop-down list that is related to the meeting otherwise select “No Related Opportunity”');</script>
+                             </span>
+                             </apex:outputLabel>
+                             
+                    </apex:outputPanel>
+                                        
+                    <apex:outputPanel id="CEELst">
+                        <div class="requiredInput">
+                            <div class="requiredBlock"></div>
+                            <apex:inputhidden value="{!selectedOppty}" id="opptyval" />
+                            <apex:selectList value="{!selectedOppty}" multiselect="false" onchange="newOppty(this.value);" size="1" style="width:50%;">
+                                <apex:selectOptions value="{!Oppties}" />
+                            </apex:selectList>
+                             
+                            <div class="btn" onclick="newiframe();">
+                                &nbsp;&nbsp;&nbsp;&nbsp; Go &nbsp;&nbsp;&nbsp;&nbsp; 
+                            </div>
+                        </div>
+                    </apex:outputPanel>                    
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="jnShdlPgbSI4" rendered="false">
+                    <apex:outputLabel styleClass="hideTxt" id="jnEngLabel">Engagement Detail</apex:outputLabel>
+                    <apex:outputText styleClass="hideTxt" id="jnEngData"></apex:outputText>
+                </apex:pageBlockSectionItem>
+               <center>
+                <img Id="progress" src="/img/loading32.gif" class="hideTxt" height="20px" width="20px" alt=""/>
+                </center>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <apex:pageblock rendered="{!eMode}">
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem id="jnShdlPgbSIe1">
+                    <apex:outputLabel >Event Name</apex:outputLabel>
+                    <apex:outputField value="{!CEE__c.Jiffle_Event__c}" id="jnEventRead" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="jnShdlPgbSIe2">
+                    <apex:outputLabel >Account Name</apex:outputLabel>
+                    <apex:outputField value="{!CEE__c.Primary_Account__c}" id="jnAccountRead" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="jnShdlPgbSIe3">
+                    <apex:outputlabel style="font-weight: bold;color:#4a4a56;" escape="false" value="Opportunity Name" />
+                    <!--<apex:outputlabel value="{!IF(CEE__c.Opportunity__c=NULL," No Related Opportunity ",CEE__c.Opportunity__r.Name)}"/>-->
+                    <apex:outputPanel >
+                        <apex:outputField value="{!CEE__c.Opportunity__c}" id="jnOpptyReadW" rendered="{!CEE__c.Opportunity__c != NULL}" />
+                        <apex:outputlabel value=" No Related Opportunity " id="jnOpptyReadNW" rendered="{!CEE__c.Opportunity__c == NULL}" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageblockSectionItem >
+                    <apex:outputText > </apex:outputText>
+                    <div class="btn" style="padding: 4px;" onclick="getSelectedOptions();">
+                        Schedule New Meeting
+                    </div>
+                </apex:pageblockSectionItem>
+
+            </apex:pageBlockSection>
+        </apex:pageblock>
+        <apex:pageBlock rendered="{!eMode}">
+            <apex:pageblocktable id="meetingLst" value="{!CEESessions}" var="alljf" style="height:10px;" >
+                <apex:column headervalue="Edit">
+                    <input type="radio" value="{!alljf.External_Edit_URL__c}" name="rblTitle" id="{!alljf.Id}">
+                        
+                    </input>
+                    <br/>
+                    <apex:actionStatus id="Retrieving" startText="Retrieving.." />
+                </apex:column>
+                <apex:column headervalue="View">
+                    <apex:outputLink target="_parent" value="{!URLFOR($Action.Jiffle_Meeting_Session__c.View, alljf.Id)}">{!alljf.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column headervalue="Meeting Type">
+                    <apex:outputfield value="{!alljf.Meeting_Type__c}">
+                    </apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Topic">
+                    <apex:outputfield value="{!alljf.Jiffle_Agenda_Item__r.Topic__c}">
+                    </apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Meeting Agenda">
+                    <apex:outputfield value="{!alljf.Jiffle_Agenda_Item__c }">
+                    </apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Meeting Start Date/Time">
+                    <apex:outputfield value="{!alljf.Start_Date_Time__c }">
+                    </apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Meeting End Date/Time">
+                    <apex:outputfield value="{!alljf.End_Date_Time__c}">
+                    </apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Meeting Status">
+                    <apex:outputfield value="{!alljf.Request_Status__c}">
+                    </apex:outputfield>
+                </apex:column>
+            </apex:pageblocktable>
+            <br/>
+            <apex:actionFunction name="getNext" action="{!jiffleCEESession.next}" />
+            <apex:actionFunction name="getfirst" action="{!jiffleCEESession.first}" />
+            <apex:actionFunction name="getlast" action="{!jiffleCEESession.last}" />
+            <apex:actionFunction name="getprevious" action="{!jiffleCEESession.previous}" />
+            <div class="paginator">
+                <span class="left">
+                <apex:outputText >Page {!jiffleCEESession.pageNumber} of {!IF((noOfRecords/Size)<1,1,CEILING(noOfRecords/Size))} (Results {!(Size*jiffleCEESession.pageNumber-(Size-1))}-{!IF((Size*jiffleCEESession.pageNumber)>noOfRecords,noOfRecords,Size*jiffleCEESession.pageNumber)} of {!noOfRecords})</apex:outputText>
+                </span>
+                <span class="prevNextLinks">            
+                    <apex:outputText escape="false" 
+                        value="{!IF(jiffleCEESession.hasPrevious,
+                                '<span class=prevNext><a href=javascript:getfirst() class=prevNextLinks><b><img src=/s.gif class=first alt=First Page/></a></b></span>',
+                                '<span class=prevNext><img src=/s.gif class=firstoff alt=First Page/>')}"/>
+                    <apex:outputText escape="false" 
+                        value="{!IF(jiffleCEESession.hasPrevious,
+                                '<span class=prevNext><a href=javascript:getprevious() class=prevNextLinks><b><img src=/s.gif class=prev alt=Previous/>Previous</a></b></span>',
+                                '<span class=prevNext><img src=/s.gif class=prevoff alt=Previous/>Previous')}"/>
+                    <apex:outputText escape="false" 
+                        value="{!IF(jiffleCEESession.hasNext,
+                                '<span class=prevNext><a href=javascript:getNext() class=prevNextLinks><b>Next<img src=/s.gif class=next alt=Next /></a></b></span>',
+                                '<span class=prevNext>Next<img src=/s.gif class=nextoff alt=Next />')}"/>
+                    <apex:outputText escape="false" 
+                        value="{!IF(jiffleCEESession.hasNext,
+                                '<span class=prevNext><a href=javascript:getlast() class=prevNextLinks><b><img src=/s.gif class=last alt=Last /></a></b></span>',
+                                '<span class=prevNext><img src=/s.gif class=lastoff alt=Last />')}"/>
+                </span>
+                
+            </div>
+        </apex:pageBlock>
+        <apex:iframe id="jiffleIframe" src="" scrolling="true" rendered="{!!eMode}" />
+        <apex:iframe id="jiffleIframeEdit" src="" scrolling="true" rendered="{!eMode}" />
+
+    </apex:form>
+    <h1 id="jiffleIframeURL"></h1>
+    <br/>
+    <br/>
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="CEE__c" fields="Id,Unique_Association__c,Name,Jiffle_Event_UUID__c,Jifflenow_Event_URL1__c" />
+    </apex:remoteObjects>
+</apex:page>

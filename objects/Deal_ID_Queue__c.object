@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Deal_ID_Queue_Start__c</fullName>
+        <description>This field holds the Deal Id Queue start number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field holds the Deal Id Queue start number</inlineHelpText>
+        <label>Deal ID Queue Start</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deal_ID_Queue_Stop__c</fullName>
+        <description>This field holds the Deal Id Queue end number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field holds the Deal Id Queue end number</inlineHelpText>
+        <label>Deal ID Queue Stop</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>This custom setting contains the Deal Id stack start and end numbers</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Deal ID Queue</label>
+    <visibility>Public</visibility>
+</CustomObject>

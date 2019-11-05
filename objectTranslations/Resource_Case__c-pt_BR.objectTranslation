@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Attachement URL --></label>
+        <name>Attachement_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Age --></label>
+        <name>Case_Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Description --></label>
+        <name>Case_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Length --></label>
+        <name>Case_Length__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner Id --></label>
+        <name>Case_Owner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner --></label>
+        <name>Case_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Priority --></label>
+        <name>Case_Priority__c</name>
+        <picklistValues>
+            <masterLabel>P1 - 4 hrs</masterLabel>
+            <translation><!-- P1 - 4 hrs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P2 - 24 hrs</masterLabel>
+            <translation><!-- P2 - 24 hrs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P3 - 48 hrs</masterLabel>
+            <translation><!-- P3 - 48 hrs --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SFDC Case Requester --></label>
+        <name>Case_Requester__c</name>
+        <relationshipLabel><!-- Resource Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Service Type --></label>
+        <name>Case_Service_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Status --></label>
+        <name>Case_Status__c</name>
+        <picklistValues>
+            <masterLabel>Assigned</masterLabel>
+            <translation><!-- Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resolved</masterLabel>
+            <translation><!-- Resolved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unassigned</masterLabel>
+            <translation><!-- Unassigned --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case Summary --></label>
+        <name>Case_Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Team Name --></label>
+        <name>Case_Team_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case count --></label>
+        <name>Case_count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case resolution method --></label>
+        <name>Case_resolution_method__c</name>
+        <picklistValues>
+            <masterLabel>Business Unit Escalations</masterLabel>
+            <translation><!-- Business Unit Escalations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSN Knowledge Base</masterLabel>
+            <translation><!-- TSN Knowledge Base --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Closed Date --></label>
+        <name>Closed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company --></label>
+        <name>Company__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Method --></label>
+        <name>Contact_Method__c</name>
+        <picklistValues>
+            <masterLabel>E-mail</masterLabel>
+            <translation><!-- E-mail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web</masterLabel>
+            <translation><!-- Web --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disable Email Notification --></label>
+        <name>Disable_Email_Notification__c</name>
+    </fields>
+    <fields>
+        <label><!-- Due Date --></label>
+        <name>Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is External User --></label>
+        <name>Is_External_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is SFDC Requester --></label>
+        <name>Is_SFDC_Requester__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>Language__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean</masterLabel>
+            <translation><!-- Korean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mandarin</masterLabel>
+            <translation><!-- Mandarin --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Met Due Date --></label>
+        <name>Met_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of days to due date --></label>
+        <name>No_of_days_to_due_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requester Email --></label>
+        <name>Non_SFDC_Requester_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requester Name --></label>
+        <name>Non_SFDC_Requester_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requester Title --></label>
+        <name>Non_SFDC_Requester_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Opportunity_Name__c</name>
+        <relationshipLabel><!-- Resource Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Phone --></label>
+        <name>Phone_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Locked for Edit --></label>
+        <name>Record_Locked_for_Edit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resolution Time --></label>
+        <name>Resolution_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Time --></label>
+        <name>Response_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Expiration Date --></label>
+        <name>SLA_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Expired --></label>
+        <name>SLA_Expired__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Start Date --></label>
+        <name>SLA_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Reason Code --></label>
+        <name>Status_Reason_Code__c</name>
+        <picklistValues>
+            <masterLabel>Child Case</masterLabel>
+            <translation><!-- Child Case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Not Supported</masterLabel>
+            <translation><!-- Client Not Supported --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Response</masterLabel>
+            <translation><!-- Client Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Close Pending</masterLabel>
+            <translation><!-- Close Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalation Response</masterLabel>
+            <translation><!-- Escalation Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insufficient lead time</masterLabel>
+            <translation><!-- Insufficient lead time --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Language Not Supported</masterLabel>
+            <translation><!-- Language Not Supported --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opened by mistake</masterLabel>
+            <translation><!-- Opened by mistake --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resolved Successfully</masterLabel>
+            <translation><!-- Resolved Successfully --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Not Supported</masterLabel>
+            <translation><!-- Service Not Supported --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSN Response</masterLabel>
+            <translation><!-- TSN Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tech Not Supported</masterLabel>
+            <translation><!-- Tech Not Supported --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub-Technology --></label>
+        <name>Sub_Technology__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team ID --></label>
+        <name>Team_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Level --></label>
+        <name>Team_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technology --></label>
+        <name>Technology__c</name>
+    </fields>
+    <fields>
+        <label><!-- Username locked Record --></label>
+        <name>Username_locked_Record__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Caso do recurso</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Caso do recurso</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Case ID</nameFieldLabel>
+</CustomObjectTranslation>

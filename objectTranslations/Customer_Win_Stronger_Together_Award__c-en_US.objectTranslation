@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Hint: Max 10 user ids. First two should be the primary persons responsible for the deal. Stronger Together Award entries can only include Cisco employees. --></help>
+        <label><!-- Account Team --></label>
+        <name>Account_Team__c</name>
+    </fields>
+    <fields>
+        <help><!-- Hint: How did your extended sales team help with this business? How would you describe their support and impact as a best practice for other sales teams? How does this Customer Win help drive our sales priorities? --></help>
+        <label><!-- Best Practices/Advice to Other Sellers --></label>
+        <name>Best_Practices_Advice_to_Other_Sellers__c</name>
+    </fields>
+    <fields>
+        <label><!-- CX Lifecycle --></label>
+        <name>CX_Lifecycle__c</name>
+        <picklistValues>
+            <masterLabel>Competitive Take Out</masterLabel>
+            <translation><!-- Competitive Take Out --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Business Outcomes --></label>
+        <name>Customer_Business_Outcomes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Description --></label>
+        <name>Customer_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Description --></label>
+        <name>Deal_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Reference --></label>
+        <name>External_Reference__c</name>
+        <picklistValues>
+            <masterLabel>Customer-to-Customer (Customer willing to speak with other Customers)</masterLabel>
+            <translation><!-- Customer-to-Customer (Customer willing to speak with other Customers) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External (Public Case Study)</masterLabel>
+            <translation><!-- External (Public Case Study) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Only (Customer willing to speak with other Cisco Sales teams)</masterLabel>
+            <translation><!-- Internal Only (Customer willing to speak with other Cisco Sales teams) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Future Opportunities (in thousands USD) --></label>
+        <name>Future_Opportunities_in_thousands_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- How Was the Opportunity Discovered? --></label>
+        <name>How_Was_the_Opportunity_Discovered__c</name>
+    </fields>
+    <fields>
+        <label><!-- # Of Customer Employees Base --></label>
+        <name>Of_Customer_Employees_Base__c</name>
+        <picklistValues>
+            <masterLabel>&lt;=1000</masterLabel>
+            <translation><!-- &lt;=1000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&gt;1000</masterLabel>
+            <translation><!-- &gt;1000 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Customer Wins/Stronger Together Awards --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Submit For Stronger Together Award --></label>
+        <name>Submit_For_Stronger_Together_Award__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Customer Win/Stronger Together Award</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Customer Wins/Stronger Together Awards</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Customer Win/Stronger Together Award Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

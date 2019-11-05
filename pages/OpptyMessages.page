@@ -1,0 +1,44 @@
+<apex:page standardController="Opportunity" extensions="OpptyMessages_CTE">
+
+<style>
+td {border-bottom:1px solid #E3DEB8}
+.bld {font-weight:bold;font-size:.91em}
+</style> 
+
+<apex:outputText value="{!Opportunity.Name} {!Opportunity.No_of_days_Overdue__c} {!Opportunity.Territory2Id}
+{!Opportunity.Opportunity_Status__c} {!Opportunity.StageName} {!Opportunity.DealID__c}"
+                 rendered="false"/>
+                 
+<div>
+<table ALIGN="left">
+<apex:outputPanel rendered="{!IF( Opportunity.error_description__c != 'Your opportunity was updated.' 
+&& Opportunity.error_description__c != 'Your opportunity was updated' && Opportunity.error_description__c != 'Inserted Successfully' && Opportunity.error_description__c != null
+&& Opportunity.error_description__c != 'An Opportunity is not integrated with E-Sales (OMF) until it reaches Stage 3 of the sales cycle.' && Opportunity.error_description__c !='An Opportunity is not integrated with OMF until it reaches Stage 3 of the sales cycle', true, false) }"> 
+<tr><td> 
+<font color = 'RED'>                 
+<apex:outputText value="- A integration error has occurred.  Please contact GSTS." rendered="{!IF( Opportunity.error_description__c != 'Your opportunity was updated.' && Opportunity.error_description__c != null 
+&& Opportunity.error_description__c != 'Your opportunity was updated' && Opportunity.error_description__c != 'Inserted Successfully'
+&& Opportunity.error_description__c != 'An Opportunity is not integrated with E-Sales (OMF) until it reaches Stage 3 of the sales cycle.' && Opportunity.error_description__c !='An Opportunity is not integrated with OMF until it reaches Stage 3 of the sales cycle', true, false) }"/>
+</font>
+</td>
+</tr>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!IF(overdueMsg != '', true, false) }">
+<tr><td>
+<font color = 'RED'> 
+{!overdueMsg}
+</font>
+</td>
+</tr>
+</apex:outputPanel>
+</table>
+<br/><br/><br/><br/><br/><br/>
+</div>
+<script>
+//SCAVA FIX
+var msgs = {!JSENCODE(isMessages)};
+var msgSec = top.document.getElementsByName("Messages")[0];
+if(msgSec && ((msgs == 0 && msgSec.title.indexOf("Hide") != -1) || (msgs == 1 && msgSec.title.indexOf("Hide") == -1))) 
+    top.twistSection(msgSec);
+</script>
+</apex:page>

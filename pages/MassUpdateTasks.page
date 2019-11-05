@@ -1,0 +1,154 @@
+<apex:page docType="html-5.0" controller="MassUpdateTasks_CT">
+	<apex:includeScript value="{!URLFOR($Resource.taskmassupdate,'taskmassupdate/js/jquery.min.js')}" />
+	<apex:form >
+		
+		<apex:outputPanel title="" id="error">
+     		<apex:pageMessages ></apex:pageMessages>
+     	</apex:outputPanel>
+		
+		<apex:pageblock id="filter">
+			<apex:pageblocksection columns="3">					
+				
+				<apex:pageBlockSectionItem >
+									
+					<apex:outputlabel >User:</apex:outputlabel>
+					
+					<apex:inputfield id="uId" value="{!TaskObj.ownerId}" />			
+					
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem >&nbsp;</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >&nbsp;</apex:pageBlockSectionItem>
+				
+				<apex:pageblocksectionItem >
+					<apex:outputlabel >Start Date </apex:outputlabel>
+					<apex:inputfield value="{!taskObj.ActivityDate}"/>
+					<!--
+					<apex:inputText value="{!datename}" size="10" id="demo" onfocus="DatePicker.pickDate(false, this , false);" />
+					-->
+				</apex:pageblocksectionItem>
+					
+				<apex:pageblocksectionItem >
+					<apex:outputlabel >End Date</apex:outputlabel>
+					<apex:inputfield value="{!taskObj2.ActivityDate}"/>
+					<!-- 
+					<apex:inputText value="{!datename}" size="10" id="demo" onfocus="DatePicker.pickDate(false, this , false);" />
+					-->
+				</apex:pageblocksectionItem>
+			
+				<apex:pageBlockSectionItem >&nbsp;</apex:pageBlockSectionItem>
+			
+			</apex:pageblocksection>
+
+			<apex:pageBlockButtons >
+				<apex:commandButton value="List Matching Tasks" action="{!queryTasks}"  reRender="display,error" status="loading"/>
+				<apex:actionStatus id="loading" onstop="init();" layout="block">
+					 <apex:facet name="start">
+                		<div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; 
+                		height: 100%;opacity:0.65;width:100%;"> 
+                    		<div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                        		<img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        		<span class="waitingDescription">Please Wait...</span>
+                    		</div>
+                		</div>
+            		</apex:facet>
+				</apex:actionStatus>
+			</apex:pageBlockButtons>
+		</apex:pageblock>
+		
+		<apex:pageBlock id="newdate">
+		</apex:pageBlock>
+		
+		<apex:pageBlock id="display">
+		
+			<apex:pageBlockSection >
+				<apex:pageBlockSectionItem >
+				
+					<apex:outputpanel >
+					
+						<apex:outputlabel styleclass="labelCol" >Select New Task Due Date : </apex:outputlabel>
+						
+						<apex:inputfield value="{!taskObj3.ActivityDate}" />
+			
+						<apex:commandbutton id="updatetask" value="Update Task Due date" action="{!updateTasks}" rerender="display,error" status="loading" />
+					
+					</apex:outputpanel>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			<apex:pageBlocktable value="{!taskList}" var="t">
+				
+				<apex:column >
+					<apex:facet name="header"><input type="checkbox" id="selectall" /></apex:facet>
+					<apex:inputCheckBox value="{!t.isSelected}" styleclass="selectedId"/>
+				</apex:column>
+				
+				<apex:column >
+					<apex:facet name="header">Task</apex:facet>
+					<apex:outputlink value="/{!t.taskId}">{!t.taskObj.subject}</apex:outputlink>
+				</apex:column>
+				
+				<apex:column >
+					<apex:facet name="header">Related To</apex:facet>
+					<apex:outputfield value="{!t.taskObj.whatId}" />
+				</apex:column>
+				
+				<apex:column >
+					<apex:facet name="header">Due Date</apex:facet>
+					<apex:outputfield value="{!t.taskObj.ActivityDate}" />					
+				</apex:column>
+				
+				<apex:column >
+					<apex:facet name="header">Status</apex:facet>	
+					<apex:outputfield value="{!t.taskObj.Status}" />				
+				</apex:column>
+			</apex:pageBlocktable>
+			
+		</apex:pageBlock>
+	</apex:form>
+	
+	<script>	
+	
+		var j$ = jQuery.noConflict(jQuery);
+		
+			function init() {
+			j$('#selectall').on("click", function () {
+        		j$('.selectedId').prop('checked', this.checked);
+    		});
+
+    		j$('.selectedId').on("change",function () {
+        		
+        		var check = (j$('.selectedId').filter(":checked").length == j$('.selectedId').length);
+        		
+        		var updatetaskenable = j$('.selectedId').filter(":checked").length = 0;
+        		
+        		j$('#selectall').prop("checked", check);
+        		toggleBtn(updatetaskenable)
+    		});
+			
+			var updatetaskenable = j$('.selectedId').filter(":checked").length = 0;
+			toggleBtn(updatetaskenable);
+			
+			// Hide user type selection
+			j$("[id$='uId_mlktp']").css("display","none");
+			
+		};
+		
+		function toggleBtn(check) {
+			
+			if(check) {
+        		j$("#updatetask").addClass("btnDisabled").removeClass("btn");
+      		}
+      		else {
+      			j$("#updatetask").addClass("btn").removeClass("btnDisabled");
+      		}
+      		
+      		return;      		
+		}		
+		
+		
+		
+		j$(document).ready(function () {
+			init(j$);
+    	});		
+	</script>				
+</apex:page>

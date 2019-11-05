@@ -1,0 +1,63 @@
+<apex:page Controller="SCP_Communities_PSREdit" tabstyle="Assigned_Partner__c" sidebar="false"
+    showHeader="true" showChat="true" language="{!$CurrentPage.parameters.lang}">   
+<script>
+    var jq$ = jQuery.noConflict();
+    //var SearchPageUrl;
+    var SearchPageUrl = '{!SearchPageUrl}';     
+    jq$(document).ready(function() {
+              
+            jq$("[id$='psr1_name']").val('{!psr1Name}');
+            // SCAVA FIX  
+            jq$("[id$='psr1_id']").val('{!JSENCODE(psr1Id)}');
+            jq$("[id$='psr2_name']").val('{!psr2Name}');
+            // SCAVA FIX  
+            jq$("[id$='psr2_id']").val('{!JSENCODE(psr2Id)}');
+            jq$("[id$='psr3_name']").val('{!psr3Name}');
+            // SCAVA FIX  
+            jq$("[id$='psr3_id']").val('{!JSENCODE(psr3Id)}');        
+            jq$("[id$='AssignPSRBtn']").hide(); 
+    });
+        
+    function getSelectedUserId(psr, userid, username) {         
+            if (psr == 'psr1') {
+                jq$("[id$='psr1_name']").val(username);
+                jq$("[id$='psr1_id']").val(userid);
+            }
+            if (psr == 'psr2') {
+                jq$("[id$='psr2_name']").val(username);
+                jq$("[id$='psr2_id']").val(userid);
+            }
+            if (psr == 'psr3') {
+                jq$("[id$='psr3_name']").val(username);
+                jq$("[id$='psr3_id']").val(userid);
+            }           
+    }
+    function openPopUpWindow(psr) {         
+            uid = '';
+            psr1_Id = jq$("[id$='psr1_id']").val();
+            psr2_Id = jq$("[id$='psr2_id']").val();
+            psr3_Id = jq$("[id$='psr3_id']").val();
+
+            uid = 'uid1=' + psr1_Id + '&uid2=' + psr2_Id + '&uid3=' + psr3_Id;          
+            if (SearchPageUrl == '') {
+                SearchPageUrl = '{!SearchPageUrl}';
+            }           
+            sUrl = SearchPageUrl + '?psrId=' + psr + '&' + uid
+                    + '&core.apexpages.devmode.url=0';
+                                        
+            window.open(sUrl, '',
+                            'width=400,height=400,dependent=yes,scrollbars=yes,resizable=no');
+        }
+        
+</script>
+<apex:form >
+<apex:pageblock id="thePageBlock">
+  <apex:pageBlockButtons >
+            <apex:commandButton action="{!savePSR}" value="{!$Label.PRM_Save}" />
+            <apex:commandButton action="{!Cancel}" value="{!$Label.PRM_Cancel}" />
+  </apex:pageBlockButtons>
+<c:SCP_Communities_PSRBulkAssignment pageCon="{!this}"
+                        componentKey="{!psrKey}" />
+</apex:pageblock>
+ </apex:form>
+</apex:page>

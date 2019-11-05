@@ -1,0 +1,4474 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>lxPOVRedirectPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>LightningComponent</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>POVRedirectPage</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account__c</fullName>
+        <description>Account</description>
+        <externalId>false</externalId>
+        <formula>Supporting_Opportunity__r.Account.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Am_Lead_SE__c</fullName>
+        <externalId>false</externalId>
+        <formula>$User.Id =  Lead_SE__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Am Lead SE</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Am_OD__c</fullName>
+        <externalId>false</externalId>
+        <formula>$User.Id =  Security_OD__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Am OD</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Am_RM__c</fullName>
+        <externalId>false</externalId>
+        <formula>$User.Id =  Security_RM__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Am RM</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Am_SEMGR__c</fullName>
+        <externalId>false</externalId>
+        <formula>$User.Id = Security_SE_MGR__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Am SEMGR</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Am_sAM__c</fullName>
+        <externalId>false</externalId>
+        <formula>$User.Id = Security_AM__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Am SAM</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Approximate_POV_List_Price__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>List price of POV equipment being used for POV</inlineHelpText>
+        <label>Approximate POV List Price ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Architecture_Imperative_1__c</fullName>
+        <description>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</inlineHelpText>
+        <label>Architecture Imperative 1</label>
+        <length>10000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Architecture_Imperative_2__c</fullName>
+        <description>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</inlineHelpText>
+        <label>Architecture Imperative 2</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Architecture_Imperative_3__c</fullName>
+        <description>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</inlineHelpText>
+        <label>Architecture Imperative 3</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BOMStatus__c</fullName>
+        <externalId>false</externalId>
+        <label>BOMStatus</label>
+        <summaryForeignKey>POV_eStar_Lineitem__c.Proof_of_Value__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>BOM_Returned_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>BOM Returned Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Business_Drivers_Others__c</fullName>
+        <description>Describe additional company business drivers that this POV will help achieve or improve</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe additional company business drivers that this POV will help achieve or improve</inlineHelpText>
+        <label>Business Drivers Other</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Initiatives_Other__c</fullName>
+        <description>Describe the relevant business imitative(s) that the customer has initiated to meet the described business driver and that this POV will be satisfying</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the relevant business imitative(s) that the customer has initiated to meet the described business driver and that this POV will be satisfying</inlineHelpText>
+        <label>Business Initiatives Other</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRCountry__c</fullName>
+        <externalId>false</externalId>
+        <formula>Supporting_Opportunity__r.Account.CRCountry__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CRCountry</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Campaign_or_Program__c</fullName>
+        <description>Campaign or Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>N/A-This field is unused at this time</inlineHelpText>
+        <label>Campaign or Program</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>-None-</fullName>
+                    <default>true</default>
+                    <label>-None-</label>
+                </value>
+                <value>
+                    <fullName>PoV Phase One</fullName>
+                    <default>false</default>
+                    <label>PoV Phase One</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Compelling_Events_For_Decision__c</fullName>
+        <description>Compelling events for decision</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Any projects, preceding security event, or specific customer timeline that is driving / compelling the execution of the POV and the close of the opportunity</inlineHelpText>
+        <label>Compelling Events For Decision</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Competitive_Dynamics__c</fullName>
+        <description>Identify any incumbent or new competitive players for this opportunity and POV.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identify any incumbent or new competitive players for this opportunity and POV</inlineHelpText>
+        <label>Competitive Dynamics</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Cooperative_Products_Deployed__c</fullName>
+        <description>Identify any products or services that may provide cooperative integration for better position of the POV within the customer opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identify any products or services that may provide cooperative integration for better position of the POV within the customer opportunity</inlineHelpText>
+        <label>Cooperative Products Deployed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Supporting_Opportunity__r.Account.Country__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Country</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Engagements_Events_CEE__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Customer Engagements &amp; Events (CEE)</description>
+        <externalId>false</externalId>
+        <label>Customer Engagements &amp; Events (CEE)</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>CEE__c.RecordType.Id</field>
+                <operation>equals</operation>
+                <value>01234000000BmCR, 01234000000BmCR</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>CEE__c</referenceTo>
+        <relationshipLabel>Proof of Values</relationshipLabel>
+        <relationshipName>Proof_of_Values</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Customers_Technical_Requirements__c</fullName>
+        <description>Note any specific physical or virtual configurations or performance needs in order to be successful (ie. 10+ Gbps or assymetric routing conditions).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Note any specific physical or virtual configurations or performance needs in order to be successful (ie. 10+ Gbps or assymetric routing conditions)</inlineHelpText>
+        <label>Customer Technical Requirements</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Deal_ID__c</fullName>
+        <description>Deal ID</description>
+        <externalId>false</externalId>
+        <formula>Supporting_Opportunity__r.DealID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Deal ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Decision_Date__c</fullName>
+        <description>Decision Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>When will the decision be made on the project?</inlineHelpText>
+        <label>Decision Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Decision_Process__c</fullName>
+        <description>Decision Process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the purchasing authorities, any relevant budget and decision-making processes to ensure a successful win of the sales opportunity</inlineHelpText>
+        <label>Decision Process</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Differentiated_Solutions_Other__c</fullName>
+        <description>Describe the unique Cisco solution offering or capabilities that will be offered to meet the requirements of the business initiative and deliver on the customer’s business drivers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the unique Cisco solution offering or capabilities that will be offered to meet the requirements of the business initiative and deliver on the customer’s business drivers</inlineHelpText>
+        <label>Differentiated Solutions Other</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>EULA_Date__c</fullName>
+        <description>Docusign Completed Date</description>
+        <externalId>false</externalId>
+        <label>EULA Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>EULA_Status__c</fullName>
+        <description>Docusign EULA Status</description>
+        <externalId>false</externalId>
+        <label>EULA Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Bookings__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Estimation of bookings revenue from this POV</inlineHelpText>
+        <label>Expected Bookings ($000s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Explicit_Customer_Requirements__c</fullName>
+        <description>Explicitly documented or stated product capabilities the customer has stated as “being required”. If an RFP is involved, please attach the RFP and response to the POV.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Explicitly documented or stated product capabilities the customer has stated as “being required”. If an RFP is involved, please attach the RFP and response to the POV.</inlineHelpText>
+        <label>Explicit Customer Requirements</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Final_Approval_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Final Approval Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Hardware_Source__c</fullName>
+        <description>The source of the hardware</description>
+        <externalId>false</externalId>
+        <label>Hardware Source</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cisco/DLP</fullName>
+                    <default>false</default>
+                    <label>Cisco/DLP</label>
+                </value>
+                <value>
+                    <fullName>Cisco Seed Unit Program (Owned by BU-Electra e.g.-for partners)</fullName>
+                    <default>false</default>
+                    <label>Cisco Seed Unit Program (Owned by BU-Electra e.g.-for partners)</label>
+                </value>
+                <value>
+                    <fullName>Distribution (for Partners to acquire gear from Distis)</fullName>
+                    <default>false</default>
+                    <label>Distribution (for Partners to acquire gear from Distis)</label>
+                </value>
+                <value>
+                    <fullName>Partner Provided</fullName>
+                    <default>false</default>
+                    <label>Partner Provided</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Implicit_Customer_Requirements__c</fullName>
+        <description>Unstated and observed requirements that may need to be met to achieve success (ie. Inexperienced security team: drive ease of use).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Unstated and observed requirements that may need to be met to achieve success (ie. Inexperienced security team: drive ease of use)</inlineHelpText>
+        <label>Implicit Customer Requirements</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Incumbent_Vendor__c</fullName>
+        <description>Note the current incumbent solutions within the account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Note the current incumbent solutions within the account</inlineHelpText>
+        <label>Incumbent Vendor</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Check Point</fullName>
+                    <default>false</default>
+                    <label>Check Point</label>
+                </value>
+                <value>
+                    <fullName>Cisco</fullName>
+                    <default>false</default>
+                    <label>Cisco</label>
+                </value>
+                <value>
+                    <fullName>Emerging Threats</fullName>
+                    <default>false</default>
+                    <label>Emerging Threats</label>
+                </value>
+                <value>
+                    <fullName>Endace</fullName>
+                    <default>false</default>
+                    <label>Endace</label>
+                </value>
+                <value>
+                    <fullName>Enterasys</fullName>
+                    <default>false</default>
+                    <label>Enterasys</label>
+                </value>
+                <value>
+                    <fullName>Fortinet</fullName>
+                    <default>false</default>
+                    <label>Fortinet</label>
+                </value>
+                <value>
+                    <fullName>IBM ISS</fullName>
+                    <default>false</default>
+                    <label>IBM ISS</label>
+                </value>
+                <value>
+                    <fullName>Juniper</fullName>
+                    <default>false</default>
+                    <label>Juniper</label>
+                </value>
+                <value>
+                    <fullName>McAfee</fullName>
+                    <default>false</default>
+                    <label>McAfee</label>
+                </value>
+                <value>
+                    <fullName>NitroSecurity</fullName>
+                    <default>false</default>
+                    <label>NitroSecurity</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Other – Competitor in Comments</fullName>
+                    <default>false</default>
+                    <label>Other – Competitor in Comments</label>
+                </value>
+                <value>
+                    <fullName>Palo Alto Networks</fullName>
+                    <default>false</default>
+                    <label>Palo Alto Networks</label>
+                </value>
+                <value>
+                    <fullName>Radware</fullName>
+                    <default>false</default>
+                    <label>Radware</label>
+                </value>
+                <value>
+                    <fullName>Reflex Security</fullName>
+                    <default>false</default>
+                    <label>Reflex Security</label>
+                </value>
+                <value>
+                    <fullName>Snort</fullName>
+                    <default>false</default>
+                    <label>Snort</label>
+                </value>
+                <value>
+                    <fullName>StillSecure</fullName>
+                    <default>false</default>
+                    <label>StillSecure</label>
+                </value>
+                <value>
+                    <fullName>Stonesoft</fullName>
+                    <default>false</default>
+                    <label>Stonesoft</label>
+                </value>
+                <value>
+                    <fullName>TippingPoint</fullName>
+                    <default>false</default>
+                    <label>TippingPoint</label>
+                </value>
+                <value>
+                    <fullName>Top Layer</fullName>
+                    <default>false</default>
+                    <label>Top Layer</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                    <label>Unknown</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_eSTAR_Order_Open_Closed__c</fullName>
+        <description>Is eSTAR_Order_Status Open or Closed?</description>
+        <externalId>false</externalId>
+        <formula>IF ((UPPER(TEXT(eSTAR_Order_Status__c)) = 'RETURNED' ||
+     UPPER(TEXT(eSTAR_Order_Status__c)) = 'CLOSED'), 
+    'Closed',
+    'Open'
+) 
+
+
+/*IF (
+    TEXT(eSTAR_Order_Status__c)= 'OVERDUE', 
+        'Open',
+
+    IF(TEXT(eSTAR_Order_Status__c)= 'PARTIALLY RETURNED', 
+        'Open',
+
+    IF(TEXT(eSTAR_Order_Status__c)= 'PARTIALLY SHIPPED', 
+        'Open',
+
+    IF(TEXT(eSTAR_Order_Status__c)= 'SHIPPED', 
+        'Open',
+
+
+    IF(TEXT(eSTAR_Order_Status__c) = 'Returned',
+            'Closed',
+            ''
+       )
+       )
+       )
+       )
+
+)
+*/
+/*
+--Category eStar Order Status
+--Closed	Returned
+--n/a	CANCELLED
+--Open	OVERDUE
+--Open	PARTIALLY RETURNED
+--Open	PARTIALLY SHIPPED
+--Open	SHIPPED
+--Pre-Ship 	(blank)
+--Pre-Ship	ORDER CREATED
+--Pre-Ship	PARTIALLY BACKLOGGED
+--Pre-Ship	PENDING APPROVAL
+--Pre-Ship	PENDING SHIPMENT
+--Pre-Ship	SHIP HOLD
+--Pre-Ship	SHIPMENT IN PROGRESS
+
+*/</formula>
+        <label>Is eSTAR Order Open/Closed?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Know_Requirements_not_Met__c</fullName>
+        <description>Note any technical, explicit, or implicit requirements that are not met by the Cisco solution being offered</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Note any technical, explicit, or implicit requirements that are not met by the Cisco solution being offered</inlineHelpText>
+        <label>Known Requirements not Met</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Lead_SE__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lead Security Engineer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the lead SE for the POV execution (usually the Security CSE or SE Specialist)</inlineHelpText>
+        <label>Lead SE</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Proof_of_Value</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Lessons_From_Previous_POV__c</fullName>
+        <description>Note any lessons learned from post POVs of similar type (won or lost) that may help ensure success in this POV</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Note any lessons learned from post POVs of similar type (won or lost) that may help ensure success in this POV</inlineHelpText>
+        <label>Lessons From Previous POV</label>
+        <length>2500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Non_DLP_Hardware_Provider__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Document the name of the Cisco program, partner account, or other external resource for hardware being used for the POV.</inlineHelpText>
+        <label>Identify non-DLP Hardware Provider</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Workspace__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Opportunity Workspace</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Link to SAM / AM opportunity workspace (searchable)</inlineHelpText>
+        <label>Opportunity Workspace</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>$Source.Supporting_Opportunity__c</field>
+                <operation>equals</operation>
+                <valueField>AT_Workspace__c.Opportunity__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>AT_Workspace__c</referenceTo>
+        <relationshipLabel>Proof of Values</relationshipLabel>
+        <relationshipName>Proof_of_Values</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OrderDetailsToeStar__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK("http://dlp.cloudapps.cisco.com/GPSS/dlp/jsp/dlphome.jsp?sfoid=" &amp; MID(eSTAR_Order_No__c, 2,LEN(eSTAR_Order_No__c)) , eSTAR_Order_No__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Order Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Order_Number_Link__c</fullName>
+        <description>Link to order # after removing the "D" from order #.</description>
+        <externalId>false</externalId>
+        <formula>"http://dlp.cloudapps.cisco.com/GPSS/dlp/jsp/dlphome.jsp?sfoid=" &amp; MID(eSTAR_Order_No__c, 2,LEN(eSTAR_Order_No__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Order Number Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Order_Number__c</fullName>
+        <description>Order Number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Order Number</inlineHelpText>
+        <label>Order Number from estar</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Organizational_Role__c</fullName>
+        <description>Organizational Role</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Drop Down – Specify the most relevant business unit within the account that is responsible for this opportunity and POV</inlineHelpText>
+        <label>Organizational Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Operations</fullName>
+                    <default>false</default>
+                    <label>Operations</label>
+                </value>
+                <value>
+                    <fullName>Desktop</fullName>
+                    <default>false</default>
+                    <label>Desktop</label>
+                </value>
+                <value>
+                    <fullName>Helpdesk</fullName>
+                    <default>false</default>
+                    <label>Helpdesk</label>
+                </value>
+                <value>
+                    <fullName>Compliance</fullName>
+                    <default>false</default>
+                    <label>Compliance</label>
+                </value>
+                <value>
+                    <fullName>Networking</fullName>
+                    <default>false</default>
+                    <label>Networking</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Owner_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Owner Email</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.FirstName   +  " " + CreatedBy.LastName</formula>
+        <label>Owner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>POV_Age__c</fullName>
+        <description>POV Age</description>
+        <externalId>false</externalId>
+        <formula>IF (
+    Is_eSTAR_Order_Open_Closed__c = 'Open', 
+        TODAY()-eStar_Ship_Date__c,
+    IF(Is_eSTAR_Order_Open_Closed__c  = 'Closed',
+            BOM_Returned_Date__c  - eStar_Ship_Date__c,
+            NULL
+       )
+
+)
+
+/*
+--If eStar Order Status = Open,
+--Today() – eStar Ship Date
+--If eStar Order Status = Closed ,
+--BOM Returned Date – eStar Ship Date
+*/</formula>
+        <label>POV Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>POV_Agreement_Exception__c</fullName>
+        <defaultValue>"No"</defaultValue>
+        <description>POV Agreement Exception</description>
+        <externalId>false</externalId>
+        <label>POV Agreement Exception</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Amount__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( eSTAR_Order_No__c ),  POV_Approved_Amount_Before_Order_Create__c ,  POV_Approved_Amount__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>POV Amount($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>POV_Approval_Status__c</fullName>
+        <description>Shows the current approval state of this POV</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Shows the current approval state of this POV</inlineHelpText>
+        <label>POV Approval Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SE Manager Approved</fullName>
+                    <default>false</default>
+                    <label>SE Manager Approved</label>
+                </value>
+                <value>
+                    <fullName>SAM Work in Progress</fullName>
+                    <default>false</default>
+                    <label>SAM Work in Progress</label>
+                </value>
+                <value>
+                    <fullName>SAM Submitted</fullName>
+                    <default>false</default>
+                    <label>SAM Submitted</label>
+                </value>
+                <value>
+                    <fullName>RM Approved</fullName>
+                    <default>false</default>
+                    <label>RM Approved</label>
+                </value>
+                <value>
+                    <fullName>OD Approved</fullName>
+                    <default>false</default>
+                    <label>OD Approved</label>
+                </value>
+                <value>
+                    <fullName>SE Manager Rejected</fullName>
+                    <default>false</default>
+                    <label>SE Manager Rejected</label>
+                </value>
+                <value>
+                    <fullName>RM Rejected</fullName>
+                    <default>false</default>
+                    <label>RM Rejected</label>
+                </value>
+                <value>
+                    <fullName>OD Rejected</fullName>
+                    <default>false</default>
+                    <label>OD Rejected</label>
+                </value>
+                <value>
+                    <fullName>Lead SE Approved</fullName>
+                    <default>false</default>
+                    <label>Lead SE Approved</label>
+                </value>
+                <value>
+                    <fullName>Lead SE Rejected</fullName>
+                    <default>false</default>
+                    <label>Lead SE Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Approved_Amount_Before_Order_Create__c</fullName>
+        <externalId>false</externalId>
+        <label>POV  Amount($) Before Order Create</label>
+        <summarizedField>POV_eStar_Lineitem__c.Ext_Price__c</summarizedField>
+        <summaryForeignKey>POV_eStar_Lineitem__c.Proof_of_Value__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>POV_Approved_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>POV Amount($) After Order Create</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>POV_Contact_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>POV Contact 2</description>
+        <externalId>false</externalId>
+        <label>POV Contact 2</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Proof of Values (POV Contact 2)</relationshipLabel>
+        <relationshipName>Proof_of_Values2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>POV_Contact_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>POV Contact 3</description>
+        <externalId>false</externalId>
+        <label>POV Contact 3</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Proof of Values (POV Contact 3)</relationshipLabel>
+        <relationshipName>Proof_of_Values3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>POV_Contact_4__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>POV Contact 4</description>
+        <externalId>false</externalId>
+        <label>POV Contact 4</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Proof of Values (POV Contact 4)</relationshipLabel>
+        <relationshipName>Proof_of_Values4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>POV_Contact_5__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>POV Contact 5</description>
+        <externalId>false</externalId>
+        <label>POV Contact 5</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Proof of Values (POV Contact 5)</relationshipLabel>
+        <relationshipName>Proof_of_Values5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>POV_Contact_Email__c</fullName>
+        <description>POV Contact Email address</description>
+        <externalId>false</externalId>
+        <formula>POV_Contact__r.Email</formula>
+        <label>POV Contact Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>POV_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>PoV Contact</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The customer contact that will receive and be responsible for execution of the POV</inlineHelpText>
+        <label>POV Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Proof of Values</relationshipLabel>
+        <relationshipName>Proof_of_Value</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>POV_Days_Overdue__c</fullName>
+        <description>POV Days Overdue</description>
+        <externalId>false</externalId>
+        <formula>IF (
+    (Is_eSTAR_Order_Open_Closed__c = 'Open' &amp;&amp; TODAY() &gt;  eStar_Original_Due_Date__c ), 
+        TODAY() - eStar_Current_Due_Date__c ,
+    IF((Is_eSTAR_Order_Open_Closed__c = 'Open'  &amp;&amp; TODAY() &lt; eStar_Original_Due_Date__c),
+        NULL,
+    IF (Is_eSTAR_Order_Open_Closed__c = 'Closed',
+        BOM_Returned_Date__c  - eStar_Ship_Date__c,
+        NULL
+       )
+      )
+)
+
+/*
+--If eStar Order Status = Open AND Today&gt; eStar Due Date,
+--Today() - eStar Current Due Date
+--If eStar Order Status = Open AND Today &lt; eStar Due Date,
+--NULL
+--If eStar Order Status = Closed ,
+--BOM Returned Date – eStar Current Due Date
+*/</formula>
+        <label>POV Days Overdue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>POV_Decision_Date__c</fullName>
+        <description>Decision Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Estimated date for decision for solution acceptance (Tech Win / Tech Loss). This is NOT the estimated close date for the opportunity. NOTE: Once the POV is completed, update this with the actual date the customer provided a Technical Win/Loss decision.</inlineHelpText>
+        <label>POV Decision Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>POV_Description__c</fullName>
+        <description>Describe the overall value a successful Eval will have to Sourcefire</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Document relevant information of the sales opportunity to help review the POV. Include reasons for POV, relevant background information, qualification information, etc.</inlineHelpText>
+        <label>POV Description</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>POV_Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>POV_Duration_Days__c  + POV_Start_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>POV Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>POV_Duration_Days__c</fullName>
+        <defaultValue>90</defaultValue>
+        <description>Proof of value Duration (Days)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Expected duration of POV should be 90 days</inlineHelpText>
+        <label>POV Duration (Days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>POV_Execution_Days__c</fullName>
+        <externalId>false</externalId>
+        <formula>if (Final_Approval_Date__c  &gt; POV_Reported_Decision_Date__c, Final_Approval_Date__c - POV_Reported_Decision_Date__c, POV_Reported_Decision_Date__c - Final_Approval_Date__c)</formula>
+        <label>POV Execution Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>POV_ID__c</fullName>
+        <description>Auto generated POV ID</description>
+        <displayFormat>POV-{0}</displayFormat>
+        <externalId>false</externalId>
+        <label>POV ID</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>POV_Outcome_Tech_Lost_Cancelled_Reason__c</fullName>
+        <description>POV Outcome-Tech &gt; Lost/Cancelled Reason</description>
+        <externalId>false</externalId>
+        <label>POV Outcome-Tech &gt; Lost/Cancelled Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Tech Win-Won Over Competitor</fullName>
+                    <default>false</default>
+                    <label>Tech Win-Won Over Competitor</label>
+                </value>
+                <value>
+                    <fullName>Tech Win-ELA</fullName>
+                    <default>false</default>
+                    <label>Tech Win-ELA</label>
+                </value>
+                <value>
+                    <fullName>Tech Win-Order Submitted</fullName>
+                    <default>false</default>
+                    <label>Tech Win-Order Submitted</label>
+                </value>
+                <value>
+                    <fullName>Tech Loss-Loss To Competitor</fullName>
+                    <default>false</default>
+                    <label>Tech Loss-Loss To Competitor</label>
+                </value>
+                <value>
+                    <fullName>Tech Loss-Loss Technical/Detection</fullName>
+                    <default>false</default>
+                    <label>Tech Loss-Loss Technical/Detection</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Outcome__c</fullName>
+        <description>Once the POV has been completed. Document the technical decision maker’s Win / Loss decision about the Cisco solution offered. (This is separate from the sales opportunity decision)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Once the POV has been completed. Document the technical decision maker’s Win / Loss decision about the Cisco solution offered. (This is separate from the sales opportunity decision)</inlineHelpText>
+        <label>POV Outcome-Tech</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Tech Win</fullName>
+                    <default>false</default>
+                    <label>Tech Win</label>
+                </value>
+                <value>
+                    <fullName>Tech Loss</fullName>
+                    <default>false</default>
+                    <label>Tech Loss</label>
+                </value>
+                <value>
+                    <fullName>Tech No Decision</fullName>
+                    <default>false</default>
+                    <label>Tech No Decision</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Product_Cloud_Location__c</fullName>
+        <description>For AMP for Endpoints, select any appropriate Cloud location; for ThreatGrid, select North America.
+
+Field Placement: Add to POV Description and Products section, after PoV Order Category field.
+
+Validation Rule: If AMP for Endpoints; AMP Threat Grid; is selected, POV Product Cloud Location field is required to be completed.
+
+Field should be visible to all POV users, and added to all POV Custom Report Types.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For AMP for Endpoints, select any appropriate Cloud location; for ThreatGrid, select North America</inlineHelpText>
+        <label>POV Product Cloud Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>POV_Solution_Advanced_Threat__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>North America</fullName>
+                    <default>false</default>
+                    <label>North America</label>
+                </value>
+                <value>
+                    <fullName>European Union</fullName>
+                    <default>false</default>
+                    <label>European Union</label>
+                </value>
+                <value>
+                    <fullName>APJC</fullName>
+                    <default>false</default>
+                    <label>APJC</label>
+                </value>
+                <value>
+                    <fullName>Canada</fullName>
+                    <default>false</default>
+                    <label>Canada</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Threat Grid Appliance</controllingFieldValue>
+                <controllingFieldValue>Threat Grid SaaS</controllingFieldValue>
+                <controllingFieldValue>AMP for Endpoint</controllingFieldValue>
+                <valueName>North America</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Threat Grid SaaS</controllingFieldValue>
+                <controllingFieldValue>AMP for Endpoint</controllingFieldValue>
+                <valueName>European Union</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AMP for Endpoint</controllingFieldValue>
+                <valueName>APJC</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Reported_Decision_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>POV Reported Decision Date set based on PoV Outcome</inlineHelpText>
+        <label>POV Reported Decision Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>POV_Solution_Advanced_Threat__c</fullName>
+        <description>Select the Security / Advanced Threat product that will be provided for this POV.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the Security / Advanced Threat product that will be provided for this POV.</inlineHelpText>
+        <label>POV Solution -  Advanced Threat</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AMP for CES (Cloud Email Security)</fullName>
+                    <default>false</default>
+                    <label>AMP for CES (Cloud Email Security)</label>
+                </value>
+                <value>
+                    <fullName>AMP for CWS (Cloud Web Security)</fullName>
+                    <default>false</default>
+                    <label>AMP for CWS (Cloud Web Security)</label>
+                </value>
+                <value>
+                    <fullName>AMP for Endpoint</fullName>
+                    <default>false</default>
+                    <label>AMP for Endpoint</label>
+                </value>
+                <value>
+                    <fullName>AMP for ESA (Email Security Appliance)</fullName>
+                    <default>false</default>
+                    <label>AMP for ESA (Email Security Appliance)</label>
+                </value>
+                <value>
+                    <fullName>AMP for Network-FP and ASA Sub/Appliance</fullName>
+                    <default>false</default>
+                    <label>AMP for Network-FP and ASA Sub/Appliance</label>
+                </value>
+                <value>
+                    <fullName>AMP for WSA (Web Security Appliance)</fullName>
+                    <default>false</default>
+                    <label>AMP for WSA (Web Security Appliance)</label>
+                </value>
+                <value>
+                    <fullName>AMP Private Cloud</fullName>
+                    <default>false</default>
+                    <label>AMP Private Cloud</label>
+                </value>
+                <value>
+                    <fullName>Cognitive (CTA)</fullName>
+                    <default>false</default>
+                    <label>Cognitive (CTA)</label>
+                </value>
+                <value>
+                    <fullName>Other Advanced Threat-Acquisition</fullName>
+                    <default>false</default>
+                    <label>Other Advanced Threat-Acquisition</label>
+                </value>
+                <value>
+                    <fullName>Other Advanced Threat Solution</fullName>
+                    <default>false</default>
+                    <label>Other Advanced Threat Solution</label>
+                </value>
+                <value>
+                    <fullName>Stealthwatch Appliances and Licenses</fullName>
+                    <default>false</default>
+                    <label>Stealthwatch Appliances and Licenses</label>
+                </value>
+                <value>
+                    <fullName>Stealthwatch Cloud Edition</fullName>
+                    <default>false</default>
+                    <label>Stealthwatch Cloud Edition</label>
+                </value>
+                <value>
+                    <fullName>Stealthwatch Learning Network</fullName>
+                    <default>false</default>
+                    <label>Stealthwatch Learning Network</label>
+                </value>
+                <value>
+                    <fullName>Stealthwatch Services</fullName>
+                    <default>false</default>
+                    <label>Stealthwatch Services</label>
+                </value>
+                <value>
+                    <fullName>Threat Grid Appliance</fullName>
+                    <default>false</default>
+                    <label>Threat Grid Appliance</label>
+                </value>
+                <value>
+                    <fullName>Threat Grid SaaS</fullName>
+                    <default>false</default>
+                    <label>Threat Grid SaaS</label>
+                </value>
+                <value>
+                    <fullName>AMP on Endpoint/ThreatGrid</fullName>
+                    <default>false</default>
+                    <label>AMP on Endpoint/ThreatGrid</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Solution_Email_Security__c</fullName>
+        <description>Select the Security / Email Security product that will be provided for this POV.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the Security / Email Security product that will be provided for this POV.</inlineHelpText>
+        <label>POV Solution -  Email Security</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CES-Cloud Email Security</fullName>
+                    <default>false</default>
+                    <label>CES-Cloud Email Security</label>
+                </value>
+                <value>
+                    <fullName>ELA-Enterprise License Agreement</fullName>
+                    <default>false</default>
+                    <label>ELA-Enterprise License Agreement</label>
+                </value>
+                <value>
+                    <fullName>ESA-Email Security Appliance</fullName>
+                    <default>false</default>
+                    <label>ESA-Email Security Appliance</label>
+                </value>
+                <value>
+                    <fullName>Hybrid CES/ESA-Email Appliance and Cloud</fullName>
+                    <default>false</default>
+                    <label>Hybrid CES/ESA-Email Appliance and Cloud</label>
+                </value>
+                <value>
+                    <fullName>Other Email Security</fullName>
+                    <default>false</default>
+                    <label>Other Email Security</label>
+                </value>
+                <value>
+                    <fullName>Other Email Security-Acquisition</fullName>
+                    <default>false</default>
+                    <label>Other Email Security-Acquisition</label>
+                </value>
+                <value>
+                    <fullName>ZIX OEM Encryption</fullName>
+                    <default>false</default>
+                    <label>ZIX OEM Encryption</label>
+                </value>
+                <value>
+                    <fullName>CES-Cloud Email Security with O365</fullName>
+                    <default>false</default>
+                    <label>CES-Cloud Email Security with O365</label>
+                </value>
+                <value>
+                    <fullName>Advanced Phishing - On prem sensor</fullName>
+                    <default>false</default>
+                    <label>Advanced Phishing - On prem sensor</label>
+                </value>
+                <value>
+                    <fullName>Advanced Phishing - Cloud sensor</fullName>
+                    <default>false</default>
+                    <label>Advanced Phishing - Cloud sensor</label>
+                </value>
+                <value>
+                    <fullName>Domain Protection</fullName>
+                    <default>false</default>
+                    <label>Domain Protection</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Solution_NGFW_IPS__c</fullName>
+        <description>Select the Security / NGFW/IPS product that will be provided for this POV.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the Security / NGFW/IPS product that will be provided for this POV.</inlineHelpText>
+        <label>POV Solution - NGFW/IPS</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>ASA High 5585</fullName>
+                    <default>false</default>
+                    <label>ASA High 5585</label>
+                </value>
+                <value>
+                    <fullName>ASA Low 5505/5506</fullName>
+                    <default>false</default>
+                    <label>ASA Low 5505/5506</label>
+                </value>
+                <value>
+                    <fullName>ASA Mid 5508/16/12/15/45/55</fullName>
+                    <default>false</default>
+                    <label>ASA Mid 5508/16/12/15/45/55</label>
+                </value>
+                <value>
+                    <fullName>ASA Service Module</fullName>
+                    <default>false</default>
+                    <label>ASA Service Module</label>
+                </value>
+                <value>
+                    <fullName>ASA Virtual Appliance</fullName>
+                    <default>false</default>
+                    <label>ASA Virtual Appliance</label>
+                </value>
+                <value>
+                    <fullName>Cisco Defense Orchestrator-CDO</fullName>
+                    <default>false</default>
+                    <label>Cisco Defense Orchestrator-CDO</label>
+                </value>
+                <value>
+                    <fullName>Cisco Security Manager</fullName>
+                    <default>false</default>
+                    <label>Cisco Security Manager</label>
+                </value>
+                <value>
+                    <fullName>Firepower / Firesight Manager / FMC</fullName>
+                    <default>false</default>
+                    <label>Firepower / Firesight Manager / FMC</label>
+                </value>
+                <value>
+                    <fullName>Firepower / NGIPS Virtual Appliance</fullName>
+                    <default>false</default>
+                    <label>Firepower / NGIPS Virtual Appliance</label>
+                </value>
+                <value>
+                    <fullName>Firepower 2100 NGFW</fullName>
+                    <default>false</default>
+                    <label>Firepower 2100 NGFW</label>
+                </value>
+                <value>
+                    <fullName>Firepower 2100-NGIPS</fullName>
+                    <default>false</default>
+                    <label>Firepower 2100-NGIPS</label>
+                </value>
+                <value>
+                    <fullName>Firepower 4100 NGFW</fullName>
+                    <default>false</default>
+                    <label>Firepower 4100 NGFW</label>
+                </value>
+                <value>
+                    <fullName>Firepower 4100-NGIPS</fullName>
+                    <default>false</default>
+                    <label>Firepower 4100-NGIPS</label>
+                </value>
+                <value>
+                    <fullName>Firepower 7000 Series</fullName>
+                    <default>false</default>
+                    <label>Firepower 7000 Series</label>
+                </value>
+                <value>
+                    <fullName>Firepower 8000 Series</fullName>
+                    <default>false</default>
+                    <label>Firepower 8000 Series</label>
+                </value>
+                <value>
+                    <fullName>Firepower 9300-NGFW</fullName>
+                    <default>false</default>
+                    <label>Firepower 9300-NGFW</label>
+                </value>
+                <value>
+                    <fullName>Firepower 9300-NGIPS</fullName>
+                    <default>false</default>
+                    <label>Firepower 9300-NGIPS</label>
+                </value>
+                <value>
+                    <fullName>Firepower on ISR</fullName>
+                    <default>false</default>
+                    <label>Firepower on ISR</label>
+                </value>
+                <value>
+                    <fullName>Firepower Services Subscriptions</fullName>
+                    <default>false</default>
+                    <label>Firepower Services Subscriptions</label>
+                </value>
+                <value>
+                    <fullName>FMC2500</fullName>
+                    <default>false</default>
+                    <label>FMC2500</label>
+                </value>
+                <value>
+                    <fullName>FMC4500</fullName>
+                    <default>false</default>
+                    <label>FMC4500</label>
+                </value>
+                <value>
+                    <fullName>Other Network Security-Acquisition</fullName>
+                    <default>false</default>
+                    <label>Other Network Security-Acquisition</label>
+                </value>
+                <value>
+                    <fullName>Radware / DDoS</fullName>
+                    <default>false</default>
+                    <label>Radware / DDoS</label>
+                </value>
+                <value>
+                    <fullName>SSL Appliance</fullName>
+                    <default>false</default>
+                    <label>SSL Appliance</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Solution_Policy_Access__c</fullName>
+        <description>Select the Security / Policy &amp; Access product that will be provided for this POV.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the Security / Policy &amp; Access product that will be provided for this POV.</inlineHelpText>
+        <label>POV Solution - Policy &amp; Access</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACS-Access Control Server</fullName>
+                    <default>false</default>
+                    <label>ACS-Access Control Server</label>
+                </value>
+                <value>
+                    <fullName>AnyConnect</fullName>
+                    <default>false</default>
+                    <label>AnyConnect</label>
+                </value>
+                <value>
+                    <fullName>ISE-Cisco Identity Services Engine</fullName>
+                    <default>false</default>
+                    <label>ISE-Cisco Identity Services Engine</label>
+                </value>
+                <value>
+                    <fullName>Other Policy &amp; Access</fullName>
+                    <default>false</default>
+                    <label>Other Policy &amp; Access</label>
+                </value>
+                <value>
+                    <fullName>Other Policy &amp; Access-Acquisition</fullName>
+                    <default>false</default>
+                    <label>Other Policy &amp; Access-Acquisition</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Solution_Web_Security__c</fullName>
+        <description>Select the Security / Web Security product that will be provided for this POV.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the Security / Web Security product that will be provided for this POV.</inlineHelpText>
+        <label>POV Solution -  Web Security</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CloudLock</fullName>
+                    <default>false</default>
+                    <label>CloudLock</label>
+                </value>
+                <value>
+                    <fullName>CWS-Cloud Web Security</fullName>
+                    <default>false</default>
+                    <label>CWS-Cloud Web Security</label>
+                </value>
+                <value>
+                    <fullName>Hybrid CWS/WSA-Web Appliance and Cloud</fullName>
+                    <default>false</default>
+                    <label>Hybrid CWS/WSA-Web Appliance and Cloud</label>
+                </value>
+                <value>
+                    <fullName>OpenDNS / Umbrella Branch</fullName>
+                    <default>false</default>
+                    <label>OpenDNS / Umbrella Branch</label>
+                </value>
+                <value>
+                    <fullName>OpenDNS / Umbrella Investigate</fullName>
+                    <default>false</default>
+                    <label>OpenDNS / Umbrella Investigate</label>
+                </value>
+                <value>
+                    <fullName>OpenDNS / Umbrella-Prof, Platform, Insight</fullName>
+                    <default>false</default>
+                    <label>OpenDNS / Umbrella-Prof, Platform, Insight</label>
+                </value>
+                <value>
+                    <fullName>OpenDNS / Umbrella Roaming</fullName>
+                    <default>false</default>
+                    <label>OpenDNS / Umbrella Roaming</label>
+                </value>
+                <value>
+                    <fullName>Other Web Security</fullName>
+                    <default>false</default>
+                    <label>Other Web Security</label>
+                </value>
+                <value>
+                    <fullName>Other Web Security-Acquisition</fullName>
+                    <default>false</default>
+                    <label>Other Web Security-Acquisition</label>
+                </value>
+                <value>
+                    <fullName>SMA-Security Management Appliance</fullName>
+                    <default>false</default>
+                    <label>SMA-Security Management Appliance</label>
+                </value>
+                <value>
+                    <fullName>WSA-Web Security Appliance</fullName>
+                    <default>false</default>
+                    <label>WSA-Web Security Appliance</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Start_Date__c</fullName>
+        <description>Proof of value Start Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Estimated POV start date. NOTE: Once POV has initiated set this date to the day of the POV kick-off or the first day of license enablement.</inlineHelpText>
+        <label>POV Start Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>POV_Status_Comments__c</fullName>
+        <description>POV Status Comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please share details relevant to the status of your POV, such as:  Status of implementation, Next Steps, Items Preventing Adoption, Risks, etc. Include date and initials.</inlineHelpText>
+        <label>POV Status Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>POV_Status__c</fullName>
+        <description>Once a POV has been approved, edit this field to show the current state of the POV. Keep this field current through the life of the POV</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Once a POV has been approved, edit this field to show the current state of the POV. Keep this field current through the life of the POV</inlineHelpText>
+        <label>POV Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>POV Approved</fullName>
+                    <default>false</default>
+                    <label>POV Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Approval In Progress</fullName>
+                    <default>false</default>
+                    <label>Approval In Progress</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POV_Type__c</fullName>
+        <description>Proof of value Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>TACTICAL: Lower value opp., lacks biz drivers, used for discovery. STRATEGIC: High value opp., clear biz drivers. C-POC: High value opp., perform in Cisco lab. SOFTWARE ONLY: No HW reqs. VM solution, license for current equipment, or SW only POV.</inlineHelpText>
+        <label>POV Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Tactical</fullName>
+                    <default>false</default>
+                    <label>Tactical</label>
+                </value>
+                <value>
+                    <fullName>Strategic</fullName>
+                    <default>false</default>
+                    <label>Strategic</label>
+                </value>
+                <value>
+                    <fullName>Partner Executed</fullName>
+                    <default>false</default>
+                    <label>Partner Executed</label>
+                </value>
+                <value>
+                    <fullName>C-POC</fullName>
+                    <default>false</default>
+                    <label>C-POC</label>
+                </value>
+                <value>
+                    <fullName>Software Only</fullName>
+                    <default>false</default>
+                    <label>Software Only</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Partner_Firejumper_Contact__c</fullName>
+        <description>Partner Firejumper Contact</description>
+        <externalId>false</externalId>
+        <label>Partner Firejumper Contact</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Position__c</fullName>
+        <description>Proof of value type</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Channel In</fullName>
+                    <default>false</default>
+                    <label>Channel In</label>
+                </value>
+                <value>
+                    <fullName>Channel Out</fullName>
+                    <default>false</default>
+                    <label>Channel Out</label>
+                </value>
+                <value>
+                    <fullName>Unregistered</fullName>
+                    <default>false</default>
+                    <label>Unregistered</label>
+                </value>
+                <value>
+                    <fullName>BD In</fullName>
+                    <default>false</default>
+                    <label>BD In</label>
+                </value>
+                <value>
+                    <fullName>BD Out</fullName>
+                    <default>false</default>
+                    <label>BD Out</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Partner_Role__c</fullName>
+        <description>TRUSTED ADVRISOR: Partner has strong relationship, is able to influence purchase. EXISTING RESELLER: partner has sold into the account before, is able to ease purchase. FULFILLMENT: Partner is a purchase vehicle only. NEW: New acct for partner.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>TRUSTED ADVRISOR: Partner has strong relationship, is able to influence purchase. EXISTING RESELLER: partner has sold into the account before, is able to ease purchase. FULFILLMENT: Partner is a purchase vehicle only. NEW: New acct for partner.</inlineHelpText>
+        <label>Partner Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Trusted Adviser</fullName>
+                    <default>false</default>
+                    <label>Trusted Adviser</label>
+                </value>
+                <value>
+                    <fullName>Existing Reseller</fullName>
+                    <default>false</default>
+                    <label>Existing Reseller</label>
+                </value>
+                <value>
+                    <fullName>Fulfillment</fullName>
+                    <default>false</default>
+                    <label>Fulfillment</label>
+                </value>
+                <value>
+                    <fullName>New to the Account</fullName>
+                    <default>false</default>
+                    <label>New to the Account</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Partner_SE_Contact__c</fullName>
+        <description>Note the Partner company’s Systems Engineer working this POV and sales opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Note the Partner company’s Systems Engineer working this POV and sales opportunity.</inlineHelpText>
+        <label>Partner SE Contact</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Sales_Contact__c</fullName>
+        <description>Note the Partner company’s Sales Representative working this POV and sales opportunity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Note the Partner company’s Sales Representative working this POV and sales opportunity</inlineHelpText>
+        <label>Partner Sales Contact</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Percent_of_POV_Advanced_Threat__c</fullName>
+        <description>Percent of POV -  Advanced Threat</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What % of the value of this POV does Advanced Threat represent?</inlineHelpText>
+        <label>Percent of POV -  Advanced Threat</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Percent_of_POV_Email_Security__c</fullName>
+        <description>What % of the value of this POV does Email Security represent?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What % of the value of this POV does Email Security represent?</inlineHelpText>
+        <label>Percent of POV -  Email Security</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Percent_of_POV_NGFW_IPS__c</fullName>
+        <description>What % of the value of this POV does NGFW/IPS represent?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What % of the value of this POV does NGFW/IPS represent?</inlineHelpText>
+        <label>Percent of POV - NGFW/IPS</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Percent_of_POV_Policy_Access__c</fullName>
+        <description>What % of the value of this POV does Policy &amp; Access represent?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What % of the value of this POV does Policy &amp; Access represent?</inlineHelpText>
+        <label>Percent of POV - Policy &amp; Access</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Percent_of_POV_Web_Security__c</fullName>
+        <description>What % of the value of this POV does Web Security represent?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What % of the value of this POV does Web Security represent?</inlineHelpText>
+        <label>Percent of POV -  Web Security</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Plan_to_Win__c</fullName>
+        <description>Describe the sales team’s plan to both successfully execute the POV and achieve both a technical win and a closed deal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the sales team’s plan to both successfully execute the POV and achieve both a technical win and a closed deal</inlineHelpText>
+        <label>Plan to Win</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Platform_Environmental_Requirements__c</fullName>
+        <description>Document any specific configuration, performance, or integration requirements in order to deploy the POV equipment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Document any specific configuration, performance, or integration requirements in order to deploy the POV equipment</inlineHelpText>
+        <label>Platform/Environmental Requirements</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PoV_Contact_First_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>POV_Contact__r.FirstName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PoV Contact First Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PoV_Contact_Last_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>POV_Contact__r.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PoV Contact Last Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PoV_Order_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>PoV Order Category</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>POV Security</fullName>
+                    <default>true</default>
+                    <label>POV Security</label>
+                </value>
+                <value>
+                    <fullName>POV Security Partner-Led</fullName>
+                    <default>false</default>
+                    <label>POV Security Partner-Led</label>
+                </value>
+                <value>
+                    <fullName>POV Collaboration</fullName>
+                    <default>false</default>
+                    <label>POV Collaboration</label>
+                </value>
+                <value>
+                    <fullName>POV Assurance</fullName>
+                    <default>false</default>
+                    <label>POV Assurance</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Products__c</fullName>
+        <description>Product</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the product types / capabilities that will be used for the POV</inlineHelpText>
+        <label>Products</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>--None--</fullName>
+                    <default>false</default>
+                    <label>--None--</label>
+                </value>
+                <value>
+                    <fullName>AMP for Endpoints</fullName>
+                    <default>false</default>
+                    <label>AMP for Endpoints</label>
+                </value>
+                <value>
+                    <fullName>AMP for ESA/WSA/CWS</fullName>
+                    <default>false</default>
+                    <label>AMP for ESA/WSA/CWS</label>
+                </value>
+                <value>
+                    <fullName>AMP for FirePower/ASA</fullName>
+                    <default>false</default>
+                    <label>AMP for FirePower/ASA</label>
+                </value>
+                <value>
+                    <fullName>AMP Private Cloud</fullName>
+                    <default>false</default>
+                    <label>AMP Private Cloud</label>
+                </value>
+                <value>
+                    <fullName>AMP Threat Grid</fullName>
+                    <default>false</default>
+                    <label>AMP Threat Grid</label>
+                </value>
+                <value>
+                    <fullName>ASA</fullName>
+                    <default>false</default>
+                    <label>ASA</label>
+                </value>
+                <value>
+                    <fullName>ASA-High</fullName>
+                    <default>false</default>
+                    <label>ASA-High</label>
+                </value>
+                <value>
+                    <fullName>CDO-Cisco Defense Orchestrator</fullName>
+                    <default>false</default>
+                    <label>CDO-Cisco Defense Orchestrator</label>
+                </value>
+                <value>
+                    <fullName>CWS</fullName>
+                    <default>false</default>
+                    <label>CWS</label>
+                </value>
+                <value>
+                    <fullName>Cyber Threat Defence</fullName>
+                    <default>false</default>
+                    <label>Cyber Threat Defence</label>
+                </value>
+                <value>
+                    <fullName>ESA</fullName>
+                    <default>false</default>
+                    <label>ESA</label>
+                </value>
+                <value>
+                    <fullName>FP Killbox</fullName>
+                    <default>false</default>
+                    <label>FP Killbox</label>
+                </value>
+                <value>
+                    <fullName>ISE</fullName>
+                    <default>false</default>
+                    <label>ISE</label>
+                </value>
+                <value>
+                    <fullName>NGFW</fullName>
+                    <default>false</default>
+                    <label>NGFW</label>
+                </value>
+                <value>
+                    <fullName>NGIPS</fullName>
+                    <default>false</default>
+                    <label>NGIPS</label>
+                </value>
+                <value>
+                    <fullName>Stealthwatch</fullName>
+                    <default>false</default>
+                    <label>Stealthwatch</label>
+                </value>
+                <value>
+                    <fullName>TrustSec</fullName>
+                    <default>false</default>
+                    <label>TrustSec</label>
+                </value>
+                <value>
+                    <fullName>WSA</fullName>
+                    <default>false</default>
+                    <label>WSA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Purchase_Criteria__c</fullName>
+        <description>Describe what will drive the final purchase decision on the solution (price, capability, features, usability, etc.)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe what will drive the final purchase decision on the solution (price, capability, features, usability, etc.)</inlineHelpText>
+        <label>Purchase Criteria</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reason_for_Exception__c</fullName>
+        <description>Reason for Exception</description>
+        <externalId>false</externalId>
+        <label>Reason for Exception</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>POV_Agreement_Exception__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Embedded Agreement</fullName>
+                    <default>false</default>
+                    <label>Embedded Agreement</label>
+                </value>
+                <value>
+                    <fullName>Master Agreement on File</fullName>
+                    <default>false</default>
+                    <label>Master Agreement on File</label>
+                </value>
+                <value>
+                    <fullName>Federal Government Customer</fullName>
+                    <default>false</default>
+                    <label>Federal Government Customer</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Embedded Agreement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Master Agreement on File</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Yes</controllingFieldValue>
+                <valueName>Federal Government Customer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reseller_Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Reseller Partner</description>
+        <externalId>false</externalId>
+        <label>Reseller Partner</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.RecordType.Id</field>
+                <operation>equals</operation>
+                <value>0123000000004aV</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Partner_Account_Status__c</field>
+                <operation>equals</operation>
+                <value>Active (Registered)</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Proof of Values</relationshipLabel>
+        <relationshipName>Evaluations</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Restrictive_Architecture__c</fullName>
+        <description>Any physical, virtual, or performance considerations that will limit the ability to have a successful POV or successful sales opportunity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Any physical, virtual, or performance considerations that will limit the ability to have a successful POV or successful sales opportunity</inlineHelpText>
+        <label>Restrictive Architecture</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SE_Comments__c</fullName>
+        <description>Document any additional or support comments to support the technical deployment or technical understanding required for Cisco to success in the POV.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Document any additional or support comments to support the technical deployment or technical understanding required for Cisco to success in the POV</inlineHelpText>
+        <label>SE Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SFDC_POV_Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>SFDC POV Opportunity</description>
+        <externalId>false</externalId>
+        <label>SFDC POV Opportunity ($0)</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Proof of Values</relationshipLabel>
+        <relationshipName>Proof_of_Value</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Team_Comments__c</fullName>
+        <description>Sales Team Comments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide any additional information about the account or organization units that may impact success/failure for the POV</inlineHelpText>
+        <label>Sales Team Comments</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Secondary_SE__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>A second SE to work on the POV document</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the CSE/SE that may be supporting the lead or the account SE.</inlineHelpText>
+        <label>Secondary SE</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>POV_Justification_Forms</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Security_AM__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Security AM</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Security Account Manager that is associated with this parent opportunity of the POV</inlineHelpText>
+        <label>Security AM</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Proof_of_Values</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Security_Lead_SE_Status__c</fullName>
+        <description>Security Lead SE Status</description>
+        <externalId>false</externalId>
+        <label>Security Lead SE Status</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Security_OD_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Security OD Status</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Security_OD__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Security OD</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Operations Director for the Security Sales team that is working the POV and security opportunity</inlineHelpText>
+        <label>Security OD</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Proof_of_Value2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Security_RM_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Security RM Status</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Security_RM__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Security Reginol Manager</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Regional Manager of the Security Account Manager that is working the POV and security opportunity</inlineHelpText>
+        <label>Security RM</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>POV_Justification_Forms1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Security_SE_MGR_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Security SE MGR Status</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Security_SE_MGR__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Security Engineer manager</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The SE Manager of the Security CSE that is working the POV and security opportunity</inlineHelpText>
+        <label>Security SE MGR</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Proof_of_Value1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Ship_to_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Ship to Address</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Ship_to_Contact_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Ship to Contact Email</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ship_to_Contact_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Ship to Contact Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ship_to_Contact_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Ship to Contact Phone</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Software_Version_Number__c</fullName>
+        <description>Allows the SE or RSM to add the software version number to the POV</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify the specific version of software required on the hardware (especially if it is not the most current version shipping)</inlineHelpText>
+        <label>Software Version Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Solution_Differentiator_1__c</fullName>
+        <description>Describe the unique Cisco solution offering or capabilities that will be offered to meet the requirements of the business initiative and deliver on the customer’s business drivers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the unique Cisco solution offering or capabilities that will be offered to meet the requirements of the business initiative and deliver on the customer’s business drivers</inlineHelpText>
+        <label>Solution Differentiator 1</label>
+        <length>10000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Solution_Differentiator_2__c</fullName>
+        <description>Describe the unique Cisco solution offering or capabilities that will be offered to meet the requirements of the business initiative and deliver on the customer’s business drivers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the unique Cisco solution offering or capabilities that will be offered to meet the requirements of the business initiative and deliver on the customer’s business drivers</inlineHelpText>
+        <label>Solution Differentiator 2</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Solution_Differentiator_3__c</fullName>
+        <description>Describe the unique Cisco solution offering or capabilities that will be offered to meet the requirements of the business initiative and deliver on the customer’s business drivers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the unique Cisco solution offering or capabilities that will be offered to meet the requirements of the business initiative and deliver on the customer’s business drivers</inlineHelpText>
+        <label>Solution Differentiator 3</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Specific_Instructions_for_Manufacturing__c</fullName>
+        <description>Note any specific information for manufacturing, such as special shipping notes, unusual configuration requirements, etc.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Note any specific information for manufacturing, such as special shipping notes, unusual configuration requirements, etc.</inlineHelpText>
+        <label>Specific Instructions for Manufacturing</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Stakeholders__c</fullName>
+        <description>Stakeholders</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Purchase authorities for this POV</inlineHelpText>
+        <label>Stakeholders</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Strategic_Imperative_1__c</fullName>
+        <description>Describe a company business driver that this POV will help achieve or improve</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe a company business driver or guiding imperative that this POV will help achieve or improve.</inlineHelpText>
+        <label>Strategic Imperative 1</label>
+        <length>10000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Strategic_Imperative_2__c</fullName>
+        <description>Describe a company business driver that this POV will help achieve or improve</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe a company business driver that this POV will help achieve or improve</inlineHelpText>
+        <label>Strategic Imperative 2</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Strategic_Imperative_3__c</fullName>
+        <description>Describe a company business driver that this POV will help achieve or improve</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe a company business driver that this POV will help achieve or improve</inlineHelpText>
+        <label>Strategic Imperative 3</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Success_Metrics__c</fullName>
+        <description>Provide any specific measures the customer has identified as driving a purchase decision (ie. Successful POV, Cost Benefit, Proof of superior capability, etc.)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide any specific measures the customer has identified as driving a purchase decision (ie. Successful POV, Cost Benefit, Proof of superior capability, etc.)</inlineHelpText>
+        <label>Success Metrics</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Supporting_Opportunity__c</fullName>
+        <description>Supporting Opportunity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Auto-populated: Sales Opportunity specific to this POV</inlineHelpText>
+        <label>Supporting Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Proof of Values</relationshipLabel>
+        <relationshipName>Evaluations</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Test_Environment_LAB_Production__c</fullName>
+        <description>Dropdown: Select if this POV will be performed in a test lab or on the customer’s production network.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Dropdown: Select if this POV will be performed in a test lab or on the customer’s production network</inlineHelpText>
+        <label>Test Environment (LAB/Production)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Lab</fullName>
+                    <default>false</default>
+                    <label>Lab</label>
+                </value>
+                <value>
+                    <fullName>Production</fullName>
+                    <default>false</default>
+                    <label>Production</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Testing_Tools__c</fullName>
+        <description>Document any tools the customer will use during the POV (such as scanning, threat insertion, performance testing, or external evaluators)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Document any tools the customer will use during the POV (such as scanning, threat insertion, performance testing, or external evaluators).</inlineHelpText>
+        <label>Testing Tools</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Value_Proposition_1_OLD__c</fullName>
+        <description>Describe the value benefits of the Cisco Unique solution offering that will help accelerate or improve the customer’s business</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the value benefits of the Cisco Unique solution offering that will help accelerate or improve the customer’s business</inlineHelpText>
+        <label>Value Proposition OLD</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Improve Security Brand</fullName>
+                    <default>false</default>
+                    <label>Improve Security Brand</label>
+                </value>
+                <value>
+                    <fullName>Secure Internet of Everything</fullName>
+                    <default>false</default>
+                    <label>Secure Internet of Everything</label>
+                </value>
+                <value>
+                    <fullName>Grow Revenue</fullName>
+                    <default>false</default>
+                    <label>Grow Revenue</label>
+                </value>
+                <value>
+                    <fullName>Improve Cap Ex</fullName>
+                    <default>false</default>
+                    <label>Improve Cap Ex</label>
+                </value>
+                <value>
+                    <fullName>Improve Op Ex</fullName>
+                    <default>false</default>
+                    <label>Improve Op Ex</label>
+                </value>
+                <value>
+                    <fullName>New Business Models</fullName>
+                    <default>false</default>
+                    <label>New Business Models</label>
+                </value>
+                <value>
+                    <fullName>Enable Mobile Workers</fullName>
+                    <default>false</default>
+                    <label>Enable Mobile Workers</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Value_Proposition_1__c</fullName>
+        <description>Value Proposition</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe additional business benefits that this POV will help achieve or improve in the customer’s organization.</inlineHelpText>
+        <label>Value Proposition 1</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Value_Proposition_2__c</fullName>
+        <description>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</inlineHelpText>
+        <label>Value Proposition 2</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Value_Proposition_3__c</fullName>
+        <description>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the relevant business imitative(s) that the customer has initiated to meet it’s business driver and that this POV will be satisfying</inlineHelpText>
+        <label>Value Proposition 3</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Value_Propositions_Other__c</fullName>
+        <description>Describe the value benefits of the Cisco Unique solution offering that will help accelerate or improve the customer’s business</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the value benefits of the Cisco Unique solution offering that will help accelerate or improve the customer’s business</inlineHelpText>
+        <label>Value Propositions Other</label>
+        <length>10000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Win_Loss_Reason__c</fullName>
+        <description>Describe what drove the technical win / technical loss of this POV (this is separate from the sales opportunity win/loss reasons)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe what drove the technical win / technical loss of this POV (this is separate from the sales opportunity win/loss reasons)</inlineHelpText>
+        <label>Win/Loss Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Workspace_Lost_Cancelled_Reason__c</fullName>
+        <description>Opportunity_Workspace Lost_Cancelled_Reason</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Opportunity_Workspace__r.Workspace_Lost_Cancelled_Reason__c )</formula>
+        <label>Workspace Lost/Cancelled Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Workspace_Outcome__c</fullName>
+        <description>Opportunity Workspace Status</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Opportunity_Workspace__r.PSS_Workspace_Status__c)</formula>
+        <label>Workspace Outcome</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>eSTAR_Order_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>eSTAR Order Amount ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>eSTAR_Order_No__c</fullName>
+        <description>To capture the eStar Order number</description>
+        <externalId>false</externalId>
+        <label>eSTAR Order No</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>eSTAR_Order_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>eSTAR Order Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Delivered</fullName>
+                    <default>false</default>
+                    <label>Delivered</label>
+                </value>
+                <value>
+                    <fullName>No Stack Available</fullName>
+                    <default>false</default>
+                    <label>No Stack Available</label>
+                </value>
+                <value>
+                    <fullName>Saved</fullName>
+                    <default>false</default>
+                    <label>Saved</label>
+                </value>
+                <value>
+                    <fullName>ORDER CREATED</fullName>
+                    <default>false</default>
+                    <label>ORDER CREATED</label>
+                </value>
+                <value>
+                    <fullName>BACKLOGGED</fullName>
+                    <default>false</default>
+                    <label>BACKLOGGED</label>
+                </value>
+                <value>
+                    <fullName>Returned</fullName>
+                    <default>false</default>
+                    <label>Returned</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>eStar_Current_Due_Date__c</fullName>
+        <description>eStar Current Due Date   as in eStar</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Populated via upload from eStar.</inlineHelpText>
+        <label>eStar Current Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>eStar_Order_Cost__c</fullName>
+        <description>eStar Order Cost  as in eStar</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Populated via upload from eStar.</inlineHelpText>
+        <label>eStar Order Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>eStar_Original_Due_Date__c</fullName>
+        <description>eStar Original Due Date  as in eStar</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Populated via upload from eStar.</inlineHelpText>
+        <label>eStar Original Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>eStar_Ship_Date__c</fullName>
+        <description>Ship date as in eStar</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Populated via upload from eStar.</inlineHelpText>
+        <label>eStar Ship Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>zzSoftware_Version_Number__c</fullName>
+        <description>Software Version Number</description>
+        <externalId>false</externalId>
+        <label>zzSoftware Version Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1.0</fullName>
+                    <default>false</default>
+                    <label>1.0</label>
+                </value>
+                <value>
+                    <fullName>4.1</fullName>
+                    <default>false</default>
+                    <label>4.1</label>
+                </value>
+                <value>
+                    <fullName>4.10</fullName>
+                    <default>false</default>
+                    <label>4.10</label>
+                </value>
+                <value>
+                    <fullName>5.0</fullName>
+                    <default>false</default>
+                    <label>5.0</label>
+                </value>
+                <value>
+                    <fullName>5.1</fullName>
+                    <default>false</default>
+                    <label>5.1</label>
+                </value>
+                <value>
+                    <fullName>5.2</fullName>
+                    <default>false</default>
+                    <label>5.2</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is to provide the Proof of Value form</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Proof of Value</label>
+    <nameField>
+        <label>Proof of Value Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Proof of Values</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <searchLayouts>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>POV_Decision_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>POV_Approval_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>POV_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>POV_Outcome__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>POV_Approval_Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Supporting_Opportunity__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SFDC_POV_Opportunity__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchResultsAdditionalFields>SFDC_POV_Opportunity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Supporting_Opportunity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>POV_Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>POV_ID__c</columns>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>eSTAR_Order_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Work_In_Progress_PoVs</fullName>
+        <columns>eSTAR_Order_Status__c</columns>
+        <columns>Account__c</columns>
+        <columns>NAME</columns>
+        <columns>POV_Status__c</columns>
+        <columns>POV_Start_Date__c</columns>
+        <columns>POV_Duration_Days__c</columns>
+        <columns>Decision_Date__c</columns>
+        <columns>PoV_Order_Category__c</columns>
+        <columns>Hardware_Source__c</columns>
+        <columns>Products__c</columns>
+        <columns>POV_Amount__c</columns>
+        <columns>POV_Contact__c</columns>
+        <columns>Security_AM__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>eSTAR_Order_Status__c</field>
+            <operation>equals</operation>
+            <value>OVERDUE,PARTIALLY RETURNED</value>
+        </filters>
+        <filters>
+            <field>PoV_Order_Category__c</field>
+            <operation>equals</operation>
+            <value>POV Security</value>
+        </filters>
+        <label>All Past Due Security POVs</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Approved_PoVs</fullName>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <columns>NAME</columns>
+        <columns>POV_Status__c</columns>
+        <columns>POV_Approval_Status__c</columns>
+        <columns>eSTAR_Order_No__c</columns>
+        <columns>eSTAR_Order_Amount__c</columns>
+        <columns>eSTAR_Order_Status__c</columns>
+        <columns>Decision_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>POV_Status__c</field>
+            <operation>equals</operation>
+            <value>POV Approved</value>
+        </filters>
+        <filters>
+            <field>Am_Lead_SE__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_sAM__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Approved PoVs</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>My_PoVs_Pending_Approval</fullName>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <columns>NAME</columns>
+        <columns>POV_Status__c</columns>
+        <columns>POV_Approval_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>POV_Status__c</field>
+            <operation>equals</operation>
+            <value>Approval In Progress</value>
+        </filters>
+        <filters>
+            <field>Am_Lead_SE__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_sAM__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My PoVs Pending Approval</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Rejected_PoVs</fullName>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <columns>NAME</columns>
+        <columns>POV_Status__c</columns>
+        <columns>POV_Approval_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>POV_Status__c</field>
+            <operation>equals</operation>
+            <value>Rejected</value>
+        </filters>
+        <filters>
+            <field>Am_Lead_SE__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_sAM__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Rejected PoVs</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Active_PoV</fullName>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Decision_Date__c</columns>
+        <columns>eSTAR_Order_No__c</columns>
+        <columns>eSTAR_Order_Status__c</columns>
+        <columns>eSTAR_Order_Amount__c</columns>
+        <columns>POV_Amount__c</columns>
+        <columns>POV_Contact__c</columns>
+        <columns>POV_Status__c</columns>
+        <columns>POV_Start_Date__c</columns>
+        <columns>PoV_Order_Category__c</columns>
+        <columns>POV_Duration_Days__c</columns>
+        <columns>POV_Approval_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Am_SEMGR__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_RM__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_OD__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Team’s Active PoV</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>My_Team_s_Past_Due_Security_POVs</fullName>
+        <booleanFilter>1 AND 2 AND (3 or 4 or 5 or 6)</booleanFilter>
+        <columns>eSTAR_Order_Status__c</columns>
+        <columns>Account__c</columns>
+        <columns>NAME</columns>
+        <columns>POV_Status__c</columns>
+        <columns>POV_Start_Date__c</columns>
+        <columns>POV_Duration_Days__c</columns>
+        <columns>Decision_Date__c</columns>
+        <columns>PoV_Order_Category__c</columns>
+        <columns>Hardware_Source__c</columns>
+        <columns>Products__c</columns>
+        <columns>POV_Amount__c</columns>
+        <columns>POV_Contact__c</columns>
+        <columns>Security_AM__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>eSTAR_Order_Status__c</field>
+            <operation>equals</operation>
+            <value>OVERDUE,PARTIALLY RETURNED</value>
+        </filters>
+        <filters>
+            <field>PoV_Order_Category__c</field>
+            <operation>equals</operation>
+            <value>POV Security</value>
+        </filters>
+        <filters>
+            <field>Am_Lead_SE__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_sAM__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_OD__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_SEMGR__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Team's Past Due Security POVs</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PoVs_Waiting_My_Approval</fullName>
+        <booleanFilter>((1 AND 5 ) OR (2 AND 6) OR (3 AND 7)) AND 4</booleanFilter>
+        <columns>NAME</columns>
+        <columns>POV_Status__c</columns>
+        <columns>POV_Approval_Status__c</columns>
+        <columns>Approximate_POV_List_Price__c</columns>
+        <columns>Decision_Date__c</columns>
+        <columns>POV_Amount__c</columns>
+        <columns>POV_Contact__c</columns>
+        <columns>POV_Duration_Days__c</columns>
+        <columns>PoV_Order_Category__c</columns>
+        <columns>POV_Start_Date__c</columns>
+        <columns>Security_AM__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Am_SEMGR__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_RM__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Am_OD__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>POV_Status__c</field>
+            <operation>equals</operation>
+            <value>Approval In Progress</value>
+        </filters>
+        <filters>
+            <field>POV_Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>SAM Submitted</value>
+        </filters>
+        <filters>
+            <field>POV_Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>SE Manager Approved</value>
+        </filters>
+        <filters>
+            <field>POV_Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>RM Approved</value>
+        </filters>
+        <label>PoVs Waiting My Approval</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <recordTypes>
+        <fullName>POV_Submit</fullName>
+        <active>true</active>
+        <description>POV submit</description>
+        <label>POV Submit</label>
+        <picklistValues>
+            <picklist>Campaign_or_Program__c</picklist>
+            <values>
+                <fullName>-None-</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PoV Phase One</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Hardware_Source__c</picklist>
+            <values>
+                <fullName>Cisco Seed Unit Program %28Owned by BU-Electra e%2Eg%2E-for partners%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco%2FDLP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distribution %28for Partners to acquire gear from Distis%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Provided</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Incumbent_Vendor__c</picklist>
+            <values>
+                <fullName>Check Point</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Emerging Threats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Endace</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterasys</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fortinet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IBM ISS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Juniper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>McAfee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NitroSecurity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %E2%80%93 Competitor in Comments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Palo Alto Networks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Radware</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reflex Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Snort</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>StillSecure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stonesoft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TippingPoint</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Top Layer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Organizational_Role__c</picklist>
+            <values>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desktop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Helpdesk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Security</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Agreement_Exception__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Approval_Status__c</picklist>
+            <values>
+                <fullName>Lead SE Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lead SE Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OD Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OD Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RM Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RM Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAM Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAM Work in Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SE Manager Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SE Manager Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Outcome_Tech_Lost_Cancelled_Reason__c</picklist>
+            <values>
+                <fullName>Tech Loss-Loss Technical%2FDetection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tech Loss-Loss To Competitor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tech Win-ELA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tech Win-Order Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tech Win-Won Over Competitor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Outcome__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tech Loss</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tech No Decision</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tech Win</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Product_Cloud_Location__c</picklist>
+            <values>
+                <fullName>APJC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>European Union</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>North America</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Solution_Advanced_Threat__c</picklist>
+            <values>
+                <fullName>AMP Private Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP for CES %28Cloud Email Security%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP for CWS %28Cloud Web Security%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP for ESA %28Email Security Appliance%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP for Endpoint</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP for Network-FP and ASA Sub%2FAppliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP for WSA %28Web Security Appliance%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP on Endpoint%2FThreatGrid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cognitive %28CTA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Advanced Threat Solution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Advanced Threat-Acquisition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stealthwatch Appliances and Licenses</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stealthwatch Cloud Edition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stealthwatch Learning Network</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stealthwatch Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Threat Grid Appliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Threat Grid SaaS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Solution_Email_Security__c</picklist>
+            <values>
+                <fullName>Advanced Phishing - Cloud sensor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Advanced Phishing - On prem sensor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CES-Cloud Email Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CES-Cloud Email Security with O365</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domain Protection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ELA-Enterprise License Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESA-Email Security Appliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hybrid CES%2FESA-Email Appliance and Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Email Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Email Security-Acquisition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZIX OEM Encryption</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Solution_NGFW_IPS__c</picklist>
+            <values>
+                <fullName>ASA High 5585</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASA Low 5505%2F5506</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASA Mid%C2%A05508%2F16%2F12%2F15%2F45%2F55</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASA Service Module</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASA Virtual Appliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Defense Orchestrator-CDO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Security Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FMC2500</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FMC4500</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower %2F Firesight Manager %2F FMC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower %2F NGIPS Virtual Appliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower 2100 NGFW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower 2100-NGIPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower 4100 NGFW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower 4100-NGIPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower 7000 Series</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower 8000 Series</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower 9300-NGIPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower Services Subscriptions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firepower on ISR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Network Security-Acquisition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Radware %2F DDoS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SSL Appliance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Solution_Policy_Access__c</picklist>
+            <values>
+                <fullName>ACS-Access Control Server</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AnyConnect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ISE-Cisco Identity Services Engine</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Policy %26 Access</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Policy %26 Access-Acquisition</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Solution_Web_Security__c</picklist>
+            <values>
+                <fullName>CWS-Cloud Web Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CloudLock</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hybrid CWS%2FWSA-Web Appliance and Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OpenDNS %2F Umbrella Branch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OpenDNS %2F Umbrella Investigate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OpenDNS %2F Umbrella Roaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OpenDNS %2F Umbrella-Prof%2C Platform%2C Insight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Web Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Web Security-Acquisition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SMA-Security Management Appliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WSA-Web Security Appliance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Status__c</picklist>
+            <values>
+                <fullName>Approval In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POV Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POV_Type__c</picklist>
+            <values>
+                <fullName>C-POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Executed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Partner_Position__c</picklist>
+            <values>
+                <fullName>BD In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BD Out</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Channel Out</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unregistered</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Partner_Role__c</picklist>
+            <values>
+                <fullName>Existing Reseller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfillment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New to the Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trusted Adviser</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PoV_Order_Category__c</picklist>
+            <values>
+                <fullName>POV Assurance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POV Collaboration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POV Security</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>POV Security Partner-Led</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Products__c</picklist>
+            <values>
+                <fullName>--None--</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP Private Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP Threat Grid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP for ESA%2FWSA%2FCWS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP for Endpoints</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP for FirePower%2FASA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASA-High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CDO-Cisco Defense Orchestrator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CWS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cyber Threat Defence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FP Killbox</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ISE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NGFW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NGIPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stealthwatch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TrustSec</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WSA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Exception__c</picklist>
+            <values>
+                <fullName>Embedded Agreement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Federal Government Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Master Agreement on File</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Test_Environment_LAB_Production__c</picklist>
+            <values>
+                <fullName>Lab</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Production</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Value_Proposition_1_OLD__c</picklist>
+            <values>
+                <fullName>Enable Mobile Workers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grow Revenue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improve Cap Ex</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improve Op Ex</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Improve Security Brand</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business Models</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secure Internet of Everything</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>zzSoftware_Version_Number__c</picklist>
+            <values>
+                <fullName>1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%2E1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%2E10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%2E1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%2E2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <validationRules>
+        <fullName>CEE_Required</fullName>
+        <active>true</active>
+        <description>CEE_Required when PoV Order Category is  POV Assurance</description>
+        <errorConditionFormula>TEXT(PoV_Order_Category__c) = 'POV Assurance' &amp;&amp;
+Customer_Engagements_Events_CEE__c =''</errorConditionFormula>
+        <errorDisplayField>Customer_Engagements_Events_CEE__c</errorDisplayField>
+        <errorMessage>CEE is Required when PoV Order Category is  POV Assurance</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>POV_Contact_Email</fullName>
+        <active>true</active>
+        <description>POV Contact Email cannot be Cisco Id</description>
+        <errorConditionFormula>$Profile.Id != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp;
+$Profile.Id != $Setup.ProfileID__c.Cisco_Data_Migration__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Integration_Echo_Suppression__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS_Analyst__c &amp;&amp;
+
+CONTAINS( POV_Contact__r.Email, '@cisco.com')</errorConditionFormula>
+        <errorDisplayField>POV_Contact__c</errorDisplayField>
+        <errorMessage>POV Contact Email address cannot  be Cisco</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>POV_Duration_Days_valid_values</fullName>
+        <active>true</active>
+        <description>Check if POV Duration (Days) is 90 days</description>
+        <errorConditionFormula>$Profile.Id != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Data_Migration__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Integration_Echo_Suppression__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS_Analyst__c &amp;&amp; 
+
+POV_Duration_Days__c != 90</errorConditionFormula>
+        <errorDisplayField>POV_Duration_Days__c</errorDisplayField>
+        <errorMessage>Valid length for POVs is 90 days.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>POV_Outcome_for_completed_Povs</fullName>
+        <active>true</active>
+        <description>If eSTAR Order Status = Completed, POV Outcome must equal Tech Win or Tech Loss.</description>
+        <errorConditionFormula>$Profile.Id != $Setup.ProfileID__c.Cisco_Data_Migration__c &amp;&amp; 
+ $Profile.Id != $Setup.ProfileID__c.Cisco_Integration_Echo_Suppression__c &amp;&amp; 
+ $Profile.Id != $Setup.ProfileID__c.Cisco_GSTS__c &amp;&amp; 
+ $Profile.Id != $Setup.ProfileID__c.Cisco_GSTS_Analyst__c &amp;&amp; 
+
+ TEXT(eSTAR_Order_Status__c) == 'Completed'
+&amp;&amp;
+( TEXT(POV_Outcome__c) != 'Tech Win' ||
+  TEXT(POV_Outcome__c) != 'Tech Loss'
+)</errorConditionFormula>
+        <errorDisplayField>POV_Outcome__c</errorDisplayField>
+        <errorMessage>Valid values for completed POVs is either 'Tech Win' or 'Tech Loss'</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>POV_Solution_Mandatory</fullName>
+        <active>true</active>
+        <description>POV_Solution_Mandatory</description>
+        <errorConditionFormula>$Profile.Id != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Data_Migration__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Integration_Echo_Suppression__c &amp;&amp;
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS__c &amp;&amp;
+
+TEXT(PoV_Order_Category__c) = 'POV Security'
+&amp;&amp;
+ISBLANK(TEXT(POV_Solution_Advanced_Threat__c))
+&amp;&amp;
+ISBLANK(TEXT(POV_Solution_Email_Security__c ))
+&amp;&amp;
+ISBLANK(TEXT(POV_Solution_NGFW_IPS__c ))
+&amp;&amp;
+ISBLANK(TEXT(POV_Solution_Policy_Access__c))
+&amp;&amp;
+ISBLANK(TEXT(POV_Solution_Web_Security__c))</errorConditionFormula>
+        <errorDisplayField>POV_Solution_Advanced_Threat__c</errorDisplayField>
+        <errorMessage>For Security POV's, at least one of the POV Solutions is required to be selected</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Partner_Role_Required</fullName>
+        <active>true</active>
+        <description>Partner_Role_Required</description>
+        <errorConditionFormula>$User.ProfileId != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp;
+TEXT(POV_Type__c) = 'Partner Executed' &amp;&amp;
+ISBLANK ( TEXT(Partner_Role__c) )</errorConditionFormula>
+        <errorDisplayField>Partner_Role__c</errorDisplayField>
+        <errorMessage>Partner Role Contact is required when POV Type is Partner Executed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Partner_SE_Contact_Required</fullName>
+        <active>true</active>
+        <description>Partner_SE_Contact_Required</description>
+        <errorConditionFormula>$User.ProfileId != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp;
+TEXT(POV_Type__c) = 'Partner Executed' &amp;&amp;
+ISBLANK (Partner_SE_Contact__c)</errorConditionFormula>
+        <errorDisplayField>Partner_SE_Contact__c</errorDisplayField>
+        <errorMessage>Partner SE Contact is required when POV Type is Partner Executed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Partner_Sales_Contact_Required</fullName>
+        <active>true</active>
+        <description>Partner_Sales_Contact_Required</description>
+        <errorConditionFormula>$User.ProfileId != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp;
+TEXT(POV_Type__c) = 'Partner Executed' &amp;&amp;
+ISBLANK ( Partner_Sales_Contact__c )</errorConditionFormula>
+        <errorDisplayField>Partner_Sales_Contact__c</errorDisplayField>
+        <errorMessage>Partner Sales Contact is required when POV Type is Partner Executed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Percent_of_POV_check</fullName>
+        <active>true</active>
+        <description>Percent_of_POV check</description>
+        <errorConditionFormula>$Profile.Id != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Data_Migration__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Integration_Echo_Suppression__c &amp;&amp;
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS__c &amp;&amp;
+
+TEXT(PoV_Order_Category__c) = 'POV Security'
+&amp;&amp;
+NULLVALUE( Percent_of_POV_Advanced_Threat__c, 0) +
+NULLVALUE( Percent_of_POV_Email_Security__c, 0) +
+NULLVALUE( Percent_of_POV_NGFW_IPS__c, 0) +
+NULLVALUE( Percent_of_POV_Policy_Access__c, 0) +
+NULLVALUE( Percent_of_POV_Web_Security__c , 0)  != 1.0</errorConditionFormula>
+        <errorDisplayField>Percent_of_POV_Advanced_Threat__c</errorDisplayField>
+        <errorMessage>The total sum of percentage must equal 100 for all Security POVs.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Reseller_Partner_Required</fullName>
+        <active>true</active>
+        <description>Reseller_Partner_Required</description>
+        <errorConditionFormula>$User.ProfileId != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp;
+TEXT(POV_Type__c) = 'Partner Executed' &amp;&amp;
+ISBLANK (Reseller_Partner__c)</errorConditionFormula>
+        <errorDisplayField>Reseller_Partner__c</errorDisplayField>
+        <errorMessage>Reseller Partner is required when POV Type is Partner Executed.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>ELink</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>E* Link</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://tools.cisco.com/GPSS/dlp/jsp/dlphome.jsp#</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Proof_of_Value</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Proof of Value</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>location.href="/apex/POVRedirectPage?CF00NV0000000bhsG={!Opportunity.Name}&amp;CF00NV0000000bhsG_lkid={!Opportunity.Id}&amp;retURL={!Opportunity.Id}&amp;newRelatedlist=1"</url>
+    </webLinks>
+    <webLinks>
+        <fullName>POV_Process_Tip_Sheet</fullName>
+        <availability>online</availability>
+        <description>This is a link to the help document on filling out a POV justification form</description>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>POV Process Tip Sheet</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://na8.salesforce.com/069C0000000nX30&amp;target=_blank</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_EULA_Submit_Approval</fullName>
+        <availability>online</availability>
+        <description>Send EULA/Submit Approval</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send EULA/Submit Approval</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT("/soap/ajax/30.0/connection.js")} 
+{!REQUIRESCRIPT("/soap/ajax/30.0/apex.js")} 
+{!REQUIRESCRIPT("/apex/dsfs__DocuSign_JavaScript")} 
+//DST is the template ID 
+var DST='fbf28342-c097-428c-89e6-5d09fd378c40'; 
+
+//CCRM is the custom role mapping. It’s similar to a key:value pair where the key is the Salesforce role and value is the DocuSign template role. In this example, I’m using “Custom Role” and “Custom Role2” to say that I’m not using any predefined SFDC roles. 
+
+var CCRM='CustomRole~Customer'; 
+
+//CRL is the custom recipient list. On this template I have 2 recipients, and describe their properties here, per role. Note that you can use queries to pull in values from your objects like I have done in the first e-mail address, pulling the opp owner’s e-mail from the record. 
+
+var CRL='Email~{!Proof_of_Value__c.POV_Contact_Email__c};LastName~{!Proof_of_Value__c.PoV_Contact_Last_Name__c};FirstName~{!Proof_of_Value__c.PoV_Contact_First_Name__c};Role~CustomRole'; 
+
+//This effectively sends a redirect executing a call to DS. Note at the end the “OCO=Send” variable, which allows you to do a one-click send without the need to go into the template / tagging view. 
+
+if("{!Proof_of_Value__c.PoV_Order_Category__c}" == 'POV Security' &amp;&amp; "{!Proof_of_Value__c.POV_Agreement_Exception__c}" != 'Yes'){
+if("{!Proof_of_Value__c.Opportunity_Workspace__c}" == null || "{!Proof_of_Value__c.Opportunity_Workspace__c}" == '' ){ 
+alert('In order to Submit a Security PoV for Approval, you must create and assign an Opportunity Workspace to the PoV record.'); 
+} 
+else{ 
+if("{!Proof_of_Value__c.EULA_Status__c}" == 'Completed'){ 
+alert('Customer has already accepted POV Agreement'); 
+} 
+
+else { 
+window.location.href = "/apex/dsfs__DocuSign_CreateEnvelope?DSEID=0&amp;SourceID={!Proof_of_Value__c.Id}&amp;DST="+DST+"&amp;CCRM="+CCRM+"&amp;CRL="+CRL+"&amp;OCO=Send"; 
+} 
+} 
+} 
+else if("{!Proof_of_Value__c.PoV_Order_Category__c}" == 'POV Security' &amp;&amp; "{!Proof_of_Value__c.POV_Status__c}" != 'Approval In Progress' &amp;&amp; "{!Proof_of_Value__c.POV_Status__c}" != 'POV Approved' &amp;&amp; "{!Proof_of_Value__c.POV_Agreement_Exception__c}" == 'Yes'){ 
+if("{!Proof_of_Value__c.Opportunity_Workspace__c}" == null || "{!Proof_of_Value__c.Opportunity_Workspace__c}" == '' ){ 
+alert('In order to Submit a Security PoV for Approval, you must create and assign an Opportunity Workspace to the PoV record.'); 
+} 
+else{ 
+var povID = "{!Proof_of_Value__c.Id}"; 
+var result = sforce.apex.execute("AutoPopulateManager","submitForApproval_NonSec",{recID : povID}); 
+window.location=window.location; 
+}	
+} 
+else if("{!Proof_of_Value__c.PoV_Order_Category__c}" != 'POV Security' &amp;&amp; "{!Proof_of_Value__c.POV_Status__c}" != 'Approval In Progress' &amp;&amp; "{!Proof_of_Value__c.POV_Status__c}" != 'POV Approved'){ 
+var povID = "{!Proof_of_Value__c.Id}"; 
+var result = sforce.apex.execute("AutoPopulateManager","submitForApproval_NonSec",{recID : povID}); 
+window.location=window.location; 
+} 
+else{ 
+if(("{!Proof_of_Value__c.POV_Status__c}" == 'POV Approved' || "{!Proof_of_Value__c.POV_Status__c}" == 'Approval In Progress')){ 
+alert('POV has already been Approved or Approval is in Progress'); 
+} 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_Email</fullName>
+        <availability>online</availability>
+        <description>Used to send custom email.</description>
+        <displayType>link</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send Email Americas</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>location.replace('/email/author/emailauthor.jsp?retURL=/{!Proof_of_Value__c.Id }&amp;p3_lkid={!Proof_of_Value__c.Id}&amp;rtype=003&amp;p2_lkid={!Proof_of_Value__c.POV_ContactId__c}&amp;template_id=00X34000002Df0J&amp;p26={!User.Email}')</url>
+    </webLinks>
+</CustomObject>

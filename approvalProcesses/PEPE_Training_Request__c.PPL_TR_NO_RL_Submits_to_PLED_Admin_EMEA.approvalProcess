@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>PPL_Primary_Request_NO_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>PLED_PPL_Admin_EMEAR_Queue2</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>This app step is to req for Approve.</description>
+        <entryCriteria>
+            <booleanFilter>1</booleanFilter>
+            <criteriaItems>
+                <field>PEPE_Training_Request__c.Platform__c</field>
+                <operation>equals</operation>
+                <value>Partner Plus Lounge</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>RejectRecord</ifCriteriaNotMet>
+        <label>Step 1</label>
+        <name>Step_1</name>
+        <rejectionActions>
+            <action>
+                <name>PDP_TR_NO_Requested_to_Request_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <emailTemplate>PEPE_Email_Template_Notifications/PDP_PPL_PLED_notification_when_Regional_Lead_requests_Training_Requests</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>(1 OR 3 ) AND 2 AND 4 AND 5</booleanFilter>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Added into cart</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.Primary_request__c</field>
+            <operation>equals</operation>
+            <value>No</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Requested</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Request__c.Platform__c</field>
+            <operation>equals</operation>
+            <value>Partner Plus Lounge</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>PEPE_PPL_TR_NO_Added_into_to_Requested</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>PPL_TR_NO_RL_Submits_to_PLED_Admin_EMEA</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

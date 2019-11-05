@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- ApplicationId --></label>
+        <name>ApplicationId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ApplicationScopes --></label>
+        <name>ApplicationScopes__c</name>
+        <picklistValues>
+            <masterLabel>spark:memberships_read</masterLabel>
+            <translation><!-- spark:memberships_read --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spark:memberships_write</masterLabel>
+            <translation><!-- spark:memberships_write --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spark:messages_read</masterLabel>
+            <translation><!-- spark:messages_read --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spark:messages_write</masterLabel>
+            <translation><!-- spark:messages_write --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spark:people_read</masterLabel>
+            <translation><!-- spark:people_read --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spark:rooms_read</masterLabel>
+            <translation><!-- spark:rooms_read --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>spark:rooms_write</masterLabel>
+            <translation><!-- spark:rooms_write --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ApplicationSecret --></label>
+        <name>ApplicationSecret__c</name>
+    </fields>
+    <fields>
+        <label><!-- BearerToken --></label>
+        <name>BearerToken__c</name>
+    </fields>
+    <fields>
+        <label><!-- ConfiguredObjects --></label>
+        <name>ConfiguredObjects__c</name>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Case</masterLabel>
+            <translation><!-- Case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact</masterLabel>
+            <translation><!-- Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead</masterLabel>
+            <translation><!-- Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity</masterLabel>
+            <translation><!-- Opportunity --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MachineId --></label>
+        <name>MachineId__c</name>
+    </fields>
+    <fields>
+        <label><!-- MachineOrg --></label>
+        <name>MachineOrg__c</name>
+    </fields>
+    <fields>
+        <label><!-- MachineSecret --></label>
+        <name>MachineSecret__c</name>
+    </fields>
+    <fields>
+        <label><!-- MachineUid --></label>
+        <name>MachineUid__c</name>
+    </fields>
+    <fields>
+        <label><!-- TriggerFields --></label>
+        <name>TriggerFields__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Spark_Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Spark_Configs</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Spark_Config Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

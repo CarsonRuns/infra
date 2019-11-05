@@ -1,0 +1,289 @@
+<apex:page docType="html-5.0" standardController="opportunity" extensions="AttritionReasonCode,lxToMakePUIReadOnlyForPSS">
+    <style>
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+        }
+        input[type=number] {
+        -moz-appearance:textfield;
+        }
+        .pagination>li>a,.pagination>li>a:focus, .pagination>li>a:hover{
+        background-color:transparent;
+        border:0px;
+        border-color:transparent;
+        }
+        .pagination>.disabled>a, .pagination>.disabled>a:focus,.pagination>.disabled>a:hover{
+        background-color:transparent;
+        border-color:transparent;
+        }
+        .helpIconWrapper + .tooltip > .tooltip-inner {
+        background-color: #FEFDBA;
+        color: #000000;
+        border: 1px solid #F3A205;
+        }
+        .cartlink + .tooltip > .tooltip-inner {
+        background-color: #FEFDBA;
+        color: #000000;
+        border: 1px solid #F3A205;
+        }
+        .helpIconWrapper .tooltiptext{
+        visibility: hidden;
+        background-color: #FEFDBA;
+        color: #000000;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 11px;
+        padding: 5px 0;
+        border: 1px solid #F3A205;
+        position: absolute;
+        width: 300px;
+        left: 78%;
+        margin-top: -55px;
+        }
+        .helpIconWrapper:hover .tooltiptext {
+        visibility: visible;
+        }
+        .helpIconWrapper .tooltiptext2{
+        visibility: hidden;
+        background-color: #FEFDBA;
+        color: #000000;
+        border-radius: 4px;
+        text-align: center;
+        padding: 5px 0;
+        border: 1px solid #F3A205;
+        position: absolute;
+        width: 190px;
+        left: 29%;
+        margin-top: -55px;
+        }
+        .helpIconWrapper:hover .tooltiptext2 {
+        visibility: visible;
+        }
+        .cartlink .tooltiptext{
+        visibility: hidden;
+        background-color: #FEFDBA;
+        color: #000000;
+        border-radius: 4px;
+        text-align: center;
+        padding: 5px 0;
+        border: 1px solid #F3A205;
+        position: absolute;
+        width: 190px;
+        left:34%;
+        margin-top: -55px;
+        }
+        .cartlink:hover .tooltiptext {
+        visibility: visible;
+        }
+        .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,.table>tbody>tr>td, .table>tfoot>tr>td {padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #cfd0d2;}
+    </style>
+    
+    <!-- template for pagination if no of items is more -->
+    <script id="pagination.html" type="text/ng-template">
+    <ul class="pagination" style="margin:10px 0 10px 0px !important">              
+        <li ng-if="directionLinks" ng-class="{disabled: noPrevious()}">
+            <a href ng-click="selectPage(page - 1)" title="Previous Page">
+                <span class="glyphicon glyphicon-triangle-left" style="top:2.5px;"></span>Previous
+            </a>
+        </li>               
+        <li ng-if="directionLinks" ng-class="{disabled: noNext()}"><a href ng-click="selectPage(page + 1)" title="Next Page">Next<span class="glyphicon glyphicon-triangle-right" style="top:2.5px;"></span></a></li>                
+    </ul>
+    </script>
+    
+    
+    <div id="technologyApplication" style="position:relative;">
+        <apex:remoteObjects jsNamespace="RemoteObjectModel">        
+            <apex:remoteObjectModel name="OpportunityLineItem" fields="Id,Mix__c,Product_Family_US__c,PricebookEntryId,OpportunityId">                        
+            </apex:remoteObjectModel>        
+        </apex:remoteObjects>        
+        
+        <!-- Ability to Search for products and select them -->
+        <div style="margin : 20px 0px;" ng-if="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''">
+            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                <input type="text" class="productsmallInput" ng-model="tempProduct" placeholder="Search & Add BE/Product Family" uib-typeahead="product as product.name for product in getProducts($viewValue)" typeahead-on-select="setSearch($item,$event,tempProduct)" style="width:35%;"/>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!isPSSEditable}">  
+                <input type="text" disabled="disabled" class="productsmallInput" ng-model="tempProduct" placeholder="Search & Add BE/Product Family" uib-typeahead="product as product.name for product in getProducts($viewValue)" typeahead-on-select="setSearch($item,$event,tempProduct)" style="width:35%;"/>
+            </apex:outputPanel>                  
+            <div class="helpIconWrapper" data-toggle="tooltip" data-placement="top"><span class="tooltiptext2">Type the Product information you are looking for</span></div> &nbsp;
+          
+            <!-- Open a modal showing all Products -->
+            <span class="cartlink" style="marign: 20px 0px " data-toggle="tooltip" data-placement="top"><span class="tooltiptext">Select from the complete list of Products</span>
+            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                <button type="button" data-toggle="modal" data-target="#myModal2">Show All</button>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!isPSSEditable}">
+                <button type="button" disabled="disabled" data-toggle="modal" data-target="#myModal2">Show All</button>
+            </apex:outputPanel>
+            </span>
+            <span style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px;width:450px" ng-cloak="true" >
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; width: 500px;" ng-cloak="true">{{saveErrorMessage}}<br/></div> <!-- QI2_Edit_utr: Product error display in the product section --> 
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block;width: 100%;" ng-cloak="true">{{mixPercentValid}}</div>
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; width: 100%;" ng-cloak="true" ng-if="recurringTechTermFlag">{{recurringTechTermValid}}<br/></div> <!-- QI2_Edit_utr: Product term warning display in the product section --> 
+            </span>
+        </div>
+        
+        <!-- List of products selected -->
+        <div>                    
+            <table class="table table-condensed list" border="1" width="100%" style="layout:fixed; margin-bottom:0px !important;" id="technologyTable">
+                <colgroup span="4"></colgroup>
+                <thead>
+                    <tr class="headerRow">
+                        <th width="5%" class="headerRow" ng-if="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''">Action</th>
+                        <th width="25%" class="headerRow">Business Entity/Sub-Entity</th>
+                        <th width="35%" class="headerRow">Product Family</th>
+                        <th width="10%" class="headerRow" style="text-align: center;">Expected Product TCV ($000s)</th>
+                        <th width="10%" class="headerRow" style="text-align: center;">Prior Product TCV ($000s)</th>
+                        <th width="10%" class="headerRow" style="text-align: center;">Expected Product ATR ($000s)</th>
+                        <th width="10%" class="headerRow" style="text-align: center;">Prior Product ATR ($000s)</th>
+                        <th width="6%" class="headerRow" style="text-align: center;">Expected Term</th>
+                        <th width="6%" class="headerRow" style="text-align: center;">Prior Term</th>
+                        <th width="6%" class="headerRow" style="text-align: center;">Attrition Reason</th>                                
+                    </tr>
+                </thead> 
+                
+                <tbody class="mainTbody">
+                    <tr class="dataRow even first last" data-ng-repeat="techObj in scopeobj | limitTo:itemsPerPage:itemsPerPage*(currentPage-1) track by $index" style="height: 31px;">                                                                
+                        <td width="5%" style="vertical-align: top" class="dataCell" ng-if="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''">
+                          <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                            <a href="javascript:void(0);" class="del s1utility" ng-click="deleteLineItem((currentPage - 1)*itemsPerPage+$index,$event);" ng-if="techObj.dataload !== 'CX'" >Del</a>
+                          </apex:outputPanel>
+                          <apex:outputPanel rendered="{!isPSSEditable}">
+                            <a class="del s1utility" ng-click="return false;">Del</a>
+                          </apex:outputPanel>
+                        </td>
+                          <!--<a href="javascript:void(0);" class="del s1utility" ng-click="deleteLineItem((currentPage - 1)*itemsPerPage+$index,$event);" ng-if="techObj.olicreatedByUser !=='CR'" >Del</a></td> --> 
+                        
+                        <td width="18%" ng-if="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:300px; vertical-align: top" >
+                            <span class="red" ng-if="techObj.isActive==false" ng-cloak="true" title="{{techObj.tech}}">{{techObj.tech}}
+                            </span>
+                            <span class="red" ng-if="techObj.isActive==false" style="padding-left:10px;" ng-cloak="true">Inactive</span><div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px;" title="{{techObj.tech}}">{{techObj.tech}}</div></td>
+                        
+                        <td width="25%" style= "vertical-align: top" class="dataCell" ng-if="isProductIntegrated === 'Yes'" title="{{techObj.title}}">{{techObj.tech}}</td>
+                        
+                        <td width="50%" class="dataCell" style="vertical-align:top;">
+                            <div class="productFamily hideLink">
+                                <div style="width: 312px;display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" class="dummyPad" ng-cloak="true" title="{{techObj.prod}}">{{techObj.prod}}</div>                                                       
+                            </div>                                                   
+                        </td> 
+                        
+                        <!-- Expected Product TCV: To be entered by User --> 
+                        <td width="10%" style="border:0px;vertical-align: top;" align="left" class="dataCell showTotal" ng-class="setTotal();" ng-cloak="true">
+                            <apex:outputPanel rendered="{!isPSSEditable}">
+                                <input disabled="disabled" style="width:43px; margin-left: 5px; text-align: left;" id="termMonths_{{$index}}" class="inputSelect" ng-model="techObj.exptcv"  ng-class="setTotal();" ng-blur="checkValidExpTCV($index,techObj)" ng-click="removeExpTCVZero($index,techObj)" ng-keyup="checkTotal($index);checkTerm($index);" ng-keydown="checkTotal($index);checkTerm($index);indvidualMix = techObj.exptcv/3;" step="0.01" type="number"/> 
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                                <input style="width:43px; margin-left: 5px; text-align: left;" id="termMonths_{{$index}}" class="inputSelect" ng-model="techObj.exptcv"  ng-class="setTotal();" ng-blur="checkValidExpTCV($index,techObj)" ng-click="removeExpTCVZero($index,techObj)" ng-keyup="checkTotal($index);checkTerm($index);" ng-keydown="checkTotal($index);checkTerm($index);indvidualMix = techObj.exptcv/3;" step="0.01" type="number"/> 
+                            </apex:outputPanel>
+                        </td>
+                        
+                        <!-- Prior Product TCV: Read only --> 
+                        <td width="10%" style="border:0px;vertical-align: top;" align="left" class="dataCell showTotal" ng-class="setTotal();" ng-cloak="true">
+                            <input style="width:50px" disabled="disabled" ng-model="techObj.priortcv"/> <!--{{techObj.priortcv}}-->
+                        </td>
+                        
+                        
+                        <!-- Expected Product ATR: Read only-->
+                        <!-- Depends on Expected TCV and Expected Term -->
+                        <td width="10%" ng-if="techObj.term == 0 || techObj.term == '' || techObj.term == null || techObj.term== 'null'" style="border:0px;vertical-align: top;" align="left" class="dataCell showTotal" ng-class="setTotal();" ng-cloak="true"> 0.00</td>
+                        <td width="10%" ng-if="techObj.term >= 12" style="border:0px;vertical-align: top;" align="left" class="dataCell showTotal" ng-class="setTotal();" ng-cloak="true">{{((((techObj.exptcv/(techObj.term/12)))| number:2))}}</td>
+                        <td width="10%" ng-if="techObj.term > 0 && techObj.term < 12" style="border:0px;vertical-align: top;" align="left" class="dataCell showTotal" ng-class="setTotal();" ng-cloak="true">{{techObj.exptcv | number:2}}</td>
+                        
+                        <!--Prior Product ATR: Read only -->
+                        <td width="10%" style="border:0px;vertical-align: top;" align="left" class="dataCell showTotal" ng-class="setTotal();" ng-cloak="true">
+                            <input style="width:50px" disabled="disabled" ng-model="techObj.prioratr"/>
+                            <!--    {{techObj.prioratr}}-->
+                        </td>
+                       
+                        <!-- Expected Term: To be entered by user -->
+                        <td width="6%" style="margin-left: 5px;">
+                            <apex:outputPanel rendered="{!isPSSEditable}">
+                                 <input disabled="disabled" style="width:43px; margin-left: 5px; text-align: left;" id="termServiceMonths_{{$index}}" class="inputSelect" ng-model="techObj.term"  ng-class="setTotal();" ng-keyup="checkTerm($index);" ng-keydown="checkTerm($index);" onkeypress="return isNumberKey(event)" step="1" min="1" max="120" type="number"/>   
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                                 <input style="width:43px; margin-left: 5px; text-align: left;" id="termServiceMonths_{{$index}}" class="inputSelect" ng-model="techObj.term"  ng-class="setTotal();" ng-keyup="checkTerm($index);" ng-keydown="checkTerm($index);" onkeypress="return isNumberKey(event)" step="1" min="1" max="120" type="number"/>   
+                            </apex:outputPanel>
+                        </td>
+                        
+                        <!-- Prior Term: Read only -->
+                        <td width="6%" style="margin-left: 5px;">
+                            <input style="width:43px; margin-left: 5px; text-align: left;" disabled="disabled" ng-model="techObj.priorterm"></input>
+                        </td>
+                        
+                        <!-- Attrition Reason: Dropdown -->                  
+                        <td>
+                            <apex:outputPanel rendered="{!isPSSEditable}">
+                                <select disabled="disabled" style="width:140px;" id='prodCategory' ng-model="techObj.attritionreason" value="techObj.attritionreason" required="true" class="input selectProd">
+                                    <apex:repeat value="{!AttritionReason}" var="attrition">
+                                        <option value="{!attrition.label}">{!attrition.value}</option>
+                                    </apex:repeat>
+                                </select>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                                <select style="width:140px;" id='prodCategory' ng-model="techObj.attritionreason" value="techObj.attritionreason" required="true" class="input selectProd">
+                                    <apex:repeat value="{!AttritionReason}" var="attrition">
+                                        <option value="{!attrition.label}">{!attrition.value}</option>
+                                    </apex:repeat>
+                                </select>
+                            </apex:outputPanel>
+                        </td>
+                        
+                    </tr>
+                    
+                    <!-- Row to show all total values -->
+                    <tr>
+                        <td width="18%" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="5%" style="border:0px;" class="dataCell">&nbsp;</td>                                   
+                        <td width="35%" style="border:0px;text-align:right;" class="dataCell"><span>Grand Total:</span></td>                                                
+                        <td width="10%" style="border:0px;text-align:left;" class="dataCell"><label id="totalTech" ng-class="totalProductCost= expectedProductCost*total/100;" ng-cloak="true">{{(totalTechnologyCost)| number:2}}</label></td>
+                        <td width="10%" style="border:0px;text-align:left;" class="dataCell"><label id="totalTech" ng-class="totalProductCost= expectedProductCost*total/100;" ng-cloak="true" ng-model="priorProductTCVGrandTotal">{{(priorProductTCVGrandTotal)| number:2}}</label></td>
+                        <td width="10%" style="border:0px;text-align:left;" class="dataCell"><label id="totalTech" ng-class="totalProductCost= expectedProductCost*total/100;" ng-cloak="true" ng-model="expectedProductATRGrandTotal">{{(expectedProductATRGrandTotal)| number:2}}</label></td>
+                        <td width="10%" style="border:0px;text-align:left;" class="dataCell"><label id="totalTech" ng-class="totalProductCost= expectedProductCost*total/100;" ng-cloak="true" ng-model="priorProductATRGrandTotal">{{(priorProductATRGrandTotal)| number:2}}</label></td>
+                        <td width="10%" style="border:0px; width:205px;" class="dataCell">&nbsp;</td>
+                        <td width="6%" style="border:0px;width:205px;" class="dataCell">&nbsp;</td> 
+                        <td width="6%" style="border:0px; width:205px;" class="dataCell">&nbsp;</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <ul uib-pagination="true" total-items="scopeobj.length" template-url="pagination.html" ng-model="currentPage" items-per-page="itemsPerPage" class="pagination-sm pull-right" style="margin:0px;"></ul>
+        </div>
+        
+        <!-- Modal template to show all the products and user can select any product from the list of products -->
+        <div id="myModal2" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="spinner" style="display:none"></div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">All Technologies and Product Family List</h4>
+                    </div>
+                    <div class="modal-body">                                                        
+                        <div class="well" style="width:100%; padding: 8px 0;">
+                            <div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">                                     
+                                <ul class="nav nav-list">
+                                    
+                                    <li ng-repeat="prodFamily in productFamilies track by $index" class="mainCategory"><label class="tree-toggler nav-header"><i class="glyphicon glyphicon-triangle-right" ng-class="accordionOpenIndex === $index?'glyphicon glyphicon-triangle-bottom':'glyphicon glyphicon-triangle-right'" ng-click="doToggle($event,prodFamily.name,$index);" style="cursor:pointer;font-size: 12px;padding-right: 5px;"></i>
+                                        <a href="javascript:void(0);" id="techNameToExpand" ng-class="(checkisActiveProductName(prodFamily.name) == false)?'blue':''" style="padding: 2px 15px 2px 15px;" ng-click="doToggle($event,prodFamily.name,$index);">{{prodFamily.name}}</a></label>                                                
+                                        <ul class="nav nav-list tree" ng-if="accordionOpenIndex === $index">
+                                            <li ng-repeat="listProductFamily in productFamiliesToggle">
+                                                <a href="javascript:void(0);" style="padding: 2px 15px 2px 15px;"  ng-click="addLineItem(listProductFamily.id,listProductFamily.name,listProductFamily.prodId,listProductFamily.product)">{{listProductFamily.product}}</a>
+                                                
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>                                   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"/>
+    
+</apex:page>

@@ -1,0 +1,191 @@
+<!--
+  myOverduePSSWorkspaces
+  author: Cong Chen
+  
+  apex class that creates the view for the overdue workspaces
+-->
+
+<apex:page tabStyle="AT_Workspace__c" controller="myOverduePSSWorkspaces_CT">
+  <apex:sectionHeader title="{!IF(isOverdueOption == true,'Workspaces Greater Than ' + StringOverdueDaysA + ' Days Overdue for ' + $User.FirstName + ' ' + $User.LastName, 'Workspaces Between ' + StringOverdueDaysA + ' and ' + StringOverdueDaysB + ' Days Overdue for ' + $User.FirstName + ' ' + $User.LastName)}" />
+  <style>
+    .bPageBlock .pbTitle { 
+      width: 35%;
+    }
+    
+    .cellStyle { 
+      padding-left: 5px !important; 
+      padding-right: 10px !important;
+    }
+    
+    .datePicker {
+      position: absolute !important;
+      left: 50px !important;
+      top: 150px !important;
+    }
+  </style>
+  <apex:form >
+    <apex:pageBlock mode="inlineEdit"  id="pageBlock">
+      <apex:pageBlockButtons >
+        <apex:commandButton id="warning" value="Please save your changes" disabled="true" style="  background:none!important; border:none; padding:0!important; display:none; color:red;" />
+        <apex:commandButton action="{!save}" id="saveButton" value="Save" style="display:none;" />  
+        <apex:commandButton action="{!cancel}" id="cancelButton" value="Cancel" style="display:none;" />
+      </apex:pageBlockButtons>
+      
+      <apex:outputPanel layout="block"  style="white-space:nowrap; overflow: scroll; height:500px; width:1050px;">
+        <apex:pageBlockTable id="workspaceTable" value="{!workspaces}" var="singleWorkspace">
+
+          <apex:column headerValue="Account Name" title="Account Name" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Account Name {!IF(sortExpression=='accountName',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="accountName" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.Account_Name__c}">
+              <apex:inlineEditSupport disabled="true" />
+            </apex:outputField>
+          </apex:column>
+          
+          <apex:column headerValue="Opportunity Name" title="Opportunity Name" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Opportunity Name {!IF(sortExpression=='opptyName',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="opptyName" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <a target="_top" href="../{!singleWorkspace.Opportunity__r.Id}"> {!singleWorkspace.Opportunity__r.Name}</a>
+          </apex:column>
+          
+          <apex:column headerValue="Workspace Expected Book Date" title="Double-click to edit Workspace Expected Book Date" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Workspace Expected Book Date {!IF(sortExpression=='pssExpectedBookDate',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="pssExpectedBookDate" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.AT_Expected_Book_Date__c}">
+              <apex:inlineEditSupport showOnEdit="saveButton, cancelButton, warning" event="ondblclick" resetFunction="resetInlineEdit" />
+            </apex:outputField>
+          </apex:column>
+
+          <apex:column headerValue="Workspace Stage" title="Double-click to edit Workspace Stage" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Workspace Stage {!IF(sortExpression=='workspaceStage',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="workspaceStage" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.Workspace_Stage__c}">
+              <apex:inlineEditSupport showOnEdit="saveButton, cancelButton, warning" event="ondblclick" resetFunction="resetInlineEdit" />
+            </apex:outputField>
+          </apex:column>         
+          
+          <apex:column headerValue="Workspace Status" title="Double-click to edit Workspace Status" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Workspace Status {!IF(sortExpression=='pssWorkspaceStatus',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="pssWorkspaceStatus" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.PSS_Workspace_Status__c}">
+              <apex:inlineEditSupport showOnEdit="saveButton, cancelButton, warning" event="ondblclick" resetFunction="resetInlineEdit" />
+            </apex:outputField>
+          </apex:column>
+          
+          <apex:column headerValue="Workspace Expected Product($000)" title="Workspace Expected Product" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Workspace Expected Product($000) {!IF(sortExpression=='pssExpectedProduct',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="pssExpectedProduct" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.AT_Expected_Product__c}">
+              <apex:inlineEditSupport disabled="true" />
+            </apex:outputField>
+          </apex:column>
+          
+          <apex:column headerValue="Workspace Forecast Status" title="Double-click to edit Workspace Forecast Status" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Workspace Forecast Status {!IF(sortExpression=='pssForecastStatus',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="pssForecastStatus" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.AT_Forecast_Status__c}">
+              <apex:inlineEditSupport showOnEdit="saveButton, cancelButton, warning" event="ondblclick" resetFunction="resetInlineEdit" />
+            </apex:outputField>
+          </apex:column>
+          
+          <apex:column headerValue="Workspace Team" title="Workspace Team" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Workspace Team {!IF(sortExpression=='pssTeam',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="pssTeam" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.AT_Team__c}">
+              <apex:inlineEditSupport disabled="true" />
+            </apex:outputField>
+          </apex:column>
+          
+          <apex:column headerValue="Workspace Name" title="Workspace Name" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Workspace Name {!IF(sortExpression=='pssName',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="pssName" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <a target="_top" href="../{!singleWorkspace.Id}">{!singleWorkspace.Name}</a>
+          </apex:column>
+          
+          <apex:column headerValue="Deal ID" title="Deal ID" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Deal ID {!IF(sortExpression=='dealID',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="dealID" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.Deal_ID__c}" style="padding: 100px !important;">
+              <apex:inlineEditSupport disabled="true" />
+            </apex:outputField>
+          </apex:column>
+          
+          <apex:column headerValue="Oppty Expected Book Date" title="Oppty Expected Book Date" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Oppty Expected Book Date {!IF(sortExpression=='opptyExpectedBookDate',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="opptyExpectedBookDate" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.expected_book_date__c} ">
+              <apex:inlineEditSupport disabled="true" />
+            </apex:outputField>
+          </apex:column>
+          
+          <apex:column headerValue="Opportunity Status" title="Opportunity Status" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Opportunity Status {!IF(sortExpression=='opptyStatus',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="opptyStatus" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.Opportunity__r.Opportunity_Status__c}">
+              <apex:inlineEditSupport disabled="true" />
+            </apex:outputField>
+          </apex:column>
+          
+          <apex:column headerValue="Oppty Expected Product($000)" title="Oppty Expected Product" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Oppty Expected Product($000) {!IF(sortExpression=='opptyExpectedProduct',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="opptyExpectedProduct" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.expected_product_000__c}">
+              <apex:inlineEditSupport disabled="true" />
+            </apex:outputField>
+          </apex:column>
+          
+          <apex:column headerValue="Oppty Forecast Status" title="Oppty Forecast Status" styleClass="cellStyle">
+            <apex:facet name="header">
+              <apex:commandLink value="Oppty Forecast Status {!IF(sortExpression=='opptyForecastStatus',IF(sortDirection='ASC','?','?'),'')}" action="{!viewData}" rerender="workspaceTable">
+                <apex:param value="opptyForecastStatus" name="column" assignTo="{!sortExpression}" />
+              </apex:commandLink>
+            </apex:facet>
+            <apex:outputField value="{!singleWorkspace.forecast_status__c}">
+              <apex:inlineEditSupport disabled="true" />
+            </apex:outputField>
+          </apex:column>
+          
+        </apex:pageBlockTable>
+      </apex:outputPanel>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

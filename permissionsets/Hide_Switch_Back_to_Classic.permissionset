@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Permission set to not allow users on Cisco_Sales profile to be able to switch back to Classic.
+****Only created for Non PSS Users as a temporary workaround. Please DO NOT assign to other profiles or other users****</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Hide_Switch Back to Classic</label>
+    <license>Salesforce</license>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>LightningExperienceUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>LtngPromoReserved01UserPerm</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>PreventClassicExperience</name>
+    </userPermissions>
+</PermissionSet>

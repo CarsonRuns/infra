@@ -1,0 +1,177 @@
+<apex:page StandardController="Case" extensions="TSNRemoveCaseDelLinks_CTE">
+
+<head>
+<apex:includeScript value="/support/console/22.0/integration.js"/>
+<script type="text/javascript">
+
+linkDelay = function() { rlIntervalId = setInterval ( "relatedLoad()", 500 ); }
+
+var delayCount = 0;
+var sendAnEmailLocationInConsole ='';
+relatedLoad = function(){
+    if(top.location.href.indexOf("/p") == -1) {
+    
+    var a = parent.document.getElementsByTagName("input");
+    
+    for(var i = 0; i < a.length; i++){
+    a = parent.document.getElementsByTagName("input");
+        if(a[i].title == 'Send an Email' || delayCount > 12){
+            clearInterval(rlIntervalId);
+            init();
+        }
+      }
+   }
+delayCount++;
+}
+var openSendAnEmailTab = function openSendAnEmailTab(result) {
+var primaryTabId = result.id;
+sforce.console.openSubtab(primaryTabId , sendAnEmailLocationInConsole , true,
+'Send an Email', null, null, 'salesforceSubtab');
+
+};
+
+
+init = function(){
+
+    //get web email
+    <!-- SCAVA FIX -->
+    var w = '{!JSENCODE(Case.SuppliedEmail)}';
+    
+    <!-- SCAVA FIX -->
+    //get Cisco Contact Email
+    var cnt =  '{!JSENCODE(Case.Cisco_Contact__c)}';
+    
+    //get logged in user profile
+    var prf =  '{!$Profile.Name}';
+    
+    // get Case Owner Mail
+    <!-- SCAVA FIX -->
+    var ownerMail =  '{!JSENCODE(caseownerMail)}';
+    
+    if(top.location.href.indexOf("/p") == -1) {
+    
+        // var systemEmail = TSNRemoveCaseDelLinks_CTE.getCiscoCaseMgmtAdd();
+        
+       var systemEmail = '0D2800000004DKj:cisco_sales_case_management@external.cisco.com:Cisco Case Management';
+        
+
+        
+        var anchors = parent.document.getElementsByTagName("a");
+       
+        for (var i = 0; i < anchors.length; i++){
+        
+                if(anchors[i].title.substring(0,6)=='Delete'){
+                    anchors[i].style.visibility = "hidden";
+                }
+                
+                else if(anchors[i].title.substring(0,5)=='Reply' || anchors[i].title.substring(0,6)=='To All'){
+
+                  if (sforce.console.isInConsole())
+                     {
+                          anchors[i].href=anchors[i].href.replace('%27);','');
+                      if(prf == 'Cisco_Sales_Cases')
+                        {
+                          if(w != '')
+                         <!-- SCAVA FIX --> 
+                            anchors[i].href = anchors[i].href + '%26p26%3D' + systemEmail + '%26p24%3D' + '{!JSENCODE(Case.SuppliedEmail)}';
+                          else
+                          <!-- SCAVA FIX -->
+                            anchors[i].href = anchors[i].href + '%26p26%3D' + systemEmail + '%26p24%3D' + '{!JSENCODE(Case.Cisco_Contact__c)}';
+                        }
+                      else
+                        {
+                        <!-- SCAVA FIX -->
+                        anchors[i].href = anchors[i].href + '%26p26%3D' + systemEmail + '%26p24%3D' + '{!JSENCODE(caseownerMail)}';
+                        }  
+                      anchors[i].href=anchors[i].href+'%27);';    
+                     }
+                  else
+                     {
+                     
+                      if(prf == 'Cisco_Sales_Cases')
+                        {
+                         if(w != '')
+                         <!-- SCAVA FIX -->
+                           anchors[i].href = anchors[i].href + '&p26=' + systemEmail + '&p24=' + '{!JSENCODE(Case.SuppliedEmail)}';
+                         else
+                         <!-- SCAVA FIX -->
+                           anchors[i].href = anchors[i].href + '&p26=' + systemEmail + '&p24=' + '{!JSENCODE(Case.Cisco_Contact__c)}';
+                        }
+                      else
+                        {
+                        <!-- SCAVA FIX -->
+                         anchors[i].href = anchors[i].href + '&p26=' + systemEmail + '&p24=' + '{!JSENCODE(caseownerMail)}';
+                        }  
+                     }
+                }
+                
+                else if(anchors[i].id.indexOf('_RelatedEmailMessageList_link') != -1){
+                    anchors[i].style.visibility = "hidden";
+                }
+           }
+    
+        var inputs = parent.document.getElementsByTagName("input");
+        
+        for (var i = 0; i < inputs.length; i++){
+        
+            if(inputs[i].title == 'Send an Email'){
+            
+                var oc = inputs[i].onclick.toString();
+                
+                var params = '';
+                
+                //get contact id
+                if(oc.toString().indexOf("p2_lkid=") != -1){
+                    var nav = oc.toString().split("p2_lkid=");
+                    var contactId = nav[1].split("&");
+                    params = 'p2_lkid='+contactId[0]+'&';
+                }
+                
+                //get case id
+                var u = oc.toString().split("p3_lkid=");
+                var caseId = u[1].split("&");
+                params = params + 'p3_lkid='+ caseId[0];
+                
+                if(prf == 'Cisco_Sales_Cases'){
+                    if(w != '')
+                        params = params + '&p24=' + w;
+                    else
+                        params = params + '&p24=' + cnt;
+                 } 
+                 else {
+                     params = params + '&p24=' + ownerMail;
+                 }    
+                if (sforce.console.isInConsole())
+                   {
+                    inputs[i].onclick = function onclick(event)
+                      {
+                       sendAnEmailLocationInConsole ='/_ui/core/email/author/EmailAuthor?rtype=003&'+params+'&p26='+systemEmail+'&retURL=%2F'+caseId[0];
+                       sforce.console.getEnclosingPrimaryTabId(openSendAnEmailTab);
+                      }
+                   }
+                else
+                   {
+                    inputs[i].onclick = function onclick(event) {
+                    
+                    parent.location.href='/_ui/core/email/author/EmailAuthor?rtype=003&'+params+'&p26='+systemEmail+'&retURL=%2F'+caseId[0];};        
+                   }
+            }
+        }
+    }
+}
+
+if (parent.window.addEventListener)
+{
+window.addEventListener ("load",linkDelay,false);
+}
+else if (parent.window.attachEvent)
+{
+parent.window.attachEvent("onload",linkDelay);
+}
+
+
+
+</script>
+</head>
+
+</apex:page>

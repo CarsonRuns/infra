@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>1 - Prospect</fullName>
+        <color>#E27001</color>
+        <default>false</default>
+        <label>1 - Prospect</label>
+        <closed>false</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>20</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>2 - Qualification</fullName>
+        <color>#A845DC</color>
+        <default>false</default>
+        <label>2 - Qualification</label>
+        <closed>false</closed>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>40</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>3 - Proposal</fullName>
+        <color>#F3D904</color>
+        <default>false</default>
+        <label>3 - Proposal</label>
+        <closed>false</closed>
+        <forecastCategory>BestCase</forecastCategory>
+        <probability>60</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>4 - Agreement</fullName>
+        <color>#0B6FCE</color>
+        <default>false</default>
+        <label>4 - Agreement</label>
+        <closed>false</closed>
+        <forecastCategory>Forecast</forecastCategory>
+        <probability>80</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Planning</fullName>
+        <default>false</default>
+        <description>while the solution plan is being created/completed</description>
+        <label>Planning</label>
+        <closed>false</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Customer Accepted</fullName>
+        <default>false</default>
+        <description>when the solution (value proposition) has been presented and accepted by the customer</description>
+        <label>Customer Accepted</label>
+        <closed>false</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Implementing</fullName>
+        <default>false</default>
+        <description>when we start to have opportunities resulting from the solution plan (could also be execution)</description>
+        <label>Implementing</label>
+        <closed>false</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Complete</fullName>
+        <default>false</default>
+        <description>when the solution has been implemented (we can also use close)</description>
+        <label>Complete</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Not Implemented</fullName>
+        <default>false</default>
+        <description>The customer has not accepted, therefore no execution</description>
+        <label>Not Implemented</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>5 - Closed Won</fullName>
+        <default>false</default>
+        <description>5 - Closed Won</description>
+        <label>5 - Closed Won</label>
+        <closed>true</closed>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+        <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>5 - Closed Cancelled</fullName>
+        <default>false</default>
+        <description>5 - Closed Cancelled</description>
+        <label>5 - Closed Cancelled</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+    <standardValue>
+        <fullName>5 - Closed Lost</fullName>
+        <default>false</default>
+        <description>5 - Closed Lost</description>
+        <label>5 - Closed Lost</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>P360_Email_Notification_Daily_Summary</fullName>
+        <ccEmails>donotreply-ciscosales@cisco.com</ccEmails>
+        <description>P360 Email Notification Daily Summary</description>
+        <protected>false</protected>
+        <recipients>
+            <field>EmailID__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>P360_Email_Templates/P360_Daily_Summary_Email</template>
+    </alerts>
+    <rules>
+        <fullName>P360_PA_PSR_Daily_Email_Notification</fullName>
+        <actions>
+            <name>P360_Email_Notification_Daily_Summary</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>4 AND 1 AND (2 OR 3 OR 5)</booleanFilter>
+        <criteriaItems>
+            <field>P360_PA_PSR_Daily_Email_Notification__c.tobeTriggered__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>P360_PA_PSR_Daily_Email_Notification__c.NewLeadCount__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>P360_PA_PSR_Daily_Email_Notification__c.NewTargetProspectCount__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>P360_PA_PSR_Daily_Email_Notification__c.EmailID__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>P360_PA_PSR_Daily_Email_Notification__c.Overdue_Leads_Count__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </criteriaItems>
+        <description>PA/PSR Daily Email Notification</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

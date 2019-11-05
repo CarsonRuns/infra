@@ -1,0 +1,10 @@
+<apex:page standardController="Workspace_Technology__c" title="Opportunity Workspace Edit">
+<apex:form >
+    <apex:outputPanel >
+       <script>
+       // SCAVA FIX
+       window.top.location='/apex/PSSUserMultiTech?scontrolCaching=1&retURL=%2F006S0000007htEd&id={!JSENCODE(Workspace_Technology__c.Workspace__c)}&CF00N30000002BozE_lkid={!JSENCODE(Workspace_Technology__c.Workspace__r.Opportunity__c)}' ;  
+       </script>
+    </apex:outputPanel>
+</apex:form>
+</apex:page>

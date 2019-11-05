@@ -1,0 +1,195 @@
+<apex:page controller="NGCC_RequalificationLeadsReport_Cls" cache="true" id="myPage" docType="html-5.0" readOnly="true" showHeader="true" sidebar="false">   
+        <style>
+       
+        .container {
+            position: relative;
+        }
+        
+        .topleft {
+            position: absolute;
+            top: 21px;
+            left: 200px;
+            font-size: 18px;
+            color:white;
+        }
+        .topright {
+                position: absolute;
+                top: 8px;
+                right: 16px;
+                font-size: 18px;
+                color:white;
+            }
+        .img { 
+            width: 100%;
+            height: auto;
+            opacity: 0.3;
+        }
+         h3:hover{
+             color:red;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+        font{
+             color:white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+        .outBorder {
+            width: -moz-available;
+            text-align: left;
+            padding: 6px;
+            border: 1px solid #CCC; 
+            height: 10px;
+            background-color: white;
+       }
+       .inBorder{
+           color: white;
+           background-color: #fffff;
+           text-align: left;
+           padding: 8px;
+       }
+       .TableTitle {
+            background-color: #c2d1e7 !important;
+            background-image: #c2d1e7 !important;
+            color:black !important;
+            text-align: left;
+            padding: 4px;
+          }
+        </style>
+    <apex:form id="myForm">
+        <br/>
+        <center><h3><font size="4">Lead Requalification Tool</font></h3></center><br/>
+        
+        <br/>
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock mode="" id="pbBlock">
+            <apex:pageBlockSection columns="2" id="Section"> 
+            <apex:panelGrid columns="2" style="float:center;" id="pgrid">
+            
+                 <apex:outputLabel ><b><h3>Start Date</h3></b></apex:outputLabel>
+                 <apex:inputField style="width:220px;" value="{!leads.SDR_Assignment_Date__c}" required="true" showDatePicker="true"/>
+                 
+                 <apex:outputLabel ><b><h3>End Date</h3></b></apex:outputLabel>
+                 <apex:inputField style="width:220px;" value="{!leads.Submitted_to_Sales_Date__c}" required="true" showDatePicker="true"/>
+                
+                <apex:outputLabel for="callCenter"><b><h3>Marketing Call Center</h3></b></apex:outputLabel>
+                <apex:selectList id="callCenter" value="{!searchCallCenter}" size="1" required="true" style="background-size: 100px !important;" >
+                    <apex:selectOption itemLabel="--None--" itemValue="--None--"/>
+                    <apex:selectOptions value="{!options}"/>
+                    <apex:actionSupport event="onchange" reRender="Details" action="{!cmdHideorShow}" status="status"/>
+                </apex:selectList>
+                             
+                <apex:actionStatus id="saveStatus">
+                <apex:facet name="stop">                
+                <apex:outputPanel id="Details">
+                <br/>
+                <apex:commandButton value="Run Report"  action="{!cmdQueryResult}" reRender="myForm" status="saveStatus" disabled="{!disableRun}"/>&nbsp;
+                <apex:commandButton value="Download Report"  action="{!cmdDownloadReport}" disabled="{!disableRunMain}"/>
+                </apex:outputPanel>                
+                </apex:facet>
+                <apex:facet name="start">
+                <apex:outputPanel >
+                <apex:commandButton value="Fetching Results..." disabled="true"/>
+                <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6;height: 100%;opacity:0.95;width:100%;"> 
+                    <div class="waitingHolder" style="top: 180.2px; width: 91px;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription">Results...</span>
+                    </div>
+                </div>
+                </apex:outputPanel>
+                </apex:facet>                
+                </apex:actionStatus>
+                <apex:outputPanel rendered="{!showSpaces}">
+                    <br/><br/><br/>
+                </apex:outputPanel>
+                 <br/>
+             </apex:panelGrid>    
+            </apex:pageBlockSection>
+            <apex:pageBlock rendered="{!IF(leadHistoryList!= NULL && leadHistoryList.size > 0,true,false)}">
+            <apex:pageBlockButtons >
+            <apex:commandButton value="◄◄" action="{!beginning}" disabled="{!DisablePrevious}" status="fetchStatus" reRender="myForm"/>
+            <apex:commandButton value="◄ Previous" action="{!previous}" disabled="{!DisablePrevious}" status="fetchStatus" reRender="myForm"/>
+            <apex:commandButton value="Next ►" action="{!next}" disabled="{!DisableNext}" status="fetchStatus" reRender="myForm"/>
+            <apex:commandButton value="►►" action="{!last}" disabled="{!DisableNext}" status="fetchStatus" reRender="myForm"/>
+            <apex:outputPanel >                      
+                    <apex:actionStatus id="fetchStatus" >
+                        <apex:facet name="start" >
+                            <img src="/img/loading.gif"/>                  
+                        </apex:facet>
+                    </apex:actionStatus>
+                </apex:outputPanel>
+             </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1" id="Section1">
+                <apex:pageBlock id="pbId">
+                 <ul>
+                  <li><b>Total Records -</b> {!leadHistoryList.size}</li>  
+                </ul>
+                <table width="100%" border="0">
+                    <tr>
+                        <td width="250" valign="top">
+                                <table cellpadding="2" cellspacing="2">
+                                    <tr>
+                                    <td style="font-weight: bold;">
+                                        <apex:chart height="300" width="400" data="{!pieData}">
+                                            <apex:pieSeries dataField="data" labelField="name"/>
+                                            <apex:legend position="right"/>
+                                        </apex:chart>
+                                    </td>                                   
+                                    </tr>            
+                                </table>
+                        </td>
+                        <td valign="top">
+                            <br/><br/><br/><br/><br/><br/>
+                            <apex:dataTable value="{!Results}" var="r" border="1" width="30%" columns="2">
+                               <apex:facet name="header">Requalification User Details</apex:facet>
+                               <apex:column value="{!r['name']}" width="15%"/>
+                               <apex:column value="{!r['total']}" width="15%"/>
+                            </apex:dataTable>
+                        </td>
+                    </tr>
+                </table> 
+                </apex:pageBlock>
+                <apex:dataTable styleclass="outBorder" border="1"  width="100%" value="{!leadsToShow}" var="r" rendered="{!IF(leadsToShow!= NULL && leadsToShow.size > 0,true,false)}">                
+                <apex:column styleclass="inBorder" headerClass="TableTitle">
+                    <apex:facet name="header">First Name</apex:facet> 
+                    <apex:outputText >{!r.lead.firstname}</apex:outputText>
+                </apex:column>
+                <apex:column styleclass="inBorder" headerClass="TableTitle">
+                    <apex:facet name="header">Last Name</apex:facet> 
+                    <apex:outputText >{!r.lead.lastname}</apex:outputText>
+                </apex:column>
+                <apex:column styleclass="inBorder" headerClass="TableTitle">
+                    <apex:facet name="header">Status</apex:facet> 
+                    <apex:outputText >{!r.lead.status}</apex:outputText>
+                </apex:column>
+                <apex:column styleclass="inBorder" headerClass="TableTitle">
+                    <apex:facet name="header">Country</apex:facet> 
+                    <apex:outputText >{!r.lead.CustomCountry__c}</apex:outputText>
+                </apex:column>
+                <apex:column styleclass="inBorder" headerClass="TableTitle">
+                    <apex:facet name="header">Requalification Date</apex:facet> 
+                    <apex:outputText >{!r.CreatedDate}</apex:outputText>
+                </apex:column>
+                <apex:column styleclass="inBorder" headerClass="TableTitle">
+                    <apex:facet name="header">Requalification User</apex:facet> 
+                    <apex:outputText >{!r.createdby.name}</apex:outputText>
+                </apex:column>
+                <apex:column styleclass="inBorder" headerClass="TableTitle">
+                    <apex:facet name="header">SDR Lead Owner</apex:facet> 
+                    <apex:outputText >{!r.lead.SDR_Lead_Owner_Name__c}</apex:outputText>
+                </apex:column>
+                <apex:column styleclass="inBorder" headerClass="TableTitle">
+                    <apex:facet name="header">Call Center Name</apex:facet> 
+                    <apex:outputText >{!r.lead.Call_Center_Vendor__c}</apex:outputText>
+                </apex:column>
+            </apex:dataTable> 
+            </apex:pageBlockSection>
+            </apex:pageBlock> 
+            <apex:outputPanel rendered="{!errorMessageShow}">
+            <apex:pageBlockSection title="No Records Found" collapsible="true" columns="1" id="Sectio2n">
+            <apex:outputPanel >
+            <ul>
+              <li><apex:outputText style="color: red !important;font-size:15 !important;" value="{!IF(leadHistoryList != NULL && leadHistoryList.size > 0,'','There are no records to display')}"/></li>
+            </ul> 
+            </apex:outputPanel>
+            </apex:pageBlockSection>             
+            </apex:outputPanel>           
+        </apex:pageBlock>
+    </apex:form>  
+</apex:page>

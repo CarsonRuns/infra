@@ -1,0 +1,165 @@
+<apex:page standardController="Opportunity" extensions="Engage_Resource" sidebar="true" showHeader="true" action="{!redirct}"> 
+    <apex:form >
+        <apex:slds />
+        <script type="text/javascript" src="/js/functions.js"></script> 
+        <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+
+        <script src="/soap/ajax/12.0/connection.js"></script> 
+        <script language="javascript"> 
+            window.onload = function() { 
+            init();
+        }
+        
+        function resize() { 
+            console.log('inside resize');   
+            var iframe = top.document.getElementsByName("itarget"); 
+            iframe[0].style.width="100%"; 
+            iframe[0].style.height="1250px"; 
+        } 
+        
+        function IDConversion( id) { 
+            console.log('inside idcon');   
+            if (id == null) 
+                return id; 
+            id = id.replace(/\"/g, ''); 
+            if (id.length != 15) { 
+                return null; 
+            } 
+            var suffix = ""; 
+            for (var i = 0; i < 3; i++) { 
+                var flags = 0; 
+                for (var j = 0; j < 5; j++) { 
+                    var c = id.charAt(i * 5 + j); 
+                    if (c >= 'A' && c <= 'Z') { 
+                        flags += 1 << j; 
+                    } 
+                } 
+                if (flags <= 25) { 
+                    suffix += "ABCDEFGHIJKLMNOPQRSTUVWXYZ".charAt(flags); 
+                } 
+                else { 
+                    suffix += "012345".charAt(flags-26); 
+                } 
+            } 
+            return id + suffix; 
+        } 
+        
+        function AdditionalCheckUserPermission(val_perm_to_check) { 
+            console.log('inside addPerm');   
+            var permission_flag = false; 
+            <!--SCAVA FIX-->
+                <!-- var permis = '{!perm}';-->
+                    var permis = '{!JSENCODE(perm)}';
+            console.log('22permission-' + permis);
+            if (permis == null) { 
+                permission_flag = false; 
+            } 
+            else { 
+                
+                split_val = permis.split(";"); 
+                for (var i=0; i< split_val.length; i++) { 
+                    if(split_val[i] == val_perm_to_check) { 
+                        permission_flag = true; 
+                        break; 
+                    } 
+                } 
+            } 
+            console.log('permission_flag-' + permission_flag);
+            return permission_flag; 
+        } 
+        
+        function getConstant(i_key, i_oType) { 
+            console.log('inside gtcons');      
+            try { 
+                
+                var q_value; 
+                <!--SCAVA FIX-->
+                    <!--var prodVal = '{!prodCons}';-->
+                        <!--var nprodVal = '{!nprodCons}';-->
+                            var prodVal = '{!JSENCODE(prodCons)}';
+                var nprodVal = '{!JSENCODE(nprodCons)}';
+                var hostname = window.location.hostname.toLowerCase(); 
+                var org_id = '00D300000000QUu'; 
+                if (org_id == '00D300000000QUu' && ((hostname.indexOf('ww') && hostname.indexOf('ciscosales.my')) != -1)) { 
+                    console.log('prod'); 
+                    q_value = prodVal; 
+                } 
+                else { 
+                    console.log('nonProd'); 
+                    q_value = nprodVal; 
+                } 
+                
+                if (q_value == null) 
+                    alert(i_key +', ' + i_oType + ' has a null value'); 
+                return q_value; 
+            } 
+            catch(ex) { 
+                alert(ex); 
+            }    
+        } 
+        
+        function init(){ 
+            localStorage.setItem('userTheme','{!$User.UIThemeDisplayed}');
+            var TSN_Profile_Id='00e800000014g5u'; 
+            var permission_flag_tsn_user=false; 
+            var profileID = '{!$Profile.Id}'; 
+            
+            console.log('Inside init');
+            if (profileID==TSN_Profile_Id){ 
+                permission_flag_tsn_user=true; 
+            } 
+            
+            var flag = 1; 
+            var permission_flag_se_user = AdditionalCheckUserPermission('SE User'); 
+            var permission_flag_request_resource = true;//AdditionalCheckUserPermission('Request Resource'); 
+            console.log('after AdditionalCheckUserPermission');
+            var hostname = window.location.hostname.toLowerCase(); 
+            var userId='{!$User.Id}'; 
+            //    userId=IDConversion(userId); 
+            var oppID = '{!OppRecId}';
+            var cancelUrl = "https://" + hostname + "/" + oppID; 
+            
+            baseUrl = getConstant('SE Link','URL'); 
+            console.log('after getConstant');
+            
+            var Id = '{!OppRecId}';          
+            var TerrId = '{!terID}';        
+            var sessId = '{!$Api.Session_ID}';
+            var usrName ='{!$User.Username}';
+            //SCAVA FIX
+            var opName = '{!JSENCODE(optyNam)}';
+            /*Lightning September 2018 release start*/
+             /*var terName= ;    */ 
+            /* var ASPageVisibleTheaters = ;*/
+            /*Lightning November 2018 release start*/
+             var isASPageVisible = 'true';
+           /*Lightning November 2018 release end*/
+             /*Lightning September 2018 release end*/
+            var caseRecTypeId = '{!JSENCODE(caseRecTypeId)}';
+            var caseExist = '{!caseExist}';
+             /*Lightning September 2018 release start*/
+            //var valArray = ASPageVisibleTheaters .split(";"); 
+            //var isASPageVisible = 'false';
+            /*for(var i=0;i<valArray.length;i++) 
+            {   
+                if(terName == valArray[i]){ 
+                isASPageVisible = 'true'; 
+                break;
+                }       
+            }  */  
+            //isASPageVisible = ASPreSalesRequestVisible;       
+           /*Lightning September 2018 release end*/
+            var hostname = window.location.hostname.toLowerCase();
+            console.log('hostname '+hostname);
+            var redirecturl = baseUrl + "WWSPS/SECCI/protected/specialization.do?action=showPage&sessionId=" + sessId + "&cancelURL="+ cancelUrl + "&apiServerUrl=https://"+hostname+"/services/Soap/u/45.0/00Dn00000008ytl"+"&profileId="+ 
+                permission_flag_request_resource +"&profileFlag="+ permission_flag_tsn_user + "&userId="+ userId +"&opptyId="+Id+"&TerrId="+TerrId+"&userName=" + usrName + "&isASPageVisible=" +isASPageVisible + "&caseRecordType="+ caseRecTypeId +"&optyName=" + opName + "&caseExist=" + caseExist; 
+            console.log('after redirecturl ' + redirecturl );
+              //alert(redirecturl);
+            location.href = redirecturl; 
+            resize();
+        } 
+        </script>
+        <!-- <body onload="init()"> -->
+        <div id="divisionId"> </div> 
+    </apex:form>
+</apex:page>

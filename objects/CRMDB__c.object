@@ -1,0 +1,2893 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Customer_Contracts</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayouts>
+        <fullName>CRMDB_Compact</fullName>
+        <fields>Name</fields>
+        <fields>Theater__c</fields>
+        <fields>Segment__c</fields>
+        <fields>Active_Customer__c</fields>
+        <fields>Master_Customer_Name__c</fields>
+        <fields>SDM_Assigned__c</fields>
+        <fields>Manager__c</fields>
+        <label>CRMDB Compact</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>Parent_Customer_Contract</fullName>
+        <fields>Name</fields>
+        <fields>Theater__c</fields>
+        <fields>Segment__c</fields>
+        <fields>Active_Customer__c</fields>
+        <fields>Account_Name__c</fields>
+        <fields>SDM_Assigned__c</fields>
+        <fields>Manager__c</fields>
+        <label>Parent Customer Contract</label>
+    </compactLayouts>
+    <fields>
+        <fullName>Accomplishments__c</fullName>
+        <description>THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES.  MM/DD/YY + Bullet format required.  Please provide  Executive Level accomplishments for your account. 
+If more than 1 Accomplishment, please number.  If no content for the week, use N/A.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES.  MM/DD/YY + Bullet format required.  Please provide  Executive Level accomplishments for your account
+If more than 1 Accomplishment, please number.  If no content for the week, use N/A.</inlineHelpText>
+        <label>Accomplishments</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Account_History__c</fullName>
+        <description>Bullet(s) based on SDM knowledge</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bullet(s) based on SDM knowledge</inlineHelpText>
+        <label>Account History</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Account_Name_Value__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account_Name__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account_Name_Value</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Master customer linked to customer contract.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Matches P&amp;L Customer Name</inlineHelpText>
+        <label>Master Customer Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>CRMDB</relationshipLabel>
+        <relationshipName>Customer_Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account_State__c</fullName>
+        <description>Select from Green, Yellow, Red (see AUSE process)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select from Green, Yellow, Red (see Executive Summary Process)</inlineHelpText>
+        <label>Account State</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Red</fullName>
+                    <color>#FF0000</color>
+                    <default>false</default>
+                    <label>Red</label>
+                </value>
+                <value>
+                    <fullName>Yellow</fullName>
+                    <color>#FFFF66</color>
+                    <default>false</default>
+                    <label>Yellow</label>
+                </value>
+                <value>
+                    <fullName>Green</fullName>
+                    <color>#33FF33</color>
+                    <default>false</default>
+                    <label>Green</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Active_Customer__c</fullName>
+        <description>Is this customer live (Day 2)?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is this customer live (Day 2)? Drop down options:  
+Yes
+Yes-pending disconnect
+No-disconnected
+No-pending activation"</inlineHelpText>
+        <label>Active Contract</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>Yes-pending disconnect</fullName>
+                    <default>false</default>
+                    <label>Yes-pending disconnect</label>
+                </value>
+                <value>
+                    <fullName>No-disconnected</fullName>
+                    <default>false</default>
+                    <label>No-disconnected (No longer a CMS Customer)</label>
+                </value>
+                <value>
+                    <fullName>No – Contract Expired (Other Active CMS Contracts)</fullName>
+                    <default>false</default>
+                    <label>No – Contract Expired (Other Active CMS Contracts)</label>
+                </value>
+                <value>
+                    <fullName>No-pending activation</fullName>
+                    <default>false</default>
+                    <label>No-pending activation</label>
+                </value>
+                <value>
+                    <fullName>No-disconnected (No longer a CMS Customer)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>No-disconnected (No longer a CMS Customer)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Adopt__c</fullName>
+        <externalId>false</externalId>
+        <label>Adopt</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Annual_CMS_Contract_Value_CR_S__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Child Record is the sum of  Annual CMS Contract + Annual CRs,  Parent Record is the Sum of all Child record(s) Annual Contract+CRs.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Child Record is the sum of  Annual CMS Contract + Annual CRs,  Parent Record is the Sum of all Child record(s) Annual Contract+CRs.</inlineHelpText>
+        <label>Annual CMS Contract Value + CR(S)($000)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Annual_CMS_Contract_Value__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Loaded from  Booked Qualification in a Child Record, Summed from Child record(s) to a Parent.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loaded from  Booked Qualification in a Child Record, Summed from Child record(s) to a Parent.</inlineHelpText>
+        <label>Annual CMS Contract Value($000)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Annual_Child_CMS_CR__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Summation of child's Annual_CMS_Contract_Value_CR_S__c  value</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Child Record is the sum of Annual Contract CRs, Parent Record is the Sum of CRs for all children.</inlineHelpText>
+        <label>Annual Customer CR(s) Value($000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Annual_Revenue_FY_to_date__c</fullName>
+        <description>Found in Tableau, should include FY to date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Found in Tableau, should include FY to date</inlineHelpText>
+        <label>Annual Revenue (FY to date)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Background_of_Accomplishment_or_Challeng__c</fullName>
+        <description>THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES.  MM/DD/YY+ Bullet format required.  What is the background of the Accomplishment or Challenge? Please identify the background for EACH Accomplishment or Challenge. i.e. Accomplishment #1, Challenge #1.  If no Accomplishments or Challenges for the week, use N/A.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES.  MM/DD/YY+ Bullet format required. Please identify the background for EACH Accomplishment or Challenge. i.e. Accomplishment #1, Challenge #1.  If no Accomplishments or Challenges for the week, use N/A.</inlineHelpText>
+        <label>Background of Accomplishments/Challenges</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Brief_Summary_for_Red_Yellow_Status__c</fullName>
+        <description>Provide a brief bulleted summary of Yellow or Red status</description>
+        <externalId>false</externalId>
+        <label>Brief Summary for Yellow / Red Status</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CALC_20_wk_per_Region__c</fullName>
+        <description>locked cell - autocalculated: add 20min per week per geograhic customer region (e.g. AMER, EMEAR, APJC)
+IF(Regions__c&gt; 1, Regions__c* 20, 0)</description>
+        <externalId>false</externalId>
+        <formula>0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC - 20'/wk per Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_ADOPT_Phase_effort_post_Activate__c</fullName>
+        <description>locked cell - autocalcutaed: depending on the Activation and go-live time elapes, returns "Not Live" or "NEW" if within 90 days after go-live or "MATURE" if live since mofre than 90 days after activation</description>
+        <externalId>false</externalId>
+        <formula>IF(CALC_Days_Since_Live__c = 0, "Not-Live", IF(CALC_Days_Since_Live__c &lt; 90, "New", "Mature"))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC - ADOPT Phase effort post-Activate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_AUSE_Status_Flag__c</fullName>
+        <description>locked cell - autocalculated: additional effort per week per Account State (GREEN=45min, YELLOW=90min, RED=240min)</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Account_State__c ,"Green"), 45, (IF(ISPICKVAL(Account_State__c, "Yellow"), 90, (IF(ISPICKVAL(Account_State__c,"Red"), 240, 0)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-AUSE Status Flag</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Active_or_pending_Activation__c</fullName>
+        <description>locked cell - autocalculated: Multiplier: "Active" or "Pending-Activation" means 100% SDM attention (1.0), when "Pending Disconnect", there still 10% SDM attention required (0.1)</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Active_Customer__c,"Yes"), 1, (IF(ISPICKVAL(Active_Customer__c,"No-Pending Disconnect"), 0.1, (IF(ISPICKVAL(Active_Customer__c,"No-Pending Activation"), 1, (IF(ISPICKVAL(Active_Customer__c,"No-Disconnected"), 0,0)))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Active or pending Activation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_CAP_Effort_week__c</fullName>
+        <description>locked cell - autocalculated: calculates the effort per CAP case type per week: CAP-A = 120min, CAP-B = 60min, CAP-M = 30min</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Is_Customer_on_CAP__c,"CAP - A"), 120,
+(IF(ISPICKVAL(Is_Customer_on_CAP__c,"CAP - B"),60, 
+(IF(ISPICKVAL(Is_Customer_on_CAP__c,"CAP - M"),30,0)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC- CAP Effort / week</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_CRs_Complex_week__c</fullName>
+        <description>locked cell - autocalculated: add 120min per week (2h) per complex Contract Change Request the SDM works on</description>
+        <externalId>false</externalId>
+        <formula>Open_CONTRACT_CRs_Complex__c* 120</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-CRs Complex /week</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_CRs_Simple_week__c</fullName>
+        <description>locked cell - autocalculated: add 20min per simple Contract Change Request the SDM works on</description>
+        <externalId>false</externalId>
+        <formula>Open_CONTRACT_CRs_Simple__c* 20</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-CRs Simple /week</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Days_Since_Live__c</fullName>
+        <description>locked cell - autocalculated: number of days elapsed since Service Transition Date Go-Live Date</description>
+        <externalId>false</externalId>
+        <formula>CALC_TODAY__c - Service_Transition_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC - Days Since Live</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Direct_Indirect_Sales__c</fullName>
+        <description>locked cell - autocalculated: adding 45min per week if partner (integrator like BT, Accenture)  is our customer. additional effort from meetings which require further clarifications from partner and end customer</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Direct_Indirect_Sales__c,"N/A - Cisco Direct"), 0, 45)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Direct /Indirect Sales</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Effort_for_ADOPT_phase__c</fullName>
+        <description>locked cell - autocalculated: reflects the additional effort after go-live during the ADOPT phase with 120min</description>
+        <externalId>false</externalId>
+        <formula>IF(AND(CALC_ADOPT_Phase_effort_post_Activate__c = "New", ISPICKVAL(Active_Customer__c,"Yes"), CALC_RENEW__c = "N"), 120, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC- Effort for ADOPT phase</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Emerging_Technologies_Multiplier__c</fullName>
+        <description>locked cell - autocalculated: add 30min per week if we deliver an Emerging Technology</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Emerging_Technology__c,"N"), 0, 30)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC - Emerging Technologies Multiplier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Meetings_45_per_mtg_week__c</fullName>
+        <description>locked cell - autocalculated: 45min per week per regular/adhoc meeting with customer, Integrator or internal</description>
+        <externalId>false</externalId>
+        <formula>Number_of_Scheduled_Meetings_per_Week__c * 45</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Meetings (45' per mtg /week)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_NOC_Multiplier__c</fullName>
+        <description>locked cell - autocalculated: add 15min per week for each NOC involved in the delivery</description>
+        <externalId>false</externalId>
+        <formula>Delivery_NOC_Count__c * 15</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-NOC Multiplier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Offer_Level_Complexity_Multiplier__c</fullName>
+        <description>locked cell - autocalculated: calculates offer complexity: for each selected offer level as per dropdown, # of minutes considered</description>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Offer_Level__c,"Std Foundation"), 15,(IF(ISPICKVAL(Offer_Level__c,"Std Standard"),30,(IF(ISPICKVAL(Offer_Level__c,"Std Comprehensive"),60,(IF(ISPICKVAL(Offer_Level__c,"Custom off Standard Base - b/w 20% to 80% Custom"), 120, (IF(ISPICKVAL(Offer_Level__c,"Bespoke - &gt; 80% Custom"), 120,(IF(ISPICKVAL(Offer_Level__c,"Legacy SKUs"), 30, 0)))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Offer Level Complexity Multiplier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Partner_Delivered__c</fullName>
+        <description>locked cell - autocalculated: if Partner delivered, then remove # of SDM. Not always mean smaller effort for the SDMs. Sometimes it requires more involvement.</description>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>IF(ISPICKVAL(Who_Delivers_Service__c ,"Cisco Only"), 0, 60)</inlineHelpText>
+        <label>CALC-Partner Delivered</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Platform_Complexity_Multiplier__c</fullName>
+        <description>locked cell - autocalculated: Adds a Delivery Model complexity multiplier if we have &gt;1 "NOC" AND "Emerging Technology" AND &gt; 1 Region. Introduced on R. Scott's request</description>
+        <externalId>false</externalId>
+        <formula>IF(AND(CALC_20_wk_per_Region__c &gt; 10, CALC_Emerging_Technologies_Multiplier__c &gt; 20, CALC_NOC_Multiplier__c &gt; 16), 30, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Platform Complexity Multiplier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Platform_Multiplier__c</fullName>
+        <description>locked cell - autocalculated: add 10min additional effort per week for each platform in use</description>
+        <externalId>false</externalId>
+        <formula>Platform_Count__c * 10</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Platform Multiplier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Projects_Effort_Multiplier__c</fullName>
+        <description>locked cell - autocalculated: per "Project", we add 60min per week</description>
+        <externalId>false</externalId>
+        <formula>Projects_On_going_Count__c * 60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Projects Effort Multiplier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_RENEW__c</fullName>
+        <description>locked cell - autocalculated: flags "Y" or "N" if contract has reached the 180 days renewal activity period</description>
+        <externalId>false</externalId>
+        <formula>IF(CALC_Renew_Days__c &gt;180, "N", "Y")</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-RENEW</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Renew_Days__c</fullName>
+        <description>locked cell - autocalculated: calculates the number of days left from today until "Renewal Date"</description>
+        <externalId>false</externalId>
+        <formula>Contract_Renewal_Date__c - CALC_TODAY__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Renew Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Renewal_Effort_Value__c</fullName>
+        <description>locked cell - autocalculated: add 240min per week (4h) for each renewal the SDM works on</description>
+        <externalId>false</externalId>
+        <formula>IF(CALC_RENEW__c = "Y", 240, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Renewal Effort Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_SDM_Percentage_per_WebQT__c</fullName>
+        <description>locked cell - autocalculated: SDM effort in % of FTE dependant on Annual $ volume of contract (CMS ACV). This is used to show the "as-sold" effort
+IF(Annual_CMS_Contract_Value__c	 &lt; 1, 0, (IF(Annual_CMS_Contract_Value__c	 &lt; 500000, 12.5, (IF(AND(Annual_CMS_Contract_Value__c	 &gt; 500000, Annual_CMS_Contract_Value__c	 &lt; 5000000), 25, (IF(AND(Annual_CMS_Contract_Value__c	 &gt; 5000000, Annual_CMS_Contract_Value__c	 &lt; 10000000), 50, (IF(AND(Annual_CMS_Contract_Value__c	 &gt; 10000000, Regions__c = 2), 125, (IF(AND(Annual_CMS_Contract_Value__c	 &gt; 10000000, Regions__c = 3), 150, (IF(AND(Annual_CMS_Contract_Value__c	 &gt; 10000000, Regions__c = 4), 175, (IF(AND(Annual_CMS_Contract_Value__c	 &gt; 10000000, Regions__c = 5), 200, (IF(AND(Annual_CMS_Contract_Value__c	 &gt; 10000000, Regions__c = 6), 225, (IF(Annual_CMS_Contract_Value__c	 &gt; 10000000, 100, 0))))))))))))))))))) / 100</description>
+        <externalId>false</externalId>
+        <formula>0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-SDM Percentage per WebQT</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CALC_TODAY__c</fullName>
+        <description>locked cell - autocalculated: returns value for today's date</description>
+        <externalId>false</externalId>
+        <formula>Today()</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-TODAY</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CALC_Total_SDM_Delivered__c</fullName>
+        <description>locked cell - autocalculated: calculates the total effort of all minutes in row 19-36 and returns value in total % utilisation per week for all ACTIVE contracts</description>
+        <externalId>false</externalId>
+        <formula>CALC_Total_SDM_Hours_Delivered__c / 30</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC- Total SDM % Delivered</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CALC_Total_SDM_Hours_Delivered__c</fullName>
+        <description>CALC-Total SDM Hours Delivered</description>
+        <externalId>false</externalId>
+        <formula>(CALC_20_wk_per_Region__c + CALC_Transition_effort_for_complex_or_si__c) / 60 * CALC_Active_or_pending_Activation__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Total SDM Hours Delivered</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CALC_Transition_effort_for_complex_or_si__c</fullName>
+        <description>locked cell - autocalculated: add 300min (5h) per week for simple transition support (meetings, escalations) and 600min for complex</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Active_Customer__c,"Yes"), 0, (IF(ISPICKVAL(Type_of_Transition__c,"Complex"), 600, (IF(ISPICKVAL(Type_of_Transition__c,"Simple"), 300, (IF(ISPICKVAL(Type_of_Transition__c,"None"), 0, 0)))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CALC-Transition effort of complex/simple</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CAP_Case_Opened_Date__c</fullName>
+        <description>This is provided by the CAP manager and entered into the CRMDB by the SDM</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is provided by the CAP manager and entered into the CRMDB by the SDM</inlineHelpText>
+        <label>CAP Case Opened Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CAP_Title__c</fullName>
+        <description>This is provided by the CAP manager and entered into the CRMDB by the SDM</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is provided by the CAP manager and entered into the CRMDB by the SDM</inlineHelpText>
+        <label>CAP Title</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CAP_case_Manager_Name__c</fullName>
+        <description>This is provided by the CAP manager and entered into the CRMDB by the SDM</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is provided by the CAP manager and entered into the CRMDB by the SDM</inlineHelpText>
+        <label>CAP Case Manager Name</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CAP_case_Number_Engagement_ID__c</fullName>
+        <description>This is provided by the CAP manager and entered into the CRMDB by the SDM</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is provided by the CAP manager and entered into the CRMDB by the SDM</inlineHelpText>
+        <label>CAP Case Number (Engagement ID)</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMO_Assigned_for_Billing_Reporting__c</fullName>
+        <description>CMO Assigned for Billing Reporting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provided by CMO</inlineHelpText>
+        <label>CMO Assigned for Billing/Reporting</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMO_Assigned_for_MSR__c</fullName>
+        <description>CMO Assigned for MSR</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provided by CMO</inlineHelpText>
+        <label>CMO Assigned for MSR</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMO_Billing_Effort__c</fullName>
+        <description>CMO Billing % Effort</description>
+        <externalId>false</externalId>
+        <label>CMO Billing % Effort</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMO_MSR_Effort__c</fullName>
+        <description>CMO MSR % Effort</description>
+        <externalId>false</externalId>
+        <label>CMO MSR % Effort</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CMSP_Migration_Date__c</fullName>
+        <description>CMSP Migration Date</description>
+        <externalId>false</externalId>
+        <label>CMSP Migration Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>C_NOC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Accounts managed by Kurt Hauser's Team, updated by CET Chief of Staff (CoS)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accounts managed by Kurt Hauser's Team, updated by CET Chief of Staff (CoS)</inlineHelpText>
+        <label>C-NOC</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Challenges__c</fullName>
+        <description>THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES.  MM/DD/YY + Bullet format required.  Please provide  Executive Level Challenges for your account. 
+If more than 1 Challenge, please number.  If no content for the week, use N/A.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES.  MM/DD/YY + Bullet format required.  Please provide  Executive Level Challenges for your account
+If more than 1 Challenge, please number.  If no content for the week, use N/A.</inlineHelpText>
+        <label>Challenges</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Commercial_Summary__c</fullName>
+        <description>Term(s) 
+Where we are in the length of the term(s) 
+Termination / Transfer Obligations 
+Renewal Obligations 
+Billing 
+Custom Reporting / Other reporting obligations 
+Summary of Other Cisco Services (AS/TS)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Term(s)
+Where we are in the length of the term(s)
+Termination / Transfer Obligations
+Renewal Obligations
+Billing
+Custom Reporting / Other reporting obligations
+Summary of Other Cisco Services (AS/TS)</inlineHelpText>
+        <label>Commercial Summary</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Contract_Renewal_Date__c</fullName>
+        <description>Please enter the contract renewal date (initially entered by Admin)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please enter the contract renewal date (initially entered by Admin)</inlineHelpText>
+        <label>Contract Renewal Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Term_Months__c</fullName>
+        <description>Term in number of months (Locked field, entered by the CRMDB Admin.  Please submit requests for changes in the CRMDB Admin Spark room.  You will receive a response upon completion.)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Term in # of months</inlineHelpText>
+        <label>Contract Term Months</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Count_Blank_Cells__c</fullName>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Count Blank Cells</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Countries_Served__c</fullName>
+        <description>Countries Served</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of countries the customer does business in.</inlineHelpText>
+        <label>Countries Served</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Crisis_Management__c</fullName>
+        <defaultValue>"Primary:      Name           Title       email    Work phone      Cell Phone"  &amp; BR() &amp; "Secondary: Name            Title       email    Work phone      Cell Phone"</defaultValue>
+        <description>Please move all your Crisis Management contacts to the new Crisis Management Contacts tool and stop entering contact information in this field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please move all your Crisis Management contacts to the new Crisis Management Contacts tool and stop entering contact information in this field.</inlineHelpText>
+        <label>Crisis Mgmt - WILL BE DELETED on 4/26</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Executive_Summary__c</fullName>
+        <description>THIS IS BEING USED FOR EXECUTIVE MONTHLY REVIEWS. MM/DD/YY + Bullet format required.  This is your opportunity to provide your leader a HIGH LEVEL Executive Briefing /Situation Summary for your Customer. What should your leader know if there was an escalation or Customer inquiry?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>THIS IS BEING USED FOR EXECUTIVE MONTHY REVIEWS. MM/DD/YY + Bullet format required. What should your leader know if there was an escalation or Customer inquiry?</inlineHelpText>
+        <label>Customer Executive Summary</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Sentiment__c</fullName>
+        <description>Bullet(s) describing customer sentiment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bullet(s) describing customer sentiment</inlineHelpText>
+        <label>Customer Sentiment</label>
+        <length>20000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Website__c</fullName>
+        <description>Customer Website</description>
+        <externalId>false</externalId>
+        <label>Customer Website</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customers__c</fullName>
+        <description>Customers</description>
+        <externalId>false</externalId>
+        <label>Customers</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DID__c</fullName>
+        <description>Deal ID for your customer's contract (can be obtained from Finance, SKU-Active or SOW. (Locked field, entered by the CRMDB Admin.  Please submit requests for changes in the CRMDB Admin Spark room.  You will receive a response upon completion.)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Deal ID for your customer's contract (can be obtained from Finance, SKU-Active or SOW)</inlineHelpText>
+        <label>DID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_Customer_first_became_CMS_Customer__c</fullName>
+        <description>The date of the first CMS contract</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date of the first CMS contract</inlineHelpText>
+        <label>Date Customer first became  CMS Customer</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Delivery_NOC_Count__c</fullName>
+        <description># of NOCs that are delivering service to this Customer (i.e. TP, DCOT, SFNOC, SOC, ect...)</description>
+        <externalId>false</externalId>
+        <inlineHelpText># of NOCs that are delivering service to this Customer (i.e. TP, DCOT, SFNOC, SOC, ect...)</inlineHelpText>
+        <label>Delivery NOC Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Device_Count__c</fullName>
+        <description>Number of devices under CMS management as reported by the platform.</description>
+        <externalId>false</externalId>
+        <inlineHelpText># of devices under CMS management as reported by the platform</inlineHelpText>
+        <label>Device Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Direct_Indirect_Sales__c</fullName>
+        <description>Direct / Indirect Sales</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select 3rd party integrator, if applicable</inlineHelpText>
+        <label>Direct / Indirect Sales</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>N/A - Cisco Direct</fullName>
+                    <default>false</default>
+                    <label>N/A - Cisco Direct</label>
+                </value>
+                <value>
+                    <fullName>Accenture</fullName>
+                    <default>false</default>
+                    <label>Accenture</label>
+                </value>
+                <value>
+                    <fullName>CDW</fullName>
+                    <default>false</default>
+                    <label>CDW</label>
+                </value>
+                <value>
+                    <fullName>Dimension Data</fullName>
+                    <default>false</default>
+                    <label>Dimension Data</label>
+                </value>
+                <value>
+                    <fullName>AT&amp;T</fullName>
+                    <default>false</default>
+                    <label>AT&amp;T</label>
+                </value>
+                <value>
+                    <fullName>Rocket IT</fullName>
+                    <default>false</default>
+                    <label>Rocket IT</label>
+                </value>
+                <value>
+                    <fullName>EPLUS</fullName>
+                    <default>false</default>
+                    <label>EPLUS</label>
+                </value>
+                <value>
+                    <fullName>BT</fullName>
+                    <default>false</default>
+                    <label>BT</label>
+                </value>
+                <value>
+                    <fullName>Verizon</fullName>
+                    <default>false</default>
+                    <label>Verizon</label>
+                </value>
+                <value>
+                    <fullName>Yokogowa</fullName>
+                    <default>false</default>
+                    <label>Yokogowa</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Disconnect_Date__c</fullName>
+        <description>Disconnect Date</description>
+        <externalId>false</externalId>
+        <label>Disconnect Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Emerging_Technology__c</fullName>
+        <description>Emerging Technology</description>
+        <externalId>false</externalId>
+        <label>Emerging Technology</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Y</fullName>
+                    <default>false</default>
+                    <label>Y</label>
+                </value>
+                <value>
+                    <fullName>N</fullName>
+                    <default>false</default>
+                    <label>N</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Employees__c</fullName>
+        <description>Employees</description>
+        <externalId>false</externalId>
+        <label>Employees</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expand__c</fullName>
+        <externalId>false</externalId>
+        <label>Expand</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GES_or_CGEM_Area__c</fullName>
+        <description>Based on GES list, updated by CoS 
+https://cisco.jiveon.com/groups/ges</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Based on GES list, updated by CoS
+https://apps.na.collabserv.com/communities/service/html/communitystart?communityUuid=74baff1b-36ae-4dfb-b43a-93903d4869b2</inlineHelpText>
+        <label>GES / CGEM / GSP Area</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CGEM_APJC_ANZ</fullName>
+                    <default>false</default>
+                    <label>CGEM_APJC_ANZ</label>
+                </value>
+                <value>
+                    <fullName>CGEM_APJC_ASEAN</fullName>
+                    <default>false</default>
+                    <label>CGEM_APJC_ASEAN</label>
+                </value>
+                <value>
+                    <fullName>CGEM_APJC_India</fullName>
+                    <default>false</default>
+                    <label>CGEM_APJC_India</label>
+                </value>
+                <value>
+                    <fullName>CGEM_APJC_Japan</fullName>
+                    <default>false</default>
+                    <label>CGEM_APJC_Japan</label>
+                </value>
+                <value>
+                    <fullName>CGEM_APJC_Korea</fullName>
+                    <default>false</default>
+                    <label>CGEM_APJC_Korea</label>
+                </value>
+                <value>
+                    <fullName>CGEM_EMEAR_Central</fullName>
+                    <default>false</default>
+                    <label>CGEM_EMEAR_Central</label>
+                </value>
+                <value>
+                    <fullName>CGEM_EMEAR_North</fullName>
+                    <default>false</default>
+                    <label>CGEM_EMEAR_North</label>
+                </value>
+                <value>
+                    <fullName>CGEM_France</fullName>
+                    <default>false</default>
+                    <label>CGEM_France</label>
+                </value>
+                <value>
+                    <fullName>CGEM_Germany</fullName>
+                    <default>false</default>
+                    <label>CGEM_Germany</label>
+                </value>
+                <value>
+                    <fullName>CGEM_UKI</fullName>
+                    <default>false</default>
+                    <label>CGEM_UKI</label>
+                </value>
+                <value>
+                    <fullName>GES_IBM</fullName>
+                    <default>false</default>
+                    <label>GES_IBM</label>
+                </value>
+                <value>
+                    <fullName>GES_MWA</fullName>
+                    <default>false</default>
+                    <label>GES_MWA</label>
+                </value>
+                <value>
+                    <fullName>GES_NE</fullName>
+                    <default>false</default>
+                    <label>GES_NE</label>
+                </value>
+                <value>
+                    <fullName>GES_South</fullName>
+                    <default>false</default>
+                    <label>GES_South</label>
+                </value>
+                <value>
+                    <fullName>GES_West</fullName>
+                    <default>false</default>
+                    <label>GES_West</label>
+                </value>
+                <value>
+                    <fullName>GSP_AMER</fullName>
+                    <default>false</default>
+                    <label>GSP_AMER</label>
+                </value>
+                <value>
+                    <fullName>GSP_EMEAR</fullName>
+                    <default>false</default>
+                    <label>GSP_EMEAR</label>
+                </value>
+                <value>
+                    <fullName>GSP_APJC</fullName>
+                    <default>false</default>
+                    <label>GSP_APJC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Global_Fortune_500_Rank_2018__c</fullName>
+        <description>Global Fortune 500 Rank (2018)</description>
+        <externalId>false</externalId>
+        <label>Global Fortune 500 Rank (2018)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Headquarter_Location__c</fullName>
+        <description>Headquarter Location</description>
+        <externalId>false</externalId>
+        <label>Headquarter Location</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Impact_of_Accomplishments_or_Challenge__c</fullName>
+        <description>THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES. MM/DD/YY + Bullet format required. What is the impact of the Accomplishment or Challenge? 
+Please identify the impact for EACH Accomplishment or Challenge. 
+i.e. Accomplishment #1:, Challenge #1, etc. If no Accomplishments or Challenges for the week, use N/A.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>THIS IS BEING USED FOR EXECUTIVE WEEKLY UPDATES. MM/DD/YY + Bullet format required. Please identify the impact for EACH Accomplishment or Challenge.
+i.e. Accomplishment #1:, Challenge #1, etc. If no Accomplishments or Challenges for the week, use N/A.</inlineHelpText>
+        <label>Impact of Accomplishments or Challenges</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Industry__c</fullName>
+        <externalId>false</externalId>
+        <label>Industry</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Integrated_Account_Plan_IAP_Link__c</fullName>
+        <description>Integrated Account Plan (IAP) - Link</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Insert link to Integrated Account Plan</inlineHelpText>
+        <label>Integrated Account Plan (IAP) - Link</label>
+        <length>20000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Integrated_Account_Plan_IAP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Does your customer have an Integrated Account Plan? Y/N</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Does your customer have an Integrated Account Plan? Y/N</inlineHelpText>
+        <label>Integrated Account Plan (IAP)</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_CAP_caused_by_CMS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Is CAP caused by CMS</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Y/N</inlineHelpText>
+        <label>Is CAP caused by CMS</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Customer_on_CAP__c</fullName>
+        <description>Is Customer on CAP</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If Customer is NOT on CAP select No in the drop down. If the Customer is on CAP select appropriate CAP type and save. Then complete All fields in the CAP Management Section.</inlineHelpText>
+        <label>Is Customer on CAP</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>CAP - A</fullName>
+                    <default>false</default>
+                    <label>CAP - A</label>
+                </value>
+                <value>
+                    <fullName>CAP - B</fullName>
+                    <default>false</default>
+                    <label>CAP - B</label>
+                </value>
+                <value>
+                    <fullName>CAP - M</fullName>
+                    <default>false</default>
+                    <label>CAP - M</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Is_MSR_Required__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If MSR is required to select Yes and complete the “Last MSR Date” field, if No date field is not required.</inlineHelpText>
+        <label>Is MSR Required</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Key_Contacts__c</fullName>
+        <defaultValue>"SDM:  GAM:   CSE:    SDE:   HTOM:   Other:"</defaultValue>
+        <description>Please move all your Key Contacts to the new Key Contacts tool and stop entering contact information in this field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please move all your Key Contacts to the new Key Contacts tool and stop entering contact information in this field.</inlineHelpText>
+        <label>Key Contacts - WILL BE DELETED on 4/26</label>
+        <length>20000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Land__c</fullName>
+        <externalId>false</externalId>
+        <label>Land</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Face_to_Face_Meeting_date__c</fullName>
+        <description>Last Face to Face Meeting date</description>
+        <externalId>false</externalId>
+        <label>Last Face to Face Meeting date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Last_MSR_Date_or_N_A__c</fullName>
+        <description>Date of Last Monthly Business Review.  MM/DD/YYYY</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date of Last Monthly Business Review.  MM/DD/YYYY</inlineHelpText>
+        <label>Last MSR Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Last_QBR__c</fullName>
+        <description>Date of Last Quarterly Business Review.  MM/DD/YYYY</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date of Last Quarterly Business Review.  MM/DD/YYYY</inlineHelpText>
+        <label>Last QBR Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Links_to_Quote_Contract_SoW__c</fullName>
+        <description>Please enter the link where to find the quote(s) and/or contract(s)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please enter the link where to find the quote(s) and/or contract(s)</inlineHelpText>
+        <label>Links to Quote/ Contract/ SoW</label>
+        <length>10000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Manager__c</fullName>
+        <description>Name of SDM direct Manager, or assigned Manager, for the informational and modelling purposes.</description>
+        <externalId>false</externalId>
+        <label>Manager</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Margin_As_sold__c</fullName>
+        <description>% - found in SKU Active Report 
+https://cisco.jiveon.com/groups/cms-presales-and-deal-management/overview</description>
+        <externalId>false</externalId>
+        <inlineHelpText>% - found in SKU Active Report</inlineHelpText>
+        <label>Margin (As sold)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Margin_Delivered__c</fullName>
+        <description>Percentage found in Tableau, should include FY to Date.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>% - found in Tableau, should include FY to Date</inlineHelpText>
+        <label>Margin (Delivered)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Master_Customer_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Parent of customer contract</description>
+        <externalId>false</externalId>
+        <label>Parent Customer Contract</label>
+        <referenceTo>CRMDB__c</referenceTo>
+        <relationshipLabel>Child Customer Contracts</relationshipLabel>
+        <relationshipName>CRMDB_Customers</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <description>Notes</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Additional company ranking information, such as size ranking within the customer’s industry.</inlineHelpText>
+        <label>Notes</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Scheduled_Meetings_Per_Quarter__c</fullName>
+        <description>Calculated Field: Locked - Multiplies the # of meetings per week with 13 weeks per quarter</description>
+        <externalId>false</externalId>
+        <label>Number of Scheduled Meetings Per Quarter</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Scheduled_Meetings_per_Week__c</fullName>
+        <description># of scheduled meetings of 45min per week for this customer which the SDM regularly attends, can be internal or external meetings, So just an INT field</description>
+        <externalId>false</externalId>
+        <label>Number of Scheduled Meetings per Week</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Offer_Level__c</fullName>
+        <description>What offer lever was sold for this contract?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select Offer Level</inlineHelpText>
+        <label>Standardization</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Custom off Standard Base - b/w 20% to 80% Custom</fullName>
+                    <default>false</default>
+                    <label>Custom off Standard Base - b/w 20% to 80% Custom</label>
+                </value>
+                <value>
+                    <fullName>Legacy SKUs</fullName>
+                    <default>false</default>
+                    <label>Legacy SKUs</label>
+                </value>
+                <value>
+                    <fullName>Bespoke - &gt; 80% Custom</fullName>
+                    <default>false</default>
+                    <label>Bespoke - &gt; 80% Custom</label>
+                </value>
+                <value>
+                    <fullName>Foundation</fullName>
+                    <default>false</default>
+                    <label>Foundation</label>
+                </value>
+                <value>
+                    <fullName>Comprehensive</fullName>
+                    <default>false</default>
+                    <label>Comprehensive</label>
+                </value>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                    <label>Standard</label>
+                </value>
+                <value>
+                    <fullName>Std Comprehensive</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Std Comprehensive</label>
+                </value>
+                <value>
+                    <fullName>Std Standard</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Std Standard</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Open_CONTRACT_CRs_Complex__c</fullName>
+        <description># of simple Contract Change Controls (i.e. Non-Standard-No Cost, Non-Standard-with Cost)</description>
+        <externalId>false</externalId>
+        <label>Open CONTRACT CRs - Complex</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Open_CONTRACT_CRs_Simple__c</fullName>
+        <description># of simple Contract Change Controls (i.e. Standard-No Cost, Standard-with Cost)</description>
+        <externalId>false</externalId>
+        <label>Open CONTRACT CRs - Simple</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Delivered_CSM_Assigned__c</fullName>
+        <description>Name of the CSM assigned when a Delivery Partner is engaged (e.g. Optanix, Cognizant, IpSoft). (This field is locked, as SmartSheet forms need to be updated when the SDM name is changed.  Please submit requests for changes in the CRMDB Admin Spark room.  You will receive a response upon completion.)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the CSM assigned when a Delivery Partner is engaged (e.g. Optanix, Cognizant, IpSoft)</inlineHelpText>
+        <label>Partner Delivered CSM Assigned</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Platform_Count__c</fullName>
+        <description># of Platforms used to support this Customer (CMSP, Optanix MAP, IPSoft, Centerity, etc...)</description>
+        <externalId>false</externalId>
+        <inlineHelpText># of Platforms used to support this Customer (CMSP, Optanix MAP, IPSoft, Centerity, etc...)</inlineHelpText>
+        <label>Platform Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Platforms_Type__c</fullName>
+        <description>Dropdown for type of Platform.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select all that apply</inlineHelpText>
+        <label>Platform(s) Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Centerity</fullName>
+                    <default>false</default>
+                    <label>Centerity</label>
+                </value>
+                <value>
+                    <fullName>CMSP</fullName>
+                    <default>false</default>
+                    <label>CMSP</label>
+                </value>
+                <value>
+                    <fullName>EM7/Remedy</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>EM7/Remedy</label>
+                </value>
+                <value>
+                    <fullName>IP Soft</fullName>
+                    <default>false</default>
+                    <label>IP Soft</label>
+                </value>
+                <value>
+                    <fullName>No Platform</fullName>
+                    <default>false</default>
+                    <label>No Platform</label>
+                </value>
+                <value>
+                    <fullName>Remedy</fullName>
+                    <default>false</default>
+                    <label>Remedy</label>
+                </value>
+                <value>
+                    <fullName>SG MAP</fullName>
+                    <default>false</default>
+                    <label>SG MAP</label>
+                </value>
+                <value>
+                    <fullName>SG MAP &amp; CMSP</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>SG MAP &amp; CMSP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Proactive_Problem_Management__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Proactive Problem Management</description>
+        <externalId>false</externalId>
+        <label>Proactive Problem Management</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Projects_On_going_Count__c</fullName>
+        <description>Projects On-going Count</description>
+        <externalId>false</externalId>
+        <label>Projects On-going Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason_for_Yellow_Red__c</fullName>
+        <description>Check the box if the reason for the account being flagged as Yellow or Red.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select reason(s) for the account being flagged as Yellow or Red is caused by CMS Delivery performance</inlineHelpText>
+        <label>Reason for Yellow / Red</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Delivery</fullName>
+                    <default>false</default>
+                    <label>Delivery</label>
+                </value>
+                <value>
+                    <fullName>Cisco Product</fullName>
+                    <default>false</default>
+                    <label>Cisco Product</label>
+                </value>
+                <value>
+                    <fullName>CMS Offer</fullName>
+                    <default>false</default>
+                    <label>CMS Offer</label>
+                </value>
+                <value>
+                    <fullName>Platform</fullName>
+                    <default>false</default>
+                    <label>Platform</label>
+                </value>
+                <value>
+                    <fullName>Vendor</fullName>
+                    <default>false</default>
+                    <label>Vendor</label>
+                </value>
+                <value>
+                    <fullName>Commercial</fullName>
+                    <default>false</default>
+                    <label>Commercial</label>
+                </value>
+                <value>
+                    <fullName>Selective Transition</fullName>
+                    <default>false</default>
+                    <label>Selective Transition</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reference_Account__c</fullName>
+        <description>Is this customer willing to provide a CMS reference?  Yes/No</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is this customer willing to provide a CMS reference?  Y/N</inlineHelpText>
+        <label>Reference Account</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Regions__c</fullName>
+        <description>Number of regions you support for this customer -  how many regions to do you have customer interactions? (i.e. AMER, EMEAR, APJC)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select all that apply</inlineHelpText>
+        <label>Regions supported</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AMER</fullName>
+                    <default>false</default>
+                    <label>AMER</label>
+                </value>
+                <value>
+                    <fullName>EMEAR</fullName>
+                    <default>false</default>
+                    <label>EMEAR</label>
+                </value>
+                <value>
+                    <fullName>APJC</fullName>
+                    <default>false</default>
+                    <label>APJC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Renew__c</fullName>
+        <externalId>false</externalId>
+        <label>Renew</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Renewal_Probability__c</fullName>
+        <description>Percentage based on SDM knowledge</description>
+        <externalId>false</externalId>
+        <inlineHelpText>% based on SDM knowledge</inlineHelpText>
+        <label>Renewal Probability</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Revenue_Year__c</fullName>
+        <description>Revenue Year</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The fiscal year in which the annual revenue was reported.</inlineHelpText>
+        <label>Revenue Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Revenue_in_US__c</fullName>
+        <description>Revenue generated in US $</description>
+        <externalId>false</externalId>
+        <label>Revenue in US $</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDM_Allocation__c</fullName>
+        <description>SDM % Allocation</description>
+        <externalId>false</externalId>
+        <label>SDM % Allocation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>SDM_Assigned__c</fullName>
+        <description>Name of the SDM assigned (only one name allowed).  </description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the SDM assigned (only one name allowed, additional SDMs should be added to the Contacts Field)</inlineHelpText>
+        <label>SDM Lead</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDM_Count__c</fullName>
+        <description>SDM Count</description>
+        <externalId>false</externalId>
+        <inlineHelpText># of SDMs supporting this Customer</inlineHelpText>
+        <label>SDM Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SLA__c</fullName>
+        <description>Does this Customer have SLA's (penalties apply) Y/N</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Does this Customer have SLA's (penalties apply) Y/N</inlineHelpText>
+        <label>SLA</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SLX_and_KPI_Summary__c</fullName>
+        <description>Summay of SLX and KPI obligations and performance by Service (six month trending if available)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Summay of SLX and KPI obligations and performance by Service (six month trending if available)</inlineHelpText>
+        <label>SLX and KPI Summary</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Sales_Order_Number__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Should be part of a new record create from the DLT notification.</inlineHelpText>
+        <label>Sales Order Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Segment__c</fullName>
+        <description>Based on GES list, updated by CoS </description>
+        <externalId>false</externalId>
+        <inlineHelpText>Based on GES list, updated by CoS 
+https://apps.na.collabserv.com/communities/service/html/communitystart?communityUuid=74baff1b-36ae-4dfb-b43a-93903d4869b2</inlineHelpText>
+        <label>Segment</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Transition_Date__c</fullName>
+        <description>Enter Initial activation date (not the subsequent dates for staged activations or renewals) ( Day to go live)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter Initial activation date (not the subsequent dates for staged activations or renewals)</inlineHelpText>
+        <label>Service Transition Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Theater__c</fullName>
+        <description>CET Theater</description>
+        <externalId>false</externalId>
+        <inlineHelpText>CET Theater</inlineHelpText>
+        <label>Theater</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>APJC</fullName>
+                    <default>false</default>
+                    <label>APJC</label>
+                </value>
+                <value>
+                    <fullName>EMEAR</fullName>
+                    <default>false</default>
+                    <label>EMEAR</label>
+                </value>
+                <value>
+                    <fullName>AMER</fullName>
+                    <default>false</default>
+                    <label>AMER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Total_CMS_Contract_Value_CR_S__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Child Record is the sum of  Total CMS Contract + CRs,  Parent Record is the Sum of all Child record(s) Contract+CRs.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Child Record is the sum of  Total CMS Contract + CRs,  Parent Record is the Sum of all Child record(s) Contract+CRs.</inlineHelpText>
+        <label>Total CMS Contract Value + CR(S)($000)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_CMS_Contract_Value__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Loaded from  Booked Qualification in a Child Record, Summed from Child record(s) to a Parent.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loaded from  Booked Qualification in a Child Record, Summed from Child record(s) to a Parent.</inlineHelpText>
+        <label>Total CMS Contract Value($000)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Child_CMS_CR__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Summation of child's Total_CMS_Contract_Value_CR_S__c</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Child Record is the sum of Total Contract CRs,  Parent Record is the Sum of CRs for all children.</inlineHelpText>
+        <label>Total Customer CR(s) Value($000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Cisco_Contract_Value__c</fullName>
+        <description>Total Cisco Contract Value</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Add Totals from all Services</inlineHelpText>
+        <label>Total Cisco Contract Value($000)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Other_Cisco_products_and_services__c</fullName>
+        <description>Total Other Cisco products and services</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SDM to gather this information with input from the Account Team and SDE</inlineHelpText>
+        <label>Total Other Cisco Product/Services($000)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type_of_Transition__c</fullName>
+        <description>Select the type and status of the Service Transition phase from dropdown meu: none, simple, complex. Complexity raises when any of further occurs: custom processes/design, non-standard runbook, custom tooling, offer level, non-standard reporting &amp; billing</description>
+        <externalId>false</externalId>
+        <label>Type of Transition</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Simple</fullName>
+                    <default>false</default>
+                    <label>Simple</label>
+                </value>
+                <value>
+                    <fullName>Complex</fullName>
+                    <default>false</default>
+                    <label>Complex</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>US_Fortune_500_Rank_2018__c</fullName>
+        <description>US Fortune 500 Rank (2018)</description>
+        <externalId>false</externalId>
+        <label>US Fortune 500 Rank (2018)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Upsell_Opportunities__c</fullName>
+        <description>Bullet(s) based on SDM knowledge</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bullet(s) based on SDM knowledge</inlineHelpText>
+        <label>Upsell Opportunities</label>
+        <length>20000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Who_Delivers_Service__c</fullName>
+        <description>Who is delivering the Service to the Customer?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select who is delivering the Service</inlineHelpText>
+        <label>Who Delivers Service</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>CenturyLink</fullName>
+                    <default>false</default>
+                    <label>CenturyLink</label>
+                </value>
+                <value>
+                    <fullName>Cisco</fullName>
+                    <default>false</default>
+                    <label>Cisco</label>
+                </value>
+                <value>
+                    <fullName>Cognizant</fullName>
+                    <default>false</default>
+                    <label>Cognizant</label>
+                </value>
+                <value>
+                    <fullName>E-Loyalty</fullName>
+                    <default>false</default>
+                    <label>E-Loyalty</label>
+                </value>
+                <value>
+                    <fullName>Global Capacity</fullName>
+                    <default>false</default>
+                    <label>Global Capacity</label>
+                </value>
+                <value>
+                    <fullName>GTT</fullName>
+                    <default>false</default>
+                    <label>GTT</label>
+                </value>
+                <value>
+                    <fullName>IPSoft</fullName>
+                    <default>false</default>
+                    <label>IPSoft</label>
+                </value>
+                <value>
+                    <fullName>Mindlink</fullName>
+                    <default>false</default>
+                    <label>Mindlink</label>
+                </value>
+                <value>
+                    <fullName>Optanix</fullName>
+                    <default>false</default>
+                    <label>Optanix</label>
+                </value>
+                <value>
+                    <fullName>Yokogowa</fullName>
+                    <default>false</default>
+                    <label>Yokogowa</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>CRMDB_Compact</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Data of customer information, customer sentiment, renewal date, financial information, what is important for customer etc. Each customer may have multiple contracts, which are managed separately. About 70 SDMs input the data and additional ~100 others use it. In total about 200 users. Used as user input form and only authorized users can access it. Data is populated manually by SDMs and DB Admin.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>CRMDB</label>
+    <nameField>
+        <label>Customer Contract</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>CRMDB</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <searchLayouts>
+        <customTabListAdditionalFields>Master_Customer_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Account_Name__c</customTabListAdditionalFields>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Forward</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <listViewButtons>Show_Hierarchical_View</listViewButtons>
+        <lookupDialogsAdditionalFields>Master_Customer_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Account_Name__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Account_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SDM_Assigned__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Manager__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Theater__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Active_Customer__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account_State__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Is_Customer_on_CAP__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Is_CAP_caused_by_CMS__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Total_CMS_Contract_Value__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>CRMDB__c.CRMDB_Contracts</value>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Customers_on_Cap_List_View</fullName>
+        <columns>Account_Name__c</columns>
+        <columns>NAME</columns>
+        <columns>Is_Customer_on_CAP__c</columns>
+        <columns>Is_CAP_caused_by_CMS__c</columns>
+        <columns>SDM_Assigned__c</columns>
+        <columns>Manager__c</columns>
+        <columns>Active_Customer__c</columns>
+        <columns>Account_State__c</columns>
+        <columns>Total_CMS_Contract_Value__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Is_Customer_on_CAP__c</field>
+            <operation>contains</operation>
+            <value>CAP - A,CAP - B,CAP - M</value>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>CRMDB__c.CRMDB_Contracts</value>
+        </filters>
+        <label>Customers on Cap List View</label>
+    </listViews>
+    <listViews>
+        <fullName>Parent_Contracts</fullName>
+        <columns>NAME</columns>
+        <columns>Account_Name__c</columns>
+        <columns>SDM_Assigned__c</columns>
+        <columns>Manager__c</columns>
+        <columns>Theater__c</columns>
+        <columns>Active_Customer__c</columns>
+        <columns>Account_State__c</columns>
+        <columns>Is_Customer_on_CAP__c</columns>
+        <columns>Is_CAP_caused_by_CMS__c</columns>
+        <columns>Total_CMS_Contract_Value__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Master_Customer_Name__c</field>
+            <operation>equals</operation>
+        </filters>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>CRMDB__c.CRMDB_Contracts</value>
+        </filters>
+        <label>Parent Contracts</label>
+    </listViews>
+    <listViews>
+        <fullName>SDM_Manager_List_View</fullName>
+        <columns>Account_Name__c</columns>
+        <columns>NAME</columns>
+        <columns>SDM_Assigned__c</columns>
+        <columns>Manager__c</columns>
+        <columns>Theater__c</columns>
+        <columns>Active_Customer__c</columns>
+        <columns>Account_State__c</columns>
+        <columns>Is_Customer_on_CAP__c</columns>
+        <columns>Is_CAP_caused_by_CMS__c</columns>
+        <columns>Total_CMS_Contract_Value__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>CRMDB__c.CRMDB_Contracts</value>
+        </filters>
+        <label>SDM / Manager List View</label>
+    </listViews>
+    <recordTypes>
+        <fullName>CRMDB_Contracts</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>CRMDB_Compact</compactLayoutAssignment>
+        <description>Customer Contract can be linked to Parent Customer Contracts</description>
+        <label>CRMDB_Contracts</label>
+        <picklistValues>
+            <picklist>Account_State__c</picklist>
+            <values>
+                <fullName>Green</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Red</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yellow</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Active_Customer__c</picklist>
+            <values>
+                <fullName>No %E2%80%93 Contract Expired %28Other Active CMS Contracts%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No-disconnected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No-pending activation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes-pending disconnect</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Direct_Indirect_Sales__c</picklist>
+            <values>
+                <fullName>AT%26T</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accenture</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CDW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dimension Data</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EPLUS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA - Cisco Direct</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rocket IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Verizon</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yokogowa</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Emerging_Technology__c</picklist>
+            <values>
+                <fullName>N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Y</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GES_or_CGEM_Area__c</picklist>
+            <values>
+                <fullName>CGEM_APJC_ANZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CGEM_APJC_ASEAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CGEM_APJC_India</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CGEM_APJC_Japan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CGEM_APJC_Korea</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CGEM_EMEAR_Central</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CGEM_EMEAR_North</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CGEM_France</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CGEM_Germany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CGEM_UKI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GES_IBM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GES_MWA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GES_NE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GES_South</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GES_West</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GSP_AMER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GSP_APJC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GSP_EMEAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Is_Customer_on_CAP__c</picklist>
+            <values>
+                <fullName>CAP - A</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CAP - B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CAP - M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Is_MSR_Required__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Offer_Level__c</picklist>
+            <values>
+                <fullName>Bespoke - %3E 80%25 Custom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Comprehensive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Custom off Standard Base - b%2Fw 20%25 to 80%25 Custom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Foundation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Legacy SKUs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Platforms_Type__c</picklist>
+            <values>
+                <fullName>CMSP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Centerity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IP Soft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Platform</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Remedy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SG MAP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Yellow_Red__c</picklist>
+            <values>
+                <fullName>CMS Offer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commercial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platform</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Selective Transition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reference_Account__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Regions__c</picklist>
+            <values>
+                <fullName>AMER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SLA__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Theater__c</picklist>
+            <values>
+                <fullName>AMER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>APJC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type_of_Transition__c</picklist>
+            <values>
+                <fullName>Complex</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Simple</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Who_Delivers_Service__c</picklist>
+            <values>
+                <fullName>CenturyLink</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cognizant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-Loyalty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GTT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Capacity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IPSoft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mindlink</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Optanix</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yokogowa</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <validationRules>
+        <fullName>Make_MSR_Date_Mandatory</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( 
+ISPICKVAL( Is_MSR_Required__c , "YES"), 
+ISBLANK(Last_MSR_Date_or_N_A__c) 
+)</errorConditionFormula>
+        <errorDisplayField>Last_MSR_Date_or_N_A__c</errorDisplayField>
+        <errorMessage>Please complete Last MSR Date</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Show_Hierarchical_View</fullName>
+        <availability>online</availability>
+        <description>Show Hierarchical View of the CRMDB Contracts</description>
+        <displayType>massActionButton</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Show Hierarchical View</masterLabel>
+        <openType>replace</openType>
+        <page>CRMDBContractHierarchy</page>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+    </webLinks>
+</CustomObject>

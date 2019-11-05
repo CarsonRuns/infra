@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Briefing_Center__c</fullName>
+        <description>field to store the briefing center list to show in the customer engagement Calendar</description>
+        <externalId>false</externalId>
+        <label>Briefing Center</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reporting_Structure__c</fullName>
+        <description>field to store the reporting structure for IT Engagements and infosec engagements</description>
+        <externalId>false</externalId>
+        <label>Reporting Structure</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <label>ITCE Calendar Parameters</label>
+    <visibility>Public</visibility>
+</CustomObject>

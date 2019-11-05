@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Address_Line_1__c</field>
+        <field>Address_Line_2__c</field>
+        <field>AnnualRevenue</field>
+        <field>Call_Center_Vendor__c</field>
+        <field>Lead_Type__c</field>
+        <field>LeadSource</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_APJ_Approval_LDR_Owner_Manila_Asia</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_SiteMgr_Convergys_Manila_Asia</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Lead.Medium_Type__c</field>
+                <operation>equals</operation>
+                <value>Inbound Chat</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-SDR Convergys (Manila - Global)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>NGCC Inbound Chat Rule</label>
+        <name>NGCC_Inbound_Chat_Rule</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_APJ_Approval_LDR_Owner_Manila_Asia</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_SiteMgr_Convergys_Manila_Asia</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>PHILIPPINES,SINGAPORE</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-SDR Convergys (Manila - Global)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Global Mktg Manilla Asia Approval</label>
+        <name>Global_Mktg_Manilla_Asia_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_APJ_Approval_LDR_Owner_GC</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Convergys_China</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Lead.Theater__c</field>
+                <operation>equals</operation>
+                <value>Greater China</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-SDR Convergys (Manila - Global)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Global Mktg China Approval</label>
+        <name>Global_Mktg_China_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_APJ_Approval_LDR_Owner_Kuala_Lump</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_SellByTel_Kuala_Lumpur</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5</booleanFilter>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>AMERICAN SAMOA,ANTARCTICA,BRITISH INDIAN OCEAN TERRITORY,BRUNEI DARUSSALAM,CAMBODIA,CHRISTMAS ISLAND,COCOS (KEELING) ISLANDS,COOK ISLANDS,FIJI,FRENCH POLYNESIA,GUAM,HEARD AND MCDONALD ISLANDS,INDONESIA,KIRIBATI</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>LAO PEOPLE&apos;S DEMOCRATIC REPUBLIC,MALAYSIA,MARSHALL ISLANDS,MICRONESIA,MYANMAR,NAURU,NEW CALEDONIA,NIUE,NORFOLK ISLAND,NORTHERN MARIANA ISLANDS,PALAU,PITCAIRN</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>BRITISH INDIAN OCEAN TERRITORY,SAMOA,SOLOMON ISLANDS,THAILAND,TIMOR-LESTE,TOKELAU,TONGA,TUVALU,VANUATU,VIET NAM,WALLIS AND FUTUNA,WESTERN SAHARA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>AUSTRALIA,NEW ZEALAND,PAPUA NEW GUINEA,JAPAN</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-SDR Convergys (Manila - Global)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Global Mktg KL Approval</label>
+        <name>Global_Mktg_KL_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_APJ_Approval_LDR_Owner_Korea</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_SellByTel_Korea</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>&quot;KOREA, DEMOCRATIC PEOPLE&apos;S REP&quot;,&quot;KOREA, REPUBLIC OF&quot;</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-SDR Convergys (Manila - Global)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Global Mktg Korea Approval</label>
+        <name>Global_Mktg_Korea_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_APJ_Approval_LDR_Owner_India</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Convergys_India</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>BANGLADESH,BHUTAN,INDIA,MALDIVES,NEPAL,SRI LANKA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-SDR Convergys (Manila - Global)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Global Mktg India Approval</label>
+        <name>Global_Mktg_India_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_LDR_Convergys_Manila_Asia</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager Convergys (Manila - Asia)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>PHILIPPINES,SINGAPORE</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Global Mktg Manilla LDR Approval</label>
+        <name>Global_Mktg_Manilla_LDR_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_LDR_SellByTel_Kuala_Lumpur</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>(1 OR 5) AND (2 OR 3 OR 4)</booleanFilter>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager SellByTel (Kuala Lumpur)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>AMERICAN SAMOA,ANTARCTICA,BRITISH INDIAN OCEAN TERRITORY,BRUNEI DARUSSALAM,CAMBODIA,CHRISTMAS ISLAND,COCOS (KEELING) ISLANDS,COOK ISLANDS,FIJI,FRENCH POLYNESIA,GUAM,HEARD AND MCDONALD ISLANDS,INDONESIA,KIRIBATI</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>LAO PEOPLE&apos;S DEMOCRATIC REPUBLIC,MALAYSIA,MARSHALL ISLANDS,MICRONESIA,MYANMAR,NAURU,NEW CALEDONIA,NIUE,NORFOLK ISLAND,NORTHERN MARIANA ISLANDS,PALAU,PITCAIRN</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>BRITISH INDIAN OCEAN TERRITORY,SAMOA,SOLOMON ISLANDS,THAILAND,TIMOR-LESTE,TOKELAU,TONGA,TUVALU,VANUATU,VIET NAM,WALLIS AND FUTUNA,WESTERN SAHARA,AUSTRALIA,NEW ZEALAND,PAPUA NEW GUINEA,JAPAN</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager Convergys (Manila - Asia)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Global Mktg KL LDR Approval</label>
+        <name>Global_Mktg_KL_LDR_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_LDR_SellByTel_Korea</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager SellByTel (Korea)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager Convergys (Manila - Asia)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>&quot;KOREA, DEMOCRATIC PEOPLE&apos;S REP&quot;,&quot;KOREA, REPUBLIC OF&quot;</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Global Mktg Korea LDR Approval</label>
+        <name>Global_Mktg_Korea_LDR_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_LDR_Convergys_India</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>BANGLADESH,BHUTAN,INDIA,MALDIVES,NEPAL,SRI LANKA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager (AP)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager Convergys (Manila - Asia)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>Global Mktg India LDR Approval</label>
+        <name>Global_Mktg_India_LDR_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>1 AND 2 AND (3 OR 4) AND 5</booleanFilter>
+        <criteriaItems>
+            <field>Lead.RecordType</field>
+            <operation>equals</operation>
+            <value>Prospect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Lead_Qualifier_Call_Center__c</field>
+            <operation>equals</operation>
+            <value>Convergys Manila - Global</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>Marketing Qualified</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Theater__c</field>
+            <operation>equals</operation>
+            <value>APJ,Greater China</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>NGCC_Approval_Submission_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Approval_Submission_Mktg_Qualified</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>NGCC_Approval_Submission_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Requalification_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>NGCC_Approval_Submission</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>NGCC Gbl Manilla Mktg Lead Approval</label>
+    <recallActions>
+        <action>
+            <name>NGCC_Approval_Submission_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

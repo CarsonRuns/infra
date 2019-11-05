@@ -1,0 +1,1 @@
+public class Oppty_OpptyWorkspace_BatchException extends Exception{}

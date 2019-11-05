@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Deployed --></label>
+        <name>Deployed__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Count --></label>
+        <name>Max_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Text --></label>
+        <name>Message_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message Type --></label>
+        <name>Template_Type__c</name>
+        <picklistValues>
+            <masterLabel>Html</masterLabel>
+            <translation><!-- Html --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text</masterLabel>
+            <translation><!-- Text --></translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Announcement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Announcements</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Announcement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Message to be displayed on the Announcement Page --></label>
+            <section>Message to be displayed on the Announcement Page</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

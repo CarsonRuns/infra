@@ -1,0 +1,46 @@
+<apex:page standardController="Contact" extensions="EloquaProspectProfiler_CTE" action="{!validateLicense}" >
+    <!-- start: added for March 2018 release, the variable to identify if UI is classic or lightning -->
+     <apex:variable var="classic" value="{! $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' }"/>
+    <!--end -->
+    <apex:outputText rendered="{!AND(!validLicense,Contact.Integrated_With_MCP__c)}">
+        You donot have permission to view Prospect Profiler.
+    </apex:outputText>
+    
+    <apex:iframe src="{!value}{!Contact.Email}" rendered="{!AND(validLicense,Contact.Integrated_With_MCP__c,classic)}"/> 
+    <!--<apex:iframe src="https://cloudsso-test.cisco.com/idp/startSSO.ping?PartnerSpId=https://login.eloqua.com/auth/saml2/idp2/276855747/376957929E2C4E1E9EB1937951B751D2&TargetResource=/NA%3FNA%3DNA%26ReturnURL%3D/apps/salesTools/profiler%3FemailAddress%3D{!Contact.Email}" rendered="{!AND(validLicense,Contact.Integrated_With_MCP__c)}"/> 
+-->
+     
+    <script language="javascript"> 
+    //added for March 2018 release, function to identify if UI is classic/lightning
+      function uiTheme() { 
+       		var uiTheme ;
+            uiTheme = "{! $User.UIThemeDisplayed }";
+    		if( uiTheme === 'Theme4d'){
+                return 'lightning';
+             }
+            else if( uiTheme === 'Theme2' || uiTheme === 'Theme3') {
+                return 'classic';
+            }
+		};
+    	//changed for March 2018 release, function to handle resize iframe for lightning UI
+       function resizeIframe() {            
+          var me = window.name;
+          var newHeight = document.body.offsetHeight;         
+          uiTheme = uiTheme();
+          if(uiTheme === 'classic'){
+          	if (me) {
+          		var iframes = parent.document.getElementsByName(me);
+            	if (iframes && iframes.length == 1) {
+                   	//if (height <= 300) 
+                   	iframes[0].style.height = newHeight + "px";                            
+             	}
+          	} 
+          }
+          else if(uiTheme === 'lightning'){
+              	
+           	window.parent.postMessage({ event: 'resize', height: newHeight , element: me}, "*");
+          }
+      }
+      resizeIframe(); 
+    </script>
+</apex:page>

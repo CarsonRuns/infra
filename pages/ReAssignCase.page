@@ -1,0 +1,23 @@
+<apex:page tabStyle="Case" title="Change Case Owner" StandardController="Case" Extensions="ReAssignCase_CTE">
+    <apex:form >
+        <apex:pageBlock Title="Change Case Owner">
+            <apex:pageMessages />
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!save}" value="Save" />
+                <apex:commandButton action="{!cancel}" value="Cancel" />
+            </apex:pageBlockButtons> 
+            <apex:pageBlockSection title="Select New Owner" columns="2" collapsible="false"> 
+                <apex:outputField value="{!Case.CaseNumber}"/>  
+                <apex:outputField value="{!Case.Subject}"/> 
+                <apex:outputField value="{!Case.Preferred_VSE__c}"/>
+                <apex:pageBlockSectionItem id="ownerBlock">
+                    <apex:outputLabel value="New Case Owner" for="caseOwner"/>      
+                    <apex:inputField id="caseOwner" value="{!Case.OwnerId}"/> 
+                </apex:pageBlockSectionItem>  
+               <apex:inputField id="caseTeam" value="{!Case.Team__c}" required="true" rendered="{!isTSNCase}"/>  
+               <br></br>
+               <apex:inputField id="tier2reason" value="{!Case.Transfer_Tier_II_Reason__c}" rendered="{!isTSNCase}"/>
+            </apex:pageBlockSection> 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

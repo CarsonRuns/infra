@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>emear-pepe-contentadmin@cisco.com</email>
+    <name>PLED Admin EMEAR Queue</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>PDP_PLED_Admin_EMEAR</publicGroup>
+        </publicGroups>
+        <users>
+            <user>ankpande@cisco.com</user>
+            <user>ckampour@cisco.com</user>
+            <user>hpolakov@cisco.com</user>
+            <user>jgomez2@cisco.com</user>
+            <user>jybhatta@cisco.com</user>
+            <user>kojacobs@cisco.com</user>
+            <user>psileno@cisco.com</user>
+            <user>rajvasin@cisco.com</user>
+            <user>rmonteir@cisco.com</user>
+            <user>sancmeht@cisco.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PEPE_Training_Event__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>PEPE_Training_Request__c</sobjectType>
+    </queueSobject>
+</Queue>

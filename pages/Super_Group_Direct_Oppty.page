@@ -1,0 +1,75 @@
+<apex:page showHeader="false" sidebar="false" StandardController="Super_Group__c" extensions="Super_Group_Direct_Oppty_CTE">
+<apex:pageblock id="thePageBlock" title="Opportunities">
+        <apex:form >  
+             <apex:pageMessages />
+             <table cellspacing = "0" cellpadding = "0" width = "100%">
+                <tr>
+                    <td align = "right"> 
+                        <apex:commandLink target="_top" action="{!exportDirectOpptyLink}" value="[ Excel Export ]" oncomplete="CloseAndRefresh();" title="Export Data is limited to 15 MB"/>
+                    </td>
+                </tr>
+            </table>
+                   <apex:pageBlockTable value="{!OpptyRecords}" var="oppty" id="table">
+                              <apex:column headerValue="Opportunity Name">
+                                     <apex:outputLink value="/{!oppty.Id}" target="_top">{!oppty.Name}</apex:outputLink>
+                               </apex:column>   
+                               <apex:column value="{!oppty.Account.Name}" headerValue="Account Name">
+                                 <apex:facet name="header">   
+                                   <apex:commandLink action="{!OrderData}" value="Account Name {!IF(sortOrderNew == '','▼',
+                                                                           IF(sortColumnNameNew == 'Account.Name',IF(sortOrderNew == 'DESC','▲','▼'),''))}">
+                                                                           
+                                       <apex:param assignTo="{!sortOrderNew}" value="DESC"/>
+                                       <apex:param assignTo="{!sortColumnNameNew}" value="Account.Name"/>
+                                       
+                                   </apex:commandLink>
+                                 </apex:facet>
+                              </apex:column>
+                              <apex:column value="{!oppty.Owner.Alias}" headerValue="Opportunity Owner">
+                                 <apex:facet name="header">   
+                                   <apex:commandLink action="{!OrderData}" value="Opportunity Owner {!IF(sortColumnNameNew == 'Owner.Alias',
+                                                                           IF(sortOrderNew == 'DESC','▲','▼'),'')}">
+                                                                           
+                                       <apex:param assignTo="{!sortOrderNew}" value="ASC"/>
+                                       <apex:param assignTo="{!sortColumnNameNew}" value="Owner.Alias"/>
+                                       
+                                   </apex:commandLink>
+                                 </apex:facet>
+                              </apex:column> 
+                              <apex:column value="{!oppty.Opportunity_Status__c}" headerValue="Opportunity Status"/> 
+                              <apex:column value="{!oppty.CloseDate}" headerValue="Expected Book Date"/>    
+                              <apex:column value="{!oppty.StageName}" headerValue="Stage"/> 
+                              <apex:column value="{!oppty.Expected_Product__c}" headerValue="Expected Product ($'000)"/>
+                              <apex:column value="{!oppty.Expected_Service__c}" headerValue="Expected Service ($'000)"/>      
+                   </apex:pageBlockTable>
+
+            <apex:pageBlockSection >
+                    <apex:pageBlockSectionItem >
+                             <apex:outputPanel >
+                                    <apex:commandLink action="{!OPPTYCON.previous}" rendered="{!OPPTYCON.hasprevious}">Previous&nbsp;|</apex:commandlink>
+                                    <apex:commandLink action="{!OPPTYCON.next}" rendered="{!OPPTYCON.hasnext}" > &nbsp;Next</apex:commandlink>
+                              </apex:outputPanel>
+                     </apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >
+                             <apex:outputPanel style="float:right;" rendered="{!IF(OPPTYCON == null,false,true)}">
+                                       <apex:outputText value="{!OPPTYCON.pageNumber}/{!totalpages}" rendered="{!IF(totalpages == 0,false,true)}">Pages : </apex:outputText>
+                              </apex:outputPanel>
+                   </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+          </apex:form>
+</apex:pageblock> 
+<script language = "javascript">
+function resizeIframe() {
+    var me = window.name;
+    if (me) {
+      var iframes = parent.document.getElementsByName(me);
+      if (iframes && iframes.length == 1) {
+        height = document.body.offsetHeight;
+        //if (height <= 300) 
+            iframes[0].style.height = height + "px";
+        
+      }
+    }
+  }
+ resizeIframe(); 
+</script>
+</apex:page>

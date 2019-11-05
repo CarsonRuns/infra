@@ -1,0 +1,103 @@
+<apex:component controller="SCP_Communities_PSRBulk_CT" allowDML="true">
+
+    <apex:attribute name="pageCon" type="SCP_Communities_PageControllerBase" description=" Reference to parent controller " assignTo="{!pageController}" required="true"/>
+    <apex:attribute name="componentKey" type="String" description=" Unique Key to current Component " assignTo="{!key}" required="true" />
+    <apex:attribute name="isLeadComp" type="Boolean" description="Boolean field used to display Disti block" assignTo="{!isLead}" />
+    <style>
+        .bold {
+            font-weight: bold;
+            color: #525252;
+            font-family: Sans-serif;
+            
+        }
+    </style>
+    <apex:pageblock id="psrblk">
+        <apex:outputpanel styleclass="ptreglinks">
+            <apex:outputlabel >{!$Label.PRM_Partner_Register_Link1}&nbsp;&nbsp;</apex:outputlabel>
+            <apex:outputlink value="{!$Setup.CCW_Urls__c.PSR_PSS_Link__c}" target="_blank" >{!$Label.PRM_Partner_Register_Link2}</apex:outputlink><br/>
+            <apex:outputlabel ><span style="color:red">*</span>{!$Label.PRM_Partner_Register_Link3}</apex:outputlabel>
+        </apex:outputpanel>
+        <apex:pageBlockSection id="APSR_sec" title="PSR Selection"
+                columns="3">                
+                <apex:pageBlockSectionItem id="pgsec2" rendered="{!isPA}">
+                    <apex:outputPanel id="psrop" layout="block">
+                        <apex:panelGrid id="pgd2" columns="4">
+                            <apex:outputLabel styleclass="labelCol" id="psr1_label"
+                                value="{!$ObjectType.Lead.fields.PSR_1__c.label}:" />
+                            <apex:inputtext id="psr1_name" value="{!psr1_name}" />
+                            <apex:inputhidden id="psr1_id" value="{!psr1_Id}" />
+                            <apex:outputLink id="psr1" value="#"
+                                onclick="openPopUpWindow('psr1');return false;" target="_blank">
+                                <img src="/s.gif" alt="PSR 1 Lookup (New Window)"
+                                    class="lookupIcon" onblur="this.className = 'lookupIcon';"
+                                    onfocus="this.className = 'lookupIconOn';"
+                                    onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';"
+                                    onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';"
+                                    title="PSR 1 Lookup (New Window)" />
+                            </apex:outputLink>
+
+                            <apex:outputLabel styleclass="labelCol" id="psr2_label"
+                                value="{!$ObjectType.Lead.fields.PSR_2__c.label}:" />
+                            <apex:inputtext id="psr2_name" value="{!psr2_name}" />
+                            <apex:inputhidden id="psr2_id" value="{!psr2_Id}" />
+                            <apex:outputLink id="psr2" value="#"
+                                onclick="openPopUpWindow('psr2');return false;" target="_blank">
+                                <img src="/s.gif" alt="PSR 2 Lookup (New Window)"
+                                    class="lookupIcon" onblur="this.className = 'lookupIcon';"
+                                    onfocus="this.className = 'lookupIconOn';"
+                                    onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';"
+                                    onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';"
+                                    title="PSR 2 Lookup (New Window)" />
+                            </apex:outputLink>
+
+                            <apex:outputLabel styleclass="labelCol" id="psr3_label"
+                                value="{!$ObjectType.Lead.fields.PSR_3__c.label}:" />
+                            <apex:inputtext id="psr3_name" value="{!psr3_name}" />
+                            <apex:inputhidden id="psr3_id" value="{!psr3_Id}" />
+                            <apex:outputLink id="psr3" value="#"
+                                onclick="openPopUpWindow('psr3');return false;" target="_blank">
+                                <img src="/s.gif" alt="PSR 3 Lookup (New Window)"
+                                    class="lookupIcon" onblur="this.className = 'lookupIcon';"
+                                    onfocus="this.className = 'lookupIconOn';"
+                                    onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';"
+                                    onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';"
+                                    title="PSR 3 Lookup (New Window)" />
+                            </apex:outputLink>
+                        </apex:panelGrid>
+                        <apex:commandButton value="{!$Label.PRM_Assign_to_PSR}"
+                            status="searching"
+                        action="{!assignPSRs}" id="AssignPSRBtn" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:outputpanel id="distiblock" rendered="{!isLead}">
+            <apex:pageBlockSection title="{!$Label.PRM_DistributorSection}">            
+                <apex:panelGrid columns="2">
+                    <apex:outputlabel styleclass="x-form-item-label bold" value="{!$ObjectType.Lead.fields.Partner_Lead_Status__c.label} : " />
+                      <apex:selectList value="{!leadStatus}"
+                                         multiselect="false" styleclass="uiMultiSelectMain2" size="1">
+                            <apex:actionSupport event="onchange" action="{!enableMassEdit}" reRender="pgbk2,pgbk3" oncomplete="initlizeUserTable();bindEvents(); return false;" />
+                            <apex:selectOptions value="{!leadStatusList}"/>
+                        </apex:selectList>
+                        
+                    <apex:commandbutton value="{!$Label.PRM_Save}" action="{!updateStatus}" rendered="{!NOT(disableUpdate)}"/>
+                    <apex:actionStatus id="searching2"
+                               onstart="$('#loading').show()"
+                               onstop="$('#loading').hide()" />
+                </apex:panelGrid>
+                <apex:panelGrid id="pgd2" columns="2" rendered="{!AND(isDisti,isPA)}">
+                             <apex:outputLabel styleclass="labelCol" id="psr4_label"
+                                        value="{!$Label.PRM_Partner_Name}:" />
+                            <apex:selectList id="ldPartnerName1" value="{!selectedPartner}" size="1" multiselect="false" styleclass="uiMultiSelectMain2">                          
+                                <apex:selectOptions value="{!partnerNameList}" />
+                            </apex:selectList>
+                            <apex:commandButton value="{!$Label.PRM_AssignPartner}" action="{!AssignPartnerName}" />
+                                    
+                          </apex:panelGrid>
+            </apex:pageBlockSection>            
+            </apex:outputpanel>
+            <apex:pageBlockButtons location="bottom" >
+                <apex:commandButton value="{!$Label.PRM_Cancel}" action="{!cancelMassUpdate}"/>
+            </apex:pageBlockButtons>
+    </apex:pageblock>
+</apex:component>

@@ -1,0 +1,37 @@
+<apex:page id="page1" standardController="Lead_Prioritization_Model__c" extensions="RankingVForce" standardStylesheets="true" >
+    
+    <apex:form id="form1">
+        
+        <apex:pageBlock id="pb"  >
+            <apex:pageBlockSection id="sec1" columns="1"  collapsible="true" showHeader="true"  title="Rankings">
+                <script>
+          
+                if ({!pageNumber} == 1)
+                twistSection(document.getElementById('page1:form1:pb:sec1').childNodes[0].childNodes[0]);
+             		
+          
+                </script>
+                <apex:pageBlockTable value="{!ranks}" var="r" width="50" >
+                    <apex:column headerValue="Ranking">
+                        <apex:outputLink target="_parent" value="/{!r.id}/e?retURL=%2F{!r.id}">Edit</apex:outputLink>
+                    </apex:column> 
+                    <apex:column title="Region: " value="{!r.Theatre__c}" />  
+                    <apex:column value="{!r.Attribute_Name__c}" />
+                    <apex:column value="{!r.Attribute_Value__c}" />  
+                    <apex:column value="{!r.Attribute_Ranking__c}" />
+                </apex:pageBlockTable>
+                <apex:panelGrid columns="7">
+                    <apex:commandButton status="fetchStatus" reRender="pb" value="|<" action="{!first}" disabled="{!!hasPrevious}" title="First Page"/>
+                    <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!previous}" disabled="{!!hasPrevious}" title="Previous Page"/>
+                    <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!next}" disabled="{!!hasNext}" title="Next Page"/>
+                    <apex:commandButton status="fetchStatus" reRender="pb" value=">|" action="{!last}" disabled="{!!hasNext}" title="Last Page"/>
+                    <apex:outputText >{!(pageNumber * size)+1-size}-{!IF((pageNumber * size)>noOfRecords, noOfRecords,(pageNumber * size))} of {!noOfRecords}</apex:outputText>
+                    <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                        <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                    </apex:outputPanel>
+                </apex:panelGrid>
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

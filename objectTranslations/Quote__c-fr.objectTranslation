@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Nom du compte</label>
+        <name>Account_Name__c</name>
+        <relationshipLabel>Devis</relationshipLabel>
+    </fields>
+    <fields>
+        <label>État CBN</label>
+        <name>CBN_Status__c</name>
+    </fields>
+    <fields>
+        <label>État de l'entente CCW</label>
+        <name>CCW_Deal_Status_MQ__c</name>
+    </fields>
+    <fields>
+        <label>État de l'entente CCW_ancienne</label>
+        <name>CCW_Deal_Status__c</name>
+    </fields>
+    <fields>
+        <label>ID du devis</label>
+        <name>DM_Quote_ID__c</name>
+    </fields>
+    <fields>
+        <label>ID d'entente</label>
+        <name>Deal_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Source --></label>
+        <name>Deal_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Type --></label>
+        <name>Deal_Type__c</name>
+    </fields>
+    <fields>
+        <label>Date d'expiration</label>
+        <name>Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label>Inscrit par</label>
+        <name>Initiated_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integrate Status --></label>
+        <name>Integrate_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inprogress</masterLabel>
+            <translation><!-- Inprogress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passed</masterLabel>
+            <translation><!-- Passed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Integrated Quote --></label>
+        <name>Integrated_Quote__c</name>
+    </fields>
+    <fields>
+        <label>Collaboration sur devis ?</label>
+        <name>Is_Collaborated__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation>Non</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>Oui</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Est un devis factice</label>
+        <name>Is_Dummy_Quote__c</name>
+    </fields>
+    <fields>
+        <label>Est finalisé</label>
+        <name>Is_Finalized__c</name>
+    </fields>
+    <fields>
+        <label>État non standard</label>
+        <name>Non_Standard_Status__c</name>
+    </fields>
+    <fields>
+        <label>ID de l'ancienne entente</label>
+        <name>Old_Deal_ID__c</name>
+    </fields>
+    <fields>
+        <label>ID de l'ancien compte de partenaire</label>
+        <name>Old_Partner_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label>Offres Type Deal</label>
+        <name>Opportunity_Deal_Type__c</name>
+    </fields>
+    <fields>
+        <label>Nom de l'occasion</label>
+        <name>Opportunity_Name__c</name>
+        <relationshipLabel>Devis</relationshipLabel>
+    </fields>
+    <fields>
+        <label>ID du propriétaire de l'occasion</label>
+        <name>Opportunity_Owner1__c</name>
+    </fields>
+    <fields>
+        <label>État de l'occasion</label>
+        <name>Opportunity_Status__c</name>
+    </fields>
+    <fields>
+        <label>Partenaire</label>
+        <name>PartnerAcctId__c</name>
+        <relationshipLabel>Devis (partenaire)</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Partenaire</label>
+        <name>Partner_del__c</name>
+    </fields>
+    <fields>
+        <help>La liste de tous les indicateurs appliqués à ce devis.
+'Archivé' indique que le devis a été archivé dans CCW et n'est disponible qu'à l'ouverture d'un dossier.</help>
+        <label>Indicateurs de devis</label>
+        <name>Quote_Flags__c</name>
+        <picklistValues>
+            <masterLabel>Archived</masterLabel>
+            <translation>Archivé</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Dernière modification du devis par</label>
+        <name>Quote_Last_Modified_By__c</name>
+    </fields>
+    <fields>
+        <label>Dernière mise à jour du devis le</label>
+        <name>Quote_Last_Updated__c</name>
+    </fields>
+    <fields>
+        <label>Montant de la liste de produits du devis</label>
+        <name>Quote_Product_List_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Montant net des produits du devis</label>
+        <name>Quote_Product_Net_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Montant de la liste de services du devis</label>
+        <name>Quote_Service_List_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Montant net des services du devis</label>
+        <name>Quote_Service_Net_Amount__c</name>
+    </fields>
+    <fields>
+        <help>Si trois devis sont associés à une occasion, seul un des trois peut être « finalisé ». Les autres devis demeureront « non finalisés ».</help>
+        <label>État du devis</label>
+        <name>Quote_Status__c</name>
+        <picklistValues>
+            <masterLabel>Finalized</masterLabel>
+            <translation>Finalisé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unfinalized</masterLabel>
+            <translation>Non finalisé</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Résumé du devis</label>
+        <name>Quote_Summary_Link__c</name>
+    </fields>
+    <fields>
+        <label>Sommaire du devis</label>
+        <name>Quote_Summary__c</name>
+        <relationshipLabel>Devis</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Affichage des comptes</label>
+        <name>Sales_Account_View__c</name>
+    </fields>
+    <fields>
+        <label>Territoire</label>
+        <name>Territory__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Devis</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Devis</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Devis</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Partner Quote Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informations</label>
+            <section>Information</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label>Consommation</label>
+        <name>Deal_Consumption</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Integrate_Quote --></label>
+        <name>Integrate_Quote</name>
+    </webLinks>
+    <webLinks>
+        <label>Aperçu du devis</label>
+        <name>Quote_Overview</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Cisco_Commerce_Quotes --></label>
+        <name>View_Cisco_Commerce_Quotes</name>
+    </webLinks>
+</CustomObjectTranslation>

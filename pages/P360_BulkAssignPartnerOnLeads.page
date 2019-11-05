@@ -1,0 +1,60 @@
+<!-- Page for Bulk Assigning Channel Partner for Partner Leads from Lead list views -->
+<apex:page standardController="Lead" recordSetVar="leads" extensions="P360_BulkAssignPartnerOnLeads_CTE">
+<apex:includeScript value="{!$Resource.jquery22}" />
+<script>
+    /*May 2018 Lightning Release change: start*/
+    //Check if UI is Lightning Experience
+    function inLightningExperience() {
+        return ['Theme4d', 'Theme4u'].indexOf('{!$User.UIThemeDisplayed}') > -1; 
+    }
+    /*May 2018 Lightning Release change: end*/
+   <!-- On page load, if no Lead is selected, return the user back to previous screen -->
+    // SCAVA FIX
+    if({!JSENCODE(leadNotSelected1)}){       <!--  updated By Naresh for 10/06/08 Lighnting Release to fix SCAVA issue  -->
+        alert("{!$Label.Lead_Bulk_No_Lead_Selected}");
+        /*May 2018 Lightning Release change: start*/
+        
+        var inLightningExperience = inLightningExperience();
+        if (inLightningExperience){
+             sforce.one.back(true);
+        }
+        else{
+           
+           // SCAVA FIX
+            window.parent.location.href ="{!LEFT($CurrentPage.URL,FIND('/',$CurrentPage.URL,9)-1)}{!JSENCODE(returnURL)}";   
+        }
+        /*May 2018 Lightning Release change: end*/
+    }
+</script>
+<apex:form id="bulkassignform">
+    <!-- render only when messages are not displayed -->  
+    <apex:pageMessages id="messages" escape="false"/>   
+    <apex:outputpanel rendered="{!ValidateUser}">  
+         <img src="/img/msg_icons/info32.png"/>
+         <apex:outputtext value="This function is available to Sales Account Manager Only."/>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!!ValidateUser}">
+        <apex:sectionHeader title="Leads" 
+            subtitle="Partner Assignment"/>      
+        <apex:outputpanel >
+              <apex:outputText >Please select a Channel Partner to assign to the selected leads. This is intended to be used with Partner Leads only.</apex:outputText>
+              <br/>
+              <apex:inputField id="selectedPartner" label="Channel Partner" value="{!lead.Channel_Partner__c}" required="true"/>       
+              <br/><br/>
+              <apex:commandButton action="{!saveLeads}" value="Update Leads" rerender="bulkassignform"  onClick="disablebutton();" id="searchLeads"/>    
+        </apex:outputpanel>    
+    </apex:outputpanel>
+    <apex:commandButton action="{!cancel}" value="Back" />  
+  </apex:form>
+  <script>
+  var $j = jQuery.noConflict();
+  function disablebutton(){   
+      if($j('[id$=selectedPartner]').val() != "" && $j('[id$=selectedPartner]').val() != 'undefined'){              
+          $j('[id$=searchLeads]').attr('disabled',true);
+          $j('[id$=searchLeads]').hide();     
+          alert("{!$Label.Lead_Bulk_Process_Message}");
+      }
+  }
+  </script>
+
+</apex:page>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Clause d'emplac d'archive suppl</label>
+        <name>Additional_Archive_Where_Clause__c</name>
+    </fields>
+    <fields>
+        <label>Clause d'emplacement de clone suppl</label>
+        <name>Additional_Clone_Where_Clause__c</name>
+    </fields>
+    <fields>
+        <label>Clause d'emplacement SOQL suppl</label>
+        <name>Additional_SOQL_Where_Clause__c</name>
+    </fields>
+    <fields>
+        <label>Copier activités ouvertes dans l'archive</label>
+        <name>Copy_open_Activities_on_Archive__c</name>
+    </fields>
+    <fields>
+        <label>Copier activités ouvertes dans le clone</label>
+        <name>Copy_open_Activities_on_Clone__c</name>
+    </fields>
+    <fields>
+        <label>Champs de clone exclus</label>
+        <name>Excluded_Clone_Fields__c</name>
+    </fields>
+    <fields>
+        <label>Clé étr util pour lien vers objet parent</label>
+        <name>FK_to_Parent_Object__c</name>
+    </fields>
+    <fields>
+        <label>Champ identifiant</label>
+        <name>Identifier_Field__c</name>
+    </fields>
+    <fields>
+        <label>Champ fusion util pr lien vers obj par</label>
+        <name>Merge_Field_To_Parent_Object__c</name>
+        <picklistValues>
+            <masterLabel>{!Account_Id}</masterLabel>
+            <translation><!-- {!Account_Id} --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>{!Account_Name}</masterLabel>
+            <translation><!-- {!Account_Name} --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>{!Case_ID}</masterLabel>
+            <translation><!-- {!Case_ID} --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>{!Case_Number}</masterLabel>
+            <translation><!-- {!Case_Number} --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>{!Case_OwnerFull_Name}</masterLabel>
+            <translation><!-- {!Case_OwnerFull_Name} --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>{!Case_OwnerId}</masterLabel>
+            <translation><!-- {!Case_OwnerId} --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>{!Case_Plan_Year}</masterLabel>
+            <translation><!-- {!Case_Plan_Year} --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>{!Case_Record_Type_ID}</masterLabel>
+            <translation><!-- {!Case_Record_Type_ID} --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>{!Case_Record_Type_Name}</masterLabel>
+            <translation><!-- {!Case_Record_Type_Name} --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>{!Case_Type}</masterLabel>
+            <translation><!-- {!Case_Type} --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>URL du nouvel enregistrement</label>
+        <name>New_Record_URL__c</name>
+    </fields>
+    <fields>
+        <label>Nom de l'objet</label>
+        <name>ObjectName__c</name>
+    </fields>
+    <fields>
+        <label>Libellé de l'objet</label>
+        <name>Object_Label__c</name>
+    </fields>
+    <fields>
+        <label>Ordre</label>
+        <name>Order__c</name>
+    </fields>
+    <fields>
+        <label>1 maximum ?</label>
+        <name>atMostOne__c</name>
+    </fields>
+    <fields>
+        <label>Nombre d'indentations (0,1,2)</label>
+        <name>indent__c</name>
+    </fields>
+    <fields>
+        <label>est archivable</label>
+        <name>isArchivable__c</name>
+    </fields>
+    <fields>
+        <label>est clonable</label>
+        <name>isCloneable__c</name>
+    </fields>
+    <fields>
+        <label>Nom de l'objet parent</label>
+        <name>parent_object_name__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- zzCSAPEN Site Map UI Configuration Mgmt --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- zzCSAPEN Site Map UI Configuration Mgmt --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Site Map Configuration New Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Site Map Configuration New Layout - REL_7.0</layout>
+        <sections>
+            <label><!-- Account Plan Site Map Controllers --></label>
+            <section>Account Plan Site Map Controllers</section>
+        </sections>
+        <sections>
+            <label><!-- Copy Account Plan Controllers --></label>
+            <section>Copy Account Plan Controllers</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

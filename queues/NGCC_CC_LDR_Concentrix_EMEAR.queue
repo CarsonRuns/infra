@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>NGCC-CC LDR Concentrix(EMEAR)</name>
+    <queueMembers>
+        <roles>
+            <role>NGCC_SDR_Central_Emerging_Europe</role>
+            <role>NGCC_SDR_Concentrix_Hungary</role>
+            <role>NGCC_SDR_Concentrix_Northern_Ireland3</role>
+            <role>NGCC_SDR_Concentrix_Northern_Ireland</role>
+            <role>NGCC_Senior_Agent_Concentrix_Northern_Ireland3</role>
+            <role>NGCC_Senior_Agent_Concentrix_Northern_Ireland</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

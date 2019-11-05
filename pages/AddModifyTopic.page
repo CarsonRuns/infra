@@ -1,0 +1,39 @@
+<!--
+    Story - US6281
+    Release - November 2014
+    Author - Bramha, Accenture
+    Functionality -  Presenter -- Profile.
+-->
+<apex:page standardcontroller="Presenter__c" showHeader="false" sidebar="false"  extensions="PresenterController" action="{!topics}" >
+<apex:form >
+    <apex:pageBlock >
+        <apex:pagemessages id="errmsg"/> 
+        <apex:outputPanel id="main">
+            <table>
+                <tr>
+                    <apex:repeat value="{!headers}" var="h">
+                        <td><b>{!h}</b></td>
+                    </apex:repeat>
+                </tr>                
+                <apex:repeat value="{!wrTopic}" var="tp">
+                    <tr>
+                      <td><apex:inputCheckbox value="{!tp.isCheck}"/></td>  
+                      <td>{!tp.tpName}</td>
+                    </tr>
+                </apex:repeat>
+            </table>    
+        </apex:outputPanel>
+        <apex:pageBlockButtons >    
+            <apex:commandButton action="{!updateTopic}" oncomplete="closeWindo();" value="Update Topic" id="theButton"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock> 
+</apex:form>
+<script>
+    function closeWindo(){
+        if (window.opener != null && !window.opener.closed) {
+            window.opener.location.reload();
+        }      
+        window.close();
+    } 
+</script>
+</apex:page>

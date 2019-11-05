@@ -1,0 +1,361 @@
+<!--
+so_dcpattachmentcomponent Contains the components which are using to implement DCP Document Attachment functionallity,
+All the Javascript Fuctions are defined here to implement DCP functionallity.
+-->
+<apex:component controller="SO_DCPAttachmentHandler" allowDML="TRUE">
+    <!-- Styling  -->
+    <style>
+        .loadderbg {
+        background: rgba(0, 0, 0, 0.5); 
+        width:100%;
+        height: 400px;
+        left:0%;
+        position: absolute;
+        top:0%;
+        z-index:999999;
+        
+        }
+        #bodyCell{ position: relative;}
+        
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+    </style>
+    
+    <apex:form id="frm1">
+        <script src="../../soap/ajax/40.0/connection.js" type="text/javascript"></script>
+        <script src="//code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
+        <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script src="/soap/ajax/40.0/connection.js" type="text/javascript"></script>
+        <script src="/soap/ajax/40.0/apex.js" type="text/javascript"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+        <script type="text/javascript">
+        
+        var __sfdcSessionId = '{!GETSESSIONID()}';
+        var strTitle;
+        sforce.connection.sessionId='{!GETSESSIONID()}';
+        window.onload = function(){
+             getDCPAttachments();
+             
+            
+        }
+        </script>
+        
+        <script type="text/javascript">
+        // Method to Parse the JSON response into an object and Authenticate user
+        function getDCPAttachments()
+        {
+            //alert("method called!!");
+            
+            console.log('Call DCP  1 Reached');
+            //     console.log('filterKeyword: {!filterKeyword}');
+            // Create an AJAX HTTP request object
+             
+            xhttp = new XMLHttpRequest(); 
+            xhttp.onreadystatechange = function() {  // Define a handler, which fires when the request completes
+                if (xhttp.readyState == 4) { // If the request state = 4 (completed)...
+                    if (xhttp.status == 200) { // And the status = 200 (OK), then...
+                    // Parse the JSON response into an object
+                        var authInfo = JSON.parse(xhttp.responseText); 
+                        actFun(xhttp.responseText);
+                        
+                    } else 
+                    {
+                        //console.log('ResponseText: '+xhttp.responseText);
+                        //       console.log('Response: '+xhttp.response);
+                    }
+                }
+            }
+                             
+            console.log('CSRF Token---'+'{!csrf_Token}');
+            var body ='{"recordsPerPage":500,"pageNumber":1,"source":"HOME","presetConfiguration":0,"activityId":null,"advanceFilteringRequest":[{"columnName":"contentCategory","filterValue":"{!filterKeyword}","operatorId":16},{"columnName":"status","filterValue":"Approval Not Applicable,Pre-Draft,Draft,Internal Approval Pending,Internal Approved,Internal Rejected,Customer Acceptance Pending,Customer Accepted,Customer Rejected","operatorId":8},{"columnName":"actionTaken","filterValue":"Uploaded/Checked In","operatorId":8},{"columnName":"dealId","filterValue":"{!dealID}","operatorId":8}],"advanceSortDetails":[{"columnName":"lastModifiedDate","order":"desc"}],"projectIdList":""}';
+            //     console.log('Body 1' + body);
+            console.log('Making Rest Call' );
+           // xhttp.open('POST', '{!fileListURL}', true);        
+           // Sending the content as URL-encoded form data 
+           
+           // New changes for DCP - start
+            
+            xhttp.open('POST', '{!fileListURL}', true); 
+                 
+            xhttp.setRequestHeader('Authorization','Bearer '+ '{!DCPContentAuthToken}');                      
+         
+            
+            //New changes for DCP - end  
+            
+            xhttp.setRequestHeader('Content-Type', 'application/json');
+            // Sending the content as URL-encoded form data
+            xhttp.setRequestHeader('Csrf_token','LOCALTOKEN');
+            xhttp.setRequestHeader('UID','{!cecId}'); 
+            //xhttp.setRequestHeader('Csrf_token','{!csrf_Token}');
+            //  xhttp.setRequestHeader('Access-Control-Allow-Headers','OBSSOCookie');
+            //  xhttp.setRequestHeader('OBSSOCookie','QfRmDc2wyq2S%2BZXkeMuOy9%2Bvoc%2B09HKx%2Bz0s%2Bt');// Sending the content as URL-encoded form data
+            // pass along cookies
+            xhttp.withCredentials = true;             
+            // Execute the AJAX HTTP request
+            
+            xhttp.send(body); 
+            console.log('Request Sent ' );
+            
+            return false;
+        }
+        //download dcp document
+         function downloadAttachment(contentId){            
+       //     var frm = document.querySelector("[id$='frmDownload']");
+       //   frm.src = "{!downloadFilesURL}"+contentId;
+            var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+        if (this.readyState == 4){
+            if(this.status == 200){
+                var url = window.URL || window.webkitURL;
+                var disposition = xhr.getResponseHeader('Content-Disposition');
+                var filename = "";
+                if (disposition && disposition.indexOf('attachment') !== -1) {
+                    var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                    
+                    var matches = filenameRegex.exec(disposition);
+                    if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+                }
+                if(filename != "" && filename != "null") {
+                    if(navigator.msSaveBlob) {
+                        navigator.msSaveBlob(this.response, filename);
+                    } else {
+                        var a = document.createElement("a");
+                        var objectUrl = url.createObjectURL(this.response);
+                        a.href = objectUrl;
+                        a.download = filename;
+                        a.click();
+                        
+                        /*var elem = document.createElement('a');
+                        elem.download = filename;
+                        var objectUrl = url.createObjectURL(this.response);
+                        elem.href = objectUrl;
+                        document.body.appendChild(elem);
+                        elem.click();
+                        url.revokeObjectURL(objectUrl);
+                        document.body.removeChild(elem);*/
+                    }   
+                } else {    
+                    
+                }
+            } else if(this.status != 200) {
+              afBanner("Failed","The document download failed : "+disposition);
+            }   
+        } else {
+        
+        }   
+    }
+    xhr.open('GET', "{!downloadFilesURL}"+contentId);
+    xhr.withCredentials = true;
+    xhr.setRequestHeader('Authorization','Bearer '+ '{!DCPUploadAuthToken}');
+     xhr.setRequestHeader('UID','{!cecId}');
+    xhr.responseType = 'blob';
+    xhr.send();
+            return false;
+        }
+        
+        // Upload Document file to DCP
+        function uploadDCPAttachments(){
+            console.log('Uploading');
+           
+            console.log('customerName--'+'{!customerName}');
+            console.log('PartyId---'+'{!partyID}');
+            
+            if(validateInput()){
+                $('.apexp').append("<div class=loadderbg></div>");
+                var file_data = $("#fileToUpload").prop("files")[0];  
+                var strTitle = $('input[id*="txtTitle"]').val();
+                //console.log("{\n  \"keywords\" : \"{!filterKeyword}\",\n  \"organizationSecurity\" : 2,  \n  \"customerContentList\" : [ ],  \n  \"dragAndDropUpload\" : \"Y\", \n  \"category\" : \"4\",\n  \"source\" : \"HOME\",\n  \"title\" : \""+strTitle+"\"}");
+                var form_data = new FormData();                
+                form_data.append("file", file_data);         
+                /* Actual one*/
+                //form_data.append("request", "{\n  \"keywords\" : \"{!filterKeyword}\",\n  \"organizationSecurity\" : 2,  \n  \"customerContentList\" : [ ],  \n  \"dragAndDropUpload\" : \"Y\", \n  \"category\" : \"4\",\n  \"source\" : \"HOME\",\n  \"title\" : \""+strTitle+"\"}");
+                /* For testing*/
+                // form_data.append("request", "{\n  \"keywords\" : \"{!filterKeyword}\", \n  \"category\" : \"4\",\n  \"source\" : \"HOME\",\n  \"title\" : \""+strTitle+"\"}");
+                console.log("test");
+                console.log("{\n  \"keywords\" : \"{!filterKeyword}\",\n  \"organizationSecurity\" : 2,  \n  \"customerContentList\" : [{\n \"customerName\" : \"{!customerName}\",\n  \"partyId\" : \"{!partyID}\",\n  \"customerRelationship\" : \"E\",  \n  \"selectedFlag\" : \"Y\"\n} ],  \n  \"dragAndDropUpload\" : \"Y\",  \n  \"contentStatusId\" : 1, \n  \"category\" : 2, \n  \"dealId\" : \"{!dealID}\", \n  \"source\" : \"HOME\", \n  \"title\" : \""+strTitle+"\"}");
+                form_data.append("request", "{\n  \"keywords\" : \"{!filterKeyword}\",\n  \"organizationSecurity\" : 2,  \n  \"customerContentList\" : [{\n \"customerName\" : \"{!customerName}\",\n  \"partyId\" : \"{!partyID}\",\n  \"customerRelationship\" : \"E\",  \n  \"selectedFlag\" : \"Y\"\n} ],  \n  \"dragAndDropUpload\" : \"Y\",  \n  \"contentStatusId\" : 1, \n  \"category\" : 2, \n  \"dealId\" : \"{!dealID}\", \n  \"source\" : \"HOME\", \n  \"title\" : \""+strTitle+"\"}");
+                //form_data.append("request", "{\n  \"keywords\" : \"{!filterKeyword}\",\n  \"organizationSecurity\" : 2,  \n  \"customerContentList\" : [{\n \"customerName\" : \"{!customerName}\",\n  \"partyId\" : \"{!partyID}\",\n  \"customerRelationship\" : \"E\"\n} ],  \n  \"dragAndDropUpload\" : \"Y\",  \n  \"contentStatusId\" : 1, \n  \"category\" : 2,  \n  \"selectedFlag\" : \"Y\", \n  \"dealId\" : \"{!dealID}\", \n  \"source\" : \"HOME\", \n  \"title\" : \""+strTitle+"\"}");
+                $.ajax({
+                    async: true,
+                    crossDomain: true,
+                   headers: {
+                    'Authorization':'Bearer ' +'{!DCPUploadAuthToken}',
+                    'UID':'{!cecId}'
+                   },               
+                    method: "POST",
+                    url: "{!dcpUploadURL}",                 
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    contentType: false,
+                    processData: false,
+                    mimeType: "multipart/form-data",
+                    data: form_data,
+                    dataType: "json", 
+                    // Display Success Message
+                    success: function(data, textStatus, xhr) {
+                        //$("#status").html("Ajax Request Completed !");
+                        //alert("Success" + textStatus);
+                        var parseRes = JSON.parse(xhr.responseText);
+                        console.log('ResponseText: Parse--- '+parseRes.status);
+                        console.log('error respones---'+parseRes.errorResponse);
+                        $("#fileToUpload").val(null);  
+                        $('input[id*="txtTitle"]').val('');
+                        $('.loadderbg').remove();
+                        if(parseRes.status == 'SUCCESS'){
+                            getDCPAttachments();
+                            afBanner("Success","The document has been uploaded successfully!");
+                        }else {
+                            afBanner("Failed","The document upload failed : "+parseRes.errorResponse.errorDesc);
+                            
+                        }
+                        
+                    },
+                    // Display Error Message 
+                    error: function(response){
+                        $("#fileToUpload").val(null);  
+                        $('input[id*="txtTitle"]').val('');
+                        $('.loadderbg').remove();
+                        afBanner("Failed","The document uploading was failed as the session expired,Please login again and try.");}
+                });
+                
+            }
+            
+            return false;
+        }
+        // Funtion to validate file which is to be uploaded 
+        function validateInput(){
+            var file = $("#fileToUpload").prop("files")[0];
+            if (file) {
+                var fileSize = 0;
+                if (file.size > (12 * 1024 * 1024)) {
+                    afBanner("Failed","File too large, Can't upload a file which is greater than 12MB");
+                    return false;
+                }
+            }
+            else{
+                afBanner("Failed","Please select a file to upload!");
+                return false;
+            }
+            
+            return true;
+        }
+        // to get the latest version from DCP, Upload latest version Document file
+        function uploadVersion(contentId,edmContentId){
+            console.log('Content ID'+contentId+'edmContentId'+edmContentId);
+            if(validateInput()){
+                $('.apexp').append("<div class=loadderbg></div>");
+                var file_data = $("#fileToUpload").prop("files")[0];  
+                var strTitle = $('input[id*="txtTitle"]').val();
+                var form_data = new FormData(); 
+                console.log("{\n  \"contentId\" : \""+contentId+"\",\n  \"edmContentId\" : \""+edmContentId+"\",\n  \"version\" : \"0.1\",\n  \"contentStatusId\" : \"1\",\n  \"title\" : \""+strTitle+"\"}");
+                form_data.append("file", file_data);         
+                form_data.append("request", "{\n  \"contentId\" : \""+contentId+"\",\n  \"edmContentId\" : \""+edmContentId+"\",\n  \"version\" : \"0.1\",\n  \"contentStatusId\" : \"1\",\n  \"title\" : \""+strTitle+"\"}");
+                $.ajax({
+                    async: true,
+                    crossDomain: true,
+                    headers: {
+                    'Authorization':'Bearer' +'{!DCPUploadAuthToken}',
+                    'UID':'{!cecId}'
+                    },
+                    method: "POST",
+                    url: "{!dcpVersionURL}",
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    contentType: false,
+                    processData: false,
+                    mimeType: "multipart/form-data",
+                    data: form_data,
+                    dataType: "json", 
+                    success: function(data, textStatus, xhr) {
+                        
+                        var parseRes = JSON.parse(xhr.responseText);
+                        
+                        $("#fileToUpload").val(null);  
+                        $('input[id*="txtTitle"]').val('');
+                        $('.loadderbg').remove();
+                        if(parseRes.status == 'SUCCESS'){
+                            getDCPAttachments();
+                            afBanner("Success","The document has been uploaded successfully!");
+                        }else {
+                            afBanner("Failed","The document version upload failed : "+parseRes.errorResponse.errorDesc);
+                            
+                        }
+                        
+                    },
+                    error: function(response){
+                        //       console.log(response);
+                        $("#fileToUpload").val(null);  
+                        $('input[id*="txtTitle"]').val('');
+                        $('.loadderbg').remove();
+                        afBanner("Failed","The document uploading was failed as the session expired,Please login again and try.");}
+                });
+                
+            }
+            
+            return false;
+        }
+
+   </script>
+<!-- VF Page Components --->        
+        <apex:pageBlock id="pbAtmts">
+            <apex:pageMessages id="lblBanner"></apex:pageMessages>
+            <apex:pageBlockSection columns="1" collapsible="true" title="Upload Documents" rendered="{!NOT(hideSection)}">
+                <apex:outputLabel value="Select a File to Upload"></apex:outputLabel>                
+                <input type="file" name="fileToUpload" id="fileToUpload" />
+                <apex:outputLabel id="lblTitle" value="Notes"></apex:outputLabel>
+                <input type="Text" name="txtTitle" id="txtTitle"/>                
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons rendered="{!NOT(hideSection)}">
+                <apex:commandButton value="Refresh"  onclick="getDCPAttachments();" reRender="pbAtmts,lblBanner" />
+                     
+                <apex:commandButton value="Upload" onclick="uploadDCPAttachments();return false;" />
+                    
+                <!--<button type="button" onClick="getDCPAttachments();return false;">Refresh</button>
+<button type="button" onClick="uploadDCPAttachments();return false;">Upload</button>-->
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1" id="pbsAtmts" collapsible="true" title="Attachment List">
+                
+                <apex:actionFunction name="actFun" action="{!parseDCPResponse}" reRender="pbsAtmts" >
+                    <apex:param name="strParam" value="" assignTo="{!JSONResponse }"/>
+                </apex:actionFunction>
+                <apex:actionFunction name="afBanner" action="{!setBannerMsg}" reRender="lblBanner">
+                    <apex:param name="strParam" value="" assignTo="{!bannerStatus}" />
+                    <apex:param name="strParam1" value="" assignTo="{!bannerMsg}" />
+                </apex:actionFunction>
+                <apex:pageBlockTable id="pgTable" value="{!dcpFileList}" var="fileList"  >
+                    <apex:column headerValue="Object Type" value="{!fileList.ObjectType}" />
+                    <apex:column headerValue="File Name" >
+                        <!--  <input id="upload-button" type="submit" value="{!fileList.fileName}" style="cursor:pointer;text-decoration: underline;
+color: blue;background:none; border:0;" onClick="downloadAttachment();return false;" ></input> -->
+                        <apex:commandLink value="{!fileList.fileName}" onclick="downloadAttachment('{!fileList.contentId}');return false;" reRender="frmDownload"
+                                          style="color: blue;" />
+                    </apex:column>                   
+                    <apex:column headerValue="File Type" value="{!fileList.mimeType}" />
+                    <apex:column headerValue="Notes" value="{!fileList.title}" />
+                    <apex:column headerValue="File Size" value="{!fileList.fileSize}" title="File Size"/>
+                    <apex:column headerValue="Created By" value="{!fileList.CreatedBy}" title="Author"/>
+                    <apex:column headerValue="Created Date" value="{!fileList.checkedInDate}"/>
+                    <apex:column headerValue="DCP URL">
+                       <a href="{!dcpAttachmentsURL}{!fileList.contentId}" target="_blank">View in DCP</a>
+                      <!-- <a href="{!dcpAttachmentsURL}{!fileList.contentId}" onclick="downloadAttachment('{!fileList.contentId}');return false;" target="_blank">View in DCP</a>-->
+                    </apex:column>
+                    <apex:column headerValue="Upload Version">
+                        <apex:commandButton value="Upload Version" onclick="uploadVersion('{!fileList.contentId}','{!fileList.edmContentId}');return false;"/>
+                    </apex:column>
+               
+                </apex:pageBlockTable>
+            </apex:pageBlockSection> 
+        </apex:pageBlock>   
+        <!--<apex:commandButton id="btnSave" value="save" action="{!parseDCPResponse}" reRender="pgTable"/> -->     
+        <apex:iframe id="frmDownload" height="10"  />
+    </apex:form>
+    <apex:attribute name="sfilterKeyword" type="string" assignTo="{!filterKeyword}" required="true" description="" />
+    <apex:attribute name="hideSection" type="boolean" description="" />
+    <apex:attribute name="customerName" type="string" description="" />
+    <apex:attribute name="partyID" type="string" description="" />
+    <apex:attribute name="dealID" type="string" description="" />
+</apex:component>

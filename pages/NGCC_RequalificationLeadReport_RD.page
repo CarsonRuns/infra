@@ -1,0 +1,119 @@
+<apex:page controller="NGCC_RequalificationLeadsReport_Cls1" sidebar="false"  readOnly="true">   
+    <apex:form id="myForm">
+    <apex:pageMessages ></apex:pageMessages>
+    <head>
+        <link    rel="stylesheet" href="{!$Resource.NGCC_jquery_dataTables}"/> 
+        <link    rel="stylesheet" href="{!$Resource.NGCC_buttons_dataTables_min}"/> 
+        <link    rel="stylesheet" href="{!$Resource.NGCC_cssFile}"/>
+        <link    rel="stylesheet" href="{!$Resource.NGCC_chosen_min}"/>      
+        <script  src="{!$Resource.NGCC_jquery_1_11_1}">            </script>
+        <script  src="{!$Resource.NGCC_jquery_dataTables_min}">    </script>
+        <script  src="{!$Resource.NGCC_jquery_1_12_4}">            </script>
+        <script  src="{!$Resource.NGCC_jquery_dataTables_min_2}">  </script>
+        <script  src="{!$Resource.NGCC_dataTables_buttons_min}">   </script>        
+        <script  src="{!$Resource.NGCC_jszip_min}">                </script>        
+        <script  src="{!$Resource.NGCC_buttons_html5_min}">        </script>
+        <script  src="{!$Resource.NGCC_pdfmake_min}">              </script>        
+        <script  src="{!$Resource.NGCC_vfs_fonts}">                </script>                       
+        <script  src="{!$Resource.NGCC_chosen_jquery_min}">        </script>
+               
+    <script>
+        $(document).ready(function() {
+            var contactTable =  $('[id$="contacttable"]').DataTable( {
+            dom: 'Bfrtip',
+                buttons: [{
+                            extend: 'excelHtml5',
+                            text: 'Download Excel',
+                            title: 'Lead Requalification Table',
+                          
+                },{
+                            extend: 'pdfHtml5',
+                            text: 'Download PDF    ',
+                            title: 'Lead Requalification Table',
+                            
+                },{
+                            extend: 'csvHtml5',
+                            text: 'Download CSV',
+                            title: 'Lead Requalification Table',
+                           
+                }]
+            } );
+            $(".choiceChosen, .productChosen").chosen(); 
+        } );
+    </script>
+
+    <style>
+        #element1 {display:inline-block;margin-right:10px; width:600px;float: left !important;margin-top: 40px !important;} 
+        #element2 {display:inline-block;margin-right:10px; width:600px;}           
+        h3:hover{color:red;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        font-family: 'Oswald', sans-serif;display: inline-block;transition: all .5s ease;
+        z-index: 2;-webkit-transition: all 200ms ease-in;-webkit-transform: scale(1.3);
+        -ms-transition: all 200ms ease-in;-ms-transform: scale(1.3);-moz-transition: all 200ms ease-in;-moz-transform: scale(1.3);
+        transition: all 200ms ease-in;transform: scale(1.3);
+        }
+        font{color:white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;}
+        fieldset {
+        border: 2px solid #00F;
+        border-radius: 8px;
+        border:1px solid #999;
+        border-radius:8px;
+        box-shadow: 0 0 90px grey;
+        }
+    </style>
+    </head>
+    <fieldset>
+    <div id="element1">
+        
+        <apex:panelGrid columns="2" style="padding: 3px 3px !important;" id="pgrid">
+            <apex:outputLabel style="padding-left: 0px !important;" for="callCenter"><b><h3>Marketing Call Center</h3></b></apex:outputLabel>
+            <apex:selectList id="callCenter" value="{!searchCallCenter}" size="1" required="true" styleClass="choiceChosen">
+                <apex:selectOptions value="{!options}"/>
+            </apex:selectList>
+            <apex:outputLabel style="padding-left: 0px !important;"><b><h3>Start Date</h3></b></apex:outputLabel>
+            <apex:inputField style="width:220px;padding: 3px 3px !important;margin-top: 13px !important;" value="{!leads.SDR_Assignment_Date__c}" required="true" showDatePicker="true"/>
+            <apex:outputLabel style="padding-left: 0px !important;"><b><h3>End Date</h3></b></apex:outputLabel>
+            <apex:inputField style="width:220px;padding: 3px 3px !important;" value="{!leads.Submitted_to_Sales_Date__c}" required="true" showDatePicker="true"/>
+            <apex:actionStatus id="saveStatus">
+                <apex:facet name="stop">                
+                <apex:outputPanel id="Details">
+                <apex:commandButton value="Run Report"  action="{!cmdQueryResult}" reRender="myForm" status="saveStatus" style="padding: 6px !important;width: 100px !important;"/>
+                </apex:outputPanel>                
+                </apex:facet>
+                <apex:facet name="start">
+                <apex:outputPanel >
+                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6;height: 100%;opacity:0.95;width:100%;"> 
+                    <div class="waitingHolder" style="top: 180.2px; width: 91px;">
+                    <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                    <span class="waitingDescription">Results...</span>
+                    </div>
+                    </div>
+                </apex:outputPanel>
+            </apex:facet>                
+            </apex:actionStatus>                
+        </apex:panelGrid>
+        
+    </div> 
+    <div id="element2">
+    <apex:chart height="240" width="340" data="{!pieData}">
+    <apex:pieSeries dataField="data" labelField="name"/>
+    <apex:legend position="right"/>
+    </apex:chart>
+    </div>
+    </fieldset>
+    <br/><br/>
+    <table id="contacttable" class="display nowrap" style="background-color: lightgray !important;">
+        <thead>
+        <tr>
+            <th><h3>Lead ID</h3></th><th><h3>Lead Name</h3></th><th><h3>Lead Status</h3></th><th><h3>Country</h3></th><th><h3>Requalification Date</h3></th><th><h3>Requalification User</h3></th><th><h3>SDR Lead Owner</h3></th><th><h3>Call Center Name</h3></th><th><h3>Lead Source</h3></th>
+        </tr>
+        </thead>            
+        <tbody>
+            <apex:repeat value="{!leadHistoryList}" var="r">
+        <tr>
+            <td>{!r.leadid}</td><td>{!r.lead.name}</td><td>{!r.lead.status}</td><td>{!r.lead.CustomCountry__c}</td><td>{!r.CreatedDate}</td><td>{!r.createdby.name}</td><td>{!r.lead.SDR_Lead_Owner_Name__c}</td><td>{!r.lead.Call_Center_Vendor__c}</td><td>{!r.lead.leadsource}</td>
+        </tr>
+        </apex:repeat>
+        </tbody>
+    </table>
+    </apex:form> 
+</apex:page>

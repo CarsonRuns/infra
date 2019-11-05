@@ -1,0 +1,44 @@
+<apex:page standardController="CEE_Location__c" extensions="CEE_LocationAvailabilityController" sidebar="false">  
+    <h1> Location General Availability </h1>
+    <apex:messages />
+    <apex:form >
+        <apex:actionFunction name="rerenderIframe" action="{!changeUrl}" rerender="ceeIframePanel" />
+    </apex:form>
+    
+    <apex:outputPanel id="ceeIframePanel">
+        <apex:iframe src="{!ifrUrl}" scrolling="true" id="ceeIframe"/>
+    </apex:outputPanel>
+    
+    <apex:includeScript value="{!$Resource.cee_common}"/>
+    <script>
+	    function receiveMessage(sfdcEvent){
+	        if(sfdcEvent.origin !== '{!envRoot}'){
+	            console.log("SFDC - bad origin - " + sfdcEvent.origin + " NOT {!envRoot} - "  + sfdcEvent.data);
+	            return;
+	        }
+	        console.log("SFDC - origin - " + sfdcEvent.origin + " - " + sfdcEvent.data);
+	        var ifr = document.getElementById('ceeIframe');
+	        rerenderIframe();
+	        document.getElementById('ceeIframe').height = window.innerHeight;
+	    }
+	    
+	    (function() {
+	        var windowOnresize = window.onresize;
+	        window.onresize = function(){
+	            if(windowOnresize) windowOnresize();
+	            document.getElementById('ceeIframe').height = window.innerHeight;
+	        };
+	    }());
+	    
+	    if (window.addEventListener){
+	        window.addEventListener("message", receiveMessage, false)    
+	    } else {
+	        window.attachEvent("onmessage", receiveMessage)
+	    }
+	    
+	    addLoadEvent(function(){
+	        iwindow = document.getElementById('ceeIframe').contentWindow;
+	        iwindow.postMessage('IframeSend', '*');
+	    });
+    </script>
+</apex:page>

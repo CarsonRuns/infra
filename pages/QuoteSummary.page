@@ -1,0 +1,67 @@
+<!-- ************* Change History ***************
+WR-01662 05/13/2016: Using the new method of baseURL from extension for direct value assignment.
+<!-- ************* Change History *************** -->
+<apex:page showHeader="false" sidebar="false" standardController="Quote_Summary__c" extensions="QuoteSummary_CTE" >
+      <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+    <script>
+    var hostname = "https://" + window.location.hostname.toLowerCase();
+    var baseUrl = '{!BaseUrl}';
+    var profile = '{!$Profile.Name}'; 
+    var pdrDown = '{!PdrDown}';
+    
+    function CloseTab(){
+        sforce.console.getFocusedSubtabId(closeSubtab);        
+    }
+    var closeSubtab = function closeSubtab(result) {
+        var tabId = result.id;
+        console.log(tabId);
+        sforce.console.closeTab(tabId);
+    };
+    
+    function inLightningExperience() {
+        return ['Theme4d', 'Theme4u'].indexOf('{!$User.UIThemeDisplayed}') > -1; 
+    }
+    //var quoteId = '{!Quote_Summary__c.Quote_ID__c}';
+    // var quoteStatus = '{!QuoteStatus}';
+    //var isArchived =  '{!Quote_Summary__c.Quote_Flags__c}';
+    <!--SCAVA FIX-->
+        var quoteStatus = '{!JSENCODE(QuoteStatus)}';
+    console.log('quoteStatus = ',quoteStatus);
+    var isArchived =  '{!JSENCODE(Quote_Summary__c.Quote_Flags__c)}';
+    var profileName = "{!profilecheck}";
+    
+    if(pdrDown == 'Yes' && profile.substring(0,2) != 'QA' && profileName=='true'){
+        //alert('SFDC Quoting is currently unavailable, please try later.');
+    }
+    else if(quoteStatus == "DELETED"){
+        alert('Quote on this opportunity has been deleted');
+        if(history.length==1||history.length==0)
+            window.close();
+        else
+            history.back();
+    }
+        else if(isArchived == "Archived"){
+            top.location.href = hostname + "/apex/Quote_Archived"; 
+        }
+            else {
+                if(baseUrl == '')
+                    console.log('No url found in Org Constant');
+                <!--var pdrUrl = baseUrl + "/SFDCRequestHandler?at=quoteSummary&dealId={!Quote_Summary__c.Deal_Id__c}&quoteId={!Quote_Summary__c.Quote_ID__c}&userid={!$User.Id}&email={!$User.Email}&sessionid={!$Api.Session_ID}&url={!$Api.Enterprise_Server_URL_110}&hostname=" + hostname;-->
+                    <!--SCAVA FIX-->
+                var pdrUrl = baseUrl + "/SFDCRequestHandler?at=quoteSummary&dealId={!JSENCODE(Quote_Summary__c.Deal_Id__c)}&quoteId={!JSENCODE(Quote_Summary__c.Quote_ID__c)}&userid={!$User.Id}&email={!$User.Email}&sessionid={!$Api.Session_ID}&url={!$Api.Enterprise_Server_URL_110}&hostname=" + hostname;
+                if (inLightningExperience)
+                {
+                    window.location.href = pdrUrl;
+                }
+                else
+                {
+                    top.window.location = pdrUrl;
+                    
+                }
+                window.scrollBy(0,15);
+            }
+    
+    
+    </script> 
+    <apex:pageMessages rendered="{!profilecheck}" />
+</apex:page>

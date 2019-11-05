@@ -1,0 +1,213 @@
+<!--
+Name    : NGCC_SendSMS_Popup
+Author  : Ghattamaneni Chaithanya
+Purpose : Main Page to handle overall Send SMS functionality.
+Created Date: 20 Dec 2017
+Modification History:  
+   1.	Author: Ghattamaneni Chaithanya
+    	Purpose: Added changes to fix the SCAVA issues, Line No.#31-39
+    	date: July 09,2018
+   2.	Author: Ghattamaneni Chaithanya
+    	Purpose: Added changes to fix the SCAVA issues, Line No.#68-74,Line No.#148-154
+    	date: March 28,2019
+-->
+
+<apex:page docType="html-5.0" standardController="Lead" id="pg" extensions="NGCC_SendSMSExtn" showHeader="false" sidebar="false" standardStylesheets="true" >
+    <html lang="en">
+        <head>
+            <meta charset="utf-8"/>  
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:includeScript value="{! $Resource.NGCC_Jquery}"/>
+            <apex:includeScript value="{! $Resource.NGCC_JqueryUi}"/>
+            <apex:stylesheet value="{! $Resource.NGCC_JqueryCSS}"/>
+            <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/ui-lightness/jquery-ui.css" />
+            <script> 
+            
+            $(function(){               
+                window.$Label = window.$Label || {};
+                $Label.NGCC_Naas_SMS_Terms = '{!($Label.NGCC_Naas_SMS_Terms)}';
+                $Label.NGCC_Naas_SMS_Terms_BlankPhone = '{!($Label.NGCC_Naas_SMS_Terms_BlankPhone)}';
+                $Label.NGCC_Naas_SMS_PopupINFO = '{!($Label.NGCC_Naas_SMS_PopupINFO)}';
+               <!-- $Label.NGCC_SMS_DefaultText = '{!($Label.NGCC_SMS_DefaultText)}';-->
+                /* SCAVA Fixes */
+                var lMob = '{!JSENCODE(Lead.MobilePhone)}';
+                var lPh = '{!JSENCODE(Lead.Phone)}';
+                var smsPermString = '{!JSENCODE(leadsmsPermission)}';
+                var smsPermission = false;
+                if (smsPermString == 'true') {
+                     smsPermission = true;
+                }
+                 /* End */
+                
+                var  terms =  $Label.NGCC_Naas_SMS_Terms;
+                var  terms_BlankPhone =  $Label.NGCC_Naas_SMS_Terms_BlankPhone;
+                var  PopUpInfo = $Label.NGCC_Naas_SMS_PopupINFO;
+                var  defaultText = $Label.NGCC_SMS_DefaultText;
+                
+                jQuery('<form style="display: block;">'+
+                       '<ul style=" margin: 0; padding: 0;">'+ 
+                       PopUpInfo+
+                       '</ul><br/>'+
+                       '<div id="termsBlankPhone" style="text-align: justify;text-justify:inter-word;display:none;">'+
+                       '<input type="checkbox" id="smsPermissionBlankPhone" class="Confirm" >'+terms_BlankPhone+
+                       '</div>'+
+                       '<div id="terms" style="text-align: justify;text-justify:inter-word;display:none;">'+
+                       '<input type="checkbox" id="smsPermission" class="Confirm" >'+terms+
+                       '</div><p></p>'+
+                       'Phone/Mobile#:<input type="text" id ="Ph" style="width:50%" name="MobilePhone" ><br><p></p>'+
+                       'Message:<br/><textarea value="" id="msg" type="text"  name="Desc" cols="35" data-maxlength="140" rows="4" >Cisco, please go to</textarea>'+
+                       '<div id="chars" style="width: 260px;color:red;text-align:right"></div>'+
+                       '</form>').dialog({
+                    minWidth: 400,
+                    minHeight: 443,
+                    position:"center",
+                    autoOpen: true,
+                    modal: true,
+                    open: function() {
+                        /* SCAVA Fixes */
+                        var lMob = '{!JSENCODE(Lead.MobilePhone)}';
+                        var lPh = '{!JSENCODE(Lead.Phone)}';
+                        var smsPermString = '{!JSENCODE(leadsmsPermission)}';
+                        var smsPermission = false;
+                        if (smsPermString == 'true') {
+                             smsPermission = true;
+                        }
+                        /* End */
+                        if(lMob.length != 0){
+                            document.getElementById("Ph").value = lMob ;
+                            $("#terms").show();
+                            document.getElementById("smsPermission").checked = smsPermission;
+                        }
+                        else if(lPh.length  != 0){
+                            document.getElementById("Ph").value = lPh;
+                            $("#terms").show();
+                            document.getElementById("smsPermission").checked = smsPermission;
+                        }
+                            else{
+                                $("#termsBlankPhone").show();
+                                document.getElementById("smsPermissionBlankPhone").checked = smsPermission;
+                            }
+                        $("#msg").attr("disabled", !smsPermission);
+                        $(".sbtn").attr("disabled", !smsPermission);
+                        if(smsPermission == false){
+                            $(".sbtn").css({"opacity": "0.5"});
+                        } 
+                        $("#smsPermissionBlankPhone").click(function() {
+                            $("#msg").attr("disabled", !this.checked);
+                            var ckd = this.checked ; 
+                            $(".sbtn").attr("disabled", !this.checked);
+                            if(ckd == false){
+                                $(".sbtn").css({"opacity": "0.5"});
+                            }
+                            if(ckd == true){
+                                $(".sbtn").css({"opacity": "1"});
+                            }
+                        });
+                        $("#smsPermission").click(function() {
+                            $("#msg").attr("disabled", !this.checked);
+                            var ckd = this.checked ; 
+                            $(".sbtn").attr("disabled", !this.checked);
+                            if(ckd == false){
+                                $(".sbtn").css({"opacity": "0.5"});
+                            }
+                            if(ckd == true){
+                                $(".sbtn").css({"opacity": "1"});
+                            }
+                        });                         
+                    },
+                    beforeClose: function(){
+                        window.top.close();
+                    },   
+                    buttons: {
+                        "Send SMS":{
+                            text: 'Send SMS', 
+                            'class': 'sbtn', 
+                            click: function(){
+                                
+                                var cmsg = document.getElementById("msg").value;
+                                var cMobilePhone = document.getElementById("Ph").value;
+                                var SMSPermission = document.getElementById("smsPermissionBlankPhone");
+                                var SMSPermission1 = document.getElementById("smsPermission");
+                                var filter = /^((\+)?[1-9]{1,2})?([-\s\.])?((\(\d{1,4}\))|\d{1,4})(([-\s\.])?[0-9]{1,12}){1,2}$/;
+                                
+                                if(cMobilePhone.length == 0){
+                                    alert("Please enter the Mobile/Phone Number");
+                                }
+                                else if(filter.test(cMobilePhone)==false){
+                                    alert('Invalid Mobile/Phone');
+                                }
+                                else if(cmsg.length==0){
+                                    alert("Please enter the message");
+                                }
+                                    else if(cmsg.trim().length == 0) {
+                                        alert('Invalid Message');
+                                    }
+                                        else{
+                                            $( ".sbtn" ).button( "option", "label", "Sending......." );
+                                            var lMobilePhone = '{!JSENCODE(Lead.MobilePhone)}';
+                                            var lPhone = '{!JSENCODE(Lead.Phone)}';
+                                            var lsmsPermString = '{!JSENCODE(leadsmsPermission)}';
+                                            var lSMSPermission = false;
+                                            if (lsmsPermString == 'true') {
+                                                lSMSPermission = true;
+                                            }                                            
+                                            var flag = 0;
+                                            if(lMobilePhone != cMobilePhone && lPhone != cMobilePhone ){
+                                                alert('Phone/Mobile changed');
+                                                flag = 1;
+                                            }
+                                            if( (lSMSPermission != SMSPermission.checked) || (lSMSPermission != SMSPermission1.checked)){
+                                                flag = 1;
+                                            }
+                                            if(flag == 1){
+                                                NGCC_SendSMSExtn.updateLead('{!Lead.Id}',cMobilePhone,function(result, event) {
+                                                }, {escape:true});
+                                            }
+                                            NGCC_SendSMSExtn.Send(cMobilePhone,cmsg,'{!Lead.Id}',
+                                                                  function(result, event) {
+                                                                      if (event.status){
+                                                                          if(result == '200'){
+                                                                              alert('SMS is queued to be sent.');
+                                                                              $( ".sbtn" ).button( "option", "label", "Send SMS" );
+                                                                              window.top.close();
+                                                                          }
+                                                                          else {
+                                                                              alert("SMS couldn't be delivered."+result);  
+                                                                              window.top.close();
+                                                                          }
+                                                                      } 
+                                                                  }, {escape:true});
+                                        }
+                            }
+                        },
+                        "Cancel": function() {
+                            window.top.close();
+                        }
+                    }
+                });  
+                $("#msg").keyup(validateMaxLength);                
+                function validateMaxLength(){
+                    var text = $(this).val();
+                    var maxlength = $(this).data('maxlength');
+                    if(text.length > 140) {
+                        alert('You cannot enter more than 140 characters, please shorten your message');
+                        $(this).val(text.substr(0, maxlength)); 
+                    }
+                    $("#chars").html($(this).val().length+'/140');
+                }
+            });
+            </script>
+        </head>        
+        <body>
+            
+        </body>
+    </html>
+    
+    <style>
+        body {
+        background-color: #ff8000 ;
+        }
+        
+    </style>
+</apex:page>

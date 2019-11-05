@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Briefing Status --></label>
+        <name>Briefing_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Briefing Type --></label>
+        <name>Briefing_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Engagements &amp; Events --></label>
+        <name>Customer_Engagements_Events__c</name>
+        <relationshipLabel><!-- Rooms --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date Time --></label>
+        <name>End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Contact Email --></label>
+        <name>Engagement_Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Contact Name --></label>
+        <name>Engagement_Contact_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- zzEvent Name --></label>
+        <name>Event_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Room Name Dataloder --></label>
+        <name>Room_Name_Dataloder__c</name>
+    </fields>
+    <fields>
+        <label><!-- Room Name --></label>
+        <name>Room_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Room --></label>
+        <name>Room__c</name>
+        <relationshipLabel><!-- Agenda Rooms --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Date/Time --></label>
+        <name>Start_Date_Time__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Agenda Room</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Agenda Rooms</value>
+    </caseValues>
+    <startsWith>Vowel</startsWith>
+    <layouts>
+        <layout>Agenda Room Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- The Start Date/Time needs to be earlier than the End Date/Time. --></errorMessage>
+        <name>Start_Date_Greater_than_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Room times chosen are outside the Briefing&apos;s Start or End Time. --></errorMessage>
+        <name>Start_or_End_within_Briefing_Window</name>
+    </validationRules>
+</CustomObjectTranslation>

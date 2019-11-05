@@ -1,0 +1,2247 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>AP_Delete_Information__c</fullName>
+        <description>Used to store information of AP being deleted</description>
+        <externalId>false</externalId>
+        <label>AP Delete Information</label>
+        <length>2000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>AccountPlanCount__c</fullName>
+        <description>For reporting purposes, to count Account Plans uniquely</description>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>AccountPlanCount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Achievement_000_s__c</fullName>
+        <description>Used for Account Planning</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Currency field of the total revenue of Previous year for the account.</inlineHelpText>
+        <label>Account Achievement (000's)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Account_Business_Vision__c</fullName>
+        <description>Used for AP.  The Cisco Account Team’s business vision for the account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Cisco Account Team’s business vision for the account.</inlineHelpText>
+        <label>Account Business Vision</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Account_Plan_Name__c</fullName>
+        <description>The name of the Account Plan.  Required text field to capture the name of an account plan in 100 characters or less.  The name should follow the format: “FY00-Account Name-Other Optional Identifier(s)”.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Required text field to capture the name of an account plan in 100 characters or less.  The name should follow the format: “FY00-Account Name-Other Optional Identifier(s)”.</inlineHelpText>
+        <label>Account Plan Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Plan_Origin__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Plan Origin</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Web</fullName>
+                    <default>false</default>
+                    <label>Web</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Account_Services_Vision__c</fullName>
+        <description>Added as a part of July release. Reference QW3114. This is to ensure that the correct data is connected to the field Account Team CA vision for the slide "Account Team Vision (Data)</description>
+        <externalId>false</externalId>
+        <label>Account Services Vision</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Account_Technical_Vision__c</fullName>
+        <description>Used for AP.  The Cisco Account Team’s technical vision for the account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Cisco Account Team’s technical vision for the account</inlineHelpText>
+        <label>Account Technical Vision</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Plans</relationshipLabel>
+        <relationshipName>Account_Plans</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Age__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Closed__c = True, 
+ROUND(ClosedDate__c - CreatedDate, 0), ROUND((NOW() - CreatedDate),0))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Analyst_Overview__c</fullName>
+        <description>Used for AP.  Factiva integrated field.  Text field (32,000 char) to capture a summary of industry analyst’s overview of the customer.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Factiva integrated field.  Text field (32,000 char) to capture a summary of industry analyst’s overview of the customer.</inlineHelpText>
+        <label>Analyst Overview</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Architecture_Product_Focus_1__c</fullName>
+        <description>Architecture/Product Focus 1</description>
+        <externalId>false</externalId>
+        <label>Architecture/Product Focus 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Architecture_Product_Focus_2__c</fullName>
+        <description>Architecture/Product Focus 2</description>
+        <externalId>false</externalId>
+        <label>Architecture/Product Focus 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Architecture_Product_Focus_3__c</fullName>
+        <description>Architecture/Product Focus 3</description>
+        <externalId>false</externalId>
+        <label>Architecture/Product Focus 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Budget_Cycle__c</fullName>
+        <description>To know when the customer will most likely buy
+Summary statement/outline of the customer’s budget cycle.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Summary statement/outline of the customer’s budget cycle.</inlineHelpText>
+        <label>Budget Cycle</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Business_Issues_1__c</fullName>
+        <description>Business Issues 1</description>
+        <externalId>false</externalId>
+        <label>Business Issues 1</label>
+        <length>1500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Issues_2__c</fullName>
+        <description>Business Issues 2</description>
+        <externalId>false</externalId>
+        <label>Business Issues 2</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Issues_3__c</fullName>
+        <description>Business Issues 3</description>
+        <externalId>false</externalId>
+        <label>Business Issues 3</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Issues_Architecture_1__c</fullName>
+        <description>Business Issues Architecture 1</description>
+        <externalId>false</externalId>
+        <label>Business Issues Architecture 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Issues_Architecture_2__c</fullName>
+        <description>Business Issues Architecture 2</description>
+        <externalId>false</externalId>
+        <label>Business Issues Architecture 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Issues_Architecture_3__c</fullName>
+        <description>Business Issues Architecture 3</description>
+        <externalId>false</externalId>
+        <label>Business Issues Architecture 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Issues__c</fullName>
+        <description>Used for AP.  Factiva integrated field.  A high-level statement about the customer’s key business issues faced.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Factiva integrated field.  A high- statement about the customer’s key business issues faced</inlineHelpText>
+        <label>Business Issues</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Opportunities_1__c</fullName>
+        <description>Business Opportunities 1</description>
+        <externalId>false</externalId>
+        <label>Business Opportunities 1</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Opportunities_2__c</fullName>
+        <description>Business Opportunities 2</description>
+        <externalId>false</externalId>
+        <label>Business Opportunities 2</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Opportunities_3__c</fullName>
+        <description>Business Opportunities 3</description>
+        <externalId>false</externalId>
+        <label>Business Opportunities 3</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Opportunities_Architecture_1__c</fullName>
+        <description>Business Opportunities Architecture 1</description>
+        <externalId>false</externalId>
+        <label>Business Opportunities Architecture 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Opportunities_Architecture_2__c</fullName>
+        <description>Business Opportunities Architecture 2</description>
+        <externalId>false</externalId>
+        <label>Business Opportunities Architecture 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Opportunities_Architecture_3__c</fullName>
+        <description>Business Opportunities Architecture 3</description>
+        <externalId>false</externalId>
+        <label>Business Opportunities Architecture 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CEO_Biography__c</fullName>
+        <description>CEO Biography</description>
+        <externalId>false</externalId>
+        <label>CEO Biography</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CEO_Messaging__c</fullName>
+        <description>Used for AP</description>
+        <externalId>false</externalId>
+        <label>CEO Messaging</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CIO_IT_Biography__c</fullName>
+        <description>CIO/IT Biography</description>
+        <externalId>false</externalId>
+        <label>CIO/IT Biography</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cisco_Capital_Contracts__c</fullName>
+        <description>Listing of key Cisco Capital contracts.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Listing of key Cisco Capital contracts.</inlineHelpText>
+        <label>Cisco Capital Contracts</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Cisco_Opportunities__c</fullName>
+        <description>The opportunities for Cisco as applicable to the customer from the Cisco Account Team perspective, such as new technology areas that Cisco has not developed or that Cisco has but the customer has not implemented.</description>
+        <externalId>false</externalId>
+        <label>Cisco Opportunities</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cisco_Strengths__c</fullName>
+        <description>The strength's of Cisco (account team, products, marketing, etc.) as applicable to the customer from the Cisco Account Team's perspective</description>
+        <externalId>false</externalId>
+        <label>Cisco Strengths</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cisco_Threats__c</fullName>
+        <description>The threats for Cisco as applicable to the customer from the Cisco Account Team perspective, such as a competitor, a non-supportive or combative customer contact, etc</description>
+        <externalId>false</externalId>
+        <label>Cisco Threats</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cisco_Weaknesses__c</fullName>
+        <description>The weaknesses of Cisco (account team, products, marketing, etc.) as applicable to the customer from the Cisco Account Team's perspective</description>
+        <externalId>false</externalId>
+        <label>Cisco Weaknesses</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Close__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK("apex/CloseAccountPlan?id="&amp;Id&amp;"&amp;retURL=/"&amp; Account__r.Id , "Cls","_top")</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Close</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ClosedDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Closed Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Closed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Closed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Internal Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Competitive_Partner_Arch_Product_Focus__c</fullName>
+        <description>Competitive Partner Arch/Product Focus</description>
+        <externalId>false</externalId>
+        <label>Competitive Partner Arch/Product Focus</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Competitive_Partner__c</fullName>
+        <description>Competitive Partner</description>
+        <externalId>false</externalId>
+        <label>Competitive Partner</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Competitors__c</fullName>
+        <description>Used for AP</description>
+        <externalId>false</externalId>
+        <label>Competitors</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>ContactEmail__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ContactPhone__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contact Name</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Account Plans</relationshipLabel>
+        <relationshipName>Account_Plans</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Continuance_Strategy__c</fullName>
+        <description>Used for AP</description>
+        <externalId>false</externalId>
+        <label>Continuance Strategy</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Contract_Expiration_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Expiration Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Copy_Account_Plan__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK("https://na1.salesforce.com/servlet/servlet.Integration?lid=00b30000000jKgS&amp;eid=" &amp; Id,IMAGE("/servlet/servlet.FileDownload?file=01530000000IxpH", "", 19,118))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Copy Account Plan</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Corporate_Affiliation__c</fullName>
+        <externalId>false</externalId>
+        <label>Corporate Affiliation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CreatedDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Opened Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Competitors__c</fullName>
+        <description>Customer Competitors</description>
+        <externalId>false</externalId>
+        <label>Customer Competitors</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Financing_Procurement__c</fullName>
+        <description>Summary of the customer’s financing/procurement process.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Summary of the customer’s financing/procurement process.</inlineHelpText>
+        <label>Customer Financing/Procurement</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Mission_Statement__c</fullName>
+        <description>Customer Mission Statement</description>
+        <externalId>false</externalId>
+        <label>Customer Mission Statement</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Overview__c</fullName>
+        <description>Customer Overview</description>
+        <externalId>false</externalId>
+        <label>Customer Overview</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Strategy_and_Vision__c</fullName>
+        <description>Factiva integrated field.  A high-level statement about the customer’s strategy and where the customer is going.  Vision addresses the company’s core values, core purpose, and envisioned future.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Factiva integrated field.  A high-level statement about the customer’s strategy and where the customer is going.  Vision addresses the company’s core values, core purpose, and envisioned future.</inlineHelpText>
+        <label>Customer Strategy and Vision</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Technical_Vision__c</fullName>
+        <description>A high-level statement about what the customer envisions for their technical or IT future.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A high-level statement about what the customer envisions for their technical or IT future</inlineHelpText>
+        <label>Customer Technical Vision</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Data_Source_Name__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Data Source Name</label>
+        <length>60</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deployment_No__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Deployment No</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Eco_System_Partner_Arch_Product_Focus__c</fullName>
+        <description>Eco System Partner Arch/Product Focus</description>
+        <externalId>false</externalId>
+        <label>Eco System Partner Arch/Product Focus</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Borderless</fullName>
+                    <default>false</default>
+                    <label>Borderless</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Data Center/Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center/Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Vertical Reference Arch</fullName>
+                    <default>false</default>
+                    <label>Vertical Reference Arch</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Eco_System_Partner__c</fullName>
+        <description>Eco System Partner</description>
+        <externalId>false</externalId>
+        <label>Eco System Partner</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Funding_Amount_000_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Funding Amount (000's)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Funding_Source__c</fullName>
+        <externalId>false</externalId>
+        <label>Funding Source</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Has_Cisco_Capital_Contracts__c</fullName>
+        <externalId>false</externalId>
+        <label>Has Cisco Capital Contracts?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                    <label>Unknown</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Heat_Map_Attached__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Heat Map Attached</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Higher_Ed_Campus_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Higher Ed Campus Location</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Higher_Ed_Staff__c</fullName>
+        <externalId>false</externalId>
+        <label>Higher Ed Staff</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Higher_Ed_Students__c</fullName>
+        <externalId>false</externalId>
+        <label>Higher Ed Students</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_are_Issues_Addressed__c</fullName>
+        <description>Used for AP.  Factiva integrated field.  The customer’s business process/approach to addressing business issues.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Factiva integrated field.  The customer’s business process/approach to addressing business issues</inlineHelpText>
+        <label>How are Issues Addressed</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>IT_Initiatives_Challenges__c</fullName>
+        <externalId>false</externalId>
+        <label>IT Initiatives &amp; Challenges</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Industry_Overview__c</fullName>
+        <description>Used for AP.  Factiva integrated field.  Text field (32,000 char) to capture a high-level overview of the customer’s industry.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Factiva integrated field.  Text field (32,000 char) to capture a high-level overview of the customer’s industry</inlineHelpText>
+        <label>Industry Overview</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Install_Base_Trending_Attached__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to indicate if an Install Base Trending document is attached to the Account Plan in the Notes and Attachments related list.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checkbox to indicate if an Install Base Trending document is attached to the Account Plan in the Notes and Attachments related list.</inlineHelpText>
+        <label>Install Base Trending Attached</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>K_12_Sites__c</fullName>
+        <externalId>false</externalId>
+        <label>K-12 Sites</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>K_12_Students__c</fullName>
+        <externalId>false</externalId>
+        <label>K-12 Students</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>K_12_Teachers__c</fullName>
+        <externalId>false</externalId>
+        <label>K-12 Teachers</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Key_Customer_Departments_Orgs__c</fullName>
+        <description>Key Customer Departments/Orgs</description>
+        <externalId>false</externalId>
+        <label>Key Customer Departments/Orgs</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Key_Performance_Indicators__c</fullName>
+        <description>Key Performance Indicators</description>
+        <externalId>false</externalId>
+        <label>Key Performance Indicators</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Market_Intelligence__c</fullName>
+        <description>Market Intelligence</description>
+        <externalId>false</externalId>
+        <label>Market Intelligence</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Network_Architecture_Attached__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to indicate if a Network Architecture diagram or document is attached to the Account Plan in the Notes and Attachments related list.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checkbox to indicate if a Network Architecture diagram or document is attached to the Account Plan in the Notes and Attachments related list.</inlineHelpText>
+        <label>Network Architecture Attached</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Network_Landscape_Attached__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to indicate if a Network Landscape diagram or document is attached to the Account Plan in the Notes and Attachments related list.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checkbox to indicate if a Network Landscape diagram or document is attached to the AccountPlan in the Notes and Attachments related list.</inlineHelpText>
+        <label>Network Landscape Attached</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Non_Standard_Contract_Terms__c</fullName>
+        <description>Summary of any non-standard contract terms with the customer.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Summary of any non-standard contract terms with the customer.</inlineHelpText>
+        <label>Non-Standard Contract Terms</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Old_Case_ID__c</fullName>
+        <externalId>true</externalId>
+        <label>Old Case ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Open__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Open</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opportunities__c</fullName>
+        <description>Factiva integrated field.  The customer’s opportunities for growth, expansion, increasing market share, increased revenues, decreased costs, etc.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Factiva integrated field.  The customer’s opportunities for growth, expansion, increasing market share, increased revenues, decreased costs, etc.</inlineHelpText>
+        <label>Opportunities</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_Executive_Information__c</fullName>
+        <description>Other Executive Information</description>
+        <externalId>false</externalId>
+        <label>Other Executive Information</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_Financial_Information__c</fullName>
+        <description>Other Financial Information</description>
+        <externalId>false</externalId>
+        <label>Other Financial Information</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_Information__c</fullName>
+        <description>Text field used to capture any other relevant information for the Account Plan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Text field used to capture any other relevant information for the Account Plan</inlineHelpText>
+        <label>Other Information</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Other_Partner_Information__c</fullName>
+        <description>Other Partner Information</description>
+        <externalId>false</externalId>
+        <label>Other Partner Information</label>
+        <length>256</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_URL__c</fullName>
+        <description>URL field to link to other relevant information.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>URL field to link to other relevant information</inlineHelpText>
+        <label>Other URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Overall_Market_Share__c</fullName>
+        <description>Outline of the customer’s total market share.  Typically expressed as a percent (%), and can include high-level statement describing key business unit %s.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Outline of the customer’s total market share.Typically expressed as a percent (%), and can include high-level statement describing key business unit %s.</inlineHelpText>
+        <label>Overall Market Share</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Partner_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Partner2</description>
+        <externalId>false</externalId>
+        <label>Partner 2</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Plans Partner2</relationshipLabel>
+        <relationshipName>Account_Plans_Partner2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Partner_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Partner3</description>
+        <externalId>false</externalId>
+        <label>Partner 3</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Plans Partner3</relationshipLabel>
+        <relationshipName>Account_Plans_Partner3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Partners_with_Service_Contract__c</fullName>
+        <externalId>false</externalId>
+        <label>Partners with Service Contract</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Plan_Year__c</fullName>
+        <description>Required picklist field to capture the Cisco fiscal year that the account plan was developed for.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Required picklist field to capture the Cisco fiscal year that the account plan was developed for</inlineHelpText>
+        <label>Plan Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>2005</fullName>
+                    <default>false</default>
+                    <label>2005</label>
+                </value>
+                <value>
+                    <fullName>2006</fullName>
+                    <default>false</default>
+                    <label>2006</label>
+                </value>
+                <value>
+                    <fullName>2007</fullName>
+                    <default>false</default>
+                    <label>2007</label>
+                </value>
+                <value>
+                    <fullName>2008</fullName>
+                    <default>false</default>
+                    <label>2008</label>
+                </value>
+                <value>
+                    <fullName>2009</fullName>
+                    <default>false</default>
+                    <label>2009</label>
+                </value>
+                <value>
+                    <fullName>2010</fullName>
+                    <default>false</default>
+                    <label>2010</label>
+                </value>
+                <value>
+                    <fullName>2011</fullName>
+                    <default>false</default>
+                    <label>2011</label>
+                </value>
+                <value>
+                    <fullName>2012</fullName>
+                    <default>false</default>
+                    <label>2012</label>
+                </value>
+                <value>
+                    <fullName>2013</fullName>
+                    <default>false</default>
+                    <label>2013</label>
+                </value>
+                <value>
+                    <fullName>2014</fullName>
+                    <default>false</default>
+                    <label>2014</label>
+                </value>
+                <value>
+                    <fullName>2015</fullName>
+                    <default>false</default>
+                    <label>2015</label>
+                </value>
+                <value>
+                    <fullName>2016</fullName>
+                    <default>false</default>
+                    <label>2016</label>
+                </value>
+                <value>
+                    <fullName>2017</fullName>
+                    <default>false</default>
+                    <label>2017</label>
+                </value>
+                <value>
+                    <fullName>2018</fullName>
+                    <default>false</default>
+                    <label>2018</label>
+                </value>
+                <value>
+                    <fullName>2019</fullName>
+                    <default>false</default>
+                    <label>2019</label>
+                </value>
+                <value>
+                    <fullName>2020</fullName>
+                    <default>false</default>
+                    <label>2020</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Position_in_Industry__c</fullName>
+        <description>Used for AP</description>
+        <externalId>false</externalId>
+        <label>Position in Industry</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Potential_Revenue__c</fullName>
+        <description>Potential Revenue</description>
+        <externalId>false</externalId>
+        <label>Potential Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Primary Partner</description>
+        <externalId>false</externalId>
+        <label>Primary Partner</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Plans Primary Partner</relationshipLabel>
+        <relationshipName>Account_Plans_Primary_Partner</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Priority</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Process_to_Become_Preferred_Supplier__c</fullName>
+        <description>Description of the criteria and process to become a “Preferred Supplier” for the customer.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description of the criteria and process to become a “Preferred Supplier” for the customer</inlineHelpText>
+        <label>Process to Become "Preferred Supplier"</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Product_Potential_CY_000_s__c</fullName>
+        <description>Used for AP</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Currency field of the potential sale of products for the current fiscal year in thousands.</inlineHelpText>
+        <label>Product Potential Current FY (000's)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Profit_000_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Profit (000's)</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Plan Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>User didn't attend training</fullName>
+                    <default>false</default>
+                    <label>User didn't attend training</label>
+                </value>
+                <value>
+                    <fullName>Complex functionality</fullName>
+                    <default>false</default>
+                    <label>Complex functionality</label>
+                </value>
+                <value>
+                    <fullName>Existing problem</fullName>
+                    <default>false</default>
+                    <label>Existing problem</label>
+                </value>
+                <value>
+                    <fullName>Instructions not clear</fullName>
+                    <default>false</default>
+                    <label>Instructions not clear</label>
+                </value>
+                <value>
+                    <fullName>New problem</fullName>
+                    <default>false</default>
+                    <label>New problem</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Revenue_000_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Revenue (000's)</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Contract__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Contract</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Advanced Services</fullName>
+                    <default>false</default>
+                    <label>Advanced Services</label>
+                </value>
+                <value>
+                    <fullName>Partner branded service</fullName>
+                    <default>false</default>
+                    <label>Partner branded service</label>
+                </value>
+                <value>
+                    <fullName>Both AS &amp; SMARTnet</fullName>
+                    <default>false</default>
+                    <label>Both AS &amp; SMARTnet</label>
+                </value>
+                <value>
+                    <fullName>SMARTnet</fullName>
+                    <default>false</default>
+                    <label>SMARTnet</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                    <label>Unknown</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Landscape_Attached__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to indicate if a Service Landscape document is attached to the Account Plan in the Notes and Attachments related list.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checkbox to indicate if a Service Landscape document is attached to the Account Plan in the Notes and Attachments related list.</inlineHelpText>
+        <label>Service Landscape Attached</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Service_Potential_CY_000_s__c</fullName>
+        <description>Used for AP</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Currency field of the potential sale of services for the current fiscal year in thousands.</inlineHelpText>
+        <label>Service Potential Current FY (000's)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SiteMapIdentifier__c</fullName>
+        <description>Determines how the record displays on the site map</description>
+        <externalId>false</externalId>
+        <formula>CASE( Plan_Year__c , "2005", "2005", "2006", "2006","2007","2007","2008","2008","2009","2009","2010","2010","","--None--","NOT DEFINED") &amp; " - " &amp; Account_Plan_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SiteMapIdentifier</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Account_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Account Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Source_Account_Plan_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Account Plan Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Account_Plan__c</fullName>
+        <description>When an Account Plan is copied, the Account Plan number from the source Account Plan is populated into this field for the new Account Plan created.</description>
+        <externalId>false</externalId>
+        <label>Source Account Plan</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Contact_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Contact Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>AM - In Revision</fullName>
+                    <default>false</default>
+                    <label>AM - In Revision</label>
+                </value>
+                <value>
+                    <fullName>RSM - Reviewing</fullName>
+                    <default>false</default>
+                    <label>RSM - Reviewing</label>
+                </value>
+                <value>
+                    <fullName>RSM - Accepted</fullName>
+                    <default>false</default>
+                    <label>RSM - Accepted</label>
+                </value>
+                <value>
+                    <fullName>RSM - Closed</fullName>
+                    <default>false</default>
+                    <label>RSM - Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Strategic_Message__c</fullName>
+        <description>Used for AP</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The account team’s strategic message for the customer.  An “elevator” pitch to be consistently communicated by all member’s of the account team</inlineHelpText>
+        <label>Strategic Message</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Strengths__c</fullName>
+        <description>Factiva integrated field.  The customer’s strengths.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Factiva integrated field.  The customer’s strengths</inlineHelpText>
+        <label>Strengths</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Subject__c</fullName>
+        <externalId>false</externalId>
+        <label>Subject</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SuppliedCompany__c</fullName>
+        <externalId>false</externalId>
+        <label>Web Company</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SuppliedEmail__c</fullName>
+        <externalId>false</externalId>
+        <label>Web Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SuppliedName__c</fullName>
+        <externalId>false</externalId>
+        <label>Web Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SuppliedPhone__c</fullName>
+        <externalId>false</externalId>
+        <label>Web Phone</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Supporting_Documents__c</fullName>
+        <description>Used for AP.  URL field to link to other supporting documents.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>URL field to link to other supporting documents</inlineHelpText>
+        <label>Supporting Documents</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Technology_Matrix_Franchise_Map_Attached__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to indicate if a Technology Matrix or Franchise Map document is attached to the Account Plan in the Notes and Attachments related list.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checkbox to indicate if a Technology Matrix or Franchise Map document is attached to the Account Plan in the Notes and Attachments related list.</inlineHelpText>
+        <label>Technology Matrix/Franchise Map Attached</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Threats__c</fullName>
+        <description>Factiva integrated field.  Threats to the customer’s current business, growth, market share, margins, revenue, etc.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Factiva integrated field.  Threats to the customer’s current business, growth, market share, margins,revenue, etc.</inlineHelpText>
+        <label>Threats</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Timeframe__c</fullName>
+        <description>Revenue Time Frame</description>
+        <externalId>false</externalId>
+        <label>Timeframe</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>0-12 Months</fullName>
+                    <default>false</default>
+                    <label>0-12 Months</label>
+                </value>
+                <value>
+                    <fullName>12 -18 Months</fullName>
+                    <default>false</default>
+                    <label>12 -18 Months</label>
+                </value>
+                <value>
+                    <fullName>18-36 Months</fullName>
+                    <default>false</default>
+                    <label>18-36 Months</label>
+                </value>
+                <value>
+                    <fullName>3-5 Years</fullName>
+                    <default>false</default>
+                    <label>3-5 Years</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Problem</fullName>
+                    <default>false</default>
+                    <label>Problem</label>
+                </value>
+                <value>
+                    <fullName>Feature Request</fullName>
+                    <default>false</default>
+                    <label>Feature Request</label>
+                </value>
+                <value>
+                    <fullName>Question</fullName>
+                    <default>false</default>
+                    <label>Question</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Vendor_Selection_Criteria__c</fullName>
+        <description>Description of the customer’s criteria for selecting a vendor.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description of the customer’s criteria for selecting a vendor.</inlineHelpText>
+        <label>Vendor Selection Criteria</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Weaknesses__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Factiva Integrated Field. The Customer's Weaknesses</inlineHelpText>
+        <label>Weaknesses</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Year_End__c</fullName>
+        <description>Date field indicating the customer’s fiscal year end.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date field indicating the customer’s fiscal year end</inlineHelpText>
+        <label>Year End</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Account Plan</label>
+    <nameField>
+        <displayFormat>{00000000}</displayFormat>
+        <label>Account Plan Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Plans</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Account_Plan_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Plan_Year__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Account_Plan_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Plan_Year__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Subject__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Contact__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Account__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Status__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchResultsAdditionalFields>Account_Plan_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Plan_Year__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Plan_Year__c</columns>
+        <columns>Status__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Plan_Year__c</field>
+            <operation>equals</operation>
+            <value>2019</value>
+        </filters>
+        <label>ALL</label>
+    </listViews>
+</CustomObject>

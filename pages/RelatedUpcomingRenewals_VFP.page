@@ -1,0 +1,17 @@
+<apex:page standardController="Opportunity">
+     <apex:includeLightning />
+
+    <div id="lightning" />
+
+    <script>
+    var opptyId = '{!Opportunity.Id}';
+    
+        $Lightning.use("c:RelatedUpcomingRenewalsOpptyApp", function() {
+          $Lightning.createComponent("c:RelatedUpcomingRenewalsOppty",
+          { recordId : opptyId},
+          "lightning",
+          function(cmp) {
+          });
+        });
+    </script>
+</apex:page>

@@ -1,0 +1,37 @@
+<apex:page standardController="Assigned_Partner__c" showHeader="true" tabStyle="Assigned_Partner__c"
+    sidebar="false" extensions="SCP_Communities_tpdetails_CT" action="{!redirect}">
+    <style>
+        .btnslist {
+            display:block !important;
+            margin: auto !important;
+            width: 60% !important;
+        }
+        a.cii {
+            color: #007FC5 !important;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    </style>
+    <apex:pageMessages />
+    <apex:form id="tpform" styleclass="tpbtnsform">
+         <!-- Hidden fields required for use of SCP_Communities_tpdetails__CT.redirect() action method -->
+        <apex:inputhidden value="{!Assigned_Partner__c.Partner_Status__c}" />
+        <!-- Hidden fields required for extend functionality -->
+        <apex:inputhidden value="{!Assigned_Partner__c.Expiration_Date__c}" />
+        <apex:inputhidden value="{!Assigned_Partner__c.CreatedDate}" />
+        <!-- Hidden fields required for CCW Initiate deal --> 
+        <apex:inputhidden value="{!Assigned_Partner__c.Customer_Account__c}" />
+        <apex:inputhidden value="{!Assigned_Partner__c.TBM_TAM_Username__c}" />
+        <!-- apex:outputlink value="{!URLFOR($Action.Assigned_Partner__c.Edit,Assigned_Partner__c.Id)}" rendered="false">{!$Label.PRM_edit}</apex:outputlink  -->       
+        <apex:outputpanel id="btnslist" styleclass="btnslist" layout="block">
+            <apex:commandButton value="{!$Label.PRM_edit}" action="{!edit}" rendered="true" immediate="true"/>
+            <apex:commandButton value="{!$Label.PRM_extend}" rendered="{!isExtendButtonRendered}" disabled="{!isExtendButtonDisabled}" onclick="return confirm('{!$Label.PRM_extendconfirmmsg}');" action="{!extend}"  immediate="true"/>
+            <apex:commandButton value="{!$Label.PRM_initiatedeal}" rendered="true" action="{!initiateDeal}" immediate="true"/>
+            <apex:commandButton value="{!$Label.PRM_viewdeal}" rendered="true" action="{!viewAllDeals}"  immediate="true"/>
+            <apex:commandButton value="Add/Edit PSR Assignment" rendered="{!isPA}" action="{!addEditPSR}" immediate="true" />
+        </apex:outputpanel>
+    </apex:form>
+    
+    <apex:detail inlineEdit="false" showChatter="false" />
+    
+</apex:page>

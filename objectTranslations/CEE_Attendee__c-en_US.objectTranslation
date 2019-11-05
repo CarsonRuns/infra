@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agenda Item --></label>
+        <name>Agenda_Item__c</name>
+        <relationshipLabel><!-- CEE Attendees --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Attendee Department --></label>
+        <name>Attendee_Department__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attendee Reports to CIO? --></label>
+        <name>Attendee_Reports_to_CIO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Briefing Theater --></label>
+        <name>Briefing_Theater__c</name>
+        <picklistValues>
+            <masterLabel>AMERICAS</masterLabel>
+            <translation><!-- AMERICAS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Customer Engagement &amp; Events --></label>
+        <name>Customer_Engagement_Events__c</name>
+        <relationshipLabel><!-- CEE Attendees --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Presenter Agenda Briefing Center --></label>
+        <name>Presenter_Agenda_Briefing_Center__c</name>
+    </fields>
+    <fields>
+        <label><!-- Presenter Agenda End Time --></label>
+        <name>Presenter_Agenda_End_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Presenter Agenda Start Time --></label>
+        <name>Presenter_Agenda_Start_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Presenter User --></label>
+        <name>Presenter_User__c</name>
+        <relationshipLabel><!-- CEE Attendees (Presenter User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Presenter --></label>
+        <name>Presenter__c</name>
+        <relationshipLabel><!-- CEE Attendees --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Salesforce User Not Available --></label>
+        <name>Salesforce_User_Not_Available__c</name>
+    </fields>
+    <fields>
+        <label><!-- Salesforce User --></label>
+        <name>Salesforce_User__c</name>
+        <relationshipLabel><!-- CEE Attendees (Salesforce User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Shadow Approval Status --></label>
+        <name>Shadow_Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted to PM</masterLabel>
+            <translation><!-- Submitted to PM --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Shadow Approver --></label>
+        <name>Shadow_Approver__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please Enter the Justification for Shadowing here --></help>
+        <label><!-- Shadow Justification --></label>
+        <name>Shadow_Justification__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shadow Submitted Date --></label>
+        <name>Shadow_Submitted_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Cisco</masterLabel>
+            <translation><!-- Cisco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interpreter</masterLabel>
+            <translation><!-- Interpreter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Presenter</masterLabel>
+            <translation><!-- Presenter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shadow</masterLabel>
+            <translation><!-- Shadow --></translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CEE Attendee</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CEE Attendees</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CEE Attendee Layout</layout>
+        <sections>
+            <label><!-- Attendee Details (Manual) --></label>
+            <section>Attendee Details (Manual)</section>
+        </sections>
+        <sections>
+            <label><!-- Briefing --></label>
+            <section>Briefing</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Please provide valid Cisco email --></errorMessage>
+        <name>CEE_Attendee_CheckingFor_ValidCEC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Email is Mandatory for non SFDC user as a presenter --></errorMessage>
+        <name>CEE_Attendee_Email_Mandtory_Presenter</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Attendee needs at least A) a valid Salesforce User or B) valid Name and Email fields in order to be saved. --></errorMessage>
+        <name>CEE_Attendee_Manual_Or_User</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Attendee must have a type assigned. --></errorMessage>
+        <name>CEE_Attendee_Must_Have_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please Enter all the Mandatory fields to submit the shadow request --></errorMessage>
+        <name>Shadow_User_Check_Conditions</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Multi_CEE_Attendees --></label>
+        <name>Add_Multi_CEE_Attendees</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Presenter_Availability --></label>
+        <name>Presenter_Availability</name>
+    </webLinks>
+</CustomObjectTranslation>

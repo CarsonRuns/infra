@@ -1,0 +1,17 @@
+<!--apex:page standardController="Jiffle_Attendee_Invitee__c" recordSetVar="jA" extensions="JiffleNowReconcile_CTE" action="{!cmdSubmit}"-->
+<!--SCAVA FIX-->
+<apex:page standardController="Jiffle_Attendee_Invitee__c" recordSetVar="jA" extensions="JiffleNowReconcile_CTE">
+    <apex:sectionHeader title="Jiffle Attendee/Invitee Details" subtitle="Confirmation" />
+    <apex:form id="fm">
+    <apex:actionFunction name="cmdSubmit" action="{!cmdSubmit}" rerender="fm"/>
+        <apex:pageMessages id="messages" escape="false" />
+        <apex:commandButton action="{!cmdDone}" value="Done" />
+        <!--SCAVA FIX-->
+        <script type = "text/javascript">
+            window.onload=function()       
+            {        
+            cmdSubmit();
+            }
+         </script>
+    </apex:form>
+</apex:page>

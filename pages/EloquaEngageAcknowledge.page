@@ -1,0 +1,195 @@
+<apex:page showHeader="true" sidebar="false" id="pg">
+    <style>
+        .frms {
+            display: none;
+        }
+        .frmsshow {
+            display: block;
+        }
+        .btnTest {
+            background: #3cb0fd;
+            border-radius: 14px;
+            width: 90px !important;
+            font-family: Arial;
+            font-weight: bold;
+            color: #ffffff !important;
+            font-size: 12px;
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+        }
+        .btnTest:hover {
+            background: #3cb0fd;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .alignCenter {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        .newLink {
+            color: #3366CC;
+        }
+        .header {
+            background-color: #F0F0F0;
+            border: 2px solid #000000;
+            color: #000000;
+            padding: 2em;
+            opacity: 1;
+            transition: opacity 1s, height 0;
+            width: 600px;
+            display: inline-block;
+            top: 50%;
+            left: 50%;
+            margin-left: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+    </style>
+    <!-- Begin Default Content REMOVE THIS -->
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="User" fields="FirstName,CASL_Acknowledgement__c,Id" />
+    </apex:remoteObjects>
+    <script>
+        window.onload = validateAcknowledgement;
+
+        function hidePg() {
+            document.getElementById("engage").style.display = 'none';
+        }
+
+        function validateAcknowledgement() {
+        
+            document.getElementById("engage").classList.add('frms');
+            hidePg();
+            var u = new SObjectModel.User();
+            u.retrieve({
+                where: {
+                    Id: {
+                        eq: '{!$User.Id}'
+                    }
+                },
+                limit: 1
+            }, function(err, records) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    adt = new Date(records[0]._props.CASL_Acknowledgement__c);
+                    var curDate = new Date();
+                    if (typeof records[0]._props.CASL_Acknowledgement__c != "undefined") {
+
+                        adt.setDate(adt.getDate() + 30);
+
+                        if (adt > curDate) {
+                            getEloqua();
+                        } else {
+                            getAcknowledge();
+                        }
+
+                    } else {
+                        getAcknowledge();
+                    }
+
+                }
+            });
+
+        }
+
+        function formatDate(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() +
+                " " + strTime;
+        }
+
+        function getAcknowledge() {
+            document.getElementById("msg").classList.remove('frms');
+            document.getElementById("msg").classList.add('header');
+            document.getElementById("btn").classList.remove('frms');
+            document.getElementById("engage").style.display = 'none';
+            document.getElementById("loading").classList.remove('frmsshow');
+            document.getElementById("loading").classList.add('frms');
+
+        }
+
+        function getEloqua() {
+           // SCAVA FIX
+            var engagewith = "{!JSENCODE($CurrentPage.parameters.Engage)}";
+            document.getElementById("acknowledge").style.display = 'none';
+            document.getElementById("engage").style.display = 'block';
+            //document.getElementById("engage").src='https://cloudsso.cisco.com/idp/startSSO.ping?PartnerSpId=https://login.eloqua.com/auth/saml2/idp2/2026391005/B3CE767A81DC449AA89B9CFA825EEA3C&TargetResource=/NA%3FNA%3DNA%26ReturnURL%3D/apps/Engage'+engagewith;;
+            document.getElementById("engage").src='https://cloudsso.cisco.com/idp/startSSO.ping?PartnerSpId=https://login.eloqua.com/auth/saml2/idp2/177775138/D3C3AA7312AA4B4AB40D474D5EB02FF5&TargetResource=/NA%3FNA%3DNA%26ReturnURL%3D/apps/Engage'+engagewith;;
+            document.getElementById("engage").classList.remove('frms');
+            document.getElementById("engage").classList.add('frmsshow');
+            document.getElementById("loading").classList.remove('frmsshow');
+
+        }
+
+        function acknowledgeCASL() {
+            alert("Thanks for Acknowledgement.Please wait..");
+
+            var dt = new Date();
+            var acknowledgedt = formatDate(dt);
+            var record = new SObjectModel.User({
+                Id: '{!$User.Id}',
+                CASL_Acknowledgement__c: acknowledgedt
+            });
+            record.update(updateCallback);
+        }
+
+        function updateCallback(err, ids) {
+            if (err) {
+                console.log(err);
+                //alert(err);
+
+            } else {
+                console.log('Success');
+                getEloqua();
+            }
+        }
+    </script>
+    <div class="alignCenter" id="acknowledge">
+        <center>
+            <div id="loading">
+                <img src="/img/loading32.gif" class="frmsshow" />
+                <h1>Please wait ..</h1>
+            </div>
+        </center>
+        <div class="frms" id="msg">
+            <center>
+                <h1>Canadian Anti-Spam Legislation Notice</h1>
+            </center>
+            <p style="text-align:left">
+                All marketing campaigns with Canadian recipients must be compliant with Cisco's Canadian Anti-Spam Legislation [CASL] Policy and must contain the following:
+            </p>
+            <p>
+                <ul style="text-align:left">
+                    <li>Name of the sender (Cisco Systems, Inc and affiliates)</li>
+                    <li>Company address (Address of office from which campaign is being sent)
+                    </li>
+                    <li>Web address (<a href="http://www.cisco.com" target="_blank" class="newLink"> www.cisco.com</a>)</li>
+                    <li>Two unsubscribe methods (phone and
+                        <a class="newLink" href="https://grs.cisco.com/grsx/cust/grsCustomerSurvey.html?SurveyCode=4119&KeyCode=000478327" target="_blank">unsubscribe URL</a>
+                    </li>
+                </ul>
+            </p>
+            <p style="text-align:left">For more information, visit the
+                <a class="newLink" href="http://iwe.cisco.com/web/canadian-spam-legislation" target="_blank">CASL IWE Site</a> or view the CASL policy on Policy Central.
+            </p>
+        </div>
+        <br/>
+        <br/>
+        <div class="alignCenter btnTest frms" id="btn">
+            <label onclick="acknowledgeCASL();" style="cursor:pointer"> I Acknowledge</label>
+        </div>
+    </div>
+    <div id="frms">
+        <apex:iframe id="engage" src="" height="800px" scrolling="true" />
+    </div>
+</apex:page>

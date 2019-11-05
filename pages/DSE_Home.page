@@ -1,0 +1,49 @@
+<apex:page showheader="true" standardStylesheets="false" title="Sales Transformation" controller="DSE_Home_Page_CTL" action="{!init}">
+   <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <META HTTP-EQUIV="Cache-Control" CONTENT="max-age=0" />
+      <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache" />
+      <META http-equiv="expires" content="0" />         
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
+      <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.min.js"></script>
+      <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.5/angular-nvd3.min.js"></script>
+      <script src="/apex/DSE_Tabular_Directives_v2"></script>
+      <script src="/apex/DSE_D3_Directives"></script>
+      <apex:stylesheet value="{!URLFOR($Resource.ciscobootstrap, '/css/bootstrap.css')}" />
+      <link rel="stylesheet" href="/apex/DSE_Main_CSS" />
+      <script>
+         angular.module('myApp', ['ui.bootstrap', 'directives.DSE_table','directives.DSE_D3']);
+         
+      </script>
+      <script type="text/javascript">
+      
+              function verifyJobCategory(){
+                          console.log('Tac Home Visibility : '+'{!tachomevisibility }');
+                          if ({!tachomevisibility }) {
+                              console.log('Access TAC Tile');
+                          } else {
+                              (parent.document.getElementsByName(window.name))[0].style.height="0px";                                                
+                              console.log('No access TAC Tile');
+                          }
+                   };
+                
+                verifyJobCategory();
+                
+      </script>
+      <style>
+         .oRight{
+         background-color: #F8F8F8 !important;
+         }
+      </style>
+      <br/>
+      <apex:form >
+
+         <div class="dse-st bPageBlock brandSecondaryBrd apexDefaultPageBlock secondaryPalette" ng-app="myApp" style="background-color:#F8F8F8 !important;padding:15px 10px 10px 5px;margin-left:-10px;">
+            <stss-Table ng-if="{!tachomevisibility }" view-name="homeview" apipath="oecaseorderapi/v1.0/cases/tech" mtoken="{!mtoken}" apitype="external" apiobject="taccase" locale="{!locale}" timezone="{!tzCode}" localeformat="{!localeformat}" sectitle="TAC Cases" filtertype="'U'">
+            </stss-Table>
+         </div>
+
+      </apex:form>
+   </html>
+</apex:page>

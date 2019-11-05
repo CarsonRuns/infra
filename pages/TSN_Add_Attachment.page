@@ -1,0 +1,50 @@
+<apex:page standardController="Case" extensions="TSN_Add_Attachment_CTE">
+<apex:sectionHeader title="Attach File to Case {!caseNumber}"/>
+ 
+  <apex:form >
+    <apex:pageMessages />
+    <apex:pageBlock title="Upload Attachments" Id="attachmentfile">
+      
+   <!--  <apex:actionFunction name="saveAttachment" reRender="attachmentbody" oncomplete="CloseAndRefresh();"/> -->
+       
+        <apex:pageBlockSection columns="1">
+        <b> <font size="2" face="arial" color="red"> Each File attachment size is limited to 40MB </font> </b>
+        <br/>
+        <br/>
+        <b> &nbsp; 1.&nbsp;&nbsp; Select the File </b>
+        <br/>
+        &nbsp;&nbsp; Type the path of the file or click the Browse button to find the file.
+        <br/>
+        <apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" fileSize="{!attachment.BodyLength}" id="attachmentbody" />      
+        <b> &nbsp;&nbsp; Description </b> <apex:inputTextarea value="{!attachment.description}" id="attachmentdescription" cols="50" rows="5"/>
+        <br/>
+        <b> &nbsp; 2.&nbsp;&nbsp; Click the "Attach File" button.</b>
+        <br/>
+        &nbsp;&nbsp;Repeat steps 1 and 2 to attach multiple files.
+        <br/>
+        &nbsp;&nbsp;(When the upload is complete the file information will appear below.)
+        <br/>
+        <apex:commandButton value="Attach File" action="{!checkAttachmentSize}"/>
+        <b> &nbsp; 3.&nbsp;&nbsp; Click the Done button to return to the previous page.</b>
+        <br/>
+        &nbsp;&nbsp;( This will cancel an in-progress upload. )
+        <br/>
+        <apex:commandButton value="Done" action="{!close}"></apex:commandButton>
+        
+        </apex:pageBlockSection>
+        
+       <apex:pageBlockSection columns="1" title="You have uploaded the following file" rendered="{!attachFlag}" collapsible="false">
+       
+       <apex:pageBlockSectionItem >     
+       <apex:repeat value="{!Results}" var="attch" id="attchRepeat" >
+       <b>FileName:&nbsp;&nbsp;</b>
+       <apex:outputText value="{!attch}"></apex:outputText>
+       <br/><br/>
+       </apex:repeat> 
+       </apex:pageBlockSectionItem>
+             
+       </apex:pageBlockSection>
+
+   </apex:pageBlock>
+  </apex:form>
+</apex:page>

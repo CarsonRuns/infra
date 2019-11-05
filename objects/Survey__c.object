@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Account associated to Opportunity for which Support Request and survey is requested</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Surveys</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <description>This field shows the comments given by requester for Survey if 1,2,or 5 is selected for any of the field in survey.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>(Please elaborate if you rated any of the above category 1, 2 or 5)</inlineHelpText>
+        <label>Comments</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Comments_from_Provider__c</fullName>
+        <description>Comments entered by Sales Support Request Provider</description>
+        <externalId>false</externalId>
+        <formula>Support_Request_Detail__r.Comments__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Comments from Provider</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deal_ID__c</fullName>
+        <description>Deal ID for the Opportunity associated to Sales Support Request</description>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.DealID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Deal ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Effectiveness_Value__c</fullName>
+        <description>Requester rating value for Effectiveness of Solution/Information provided by Support Request Provider</description>
+        <externalId>false</externalId>
+        <formula>VALUE(LEFT(TEXT(Effectiveness_of_Solution_Information__c), 1))</formula>
+        <label>Effectiveness Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Effectiveness_of_Solution_Information__c</fullName>
+        <description>Requester rating for Effectiveness of Solution/Information provided by Support Request Provider</description>
+        <externalId>false</externalId>
+        <label>Effectiveness of Solution/Information</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>5. Very Satisfied</fullName>
+                    <default>false</default>
+                    <label>5. Very Satisfied</label>
+                </value>
+                <value>
+                    <fullName>4. Satisfied</fullName>
+                    <default>false</default>
+                    <label>4. Satisfied</label>
+                </value>
+                <value>
+                    <fullName>3. Neutral</fullName>
+                    <default>false</default>
+                    <label>3. Neutral</label>
+                </value>
+                <value>
+                    <fullName>2. Dissatisfied</fullName>
+                    <default>false</default>
+                    <label>2. Dissatisfied</label>
+                </value>
+                <value>
+                    <fullName>1. Very Dissatisfied</fullName>
+                    <default>false</default>
+                    <label>1. Very Dissatisfied</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Opportunity associated to Suport Request for which Survey is created</description>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipName>Surveys</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Overall_Satisfaction_of_Support_Value__c</fullName>
+        <description>Satisfaction level value for the Support Request provided by Support Request Provider</description>
+        <externalId>false</externalId>
+        <formula>VALUE(LEFT(TEXT( Overall_Satisfaction_of_Support__c), 1))</formula>
+        <label>Overall Satisfaction of Support Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overall_Satisfaction_of_Support__c</fullName>
+        <description>Satisfaction level for the Support Request provided by Support Request Provider</description>
+        <externalId>false</externalId>
+        <label>Overall Satisfaction of Support</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>5. Very Satisfied</fullName>
+                    <default>false</default>
+                    <label>5. Very Satisfied</label>
+                </value>
+                <value>
+                    <fullName>4. Satisfied</fullName>
+                    <default>false</default>
+                    <label>4. Satisfied</label>
+                </value>
+                <value>
+                    <fullName>3. Neutral</fullName>
+                    <default>false</default>
+                    <label>3. Neutral</label>
+                </value>
+                <value>
+                    <fullName>2. Dissatisfied</fullName>
+                    <default>false</default>
+                    <label>2. Dissatisfied</label>
+                </value>
+                <value>
+                    <fullName>1. Very Dissatisfied</fullName>
+                    <default>false</default>
+                    <label>1. Very Dissatisfied</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Request_Type__c</fullName>
+        <description>Type of SAC request</description>
+        <externalId>false</externalId>
+        <label>Request Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>UCS</fullName>
+                    <default>true</default>
+                    <label>UCS</label>
+                </value>
+                <value>
+                    <fullName>SAC TV</fullName>
+                    <default>false</default>
+                    <label>SAC TV</label>
+                </value>
+                <value>
+                    <fullName>SAC HCS</fullName>
+                    <default>false</default>
+                    <label>SAC HCS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Support_Request_Status__c</fullName>
+        <description>Status of Sales Support Request</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Support_Request_Detail__r.Status__c )</formula>
+        <label>Sales Support Request Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Support_Request_Detail__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Support Request detail record for which Survey is created</description>
+        <externalId>false</externalId>
+        <label>Support Request Detail</label>
+        <referenceTo>Support_Request_Detail__c</referenceTo>
+        <relationshipName>Surveys</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Timeliness_of_Access_to_Experts_Value__c</fullName>
+        <description>Requester rating value for Timeliness of Access to Experts</description>
+        <externalId>false</externalId>
+        <formula>VALUE(LEFT(TEXT(Timeliness_of_Access_to_Experts__c), 1))</formula>
+        <label>Timeliness of Access to Experts Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Timeliness_of_Access_to_Experts__c</fullName>
+        <description>Requester rating for Timeliness of Access to Experts</description>
+        <externalId>false</externalId>
+        <label>Timeliness of Access to Experts</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>5. Very Satisfied</fullName>
+                    <default>false</default>
+                    <label>5. Very Satisfied</label>
+                </value>
+                <value>
+                    <fullName>4. Satisfied</fullName>
+                    <default>false</default>
+                    <label>4. Satisfied</label>
+                </value>
+                <value>
+                    <fullName>3. Neutral</fullName>
+                    <default>false</default>
+                    <label>3. Neutral</label>
+                </value>
+                <value>
+                    <fullName>2. Dissatisfied</fullName>
+                    <default>false</default>
+                    <label>2. Dissatisfied</label>
+                </value>
+                <value>
+                    <fullName>1. Very Dissatisfied</fullName>
+                    <default>false</default>
+                    <label>1. Very Dissatisfied</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Timeliness_of_Problem_Resolution_Value__c</fullName>
+        <description>Requester rating value for Timeliness of Problem Resolution</description>
+        <externalId>false</externalId>
+        <formula>VALUE(LEFT(TEXT(Timeliness_of_Problem_Resolution__c), 1))</formula>
+        <label>Timeliness of Problem Resolution Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Timeliness_of_Problem_Resolution__c</fullName>
+        <description>Requestor rating for Timeliness of Problem Resolution</description>
+        <externalId>false</externalId>
+        <label>Timeliness of Problem Resolution</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>5. Very Satisfied</fullName>
+                    <default>false</default>
+                    <label>5. Very Satisfied</label>
+                </value>
+                <value>
+                    <fullName>4. Satisfied</fullName>
+                    <default>false</default>
+                    <label>4. Satisfied</label>
+                </value>
+                <value>
+                    <fullName>3. Neutral</fullName>
+                    <default>false</default>
+                    <label>3. Neutral</label>
+                </value>
+                <value>
+                    <fullName>2. Dissatisfied</fullName>
+                    <default>false</default>
+                    <label>2. Dissatisfied</label>
+                </value>
+                <value>
+                    <fullName>1. Very Dissatisfied</fullName>
+                    <default>false</default>
+                    <label>1. Very Dissatisfied</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>InDevelopment</deploymentStatus>
+    <description>This object captures the information about the survey sent to the opportunity owner once the sales support requested is completed.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>zzSurvey</label>
+    <nameField>
+        <displayFormat>SV-{00000000}</displayFormat>
+        <label>Survey Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Surveys</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <validationRules>
+        <fullName>Enter_Comments</fullName>
+        <active>true</active>
+        <description>To validate that user has added comments if he entered rating for any of the above category as 1, 2 or 5</description>
+        <errorConditionFormula>ISBLANK(Comments__c) &amp;&amp; 
+( 
+Text(Effectiveness_of_Solution_Information__c) ='1. Very Dissatisfied' || 
+Text(Effectiveness_of_Solution_Information__c) ='2. Dissatisfied' || 
+Text(Effectiveness_of_Solution_Information__c) ='5. Very Satisfied' || 
+Text(Timeliness_of_Access_to_Experts__c) ='1. Very Dissatisfied' || 
+Text(Timeliness_of_Access_to_Experts__c) ='2. Dissatisfied' || 
+Text(Timeliness_of_Access_to_Experts__c) ='5. Very Satisfied' || 
+Text(Timeliness_of_Problem_Resolution__c) ='1. Very Dissatisfied' || 
+Text(Timeliness_of_Problem_Resolution__c) ='2. Dissatisfied' || 
+Text(Timeliness_of_Problem_Resolution__c) ='5. Very Satisfied' || 
+Text(Overall_Satisfaction_of_Support__c) ='1. Very Dissatisfied' || 
+Text(Overall_Satisfaction_of_Support__c) ='2. Dissatisfied' || 
+Text(Overall_Satisfaction_of_Support__c) ='5. Very Satisfied')</errorConditionFormula>
+        <errorMessage>Please elaborate if you rated any of the above category as 1, 2 or 5</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Prevent_Edit_For_Closed_Survey</fullName>
+        <active>true</active>
+        <description>This Validation rule checks if Survey is filled once, nobody should be able to edit it</description>
+        <errorConditionFormula>And( 
+Not(ISNEW()), 
+AND( 
+NOT(PRIORVALUE(Effectiveness_of_Solution_Information__c) = ''), 
+NOT(PRIORVALUE(Overall_Satisfaction_of_Support__c) = ''), 
+NOT(PRIORVALUE(Timeliness_of_Access_to_Experts__c) = ''), 
+NOT(PRIORVALUE(Timeliness_of_Problem_Resolution__c) = '') 
+) 
+)</errorConditionFormula>
+        <errorMessage>Closed Survey Cannot Be Edited</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Prevent_Editing_Non_Survey_Owner</fullName>
+        <active>true</active>
+        <description>To prevent editing Survey record if User is not Owner of the Survey.Only Owner &amp; Super profiles can edit Surveys</description>
+        <errorConditionFormula>!ISNEW() &amp;&amp; 
+$Profile.Id != '00e30000000dcbg' &amp;&amp; 
+$Profile.Id != '00e30000000dfUE' &amp;&amp; 
+$Profile.Id != '00e30000000eca0' &amp;&amp; 
+$Profile.Id != '00e30000000dcbf' &amp;&amp; 
+$Profile.Id != '00e30000000qiJj' &amp;&amp; 
+$User.Id != OwnerId</errorConditionFormula>
+        <errorMessage>Insufficient Priviliges, Only Owner of the Survey can edit it.</errorMessage>
+    </validationRules>
+</CustomObject>

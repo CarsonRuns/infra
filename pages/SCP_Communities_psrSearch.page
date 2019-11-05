@@ -1,0 +1,81 @@
+<apex:page id="psrLookUpPage" setup="false" showChat="false"
+    showHeader="false" sidebar="false" title="PSR Lookup" name="PSR Lookup"
+    controller="prmPSRLookUp_CT">
+    
+    <apex:includeScript value="{!URLFOR($Resource.jquery_datatable, 'jquery/js/media_jquery.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jquery_datatable, 'jquery/js/jquery.dataTables.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jquery_datatable, 'jquery/js/dataTables.tableTools.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/dataTables.tableTools.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/jquery.dataTables.css')}" />
+    <script type="text/javascript">
+       var jq$ = jQuery.noConflict();
+        var userTable;
+        jq$(document).ready(function() {
+            jq$('#psrLookUpPage\\:pg3\\:frm3\\:pgTbpanel').css({
+                width:"100%",
+                overflow:"auto"
+            });
+            /* <!--#psrLookUpPage\\:pg3\\:frm3\\:pgtb3 -->*/
+            userTable = jq$('.jquerytable').dataTable({
+                "ordering": true,
+                "pagingType": "full_numbers",
+                "language": {  
+                    "search":"{!$Label.PRM_datatbl_search}",
+                    "info":  "{!$Label.PRM_datatbl_info}",   
+                    "zeroRecords":"{!$Label.PRM_datatbl_zeroRecords}",
+                    "infoFiltered":   "{!$Label.PRM_datatbl_info_filtered}",
+                    "infoEmpty":      "{!$Label.PRM_datatbl_info_empty}",
+                    "lengthMenu":"{!$Label.PRM_datatbl_display_num_records}",                                   //added for translation
+                    "paginate": {
+                    "first": "{!$Label.PRM_datatbl_first}",
+                    "last":       "{!$Label.PRM_datatbl_last}",
+                    "next":       "{!$Label.PRM_datatbl_next}",
+                    "previous":   "{!$Label.PRM_datatbl_previous}"
+                        }},
+                "lengthChange": true,
+                "lengthMenu": [ [5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"] ]
+            });
+            jq$('#psrLookUpPage\\:pg3\\:frm3\\:pgtb3').css({
+                width:"75%",
+                overflow:"auto"
+            });
+            /*
+            jq$("input[id='row_sel']").live("click",function() {
+                //window.opener.fn_getIdValuefromChild(jq$(this).val())
+                alert(jq$(this).next().val());
+                return false;
+            });
+            */
+            jq$(function() {
+                jq$(document).on('click','input[id=row_sel]',function() {
+                    var username = jq$(this).parent().next().next().next().find("span").text();
+                    //alert(jq$(this).parent().next().next().next().find("span").text());
+                    // SCAVA FIX
+                    opener.getSelectedUserId("{!JSENCODE(psrId)}",jq$(this).val(),username);
+                    window.close();
+                })
+            })
+        });
+        
+    </script>
+    <apex:pageBlock id="pg3">
+        <apex:form id="frm3">
+            <apex:outputPanel id="pgTbpanel" layout="block">
+                <apex:message id="msg3" />
+                <apex:pageBlockTable styleclass="jquerytable" rendered="{!IF(userList== null, false, true)}"
+                    id="pgtb3" align="center" value="{!userList}" var="u">
+                    <apex:column headerValue="{!$Label.PRM_Select}">
+                        <input type="radio" name="grp3" id="row_sel" value="{!u.UserRec.Id}" />
+                    </apex:column>
+                    <apex:column value="{!u.UserRec.FirstName}">
+                    </apex:column>
+                    <apex:column value="{!u.UserRec.LastName}">
+                    </apex:column>
+                    <apex:column value="{!u.UserRec.Name}">
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:outputPanel>
+        </apex:form>
+    </apex:pageBlock>
+
+</apex:page>

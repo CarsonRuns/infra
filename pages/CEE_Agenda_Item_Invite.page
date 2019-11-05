@@ -1,0 +1,104 @@
+<apex:page standardController="Agenda_Item__c" action="{!addInvitationEmails}" extensions="CEE_AgendaItemInviteController" sidebar="false">  
+    <apex:messages />
+    
+    <apex:outputPanel id="loadPanel">    
+    	<apex:pageMessage id="loadStatus" severity="Info" strength="1" summary="Sending Invites - this may take 5-35 seconds to complete..." rendered="{!isLoading}"> </apex:pageMessage>
+    </apex:outputPanel>
+    
+    <apex:outputPanel id="ceeIframePanel">
+        <apex:iframe src="{!ifrUrl}" scrolling="true" id="ceeIframe"/>
+    </apex:outputPanel>    
+    
+    
+    <apex:form >
+    	<apex:actionFunction name="loadIframe" action="{!iframeLoaded}" rerender="loadPanel" />
+        <apex:actionFunction name="rerenderIframe" action="{!changeUrl}" rerender="ceeIframePanel" />
+        <apex:commandButton action="{!backMethod}" value="Return to Agenda Items" id="vfBackButton" />
+    </apex:form>
+    
+    <script language="javascript">
+
+    //Change the iframe and reload it
+    function receiveMessage(sfdcEvent){
+        if(sfdcEvent.origin !== '{!envRoot}'){
+            console.log("SFDC receiveMessage - bad origin - " + sfdcEvent.origin + " NOT {!envRoot} - "  + sfdcEvent.data);
+            return;
+        }
+        console.log("SFDC receiveMessage - origin - " + sfdcEvent.origin + " - " + sfdcEvent.data);
+        if (window.removeEventListener){
+	        window.removeEventListener("message", receiveMessage, false);
+	        window.addEventListener("message", receiveLoad, false);    
+	    } else {
+	        window.detachEvent("onmessage", receiveMessage);
+	        window.attachEvent("onmessage", receiveLoad);
+	    }
+        
+        //Reload iframe with correct parameters
+		if(sfdcEvent.data == "CanvasRedirectSuccess"){
+	        var ifr = document.getElementById('ceeIframe');
+	        rerenderIframe();
+	        document.getElementById('ceeIframe').height = window.innerHeight;
+	        
+// 	        iwindow = document.getElementById('ceeIframe').contentWindow;
+//         	iwindow.postMessage('IframeSendTwo', '*');
+        	
+       	    addLoadEvent(function(){
+		        iwindow = document.getElementById('ceeIframe').contentWindow;
+		        iwindow.postMessage('IframeSend', '*');
+		    });
+        }
+    }
+    
+    function receiveLoad(sfdcEvent){
+        if(sfdcEvent.origin !== '{!envRoot}'){
+            console.log("SFDC receiveLoad - bad origin - " + sfdcEvent.origin + " NOT {!envRoot} - "  + sfdcEvent.data);
+            return;
+        }
+        console.log("SFDC receiveLoad - origin - " + sfdcEvent.origin + " - " + sfdcEvent.data);
+        if (window.removeEventListener){
+	        window.removeEventListener("message", receiveLoad, false)    
+	    } else {
+	        window.detachEvent("onmessage", receiveLoad)
+	    }
+        
+		if(sfdcEvent.data == "CanvasLoadSuccess"){
+			loadIframe();
+        }
+    }
+    
+    //Add Initial listener and events
+    if (window.addEventListener){
+        window.addEventListener("message", receiveMessage, false);   
+    } else {
+        window.attachEvent("onmessage", receiveMessage);
+    }   
+    addLoadEvent(function(){
+        iwindow = document.getElementById('ceeIframe').contentWindow;
+        iwindow.postMessage('IframeSend', '*');
+    });
+    
+    //On resize, adjust window
+    (function() {
+        var windowOnresize = window.onresize;
+        window.onresize = function(){
+            if(windowOnresize) windowOnresize();
+            document.getElementById('ceeIframe').height = window.innerHeight;
+        };
+    }());
+    
+    //Add load event (does not override SFDC onload items)
+    function addLoadEvent(func){
+        var curronload = window.onload;
+        if(typeof window.onload != 'function'){
+            window.onload = func;
+        } else {
+            window.onload = function(){
+                if(curronload) {
+                    curronload();
+                }
+                func();
+            }
+        }
+    }
+    </script>
+</apex:page>

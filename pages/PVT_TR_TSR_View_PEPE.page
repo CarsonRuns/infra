@@ -1,0 +1,46 @@
+<apex:page standardController="PEPE_Training_Request__c" extensions="VFCntrl_PVT_TR_TSR_PEPE" action="{!showTSRRecInViewPage}">
+<apex:form id="MainForm">
+<apex:pageBlock id="MainPageBlock">
+    <!--<apex:pageBlockSection title="Training Sessions Requests" columns="2" collapsible="false">
+    </apex:pageBlockSection>-->
+    <!--<div><h3 style="font-size: 1.3em">Training Sessions Requests</h3>
+    </div>-->
+   <br/>
+      <apex:outputText value="No records to display" rendered="{!lstTSRDtlsForViewPage.size=null}" style="border: 1px solid #e0e3e5;"/>
+   <apex:pageBlockTable var="tsrVar" value="{!lstTSRDtlsForViewPage}" id="EDLstTableId" rendered="{!lstTSRDtlsForViewPage.size != null}">
+     <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Event Day </apex:facet>                                                                                               
+    <apex:commandLink id="EDName" value="{!tsrVar.Event_Day__r.Name}" action="/{!tsrVar.Event_Day__c}" immediate="true" target="__blank">
+     </apex:commandLink>
+     </apex:column>
+     
+     <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Training Event Name </apex:facet>                                                                                               
+    <apex:commandLink id="EDEveName" value="{!tsrVar.Training_Event_Name__c}" action="/{!tsrVar.Training_Request__r.Training_Offering_Id__c}" immediate="true" target="__blank">
+    </apex:commandLink>
+     </apex:column>
+   
+   <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">TP Room Name </apex:facet>                                                                                               
+    <apex:outputField value="{!tsrVar.TP_Room_Name__c}"/>
+     </apex:column>
+    <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Room Capacity </apex:facet>                                                                                               
+    <apex:outputField value="{!tsrVar.Room_Capacity__c}"/>
+     </apex:column>
+    
+    <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Host Name </apex:facet>                                                                                               
+    <apex:outputField value="{!tsrVar.Host_Name__c}"/>
+     </apex:column>
+     
+    <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Host Email </apex:facet>                                                                                               
+    <apex:outputField value="{!tsrVar.Host_Email__c}"/>
+     </apex:column> 
+
+  </apex:pageBlockTable>
+   
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

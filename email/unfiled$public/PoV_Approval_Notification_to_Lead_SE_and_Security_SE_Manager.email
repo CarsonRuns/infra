@@ -1,0 +1,44 @@
+The following POV Request for {!Proof_of_Value__c.Name} has been Approved by SE MGR : {!Proof_of_Value__c.Security_SE_MGR__c}
+ Or Lead SE{!Proof_of_Value__c.Lead_SE__c} 
+<br/><br/>
+ POV Link : {!Proof_of_Value__c.Link} 
+<br/><br/>
+<table>
+<tr>
+<td>Contact Name :</td> 
+<td>{!Proof_of_Value__c.POV_Contact__c} </td>
+</tr>
+<tr>
+<td>Contact Email : </td>
+<td>{!Proof_of_Value__c.POV_Contact_Email__c}</td>
+</tr>
+<tr>
+<td>Account Name :</td> 
+<td>{!Proof_of_Value__c.Account__c}</td>
+</tr>
+<tr>
+<td>Opportunity Owner :</td>
+<td>{!Opportunity.OwnerFullName}</td> 
+</tr>
+<tr>
+<td>Lead SE Name :</td> 
+<td>{!Proof_of_Value__c.Lead_SE__c} </td> 
+</tr>
+<tr>
+<td>SE Manager Name :</td>
+<td>{!Proof_of_Value__c.Security_SE_MGR__c} </td>
+</tr>
+<tr>
+<td>Reseller Partner : </td>
+<td>{!Proof_of_Value__c.Reseller_Partner__c} </td>
+</tr>
+<tr>
+<td>Decision Date : </td> 
+<td>{!Proof_of_Value__c.Decision_Date__c} </td>
+<tr>
+<td>Description :</td> 
+<td>{!Proof_of_Value__c.POV_Description__c} </td>
+</tr>
+</table>
+<br/><br/>
+Thanks

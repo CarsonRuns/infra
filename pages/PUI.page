@@ -1,0 +1,341 @@
+<apex:page id="page" Controller="PUI_CT" tabstyle="opportunity" >
+<div style="color:#CC0000">&nbsp;<apex:messages ></apex:messages></div>                                                   
+
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.yui241,'build/container/assets/container.css')}" />
+<script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/yahoo-dom-event/yahoo-dom-event.js')}"></script> 
+<script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/animation/animation-min.js')}"></script> 
+<script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/container/container-min.js')}"></script> 
+
+<!-- REPLACE SR 1 of 3 -->
+<!-- <link rel="stylesheet" type="text/css" href="http://wwwin-dev-new.cisco.com/it/sales/TB/dameyer/PUI/pui.css" />  -->
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.PUI_SR,'pui.css')}" />
+
+<script language="javascript">
+    var OpptyName = "{!Opportunity.Name}";
+    var OpptyId = "{!Opportunity.Id}";
+    var PBEIDSVC = "{!$Component.page.mainForm.mainPb.ServicePbs.pbeIdSvc}";
+    var PBEIDTECH = "{!$Component.page.mainForm.mainPb.TechnologyPbs.pbeIdTech}";
+    var DELROWNUMTECH = "{!$Component.page.mainForm.mainPb.delRowNumTech}";
+    var DELROWNUMSVC = "{!$Component.page.mainForm.mainPb.delRowNumSvc}";
+    var PBEPL = "{!$Component.page.hiddenForm.PBEPL}";
+    var PBEPL1 = "{!$Component.page.hiddenForm.PBEPL1}";
+    var P2PL = "{!$Component.page.hiddenForm.P2PL}";
+    var ES = "{!$Component.page.mainForm.mainPb.mainPbs.ES}";
+    var EP = "{!$Component.page.mainForm.mainPb.mainPbs.EP}";
+    var INTER_URL = "{!URLFOR($Resource.yui241,'assets/rel_interstitial_loading.gif')}";
+</script>
+<!-- REPLACE SR 2 of 3 -->
+<!-- <script type="text/javascript" src="http://wwwin-dev-new.cisco.com/it/sales/TB/dameyer/PUI/1.js"></script>   -->
+<script type="text/javascript" src="{!URLFOR($Resource.PUI_SR,'1.js')}"></script>
+
+<center><div style="color:#CC0000;font-weight:bold">{!Error_msg}</div></center>
+<apex:sectionHeader title="Add Technology & Service for {!Opportunity.Name}" help="/servlet/servlet.FileDownload?file=01580000000v02W" rendered="{!IF(($User.ICM__c='True'),true,false)}"/>
+    <apex:sectionHeader title="Add Technology & Service for {!Opportunity.Name}" help="/servlet/servlet.FileDownload?file=01530000000JU4s" rendered="{!IF(($User.ICM__c='True'),false,true)}"/>
+    <apex:form id="mainForm" onsubmit="return submitPage;"> 
+        <apex:pageBlock id="mainPb">
+            <center>
+                <div id="PAGE_MSG" style="color:#CC0000;visibility:hidden;font-weight:bold">&nbsp;</div>
+            </center>       
+            <apex:pageBlockSection id="mainPbs" columns="{!VALUE(IF(($User.ICM__c='True'),'4','2'))}" collapsible="false" >
+                <apex:facet name="header">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="color:#ffffff;"><h3>Opportunity Details</h3></td>
+                        <td width="200px" align="right">
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="background-color:#ffffff;">&nbsp;&nbsp;</td>
+                                    <td style="background-color:#ffffff;" class="td-left-red">&nbsp;</td>
+                                    <td style="background-color:#ffffff;font-weight:normal;">= Required Information</td>
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    </table>
+            </apex:facet>           
+                <apex:outputField value="{!AccountName.Name}" style="text-align: left;" styleClass="align-left-nowrap"/>
+                 
+                
+                <apex:outputField value="{!Opportunity.CloseDate}" style="text-align: left;" styleClass="align-left-nowrap"/>
+                               
+                 
+<!--              <apex:outputLabel rendered="{!IF(($User.ICM__c='True'),true,false)}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel> -->
+<!--              <apex:outputLabel rendered="{!IF(($User.ICM__c='True'),true,false)}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel> -->
+
+                
+                
+                <apex:outputField value="{!Opportunity.Name}" style="text-align: left;" styleClass="align-left-nowrap"/>
+                
+                 
+               
+                <apex:inputField value="{!Opportunity.Expected_Product__c}" id="EP" required="true" style="text-align: left;" styleClass="align-left-nowrap"/>
+                               
+              
+<!--              <apex:outputLabel rendered="{!IF(($User.ICM__c='True'),true,false)}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel> -->
+<!--              <apex:outputLabel rendered="{!IF(($User.ICM__c='True'),true,false)}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel> -->
+                
+                
+                <apex:outputField value="{!Opportunity.StageName}" style="text-align: left;" styleClass="align-left-nowrap"/>
+                                 
+                
+                <apex:inputField value="{!Opportunity.Expected_Service__c}" id="ES" style="text-align: left" styleClass="align-left-nowrap" onblur="calculateSvc();"/>
+                               
+                                             
+<!--              <apex:outputLabel rendered="{!IF(($User.ICM__c='True'),true,false)}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel> -->
+<!--              <apex:outputLabel rendered="{!IF(($User.ICM__c='True'),true,false)}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel> -->
+                
+               
+                <apex:outputField value="{!Opportunity.DealID__c}" style="text-align: left;" styleClass="align-left-nowrap"/>
+               
+                              
+                
+                
+                <apex:pageBlockSectionItem id="linkBlock" rendered="{!IF( Opportunity.Quote_Count__c > 0, true, false)}">
+                    <apex:outputLabel value="Quote Information" for="theLink"/>
+                <apex:outputLink value="javascript: var newWin = window.open('/{!qs}','childwin', 'menubar=no, resizable=yes, scrollbars=yes, height=500, width=1000 top=100, left=100'); newWin.focus();" id="theLink">Quote Summary</apex:outputLink>
+                </apex:pageBlockSectionItem>
+               
+            </apex:pageBlockSection>
+                                       
+            
+            <!--Technology -->
+    <apex:actionRegion immediate="false">
+        <apex:outputPanel id="Tech"> 
+            <apex:actionstatus id="statusT">
+                <apex:facet name="start">
+                    <center><table><tr><td align="center">
+                        Processing
+                    </td></tr><tr><td>
+                        <img src="{!URLFOR($Resource.yui241,'assets/rel_interstitial_loading.gif')}" /> 
+                    </td></tr></table></center>                 
+                </apex:facet>
+                <apex:facet name="stop">
+                     <apex:outputPanel > 
+                            <div style="color:#00BF00">&nbsp;<apex:messages ></apex:messages></div>                                                   
+                            <!-- Used to hold Tech rownumber when user clicks del -->
+                            <apex:inputHidden id="delRowNumTech" value="{!TechRowNum}" />
+                        <apex:pageBlockSection title="Technology" id="TechnologyPbs" columns="1" collapsible="false">
+                        
+                                              
+                                <!-- set pbeIdTech to add  -->
+                                <apex:inputHidden id="pbeIdTech" value="{!PbeId_Tech}" />
+                            <apex:dataTable value="{!LineItemsTechnology}" var="opportunitylineitem" cellPadding="4" width="100%">
+                                <apex:column style="border-bottom:solid 1px #e3deb8;" styleClass="nowrap">
+                                    <apex:facet name="header">
+                                        <apex:outputText >Technology&nbsp;&nbsp;
+                                            <apex:commandButton action="{!addTech}" value="Add" rerender="Tech" status="statusT" id="addTechBtn" onclick="if(!add('TECH',event)){return false;}" /> 
+                                            <div id="NO_LI_TECH" style="visibility:hidden;font-weight:normal">No Technology has been added</div>                                                                                                                    
+                                        </apex:outputText>                                      
+                                    </apex:facet>
+                                    <apex:facet name="footer">&nbsp;</apex:facet>   
+                                    <b>
+                                        <apex:commandLink value="Del" action="{!delTech}" rerender="Tech" status="statusT" onclick="setRowToDelete(event,'TECH')" />
+                                    </b>                                        
+                                    &nbsp;
+                                    <apex:outputPanel id="PBNAME_TECH"><!--Name is added via js--></apex:outputPanel>                               
+                                    <apex:inputHidden value="{!opportunitylineitem.PriceBookEntryId}" id="PBEID_TECH" />
+                                </apex:column>
+                                <apex:column style="border-bottom:solid 1px #e3deb8;" footerClass="align-right-nowrap">
+                                    <apex:facet name="header">&nbsp;</apex:facet>
+                                    <apex:facet name="footer"><b>Total:</b></apex:facet>                            
+                                    &nbsp;
+                                </apex:column>                              
+                                <apex:column style="border-bottom:solid 1px #e3deb8;" styleClass="align-right-nowrap" headerClass="align-left-nowrap" width="35px">
+                                    <!--<apex:facet name="header">Mix %</apex:facet>-->
+                                     <apex:facet name="header"><apex:outputLabel value="{!$Label.PUI_Mix}"/></apex:facet>
+                                    <div class="INPUT_SHRINK">
+                                        <table border="0" cellpadding="0" cellspacing="0"><tr><td>
+                                            <apex:inputField value="{!opportunitylineitem.Mix__c}" id="MIX_TECH" required="TRUE" onblur="noDecimal(this);calculateMix();"/>
+                                        </td><td>&nbsp;%</td></tr></table>
+                                        <apex:outputPanel id="MIX_TECH_MSG" style="color:#CC0000;font-weight:bold"/>
+                                    </div>                                      
+                                <apex:facet name="footer">
+                                    <div id="MIX_TOTAL_TECH"><!-- substitute mixp value here --></div>
+                                </apex:facet>
+                                </apex:column>
+                                <apex:column style="border-bottom:solid 1px #e3deb8;" styleClass="align-right-nowrap" headerClass="align-left-nowrap" width="5%">
+                                    <!--<apex:facet name="header">Product Family</apex:facet>-->
+                                     <apex:facet name="header"><apex:outputLabel value="{!$Label.PUI_Product}"/></apex:facet>
+                                    <apex:inputHidden value="{!opportunitylineitem.Product_Family_US__c}" id="HIDDEN_TECH"/>
+                                    <apex:outputPanel id="startingDiv_TECH" layout="block"><!-- Used as starting point to add pls--></apex:outputPanel>
+                                    <apex:facet name="footer">
+                                        <div id="MIX_MSG_TECH"></div>
+                                    </apex:facet>                                                               
+                                </apex:column>
+                                <apex:column style="border-bottom:solid 1px #e3deb8;" rendered="{!IF(($User.ICM__c='True'),true,false)}" styleClass="align-left-nowrap" headerClass="align-left-nowrap" width="5%">
+                                    <apex:facet name="header">Competitor Technology</apex:facet>
+                                    <apex:inputField value="{!opportunitylineitem.Technology_Competitor__c}"/>
+                                    
+                                    <apex:facet name="footer">
+                                        
+                                    </apex:facet>                                                               
+                                </apex:column>
+                            </apex:dataTable>
+                     </apex:pageBlockSection>
+                     
+                     
+                    
+    
+
+<script language="javascript">
+
+if (built){
+//if the page has already done the initial load run these when the TECH panel refreshes.
+    writePbName(TECH);
+
+    plNumFor[0] = new Array();
+    
+    BuildPls(TECH);
+    calculateMix();
+}
+</script>
+                 </apex:outputPanel> 
+            </apex:facet>
+        </apex:actionstatus>
+     </apex:outputPanel>   
+    </apex:actionRegion>     
+<!-- Service -->
+<apex:actionRegion immediate="false">
+<apex:outputPanel id="Svc">
+    <apex:actionstatus id="statusS">
+        <apex:facet name="start">
+            <center><table><tr><td align="center">
+                Processing
+            </td></tr><tr><td>
+                <img src="{!URLFOR($Resource.yui241,'assets/rel_interstitial_loading.gif')}" />
+            </td></tr></table></center>
+        </apex:facet>
+        <apex:facet name="stop">
+            <apex:outputPanel >
+                <div style="color:#CC0000">&nbsp;<apex:messages ></apex:messages></div>  
+                <!-- Used to hold Tech rownumber when user clicks del -->
+                <apex:inputHidden id="delRowNumSvc" value="{!SvcRowNum}"/>              
+                <apex:pageBlockSection title="Service" id="ServicePbs" columns="1" collapsible="false">
+                    <!-- set pbeIdSvc to add  -->
+                    <apex:inputHidden id="pbeIdSvc" value="{!PbeId_Svc}"/>
+                    <apex:dataTable value="{!LineItemsService}" var="opportunitylineitem" cellPadding="4" border="0" width="100%">
+                        <apex:column style="border-bottom:solid 1px #e3deb8;" styleClass="nowrap">
+                            <apex:facet name="header">
+                                <apex:outputText >Service Program&nbsp;&nbsp;                            
+                                    <apex:commandButton action="{!addSvc}" value="Add" rerender="Svc" status="statusS" id="addSvcBtn" onclick="if(!add('SVC',event)){return false;}" />
+                                    <div id="NO_LI_SVC" style="visibility:hidden;font-weight:normal">No Service Program has been added</div>                                                                        
+                                </apex:outputText>                                  
+                            </apex:facet>
+                            <apex:facet name="footer">&nbsp;</apex:facet>
+                            <b>
+                                <apex:commandLink value="Del" action="{!delSvc}" rerender="Svc" status="statusS" onclick="setRowToDelete (event,'SVC')" />
+                            </b>                                
+                            &nbsp;
+                            <apex:inputHidden value="{!opportunitylineitem.PriceBookEntryId}" id="PBEID_SVC" />
+                            <apex:outputPanel id="PBNAME_SVC"><!--Name is added via js--></apex:outputPanel>
+                        </apex:column>
+                        
+                        <apex:column style="border-bottom:solid 1px #e3deb8;" styleClass="align-left-nowrap" headerClass="align-left-nowrap" width="5%">
+                            <apex:facet name="header">Service Category</apex:facet>
+                            <apex:facet name="footer"> </apex:facet>                           
+                            <apex:outputPanel id="startingDiv_SCat" layout="block"><!-- Used as starting point to add pls--></apex:outputPanel>                              
+                            <table cellspacing="0" cellpadding="0"><tbody><tr><td style="border-left:3px solid #CC0000">
+                            <apex:inputField value="{!opportunitylineitem.Service_Category__c}"  id="HIDDEN_SCat"/>
+                            </td></tr></tbody></table>
+                            <apex:outputPanel id="HIDDEN_SCat_MSG" style="color:#CC0000;font-weight:bold"/>                                                
+                        </apex:column> 
+                        
+                        <apex:column style="border-bottom:solid 1px #e3deb8;" styleClass="align-left-nowrap" headerClass="align-left-nowrap" width="5%">
+                            <apex:facet name="header">Service Level</apex:facet>
+                            <apex:facet name="footer">&nbsp;</apex:facet>                           
+                            <apex:outputPanel id="startingDiv_SVC" style="border-left:3px solid #CC0000" layout="block"><!-- Used as starting point to add pls--></apex:outputPanel>                              
+                            <apex:outputPanel id="HIDDEN_SVC_MSG" style="color:#CC0000;font-weight:bold"/>  
+                            <!--<apex:outputField value="{!opportunitylineitem.Service_Level__c}" id="Service" /> -->
+                            <apex:inputHidden value="{!opportunitylineitem.Service_Level__c}" id="HIDDEN_SVC" />                                                
+                        </apex:column>
+                        <apex:column style="border-bottom:solid 1px #e3deb8;" styleClass="align-left-nowrap" footerClass="align-left-nowrap">
+                            <apex:facet name="header">&nbsp;</apex:facet>
+                            <apex:facet name="footer"><b>Total:</b></apex:facet>
+                            &nbsp;                          
+                        </apex:column>
+                        <apex:column style="border-bottom:solid 1px #e3deb8;" styleClass="align-left-nowrap" headerClass="align-left-nowrap" width="35px">
+                            <apex:facet name="header">Mix %</apex:facet>
+                            <div class="INPUT_SHRINK">
+                                <table border="0" cellpadding="0" cellspacing="0"><tr><td>                          
+                                    <apex:inputField value="{!opportunitylineitem.Mix__c}" id="MIX_SVC" required="TRUE" onblur="noDecimal(this);calculateSvc();calculateMix();"/>
+                                </td><td>&nbsp;%</td></tr></table>                                                                  
+                                <apex:outputPanel id="MIX_SVC_MSG" style="color:#CC0000;font-weight:bold"/>                             
+                            </div>                              
+                        <apex:facet name="footer">
+                            <div id="MIX_TOTAL_SVC"><!-- substitute mixp value here --></div>
+                        </apex:facet>
+                        </apex:column>
+                        <apex:column style="border-bottom:solid 1px #e3deb8;" styleClass="align-right-nowrap" headerClass="align-right-nowrap">
+                            <apex:facet name="header">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                Service ($'000)
+                            </apex:facet>
+                            <apex:outputPanel id="DOLLAR_SVC"><!-- div for svc calc--></apex:outputPanel>
+                            <apex:facet name="footer">
+                                <div id="MIX_MSG_SVC" class="align-left-nowrap"></div>
+                            </apex:facet>                           
+                        </apex:column>
+                    </apex:dataTable>
+                </apex:pageBlockSection>
+
+<script language="javascript">
+//if the page has already done the initial load run these when the SVC panel refreshes.
+    if (built){
+        writePbName(SVC);
+        BuildPls(SVC);
+        calculateSvc();
+        calculateMix();
+    }
+</script>
+            </apex:outputPanel>
+        </apex:facet>
+    </apex:actionstatus>
+</apex:outputPanel>
+</apex:actionRegion>
+    <apex:pageBlockButtons >
+        <apex:commandButton action="{!save}" value="Save" onclick="validateSave();"/>
+<!-- commandButton validates the form. if bad values it does not do the apex method
+            <apex:commandButton action="{!cancel}" value="Cancel" onclick="cancel();"/>     -->
+        <input type="button" onclick="cancel();" value="Cancel" class="btn" />      
+    </apex:pageBlockButtons>
+    </apex:PageBlock>
+</apex:form>
+
+
+
+
+
+<!-- <div style="visibility:visible"> -->
+<div style="visibility:hidden">
+<!-- HIDDEN DIV HOLDING pricebook and product2 values -->
+    <apex:form id="hiddenForm">
+    PriceBookEntry
+    <apex:selectList value="{!idk}" id="PBEPL" multiselect="false" size="1" onchange="setPbeFromHiddenDivPL()">
+        <apex:selectOptions value="{!PbePickList}"/> 
+    </apex:selectList>
+    ...
+       
+      <apex:selectList value="{!idk}" id="PBEPL1" onchange="setPbeFromHiddenDivPL()">
+        <apex:selectOptions value="{!PbePickListinact}"/> 
+    </apex:selectList>
+    
+    ...
+    <apex:selectList value="{!idk}" id="P2PL" multiselect="false" size="1">
+        <apex:selectOptions value="{!Product2PL}"/>product2 
+    </apex:selectList>
+</apex:form>
+
+
+
+
+<!-- REPLACE SR 3 of 3 -->
+<!-- <script type="text/javascript" src="http://wwwin-dev-new.cisco.com/it/sales/TB/dameyer/PUI/10.js"></script>  -->
+<script type="text/javascript" src="{!URLFOR($Resource.PUI_SR,'10.js')}"></script>
+
+<input type="button" value="showPl" onclick="techPl()"/>
+<input type="button" value="showInputs" onclick="showInputs()" />
+</div>
+
+</apex:page>

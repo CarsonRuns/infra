@@ -1,0 +1,13 @@
+<!--apex:page StandardController="AT_Workspace__c"  extensions="PSS_Clone_CTE" action="{!clonethis}"-->
+<!--SCAVA FIX Alekhya_PSS_Clone_CTE-->
+<apex:page StandardController="AT_Workspace__c"  extensions="Alekhya_PSS_Clone_CTE" id="pg" >
+<script type = "text/javascript">
+    window.onload=function()       
+    {        
+        clonethis();
+    }
+</script>
+<apex:form >
+  <apex:actionFunction name="clonethis" action="{!clonethis}" reRender="pg"/>   
+ </apex:form>
+</apex:page>

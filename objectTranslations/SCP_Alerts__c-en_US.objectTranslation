@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notification for --></label>
+        <name>Notification_for__c</name>
+        <picklistValues>
+            <masterLabel>Internal Users</masterLabel>
+            <translation><!-- Internal Users --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partners Users</masterLabel>
+            <translation><!-- Partners Users --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>SCP Alert</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SCP Alerts</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>SCP Alert Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

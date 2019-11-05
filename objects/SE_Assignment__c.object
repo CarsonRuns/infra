@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Cisco_SE__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field shows that SEM has assigned SE is from Cisco</description>
+        <externalId>false</externalId>
+        <label>Cisco SE</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>R00N30000001tZyHEAU</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contribution__c</fullName>
+        <description>This field will provide % of SE Contribution on a given Opportunity</description>
+        <externalId>false</externalId>
+        <label>Contribution %</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Notify_AM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field specifies whether the email has to be sent to the AM notifying him about the SE Assignment to his requested Opportunity</description>
+        <externalId>false</externalId>
+        <label>Notify AM</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Notify_SE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field specifies whether an email has to be sent to the SE regarding the Opportunity Assignment</description>
+        <externalId>false</externalId>
+        <label>Notify SE</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <description>This field will have the name of the Opportunity which requires SE Involvment</description>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>SE Assignments</relationshipLabel>
+        <relationshipName>R00N30000001tZyMEAU</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Partner_SE__c</fullName>
+        <description>This field shows that SEM has assigned SE is from a Partner</description>
+        <externalId>false</externalId>
+        <label>Partner SE</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SE_Assignment_Type__c</fullName>
+        <description>This field provides if the SE Assigned to an Opportunity is a Primary or Secondary SE</description>
+        <externalId>false</externalId>
+        <label>SE Assignment Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Primary</fullName>
+                    <default>true</default>
+                    <label>Primary</label>
+                </value>
+                <value>
+                    <fullName>Secondary</fullName>
+                    <default>false</default>
+                    <label>Secondary</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SE_Engagement_Type__c</fullName>
+        <description>Added for June QW release. Reference QW 3452. SFDC SE Beta enhancements</description>
+        <externalId>false</externalId>
+        <label>SE Engagement Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Contribution Intensity: High</fullName>
+                    <default>false</default>
+                    <label>Contribution Intensity: High</label>
+                </value>
+                <value>
+                    <fullName>Contribution Intensity: Low</fullName>
+                    <default>false</default>
+                    <label>Contribution Intensity: Low</label>
+                </value>
+                <value>
+                    <fullName>Contribution Intensity: Medium</fullName>
+                    <default>false</default>
+                    <label>Contribution Intensity: Medium</label>
+                </value>
+                <value>
+                    <fullName>Engaged: Proactive</fullName>
+                    <default>false</default>
+                    <label>Engaged: Proactive</label>
+                </value>
+                <value>
+                    <fullName>Engaged: Reactive</fullName>
+                    <default>false</default>
+                    <label>Engaged: Reactive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>InDevelopment</deploymentStatus>
+    <description>This Object is for SE Lite Project which will allow SEM's to assign SE for any given opportunity</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>zzSE Assignment</label>
+    <nameField>
+        <displayFormat>A-{0000}</displayFormat>
+        <label>SE Assignment</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>SE Assignments</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <validationRules>
+        <fullName>zzCisco_SE_or_Partner_SE_Not_Both</fullName>
+        <active>false</active>
+        <description>This Validation Rule will validate if user has not selected both Cisco SE or Partner SE</description>
+        <errorConditionFormula>OR(AND(LEN(Cisco_SE__c) &lt; 1, LEN(Partner_SE__c ) &lt; 1), AND(LEN(Cisco_SE__c) &gt;0, LEN(Partner_SE__c ) &gt;0))</errorConditionFormula>
+        <errorMessage>SE Assignment records can contain either a Cisco SE or a Partner SE, not both.  If you need to assign an additional SE to this Opportunity, please create a new SE Assignment</errorMessage>
+    </validationRules>
+</CustomObject>

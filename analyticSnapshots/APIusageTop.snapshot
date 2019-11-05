@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticSnapshot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Snapshot of APIusageTOP</description>
+    <groupColumn>USERNAME</groupColumn>
+    <mappings>
+        <sourceField>JobName</sourceField>
+        <sourceType>snapshot</sourceType>
+        <targetField>snapshot__c.Name</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>TIME_SEGMENT</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>snapshot__c.APIusageSummary_Day_Of_Week__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>ExecutionTime</sourceField>
+        <sourceType>snapshot</sourceType>
+        <targetField>snapshot__c.snapshot_Execution_Time__c</targetField>
+    </mappings>
+    <mappings>
+        <aggregateType>Sum</aggregateType>
+        <sourceField>CALL_COUNT</sourceField>
+        <sourceType>summary</sourceType>
+        <targetField>snapshot__c.sum__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>USERNAME</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>snapshot__c.username__c</targetField>
+    </mappings>
+    <name>APIusageTop</name>
+    <runningUser>sfdc_apex_user@cisco.com</runningUser>
+    <sourceReport>AdminUseOnly/APIusageTopUsers</sourceReport>
+    <targetObject>snapshot__c</targetObject>
+</AnalyticSnapshot>

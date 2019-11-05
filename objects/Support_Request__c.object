@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The Account associated with Support Request</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Support_Requests</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Application__c</fullName>
+        <description>Application field value for corresponding account</description>
+        <externalId>false</externalId>
+        <formula>TEXT (Account__r.Application__c)</formula>
+        <label>Application</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Comments_already_selected__c</fullName>
+        <description>Contains all the comments entered for the services selected.</description>
+        <externalId>false</externalId>
+        <label>Comments already entered</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Deal_ID__c</fullName>
+        <description>Deal ID associated with the opportunity</description>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.DealID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Deal ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Forecasting_Position__c</fullName>
+        <description>Forecasting Position of related opportunity.</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Opportunity__r.Position__c)</formula>
+        <label>Forecasting Position</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Support_Requested__c</fullName>
+        <description>Value of the field will be set to 0 if support is not requested, else it will be set to 1.</description>
+        <externalId>false</externalId>
+        <formula>IF( INCLUDES( Support_Request_Type__c , 'Support not required'), 'No','Yes')</formula>
+        <label>Is Support Requested</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Modified_By_Email__c</fullName>
+        <description>Provides the email address of the LastModifiedBy person</description>
+        <externalId>false</externalId>
+        <formula>LastModifiedBy.Email</formula>
+        <label>Last Modified By Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Owner_Name__c</fullName>
+        <description>Contains the Opportunity Owner's Name.</description>
+        <externalId>false</externalId>
+        <label>Opportunity Owner</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Opportunity associated with the Support Request</description>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipName>Support_Requests</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Partner__c</fullName>
+        <description>Primary Partner of the corresponding opportunity</description>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Primary_Partner__r.Name</formula>
+        <label>Primary Partner</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Request_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Request Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>UCS</fullName>
+                    <default>true</default>
+                    <label>UCS</label>
+                </value>
+                <value>
+                    <fullName>SAC TV</fullName>
+                    <default>false</default>
+                    <label>SAC TV</label>
+                </value>
+                <value>
+                    <fullName>SAC WebEx</fullName>
+                    <default>false</default>
+                    <label>SAC WebEx</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SAC_MEET_COMP_UCS__c</fullName>
+        <description>Is your UCS opportunity competing against an AMD, SPARC, or other RISC offer?</description>
+        <externalId>false</externalId>
+        <label>SAC_MEET-COMP_UCS</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>I Don't Know</fullName>
+                    <default>false</default>
+                    <label>I Don't Know</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Services_Already_Selected__c</fullName>
+        <description>Contains all the services selected</description>
+        <externalId>false</externalId>
+        <label>Services Already Selected</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Services_Recently_Selected__c</fullName>
+        <description>Contains all the recent services selected.</description>
+        <externalId>false</externalId>
+        <label>Services Recently Selected</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status of the Support Request</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Requested</fullName>
+                    <default>false</default>
+                    <label>Requested</label>
+                </value>
+                <value>
+                    <fullName>In Process</fullName>
+                    <default>false</default>
+                    <label>In Process</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Support_Request_Type_Others__c</fullName>
+        <description>Other type of Support Request requested for the Opportunity</description>
+        <externalId>false</externalId>
+        <label>Comments for Support Provider</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_Request_Type__c</fullName>
+        <description>Type of the Support Requests requested for the opportunity.</description>
+        <externalId>false</externalId>
+        <label>Support Request Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Request_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>3rd Party Software Service request</fullName>
+                    <default>false</default>
+                    <label>3rd Party Software Service request</label>
+                </value>
+                <value>
+                    <fullName>Advanced/Professional Services</fullName>
+                    <default>false</default>
+                    <label>Advanced/Professional Services</label>
+                </value>
+                <value>
+                    <fullName>Application / Data Center Migration</fullName>
+                    <default>false</default>
+                    <label>Application / Data Center Migration</label>
+                </value>
+                <value>
+                    <fullName>Application and Performance</fullName>
+                    <default>false</default>
+                    <label>Application and Performance</label>
+                </value>
+                <value>
+                    <fullName>Application Dependency Mapping</fullName>
+                    <default>false</default>
+                    <label>Application Dependency Mapping</label>
+                </value>
+                <value>
+                    <fullName>Architectural Assistance</fullName>
+                    <default>false</default>
+                    <label>Architectural Assistance</label>
+                </value>
+                <value>
+                    <fullName>Bill of Material(BOM)</fullName>
+                    <default>false</default>
+                    <label>Bill of Material(BOM)</label>
+                </value>
+                <value>
+                    <fullName>Business Unit (BU)</fullName>
+                    <default>false</default>
+                    <label>Business Unit (BU)</label>
+                </value>
+                <value>
+                    <fullName>Business Unit (BU) – VTG</fullName>
+                    <default>false</default>
+                    <label>Business Unit (BU) – VTG</label>
+                </value>
+                <value>
+                    <fullName>Capacity Assurance Program</fullName>
+                    <default>false</default>
+                    <label>Capacity Assurance Program</label>
+                </value>
+                <value>
+                    <fullName>CBC/EBC Briefing</fullName>
+                    <default>false</default>
+                    <label>CBC/EBC Briefing</label>
+                </value>
+                <value>
+                    <fullName>Channel Partners</fullName>
+                    <default>false</default>
+                    <label>Channel Partners</label>
+                </value>
+                <value>
+                    <fullName>Channels Support</fullName>
+                    <default>false</default>
+                    <label>Channels Support</label>
+                </value>
+                <value>
+                    <fullName>Cisco/Tandberg Capital/Financing</fullName>
+                    <default>false</default>
+                    <label>Cisco/Tandberg Capital/Financing</label>
+                </value>
+                <value>
+                    <fullName>Cisco Capital</fullName>
+                    <default>false</default>
+                    <label>Cisco Capital</label>
+                </value>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <label>Cloud</label>
+                </value>
+                <value>
+                    <fullName>Compensation/Quota</fullName>
+                    <default>false</default>
+                    <label>Compensation/Quota</label>
+                </value>
+                <value>
+                    <fullName>Competitive</fullName>
+                    <default>false</default>
+                    <label>Competitive</label>
+                </value>
+                <value>
+                    <fullName>Create/Validate a Presentation</fullName>
+                    <default>false</default>
+                    <label>Create/Validate a Presentation</label>
+                </value>
+                <value>
+                    <fullName>Customer Engagement Letter</fullName>
+                    <default>false</default>
+                    <label>Customer Engagement Letter</label>
+                </value>
+                <value>
+                    <fullName>Customer Service/Operations</fullName>
+                    <default>false</default>
+                    <label>Customer Service/Operations</label>
+                </value>
+                <value>
+                    <fullName>Deal Desk</fullName>
+                    <default>false</default>
+                    <label>Deal Desk</label>
+                </value>
+                <value>
+                    <fullName>Demo Equipment</fullName>
+                    <default>false</default>
+                    <label>Demo Equipment</label>
+                </value>
+                <value>
+                    <fullName>Design Assistance</fullName>
+                    <default>false</default>
+                    <label>Design Assistance</label>
+                </value>
+                <value>
+                    <fullName>Ecosystem Partners</fullName>
+                    <default>false</default>
+                    <label>Ecosystem Partners</label>
+                </value>
+                <value>
+                    <fullName>General Migration</fullName>
+                    <default>false</default>
+                    <label>General Migration</label>
+                </value>
+                <value>
+                    <fullName>Intel Competitive Discounts (MEET-COMP)</fullName>
+                    <default>false</default>
+                    <label>Intel Competitive Discounts (MEET-COMP)</label>
+                </value>
+                <value>
+                    <fullName>Interactive Workshop Briefing</fullName>
+                    <default>false</default>
+                    <label>Interactive Workshop Briefing</label>
+                </value>
+                <value>
+                    <fullName>Microsoft</fullName>
+                    <default>false</default>
+                    <label>Microsoft</label>
+                </value>
+                <value>
+                    <fullName>NetApp FlexPod</fullName>
+                    <default>false</default>
+                    <label>NetApp FlexPod</label>
+                </value>
+                <value>
+                    <fullName>Oracle</fullName>
+                    <default>false</default>
+                    <label>Oracle</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Pricing / Ordering</fullName>
+                    <default>false</default>
+                    <label>Pricing / Ordering</label>
+                </value>
+                <value>
+                    <fullName>Product Information</fullName>
+                    <default>false</default>
+                    <label>Product Information</label>
+                </value>
+                <value>
+                    <fullName>PSS/SBDM/TVSS</fullName>
+                    <default>false</default>
+                    <label>PSS/SBDM/TVSS</label>
+                </value>
+                <value>
+                    <fullName>Public Sector</fullName>
+                    <default>false</default>
+                    <label>Public Sector</label>
+                </value>
+                <value>
+                    <fullName>References (End customer / Partner)</fullName>
+                    <default>false</default>
+                    <label>References (End customer / Partner)</label>
+                </value>
+                <value>
+                    <fullName>RFP-Proposal Campaign-Proactive Proposal</fullName>
+                    <default>false</default>
+                    <label>RFP-Proposal Campaign-Proactive Proposal</label>
+                </value>
+                <value>
+                    <fullName>RISC Server Replacement</fullName>
+                    <default>false</default>
+                    <label>RISC Server Replacement</label>
+                </value>
+                <value>
+                    <fullName>Roadmap</fullName>
+                    <default>false</default>
+                    <label>Roadmap</label>
+                </value>
+                <value>
+                    <fullName>Sales Operations (Ops)</fullName>
+                    <default>false</default>
+                    <label>Sales Operations (Ops)</label>
+                </value>
+                <value>
+                    <fullName>Sales Support / Strategy</fullName>
+                    <default>false</default>
+                    <label>Sales Support / Strategy</label>
+                </value>
+                <value>
+                    <fullName>SAP</fullName>
+                    <default>false</default>
+                    <label>SAP</label>
+                </value>
+                <value>
+                    <fullName>SAP HANA</fullName>
+                    <default>false</default>
+                    <label>SAP HANA</label>
+                </value>
+                <value>
+                    <fullName>Service Provider (SP)</fullName>
+                    <default>false</default>
+                    <label>Service Provider (SP)</label>
+                </value>
+                <value>
+                    <fullName>Services (CA AS)</fullName>
+                    <default>false</default>
+                    <label>Services (CA AS)</label>
+                </value>
+                <value>
+                    <fullName>Services (CA RMS)</fullName>
+                    <default>false</default>
+                    <label>Services (CA RMS)</label>
+                </value>
+                <value>
+                    <fullName>Services (CA TS)</fullName>
+                    <default>false</default>
+                    <label>Services (CA TS)</label>
+                </value>
+                <value>
+                    <fullName>Technical / Architecture</fullName>
+                    <default>false</default>
+                    <label>Technical / Architecture</label>
+                </value>
+                <value>
+                    <fullName>Technical Services(TS)</fullName>
+                    <default>false</default>
+                    <label>Technical Services(TS)</label>
+                </value>
+                <value>
+                    <fullName>Telepresence Education Forum</fullName>
+                    <default>false</default>
+                    <label>Telepresence Education Forum</label>
+                </value>
+                <value>
+                    <fullName>Tools</fullName>
+                    <default>false</default>
+                    <label>Tools</label>
+                </value>
+                <value>
+                    <fullName>Training (internal &amp; external)</fullName>
+                    <default>false</default>
+                    <label>Training (internal &amp; external)</label>
+                </value>
+                <value>
+                    <fullName>Try and Buy Program</fullName>
+                    <default>false</default>
+                    <label>Try and Buy Program</label>
+                </value>
+                <value>
+                    <fullName>UCS Competitive (non-HP)</fullName>
+                    <default>false</default>
+                    <label>UCS Competitive (non-HP)</label>
+                </value>
+                <value>
+                    <fullName>UCS HP Competitive War Room</fullName>
+                    <default>false</default>
+                    <label>UCS HP Competitive War Room</label>
+                </value>
+                <value>
+                    <fullName>UCS Pre-Configuration Request (BOM)</fullName>
+                    <default>false</default>
+                    <label>UCS Pre-Configuration Request (BOM)</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>3rd Party Software Service request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Application / Data Center Migration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Application and Performance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Application Dependency Mapping</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Architectural Assistance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Capacity Assurance Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>CBC/EBC Briefing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Channels Support</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Cisco Capital</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Cloud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Customer Engagement Letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Demo Equipment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>Ecosystem Partners</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>General Migration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Intel Competitive Discounts (MEET-COMP)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Interactive Workshop Briefing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Microsoft</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>NetApp FlexPod</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Oracle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Product Information</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>RFP-Proposal Campaign-Proactive Proposal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>RISC Server Replacement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>SAP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>SAP HANA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Services (CA AS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Services (CA RMS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Services (CA TS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>Telepresence Education Forum</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Try and Buy Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>UCS Competitive (non-HP)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>UCS HP Competitive War Room</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCS</controllingFieldValue>
+                <valueName>UCS Pre-Configuration Request (BOM)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>Advanced/Professional Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Bill of Material(BOM)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>Business Unit (BU)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>Channel Partners</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>Cisco/Tandberg Capital/Financing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>Compensation/Quota</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Competitive</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Create/Validate a Presentation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>Customer Service/Operations</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Deal Desk</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Design Assistance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>PSS/SBDM/TVSS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>Public Sector</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <valueName>Sales Operations (Ops)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SAC TV</controllingFieldValue>
+                <controllingFieldValue>SAC WebEx</controllingFieldValue>
+                <valueName>Technical Services(TS)</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Theater__c</fullName>
+        <description>Theater associated with the opportunity</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Opportunity__r.Theater__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Theater</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>InDevelopment</deploymentStatus>
+    <description>This objects captures the information about support requests selected by Account Manager.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>zzSupport Request</label>
+    <nameField>
+        <displayFormat>{00000000}</displayFormat>
+        <label>Support Request</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Support Requests</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

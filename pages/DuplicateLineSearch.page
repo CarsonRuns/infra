@@ -1,0 +1,12 @@
+<apex:page controller="DuplicateLineSearch_CT">
+    <apex:form >
+        <br/>
+        OpptyId&nbsp;&nbsp;<apex:inputText value="{!OpptyId}"/>&nbsp;&nbsp;&nbsp;<apex:commandButton action="{!getDl}" value="get dlId"/>
+<!--        <br/><br/><br/><br/>
+        {!dlId}-->
+        <br/>
+        <apex:detail subject="{!dlId}" relatedList="true" title="false"/> 
+        <br/><br/>        
+        {!error}
+    </apex:form>
+</apex:page>

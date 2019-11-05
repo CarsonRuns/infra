@@ -1,0 +1,19 @@
+<apex:page standardController="Lead">
+  <script type="text/javascript" src="//www.cisco.com/etc/designs/cdc/fw/lib/jQuery/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="//www.cisco.com/c/dam/cdc/t/ctm.js"></script>
+  <script>
+      function myCallback(){
+          alert("Succcess");
+      }
+      
+      function load(){
+          // alert('Loading');
+           console.log(trackEvent);
+           trackEvent.event('view', {
+             un: '{!$User.UserName}',
+             tabName: 'Classic Lead'
+           });
+        }
+        load();
+  </script>
+</apex:page>

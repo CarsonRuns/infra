@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Alias/Country Email Id --></label>
+        <name>Alias_Country_Email_Id__c</name>
+    </fields>
+    <fields>
+        <label>Resp. centre de contact Cisco 1</label>
+        <name>Cisco_Contact_Center_Manager1__c</name>
+        <relationshipLabel><!-- NGCC Mapping Objects (Cisco Contact Center Manager1) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Resp. centre de contact Cisco 2</label>
+        <name>Cisco_Contact_Center_Manager2__c</name>
+        <relationshipLabel><!-- NGCC Mapping Objects (Cisco Contact Center Manager2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Inactive Queue Name --></label>
+        <name>Inactive_Queue_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- LDR User --></label>
+        <name>LDR_User__c</name>
+        <relationshipLabel><!-- NGCC Mapping Objects (LDR User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Langue</label>
+        <name>Language__c</name>
+        <picklistValues>
+            <masterLabel>Chinese (Simplified): zh_CN</masterLabel>
+            <translation><!-- Chinese (Simplified): zh_CN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Danish: da</masterLabel>
+            <translation><!-- Danish: da --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch: nl_NL</masterLabel>
+            <translation><!-- Dutch: nl_NL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English: en_US</masterLabel>
+            <translation>Anglais : en_US</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finnish: fi</masterLabel>
+            <translation><!-- Finnish: fi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French: fr</masterLabel>
+            <translation><!-- French: fr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German: de</masterLabel>
+            <translation><!-- German: de --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian: it</masterLabel>
+            <translation><!-- Italian: it --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese: ja</masterLabel>
+            <translation><!-- Japanese: ja --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean: ko</masterLabel>
+            <translation><!-- Korean: ko --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Polish: pl</masterLabel>
+            <translation><!-- Polish: pl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (Brazil): pt_BR</masterLabel>
+            <translation><!-- Portuguese (Brazil): pt_BR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian: ru</masterLabel>
+            <translation><!-- Russian: ru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish: es</masterLabel>
+            <translation><!-- Spanish: es --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thai: th</masterLabel>
+            <translation><!-- Thai: th --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Adresse e-mail de l'admin du lead</label>
+        <name>Lead_Admin_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Admin --></label>
+        <name>Lead_Admin__c</name>
+        <relationshipLabel><!-- NGCC Mapping Objects (Lead Admin) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MCP Enabled --></label>
+        <name>MCP_Enabled__c</name>
+    </fields>
+    <fields>
+        <label>Sous-division géographique</label>
+        <name>Sub_Theater__c</name>
+    </fields>
+    <fields>
+        <label>Division géographique</label>
+        <name>Theater__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas</masterLabel>
+            <translation>AMÉRIQUE</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEAR</masterLabel>
+            <translation><!-- EMEAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greater China</masterLabel>
+            <translation>Grande Chine</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unassigned Queue Name --></label>
+        <name>Unassigned_Queue_Name__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- CC Mapping Object --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- CC Mapping Object --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Country Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>NGCC Mapping Object Call Center</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>NGCC Mapping Object Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Call Center --></label>
+        <name>Call_Center</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Country Mapping --></label>
+        <name>Country_Mapping</name>
+    </recordTypes>
+</CustomObjectTranslation>

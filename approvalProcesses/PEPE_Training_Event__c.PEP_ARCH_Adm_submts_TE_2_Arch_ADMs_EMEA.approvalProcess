@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Training_Event_Name__c</field>
+        <field>Status__c</field>
+        <field>Type_of_Architecture_Event__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>PDP_Status_to_published</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>PEPE_Arch_Published_recordtype_change</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>PEPE_ARCH_EMEAR_ADMIN_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Only one approval step.</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>PEPE_Training_Event__c.RecordType</field>
+                <operation>equals</operation>
+                <value>Architecture,Architectures,Architechture Submitted 02</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>PEPE_Training_Event__c.Platform__c</field>
+                <operation>equals</operation>
+                <value>Architectures</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>RejectRecord</ifCriteriaNotMet>
+        <label>Step 1</label>
+        <name>Step_1</name>
+        <rejectionActions>
+            <action>
+                <name>PDP_Submitted_to_Deleted</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>This Approval Process is to have a Architecture business workflow automation to notify ARCH ADMIN TEAM for new submission of the Training Event. ARCH ADMIN Team either approves or rejects the record based on the details provided in the record.</description>
+    <emailTemplate>PEPE_Email_Template_Notifications/PEPE_ARCH_EMEAR_Admin_approval_Notification_to_for_TE_submitted</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Created</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Architectures,Architectures Multiple</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.Platform__c</field>
+            <operation>equals</operation>
+            <value>Architectures</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>PDP_Status_to_submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PEPE_Arch_Submitted_recordtype_change</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>PEP: ARCH Adm submts TE 2 Arch ADMs EMEA</label>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

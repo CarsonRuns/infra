@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Enrollment Period --></label>
+        <name>Enrollment_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- FY Target Percent --></label>
+        <name>FY_Target_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- FY Target --></label>
+        <name>FY_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Linitm_Id --></label>
+        <name>Linitm_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- MBO Description --></label>
+        <name>MBO_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- MBO Item --></label>
+        <name>MBO_Item__c</name>
+        <relationshipLabel><!-- Partner MBO --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MBO Partner Enrollment --></label>
+        <name>MBO_Partner_Enrollment__c</name>
+        <relationshipLabel><!-- Partner MBO --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MBO --></label>
+        <name>MBO__c</name>
+        <relationshipLabel><!-- Partner MBO --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Measure Unit --></label>
+        <name>Measure_Unit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Measure --></label>
+        <name>Measure__c</name>
+    </fields>
+    <fields>
+        <label><!-- Objective --></label>
+        <name>Objective__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Name --></label>
+        <name>Partner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner --></label>
+        <name>Partner__c</name>
+        <relationshipLabel><!-- Partner MBO --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Program Name --></label>
+        <name>Program_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q1 Target Percent --></label>
+        <name>Q1_Target_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q1 Target --></label>
+        <name>Q1_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q2 Target Percent --></label>
+        <name>Q2_Target_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q2 Target --></label>
+        <name>Q2_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q3 Target Percent --></label>
+        <name>Q3_Target_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q3 Target --></label>
+        <name>Q3_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q4 Target Percent --></label>
+        <name>Q4_Target_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Q4 Target --></label>
+        <name>Q4_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Segment --></label>
+        <name>Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>De-Activated</masterLabel>
+            <translation><!-- De-Activated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ready For Assignment</masterLabel>
+            <translation><!-- Ready For Assignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Target_Assigned</masterLabel>
+            <translation><!-- Target_Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Target_Calc_InProgress</masterLabel>
+            <translation><!-- Target_Calc_InProgress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Targets To Be Submitted</masterLabel>
+            <translation><!-- Targets To Be Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Track --></label>
+        <name>Sub_Track__c</name>
+        <picklistValues>
+            <masterLabel>PRODUCT</masterLabel>
+            <translation><!-- PRODUCT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SERVICE</masterLabel>
+            <translation><!-- SERVICE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Target --></label>
+        <name>Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Track --></label>
+        <name>Track__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner MBO</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner MBO</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Partner MBO Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Target Assignment Detail --></label>
+            <section>Target Assignment Detail</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

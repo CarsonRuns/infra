@@ -1,0 +1,2243 @@
+<apex:page showHeader="false" controller="JabberPhoneController" id="myPage">
+<script src="/support/api/27.0/interaction.js"></script>
+<script src="/soap/ajax/27.0/connection.js" type="text/javascript"></script>
+<apex:includeScript value="{!$Resource.jquery}"/>
+
+<apex:includeScript value="{!$Resource.jQuery_flyout}"/>
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}"  />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}"  />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.position.js')}"  />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.accordion.js')}"  />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.menu.js')}"  />
+<apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.autocomplete.js')}"  />
+<apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/themes/ui-lightness/jquery.ui.all.css')}"  />
+<apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/themes/ui-lightness/jquery.ui.all.css')}"  />
+<apex:stylesheet value="{!URLFOR($Resource.jQuery_flyout_css)}"  />
+<apex:stylesheet value="{!$Resource.JabberPhoneStyleSheet}"  />
+               
+<script type="text/javascript">
+sforce.connection.sessionId = "{!$Api.Session_ID}";
+
+
+    // global variables for auto complete feature
+    var preserveC2CAttributes;
+    
+    var jabberPhoneClientId;
+    var timerObj = [];
+    var durationInTextObj = {};
+    var selectedSearchResultId;
+    var transferLine, conferenceLine;
+    var controllerObj = {'Help':'{!$Label.Help_Training}','Settings':'/apex/JabberSelfDiagnosticTool'};
+    var isDuplicateEvent = false,isDuplicateKeyUPEvent = false, isHeaderClickBeforeEventDupe = false, isHeaderClickAfterEventDupe = false;
+    var incomingFlag = {"L1" : false, "L2" : false};
+    var incomingCallIds = {};
+    var phoneComponentHeight = {"login" : 38, "dialPad" : 212,"header" : 95, "recentCall" : 126,"history" : 46, "buffer" : 210,"incomingCall":89,"PhoneLineHeightCollapsible" : 39,"PhoneLineHeightExpand" : 582, "oldCall" : 492};
+    var focusCallBack = function (response) {
+        if (response.result) {
+            //console.log(response.result);
+            //localStorage.setItem('AAA Focus Object:', response.result);
+        }
+        else
+        {
+            //console.log(response.error); 
+        }
+    };
+    localStorage.removeItem("setSoftphoneHeight");
+    //sforce.interaction.onFocus(focusCallBack);
+    var dualPropagation = false;
+    $(document).ready(function() {
+        // this id will be used to check whether page is still alive or not from interface window
+        var currentDate = new Date(),_connectedLine,_connectedState;;
+        jabberPhoneClientId = currentDate.getTime();
+            initiatePhoneActions();
+            checkStatusMessage('Available', 'Available');
+            $('#jabber_recentCallSummary').find('.bPageBlock').removeAttr('class');
+            $('#jabber_recentCallSummary').find('h1').click(function(e){
+                if(dualPropagation){
+                    e.stopImmediatePropagation();
+                    return false;
+                }
+                if(!$(this).hasClass('expanded')){
+                    $(this).addClass('expanded');
+                    console.log($(this).next('div').outerHeight());
+                }
+                else
+                    $(this).removeClass('expanded');
+            });
+            $( "#numberInput" ).autocomplete({
+                source: function(request,response){
+                    searchCustomerInfo(request.term,response);
+                },
+                select: function( event, ui ) {
+                    preserveC2CAttributes = true;
+                    document.getElementById("myPage:myForm:c2cFlag").value = true;
+                    document.getElementById("myPage:myForm:c2cObject").value = ui.item.strType;
+                    document.getElementById("myPage:myForm:c2cRecId").value = ui.item.strId;
+                    document.getElementById("myPage:myForm:c2cParentRecId").value = "";
+                }
+            }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+              return $( '<li style="width:160px">' )
+                .attr( "data-value", item.strPhoneNumber )
+                .append( '<a><span class="JabberIcons '+checkType(item.strType)+'">' + checkName(item.label) + '<br><span style="padding-left:10px;font-size: 10px">' + checkPhoneNumber(item.value) + '</span></span></a>' )
+                .appendTo( ul );
+            };
+            $('#jabber_recentCallSummary').accordion({
+                collapsible: true,
+                heightStyle: "content",
+                event : "click",
+                active : false,
+                beforeActivate : function( event, ui ){
+                    dualPropagation = true;
+                    var _newHeader = ui.newHeader;
+                    if(_newHeader.length > 0){
+                        if(ui.newHeader.hasClass('expanded')){
+                            checkPhoneHeight("CallSummary","plus");
+                        } 
+                    }
+                },
+                activate : function(event, ui){
+                    var _oldHeader = ui.oldHeader;
+                    _oldHeader.removeClass('expanded');
+                    if(_oldHeader.length > 0){
+                        if(!ui.oldHeader.hasClass('expanded')){
+                            checkPhoneHeight("CallSummary","minus");
+                        }
+                    }
+                    dualPropagation = false;
+                }
+            });
+            $('#jabber_recentCallSummary').bind('accordionchangestart', function(event, ui){
+                if(dualPropagation){
+                    event.stopPropogation();
+                }
+            });
+            checkPhoneState();
+            isConnectionAlive();
+            if(isPhoneActive() == true && typeof localStorage.getItem("Registered") != 'undefined' && localStorage.getItem("Registered") != null &&localStorage.getItem("Registered")=='Yes')
+            {
+                checkIncomingDialog();
+                getActiveCallLog(localStorage.getItem('L1EventId'),localStorage.getItem('L2EventId'));
+            }
+            
+    });
+    // show incoming alert box event when page get refreshed/user navigated to other page.
+    var checkIncomingDialog = function(){
+        var _lineNum = getIncomingLine();
+        for(i=0;i<_lineNum.length;i++){
+            var _jpCallType = localStorage.getItem(_lineNum[i]+'CallType'),_jpCallState = localStorage.getItem(_lineNum[i]+'CallState'),_jpCallId = localStorage.getItem(_lineNum[i]+'CallId');
+            if(_jpCallType == 'Incoming' && (_jpCallState == 'Ringin' || _jpCallState == 'Proceed')){
+                if(incomingCallIds[_jpCallId] != true){
+                    showIncomingCallQuickView(_lineNum[i]);
+                    incomingFlag[_lineNum[i]] = true;
+                    incomingCallIds[_jpCallId] = true;
+                    sforce.interaction.runApex('JabberPhoneUtils', 'searchPhoneNumber', 'strPhNumber='+localStorage.getItem(_lineNum[i]+'PhoneNumber')+'&strCallerId='+_lineNum[i],
+                        incomingCallBack);
+    
+                }
+            }
+        }
+    };
+    var isConnectionAlive = function ()
+    {
+        var currentDate = new Date();
+        var currentTimeInMS = currentDate.getTime();
+        
+        if(localStorage.getItem('InterfaceTimeStamp') != 'null' && localStorage.getItem('InterfaceTimeStamp') != '')
+        {
+            var interfaceTimeInMS = JSON.parse(localStorage.getItem('InterfaceTimeStamp'));
+            if((currentTimeInMS - interfaceTimeInMS) > 120000){
+                
+                setLocalstorage('Registered','No');
+                checkPhoneState();
+            }
+        }
+        else if (localStorage.getItem('Registered') == 'Yes')
+        {
+            setLocalstorage('Registered','No');
+            checkPhoneState();
+        }
+        setTimeout(function(){ isConnectionAlive(); },60000);
+    }
+    var getIncomingLine = function(){
+        var _l1CallId = localStorage.getItem('L1CallId'),_l2CallId = localStorage.getItem('L2CallId'),_incomingLine = [];
+        if(_l1CallId != '' && _l1CallId != 'null'){
+            _incomingLine.push('L1');
+        } 
+        if(_l2CallId != '' && _l2CallId != 'null'){
+            _incomingLine.push('L2');
+        }
+        return _incomingLine;
+    };
+    function getCallLine(activeCallId)
+    {
+        var l1CallId = localStorage.getItem('L1CallId');
+        var l2CallId = localStorage.getItem('L2CallId');
+        if(activeCallId != 'null' && activeCallId != '' && l1CallId == activeCallId)
+        {
+            return 'L1';
+        }
+        else if(activeCallId != 'null' && activeCallId != '' && l2CallId == activeCallId)
+        {
+            return 'L2';
+        }
+        else
+        {
+            return '';
+        }
+    }
+    function getConnectedCallLine()
+    {
+        var L1CallStatus = localStorage.getItem('L1CallState');
+        var L2CallStatus = localStorage.getItem('L2CallState');
+        
+        if(L1CallStatus == 'Connected')
+        {
+            return 'L1';
+        }
+        else if(L2CallStatus == 'Connected')
+        {
+            return 'L2';
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    function getAvailableCallLine()
+    {
+        var L1CallId = localStorage.getItem('L1CallId');
+        var L2CallId= localStorage.getItem('L2CallId');
+        var L1CallStatus = localStorage.getItem('L1CallState');
+        var L2CallStatus = localStorage.getItem('L2CallState');
+        
+        if(L1CallId == '' || L1CallId == 'null' || L1CallId == null || L1CallStatus == 'OnHook' || L1CallStatus == 'Reorder')
+        {
+            if(isSectionFree('L1') == true)
+            {
+                return 'L1';
+            }
+            else if((L2CallId == '' || L2CallId == 'null' || L2CallId == null || L2CallStatus == 'OnHook' || L2CallStatus == 'Reorder') && isSectionFree('L2') == true)
+            {
+                return 'L2';
+            }
+            else
+            {
+                return 'L1';
+            }
+        }
+        else if(L2CallId == '' || L2CallId == 'null' || L2CallId == null || L2CallStatus == 'OnHook' || L2CallStatus == 'Reorder')
+        {
+            return 'L2';
+        }
+        else 
+        {
+            return null;
+        }
+    }
+    function isSectionFree(freeLine)
+    {
+        var secDiv = $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+freeLine);
+        if(secDiv.is(':visible') == true){
+            return false;
+        }
+        return true;
+    }
+    function isPhoneActive()
+    {
+        var L1CallId = localStorage.getItem('L1CallId');
+        var L2CallId= localStorage.getItem('L2CallId');
+        
+        if(L1CallId != '' && L1CallId != 'null' && L1CallId != null)
+        {
+            return true;
+        }
+        else if(L2CallId != '' && L2CallId != 'null' && L2CallId != null)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+    function redial(phNumber,redialName,redialRelatedTo)
+    {
+        preserveC2CAttributes = true;
+        document.getElementById("myPage:myForm:c2cFlag").value = true;
+        document.getElementById("myPage:myForm:c2cObject").value = "Jabber";
+        document.getElementById("myPage:myForm:c2cRecId").value = redialRelatedTo;
+        document.getElementById("myPage:myForm:c2cParentRecId").value = redialName;
+        $("#numberInput").val(phNumber);
+        initiateNewCall(phNumber);
+    }
+    function searchCustomerInfo(searchString,responseCallBack)
+    {
+        var customerSearchCallback = responseCallBack;
+        if(searchString.length >= 6 && searchString.search(/[^\d+]/g) == -1)
+        {
+            console.log('search by phone');
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.JabberPhoneController.lookupCustomerInfo}', searchString,'By Phone', function(customerSearchResult,event){
+                var _jsonParsed = $.parseJSON(customerSearchResult);
+                customerSearchCallback($.map(_jsonParsed, function( item ) { 
+                        return {
+                            label: item.strName,   
+                            value: item.strPhoneNumber,
+                            strType : item.strType,
+                            strId : item.strId
+                        }
+                    }
+                ));
+            },{buffer:false,escape: false,timeout: 120000});
+        }
+        else if(searchString.length >= 2 && searchString.search(/[a-zA-Z]/g) > -1)
+        {
+            console.log('search by name');
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.JabberPhoneController.lookupCustomerInfo}', searchString,'By Name', function(customerSearchResult,event){
+                var _jsonParsed = $.parseJSON(customerSearchResult);
+                customerSearchCallback($.map(_jsonParsed, function( item ) { 
+                        return {
+                            label: item.strName,   
+                            value: item.strPhoneNumber,
+                            strType : item.strType,
+                            strId : item.strId
+                        }
+                    }
+                ));
+            },{buffer:false,escape: false,timeout: 120000});
+        }
+        else 
+        {
+            // close autocomplete menu when search string size is less than the expecetd size.
+            $( "#numberInput" ).autocomplete( "close" );
+        }
+    }
+    var initiatePhoneActions = function(){
+        $('.dialIcon').live('click',function(){
+            // ignore duplicate events when user clicks consecutively
+            if(isDuplicateEvent == true){
+                return false;
+            }
+            isDuplicateEvent = true;
+            if($('#jabberDialPad').is(':visible')){
+                $('#jabberDialPad').slideUp('fast',function(){
+                    checkPhoneHeight("DialPad");
+                    isDuplicateEvent = false;
+                });
+            } else {
+                $('#jabberDialPad').slideDown('fast');
+                checkPhoneHeight("DialPad");
+                isDuplicateEvent = false;
+            }
+        });
+        $('#numberInput').keyup(function(){
+            
+            if($(this).val()!=''){
+                preserveC2CAttributes = false;
+                if(!$('#jabberDialPad').is(':visible')){
+                    $('#jabberDialPad').slideDown('fast');
+                    checkPhoneHeight("DialPad");
+                    isDuplicateKeyUPEvent = false;
+                }
+            } else {
+            
+                // ignore duplicate events when user clicks consecutively
+                if(isDuplicateKeyUPEvent == true){
+                    return false;
+                }
+                if($('#jabberDialPad').is(':visible')){
+                    isDuplicateKeyUPEvent = true;
+                    $('#jabberDialPad').slideUp('fast',function(){
+                        checkPhoneHeight("DialPad");
+                    });
+                }
+            }
+        });
+        $('#jabberDialPad').find('li.general').live('click',function(){
+            var _num = $(this).attr('val'),numberField = $('#numberInput'),str=numberField.val(),newStr,connectedCallLine = getConnectedCallLine();
+            if(typeof _num != 'undefined' && _num == 'back'){
+                newStr = str.substring(0, str.length-1);
+                numberField.val(newStr);
+            } else if(typeof _num != 'undefined' && _num == 'call'){
+                if(preserveC2CAttributes != true)
+                    document.getElementById("myPage:myForm:c2cFlag").value = false;
+                initiateNewCall(str);
+            }else {
+                // verify the dial pad mode and do action accordingly
+                if(connectedCallLine != null)
+                {
+                    setLocalstorage(connectedCallLine+'DTMFInput', null);
+                    // send DTMF input to jabber server
+                    if(_num != '+')
+                    {
+                        setLocalstorage(connectedCallLine+'DTMFInput', _num);
+                    }
+                }
+                else
+                {
+                    // looks like some line is available  so keep all numbers to make a fresh call
+                    numberField.val(numberField.val() + _num);
+                }
+            }
+        }).mouseup(function(){
+            $(this).css({'opacity':'1'});
+        }).mousedown(function(){
+            $(this).css({'opacity':'0.5'});
+        });
+        $('.jabberConferrence,.jabberTransfer,.jabberMute,.jabberHold').live('click',function(){
+            var _parentLineId = $(this).parent().parent().parent().prev().attr('id'),_splitLine = _parentLineId.split("_"),_extractedLine = _splitLine[1],_lineClass = $(this).attr('class'),_splitLineClass = _lineClass.split(" "),_mainClass = _splitLineClass[0];
+            switch(_mainClass){
+                case "jabberConferrence" :
+                    conferenceCall(_extractedLine);
+                    break;
+                case "jabberTransfer" :
+                    transferCall(_extractedLine);
+                    break;
+                case "jabberMute" :
+                    if($(this).hasClass('muteCall')){
+                        muteCall(_extractedLine);
+                        $(this).removeClass('muteCall').addClass('unMuteCall');
+                    } else {
+                        unMuteCall(_extractedLine);
+                        $(this).removeClass('unMuteCall').addClass('muteCall');
+                    }
+                    break;
+                case "jabberHold" :
+                    if($(this).hasClass('holdCall')){
+                        holdCall(_extractedLine);
+                    } else {
+                        unholdCall(_extractedLine);
+                    }
+                    break;
+                default :
+            }
+        });
+        $('.jabberEndCall,.jabberSaveCall,.jabberCancelCall').live('click',function(){
+            var _parentObjId = $(this).parent('div').attr('id'),_splitHTMLObj = _parentObjId.split("_"),_type = _splitHTMLObj[0],_lineNumber = _splitHTMLObj[1];
+            switch(_type){
+                case "oncall":
+                    endCall(_lineNumber);
+                    break;
+                case "saveCall":
+                    if($(this).hasClass('jabberSaveCall')){
+                        _lineNumber == 'L1'? UpdateL1Task("", "Save",_lineNumber) : UpdateL2Task("", "Save",_lineNumber);
+                        hideCallSummary(_lineNumber);
+                    } else {
+                        _lineNumber == 'L1'? UpdateL1Task("", "Cancel",_lineNumber) : UpdateL2Task("", "Cancel",_lineNumber);
+                        hideCallSummary(_lineNumber);
+                    }
+                    $('h1#jabberCallLine_'+_lineNumber).find('.jabberPhoneIco').addClass('inProgressIco');
+                    break;
+                case "updateExistingCall":
+                    $('.callHistoryEdit').jabberOverlay({
+                        type : 'show',
+                        height : $('.callHistoryEdit').outerHeight()
+                    });
+                    if($(this).hasClass('jabberSaveCall')){
+                        UpdateExLog();
+                    } else {
+                        CancelExLog();
+                    }
+                    break;
+                default :
+            } 
+        }).mouseup(function(){
+            $(this).css({'opacity':'1'});
+        }).mousedown(function(){
+            $(this).css({'opacity':'0.5'});
+        });
+        // add click action to hold icon on call section header
+        $('.iconDimension').live('click',function(){
+            if($(this).next().hasClass('holdPhoneIco')){
+                var _parentLineId = $(this).parent().attr('id'),_splitLine = _parentLineId.split("_"),_extractedLine = _splitLine[1];
+                unholdCall(_extractedLine);
+            } else {
+                return false;
+            }
+        });
+        
+        $('#jabber_recentCallSummary').find('h1 a').live('click',function(){
+            var _parentObjId = $(this).parent().parent().parent('h1').attr('id'),_splitHTMLObj = _parentObjId.split("_"),_lineNumber = _splitHTMLObj[1];
+            UpdateSlectResult('','Refresh',_lineNumber,$(this).attr('id'));
+        });
+        $('#jabber_recentCallSummary').find('select[id$=_mlktp]').live('change',function(){
+            if($(this).parent().find('span.lookupInput input[type="text"]').val()!=''){
+                var msgId = this.id.substring(this.id.length-10, this.id.length-1)+'_phone_msg_id';
+                $(this).parent().find('span.lookupInput input[type="text"]').val('');
+                $(this).parent().find('span.lookupInput').append('<div class="callout border-callout" id="'+msgId+'">Select name from lookup.<b class="border-notch notch"></b><b class="notch"></b></div>');
+                setTimeout(function(){$('#'+msgId).remove(); },2000);
+            }
+            if($(this).val() != '' && $(this).val() == '00Q'){
+                if($(this).parent().parent().prev().prev().find('span.lookupInput input[type="text"]').val()!=''){
+                    $(this).parent().parent().prev().prev().find('input[type=hidden][id$=_lkid],span.lookupInput input[type="text"]').val('');
+                }
+            }
+            $(this).parent().find('span.lookupInput input[type="text"]').trigger('blur');
+        });
+        $('.callHistoryEdit').find('select[id$=_mlktp]').live('change',function(){
+            if($(this).parent().find('span.lookupInput input[type="text"]').val()!=''){
+                var msgId = this.id.substring(this.id.length-10, this.id.length-1)+'_callhistory_msg_id';
+                $(this).parent().find('span.lookupInput input[type="text"]').val('');
+                $(this).parent().find('span.lookupInput').append('<div class="callout border-callout" id="'+msgId+'">Select name from lookup.<b class="border-notch notch"></b><b class="notch"></b></div>');
+                setTimeout(function(){$('#'+msgId).remove(); },2000);
+            }
+            if($(this).val() != '' && $(this).val() == '00Q'){
+                if($(this).parent().parent().prev().prev().find('span.lookupInput input[type="text"]').val()!=''){
+                    $(this).parent().parent().prev().prev().find('input[type=hidden][id$=_lkid],span.lookupInput input[type="text"]').val('');
+                }
+            }
+        });
+        $('.callHistoryEdit').find('span.lookupInput input[type=text]:eq(0)').live('blur',function(){
+            console.log("WhoId Value"+$('.callHistoryEdit').find('select:eq(1)').val());
+            if($('.callHistoryEdit').find('select:eq(1)').val()=='00Q' && $(this).val()!=''){
+                $('.callHistoryEdit').find('select:eq(1)').prop('selectedIndex',0);
+                $('.callHistoryEdit').find('input[type=hidden][id$=_lkid]:eq(1),span.lookupInput input[type=text]:eq(1)').val('');
+            }
+        });
+        
+        $('.jabberCallSecArrow').live('click',function(){
+        
+            // ignore duplicate events when user clicks consecutively
+            if(isDuplicateEvent == true){
+                return false;
+            }
+            isDuplicateEvent = true;
+            if($(this).parent('div').next('div').is(':visible')){
+                $(this).addClass('jabberSideArrow');
+                $(this).parent('div').next('div').slideUp('fast',function(){
+                    if($(this).hasClass('jabberSectionMainEle')){
+                        checkPhoneHeight('recentCall','minus');
+                    } else {
+                        checkPhoneHeight('history','minus');
+                    }
+                    isDuplicateEvent = false;
+                });
+            } else {
+                $(this).removeClass('jabberSideArrow');
+                $(this).parent('div').next('div').slideDown('fast');
+                if($(this).parent('div').next('div').hasClass('jabberSectionMainEle')){
+                        checkPhoneHeight('recentCall','plus');
+                    } else {
+                        checkPhoneHeight('history','plus');
+                    }
+                    isDuplicateEvent = false;
+            }
+        });
+        $('#jabber_recentCalls').find('a[id$=theCommandLink]').live('click',function(){
+            $('#jabber_recentCalls').jabberOverlay({
+                type : 'show',
+                height : $('#jabber_recentCalls').outerHeight()
+            });
+            $(this).parent().parent().parent().find('div').each(function(){
+                if($(this).hasClass('ActiveRow')){
+                    $(this).removeClass('ActiveRow')
+                }
+            });
+            $(this).parent().parent().addClass('ActiveRow');
+        });
+        $('.jabberHelpIco,.jabberSettingsIco').live('click',function(){
+            var _externalLink;
+            if($(this).hasClass('jabberHelpIco')){
+                _externalLink = controllerObj.Help;
+            } else {
+                _externalLink = controllerObj.Settings;
+            }
+            openExternalLink(_externalLink);
+        });
+    };
+        
+    var hasUserInitiatedCall = false;
+    var hasUserAnsweredCall = false;
+    var inComingCallResults = {};
+    function storageEventHandler(e)
+    {
+        //console.log('Roger!  my id is '+ jabberPhoneClientId);
+        if (e.key == 'Registered') 
+        {
+            if((e.newValue == "null" || e.newValue == "No") && e.oldValue != "No" && e.oldValue != "null")
+            {
+                try {
+                    window.parent.document.getElementById('SoftphoneIframe').contentWindow.document.location.reload();
+                } catch(e) {
+                    console.log(e);
+                }
+            }
+            //sforce.interaction.cti.setSoftphoneHeight(750);
+            checkPhoneState();
+        }
+        if (e.key == 'L1CallState' || e.key == 'L2CallState') 
+        {
+            if(e.newValue != 'null' && e.newValue != '')
+            {
+                var callLine = e.key.substr(0,2);
+                updatePhoneUI(callLine, e.newValue);
+            }   
+        }
+        if (e.key == 'L1EventId' || e.key == 'L2EventId') 
+        {
+            if(e.newValue != 'null' && e.newValue != '')
+            {
+                var callLine = e.key.substr(0,2);
+                var newCallEventId = $('body').find('input[type=hidden][id$='+callLine+'eventId]').val();
+                //var newCallEventId = document.getElementById("myPage:myForm:"+callLine+"eventId").value;
+                console.log('*** event id in hidden var: '+ newCallEventId);
+                console.log('*** event id in storage var: '+ e.newValue);
+                // IE is executing this call in source window where event id is set to the local storage. 
+                // It makes duplicate inconsitent behavior on duration calculation.
+                // To prevent this call, compare LS values against event record ID. event record id will be available only on source window.
+                if(e.newValue != newCallEventId)
+                {
+                    if(callLine == 'L1')
+                    {
+                        getL1ActiveCallLog(e.newValue,'');
+                    }
+                    else
+                    {
+                        getL2ActiveCallLog('',e.newValue);
+                    }
+                }
+            }
+        }
+    }
+    window.addEventListener("storage", storageEventHandler, false);
+        
+    function updatePhoneUI(jpLineNumber, jpCallState)
+    {
+        var jpCallId = localStorage.getItem(jpLineNumber + 'CallId');
+        var jpCallType = localStorage.getItem(jpLineNumber + 'CallType');
+        var jpEventId = localStorage.getItem(jpLineNumber + 'EventId');
+        var _mainLineSec = $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+jpLineNumber);
+        console.log('*** jpCallId ' + jpCallId);
+        console.log('*** jpCallType ' + jpCallType);
+        console.log('*** jpCallState ' + jpCallState);
+        console.log('*** jpCallLine ' + jpLineNumber);
+        
+        if(jpCallType == 'Incoming' && (jpCallState == 'Ringin' || jpCallState == 'Proceed'))
+        {
+            sforce.interaction.cti.disableClickToDial( );
+            // alert incoming call in a custom msg box, use call id as div identifier
+            // To prevent recusrsive call, keep incoming call ids in array and vaify the array entry each time.
+            if(incomingCallIds[jpCallId] != true)
+            {
+                showIncomingCallQuickView(jpLineNumber);
+                incomingFlag[jpLineNumber] = true;
+                incomingCallIds[jpCallId] = true;
+                try
+                {
+                    sforce.interaction.runApex('JabberPhoneUtils', 'searchPhoneNumber', 'strPhNumber='+localStorage.getItem(jpLineNumber+'PhoneNumber')+'&strCallerId='+jpLineNumber,
+                        incomingCallBack);
+                }
+                catch(e)
+                {
+                    console.log('*** Exception while searching for incoming call, '+ e);
+                }
+
+            }
+                    
+        }
+        else if(jpCallState == 'Proceed')
+        {
+            checkStatusMessage('Calling','Calling');
+            _mainLineSec.find('.jabberPhoneIco').removeClass('offHookPhoneIco').addClass('inProgressIco');
+            sforce.interaction.cti.disableClickToDial( );
+            
+            _mainLineSec.next('div').find('.jabberToolBarArea').hide();
+            _mainLineSec.next('div').find('.buttonBar div#oncall_'+jpLineNumber).show();
+            _mainLineSec.next('div').find('.buttonBar div#saveCall_'+jpLineNumber).hide();
+            
+            // create log for outgoing call, only if user clicked call button
+            // this flag will help to prevent multiple log creation by other open tabs
+            // Note: make sure this flag set to tru at make call button
+            if(hasUserInitiatedCall)
+            {   
+                console.log("*** about to insert new event");
+                hasUserInitiatedCall = false;
+                if(jpLineNumber == 'L1')
+                {
+                    CreateNewL1Task(jpLineNumber,jpCallType,localStorage.getItem(jpLineNumber+'PhoneNumber'));
+                }
+                else
+                {
+                    CreateNewL2Task(jpLineNumber,jpCallType,localStorage.getItem(jpLineNumber+'PhoneNumber'));
+                }
+                
+            }
+        }
+        else if(jpCallState == 'Connected')
+        {
+            checkStatusMessage('Busy','Busy');
+            _mainLineSec.next('div').find('.jabberToolBarArea').show();
+            _mainLineSec.next('div').find('.buttonBar div#oncall_'+jpLineNumber).show();
+            _mainLineSec.find('.jabberPhoneIco').removeClass('inProgressIco');
+            _mainLineSec.find('.jabberPhoneIco').removeClass('offHookPhoneIco');
+            if(_mainLineSec.next('div').find('.jabberHold').hasClass('unHoldCall')){
+                _mainLineSec.next('div').find('.jabberHold').removeClass('unHoldCall').addClass('holdCall');
+                _mainLineSec.find('.jabberPhoneIco').removeClass('holdPhoneIco');
+                
+                // show both conference and transfer icon
+                _mainLineSec.next('div').find('.jabberConferrence').show();
+                _mainLineSec.next('div').find('.jabberTransfer').show();
+                
+                unholdCall(jpLineNumber);
+            }
+            
+            // expand active call log section whenever call resumed from hold state
+            if(_mainLineSec.hasClass('phoneInit')){
+                _mainLineSec.removeClass('phoneInit');
+            } else {
+                if(!_mainLineSec.hasClass('expanded') && jpEventId != null && jpEventId != 'null' && jpEventId != '' && localStorage.getItem(jpLineNumber + 'CallState') == 'Connected'){
+                    dualPropagation = false;
+                    _mainLineSec.trigger('click');
+                }
+            }
+            // create new event for incoming call and show the phone lines after getting +ve acknowledgement
+            if(jpCallType == 'Incoming' && hasUserAnsweredCall == true){
+                hasUserAnsweredCall = false;
+                var _ANIresult = localStorage.getItem('ANISearchResult'),_searchResult = (_ANIresult == 'null' || _ANIresult == 'undefined' || _ANIresult == null || _ANIresult == '')? '{}': _ANIresult,_respJson = $.parseJSON(_searchResult),_respArray = (typeof _respJson[jpLineNumber]!='undefined')?_respJson[jpLineNumber]:{};
+                
+                document.getElementById("myPage:myForm:c2cFlag").value = false;
+                if(_respArray.length == 1)
+                {
+                    document.getElementById("myPage:myForm:c2cFlag").value = true;
+                    document.getElementById("myPage:myForm:c2cObject").value = _respArray[0].strType;
+                    document.getElementById("myPage:myForm:c2cRecId").value = _respArray[0].strId;
+                    document.getElementById("myPage:myForm:c2cParentRecId").value = "";
+                }
+            
+                if(jpLineNumber == 'L1')
+                {
+                    CreateNewL1Task(jpLineNumber,jpCallType,localStorage.getItem(jpLineNumber+'PhoneNumber'));
+                }
+                else
+                {
+                    CreateNewL2Task(jpLineNumber,jpCallType,localStorage.getItem(jpLineNumber+'PhoneNumber'));
+                }
+            }
+            // remove incoming call alert
+            if(jpCallType == 'Incoming')
+            {
+                hideIncomingCall(jpLineNumber);
+                incomingFlag[jpLineNumber] = false;
+            }
+            // show click2call icon 
+            sforce.interaction.cti.enableClickToDial();
+        }
+        else if(jpCallState == 'Hold')
+        {
+            checkStatusMessage('Busy','Hold');
+            // hide hold button and show the resume button
+            _mainLineSec.next('div').find('.jabberToolBarArea').show();
+            
+            _mainLineSec.next('div').find('.buttonBar div#oncall_'+jpLineNumber).hide();
+            if(_mainLineSec.next('div').find('.jabberHold').hasClass('holdCall')){
+                _mainLineSec.next('div').find('.jabberHold').removeClass('holdCall').addClass('unHoldCall');
+                // show action icon on call section header
+                _mainLineSec.find('.jabberPhoneIco').removeClass('inProgressIco').addClass('holdPhoneIco');
+                // hide both conference and transfer icons
+                _mainLineSec.next('div').find('.jabberConferrence').hide();
+                _mainLineSec.next('div').find('.jabberTransfer').hide();
+                holdCall(jpLineNumber);
+            } 
+            if(_mainLineSec.hasClass('phoneInit')){
+                _mainLineSec.removeClass('phoneInit');
+            } else {
+                if(_mainLineSec.hasClass('expanded') && jpEventId != null && jpEventId != 'null' && jpEventId != '' && localStorage.getItem(jpLineNumber + 'CallState') == 'Hold'){
+                    _mainLineSec.trigger('click');
+                }
+            }
+        }
+        else if(jpCallState == 'Reorder')
+        {
+            sforce.interaction.cti.enableClickToDial();
+            checkStatusMessage('Busy','Failed');
+            _mainLineSec.next('div').find('.jabberToolBarArea').hide();
+            // set phone status as 'Failed'
+            // show end button
+        }
+        else if(jpCallState == 'OnHook')
+        {
+            $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+jpLineNumber).removeClass('connectedCall');
+            checkStatusMessage('Available','Available');
+            _mainLineSec.next('div').find('.jabberToolBarArea').hide();
+            _mainLineSec.next('div').find('.buttonBar div#oncall_'+jpLineNumber).hide();
+            _mainLineSec.next('div').find('.buttonBar div#saveCall_'+jpLineNumber).show();
+            _mainLineSec.find('.jabberPhoneIco').removeClass('holdPhoneIco');
+            _mainLineSec.find('.jabberPhoneIco').removeClass('inProgressIco').addClass('offHookPhoneIco');
+            if(incomingFlag[jpLineNumber] == true)
+            {
+                // remove incoming popup when customer end the call from other end OR user decline a call.
+                hideIncomingCall(jpLineNumber);
+                resetLocalStorage(jpLineNumber);
+            } 
+            else 
+            {
+                // save the call log when customer initiated end call process
+                if(jpLineNumber == 'L1')
+                {
+                
+                    if(transferLine == 'L2' || conferenceLine == 'L2')
+                    {
+                        conferenceLine = '';
+                        transferLine = '';
+                        UpdateL1Task(localStorage.getItem(jpLineNumber+'EventId'), "Delete", jpLineNumber);
+                        hideCallSummary(jpLineNumber);
+                        if($('#jabber_recentCallSummary').find('h1#jabberCallLine_'+findAnotherLine(jpLineNumber)+' .jabberPhoneIco').hasClass('holdPhoneIco')){
+                            $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+findAnotherLine(jpLineNumber)+' .jabberPhoneIco').removeClass('holdPhoneIco');
+                            $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+findAnotherLine(jpLineNumber)).trigger('click');
+                        }
+                    }
+                    else
+                    {
+                        UpdateL1Task(localStorage.getItem(jpLineNumber+'EventId'), "End Call", jpLineNumber);
+                    }
+                }
+                else
+                {
+                    if(transferLine == 'L1' || conferenceLine == 'L1')
+                    {
+                        conferenceLine = '';
+                        transferLine = '';
+                        UpdateL2Task(localStorage.getItem(jpLineNumber+'EventId'), "Delete", jpLineNumber);
+                        hideCallSummary(jpLineNumber);
+                        if($('#jabber_recentCallSummary').find('h1#jabberCallLine_'+findAnotherLine(jpLineNumber)+' .jabberPhoneIco').hasClass('holdPhoneIco')){
+                            $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+findAnotherLine(jpLineNumber)+' .jabberPhoneIco').removeClass('holdPhoneIco');
+                            $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+findAnotherLine(jpLineNumber)).trigger('click');
+                        }
+                    }
+                    else
+                    {
+                        UpdateL2Task(localStorage.getItem(jpLineNumber+'EventId'), "End Call", jpLineNumber);
+                    }
+                }
+                resetLocalStorage(jpLineNumber);
+                // stop timer
+                endTimer(jpLineNumber);
+            }
+            sforce.interaction.cti.enableClickToDial();
+        }
+        else if(jpCallState == 'OffHook')
+        {
+            checkStatusMessage('Available','Available');
+            // remove incoming call alert
+            if(jpCallType == 'Incoming' || jpLineNumber != '')
+            {
+                hideIncomingCall(jpLineNumber);
+                incomingFlag[jpLineNumber] = false;
+                resetLocalStorage(jpLineNumber);
+            }
+        }
+        else if(jpCallState == 'Ringout')
+        {
+            checkStatusMessage('Calling','Calling');
+        }
+        disableCallBtn();
+    }
+    
+    var checkStatusMessage = function(status,msg){
+            var _class;
+            switch(status){
+                case "Available" :
+                    _class = 'jabberLeftMargin jabberPhoneAvailable';
+                    break;
+                case "Calling" :
+                    _class = 'jabberLeftMargin jabberPhoneCalling';
+                    break;
+                case "Busy" :
+                    _class = 'jabberLeftMargin jabberPhoneBusy';
+                    break;
+                default :
+            }
+            $('#registrationStatus').removeAttr('class').addClass(_class);
+            $('#jabberStatusText').text(msg);
+     };
+     sforce.interaction.cti.onClickToDial(function(response) {
+        if (response.result) {
+        
+            var c2cResultInJson = jQuery.parseJSON(response.result);
+            var countryCode = "";
+            sforce.connection.sessionId = '{!$Api.Session_ID}';
+            var xmlHttp = null;
+            // request from BAT user, skip country code prefix logic if phone number already has + sign
+            if(c2cResultInJson.number.indexOf("+") != 0)
+            {
+                xmlHttp = new XMLHttpRequest();
+                //xmlHttp.open( "GET","{!$Label.Jabber_Country_Code_Search_URL}" +result.objectId, false );
+                xmlHttp.open( "GET", "{!strHostName}"+"{!$Label.Jabber_Country_Code_Search_URL}" +c2cResultInJson.objectId, false );
+                xmlHttp.setRequestHeader('Authorization', 'OAuth ' +sforce.connection.sessionId);  
+                xmlHttp.setRequestHeader('X-PrettyPrint', 'true'); 
+                xmlHttp.send( null );
+                var xmlResponse = xmlHttp.responseText;
+                //alert(xmlHttp.responseText);
+                //alert(window.navigator.appName);
+                if(window.navigator.appName == 'Netscape'){
+                    if(xmlResponse.indexOf('<response>') != -1){
+                        countryCode = xmlResponse.substring(xmlResponse.indexOf('<response>')+11,xmlResponse.indexOf('</response>'));
+                    }else{
+                        countryCode = xmlResponse.replace(/"/g,"");
+                    }    
+                }else{
+                    countryCode = xmlResponse.replace(/"/g,"");
+                }    
+            }
+            var phoneNum = c2cResultInJson.number;
+            phoneNum  = parsePhoneNumber(phoneNum);
+            if(phoneNum.indexOf(countryCode) != 0)
+            {
+                phoneNum = countryCode+phoneNum;
+            }
+            phoneNum = '+'+phoneNum;
+            $('#numberInput').val(phoneNum);
+            // populate even fields
+            setC2CAttributes(response);
+            // trigger new call
+            initiateNewCall(phoneNum)
+        }
+    });
+    
+    function parsePhoneNumber(phoneNumber)
+    {   
+        // exlude extension numbers from phone number. 
+        // Consider any first identified alpha character as separator for identify the extension number.
+        var extensionIndex = phoneNumber.search(/[a-z]/i);
+        if(extensionIndex > -1)
+        {
+            phoneNumber = phoneNumber.substring(0, extensionIndex);
+        }
+        // also consider '*' as a separator to identify the extension number
+        extensionIndex = phoneNumber.search(/\*/i);
+        if(extensionIndex > -1)
+        {
+            phoneNumber = phoneNumber.substring(0, extensionIndex);
+        }
+        // remove all special chars and alpha chars from the selected phone number
+        var parsedNumber = phoneNumber.replace(/[^\d]/g,"");
+        return parsedNumber;
+    }
+    
+    function setC2CAttributes(C2CResponse)   
+    {
+        if (C2CResponse.result) 
+        {
+            var C2CResult = JSON.parse(C2CResponse.result);
+            document.getElementById("myPage:myForm:c2cFlag").value = true;
+            document.getElementById("myPage:myForm:c2cObject").value = C2CResult.object;
+            document.getElementById("myPage:myForm:c2cRecId").value = C2CResult.objectId;
+            document.getElementById("myPage:myForm:c2cParentRecId").value = "";
+              
+            var parentPath = window.parent.location.pathname;
+
+            if(parentPath != null && parentPath.length == 16)
+            {
+               var parentRecId = parentPath.substring(1,16);
+               if(parentRecId.indexOf('/') == -1)
+               {
+                   document.getElementById("myPage:myForm:c2cParentRecId").value = parentRecId; 
+               }
+            }
+         }
+    }   
+    function incomingCallBack(response)
+    {
+        if (response.result) 
+        {
+            
+            var incomingLineNumber = response.result.substring(0,response.result.indexOf("*#Jp*#"));
+            var searchResult = response.result.substr(response.result.indexOf("["));
+            var resultInJson = $.parseJSON(searchResult);
+            // store results in array so that answer button can show the picklist when search results has multiple records.
+            inComingCallResults[incomingLineNumber] = resultInJson;
+            setLocalstorage('ANISearchResult',JSON.stringify(inComingCallResults));
+            var _html = '',respLen;
+            respLen = resultInJson.length;
+            console.log(respLen);
+            
+            if(respLen==1){
+                $('#incomingMainDiv_'+incomingLineNumber).find('div.Incoming_contactName').html(checkName(resultInJson[0].strName));
+            } 
+        } 
+    }
+    
+    var showIncomingCallQuickView = function(jpCallLine){
+        var _html = '',_imgUrlAnswer = "{!URLFOR($Resource.JabberImages,'JabberImages/AnswerBtn_New.png')}",_imgUrlDecline = "{!URLFOR($Resource.JabberImages,'JabberImages/DeclinerBtn_New.png')}";
+        _html += '<div class="incomingMainDiv" id="incomingMainDiv_'+jpCallLine+'">';
+        _html += '<div class="incomingPhoneICO incomingView_Main"><div class="txtBold pad5left font10">Incoming call...</div>';
+        _html += '<div class="clearSectionRow"></div>';
+        _html += '<div class="txtBold pad5left font12">'+checkName(localStorage.getItem(jpCallLine+'PhoneNumber'))+'</div>';
+        _html += '<div class="clearSectionRow"></div>';
+        _html += '<div class="txtBold pad5left font12 Incoming_contactName">&nbsp;</div>';
+        _html += '<div class="clearSectionRow"></div></div>';
+        _html += '<div class="actionButton clear"><div class="fltleft"><a href="javascript:void(0);" class="green"><img src="'+_imgUrlAnswer+'" /></a></div><div><a href="javascript:void(0);" class="red"><img src="'+_imgUrlDecline+'" /></a></div></div>';
+        _html += '<div class="clearSectionRow"></div>';
+        _html += '</div>';
+        if($('#jabberIncomingCallSection').find('.incomingMainDiv').length == 0){
+            $('#jabberIncomingCallSection').append(_html);
+            $('#jabberIncomingCallSection').slideDown('fast');
+            checkPhoneHeight("IncomingCall",'plus');
+        }
+        $('#incomingMainDiv_'+jpCallLine).find('.actionButton div a').live('click',function(){
+            ($(this).hasClass('green'))?answerCall(jpCallLine):declineCall(jpCallLine);
+        });
+    };
+    var hideIncomingCall = function(jpCallLine){
+        $('#jabberIncomingCallSection').find('div#incomingMainDiv_'+jpCallLine).slideUp('fast',function(){
+            checkPhoneHeight("IncomingCall",'minus');   
+        });
+        $('#jabberIncomingCallSection').find('div#incomingMainDiv_'+jpCallLine).remove();
+        
+        // hide incoming call section if both alert box are invisible
+        if($('#jabberIncomingCallSection').find('div#incomingMainDiv_L1').is(':visible') == false && 
+            $('#jabberIncomingCallSection').find('div#incomingMainDiv_L2').is(':visible') == false)
+        {
+            $('#jabberIncomingCallSection').hide();
+        }
+        
+    };
+    var checkType = function(type){
+                var _class;
+                if(type === 'Contact'){
+                    _class = 'JabberIconsContact'; 
+                } else {
+                    _class = 'JabberIconsAccount';
+                }
+                return _class;
+    };
+    
+    function initiateNewCall(phNumber)
+    {
+        var availableLine = getAvailableCallLine();
+        if(availableLine != null)
+        {
+            hasUserInitiatedCall = true;
+            setLocalstorage(availableLine+'PhoneNumber', phNumber)
+        }
+    }           
+    function muteCall(jpCallLine)
+    {
+        setLocalstorage(jpCallLine+'Mute','true');
+    }
+
+    function unMuteCall(jpCallLine)
+    {
+        setLocalstorage(jpCallLine+'Mute','false');
+    }
+    function holdCall(jpCallLine)
+    {
+        setLocalstorage(jpCallLine+'Hold','true');
+    }
+    function unholdCall(jpCallLine)
+    {
+        setLocalstorage(jpCallLine+'Hold','false');
+    }
+    function conferenceCall(jpCallLine)
+    {
+        var _checkLines = $('#jabber_recentCallSummary').find('h1.connectedCall').length;
+        conferenceLine = '';
+        if(_checkLines == 1)
+        {
+            holdCall(jpCallLine);
+        } 
+        else 
+        {
+            if(jpCallLine == 'L1')
+            {
+                conferenceLine = 'L2';
+            }
+            else
+            {
+                conferenceLine = 'L1';
+            }
+            setLocalstorage('ConferenceWith',conferenceLine);
+        }
+    }
+    function transferCall(jpCallLine)
+    {
+        var _checkLines = $('#jabber_recentCallSummary').find('h1.connectedCall').length;
+        transferLine = '';
+        if(_checkLines == 1)
+        {
+            holdCall(jpCallLine);
+        } 
+        else 
+        {
+            if(jpCallLine == 'L1')
+            {
+                transferLine = 'L2';
+            }
+            else
+            {
+                transferLine = 'L1';
+            }
+            setLocalstorage('TransferTo',transferLine);
+        }
+    }
+    function answerCall(jpCallLine)
+    {
+        // create log for outgoing call, only if user clicked call button
+        // this flag will help to prevent multiple log creation by other open tabs
+        // Note: this flag should set to true at answer call button
+        $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+jpCallLine).next('div').find('.buttonBar div#saveCall_'+jpCallLine).hide(); //Defect Fixed
+        hasUserAnsweredCall = true
+        setLocalstorage(jpCallLine+'IsAnswered', 'Yes');
+    }
+    function endCall(jpCallLine){
+        // reset trans/conf flag so that we can preserv call log when conf/trans failed and user end the call manually.
+        conferenceLine = '';
+        transferLine = '';
+        setLocalstorage(jpCallLine+'EndCall','true');
+    }
+    function declineCall(jpCallLine)
+    {
+        setLocalstorage(jpCallLine+'IsAnswered', 'No');
+    }
+    
+    function renderPhoneUI(isRegistered)
+    {
+        if(isRegistered == 'Yes')
+        {
+            $('#jpAppSec').show();
+            $('#jpLoginSec').hide();
+        }
+        else
+        {
+             $('#jpAppSec').hide();
+             $('#jpLoginSec').show();
+        }
+    }
+    
+    function CreateTaskCallBack(request)
+    {
+        var activeLine = request.options.parameters.firstParam;
+        var eventId;
+        if(activeLine == 'L1')
+        {
+            eventId = document.getElementById("myPage:myForm:L1eventId").value;
+        }
+        else
+        {
+            eventId = document.getElementById("myPage:myForm:L2eventId").value;
+        }
+        var callState = localStorage.getItem(activeLine+'CallState');
+        if(callState != 'null' && callState != '' && callState != null && callState != 'OnHook' &&  callState != 'Reorder' )
+        {
+            setLocalstorage(activeLine+'EventId', eventId)
+            showPhoneLines(activeLine, 'Connected');
+        }
+        
+        // after showing the call log section, refresh main page to show the matched record, if search result has only one record
+        if(localStorage.getItem(activeLine+'CallType') == 'Incoming'){
+            var _ANIresult = localStorage.getItem('ANISearchResult'),_searchResult = (_ANIresult == 'null' || _ANIresult == 'undefined' || _ANIresult == null || _ANIresult == '')? '{}': _ANIresult,_respJson = $.parseJSON(_searchResult),_respArray = (typeof _respJson[activeLine]!='undefined')?_respJson[activeLine]:{};
+            if(_respArray.length == 1 && _respArray[0].strId != '')
+            {
+                //sforce.interaction.screenPop('/'+_respArray[0].strId);
+                window.top.location.replace('/'+_respArray[0].strId);
+            }
+        }
+        else if(preserveC2CAttributes == true && (document.getElementById("myPage:myForm:c2cRecId").value != '' || 
+            document.getElementById("myPage:myForm:c2cParentRecId").value != ''))
+        {
+            var whatId = document.getElementById("myPage:myForm:c2cRecId").value,
+                whoId = document.getElementById("myPage:myForm:c2cParentRecId").value,
+                recId = whatId != ''? whatId : whoId;
+            
+            window.top.location.replace('/'+recId);
+        }
+        preserveC2CAttributes = false;
+    
+    }
+    // This is a call back method, it will be invoked on complete of 'End Call' or 'Save' or 'Cancel' button.
+    function UpdateTaskCallBack(request)
+    {
+        var activeLine = request.options.parameters.thirdParam;
+        var actionType = request.options.parameters.secondParam;
+        if((activeLine == 'L1' || activeLine == 'L2') && actionType == 'End Call')
+        {
+            var _mainLineSec = $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+activeLine);    
+            console.log("******* inside");
+            //showPhoneLines(activeLine, 'Connected');
+            removeOptions(activeLine);
+            _mainLineSec.next('div').find('.buttonBar div#oncall_'+activeLine).hide();
+            _mainLineSec.next('div').find('.buttonBar div#saveCall_'+activeLine).show();
+            $('#div_duration_'+activeLine).html(durationInTextObj[activeLine]);
+        }
+    }
+    function UpdateSearchResultCallBack()
+    {
+        if(selectedSearchResultId != null && selectedSearchResultId != '')
+        {
+            //sforce.interaction.screenPop('https://cs12.salesforce.com/'+selectedSearchResultId);
+            // since above api method is not working in edit page of any record, used standard JS method to refresh the main page
+            window.top.location.replace('/'+selectedSearchResultId);
+        }
+    }
+    function getActiveLogsCallBack(request)
+    {
+        // refresh phone UI
+        var l1EventId = request.options.parameters.firstParam;
+        var l2EventId = request.options.parameters.secondParam;
+        
+        var currentL1EventId = localStorage.getItem('L1EventId');
+        var currentL2EventId = localStorage.getItem('L2EventId');
+        
+        if(l1EventId != null && l1EventId != '' && l1EventId != 'null' && currentL1EventId != '' && currentL1EventId != 'null' && currentL1EventId != null)
+        {
+            showPhoneLines('L1', localStorage.getItem('L1CallState'));
+            updatePhoneUI('L1', localStorage.getItem('L1CallState'));
+        }
+        if(l2EventId != null && l2EventId != '' && l2EventId != 'null' && currentL2EventId != '' && currentL2EventId != 'null' && currentL2EventId != null)
+        {
+            showPhoneLines('L2', localStorage.getItem('L2CallState'));
+            updatePhoneUI('L2', localStorage.getItem('L2CallState'));
+        }
+        // set active call status to the header
+        if(getConnectedCallLine() != null && getConnectedCallLine() != '')
+        {
+            checkStatusMessage('Busy','Busy');
+        }
+    }
+    function showLogCallBack()
+    {
+        //$('#jabber_recentCalls').jabberOverlay({ type : 'hide' });
+        var isSectionVisible = document.getElementById("myPage:myForm:isExistingLogVisible").value;
+        removeOptions();
+        if(isSectionVisible == 'true'){
+            if($('.callHistoryEdit').is(':visible')==false){
+                
+                $('.callHistoryEdit').slideDown('fast');
+                checkPhoneHeight('oldCall','plus');
+            } 
+        } else {
+            if($('.callHistoryEdit').is(':visible')){
+                $('.callHistoryEdit').slideUp('fast',function(){
+                    checkPhoneHeight('oldCall','minus');
+                });
+            }
+        }
+        console.log('*** Message from sfdc: '+ document.getElementById("myPage:myForm:serverResponseMsg").value);
+    }
+    function resetLocalStorage(lineNumber)
+    {
+            localStorage.setItem(lineNumber+'EventId', null);
+            localStorage.setItem(lineNumber+'IsAnswered', null);
+            localStorage.setItem(lineNumber+'CallId', null);
+            localStorage.setItem(lineNumber+'CallState', null);
+            localStorage.setItem(lineNumber+'CallType', null);
+            localStorage.setItem(lineNumber+'PhoneNumber', null);
+            localStorage.setItem(lineNumber+'DTMFInput', null);
+            localStorage.setItem(lineNumber+'EndCall', null);
+            localStorage.setItem(lineNumber+'Hold', null);
+            localStorage.setItem('ConferenceWith',null);
+            localStorage.setItem('TransferTo',null);
+    }
+    function setLocalstorage(lskey,lsvalue){
+        $('#chromeExtensionFlag').attr('isActive',"true");
+        localStorage.setItem(lskey,lsvalue);
+    }
+    function openJabberPhoneWindow(){
+           window.open('/apex/JabberPopupPage','JabberPhone','width=260,height=160,resizable=1');
+    }
+    var jabberSetSoftPhoneHeight = function(sftPhoneHeight){
+            //sforce.interaction.cti.setSoftphoneHeight(sftPhoneHeight);
+            //window.parent.Sfdc.interaction.setSoftphoneIframeHeight(sftPhoneHeight);  
+            $("#SoftphoneIframe",parent.document.body).css("height",sftPhoneHeight);
+        };
+    var checkPhoneHeight = function(section,callSummaryFlag,jpLineNumber){
+        var _height,_checkExpanded,_jabberIncomingCallVisible = $('#incomingMainDiv_'+jpLineNumber).is(':visible'),_dialPadVisible = $('#jabberDialPad').is(':visible'),_callSummaryVisible = $('#jabber_recentCallSummary').find('h1:visible').length;
+        switch(section){
+            case "DialPad":
+                phoneHeight = (_dialPadVisible)?phoneHeight+phoneComponentHeight.dialPad:phoneHeight-phoneComponentHeight.dialPad;
+                break;
+            case "IncomingCall" :
+                phoneHeight = (callSummaryFlag == 'plus')?phoneHeight+phoneComponentHeight.incomingCall:phoneHeight-phoneComponentHeight.incomingCall;
+                break;
+            case "CallSummary" :
+                phoneHeight = (callSummaryFlag == "plus")?phoneHeight+phoneComponentHeight.PhoneLineHeightExpand:phoneHeight-phoneComponentHeight.PhoneLineHeightExpand;
+                break;
+            case "callSummaryCollapsed" :
+                phoneHeight = (callSummaryFlag == "plus")?phoneHeight+phoneComponentHeight.PhoneLineHeightCollapsible:phoneHeight-phoneComponentHeight.PhoneLineHeightCollapsible;
+                break;
+            case "Login" :
+                phoneHeight = phoneComponentHeight.login;
+                break;
+            case "Registered" :
+                phoneHeight = phoneComponentHeight.header+phoneComponentHeight.buffer;
+                break;
+            case "recentCall" :
+                phoneHeight = (callSummaryFlag == "plus")?phoneHeight+phoneComponentHeight.recentCall:phoneHeight-phoneComponentHeight.recentCall;
+                break;
+            case "history" :
+                phoneHeight = (callSummaryFlag == "plus")?phoneHeight+phoneComponentHeight.history:phoneHeight-phoneComponentHeight.history;
+                break;
+            case "OnCall" :
+                if(callSummaryFlag == 'minus'){
+                    _checkExpanded = $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+jpLineNumber).hasClass('expanded');
+                    phoneHeight = (_checkExpanded)?phoneHeight-(phoneComponentHeight.PhoneLineHeightExpand):phoneHeight-(phoneComponentHeight.PhoneLineHeightCollapsible);
+                } else {
+                    phoneHeight = phoneHeight+(phoneComponentHeight.PhoneLineHeightExpand);
+                }
+                break;
+            case "oldCall" :
+                phoneHeight = (callSummaryFlag == 'plus')?phoneHeight+phoneComponentHeight.oldCall:phoneHeight-phoneComponentHeight.oldCall;
+                break;
+                
+            default :
+        }
+        jabberSetSoftPhoneHeight(phoneHeight);
+        if(section == "CallSummary") return true;
+    };
+    var showPhoneLines = function(jpLineNumber,jpCallState){
+        console.log('*** show phone line method execution began for line #'+ jpLineNumber);
+        var _getMainLine,_callId = localStorage.getItem(jpLineNumber+'CallId'),_jabberMainline = $('#jabber_recentCallSummary');
+        if(localStorage.getItem(jpLineNumber+'CallType') == 'Incoming'){
+            var _ANIresult = localStorage.getItem('ANISearchResult'),_searchResult = (_ANIresult == 'null' || _ANIresult == 'undefined' || _ANIresult == null || _ANIresult == '')? '{}': _ANIresult,_respJson = $.parseJSON(_searchResult),_respArray = (typeof _respJson[jpLineNumber]!='undefined')?_respJson[jpLineNumber]:{},_callerName = (_respArray.length == 1)?_respArray[0].strName : "";
+        }
+        _getMainLine = _jabberMainline.find('h1#jabberCallLine_'+jpLineNumber);
+        _getMainLine.find('.phoneBlock').html(localStorage.getItem(jpLineNumber+'PhoneNumber'));
+        _getMainLine.addClass('connectedCall');
+        
+        // reset phone icon on call log section header whenever call is connected
+        _getMainLine.find('.jabberPhoneIco').removeClass('holdPhoneIco');
+
+            
+        if(_getMainLine.is(':visible') == false){ 
+            _getMainLine.show();
+        }
+        checkPhoneHeight("callSummaryCollapsed","plus");
+        if(jpCallState != 'Hold'){
+            if(!_getMainLine.hasClass('expanded')){ _getMainLine.trigger('click'); }
+        }
+        _getMainLine.addClass('phoneInit');
+        
+        if(typeof _respArray != 'undefined' && localStorage.getItem(jpLineNumber+'CallType') == 'Incoming') 
+            populateDropDownList(jpLineNumber,_respArray);
+        else 
+            $('.jabberPhoneLineIncomingMenu_'+jpLineNumber).hide();
+            
+        removeOptions(jpLineNumber);
+        setTimer(jpLineNumber,true);
+        var lookupReferenceObj;
+        // show hyper link on section header
+        lookupReferenceObj = $('.lookupInput').find('input[type="text"][id$=WhatID_'+jpLineNumber+']');
+        $(lookupReferenceObj).trigger('blur');
+        _getMainLine.find('.nameBlock').show();
+        console.log("Active header index--->"+_jabberMainline.find('h1.expanded').index());
+    };
+    var hideCallSummary = function(jpLineNumber){
+        var _jabberMainline = $('#jabber_recentCallSummary');
+        _jabberMainline.removeClass('expanded');
+        _jabberMainline.find('h1#jabberCallLine_'+jpLineNumber+' .nameBlock').html('');
+        _jabberMainline.find('h1#jabberCallLine_'+jpLineNumber+' .phoneBlock').html('');
+        _jabberMainline.find('h1#jabberCallLine_'+jpLineNumber).next().hide();
+        _jabberMainline.find('h1#jabberCallLine_'+jpLineNumber).trigger('click');
+        _jabberMainline.find('h1#jabberCallLine_'+jpLineNumber).hide();
+        checkPhoneHeight("callSummaryCollapsed","minus");
+        $('#flyout_'+jpLineNumber).jabberFlyOutMenu({killMenu : true});
+    };
+    var removeOptions = function(lineNumber){
+    
+        // As per business concerns, rolled back this fix.
+        // prevet user to enter text on the lookup field manually, disable text box edit permissions.
+        // $(".lookupInput").find('input[type="text"]').attr('readonly',true);
+        
+        var _mainObject = (typeof lineNumber != 'undefined')?$('#jabber_recentCallSummary').find('h1#jabberCallLine_'+lineNumber).next():$('.callHistoryEdit'),_selectBoxObject = _mainObject.find('select[id$=_mlktp]:eq(0)'), _RelatedTolookupField = _mainObject.find('input[id$=_lkid]:eq(0)'),  _hiddenRelatedToLKTP = _mainObject.find('input[id$=_lktp]:eq(0)');
+        var _nameSelectBoxObject = _mainObject.find('select[id$=_mlktp]:eq(1)'), _nameLookupField = _mainObject.find('input[id$=_lkid]:eq(1)'),_hiddenNameLKTP = _mainObject.find('input[id$=_lktp]:eq(1)')
+        _selectBoxObject.find('option').each(function(index){
+            if($(this).attr('value')!= "001" && $(this).attr('value')!= "006" && $(this).attr('value')!="500") $(this).remove();
+        });
+        
+        _selectBoxObject.prepend('<option value="{!$Label.Related_To_Default_Option}" selected="selected">--None--</option>');
+        if($(_RelatedTolookupField).val() != "" && $(_RelatedTolookupField).val().substr(0,3) != '000')
+        {
+            $(_selectBoxObject).val($(_RelatedTolookupField).val().substr(0,3));
+            $(_hiddenRelatedToLKTP).val($(_RelatedTolookupField).val().substr(0,3));
+        }
+        else
+        {
+            $(_selectBoxObject).val("");
+            $(_hiddenRelatedToLKTP).val("{!$Label.Related_To_Default_Option}");
+        }
+        if($(_nameLookupField).val() != "" && $(_nameLookupField).val().substr(0,3) != '000')
+        {
+            $(_nameSelectBoxObject).val($(_nameLookupField).val().substr(0,3));
+            $(_hiddenNameLKTP).val($(_nameLookupField).val().substr(0,3));
+        }
+        else
+        {
+            $(_nameSelectBoxObject).val("");
+        }
+    };
+    var checkPhoneState = function(){
+        if(typeof localStorage.getItem("Registered") != 'undefined' && localStorage.getItem("Registered") != null &&localStorage.getItem("Registered")=='Yes'){
+            $('#jpLoginSec').hide();
+            $('#jpLoginSecChrome').hide();
+            checkPhoneHeight("Registered");
+            $('#jpAppSec').show();
+            sforce.interaction.cti.enableClickToDial();
+        } else if(typeof localStorage.getItem("Registered") != 'undefined' && (localStorage.getItem("Registered") == 'null' || localStorage.getItem("Registered")=='No') && localStorage.getItem('LoginMode') == 'Extension'){
+            $('#jpLoginSec').hide();
+            $('#jpAppSec').hide();
+            $('#jpLoginSecChrome').show();
+        } else {
+            $('#jpAppSec').hide();
+            checkPhoneHeight("Login");
+            $('#jpLoginSec').show();
+            sforce.interaction.cti.disableClickToDial();
+        }
+    };
+    
+    var populateDropDownList = function(lineNumber,searchResult){
+            var _html = '';
+            console.log('ready to create select list box for incoming call, list length will be ' + searchResult.length);
+            if(searchResult.length > 1){
+                $.each(searchResult,function(key,value){
+                    if(key < 5)
+                        _html += '<li><a href="javascript:void(0);" dataValue1="'+value.strId+'" dataValue2="'+value.strType+'" dataValue3="'+lineNumber+'" title="'+value.strName+'"><span class="JabberIcons '+checkType(value.strType)+'">'+checkName(value.strName)+'</span></a></li>';
+                });
+                if(searchResult.length > 5)
+                {
+                    _html += '<li title="Use lookup icon to search more matched records" ><span style="float:right;">More...</span></li>';
+                }
+                $('#Items_'+lineNumber).find('ul').html(_html);
+                $('#flyout_'+lineNumber).jabberFlyOutMenu({
+                    content: $('#flyout_'+lineNumber).next().html(),
+                    flyOut: true,
+                    width : 157,
+                    killMenu : false
+                });
+                $('.jabberPhoneLineIncomingMenu_'+lineNumber).show();
+            } else {
+                $('.jabberPhoneLineIncomingMenu_'+lineNumber).hide();
+            }
+        };
+        var checkName = function(contactName){
+            return (contactName.length > 16)? contactName.substr(0,15)+'..':contactName;
+        };
+        var checkPhoneNumber = function(phNumber){
+            return (phNumber.length > 18)? phNumber.substr(0,17)+'..':phNumber;
+        };
+        var dropDownReturnCallBack = function(recordId,recordType,line,selectedText){
+            $('#flyout_'+line).unbind('click');
+            document.getElementById("myPage:myForm:c2cFlag").value = false;
+            if(recordId != "" && recordId != null)
+            {
+                selectedSearchResultId = recordId;
+                document.getElementById("myPage:myForm:c2cFlag").value = true;
+                document.getElementById("myPage:myForm:c2cObject").value = recordType;
+                document.getElementById("myPage:myForm:c2cRecId").value = recordId;
+                document.getElementById("myPage:myForm:c2cParentRecId").value = "";
+                
+                UpdateSearchResult(localStorage.getItem(line+'EventId'), 'Search Result Update');
+            }
+            //$('#flyout_'+line).text(selectedText);
+        }
+        var currentTimeInMS = {'L1':0, 'L2':0};
+        var populateDuration = function(jpLineNumber){
+            var dat = new Date(),durationInFormat,startTimeInMS,durationInSecs,hour,min,sec;
+            startTimeInMS = $('body').find('input[type=hidden][id$='+jpLineNumber+'StartTimeInMS]').val();
+            startTimeInMS = isNaN(startTimeInMS) ? 0: parseInt(startTimeInMS);
+            currentTimeInMS[jpLineNumber] = isNaN(currentTimeInMS[jpLineNumber]) ? 0 : parseInt(currentTimeInMS[jpLineNumber]);
+            durationInSecs = ((currentTimeInMS[jpLineNumber]/1000) -(startTimeInMS/1000)).toFixed(0);
+            hour = Math.floor(((durationInSecs/60)/60));
+            min = Math.floor((durationInSecs/60)%60);
+            sec = (durationInSecs%60).toFixed(0);
+            durationInFormat = pad(hour,2)+':'+pad(min,2)+':'+pad(sec,2);
+            durationInTextObj[jpLineNumber] = durationInFormat;
+            //set call duration in seconds for each call
+            durationInTextObj[jpLineNumber+'Secs'] = durationInSecs;
+            $('#div_duration_'+jpLineNumber).html(pad(hour,2)+':'+pad(min,2)+':'+pad(sec,2));
+            currentTimeInMS[jpLineNumber] = currentTimeInMS[jpLineNumber] + 1000;
+        };
+        var setTimer = function(jpLineNumber){
+            console.log('timer is started for '+ jpLineNumber);
+            var timeout = 1000;
+            currentTimeInMS[jpLineNumber] = $('body').find('input[type=hidden][id$=currentTimeInMS]').val();
+            timerObj[jpLineNumber] = $("#div_duration_"+jpLineNumber).timer(timeout, function() {
+                populateDuration(jpLineNumber);
+            });
+        };
+        var endTimer = function(jpLineNumber){
+            try{
+                timerObj[jpLineNumber].stop();
+                if(typeof durationInTextObj[jpLineNumber] != 'undefined')
+                {
+                    $('body').find('input[type=hidden][id$='+jpLineNumber+'EventDuration]').val(durationInTextObj[jpLineNumber]);
+                    $('body').find('input[type=hidden][id$='+jpLineNumber+'EventDurationInSecs]').val(durationInTextObj[jpLineNumber+'Secs']);
+                }
+                else
+                {
+                    console.log('*** duration is blank, recalculating once again...');
+                    populateDuration(jpLineNumber);
+                    $('body').find('input[type=hidden][id$='+jpLineNumber+'EventDuration]').val(durationInTextObj[jpLineNumber]);
+                    $('body').find('input[type=hidden][id$='+jpLineNumber+'EventDurationInSecs]').val(durationInTextObj[jpLineNumber+'Secs']);
+                }
+            } catch(e) {
+                console.log("Error"+e);
+            }
+        };
+        var pad = function(number, length) {
+            var str = '' + number;
+            while (str.length < length) {str = '0' + str;}
+            return str;
+        };
+        var findAnotherLine = function(availableLine){
+            return (availableLine == "L2")?"L1":"L2";
+        };
+        var disableCallBtn = function(){
+            var _availLine = getAvailableCallLine();
+            if(_availLine == '' || _availLine == null){
+                $('#jabberDialPad').find('.borderGrey ul:eq(4) li:eq(1)').hide();
+                $('#jabberDialPad').find('.borderGrey ul:eq(4) li:eq(2)').show();
+                $('#jabberDialPad').find('.borderGrey ul:eq(4) li:eq(2)').css({'opacity':'0.5','cursor':'default'});
+            } else {
+                $('#jabberDialPad').find('.borderGrey ul:eq(4) li:eq(1)').show();
+                $('#jabberDialPad').find('.borderGrey ul:eq(4) li:eq(2)').hide();
+                $('#jabberDialPad').find('.borderGrey ul:eq(4) li:eq(2)').css({'opacity':'1','cursor':'pointer'});
+            }
+        };
+        
+        var createHyperLinks = function(compRef){
+
+            console.log('**** lokup field id  '+ compRef.id);
+            var _splitHTMLObj = compRef.id.split("_"),_splitIdHierarchy = _splitHTMLObj[0].split(":"),_fieldName = _splitIdHierarchy[3],_lineNumber = _splitHTMLObj[1];
+            var _lookupId = $(compRef).parent().parent('div').find('input[type="hidden"][id$=_lkid]').val();
+            var _leadLookupNode = $(compRef).parent().parent().parent('div.detailRow').next().next('div.detailRow').find('select[id$=_mlktp]');
+            if(_splitHTMLObj.length == 3)
+            {
+                console.log('**** picklist value='+ compRef.value);
+                return;
+                
+            }
+            switch(_fieldName){
+                case "WhatID":
+                    if(compRef.value != '' && typeof _lookupId != 'undefined' && _lookupId != '' && _lookupId != '000000000000000')
+                    {
+                        $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+_lineNumber+' .nameBlock').html('<a href="javascript:void(0);" title="'+compRef.value+'" id="'+_lookupId+'">'+checkName(compRef.value)+'</a>');
+                        if($(_leadLookupNode).val()=='00Q'){
+                            $(_leadLookupNode).prop('selectedIndex',0).parent().find('input[type=hidden][id$=_lkid],span.lookupInput input[type=text]').val('');
+                        }
+                    }
+                    else
+                    {
+                        $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+_lineNumber+' .nameBlock').html('');
+                        var _whoLookupText = $(compRef).parent().parent().parent('div.detailRow').next().next('div.detailRow').find('input[type="text"]').val();
+                        var _whoLookupId = $(compRef).parent().parent().parent('div.detailRow').next().next('div.detailRow').find('input[type="hidden"][id$=_lkid]').val();
+                        $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+_lineNumber+' .nameBlock').html('<a href="javascript:void(0);" title="'+_whoLookupText+'" id="'+_whoLookupId+'">'+checkName(_whoLookupText)+'</a>');
+                    }
+                    break;
+                case "WhoID":
+                    if($(compRef).parent().parent().parent('div.detailRow').prev().prev('div.detailRow').find('input[type="hidden"][id$=_lkid]').val()=='' || 
+                        $(compRef).parent().parent().parent('div.detailRow').prev().prev('div.detailRow').find('input[type="hidden"][id$=_lkid]').val()=='000000000000000'){
+                        
+                        if(compRef.value != '' && typeof _lookupId != 'undefined' && _lookupId != '' && _lookupId != '000000000000000')
+                        {
+                            $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+_lineNumber+' .nameBlock').html('<a href="javascript:void(0);" title="'+compRef.value+'" id="'+_lookupId+'">'+checkName(compRef.value)+'</a>');
+                        } else {
+                            $('#jabber_recentCallSummary').find('h1#jabberCallLine_'+_lineNumber+' .nameBlock').html('');
+                        }
+                    }
+                    break;
+                default :       
+            }
+        }
+        function PageRefreshCallBack(request)
+        {
+            var recordId = request.options.parameters.fourthParam;
+            //sforce.interaction.screenPop('/'+recordId);
+            window.top.location.replace('/'+recordId);
+        }
+        var openExternalLink = function(url){
+            window.open(url,'_blank','width=1600,height=900,left=0,top=0,scrollbars=yes');
+        };
+ </script>
+ 
+    <style>
+        [id*=myForm] { font-size: 10px;}
+        [id*=pageBlock] {  font-size: 98%;}
+        .pbSubheader {
+            background-color: #1797C0 !important;
+            font-weight: bold;
+            font-size: 91%;
+            padding: 2px 2px 2px 5px !important;
+            margin-top: 15px;
+            overflow: hidden;
+            margin-bottom: 2px;
+        }
+        .round{
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberHeader.jpg')}') no-repeat scroll left center transparent;
+            position: relative;
+            padding : 9px 9px 11px 9px;
+        }
+        .jabberPhoneAvailable {
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/jabbergreenBar.png')}') no-repeat scroll -10px -8px transparent;
+        }
+        .jabberPhoneCalling {
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberyellowBar.png')}') no-repeat scroll -10px -8px transparent;
+        }
+        .jabberPhoneBusy {
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberredBar.png')}') no-repeat scroll -10px -8px transparent;
+        }
+        .jabberLogo {
+            background: url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberLogo.png')}') no-repeat scroll left 50% transparent;
+            background-size: 19px 19px;
+            background-position: 9px -2px;
+            height: 16px;
+            padding-left: 30px;
+            margin: -4px 29px 0;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+        .dialIcon {
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberDialIcon.png')}') no-repeat scroll 0px 0px transparent;
+            width : 15px;
+            height : 15px;
+            float : left;
+            margin-top : 5px;
+            cursor : pointer;
+        }
+        .incomingPhoneICO {
+            background: url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberIncomingIco.gif')}') no-repeat scroll 10px 9px transparent;
+            background-size: 39px 36px;
+            width: 50px;
+            height: 43px;
+            margin: -2px 0px 0px -17px;
+            padding: 0px 0px 0px 20px;
+            float: left;
+        }
+        .incomingView_Main{
+            width: 122px;
+            display: table;
+            margin: 0px 0px 0px 0px;
+            padding: 4px 0px 0px 46px;
+        }
+        #jabber_recentCallSummary .jabberPhoneIco {
+            background: url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberPhoneIcon.png')}') no-repeat scroll 0px 5px transparent;
+            background-size: 20px 18px;
+            width: 50px;
+            height: 27px;
+            margin: -2px 0px 0px -17px;
+            padding: 0px 0px 0px 20px;
+        }
+        #jabber_recentCallSummary .holdPhoneIco {
+            background: url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberPhoneHoldIco.gif')}') no-repeat scroll -8px -3px transparent;
+            background-size: 36px 35px;
+        }
+        #jabber_recentCallSummary .offHookPhoneIco {
+            background: url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberOffHookIco.gif')}') no-repeat scroll -5px -3px transparent;
+            background-size: 36px 35px;
+        }
+        .jabberEndCall {
+            background: url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberEndCall.png')}') no-repeat scroll left center transparent;
+            background-size : 84px 25px;
+            width : 84px;
+            height : 25px;
+            padding: 4px;
+        }
+        .jabberSaveCall {
+            background: url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberSaveCall.png')}') no-repeat scroll left center transparent;
+            background-size: 84px 25px;
+            background-position: 1px 5px;
+            width: 80px;
+            height: 25px;
+            padding: 4px;
+            margin-left: 6px;
+            position:absolute;
+        }
+        .jabberCancelCall {
+            background: url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberCancelEvent.png')}') no-repeat scroll left center transparent;
+            background-size: 81px 25px;
+            background-position: 4px 5px;
+            width: 81px;
+            height: 25px;
+            padding: 4px;
+            margin-left: 100px;
+            position:absolute;
+        }
+        .SFDCRequestStatus {
+            position: absolute;
+            height: 321px;
+            width: 199px;
+            z-index: 1000000;
+            opacity : 0.7;
+            background : #FFFFFF;
+        }
+        .sfdcRequestStatusIcon {
+        
+            width: 36%;
+            height: 14px;
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/LoadingDots.gif')}') no-repeat scroll center transparent;
+            padding: 2px;
+            padding-top: 38px;
+            margin: 0 auto;
+            top: 34%;
+            left: 33%;
+            color: #FFF;
+            position: absolute;
+        }
+        .jabberConferrence{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/actionbar_conf.png')}') no-repeat scroll center center transparent;
+            width : 42px;
+            height : 36px;
+        }
+        .jabberConferrence:hover{
+            border: 1px solid grey;
+            width : 42px;
+            height : 36px;
+            opacity : 0.7;
+        }
+        .jabberMute{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/actionbar_mute.png')}') no-repeat scroll center center transparent;
+            width : 42px;
+            height : 36px;
+        }
+        .unMuteCall{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/actionbar_speaker.png')}') no-repeat scroll center center transparent;
+            width : 42px;
+            height : 36px;
+        }
+        .jabberHold{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/actionbar_hold.png')}') no-repeat scroll center center transparent;
+            width : 42px;
+            height : 36px;
+        }
+        .jabberHold:hover{
+            border: 1px solid grey;
+            width : 42px;
+            height : 36px;
+            opacity : 0.7;
+        }
+        .unHoldCall{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/actionbar_resume.png')}') no-repeat scroll center center transparent;
+            width : 42px;
+            height : 36px;
+        }
+        .unHoldCall:hover{
+            border: 1px solid grey;
+            width : 42px;
+            height : 36px;
+            opacity : 0.7;
+        }
+        .jabberTransfer{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/actionbar_transfer.png')}') no-repeat scroll center center transparent;
+            width : 42px;
+            height : 36px;
+        }
+        .jabberTransfer:hover{
+            border: 1px solid grey;
+            width : 42px;
+            height : 36px;
+            opacity : 0.7;
+        }
+        .jabberCallSecArrow {
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/JabberArrowIcon.png')}') no-repeat scroll left center transparent;
+            padding-right : 10px;
+            background-position : 1px -36px;
+            cursor : pointer;
+        }
+        .jabberSideArrow {
+            background-position : 1px -23px;
+        }
+        .jabberSectionHeader {
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberHeader.jpg')}') no-repeat scroll left center #1797C0;
+            padding:2px 2px 2px 5px;
+            color : #FFFFFF;
+        }
+        .jabberHelpIco {
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabbberHelp.png')}') no-repeat scroll right center transparent;
+        }
+        .jabberHelpIco:hover {
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabbberHelpHover.png')}') no-repeat scroll right center transparent;
+        }
+        .jabberSettingsIco {
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberSettingsIco.png')}') no-repeat scroll right center transparent;
+        }
+        .jabberSettingsIco:hover {
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberSettingsIcoHover.png')}') no-repeat scroll right center transparent;
+        }
+        #jabber_recentCallSummary .inProgressIco {
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberInprogressIco.gif')}') no-repeat scroll left 4px transparent;
+            background-size: 26px 23px;
+        }
+        .iconDimension {
+            height: 23px;
+            left: 4px;
+            position: absolute;
+            top: 6px;
+            width: 22px;
+            cursor : pointer;
+        }
+        .ActiveRow {
+            background : none #63A5DD;
+            color : #FFFFFF;
+        }
+        .ActiveRow a {
+            color : #FFFFFF!important;
+        }
+        .JabberIcons {
+            background:url('{!URLFOR($Resource.JabberImages,'JabberImages/master.png')}') no-repeat scroll transparent;
+            padding : 0px 0px 0px 20px;
+        }
+        .JabberIconsContact {
+            background-position : 0px -82px;
+        }
+        .JabberIconsAccount {
+            background-position : 0px -3px;
+        }
+</style>
+
+      
+    <div id="jpLoginSec" class="round" style="display:none;">
+        <div><a onclick="javascript:openJabberPhoneWindow();">{!$Label.Jabber_Login}</a></div>
+        <div class="ciscoJabberHelpRound jabberSettingsIco" title="Self Diagnostic Tool">&nbsp;</div>
+    </div>
+    <div id="jpLoginSecChrome" class="round jpLoginSec" style="display:none;">
+        <div class="jpLoginChrome">Cisco Jabber</div>
+        <div class="ciscoJabberHelpRound jabberSettingsIco" title="Self Diagnostic Tool">&nbsp;</div>
+    </div>
+    <apex:form id="myForm">
+        <div id="jpAppSec" style="display:none;">
+            <div id="softphone_header_div" class="round">
+                <div class="jabberLogo">{!$Label.Jabber_Call_Center}</div>
+                <div class="secRow">
+                    <div class="jabberUserProfile">
+                        <div class="jabberLeftMargin" id="registrationStatus">&nbsp;</div>
+                        <div class="jabberRightMargin"><span class="jabberSpanTop font14Bold">{!$User.FirstName} {!$User.LastName}</span><span id="jabberStatusText" class="font10Bold"></span></div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--<div class="ciscoJabberHelp"><a href="{!$Label.Help_Training}" target="_new"><img src="/resource/1373009011000/jabberHelp" alt="" title="" /></a></div>-->
+                    <div class="ciscoJabberHelp jabberSettingsIco" title="Self Diagnostic Tool">&nbsp;</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="dialInput">
+                    <div class="dialIcon">&nbsp;</div>
+                    <span id="number_input_div"><input id="numberInput" name="number" type="text" class="jabberDialBox" placeholder="Search Name/Number" /></span>
+                    <span id="number_input_IVRS" style="display:none;"><input id="numberInputIVRS" name="number" type="text" class="jabberDialBox" /></span>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div id="jabberIncomingCallSection" class="JabberIncomingCall" style="display:none;"></div>
+            <div id="jabberDialPad" class="jabberDialPad" style="display:none;">
+                <div class="borderGrey">
+                    <ul>
+                        <li val="1" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_1.png')}" /></li>
+                        <li val="2" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_2.png')}" /></li>
+                        <li val="3" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_3.png')}" /></li>
+                    </ul>
+                    <ul>
+                        <li val="4" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_4.png')}" /></li>
+                        <li val="5" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_5.png')}" /></li>
+                        <li val="6" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_6.png')}" /></li>
+                    </ul>
+                    <ul>
+                        <li val="7" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_7.png')}" /></li>
+                        <li val="8" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_8.png')}" /></li>
+                        <li val="9" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_9.png')}" /></li>
+                    </ul>
+                    <ul>
+                        <li val="*" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_star.png')}" styleClass="resizeBtn" /></li>
+                        <li val="0" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_0.png')}" styleClass="resizeBtn" /></li>
+                        <li val="#" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_pound.png')}" styleClass="resizeBtn" /></li>
+                    </ul>
+                    <ul>
+                        <li val="+" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_plus.png')}" styleClass="resizeBtn" /></li>
+                        <li val="call" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_call.png')}" styleClass="resizeBtn" /></li>
+                        <li val="call" class="specific" style="display:none;"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_call.png')}" styleClass="resizeBtn" /></li>
+                        <li val="back" class="general"><apex:image url="{!URLFOR($Resource.JabberImages,'JabberImages/dialpad_backspace.png')}" styleClass="resizeBtn" /></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jabberCallSection">
+                <div id="jabber_recentCallSummary">
+                    <h1 style="display:none;" id="jabberCallLine_L1" class="jabberPhoneLines"><div class="iconDimension"></div><div class="jabberPhoneIco inProgressIco"><span class="nameBlock"></span><span class="phoneBlock"></span></div></h1>
+                    <div class="jabberCallSectionArea" style="display:none;">
+                        <div class="jabberToolBarArea" style="display:none;">
+                            <ul>
+                                <li class="jabberConferrence">&nbsp;</li>
+                                <li class="jabberTransfer">&nbsp;</li>
+                                <li class="jabberMute muteCall" style="display:none;">&nbsp;</li>
+                                <li class="jabberHold holdCall">&nbsp;</li>
+                            </ul>
+                        </div>
+                        <div class="jabberCallSectionArea">
+                            <apex:pageBlock id="pageBlockDummy1" >
+                                <apex:outputPanel id="thePanelDummy1">
+                                
+                                    <div class="clearRow"></div>
+                                    <div class="jabberPhoneLineIncomingMenu_L1" style="display:none;">
+                                        <a tabindex="0" href="javascript:void(0);" class="jabberPhoneLineIncomingDropDownItem fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="flyout_L1"><span class="ui-icon ui-icon-triangle-1-s"></span>--Please Select--</a>
+                                        <div class="hidden" id="Items_L1">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearRow"></div>
+                                     <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Subject</div>
+                                        <div><apex:inputText value="{!Task1.Subject}" id="Subject_L1" styleClass="jabberFormInput" maxlength="255"/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow" id="relatedTo_L1">
+                                        <div class="floatLeft smallMargin labelWidth">Related To</div>
+                                        <apex:inputField value="{!Task1.WhatId}" id="WhatID_L1" styleClass="jabberFormObj" onblur="createHyperLinks(this);" />
+                                    </div>
+                                    <div><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow" id="Name_L1">
+                                        <div class="floatLeft smallMargin labelWidth">Name</div>
+                                        <apex:inputField value="{!Task1.WhoId}" id="WhoID_L1" styleClass="jabberFormObj" onblur="createHyperLinks(this);"/>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Start</div>
+                                        <div><apex:outputField value="{!Task1.Jabber_Call_Start_Date_Time__c}" id="StartDate_L1" label=""/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Duration</div>
+                                        <div id="div_duration_L1">&nbsp;</div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">End</div>
+                                        <div><apex:outputField value="{!Task1.Jabber_Call_End_Date_Time__c}" id="EndDate_L1" label="" /></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Phone #</div>
+                                        <div><apex:outputField value="{!Task1.Phone_Number__c}" id="PhoneNumber_L1" label=""/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Call Type</div>
+                                        <div><apex:outputField value="{!Task1.CallType}" id="CallType_L1" label=""/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Call Results</div>
+                                        <div><apex:outputField value="{!Task1.Call_Results__c}" id="CallResults_L1" label=""/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Campaign</div>
+                                        <div class="jabberFormObj" title="{!Task1.Marketing_Campaign__c}"> <apex:inputField value="{!Task1.Marketing_Campaign__c}" /></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="pad7right labelWidth">Comments</div>
+                                        <div class="pad7right"><apex:inputField value="{!Task1.Description}" id="Comments_L1" /></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div> 
+                                    <!-- <apex:actionPoller action="{!incrementL1Duration}" reRender="Duration_L1" interval="5" enabled="{!startL1Timer}"/> -->
+                                    <div class="buttonBar">
+                                        <div class="alignCenter_endCall" id="oncall_L1">
+                                            <div class="jabberEndCall">&nbsp;</div>
+                                        </div>
+                                        <div class="alignCenter" id="saveCall_L1" style="display:none;">
+                                            <div class="jabberSaveCall">&nbsp;</div>
+                                            <div class="jabberCancelCall">&nbsp;</div>
+                                        </div>
+                                    </div>
+                                    <div class="clearRow"></div>
+                                </apex:outputPanel>
+                            </apex:pageBlock>
+                        </div>
+                    </div>
+                    <h1 style="display:none;" id="jabberCallLine_L2" class="jabberPhoneLines"><div class="iconDimension"></div><div class="jabberPhoneIco inProgressIco"><span class="nameBlock"></span><span class="phoneBlock"></span></div></h1>
+                    <div class="jabberCallSectionArea" style="display:none;">
+                        <div class="jabberToolBarArea">
+                            <ul>
+                                <li class="jabberConferrence">&nbsp;</li>
+                                <li class="jabberTransfer">&nbsp;</li>
+                                <li class="jabberMute muteCall" style="display:none;">&nbsp;</li>
+                                <li class="jabberHold holdCall">&nbsp;</li>
+                            </ul>
+                        </div>
+                        <div class="jabberCallSectionArea">
+                            <apex:pageBlock id="pageBlockDummy2" >
+                                <apex:outputPanel id="thePanelDummy2">
+                                
+                                    <div class="clearRow"></div>
+                                    <div class="jabberPhoneLineIncomingMenu_L2" style="display:none;">
+                                        <a tabindex="0" href="javascript:void(0);" class="jabberPhoneLineIncomingDropDownItem fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="flyout_L2"><span class="ui-icon ui-icon-triangle-1-s"></span>--Please Select--</a>
+                                        <div class="hidden" id="Items_L2">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="clearRow"></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Subject</div>
+                                        <div><apex:inputText value="{!Task2.Subject}" id="Subject_L2" styleClass="jabberFormInput" maxlength="255"/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow" id="relatedTo_L2">
+                                        <div class="floatLeft smallMargin labelWidth">Related To</div>
+                                        <apex:inputField value="{!Task2.WhatId}" id="WhatID_L2" styleClass="jabberFormObj" onblur="createHyperLinks(this);"/>
+                                    </div>
+                                    <div><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow" id="Name_L2">
+                                        <div class="floatLeft smallMargin labelWidth">Name</div>
+                                        <apex:inputField value="{!Task2.WhoId}" id="WhoID_L2" styleClass="jabberFormObj" onblur="createHyperLinks(this);"/>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Start</div>
+                                        <div><apex:outputField value="{!Task2.Jabber_Call_Start_Date_Time__c}" id="StartDate_L2" label=""/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Duration</div>
+                                        <div id="div_duration_L2">&nbsp;</div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">End</div>
+                                        <div><apex:outputField value="{!Task2.Jabber_Call_End_Date_Time__c}" id="EndDate_L2" label="" /></div>
+                                    </div>
+                                    
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Phone #</div>
+                                        <div><apex:outputField value="{!Task2.Phone_Number__c}" id="PhoneNumber_L2" label=""/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Call Type</div>
+                                        <div><apex:outputField value="{!Task2.CallType}" id="CallType_L2" label=""/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Call Results</div>
+                                        <div><apex:outputField value="{!Task2.Call_Results__c}" id="CallResults_L2" label=""/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="floatLeft pad7right labelWidth">Campaign</div>
+                                        <div class="jabberFormObj" title="{!Task2.Marketing_Campaign__c}"> <apex:inputField value="{!Task2.Marketing_Campaign__c}"  /></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    <div class="detailRow">
+                                        <div class="pad7right labelWidth">Comments</div>
+                                        <div class="pad7right"><apex:inputField value="{!Task2.Description}" id="Comments_L2"/></div>
+                                    </div>
+                                    <div class="clearRow"><hr class="hrStyleClass" /></div>
+                                    
+                                    <div class="buttonBar">
+                                        <div class="alignCenter_endCall" id="oncall_L2">
+                                            <div class="jabberEndCall">&nbsp;</div>
+                                        </div>
+                                        <div class="alignCenter" id="saveCall_L2" style="display:none;">
+                                            <div class="jabberSaveCall">&nbsp;</div>
+                                            <div class="jabberCancelCall">&nbsp;</div>
+                                        </div>
+                                    </div>
+                                    <div class="clearRow"></div>
+                                </apex:outputPanel>
+                            </apex:pageBlock>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+    
+        
+        
+            <div id="jabber_recentCalls">
+                <div class="jabberSectionHeader"><span class="jabberCallSecArrow">&nbsp;</span>Recent Calls</div> 
+                <div class="jabberSectionMainEle">
+                    <div class="jabberSectionMainComp">
+                        <apex:actionStatus onstop="$('#jabber_recentCalls').jabberOverlay({type : 'hide'});" id="cmdLinkRequestStatus">
+                        </apex:actionStatus>
+                        <apex:outputPanel id="recentCallSec" >
+                        <apex:repeat value="{!RecentCallList}" var="lastCall">
+                            <div style="height:{!IF(lastCall.strlinkText = '','6px','')};">
+                                <div class="jabberSectionCol">
+                                    <apex:commandLink value="{!lastCall.strlinkText}" action="{!showOldTask}" oncomplete="showLogCallBack();"  style="{!lastCall.strLinkColor}" id="theCommandLink" rerender="hiddenVariables,thePanelDummy3" status="cmdLinkRequestStatus">
+                                        <apex:param name="existingEventId" value="{!lastCall.wrapperTask.Id}"/>
+                                    </apex:commandLink>
+                                </div>
+                                <div> 
+                                    <div style="width:72px;float:left;"> {!lastCall.strTimeStamp} </div> 
+                                    <div style="padding-top: 2px; float:left;"> <a href="javascript:redial('{!lastCall.strPhoneNumber}','{!lastCall.strName}','{!lastCall.strRelatedTo}');"><img style="display:{!IF(lastCall.strCallType != '','block','none')}; " src="{!URLFOR($Resource.JabberImages,'JabberImages/JabberRedialIcon.gif')}"/></a> </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="clearSectionRow"></div>
+                            </div>
+                        </apex:repeat>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+            </div>
+            <div class="callHistoryEdit" style="display:none;">
+                <div class="jabberpadTop"> 
+                    <apex:outputPanel id="thePanelDummy3" >
+                        <apex:actionStatus onstop="$('.callHistoryEdit').jabberOverlay({type : 'hide'});" id="requestStatus">
+                        </apex:actionStatus> 
+                        
+                        <div class="clearRow"></div>
+                        <div class="detailRow">
+                            <div class="floatLeft pad7right labelWidth">Subject</div>
+                            <div><apex:inputText value="{!ExistingTask.Subject}" id="Subject_old" styleClass="jabberFormInput" maxlength="255"/></div>
+                        </div>
+                        <div class="clearRow"><hr class="hrStyleClass" /></div>
+                        <div class="detailRow" id="relatedTo_old">
+                            <div class="floatLeft smallMargin labelWidth">Related To</div>
+                            <apex:inputField value="{!ExistingTask.WhatId}" id="WhatID_ExtEve" styleClass="jabberFormObj"/>
+                        </div>
+                        <div><hr class="hrStyleClass" /></div>
+                        <div class="detailRow" id="Name_old">
+                            <div class="floatLeft smallMargin labelWidth">Name</div>
+                            <apex:inputField value="{!ExistingTask.WhoId}" id="WhoID_ExtEve" styleClass="jabberFormObj"/>
+                        </div>
+                        <div><hr class="hrStyleClass" /></div>
+                        <div class="detailRow">
+                            <div class="floatLeft pad7right labelWidth">Start</div>
+                            <div><apex:outputField value="{!ExistingTask.Jabber_Call_Start_Date_Time__c}" id="StartDate_old" label=""/></div>
+                        </div>
+                        <div class="clearRow"><hr class="hrStyleClass" /></div>
+                        <div class="detailRow">
+                            <div class="floatLeft pad7right labelWidth">End</div>
+                            <div><apex:outputField value="{!ExistingTask.Jabber_Call_End_Date_Time__c}" id="EndDate_old" label="" /></div>
+                        </div>
+                        <div class="clearRow"><hr class="hrStyleClass" /></div>
+                        <div class="detailRow">
+                            <div class="floatLeft pad7right labelWidth">Duration</div>
+                            <div><apex:outputField value="{!ExistingTask.Duration__c}" id="duration_old" label="" /></div>
+                        </div>
+                        
+                        <div class="clearRow"><hr class="hrStyleClass" /></div>
+                        <div class="detailRow">
+                            <div class="floatLeft pad7right labelWidth">Phone #</div>
+                            <div><apex:outputField value="{!ExistingTask.Phone_Number__c}" id="PhoneNumber_old" label=""/></div>
+                        </div>
+                        <div class="clearRow"><hr class="hrStyleClass" /></div>
+                        <div class="detailRow">
+                            <div class="floatLeft pad7right labelWidth">Call Type</div>
+                            <div><apex:outputField value="{!ExistingTask.CallType}" id="CallType_old" label=""/></div>
+                        </div>
+                        <div class="clearRow"><hr class="hrStyleClass" /></div>
+                        <div class="detailRow">
+                            <div class="floatLeft pad7right labelWidth">Call Results</div>
+                            <div><apex:outputField value="{!ExistingTask.Call_Results__c}" id="CallResults_old" label=""/></div>
+                        </div>
+                        
+                        <div class="clearRow"><hr class="hrStyleClass" /></div>
+                        <div class="detailRow">
+                            <div class="floatLeft pad7right labelWidth">Campaign</div>
+                            <div class="jabberFormObj" title="{!ExistingTask.Marketing_Campaign__c}"> <apex:inputField value="{!ExistingTask.Marketing_Campaign__c}" /></div>
+                        </div>
+                                    
+                        <div class="clearRow"><hr class="hrStyleClass" /></div>
+                        <div class="detailRow">
+                            <div class="pad7right labelWidth">Comments</div>
+                            <div class="pad7right"><apex:inputField value="{!ExistingTask.Description}" id="Comments_old" /></div>
+                        </div>
+                        <div class="clearRow"><hr class="hrStyleClass" /></div>
+                        <div class="buttonBar">
+                            <div class="alignCenter" id="updateExistingCall_editSec" >
+                                    <div class="jabberSaveCall fltleft">&nbsp;</div>
+                                    <div class="jabberCancelCall">&nbsp;</div>
+                            </div>
+                            <div class="clearRow"></div>
+                        </div>
+                    </apex:outputPanel>
+                </div>
+        </div>
+        
+        <div id="jabber_callHistory">
+            <div class="jabberSectionHeader"><span class="jabberCallSecArrow">&nbsp;</span>{!$Label.Call_History}</div> 
+                <div class="jabberHistorySection">
+                    <div style="float: left;width: 135px;">
+                    <table  style="border-spacing: 10px">
+                    <tr>
+                        <td><apex:outputLink value="{!$Label.Today_s_Call}" id="TodayLink" target="_new">{!$Label.TODAY}</apex:outputLink></td>
+                        <td><apex:outputLink value="{!$Label.This_Week_s_Call}" id="WeekLink" target="_new">{!$Label.X7_DAYS}</apex:outputLink></td>
+                        <td><apex:outputLink value="{!$Label.This_Month_s_Call}" id="MonthLink" target="_new">{!$Label.X30_DAYS}</apex:outputLink></td>
+                    </tr>
+                    </table>
+                    </div>
+                    <div style="margin-top: 11px;margin-right: 0;">
+                        <apex:outputLink value="{!$Label.Dashboard_Id}" id="DashboardLink" target="_new">{!$Label.Dashboard}</apex:outputLink>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+    </div> 
+    <div id="chromeExtensionFlag" isActive="false"></div> 
+    <apex:actionFunction action="{!createNewTask}" name="CreateNewL1Task" oncomplete="CreateTaskCallBack(request);" rerender="hiddenVariables,thePanelDummy1" >
+    <apex:param name="firstParam" assignTo="{!strCallLine}" value="" />
+    <apex:param name="secondParam" assignTo="{!strCallType}" value="" />
+    <apex:param name="fourthParam" assignTo="{!strPhoneNumber}" value="" />
+    </apex:actionFunction>  
+    
+    <apex:actionFunction action="{!createNewTask}" name="CreateNewL2Task" oncomplete="CreateTaskCallBack(request);" rerender="hiddenVariables,thePanelDummy2" >
+    <apex:param name="firstParam" assignTo="{!strCallLine}" value="" />
+    <apex:param name="secondParam" assignTo="{!strCallType}" value="" />
+    <apex:param name="fourthParam" assignTo="{!strPhoneNumber}" value="" />
+    </apex:actionFunction>
+    
+    <apex:actionFunction action="{!updateTask}" name="UpdateL1Task" oncomplete="UpdateTaskCallBack(request);" rerender="thePanelDummy1,recentCallSec">
+    <apex:param name="firstParam" assignTo="{!strTaskId}" value="" />
+    <apex:param name="secondParam" assignTo="{!strMode}" value="" />
+    <apex:param name="thirdParam" assignTo="{!strCallLine}" value="" />
+    </apex:actionFunction>
+    
+    <apex:actionFunction action="{!updateTask}" name="UpdateL2Task" oncomplete="UpdateTaskCallBack(request);" rerender="thePanelDummy2,recentCallSec">
+    <apex:param name="firstParam" assignTo="{!strTaskId}" value="" />
+    <apex:param name="secondParam" assignTo="{!strMode}" value="" />
+    <apex:param name="thirdParam" assignTo="{!strCallLine}" value="" />
+    </apex:actionFunction>
+    
+    <apex:actionFunction action="{!updateTask}" name="UpdateSearchResult" oncomplete="UpdateSearchResultCallBack();" rerender="thePanelDummy1,thePanelDummy2,hiddenVariables">
+    <apex:param name="firstParam" assignTo="{!strTaskId}" value="" />
+    <apex:param name="secondParam" assignTo="{!strMode}" value="" />
+    </apex:actionFunction>
+    
+    <apex:actionFunction action="{!updateTask}" name="UpdateSlectResult" oncomplete="PageRefreshCallBack(request);" rerender="hiddenVariables">
+    <apex:param name="firstParam" assignTo="{!strTaskId}" value="" />
+    <apex:param name="secondParam" assignTo="{!strMode}" value="" /> 
+    <apex:param name="thirdParam" assignTo="{!strCallLine}" value="" />
+    <apex:param name="fourthParam" assignTo="{!strRecordId}" value="" />
+    </apex:actionFunction>
+    
+    <!-- call this fn when page get refreshed -->
+    <apex:actionFunction action="{!getActiveCallLog}" name="getActiveCallLog"  oncomplete="getActiveLogsCallBack(request);" rerender="thePanelDummy1,thePanelDummy2,hiddenVariables">
+    <apex:param name="firstParam" assignTo="{!strL1TaskId}" value="" />
+    <apex:param name="secondParam" assignTo="{!strL2TaskId}" value="" />
+    </apex:actionFunction>
+    
+    <apex:actionFunction action="{!getActiveCallLog}" name="getL1ActiveCallLog"  oncomplete="getActiveLogsCallBack(request);" rerender="thePanelDummy1,hiddenVariables">
+    <apex:param name="firstParam" assignTo="{!strL1TaskId}" value="" />
+    <apex:param name="secondParam" assignTo="{!strL2TaskId}" value="" />
+    </apex:actionFunction>
+    
+    <apex:actionFunction action="{!getActiveCallLog}" name="getL2ActiveCallLog"  oncomplete="getActiveLogsCallBack(request);" rerender="thePanelDummy2,hiddenVariables">
+    <apex:param name="firstParam" assignTo="{!strL1TaskId}" value="" />
+    <apex:param name="secondParam" assignTo="{!strL2TaskId}" value="" />
+    </apex:actionFunction>
+    
+    <apex:actionFunction action="{!updateExisitingTask}" name="UpdateExLog" oncomplete="showLogCallBack();" rerender="hiddenVariables,thePanelDummy3,recentCallSec" status="requestStatus">
+    </apex:actionFunction>
+    
+    <apex:actionFunction action="{!cancelExisitingTask}" name="CancelExLog" oncomplete="showLogCallBack();" rerender="hiddenVariables,thePanelDummy3,recentCallSec" status="requestStatus">
+    </apex:actionFunction>
+    
+    <apex:outputPanel id="hiddenVariables">
+    <apex:inputField value="{!Task1.Theater__c}" style="display:none;"/>
+    <apex:inputField value="{!Task2.Theater__c}" style="display:none;"/>
+    <apex:inputField value="{!ExistingTask.Theater__c}" style="display:none;"/>
+    <apex:inputHidden value="{!Task1.Id}" id="L1eventId" />
+    <apex:inputHidden value="{!Task2.Id}" id="L2eventId" />
+    <apex:inputHidden value="{!strL1StartTimeInMS}" id="L1StartTimeInMS" />
+    <apex:inputHidden value="{!strL2StartTimeInMS}" id="L2StartTimeInMS" />
+    <apex:inputHidden value="{!strCurrentTimeInMS}" id="currentTimeInMS" />
+    <apex:inputHidden value="{!Task1.Duration__c}" id="L1EventDuration" />
+    <apex:inputHidden value="{!Task2.Duration__c}" id="L2EventDuration" />
+    <apex:inputHidden value="{!Task1.CallDurationInSeconds}" id="L1EventDurationInSecs" />
+    <apex:inputHidden value="{!Task2.CallDurationInSeconds}" id="L2EventDurationInSecs" />
+    <apex:inputHidden value="{!showExistingLog}" id="isExistingLogVisible" />
+    <apex:inputHidden value="{!strStatusMessage}" id="serverResponseMsg" />
+    
+    <apex:inputHidden value="{!isClickToCall}" id="c2cFlag" />
+    <apex:inputHidden value="{!strObject}" id="c2cObject" />
+    <apex:inputHidden value="{!strRecordId}" id="c2cRecId" />
+    <apex:inputHidden value="{!strParentRecordId}" id="c2cParentRecId" />
+    </apex:outputPanel>
+    
+    </apex:form>
+</apex:page>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Nom du compte</label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label>État affectation</label>
+        <name>Assignment_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation>Actif</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed-Reassigned</masterLabel>
+            <translation>Clos-Réaffecté</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation>Terminer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error</masterLabel>
+            <translation>Erreur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On-Hold</masterLabel>
+            <translation>En suspens</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Type affectation</label>
+        <name>Assignment_Type__c</name>
+        <picklistValues>
+            <masterLabel>Partner Primary</masterLabel>
+            <translation>Partenaire principal</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Secondary</masterLabel>
+            <translation>Partenaire secondaire</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation>Principal</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation>Secondaires</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Concurrent</label>
+        <name>Competitor__c</name>
+    </fields>
+    <fields>
+        <label>% contribution</label>
+        <name>Contribution_Percentage__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de jours jusqu'à l'affectation</label>
+        <name>Days_SE_Assigned__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de jours jusqu'à la requête</label>
+        <name>Days_SE_Requested__c</name>
+    </fields>
+    <fields>
+        <label>Motif refus</label>
+        <name>Decline_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Alternate</masterLabel>
+            <translation>Autre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alternate Escalation Team</masterLabel>
+            <translation>Autre équipe de montée au niveau sup.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alternate Resource</masterLabel>
+            <translation>Autre ressource</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error</masterLabel>
+            <translation>Erreur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Capacity</masterLabel>
+            <translation>Aucune capacité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Escalation Team Capacity</masterLabel>
+            <translation>Aucune capacité de l'équipe de remontée</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Escalation Team Required</masterLabel>
+            <translation>Aucune équipe de remontée requise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Resource Required</masterLabel>
+            <translation>Aucune ressource requise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Qualified</masterLabel>
+            <translation>Non qualifié</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Notification e-mail</label>
+        <name>Email_Notify__c</name>
+    </fields>
+    <fields>
+        <label>Domaine cible</label>
+        <name>Focus_Area__c</name>
+    </fields>
+    <fields>
+        <label>MyRequests-Affectations:responsable</label>
+        <name>MyRequests_Assignments_Manager__c</name>
+    </fields>
+    <fields>
+        <label>Nom de l'opportunité</label>
+        <name>Opportunity_Name__c</name>
+        <relationshipLabel>Ressource Requis Affectation</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Zone d'opportunité</label>
+        <name>Opportunity_Territory__c</name>
+    </fields>
+    <fields>
+        <label>Nom SE partenaire</label>
+        <name>Partner_SE_Name__c</name>
+    </fields>
+    <fields>
+        <label>État SE partenaire</label>
+        <name>Primary_SE_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation>Actif</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Close</masterLabel>
+            <translation>Clôture technique</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical On-hold</masterLabel>
+            <translation>En attente technique</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Commentaires requête</label>
+        <name>Request_Comments__c</name>
+    </fields>
+    <fields>
+        <label>Demande de remontée au niveau supérieur</label>
+        <name>Request_Escalated__c</name>
+    </fields>
+    <fields>
+        <label>MyRequests-Affectations</label>
+        <name>Requested_By_Me__c</name>
+    </fields>
+    <fields>
+        <label>ID territoire requis</label>
+        <name>Requested_Territory_ID__c</name>
+    </fields>
+    <fields>
+        <label>Nom territoire requis</label>
+        <name>Requested_Territory_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requester Email ID --></label>
+        <name>Requester_Email_ID__c</name>
+    </fields>
+    <fields>
+        <label>Nom ressource</label>
+        <name>Resource_Name__c</name>
+        <relationshipLabel>Ressource Requis Affectation</relationshipLabel>
+    </fields>
+    <fields>
+        <label>État de la ressource</label>
+        <name>Resource_Status__c</name>
+        <picklistValues>
+            <masterLabel>Assigned</masterLabel>
+            <translation>Affecté</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation>fermé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined - Approved</masterLabel>
+            <translation>Refusé - Approuvé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined - Pending</masterLabel>
+            <translation>Refusé - En attente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Assignment</masterLabel>
+            <translation>Affectation directe</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation>Aucun</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation>Demandé</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Nom d'utilisateur de la ressource</label>
+        <name>Resource_Username__c</name>
+    </fields>
+    <fields>
+        <label>ID d'e-mail SEM</label>
+        <name>SEM_Email_ID__c</name>
+    </fields>
+    <fields>
+        <label>Fin implication SE</label>
+        <name>SE_Involvement_End__c</name>
+    </fields>
+    <fields>
+        <label>Début implication SE</label>
+        <name>SE_Involvement_Start__c</name>
+    </fields>
+    <fields>
+        <label>Rôle SE</label>
+        <name>SE_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- SE Role --></label>
+        <name>SE_SAGE_Role__c</name>
+    </fields>
+    <fields>
+        <label>ID d'équipe SE</label>
+        <name>SE_Team_Id__c</name>
+    </fields>
+    <fields>
+        <label>Contribution SE totale (000 $)</label>
+        <name>SE_USD_Contribution__c</name>
+    </fields>
+    <fields>
+        <label>Contrat de niveau de service expiré</label>
+        <name>SLA_Expired__c</name>
+    </fields>
+    <fields>
+        <label>Date début contrat de niveau de service</label>
+        <name>SLA_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label>État SE secondaire</label>
+        <name>Secondary_SE_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation>Actif</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation>fermé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed-Reassign</masterLabel>
+            <translation>Réaffectation close</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PTO</masterLabel>
+            <translation>Congés</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Type de service</label>
+        <name>Service_Type__c</name>
+    </fields>
+    <fields>
+        <label>Spécialisation</label>
+        <name>Specialization__c</name>
+    </fields>
+    <fields>
+        <label>Code app. équipe</label>
+        <name>Team_App_Code__c</name>
+    </fields>
+    <fields>
+        <label>Niveau équipe</label>
+        <name>Team_Level__c</name>
+    </fields>
+    <fields>
+        <label>Nom de l'équipe</label>
+        <name>Team_Name__c</name>
+    </fields>
+    <fields>
+        <label>Type d'équipe</label>
+        <name>Team_Type__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Demande/attribution de ressource</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Demande/attribution de ressource</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Resource Request/Assignments Number</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

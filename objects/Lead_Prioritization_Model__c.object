@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Annual_Revenue_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Annual Revenue Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Budget_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Budget Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Buyer_Stage_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Buyer Stage  Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Cisco_Architecture_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Cisco Architecture Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Department_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Contact Department  Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Engagement_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Contact Engagement Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Title_Position_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Contact Title/Position Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Eloqua_Lead_Score_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Eloqua Lead Score Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Eloqua_Lead_Source_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Eloqua Lead Source  Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Has_Purchased_Cisco_before_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Has Purchased Cisco before Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Inbound_Program_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Inbound Program Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Job_Role_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Job Role Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Category_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Lead Category Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Source_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Lead Source Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Type_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Lead Type Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Main_Product_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Main Product Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Medium_Type_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Medium Type Weight</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Employees_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Number of Employees Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Offer_Type_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Offer Type Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Product_Value_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Product Value Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Project_Flag_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Project Flag  Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Purchasing_Role_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Purchasing Role Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>SAVM_Segment_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>SAVM Segment Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Services_Value_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Services Value Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Source_System_Name_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Source System Name Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub Region</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Theatre__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ALL</fullName>
+                    <default>true</default>
+                    <label>ALL</label>
+                </value>
+                <value>
+                    <fullName>ANZ</fullName>
+                    <default>false</default>
+                    <label>ANZ</label>
+                </value>
+                <value>
+                    <fullName>ASIA PACIFIC</fullName>
+                    <default>false</default>
+                    <label>ASIA PACIFIC</label>
+                </value>
+                <value>
+                    <fullName>CANADA</fullName>
+                    <default>false</default>
+                    <label>CANADA</label>
+                </value>
+                <value>
+                    <fullName>CENTRAL</fullName>
+                    <default>false</default>
+                    <label>CENTRAL</label>
+                </value>
+                <value>
+                    <fullName>CHINA</fullName>
+                    <default>false</default>
+                    <label>CHINA</label>
+                </value>
+                <value>
+                    <fullName>EMERGING</fullName>
+                    <default>false</default>
+                    <label>EMERGING</label>
+                </value>
+                <value>
+                    <fullName>HONG KONG</fullName>
+                    <default>false</default>
+                    <label>HONG KONG</label>
+                </value>
+                <value>
+                    <fullName>INDIA &amp; SAARC</fullName>
+                    <default>false</default>
+                    <label>INDIA &amp; SAARC</label>
+                </value>
+                <value>
+                    <fullName>JAPAN</fullName>
+                    <default>false</default>
+                    <label>JAPAN</label>
+                </value>
+                <value>
+                    <fullName>LATAM</fullName>
+                    <default>false</default>
+                    <label>LATAM</label>
+                </value>
+                <value>
+                    <fullName>NORTH</fullName>
+                    <default>false</default>
+                    <label>NORTH</label>
+                </value>
+                <value>
+                    <fullName>SOUTH</fullName>
+                    <default>false</default>
+                    <label>SOUTH</label>
+                </value>
+                <value>
+                    <fullName>TAIWAN</fullName>
+                    <default>false</default>
+                    <label>TAIWAN</label>
+                </value>
+                <value>
+                    <fullName>UK &amp; IRELAND</fullName>
+                    <default>false</default>
+                    <label>UK &amp; IRELAND</label>
+                </value>
+                <value>
+                    <fullName>US</fullName>
+                    <default>false</default>
+                    <label>US</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>AMERICAS</controllingFieldValue>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <controllingFieldValue>EMEAR</controllingFieldValue>
+                <controllingFieldValue>GREATER CHINA</controllingFieldValue>
+                <valueName>ALL</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AMERICAS</controllingFieldValue>
+                <valueName>CANADA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AMERICAS</controllingFieldValue>
+                <valueName>LATAM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AMERICAS</controllingFieldValue>
+                <valueName>US</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>ANZ</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>ASIA PACIFIC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>INDIA &amp; SAARC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>APJ</controllingFieldValue>
+                <valueName>JAPAN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEAR</controllingFieldValue>
+                <valueName>CENTRAL</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEAR</controllingFieldValue>
+                <valueName>EMERGING</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEAR</controllingFieldValue>
+                <valueName>NORTH</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEAR</controllingFieldValue>
+                <valueName>SOUTH</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EMEAR</controllingFieldValue>
+                <valueName>UK &amp; IRELAND</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GREATER CHINA</controllingFieldValue>
+                <valueName>CHINA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GREATER CHINA</controllingFieldValue>
+                <valueName>HONG KONG</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GREATER CHINA</controllingFieldValue>
+                <valueName>TAIWAN</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Theatre_Region__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>Theatre+Region</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Theatre__c</fullName>
+        <externalId>false</externalId>
+        <label>Region</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AMERICAS</fullName>
+                    <default>false</default>
+                    <label>AMERICAS</label>
+                </value>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>EMEAR</fullName>
+                    <default>false</default>
+                    <label>EMEAR</label>
+                </value>
+                <value>
+                    <fullName>GREATER CHINA</fullName>
+                    <default>false</default>
+                    <label>GREATER CHINA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Timeframe_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Timeframe Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Total_Value_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Total Value Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Vertical_Market_Weight__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Vertical Market Weight</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Lead Prioritization Model Object to store the models that are referred at Region and Sub Region Level to compute the Lead Prioritization Star Rating for Manual and eLeads.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>Lead Prioritization Model</label>
+    <nameField>
+        <label>Prioritization Model Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Lead Prioritization Models</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Forward</excludedStandardButtons>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Theatre__c</columns>
+        <columns>Sub_Region__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <columns>NAME</columns>
+        <columns>Theatre__c</columns>
+        <columns>Sub_Region__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <validationRules>
+        <fullName>Total_Weight_Percentage</fullName>
+        <active>true</active>
+        <errorConditionFormula>(Lead_Source_Weight__c+
+Lead_Category_Weight__c+
+Timeframe_Weight__c+
+Main_Product_Weight__c+
+Inbound_Program_Weight__c+
+SAVM_Segment_Weight__c+
+Total_Value_Weight__c+
+Budget_Weight__c+
+Offer_Type_Weight__c+
+Eloqua_Lead_Score_Weight__c+
+Vertical_Market_Weight__c+
+Number_of_Employees_Weight__c+
+Annual_Revenue_Weight__c+
+Has_Purchased_Cisco_before_Weight__c+
+Contact_Title_Position_Weight__c+
+Purchasing_Role_Weight__c+
+Contact_Engagement_Weight__c+
+Contact_Department_Weight__c+
+Eloqua_Lead_Source_Weight__c+
+Project_Flag_Weight__c+
+Cisco_Architecture_Weight__c+
+Lead_Type_Weight__c+
+Product_Value_Weight__c+
+Services_Value_Weight__c+
+Buyer_Stage_Weight__c+
+Source_System_Name_Weight__c + Job_Role_Weight__c + Medium_Type_Weight__c) &lt; 1</errorConditionFormula>
+        <errorMessage>Total Weightage must be 100%.
+Please correct the weightage.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Total_Weight_greater_than_100</fullName>
+        <active>true</active>
+        <errorConditionFormula>(Lead_Source_Weight__c+
+Lead_Category_Weight__c+
+Timeframe_Weight__c+
+Main_Product_Weight__c+
+Inbound_Program_Weight__c+
+SAVM_Segment_Weight__c+
+Total_Value_Weight__c+
+Budget_Weight__c+
+Offer_Type_Weight__c+
+Eloqua_Lead_Score_Weight__c+
+Vertical_Market_Weight__c+
+Number_of_Employees_Weight__c+
+Annual_Revenue_Weight__c+
+Has_Purchased_Cisco_before_Weight__c+
+Contact_Title_Position_Weight__c+
+Purchasing_Role_Weight__c+
+Contact_Engagement_Weight__c+
+Contact_Department_Weight__c+
+Eloqua_Lead_Source_Weight__c+
+Project_Flag_Weight__c+
+Cisco_Architecture_Weight__c+
+Lead_Type_Weight__c+
+Product_Value_Weight__c+
+Services_Value_Weight__c+
+Buyer_Stage_Weight__c+
+Source_System_Name_Weight__c+
+ Job_Role_Weight__c + Medium_Type_Weight__c ) &gt; 1</errorConditionFormula>
+        <errorMessage>Total Weightage must be 100%. 
+Please correct the weightage.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Weight_Percent</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR (Lead_Source_Weight__c &gt; 1,
+Lead_Category_Weight__c &gt; 1,
+Timeframe_Weight__c &gt; 1,
+Main_Product_Weight__c &gt; 1,
+Inbound_Program_Weight__c &gt; 1,
+SAVM_Segment_Weight__c &gt; 1,
+Total_Value_Weight__c &gt; 1,
+Budget_Weight__c &gt; 1,
+Offer_Type_Weight__c &gt; 1,
+Eloqua_Lead_Score_Weight__c &gt; 1,
+Vertical_Market_Weight__c &gt; 1,
+Number_of_Employees_Weight__c &gt; 1,
+Annual_Revenue_Weight__c &gt; 1,
+Has_Purchased_Cisco_before_Weight__c &gt; 1,
+Contact_Title_Position_Weight__c &gt; 1,
+Purchasing_Role_Weight__c &gt; 1,
+Contact_Engagement_Weight__c &gt; 1,
+Contact_Department_Weight__c &gt; 1,
+Eloqua_Lead_Source_Weight__c &gt; 1,
+Project_Flag_Weight__c &gt; 1,
+Cisco_Architecture_Weight__c &gt; 1,
+Lead_Type_Weight__c &gt; 1,
+Product_Value_Weight__c &gt; 1,
+Services_Value_Weight__c &gt; 1,
+Buyer_Stage_Weight__c &gt; 1,
+Source_System_Name_Weight__c &gt; 1,
+Job_Role_Weight__c &gt; 1,
+Medium_Type_Weight__c &gt; 1)</errorConditionFormula>
+        <errorMessage>Weightage cannot exceed 100%</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Weight_cannot_be_null</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR (ISNULL(Lead_Source_Weight__c),
+ISNULL(Lead_Category_Weight__c),
+ISNULL(Timeframe_Weight__c),
+ISNULL(Main_Product_Weight__c),
+ISNULL(Inbound_Program_Weight__c),
+ISNULL(SAVM_Segment_Weight__c),
+ISNULL(Total_Value_Weight__c),
+ISNULL(Budget_Weight__c),
+ISNULL(Offer_Type_Weight__c),
+ISNULL(Eloqua_Lead_Score_Weight__c),
+ISNULL(Vertical_Market_Weight__c),
+ISNULL(Number_of_Employees_Weight__c),
+ISNULL(Annual_Revenue_Weight__c),
+ISNULL(Has_Purchased_Cisco_before_Weight__c),
+ISNULL(Contact_Title_Position_Weight__c),
+ISNULL(Purchasing_Role_Weight__c),
+ISNULL(Contact_Engagement_Weight__c),
+ISNULL(Contact_Department_Weight__c),
+ISNULL(Eloqua_Lead_Source_Weight__c),
+ISNULL(Project_Flag_Weight__c),
+ISNULL(Cisco_Architecture_Weight__c),
+ISNULL(Lead_Type_Weight__c),
+ISNULL(Product_Value_Weight__c),
+ISNULL(Services_Value_Weight__c),
+ISNULL(Buyer_Stage_Weight__c),
+ISNULL(Source_System_Name_Weight__c),
+ISNULL (Job_Role_Weight__c),
+ISNULL(Medium_Type_Weight__c))</errorConditionFormula>
+        <errorMessage>Weightage cannot be blank</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Clone_Model</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Clone Model</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/{! Lead_Prioritization_Model__c.Id }/e?clone=1&amp;retURL=%2F{! Lead_Prioritization_Model__c.Id }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Show_Ranking</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Show Ranking</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>twistSection(document.getElementById('img_01Bc0000001qbt9'))</url>
+    </webLinks>
+</CustomObject>

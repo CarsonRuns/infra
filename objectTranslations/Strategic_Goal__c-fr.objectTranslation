@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Plan comptable</label>
+        <name>Account_Plan_New__c</name>
+        <relationshipLabel><!-- Strategic Goals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Catégorie</label>
+        <name>Category__c</name>
+        <picklistValues>
+            <masterLabel>Channel</masterLabel>
+            <translation><!-- Channel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Capital</masterLabel>
+            <translation><!-- Cisco Capital --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship</masterLabel>
+            <translation><!-- Relationship --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation>Vente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Services</masterLabel>
+            <translation><!-- Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategic Alliance</masterLabel>
+            <translation><!-- Strategic Alliance --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Date de fin</label>
+        <name>Date_Completed__c</name>
+    </fields>
+    <fields>
+        <label>Propriétaire</label>
+        <name>Owner__c</name>
+        <relationshipLabel><!-- Strategic Goals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>État</label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation>Terminé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation>En cours</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation>Ouvert</translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Strategic Goal --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Strategic Goal --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Strategic Goal --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Strategic Goal Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Goal Details --></label>
+            <section>Goal Details</section>
+        </sections>
+        <sections>
+            <label>Informations</label>
+            <section>Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>zz_Strategic Goal Layout_2010_05</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Goal Details --></label>
+            <section>Goal Details</section>
+        </sections>
+        <sections>
+            <label>Informations</label>
+            <section>Information</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

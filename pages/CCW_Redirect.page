@@ -1,0 +1,81 @@
+<apex:page >
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script src="/soap/ajax/31.0/connection.js"></script>
+    <script src="/soap/ajax/31.0/apex.js"></script>
+        <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+    <apex:includeScript value="{!$Resource.utilities}" />
+        
+        <apex:pageblock id="mainblock">
+            <apex:pageblocksection >
+                <apex:pageblocksectionitem >
+                    <apex:outputText style="font-size:large" value="Please wait for the page to redirect..."  />
+                        </apex:pageblocksectionitem>
+                    </apex:pageblocksection>
+                    </apex:pageblock>
+                    
+                    
+                    <script>
+                        // get the Correct PDR Url
+                        sforce.connection.sessionId = "{!$Api.Session_ID}";
+    var baseUrl = getConstant('PDR URL', 'URL');
+    // set the hostname
+    //SCAVA FIX
+    var hostname = "https://" + decodeURIComponent(window.location.hostname.toLowerCase()); 
+    var opptyType = 'partnerQuote';
+     
+                <!--SCAVA FIX-->
+                    var dealid = '{!JSENCODE($CurrentPage.parameters.dealid)}'; //Q1FY16 SW project
+    var quoteid = '{!JSENCODE($CurrentPage.parameters.quoteid)}';
+    var dealType = '{!JSENCODE($CurrentPage.parameters.dealType)}'; //Q1FY16 SW project
+    // resizes the frame to match correct style
+    function resizeIframe() {
+        var me = window.name;
+        if (me) {
+            var iframes = parent.document.getElementsByName(me);
+            if (iframes && iframes.length == 1) {
+                var height = document.body.scrollHeight;
+                var width = document.body.scrollWidth;
+                
+                iframes[0].style.height = '3500' + "px";
+                if (width < 1000) iframes[0].style.width = '1000' + "px";
+            }
+        }
+    } 
+    
+    // main function responsible for checking the passed in parameters and redirecting the user to the correct location
+    function main(){
+        
+        
+        // var sfdcmode = "{!$CurrentPage.parameters.mode}";         //Added mode to send to CCW for navigation back and forth
+        var sfdcmode = "{!JSENCODE($CurrentPage.parameters.mode)}"; 
+        
+        if (sfdcmode == null || sfdcmode == '')
+        {
+            if ('{!$User.UIThemeDisplayed}' == 'Theme3') {
+                sfdcmode = 'cls'; 
+            }
+            else 
+            {
+                sfdcmode = 'lgt';
+            }
+        }
+        
+        
+        if (dealid != '' && quoteid != ''){
+            
+            top.location.href = baseUrl + "/SFDCRequestHandler?at=" + opptyType 
+            +"&dealType=" + dealType+ "&optyNumber=" + dealid+ "&quoteId="+quoteid+
+                "&userid={!$User.Id}"+"&email={!$User.Email}"+ 
+                "&sessionid={!$Api.Session_ID}&url={!$Api.Enterprise_Server_URL_110}&hostname=" + hostname + "&mode=" + sfdcmode;
+            invalidInput = false;
+            
+        } else {
+            alert('Please provide correct deal and quote ids');
+            var link = document.getElementById('j_id0:mainblock');
+            link.style.display = 'none';
+        }
+    }
+    
+    window.onload=main();
+    </script>
+</apex:page>

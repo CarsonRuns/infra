@@ -1,0 +1,13 @@
+<apex:page controller="SAVTab_VF_CT">
+
+    <script>
+        var hostname = window.location.hostname.toLowerCase(); 
+
+        var cancelUrl = "https://" + hostname + "/home/home.jsp";
+        
+    </script>
+    
+  <apex:iframe src="{!mslURL}SALESIT/ACME/launchPage.do?sessionId={!$Api.Session_ID}&cancelURL=/home/home.jsp&apiServerUrl={!$Api.Enterprise_Server_URL_270}&userId={!$User.Id}&userName={!$User.Username}&alias={!$User.Alias}&email={!$User.Email}&country={!$User.Country}&profile={!$User.ProfileId}" rendered="{!UserPermission}" height="1250px" scrolling="true"/>
+ 
+
+</apex:page>

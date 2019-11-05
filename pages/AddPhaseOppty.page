@@ -1,0 +1,160 @@
+<apex:page standardController="Phase_Opportunity__c"
+           recordSetVar="phaseOpportunities" extensions="PhaseOpptyController">
+    <script type="text/javascript"
+    src="/support/console/42.0/integration.js"></script>
+    
+    <!-- Phase Oppty Message for Lightning (Start - 01/06/2018)-->
+    <script type="text/javascript">
+    
+    //adrfeudj - This function switchToClassic() is not being used as Phase Creation is currently supported in Lightning (09/03/18)
+    function switchToClassic(){
+        //debugger;
+        window.top.location.href = '/ltng/switcher?destination=classic';
+        location.reload();
+    }
+    
+    
+    </script>
+    <!-- Phase Oppty Message for Lightning (End- 01/06/2018)-->
+    
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages />
+            <apex:outputPanel rendered="{! $User.UIThemeDisplayed == 'Theme3' }">
+                <div>
+                    <apex:image value="{!$Resource.loadinggif}" />
+                </div>
+            </apex:outputPanel>
+            <!-- Phase Oppty Message for Lightning (Start - 01/06/2018)-->
+            <!--
+<apex:outputPanel rendered="{! $User.UIThemeDisplayed == 'Theme4d'}">
+<apex:slds />
+<div class="slds-scope">
+<div class="slds-box slds-align_absolute-center" style="height:400px">
+<div data-reactroot="" class="slds-text-heading_medium">
+Phase Creation is not currently supported in Lightning.
+<p class="slds-text-heading_small">Please switch back to <a href="" onclick="switchToClassic()">Classic</a></p>
+</div>
+</div>
+</div>
+</apex:outputPanel> -->
+            <!-- Phase Oppty Message for Lightning (End- 01/06/2018)-->
+        </apex:pageBlock>
+    </apex:form>
+    <!-- Javascript to call init function on page load -->
+    <script type="text/javascript">
+    
+    var type = '{!$User.UIThemeDisplayed}';
+    function async(fn,callback) {
+        setTimeout(function() {
+            console.log("fn calling...");
+            fn();
+            callback();
+        },0);
+    } 
+    
+    //if(type != 'Theme4d'){
+    var previousOnload = window.onload; 
+    
+    window.onload = function() { 
+        if (previousOnload) { 
+            previousOnload(); 
+        }
+        var opptyId = "{!opptyId}";
+        
+        console.log('Opportunity Id : '+opptyId);
+        console.log("Before call of Async!------------------");
+        
+        Visualforce.remoting.Manager.invokeAction(
+            "{!$RemoteAction.PhaseOpptyController.createNewPhase}", 
+            opptyId,
+            function(result,event) {
+                
+                var msg = result[0];
+                var url = result[1];
+                if(msg != 'Success')
+                    alert(msg);
+                
+                console.log("#### result : "+msg);
+                console.log("#### result : "+url);
+                
+                if(event.status) {
+                    //Komal - Lightning 08/10/2018 Release --Change to allow Lightning Desktop and Lightning Console themes
+                    if((typeof sforce.one != 'undefined') && (sforce.one != null) ) {
+                        
+                        function CloseTab(){
+                            sforce.console.getEnclosingPrimaryTabId(closeSubtab);       
+                        }
+                        var closeSubtab = function closeSubtab(result) {
+                            var tabId = result.id;
+                            console.log("Closing tab: "+ tabId);
+                            console.log(result);
+                            
+                            sforce.console.getSubtabIds(tabId)
+                            sforce.console.closeTab(tabId);
+                        };
+                        
+                        
+                        if((type == 'Theme4d' || type == 'Theme4u') ) {
+                            
+                            // Salesforce1 navigation
+                            var getRecordId = decodeURIComponent(url).split("/");
+                            var recordId = '';
+                            for (var count = 0; count < getRecordId.length; count++) {
+                                if((getRecordId[count].length == 15 || getRecordId[count].length == 18) && recordId != getRecordId[count]) {
+                                    recordId = getRecordId[count];
+                                }
+                            }
+                            
+                            
+                            var hostname = window.location.hostname;
+                            var host = encodeURI(hostname);
+                            var url = '/' + recordId + '/view'; //adrfeudj : The url declared out of this scope is for classic NOT for Lightning theme
+                            
+                            //redirectToPath = 'https://'+ host + "/lightning/r/Opportunity/" + recordId + "/view"; 
+                            redirectToPath = 'https://'+ host + "/lightning/r" + url;
+                            
+                            
+                            //window.top.location.href = redirectToPath;
+                            var openEditRecord = function openEditRecord(result) { //adrfeudj : This function opens the edit page
+                                
+                                if (result.success == true) {
+                                    console.log('Opening Edit Mode');
+                                    
+                                    sforce.one.editRecord(recordId);
+                                    CloseTab();
+                                    
+                                } else {
+                                    
+                                    console.log('Edit mode could not be opened');
+                                }
+                            };
+                            
+                            //adrfeudj : Opens a new primary tab to display the content of the specified URL
+                            sforce.console.openPrimaryTab(null,redirectToPath,true,'',openEditRecord,'Phase');
+                            
+                        }
+                        else {
+                            // For Desktop
+                            //Set the windows URL using a Visualforce expression
+                            console.log('Else for theme');
+                            window.top.location.href =url;                
+                        }} 
+                    else {
+                        console.log('Else for Sforce one');
+                        parent.frames.location.replace(url);
+                    }
+                }
+            },
+            {escape:true}                
+        );
+        
+        /*async(init(), function() {
+                console.log("Inside Async Callback!");
+            
+            });*/
+        
+    }
+    
+    </script>
+</apex:page>

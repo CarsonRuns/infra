@@ -1,0 +1,29 @@
+<apex:page standardController="OpportunityLineItem" >
+<script>
+    function isLightningDesktop() {
+      return( "{! $User.UIThemeDisplayed }" == "Theme4d");
+    }
+    // SCAVA_FIX   
+    var delID = "{!JSENCODE($Request.delID)}";    
+    var url ="";
+    if (delID){        
+        if(isLightningDesktop()){
+            var lurl = "/apex/PUI_New?id={!OpportunityLineItem.OpportunityId}&delRecName={!OpportunityLineItem.Product2.Name}&delID=" + delID;
+            top.location.href = lurl;
+        }else{
+            url = "{!URLFOR($Page.PUI_New)}?id={!OpportunityLineItem.OpportunityId}&delRecName={!OpportunityLineItem.Product2.Name}&delID=" + delID; 
+            location.href = url;
+        }
+    }
+    else{        
+        if(isLightningDesktop()){
+             liurl = "/apex/PUI_New?id={!OpportunityLineItem.OpportunityId}";
+             top.location.href = liurl;
+         }else{
+             url = "{!URLFOR($Page.PUI_New)}?id={!OpportunityLineItem.OpportunityId}";
+             location.href = url;
+         }
+    }
+    
+</script>
+</apex:page>

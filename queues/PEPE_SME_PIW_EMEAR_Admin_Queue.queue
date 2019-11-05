@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>pepe-piw-admin@cisco.com</email>
+    <name>PEPE: SME-PIW EMEAR Admin Queue</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>PEPE_SME_PIW_EMEAR_Admin_Group</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PEPE_Training_Event__c</sobjectType>
+    </queueSobject>
+</Queue>

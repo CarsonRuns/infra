@@ -1,0 +1,64 @@
+<apex:page >
+
+<!--  Nav Bar -->
+<script type="text/javascript" charset="UTF-8"
+    src="https://ciscosales.force.com/lp/resource/1411873029000/jQuery1_9"></script>
+
+ <script>
+    j$ = jQuery.noConflict();
+        j$(document).ready = loadNavBar();
+        //var _navbar_path="https://tools-dev.cisco.com/WWChannels/tpex/";
+        //var _navbar_path="https://tools-dev.cisco.com/WWChannels/newpos/";
+        var _navbar_path="https://tools.cisco.com/WWChannels/newpos/";
+        //var _navbar_path="https://tools.cisco.com/WWChannels/newpos/";
+        var _renderNavBarUrl = 'https://ciscosales.force.com/lp/resource/1411869895000/render_navbar';
+
+function loadNavBar() {
+    j$.getScript("https://ciscosales.force.com/lp/resource/1440857051000/angular_min_js", function() {
+        j$.getScript("https://ciscosales.force.com/lp/resource/1440857174000/angular_resource_min_js", function() {
+            j$.getScript("https://ciscosales.force.com/lp/resource/1440856881000/angular_cookies_min_js", function() {
+                j$.getScript(_navbar_path+"common/js/IE8/jquery.xdomainrequest.min.js", function() {
+                    j$.getScript(_navbar_path+"navbar/js/app/scripts/NavigationBar.js", function() {
+                        j$.getScript(_renderNavBarUrl, function() {
+                            console.log('***** Inside neestd ****');
+                            try {
+                                var newSS = document.createElement("link");
+                                newSS.rel = "stylesheet";
+                                newSS.href = _navbar_path+"navbar/css/font-awesome.min.css";
+                                document.head.appendChild(newSS);
+                                loadNavBarExternal('1002','bluebanner','DEV');
+                                loadStyles();
+                            }
+                            catch(err) {
+                                console.log.ERROR('*** Error ***');
+                            }
+                        })
+                    })
+                })
+            })
+        })
+    })
+}
+
+function loadStyles() {
+    console.log("### Inside Load App ###");
+    j$.each(j$("[id$='filterList']"), function() {
+        console.log('### adding class ###');
+        j$(this).addClass('pgblkstyle');
+        console.log('### adding class complete ###');
+    });
+    console.log("### Before Table Length ###");
+    
+    j$.each(j$("[id$='lead_table_length']"), function() {
+        console.log('### Adding tblenclass ###');
+        j$(this).addClass('tblenclass');
+    });
+    
+    console.log('### End of Load App ###');
+    return false;
+}   
+    
+    </script>
+<!--  End of Nav Bar -->  
+
+</apex:page>

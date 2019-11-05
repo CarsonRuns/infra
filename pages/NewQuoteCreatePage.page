@@ -1,0 +1,318 @@
+<apex:page showHeader="true" sidebar="true"
+    standardController="Quote__c" tabstyle="Opportunity"
+    extensions="Quote_Creation_CTE" action="{!check}">
+    <apex:form >
+        <apex:includeScript value="{!$Resource.jquery22}" />
+        <apex:includeScript value="{!$Resource.Bootstrapmodelwindow}" />
+        <apex:includeScript value="{!$Resource.BootStrapDialogMinJs}" />
+        <script src="/soap/ajax/28.0/connection.js" type="text/javascript"></script>
+        <script type="text/javascript"
+            src="/support/console/42.0/integration.js"></script>
+        <script src="/soap/ajax/28.0/apex.js" type="text/javascript"></script>
+        <apex:stylesheet value="/resource/BootstrapUpdateCssModelPosition" />
+        <apex:stylesheet value="/resource/BootstrapDialogMin" />
+
+        <apex:pageblock >
+            <apex:outputLabel style="background-color: transparent;font-family: Arial;color: #000">{!$Label.QuoteOpty}<br />
+                <font size="3">{!oppty.Name}</font>
+            </apex:outputLabel>
+            <apex:detail subject="{!oppty.id}" relatedList="false" title="false"
+                inlineEdit="false" />
+        </apex:pageblock>
+        <script type="text/javascript">
+                            console.log('am here 1');
+        var j$ = jQuery.noConflict(); 
+        var hostname = "https://" + window.location.hostname.toLowerCase(); 
+        var opptyType = 'quoteInvitePopup'; 
+        var opptyInviteType = 'invitation'; 
+        var isOpen = true; 
+        var opportunityId = "{!oppty.Id}"; 
+        var opptyRecordTypeId = "{!oppty.RecordTypeId}"; 
+        var newQuoteURL;  
+        <!--SCAVA FIX -->
+        var parentOpptyRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Parent_RecordTypeId__c)}"; //taking Parent Opportunity recordtype from custom setting to variable
+        var PartnerParentOpptyRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Partner_Parent_RecordTypeId__c)}"; //taking Partner Parent Opportunity recordtype from custom setting to variable
+        var PhaseOpptyRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Phase_RecordTypeId__c)}"; //taking Phase opportunity recordtype from custom setting to variable
+        var globalOpportunityRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Global_RecordTypeId__c)}"; //GDM change added new Global Opportunity recordtype.
+        var renewalOpportunityRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Renewal_RecordTypeId__c)}"; //Renewal Opportunity - 7Dec18 - katandon        
+        var parentrecordtypeTrim = opptyRecordTypeId.substring(0,15); //Trimmed 18 digit of opportunity recordtypeId to 15 digit as existing production recordtypes having 15 digit Id placed in custom setting
+        var pdrDown = "{!pdrdown}"; // getting PDR Down value from controller
+        var baseUrl = "{!baseURL}"; //getting CCW base URL from controller
+        var profileName = "{!profilecheck}"; // taking current user profile name
+        
+        var profileNameCheck = Boolean(profileName); // converting it to boolean 
+       
+        <!--SCAVA FIX -->
+        var dealid = "{!JSENCODE(oppty.DealID__c)}"; 
+        var strQuoteCount = "{!JSENCODE(TEXT(oppty.Quote_Count__c))}"; //taking Quote count into a variable
+        var quoteCount = + strQuoteCount; //converting quote count from string to number
+        <!--SCAVA FIX -->
+        var pdrStatus = "{!JSENCODE(oppty.Partner_Deal_Status__c)}"; 
+        var cplOppty = "{!JSENCODE(oppty.Contractual_Pricing_Letter_Opportunity__c)}";
+        var status = "{!JSENCODE(oppty.Opportunity_Status__c)}";
+        var isArchivedText = "{!isArchived}";//getting isArchived value from controller
+        var isArchived = + isArchivedText; //converting text to number
+        var globalopportunity;
+        var globalOptyNewQuoteURL;
+        var pageID = "{!$Label.ManagePartnerQuoteTabID}";
+        
+        var oppType;
+        //SCAVA FIX 
+        var globalopty = "{!JSENCODE(oppty.Global_Opportunity__c)}"; //getting global opty info on a record GDM Q3FY17
+        var EAReqId = "{!JSENCODE($CurrentPage.parameters.EAReqId)}"; //Added for EA Request ID POC for CCW. Not for Prod.
+        var sfdcmode = "{!JSENCODE($CurrentPage.parameters.mode)}";         //Added mode to send to CCW for navigation back and forth
+        
+        
+        if (sfdcmode == null){
+         var themeUI = "{!$User.UIThemeDisplayed}";
+            
+            if (themeUI == "Theme3"){
+            sfdcmode = "cls";
+                }
+                else
+                    sfdcmode = "lgt";
+            
+            }
+        
+        //Checking Opportunity recordtype is in Parent and Phase opportunity and populating oppType 
+        if (parentrecordtypeTrim == parentOpptyRT || parentrecordtypeTrim == PhaseOpptyRT || parentrecordtypeTrim == globalOpportunityRT
+                || parentrecordtypeTrim == renewalOpportunityRT) { //Check if Opportunity is equal to Parent and Phase recordtype 
+            oppType='fieldQuote'; 
+        }
+        else{ 
+            oppType='partnerQuote'; 
+        } 
+        
+        if(parentrecordtypeTrim == globalOpportunityRT){
+            globalopportunity = 'true';  // GDM change for checking new Global Opportunity recordtype and populating flag to true
+        } else {
+            globalopportunity = 'false';
+        }
+        
+        //Constructing CCW URL for getting response from CCW URL location
+        <!--var ccwURL = baseUrl + "/SFDCRequestHandler?at=" + opptyType + "&optyNumber={!oppty.DealID__c}&dealtype={!oppty.Deal_Type__c}&userid={!$User.Id}&email={!$User.Email}&sessionid={!$Api.Session_ID}&url={!$Api.Enterprise_Server_URL_110}&hostname=" + hostname + "&cancel=" + opportunityId; -->
+            <!--SCAVA FIX -->
+                var ccwURL = baseUrl + "/SFDCRequestHandler?at=" + opptyType + "&optyNumber={!JSENCODE(oppty.DealID__c)}&dealtype={!JSENCODE(TEXT(oppty.Deal_Type__c))}&userid={!$User.Id}&email={!$User.Email}&sessionid={!$Api.Session_ID}&url={!$Api.Enterprise_Server_URL_110}&hostname=" + hostname + "&cancel=" + opportunityId; 
+        if (EAReqId !== ''){
+            ccwURL = ccwURL + "&payLoadId="+ EAReqId;
+            //alert("CCW URL"+ ccwURL);
+        }
+             // Added by Komal for 08/10/18 Lightning Release - Start
+        if (sfdcmode == 'cls'){
+            ccwURL = ccwURL + "&mode=cls";
+        }
+        else {
+            ccwURL = ccwURL + "&mode=lgt";
+       
+        }
+             // Added by Komal for 08/10/18 Lightning Release - End
+        
+        
+            <!--SCAVA FIX -->
+                var OpportunityName = "{!JSENCODE(oppty.Name)}";
+        var optyNameTrim = OpportunityName.substring(0,45);
+        var name= encodeURIComponent(OpportunityName); //encoding opportunity name as it contains special Characters
+        
+        //Constructing CCW URL for redirecting to CCW once user clicks on 'Continue to Quote' button
+       
+            <!--SCAVA FIX -->
+                newQuoteURL = baseUrl + "/SFDCRequestHandler?at="+oppType+"&url={!$Api.Enterprise_Server_URL_110}&optyNumber={!JSENCODE(oppty.DealID__c)}&dealtype={!JSENCODE(TEXT(oppty.Deal_Type__c))}&sessionid={!$Api.Session_ID}&userid={!$User.Id}&email={!$User.Email}&hostname=" + hostname + "&cancel=" + opportunityId + "&globalOptyFlag="+globalopportunity;  
+        if (EAReqId !== ''){
+            newQuoteURL = newQuoteURL + "&payLoadId="+ EAReqId;
+            //alert("newQuote URL"+ newQuoteURL);
+        }
+        
+             // Added by Komal for 08/10/18 Lightning Release - Start
+        if (sfdcmode == 'cls'){
+            newQuoteURL = newQuoteURL + "&mode=cls";
+        }
+        else {
+            newQuoteURL = newQuoteURL + "&mode=lgt";
+        }
+             // Added by Komal for 08/10/18 Lightning Release - End
+        
+        globalOptyNewQuoteURL = newQuoteURL +"&globalOptyFlag="+globalopportunity; //Added newquote URL for the Global Opportunity recordtype. GDM change
+        
+        //Constructing url to show 'Associate Deal' functionality with opportunity tab
+        
+            <!--SCAVA FIX -->
+                var biddingDealURL = '';
+             // Added by Komal for 08/10/18 Lightning Release - Start
+        if (sfdcmode == 'cls'){
+            biddingDealURL = "{!$Site.BaseUrl}/apex/QI_Manage_Partner_Quotes?sfdc.tabName=" + pageID;
+            biddingDealURL = biddingDealURL + "&mode=cls";
+        }
+        else {
+            biddingDealURL = "{!$Site.BaseUrl}/lightning/n/Manage_Partner_Quotes";
+            biddingDealURL = biddingDealURL + "?mode=lgt";
+        }
+             // Added by Komal for 08/10/18 Lightning Release - End
+        
+        //Constructing URL to show 'Invite Partner'button on CCW UI where AM is allowed to send invitations to partners.
+       
+            <!--SCAVA FIX -->
+                var invitePartnerDec = baseUrl + "/SFDCRequestHandler?at=" + opptyInviteType + "&optyName="+name+"&optyNumber={!JSENCODE(oppty.DealID__c)}&dealtype={!JSENCODE(TEXT(oppty.Deal_Type__c))}&userid={!$User.Id}&email={!$User.Email}&sessionid={!$Api.Session_ID}&url={!$Api.Enterprise_Server_URL_110}&hostname=" + hostname + "&cancel=" + opportunityId;  
+            
+        // Added by Komal for 08/10/18 Lightning Release - Start
+        
+        if (sfdcmode == 'cls'){
+            invitePartnerDec = invitePartnerDec + "&mode=cls";
+        }
+        else {
+            invitePartnerDec = invitePartnerDec + "&mode=lgt";
+        }
+        
+             // Added by Komal for 08/10/18 Lightning Release - End
+        var invitePartner = encodeURI(invitePartnerDec); //Encoding InvitePartner URL
+        var opptyURL = hostname+'/'+opportunityId; //Constructing URL to return to Opportunity UI page
+        
+        j$(document).ready(function(){ 
+            //Creation of Model box starts here 
+            var dialogInstance = new BootstrapDialog({ 
+                size: BootstrapDialog.SIZE_Large, 
+                title: "{!$Label.QuoteCreate}&nbsp;&nbsp;&nbsp;("+optyNameTrim+")&nbsp;-&nbsp;"+dealid, 
+                closable: false, 
+                message: '<div><img src="/resource/loading"/>{!$Label.QuoteDilogLoading}</div>', //loading Image 
+                onshown: function(dilogref) { 
+                    dilogref.setMessage('<div><img src="/resource/loading"/>{!$Label.QuoteDilogLoading}</div>'); //Loading Image
+                    
+                    dilogref.setTitle("{!$Label.QuoteDialogTitleError}");
+                    dilogref.setType(BootstrapDialog.TYPE_WARNING); 
+                    //Checking Quote creation validations and showing error message on Model box when AM clicks New Quote button 
+                    if(pdrDown == 'Yes' &&  profileName == 'true'){ //checking PDR DOWN custom setting value is Yes and Profile is not starting with 'QA'                        
+                        dilogref.setMessage("{!$Label.Quoting_unavailable} {!$Label.Quoting_capabilities}");  //showing Quoting capabilities not available
+                    } else if(dealid == ''){ //Checking dealId is null
+                        dilogref.setMessage("{!$Label.Quote_need_dealId}"); // Deal Id is required
+                    } else if(status != 'Active' && status != 'Booked'){    // Checking if opportunity status is not active or booked 
+                        dilogref.setMessage("{!$Label.Quote_Oppty_Active}"); // showing Oppty must be active or Booked
+                    } else if(parentrecordtypeTrim != parentOpptyRT && parentrecordtypeTrim != PartnerParentOpptyRT && parentrecordtypeTrim != globalOpportunityRT && parentrecordtypeTrim != renewalOpportunityRT){ // checking if opportunity not equal to parent opportunity recordtype,partner parent opportunity recordtype and Global Oppty recordtype
+                        dilogref.setMessage("{!$Label.QuotePartnerInvitation}"); //Partners can be invited to create a quote only on Parent opportunities
+                    } else if(quoteCount == 0 && oppType == 'partnerQuote' && pdrStatus != 'Qualified'){ //Checking if opportunity does not have a quote(QuoteCount=0) and opportunity type is PartnerQuote and CCW deal status is not qualified
+                        dilogref.setMessage("{!$Label.Quote_Oppty_Partner_status}"); //Only Partner Opportunities with a Partner Deal Status of [ Qualified ] can have Quotes
+                    } else if(quoteCount != null && quoteCount > 0 && cplOppty == 'Yes') { //Checking if quote count is greater than zero and Contractual pricing is Yes
+                        dilogref.setMessage("{!$Label.Quote_Multiple_for_pricing}"); //You cannot create multiple quotes on an opportunity marked as Contract/Ongoing Pricing Agreement
+                    } else if(quoteCount != null && quoteCount > 0 && oppType == 'partnerQuote'){  //checking if quote count is greater than zero and oppty is having Partner Quote
+                        dilogref.setMessage("{!$Label.Quote_Multiple_cannot_for_Oppty}"); // Multiple quotes cannot be created for Partner and Direct Customer Initiated Deals
+                    } else if(quoteCount != null && quoteCount > 0 && parentrecordtypeTrim == globalOpportunityRT){  //checking if quote count is greater than zero and oppty is global opportunity
+                        dilogref.setMessage("{!$Label.Multiple_Quote_Global_Opty}"); // Multiple quotes cannot be created for Global Opportunity
+                        
+                    } else if(isArchived == 1){  // checking if opportunity quote is having Archived count 1
+                        dilogref.setMessage("{!$Label.QuoteArchived}"); //The quote you requested has been Archived. For retrieving the Archived Deals and Quotes, you need to open a case with Quoting/CCW Support. A data-dump will be provided with all the deal/order attributes.
+                    } 
+                        else if(quoteCount > 0 && globalopty != '' && parentrecordtypeTrim == parentOpptyRT ){ //GDM Enhancement change March_2017. Local Opportunity already having a Quote and  associcated with Global Opportunity and still trying for new quote
+                            dilogref.setMessage("{!$Label.QuoteMultiple_NA_for_LocalOptys}"); //Multiple quotes cannot be created for local optys
+                        }
+                            else { //Checking if opportunity is having parent opportunity recordtype and phase opportunity recordtype
+                                
+                                dilogref.setTitle("{!$Label.QuoteCreate}&nbsp;&nbsp;&nbsp;("+optyNameTrim+")&nbsp;-&nbsp;"+dealid);
+                                dilogref.setType(BootstrapDialog.TYPE_PRIMARY);
+                                if(parentrecordtypeTrim == parentOpptyRT || parentrecordtypeTrim == PhaseOpptyRT || parentrecordtypeTrim == renewalOpportunityRT){  
+                                    //calling .ajax method to get the responce from CCW URL. Based on CCW responce a Modal box or CCWQuoteCreation page will be flipped in SFDC.
+                                    
+                                    var jqueryGet =  j$.ajax({
+                                        url: ccwURL,
+                                        timeout:15000 //set time out value if there is no responce from CCW
+                                    })
+                                    //success function of JQuery .ajax method 
+                                    .done(function(data) { 
+                                        //checking if CCW return True as a responce and displaying Model box with Associate Deals, Create Quote and Invite Partner buttons. 
+                                        if (data.displayPopup == true && data.error == false) {  
+                                            isOpen = false; 
+                                            //creating Model box body message, Buttons and appending all together into 'content' variable 
+                                            var content=function(dialog) {  
+                                                var j$message = j$('<div>'+"{!$Label.Quoting_Dialogtext}"+'<br><br/></div>'); 
+                                                var j$button = j$('<button type="button" title="{!$label.QuoteAssociateDealOppty}">{!$Label.Quote_AssociateDeals}</button>'); // Associate deals button creation 
+                                                j$button.on('click', {dialog: dialog}, function(){ 
+                                                    assignBiddingdeals(); 
+                                                }); 
+                                                var j$button2 = j$('<button type="button" title="{!$label.QuoteCreatePartnerInvitation}">{!$Label.Invite_Partner_Button}</button>'); // Invite Partner button creation 
+                                                j$button2.on('click', {dialog: dialog}, function(){ 
+                                                    inviteParnter(); 
+                                                }); 
+                                                j$message.append(j$button2); 
+                                                j$message.append("&nbsp;"); 
+                                                var j$button1 = j$('<button type="button" title="{!$label.QuoteCreateNew}">{!$Label.Quote_Continue}</button>'); // Continue quote button creation 
+                                                j$button1.on('click', {dialog: dialog}, function(){ 
+                                                    newquote(); 
+                                                }); 
+                                                j$message.append(j$button1); 
+                                                j$message.append("<br><br/>");
+                                                var j$message2 = j$('<div style="border-top:1px solid #e5e5e5"><br/>{!$Label.QuoteAssociatePreText}<br><br/></div>');
+                                                j$message2.append(j$button);
+                                                j$message.append(j$message2); // Appending Associate deal button to Model box body
+                                                
+                                                return j$message; //returning Model box body including buttons
+                                            } 
+                                            dilogref.setMessage(content); //displaying all the content inside Model box
+                                            //Checking if CCW responce is false then opening CCW new quote create page
+                                        } else if (data.displayPopup == false) { 
+                                            isOpen = false; 
+                                            dilogref.setTitle("{!$Label.QuoteCreate}&nbsp;&nbsp;&nbsp;("+optyNameTrim+")&nbsp;-&nbsp;"+dealid);
+                                            dilogref.setType(BootstrapDialog.TYPE_PRIMARY);
+                                            window.top.location = newQuoteURL; 
+                                        } else { //checking below warning message if CCW is down 
+                                            isOpen = false; 
+                                            dilogref.setTitle("{!$Label.QuoteDialogTitleError}"); 
+                                            dilogref.setMessage("{!$Label.Quoting_unavailable}"); 
+                                            dilogref.setType(BootstrapDialog.TYPE_WARNING); 
+                                        } 
+                                    }) 
+                                    // failure method when CCW is sending error/timeout responce
+                                    .fail(function(data,textStatus) { 
+                                        dilogref.setTitle("{!$Label.QuoteDialogTitleError}");
+                                        dilogref.setType(BootstrapDialog.TYPE_WARNING); 
+                                        if(textStatus === 'error'){ // checking if CCW responce is error
+                                            dilogref.setMessage("{!$Label.Quoting_unavailable}"); 
+                                        }
+                                        else if(textStatus === 'timeout'){ // checking of CCW responce is timeout
+                                            dilogref.setMessage("{!$Label.QuoteCCWDilogTimeout}"); 
+                                        }
+                                            else { //for all other fail cases displaying Quoting unavailable error message
+                                                dilogref.setMessage("{!$Label.Quoting_unavailable}");    
+                                            } 
+                                    }); 
+                                } 
+                                else if(parentrecordtypeTrim == globalOpportunityRT){
+                                    window.top.location = globalOptyNewQuoteURL; //Added CCW newquote URL for the Global Opportunity recordtype. GDM change
+                                }
+                                    else {//if opportunity is not having Parent/Global and phase opportunity recordtype redirecting it to Quote creation page 
+                                        window.top.location =newQuoteURL; 
+                                    }   
+                                
+                            } //else
+                }, 
+                buttons: [{ 
+                    label: "{!$Label.QuoteCloseDialog}", 
+                    action: function(dialogRef) {  
+                        redirectOppty(); //function to redirect opportunity UI on click of back button from Model box
+                    } 
+                }] 
+            }); 
+            
+            if (isOpen) 
+            { 
+                console.log('Inside Initialization');
+                dialogInstance.open();  // Opening Model box on click of New Quote button 
+            } 
+        }); 
+        
+        function newquote() { // Function to be call on click of 'Continue to Quote' button
+            window.top.location = newQuoteURL; 
+        } 
+        
+        function assignBiddingdeals(){ // Function to be call on click of 'Associate Deals' button
+            window.top.location = biddingDealURL; 
+        } 
+        
+        function inviteParnter() { // Function to be call on click of 'Invite partners' button
+            window.top.location = invitePartner; 
+        } 
+        
+        function redirectOppty(){ // Function to call back to Opportunity UI on click of Model box 'close' button
+            window.top.location = opptyURL;
+        }
+        
+        </script>
+    </apex:form>
+    <apex:relatedList list="Opportunities" />
+</apex:page>

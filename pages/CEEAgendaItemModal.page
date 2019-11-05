@@ -1,0 +1,176 @@
+<!-------------------------------------------------------------------------------
+   @Author :Jay Dash
+   @name :CEEAgendaItemModal
+   @CreateDate : 07/23/2015
+   @Description :This page Pop up Agenda item Edit page on CEE detail page, Agenda Item section.
+   @Version :1.0
+   Modifications:
+      Jan '2016' Sudi - Added new field virtual Demo Delivery Location Drop down
+      Feb '2016' Sudi - Removed field label is hard codeing in Apex:outputlabel.
+                        Using Apex:inputfield we are getting dynamically from field.
+  ------------------------------------------------------------------------------->
+<apex:page controller="CEEAgendaItemModalController" showHeader="false" sidebar="false">
+  <apex:includeScript value="{!$Resource.jquery22}" />
+   <style>
+       label.selectRoomLabel {
+            font-weight: bold !important;
+            color: #4a4a56 !important;
+            font-size: 91% !important;
+            margin-left: 21% !important;
+        }
+            
+        select.outlookStatusClass {
+            margin-bottom: 5px;
+        }
+       select.selectRoomList {
+           margin-left:0;
+       }
+        .overlay {
+            display: none;
+            height: 100%;
+            left: 0;
+            position: fixed;
+            top: 0;
+            opacity: 0.3;
+            -moz-opacity: 0.3;
+            width: 100%;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+            filter: alpha(opacity=30);
+            background: #000;
+            -khtml-opacity: 0.3;
+            z-index: 1000;
+        }
+        .loader {
+            background: url('/img/loading32.gif') scroll no-repeat 0 0;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            left: 50%;
+        }
+    </style>
+    
+    <apex:form styleClass="AgendaItemDialog">
+        <apex:outputPanel id="pageMsgs">
+        <apex:pageMessages />
+        </apex:outputPanel>
+        <apex:pageBlock >
+        <apex:outputPanel id="nameRender">
+         <apex:pageBlockSection columns="2">
+            <apex:inputText value="{!AgendaItem.name}" style="text-align: left;" styleClass="align-left-nowrap"/>          
+            <apex:inputField value="{!AgendaItem.Start_Date_Time__c}" style="text-align: left;" styleClass="align-left-nowrap"/>  
+            <apex:pageBlockSectionItem >
+             </apex:pageBlockSectionItem>           
+             <apex:inputField value="{!AgendaItem.End_Date_Time__c}" style="text-align: left;" styleClass="align-left-nowrap"/>
+             
+             </apex:pageBlockSection>
+            </apex:outputPanel>
+             <apex:outputPanel id="solutionRender">
+             <apex:actionregion >
+             <apex:pageBlockSection columns="1"> 
+              <apex:pageBlockSectionItem >             
+                  <apex:outputLabel value="Architecture" for="arch"></apex:outputLabel>  
+                  <apex:actionregion >                                         
+                      <apex:outputPanel layout="block" styleClass="requiredInput">
+                          <apex:selectlist id="arch" value="{!selArchitecture}" size="1" disabled="{!!showFullSolutions}">
+                         
+                              <apex:outputPanel layout="block" styleClass="requiredBlock"/>
+                              <apex:selectOptions value="{!architectureOptions}" />
+                              <apex:actionSupport event="onchange" rerender="solutionRender" />
+                          </apex:selectlist>
+                      </apex:outputPanel>
+                  </apex:actionRegion>
+              </apex:pageBlockSectionItem>
+
+              <apex:pageBlockSectionItem >
+                  <apex:outputLabel value="Sub-Architecture" for="subarch"></apex:outputLabel>
+                  <apex:actionRegion >
+                  <apex:outputPanel layout="block" styleClass="requiredInput">
+                      <apex:selectlist id="subarch" value="{!selSubArchitecture}" size="1" disabled="{!!showFullSolutions}">
+                      <apex:outputPanel layout="block" styleClass="requiredBlock"/>
+                          <apex:selectOptions value="{!subArchitectureOptions}" />
+                          <apex:actionSupport event="onchange" rerender="solutionRender" />
+                      </apex:selectlist>
+                  </apex:outputPanel>
+                  </apex:actionRegion>
+              </apex:pageBlockSectionItem>            
+              <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Topic" for="sol"></apex:outputLabel>
+                            <apex:outputPanel layout="block" styleClass="requiredInput">
+                            <apex:selectlist id="sol" value="{!selSolution}" size="3" title="Solution" >
+                                <apex:outputPanel layout="block" styleClass="requiredBlock"/>
+                                <apex:selectOptions value="{!solutionOptions}" />
+                                <apex:actionSupport event="onchange" action="{!checkName}" rerender="nameRender"/>
+                            </apex:selectlist>
+                        </apex:outputPanel>
+               </apex:pageBlockSectionItem>            
+              <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Look at Additional Solutions" for="ignoreSol"/>
+                    <apex:inputCheckbox id="ignoreSol" value="{!showFullSolutions}" selected="false">
+                        <apex:actionSupport event="onchange" rerender="solutionRender"/> 
+                     </apex:inputCheckbox>
+               </apex:pageBlockSectionItem>   
+               <!-- Sudi : Removed hard code field label text. remove Apex:Pageblocksectionitem. -->                             
+                <apex:inputField id="demoDelivery" value="{!AgendaItem.Demo_Delivery_Location_s__c}"/>
+                <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Select Room(s)" for="rooms"></apex:outputLabel>
+                <apex:actionRegion >
+                    <apex:selectList label="Select Room(s)" id="rooms" multiSelect="true" value="{!selectedRooms}" size="0" styleClass="selectRoomList" title="Selected Rooms">
+                        <apex:selectOptions value="{!dynRooms}" />
+                    </apex:selectList>
+                </apex:actionRegion>
+                </apex:pageBlockSectionItem>                
+                <apex:inputTextarea value="{!AgendaItem.Sales_Objectives__c}"/>
+              </apex:pageBlockSection> 
+            </apex:actionregion>
+            </apex:outputPanel>                         
+            <apex:outputPanel id="userRender">
+             <apex:pageBlockSection rendered="{!attendee.size > 0}">                      
+                <apex:pageBlockTable value="{!attendee}" width="100%" var="ad" id="linTable" >                       
+                  <apex:column headerValue="Presenters" >          
+                    <apex:inputField value="{!ad.Salesforce_User__c}" >
+                    </apex:inputField>
+                  </apex:column>
+                </apex:pageBlockTable>
+                <apex:pageBlockTable value="{!invt }" width="100%" var="inv" id="linTable1" >                       
+                 <apex:column headerValue="Outlookstatus" >
+                    <apex:inputField styleClass="outlookStatusClass" value="{!inv.Outlook_Status__c}" />
+                 </apex:column>
+                </apex:pageBlockTable> 
+            </apex:pageBlockSection>
+          </apex:outputPanel>    
+        <div id="load_scrl" class="loadingBox loader" style="display:none"> </div>
+        <div class="loadingBox overlay"> </div>  
+        <apex:actionFunction name="saveAgenda" action="{!saveAgendaItem}" status="loading" rerender="pageMsgs" onComplete="closeWindow('{!isExcep}');"/>
+        <apex:actionStatus id="loading" onstart="loading(true)" onstop="loading(false)" />
+        <button type="button" class="btn btn-default" style="margin-left: 40%;" align="center" onClick="javascriptSaveAgenda()" value="Save">Save</button> 
+        <button type="button" class="btn btn-default"  align="center" onClick="javascriptCancelAgenda()" value="cancel">Cancel</button>              
+        </apex:pageBlock>
+    </apex:form>  
+    
+    <script>  
+        function closeWindow(isExpp){                   
+                   if(isExpp == "false"){ 
+                   <!-- SCAVA FIX -->  
+                   var local= location.protocol+"//"+location.hostname+"/{!JSENCODE($CurrentPage.parameters.ceeid)}";                   
+                   window.parent.parent.location.href = local;
+                   parent.j$modalDialog.dialog('close');
+               }
+        }
+        function javascriptSaveAgenda(){
+            saveAgenda();
+        }
+         function loading(val) {
+            if (val) {
+               $('#load_scrl').css('top', $(document).scrollTop() + 100);
+               $('.loadingBox').show();
+            }
+            else {
+               $('.loadingBox').hide();
+            }
+        }
+        function javascriptCancelAgenda(){
+            parent.j$modalDialog.dialog('close');  
+        }
+       
+    </script>     
+</apex:page>

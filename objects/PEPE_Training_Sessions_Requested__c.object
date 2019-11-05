@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Event_Day__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Event day lookup</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please use this hyperlink to see the agenda for this event day</inlineHelpText>
+        <label>Event Day</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <filterItems>
+                <field>PEPE_Event_Day__c.Training_Event__r.Platform__c</field>
+                <operation>equals</operation>
+                <value>PVT</value>
+            </filterItems>
+            <filterItems>
+                <field>PEPE_Event_Day__c.Training_Event__r.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Calendar Published RT</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>PVT</value>
+            </filterItems>
+            <filterItems>
+                <field>PEPE_Event_Day__c.Name</field>
+                <operation>contains</operation>
+                <valueField>PEPE_Event_Day__c.Name</valueField>
+            </filterItems>
+            <infoMessage>PLEASE enter TRAINING EVENT ID to see/search for the list of EVENT DAYS available.</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>PEPE_Event_Day__c</referenceTo>
+        <relationshipLabel>Event Day Selection Request</relationshipLabel>
+        <relationshipName>Event_Day_Selection_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Host_Details__c</fullName>
+        <description>Please Insert "Host - First Name Last Name (ID@cisco.com)" eg Host - John Doe (johndoe@cisco.com)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please Insert "Host - First Name Last Name (ID@cisco.com)" eg Host - John Doe (johndoe@cisco.com)</inlineHelpText>
+        <label>Host Details</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Host_Email__c</fullName>
+        <description>Captures host email</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please add valid emails in the format 'ID@cisco.com'</inlineHelpText>
+        <label>Host Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Host_Name__c</fullName>
+        <description>Capture first and last name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please add First and Last Name</inlineHelpText>
+        <label>Host Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PEPE_Record_Type__c</fullName>
+        <description>This will indicate the record type of related Training Event</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Training_Request__r.Training_Offering_Id__r.PEPE_Record_Type__c)</formula>
+        <label>PEPE Record Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Platform_Selected__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Training_Request__r.Training_Offering_Id__r.Platform__c)</formula>
+        <label>Platform Selected</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Room_Capacity__c</fullName>
+        <description>room capacity</description>
+        <externalId>false</externalId>
+        <label>Room Capacity</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Session_Slots__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Session Slots lookup for selecting the session selections.</description>
+        <externalId>false</externalId>
+        <label>Session Slots</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>(1 AND 2 AND 3)</booleanFilter>
+            <filterItems>
+                <field>PEPE_Session_Slots__c.Training_Event__r.Platform__c</field>
+                <operation>equals</operation>
+                <value>Architectures</value>
+            </filterItems>
+            <filterItems>
+                <field>PEPE_Session_Slots__c.Training_Event__r.PEPE_Record_Type__c</field>
+                <operation>equals</operation>
+                <value>Architecture</value>
+            </filterItems>
+            <filterItems>
+                <field>PEPE_Session_Slots__c.Training_Event__r.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Architechture Published</value>
+            </filterItems>
+            <infoMessage>Search using Training Event ID to look for all the session slots available.</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>PEPE_Session_Slots__c</referenceTo>
+        <relationshipLabel>Training Sessions Requests</relationshipLabel>
+        <relationshipName>Training_Sessions_Booked</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>TP_Room_Name__c</fullName>
+        <description>Enter Room Name</description>
+        <externalId>false</externalId>
+        <label>TP Room Name</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Training_Event_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Session_Slots__r.Training_Event__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Training Event Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Training_Event_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Training_Request__r.Training_Offering_Id__r.Training_Event_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Training Event Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Training_Request__c</fullName>
+        <description>Looks up to training request. Requestor uses this for session slots or event day subscriptions</description>
+        <externalId>false</externalId>
+        <label>Training Request</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>(1 AND 2 AND 5) OR (3 AND 4 AND 5)</booleanFilter>
+            <errorMessage>Choose the actual request id you created for the event day selection.</errorMessage>
+            <filterItems>
+                <field>PEPE_Training_Request__c.PEPE_Record_Type__c</field>
+                <operation>equals</operation>
+                <value>Calendar</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>PVT</value>
+            </filterItems>
+            <filterItems>
+                <field>PEPE_Training_Request__c.PEPE_Record_Type__c</field>
+                <operation>equals</operation>
+                <value>Architecture</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Architecture</value>
+            </filterItems>
+            <filterItems>
+                <field>PEPE_Training_Request__c.Owner:User.Id</field>
+                <operation>equals</operation>
+                <valueField>$User.Id</valueField>
+            </filterItems>
+            <infoMessage>Make sure you selecting the correct training request id for your request</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>PEPE_Training_Request__c</referenceTo>
+        <relationshipLabel>Training Sessions Requests</relationshipLabel>
+        <relationshipName>Training_Sessions_Booked</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This acts a junction object between TR and Event Day objects for PVT TE Events(Calendar based).
+
+Also acts as junction object between TR and Session Slots for PP/Arch TE Events(Catalogue based).</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Training Sessions Requested</label>
+    <nameField>
+        <displayFormat>Requests - {00000}</displayFormat>
+        <label>Training Sessions Requested Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Training Sessions Requests</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Session_Slots__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Training_Request__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Training_Event_Name__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Training_Event_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Session_Slots__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Training_Request__c</lookupPhoneDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <recordTypes>
+        <fullName>Architecture</fullName>
+        <active>true</active>
+        <description>Architecture based session requests</description>
+        <label>Architecture</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>PVT</fullName>
+        <active>true</active>
+        <description>PVT based session requests</description>
+        <label>PVT</label>
+    </recordTypes>
+    <validationRules>
+        <fullName>Cannot_request_if_ARCH_is_not_multiple</fullName>
+        <active>true</active>
+        <description>Requestor cannot look for session slots when it is not multiple based event</description>
+        <errorConditionFormula>ISPICKVAL(Training_Request__r.Training_Offering_Id__r.Type_of_Architecture_Event__c, 'Standard Live') ||
+ISPICKVAL(Training_Request__r.Training_Offering_Id__r.Type_of_Architecture_Event__c, 'Standard Remote') &amp;&amp;
+ISPICKVAL( Training_Request__r.Training_Offering_Id__r.Platform__c ,'Architectures')</errorConditionFormula>
+        <errorMessage>Standard event will have NO session slots to requests.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Catch_correct_TE_for_DAY_TR_Creation</fullName>
+        <active>true</active>
+        <description>Look up for same parent record only</description>
+        <errorConditionFormula>IF( NOT(ISBLANK(  Event_Day__c  )),Event_Day__r.Training_Event__r.Id != Training_Request__r.Training_Offering_Id__r.Id ,false)</errorConditionFormula>
+        <errorMessage>Please select the DAY lookup and Training Request lookup you selected have the same parent.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Catch_correct_Training_Event_for_SS_TR</fullName>
+        <active>true</active>
+        <description>Lets you catch only desired lookup values</description>
+        <errorConditionFormula>IF( NOT(ISBLANK( Session_Slots__c )),Session_Slots__r.Training_Event__r.Id != Training_Request__r.Training_Offering_Id__r.Id ,false)</errorConditionFormula>
+        <errorMessage>Please select the correct session slot for the correct training request you selected.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Is_TE_delivered_no_change_on_TSR</fullName>
+        <active>true</active>
+        <description>Is TE delivered? Then for the host - no TSR can be neither created now modified</description>
+        <errorConditionFormula>AND( 
+$Profile.Id != $Setup.ProfileID__c.Cisco_ADMIN__c , 
+ISPICKVAL(  Training_Request__r.Training_Offering_Id__r.Platform__c , 'PVT' ), 
+(ISNEW() || NOT(LastModifiedDate &lt;&gt; LastModifiedDate)), 
+ISPICKVAL( $User.PDP_User_Role__c, 'PVT') , 
+ISPICKVAL( Training_Request__r.Training_Offering_Id__r.Status__c, 'Delivered' ) 
+)</errorConditionFormula>
+        <errorMessage>Training Event is delivered , you cannot add/edit Training requests or Training sessions requested for delivered events</errorMessage>
+    </validationRules>
+</CustomObject>

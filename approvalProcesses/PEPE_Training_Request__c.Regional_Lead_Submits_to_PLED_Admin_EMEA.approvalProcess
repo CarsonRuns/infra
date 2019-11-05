@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>PDP_RecType_to_LPBC_ARC_MoreInfo</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>PEPE_PDP_Requested_to_LPBC</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>PLED_Admin_EMEAR_Queue2</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>This app step is to req for lpbc.</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>PEPE_Training_Request__c.PEPE_Record_Type__c</field>
+                <operation>equals</operation>
+                <value>Catalogue</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>RejectRecord</ifCriteriaNotMet>
+        <label>Step 1</label>
+        <name>Step_1</name>
+        <rejectionActions>
+            <action>
+                <name>PDP_Requested_to_Request_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>This Approval Process is to have a business workflow automation behind the regional lead team and PLED team. PLED Team either approves or rejects the record based on the details provided in the record.</description>
+    <emailTemplate>PDP/PDP_PLED_notification_when_Regional_Lead_requests_Training_Request</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>ISPICKVAL( Status__c ,&apos;Added into cart&apos;) &amp;&amp; 
+Training_Event_Name__c != &apos;&apos; &amp;&amp; 
+ISPICKVAL( Training_Offering_Id__r.PEPE_Record_Type__c, &apos;Catalogue&apos;) &amp;&amp; 
+ISPICKVAL( Training_Offering_Id__r.Platform__c, &apos;Partner Plus&apos; )&amp;&amp; ( 
+ISPICKVAL( Geography__c, &apos;EMEAR&apos;) || ISPICKVAL( Geography__c, &apos;APJ&apos;))</formula>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>PDP_Added_into_cart_to_Requested</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Regional Lead Submits to PLED Admin EMEA</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

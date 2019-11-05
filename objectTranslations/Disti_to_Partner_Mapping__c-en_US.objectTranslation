@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Channel Partner Disti BEGEO Id --></label>
+        <name>Channel_Partner_Disti_BEGEO_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Channel Partner --></label>
+        <name>Channel_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- DistiPartnetId --></label>
+        <name>DistiPartnetId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor Account BEGEO ID --></label>
+        <name>Distributor_Account_BEGEO_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor BEGEO ID --></label>
+        <name>Distributor_BEGEO_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributor --></label>
+        <lookupFilter>
+            <errorMessage><!-- The selected Partner is not a SCP registered active Distributor or is flagged on the Denied Distributor List, please select a valid SCP registered Distributor. --></errorMessage>
+            <informationalMessage><!-- This search will return only those Disti enrolled in the Sales Collaboration Platform program. However, if you would like to reference accounts eligible for lead assignment, refer to the P360 Partners Enrolled link on the left hand side of the screen. --></informationalMessage>
+        </lookupFilter>
+        <name>Distributor__c</name>
+        <relationshipLabel><!-- Distributor Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner BEGEO ID --></label>
+        <name>Partner_BEGEO_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner --></label>
+        <lookupFilter>
+            <errorMessage><!-- The selected Partner is not a SCP registered active partner or is flagged on the Denied Partner List, please select a valid SCP registered partner. --></errorMessage>
+            <informationalMessage><!-- This search will return only those partners enrolled in the Sales Collaboration Platform program. However, if you would like to reference accounts eligible for lead assignment, refer to the P360 Partners Enrolled link on the left hand side of the screen. --></informationalMessage>
+        </lookupFilter>
+        <name>Partner__c</name>
+        <relationshipLabel><!-- Distributors --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Distibutor &amp; Partner Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SCP_Communities_Dist to Partner Mappings</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Distibutor &amp; Partner Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

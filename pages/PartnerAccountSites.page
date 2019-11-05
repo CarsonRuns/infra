@@ -1,0 +1,61 @@
+<apex:page showHeader="false" sidebar="false" StandardController="Account" extensions="PartnerAccountSites_CT">
+<apex:actionregion >
+<apex:pageblock id="thePageBlock" >
+        <apex:form >
+                <apex:pageBlockTable value="{!listViewData}" var="viewObj" id="table">
+                    <apex:column headerValue="Account Name">
+                        <a href = "../{!viewObj.account.Id}" target = "_top">{!viewObj.account.Name}</a>
+                    </apex:column>
+                    <apex:column headerValue="Site Address">
+                        {!viewObj.account.AddressLine1__c}&nbsp;
+                        {!viewObj.account.AddressLine2__c}&nbsp;
+                        {!viewObj.account.State__c}&nbsp;<BR/>
+                        {!viewObj.account.Country__c}&nbsp;                 
+                    </apex:column>         
+                    <apex:column headerValue="# Contacts">
+                        <a target="_top" href="../003?rlid=RelatedContactList&id={!viewObj.account.Id}">{!viewObj.contactCount}</a> 
+                    </apex:column>
+                </apex:pageBlockTable> 
+                <table cellspacing = "0" cellpadding = "0" width = "100%">
+                    <tr>
+                        <td align = "left"> 
+                            <apex:commandLink rendered="{!hasPrevious}" action="{!previous}">Previous
+                            </apex:commandlink>
+                            <apex:outputPanel rendered="{!hasNext && hasPrevious}">
+                                &nbsp;|&nbsp;
+                            </apex:outputPanel>    
+                            <apex:commandLink action="{!next}" rendered="{!hasNext}" >Next</apex:commandlink>
+                     </td>
+                        <td align = "right">
+                            Page:{!pageNumber}/{!totalPages }
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+
+                
+                  
+                
+                      
+          </apex:form>
+
+</apex:pageblock>
+</apex:actionregion>
+<script language = "javascript">
+function resizeIframe() {
+    var me = window.name;
+    if (me) {
+      var iframes = parent.document.getElementsByName(me);
+      if (iframes && iframes.length == 1) {
+        height = document.body.offsetHeight;
+        //if (height <= 300) 
+            iframes[0].style.height = height + "px";
+        
+      }
+    }
+  }
+ resizeIframe(); 
+</script>
+
+</apex:page>

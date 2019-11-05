@@ -1,0 +1,27 @@
+<apex:page >
+    <img id="liveagent_button_online_573340000004DGy" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('573340000004DGy')" src="{!$Resource.NGCC_Liveagent_Online}" />
+    <img id="liveagent_button_offline_573340000004DGy" style="display: none; border: 0px none; " src="{!$Resource.NGCC_Liveagent_Offline}" />
+    <script type="text/javascript">
+    if (!window._laq) { window._laq = []; }
+    window._laq.push(function(){
+        liveagent.showWhenOnline('573340000004DGy', document.getElementById('liveagent_button_online_573340000004DGy'));
+        liveagent.showWhenOffline('573340000004DGy', document.getElementById('liveagent_button_offline_573340000004DGy'));
+    });
+    </script>
+    <script type='text/javascript' src='https://c.la4-c2-was.salesforceliveagent.com/content/g/js/42.0/deployment.js'></script>
+    <script type='text/javascript'>
+    
+    liveagent.addCustomDetail('FirstNameInput', 'Demo First name', false);
+    liveagent.addCustomDetail('LastNameInput', 'Demo Last name', false);
+    liveagent.addCustomDetail('PhoneInput', '+1(800)231-8323', false);
+    liveagent.addCustomDetail('EmailAddressInput', 'Test@cisco.com', false);
+    liveagent.addCustomDetail('data-c2c-ecid', '123123412341', false);
+    liveagent.addCustomDetail('Keycode', '000775282', false);
+    liveagent.addCustomDetail('CountryInput', 'US', false);
+    liveagent.addCustomDetail('CompanyInput', 'Cisco Systems, INC.', false)
+    liveagent.addCustomDetail('CookieInput', 'abcd-abcd-abcd-abcd');
+    liveagent.addCustomDetail('OriginatingURL', document.URL);    
+    
+    liveagent.init('https://d.la4-c2-was.salesforceliveagent.com/chat', '572340000004Cu2', '00D300000000QUu');
+    </script>
+</apex:page>

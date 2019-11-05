@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help>Emplacement supplémentaire à associer à l'engagement client</help>
+        <label>Emplacement des autres participants</label>
+        <lookupFilter>
+            <errorMessage>L'emplacement doit être actif pour la sélection.</errorMessage>
+        </lookupFilter>
+        <name>Additional_Participant_Location__c</name>
+        <relationshipLabel>Sites de briefing</relationshipLabel>
+    </fields>
+    <fields>
+        <help>Engagement client associé pour site de briefing supplémentaire</help>
+        <label>Engagements et événements du client</label>
+        <name>Customer_Engagements_Events__c</name>
+        <relationshipLabel>Sites de briefing</relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Briefing Site --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Briefing Site --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Site Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Briefing Site Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

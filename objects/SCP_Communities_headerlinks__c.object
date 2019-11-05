@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Leads_Tab__c</fullName>
+        <defaultValue>"SCP_communities_leadFilter_Clone"</defaultValue>
+        <externalId>false</externalId>
+        <label>Leads_Tab</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QRG__c</fullName>
+        <externalId>false</externalId>
+        <label>Quick Reference Guide</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Support__c</fullName>
+        <description>Field used to hold support URL</description>
+        <externalId>false</externalId>
+        <label>Support</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Target_Prospects_Tab__c</fullName>
+        <defaultValue>"SCP_Communities_targetProspectFilter"</defaultValue>
+        <externalId>false</externalId>
+        <label>Target_Prospects_Tab</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Training__c</fullName>
+        <description>Field used to hold the training URL</description>
+        <externalId>false</externalId>
+        <label>Training</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>community_prefix__c</fullName>
+        <description>Contains the Community prefix</description>
+        <externalId>false</externalId>
+        <label>community_prefix</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Custom setting used to hold the links for Training and Support on SCP communities header</description>
+    <enableFeeds>false</enableFeeds>
+    <label>SCP_Communities_headerlinks</label>
+    <visibility>Protected</visibility>
+</CustomObject>

@@ -1,0 +1,98 @@
+<apex:page >
+  <head>
+<script type="text/javascript" src="/js/functions.js"></script>
+<script src="/soap/ajax/10.0/connection.js"></script>
+<script>
+    sforce.connection.sessionId = '{!$API.Session_ID}';
+    function isPassword() {
+        if (document.getElementById("password").value)
+            SetPassword();
+
+        else
+            alert('Enter Password');
+
+    }
+    var debug = false;
+    function log(msg) {
+        if (debug)
+            alert(msg);
+    }
+    function SetPassword() {
+        log('In SetPassword');
+        var msg = '';
+        var failedMsg = '';
+
+        var txtVal = document.getElementById("userName").value;
+        var re = "\n"
+        var txtValP = document.getElementById("password").value;
+
+        log('number of usernames=' + txtVal.split(re).length);
+
+        for (i = 0; i < txtVal.split(re).length; i++) {
+            var varUserName = txtVal.split(re)[i];
+
+            var errorflag = 0;
+            var qrString = "Select u.Id from User u where u.Username ='"
+                    + varUserName + "' ";
+            log('about to query user\n' + qrString);
+
+            try {
+                var getUserRecord = sforce.connection.query(qrString);
+            } catch (e) {
+                alert('error:' + e);
+            }
+
+            log('after query User query records returned ='
+                    + getUserRecord.size);
+
+            if (getUserRecord.size == 0) {
+                failedMsg += "<br/>" + varUserName + " Invalid User Name";
+                errorflag = 1;
+            }
+            if (getUserRecord.size == 1) {
+                var arrgetUserRecord = getUserRecord.getArray("records");
+                var rgetUserRecord = arrgetUserRecord[0];
+                var Userid = rgetUserRecord.get("Id");
+
+            }
+
+            try {
+                log('trying to setPass');
+                sforce.connection.setPassword(Userid, txtValP);
+            } catch (e) {
+                console.log('Error..'+e);
+                if (errorflag == 0) {
+                    failedMsg += "<br/>Password is not in a correct format.\n\nPassword should be in alphanumeric format and more than 7 characters";
+                    errorflag = 1;
+                }
+            }
+            if (errorflag == 0) {
+                msg += "<br/>" + varUserName + " updated to " + txtValP;
+            }
+        }
+
+        document.open();
+        if (failedMsg) {
+            document.write('<b>Failed</b><br/>');
+            document.write(failedMsg);
+        }
+
+        if (msg) {
+            document.write('<br/><b>Success</b>');
+            document.write(msg);
+        }
+
+        document.close();
+
+    }
+</script>
+
+  </head>
+
+  <center>
+    <br /> UserName(s): <br />
+    <textarea id="userName" rows="10" cols="40"></textarea>
+    <br /> <br /> <br /> <br /> Password: <br /> <input type="text" id="password" value="ra!nb0w7"/> <br /> <br /> <input type="button" name="save"
+      value="Reset Password" onclick="isPassword()" />
+  </center>
+</apex:page>

@@ -1,0 +1,2007 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account__c</fullName>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Customer References</relationshipLabel>
+        <relationshipName>R00N80000002TyZvEAK</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Additional_Information_URL__c</fullName>
+        <description>URL to more info</description>
+        <externalId>false</externalId>
+        <label>Additional Information URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <description>Comments</description>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <description>Populated from the Account</description>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deployment_Date__c</fullName>
+        <description>Date Technology Deployed</description>
+        <externalId>false</externalId>
+        <label>Expected Book Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Displaced_Competitor__c</fullName>
+        <description>Displaced Competitor</description>
+        <externalId>false</externalId>
+        <label>Displaced Competitor</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>--All--</fullName>
+                    <default>false</default>
+                    <label>--All--</label>
+                </value>
+                <value>
+                    <fullName>3Com</fullName>
+                    <default>false</default>
+                    <label>3Com</label>
+                </value>
+                <value>
+                    <fullName>Aastra</fullName>
+                    <default>false</default>
+                    <label>Aastra</label>
+                </value>
+                <value>
+                    <fullName>Adobe</fullName>
+                    <default>false</default>
+                    <label>Adobe</label>
+                </value>
+                <value>
+                    <fullName>Adtran</fullName>
+                    <default>false</default>
+                    <label>Adtran</label>
+                </value>
+                <value>
+                    <fullName>Adva</fullName>
+                    <default>false</default>
+                    <label>Adva</label>
+                </value>
+                <value>
+                    <fullName>Agere</fullName>
+                    <default>false</default>
+                    <label>Agere</label>
+                </value>
+                <value>
+                    <fullName>Alaxala Networks</fullName>
+                    <default>false</default>
+                    <label>Alaxala Networks</label>
+                </value>
+                <value>
+                    <fullName>Alcatel-Lucent</fullName>
+                    <default>false</default>
+                    <label>Alcatel-Lucent</label>
+                </value>
+                <value>
+                    <fullName>Allied Telesis</fullName>
+                    <default>false</default>
+                    <label>Allied Telesis</label>
+                </value>
+                <value>
+                    <fullName>Anshi</fullName>
+                    <default>false</default>
+                    <label>Anshi</label>
+                </value>
+                <value>
+                    <fullName>Apresia</fullName>
+                    <default>false</default>
+                    <label>Apresia</label>
+                </value>
+                <value>
+                    <fullName>Arris</fullName>
+                    <default>false</default>
+                    <label>Arris</label>
+                </value>
+                <value>
+                    <fullName>Aruba</fullName>
+                    <default>false</default>
+                    <label>Aruba</label>
+                </value>
+                <value>
+                    <fullName>Atrica</fullName>
+                    <default>false</default>
+                    <label>Atrica</label>
+                </value>
+                <value>
+                    <fullName>Avaya</fullName>
+                    <default>false</default>
+                    <label>Avaya</label>
+                </value>
+                <value>
+                    <fullName>BelAir Networks</fullName>
+                    <default>false</default>
+                    <label>BelAir Networks</label>
+                </value>
+                <value>
+                    <fullName>BinTec Communications</fullName>
+                    <default>false</default>
+                    <label>BinTec Communications</label>
+                </value>
+                <value>
+                    <fullName>Bluecoat</fullName>
+                    <default>false</default>
+                    <label>Bluecoat</label>
+                </value>
+                <value>
+                    <fullName>Boda</fullName>
+                    <default>false</default>
+                    <label>Boda</label>
+                </value>
+                <value>
+                    <fullName>Brocade</fullName>
+                    <default>false</default>
+                    <label>Brocade</label>
+                </value>
+                <value>
+                    <fullName>Carrier Access</fullName>
+                    <default>false</default>
+                    <label>Carrier Access</label>
+                </value>
+                <value>
+                    <fullName>Checkpoint</fullName>
+                    <default>false</default>
+                    <label>Checkpoint</label>
+                </value>
+                <value>
+                    <fullName>Ciena</fullName>
+                    <default>false</default>
+                    <label>Ciena</label>
+                </value>
+                <value>
+                    <fullName>Citrix</fullName>
+                    <default>false</default>
+                    <label>Citrix</label>
+                </value>
+                <value>
+                    <fullName>Colubris</fullName>
+                    <default>false</default>
+                    <label>Colubris</label>
+                </value>
+                <value>
+                    <fullName>Corrigent</fullName>
+                    <default>false</default>
+                    <label>Corrigent</label>
+                </value>
+                <value>
+                    <fullName>Dell</fullName>
+                    <default>false</default>
+                    <label>Dell</label>
+                </value>
+                <value>
+                    <fullName>Digital China</fullName>
+                    <default>false</default>
+                    <label>Digital China</label>
+                </value>
+                <value>
+                    <fullName>D-Link</fullName>
+                    <default>false</default>
+                    <label>D-Link</label>
+                </value>
+                <value>
+                    <fullName>EMC</fullName>
+                    <default>false</default>
+                    <label>EMC</label>
+                </value>
+                <value>
+                    <fullName>Enterasys</fullName>
+                    <default>false</default>
+                    <label>Enterasys</label>
+                </value>
+                <value>
+                    <fullName>Ericsson</fullName>
+                    <default>false</default>
+                    <label>Ericsson</label>
+                </value>
+                <value>
+                    <fullName>Expand</fullName>
+                    <default>false</default>
+                    <label>Expand</label>
+                </value>
+                <value>
+                    <fullName>Extreme Networks</fullName>
+                    <default>false</default>
+                    <label>Extreme Networks</label>
+                </value>
+                <value>
+                    <fullName>F5</fullName>
+                    <default>false</default>
+                    <label>F5</label>
+                </value>
+                <value>
+                    <fullName>Firetide</fullName>
+                    <default>false</default>
+                    <label>Firetide</label>
+                </value>
+                <value>
+                    <fullName>Force10</fullName>
+                    <default>false</default>
+                    <label>Force10</label>
+                </value>
+                <value>
+                    <fullName>Fortinet</fullName>
+                    <default>false</default>
+                    <label>Fortinet</label>
+                </value>
+                <value>
+                    <fullName>Foundry Networks</fullName>
+                    <default>false</default>
+                    <label>Foundry Networks</label>
+                </value>
+                <value>
+                    <fullName>Fujitsu</fullName>
+                    <default>false</default>
+                    <label>Fujitsu</label>
+                </value>
+                <value>
+                    <fullName>Hewlett Packard</fullName>
+                    <default>false</default>
+                    <label>Hewlett Packard</label>
+                </value>
+                <value>
+                    <fullName>Hitachi</fullName>
+                    <default>false</default>
+                    <label>Hitachi</label>
+                </value>
+                <value>
+                    <fullName>Huawei</fullName>
+                    <default>false</default>
+                    <label>Huawei</label>
+                </value>
+                <value>
+                    <fullName>IBM</fullName>
+                    <default>false</default>
+                    <label>IBM</label>
+                </value>
+                <value>
+                    <fullName>Infinera</fullName>
+                    <default>false</default>
+                    <label>Infinera</label>
+                </value>
+                <value>
+                    <fullName>Inter-Tel</fullName>
+                    <default>false</default>
+                    <label>Inter-Tel</label>
+                </value>
+                <value>
+                    <fullName>ISS (Internet Security Systems)</fullName>
+                    <default>false</default>
+                    <label>ISS (Internet Security Systems)</label>
+                </value>
+                <value>
+                    <fullName>Juniper</fullName>
+                    <default>false</default>
+                    <label>Juniper</label>
+                </value>
+                <value>
+                    <fullName>LG</fullName>
+                    <default>false</default>
+                    <label>LG</label>
+                </value>
+                <value>
+                    <fullName>Lumeng</fullName>
+                    <default>false</default>
+                    <label>Lumeng</label>
+                </value>
+                <value>
+                    <fullName>Maipu</fullName>
+                    <default>false</default>
+                    <label>Maipu</label>
+                </value>
+                <value>
+                    <fullName>McAfee</fullName>
+                    <default>false</default>
+                    <label>McAfee</label>
+                </value>
+                <value>
+                    <fullName>McData</fullName>
+                    <default>false</default>
+                    <label>McData</label>
+                </value>
+                <value>
+                    <fullName>Meru</fullName>
+                    <default>false</default>
+                    <label>Meru</label>
+                </value>
+                <value>
+                    <fullName>Mesh Dynamics</fullName>
+                    <default>false</default>
+                    <label>Mesh Dynamics</label>
+                </value>
+                <value>
+                    <fullName>Microsoft</fullName>
+                    <default>false</default>
+                    <label>Microsoft</label>
+                </value>
+                <value>
+                    <fullName>Mitel Corporation</fullName>
+                    <default>false</default>
+                    <label>Mitel Corporation</label>
+                </value>
+                <value>
+                    <fullName>Motorola</fullName>
+                    <default>false</default>
+                    <label>Motorola</label>
+                </value>
+                <value>
+                    <fullName>NEC</fullName>
+                    <default>false</default>
+                    <label>NEC</label>
+                </value>
+                <value>
+                    <fullName>Netgear</fullName>
+                    <default>false</default>
+                    <label>Netgear</label>
+                </value>
+                <value>
+                    <fullName>Network Appliance</fullName>
+                    <default>false</default>
+                    <label>Network Appliance</label>
+                </value>
+                <value>
+                    <fullName>Nokia-Siemens</fullName>
+                    <default>false</default>
+                    <label>Nokia-Siemens</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Nortel Networks</fullName>
+                    <default>false</default>
+                    <label>Nortel Networks</label>
+                </value>
+                <value>
+                    <fullName>OKI</fullName>
+                    <default>false</default>
+                    <label>OKI</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Packeteer</fullName>
+                    <default>false</default>
+                    <label>Packeteer</label>
+                </value>
+                <value>
+                    <fullName>Partner</fullName>
+                    <default>false</default>
+                    <label>Partner</label>
+                </value>
+                <value>
+                    <fullName>Polycom</fullName>
+                    <default>false</default>
+                    <label>Polycom</label>
+                </value>
+                <value>
+                    <fullName>Procurve</fullName>
+                    <default>false</default>
+                    <label>Procurve</label>
+                </value>
+                <value>
+                    <fullName>Proxim</fullName>
+                    <default>false</default>
+                    <label>Proxim</label>
+                </value>
+                <value>
+                    <fullName>Qlogic</fullName>
+                    <default>false</default>
+                    <label>Qlogic</label>
+                </value>
+                <value>
+                    <fullName>Redback</fullName>
+                    <default>false</default>
+                    <label>Redback</label>
+                </value>
+                <value>
+                    <fullName>Riverbed</fullName>
+                    <default>false</default>
+                    <label>Riverbed</label>
+                </value>
+                <value>
+                    <fullName>EMC/RSA</fullName>
+                    <default>false</default>
+                    <label>EMC/RSA</label>
+                </value>
+                <value>
+                    <fullName>Ruijie</fullName>
+                    <default>false</default>
+                    <label>Ruijie</label>
+                </value>
+                <value>
+                    <fullName>Samsung</fullName>
+                    <default>false</default>
+                    <label>Samsung</label>
+                </value>
+                <value>
+                    <fullName>ShoreTel</fullName>
+                    <default>false</default>
+                    <label>ShoreTel</label>
+                </value>
+                <value>
+                    <fullName>Silver Peak</fullName>
+                    <default>false</default>
+                    <label>Silver Peak</label>
+                </value>
+                <value>
+                    <fullName>SkyPilot</fullName>
+                    <default>false</default>
+                    <label>SkyPilot</label>
+                </value>
+                <value>
+                    <fullName>SonicWall</fullName>
+                    <default>false</default>
+                    <label>SonicWall</label>
+                </value>
+                <value>
+                    <fullName>Sonus</fullName>
+                    <default>false</default>
+                    <label>Sonus</label>
+                </value>
+                <value>
+                    <fullName>Starent</fullName>
+                    <default>false</default>
+                    <label>Starent</label>
+                </value>
+                <value>
+                    <fullName>Stratacache</fullName>
+                    <default>false</default>
+                    <label>Stratacache</label>
+                </value>
+                <value>
+                    <fullName>Streamcore</fullName>
+                    <default>false</default>
+                    <label>Streamcore</label>
+                </value>
+                <value>
+                    <fullName>Strix Systems</fullName>
+                    <default>false</default>
+                    <label>Strix Systems</label>
+                </value>
+                <value>
+                    <fullName>Symantec</fullName>
+                    <default>false</default>
+                    <label>Symantec</label>
+                </value>
+                <value>
+                    <fullName>Symbol</fullName>
+                    <default>false</default>
+                    <label>Symbol</label>
+                </value>
+                <value>
+                    <fullName>SysMaster Corporation</fullName>
+                    <default>false</default>
+                    <label>SysMaster Corporation</label>
+                </value>
+                <value>
+                    <fullName>Tandberg</fullName>
+                    <default>false</default>
+                    <label>Tandberg</label>
+                </value>
+                <value>
+                    <fullName>TCL</fullName>
+                    <default>false</default>
+                    <label>TCL</label>
+                </value>
+                <value>
+                    <fullName>TELDAT</fullName>
+                    <default>false</default>
+                    <label>TELDAT</label>
+                </value>
+                <value>
+                    <fullName>Tellabs</fullName>
+                    <default>false</default>
+                    <label>Tellabs</label>
+                </value>
+                <value>
+                    <fullName>TippingPoint</fullName>
+                    <default>false</default>
+                    <label>TippingPoint</label>
+                </value>
+                <value>
+                    <fullName>Trapeze Networks</fullName>
+                    <default>false</default>
+                    <label>Trapeze Networks</label>
+                </value>
+                <value>
+                    <fullName>Tropos</fullName>
+                    <default>false</default>
+                    <label>Tropos</label>
+                </value>
+                <value>
+                    <fullName>Turin Networks</fullName>
+                    <default>false</default>
+                    <label>Turin Networks</label>
+                </value>
+                <value>
+                    <fullName>UTStarcom</fullName>
+                    <default>false</default>
+                    <label>UTStarcom</label>
+                </value>
+                <value>
+                    <fullName>Voltaire</fullName>
+                    <default>false</default>
+                    <label>Voltaire</label>
+                </value>
+                <value>
+                    <fullName>YAMAHA</fullName>
+                    <default>false</default>
+                    <label>YAMAHA</label>
+                </value>
+                <value>
+                    <fullName>ZTE</fullName>
+                    <default>false</default>
+                    <label>ZTE</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Franchise_Win__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Franchise Win</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Industry__c</fullName>
+        <description>Comes from the Account</description>
+        <externalId>false</externalId>
+        <label>Industry</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Education- Public/Private</fullName>
+                    <default>false</default>
+                    <label>Education- Public/Private</label>
+                </value>
+                <value>
+                    <fullName>Energy/Utilities</fullName>
+                    <default>false</default>
+                    <label>Energy/Utilities</label>
+                </value>
+                <value>
+                    <fullName>Financial Services</fullName>
+                    <default>false</default>
+                    <label>Financial Services</label>
+                </value>
+                <value>
+                    <fullName>Government</fullName>
+                    <default>false</default>
+                    <label>Government</label>
+                </value>
+                <value>
+                    <fullName>Health Care</fullName>
+                    <default>false</default>
+                    <label>Health Care</label>
+                </value>
+                <value>
+                    <fullName>Hospitality/Hotels &amp; Leisure</fullName>
+                    <default>false</default>
+                    <label>Hospitality/Hotels &amp; Leisure</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Media/Entertainment</fullName>
+                    <default>false</default>
+                    <label>Media/Entertainment</label>
+                </value>
+                <value>
+                    <fullName>Miscellaneous</fullName>
+                    <default>false</default>
+                    <label>Miscellaneous</label>
+                </value>
+                <value>
+                    <fullName>Professional Services</fullName>
+                    <default>false</default>
+                    <label>Professional Services</label>
+                </value>
+                <value>
+                    <fullName>Retail</fullName>
+                    <default>false</default>
+                    <label>Retail</label>
+                </value>
+                <value>
+                    <fullName>Service Provider</fullName>
+                    <default>false</default>
+                    <label>Service Provider</label>
+                </value>
+                <value>
+                    <fullName>Technical Services</fullName>
+                    <default>false</default>
+                    <label>Technical Services</label>
+                </value>
+                <value>
+                    <fullName>Transportation</fullName>
+                    <default>false</default>
+                    <label>Transportation</label>
+                </value>
+                <value>
+                    <fullName>Wholesale/Distribution</fullName>
+                    <default>false</default>
+                    <label>Wholesale/Distribution</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>No_of_Employees__c</fullName>
+        <description>Number of Employees</description>
+        <externalId>false</externalId>
+        <label>No. of Employees</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>--All--</fullName>
+                    <default>false</default>
+                    <label>--All--</label>
+                </value>
+                <value>
+                    <fullName>1-19</fullName>
+                    <default>false</default>
+                    <label>1-19</label>
+                </value>
+                <value>
+                    <fullName>20-49</fullName>
+                    <default>false</default>
+                    <label>20-49</label>
+                </value>
+                <value>
+                    <fullName>50-99</fullName>
+                    <default>false</default>
+                    <label>50-99</label>
+                </value>
+                <value>
+                    <fullName>100-149</fullName>
+                    <default>false</default>
+                    <label>100-149</label>
+                </value>
+                <value>
+                    <fullName>150-249</fullName>
+                    <default>false</default>
+                    <label>150-249</label>
+                </value>
+                <value>
+                    <fullName>250-499</fullName>
+                    <default>false</default>
+                    <label>250-499</label>
+                </value>
+                <value>
+                    <fullName>500-749</fullName>
+                    <default>false</default>
+                    <label>500-749</label>
+                </value>
+                <value>
+                    <fullName>750-999</fullName>
+                    <default>false</default>
+                    <label>750-999</label>
+                </value>
+                <value>
+                    <fullName>1000-1499</fullName>
+                    <default>false</default>
+                    <label>1000-1499</label>
+                </value>
+                <value>
+                    <fullName>1500-4999</fullName>
+                    <default>false</default>
+                    <label>1500-4999</label>
+                </value>
+                <value>
+                    <fullName>5000-9999</fullName>
+                    <default>false</default>
+                    <label>5000-9999</label>
+                </value>
+                <value>
+                    <fullName>10000+</fullName>
+                    <default>false</default>
+                    <label>10000+</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>No_of_Sites_Deployed__c</fullName>
+        <description>Number of Sites Deployed</description>
+        <externalId>false</externalId>
+        <label>No. of Sites Deployed</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>No_of_Sites__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.No_of_Sites__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>No. of Sites</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner__c</fullName>
+        <description>Partner Name</description>
+        <externalId>false</externalId>
+        <label>Partner</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reference_Flags__c</fullName>
+        <externalId>false</externalId>
+        <label>Reference Flags</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Franchise Win</fullName>
+                    <default>false</default>
+                    <label>Franchise Win</label>
+                </value>
+                <value>
+                    <fullName>Economic Stimulus</fullName>
+                    <default>false</default>
+                    <label>Economic Stimulus</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reference_Score__c</fullName>
+        <description>Reference Score</description>
+        <externalId>false</externalId>
+        <label>Reference Score</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1-Star = Bought</fullName>
+                    <default>true</default>
+                    <label>1-Star = Bought</label>
+                </value>
+                <value>
+                    <fullName>2-Stars = Bought, Deployed, Internal Reference Only</fullName>
+                    <default>false</default>
+                    <label>2-Stars = Bought, Deployed, Internal Reference Only</label>
+                </value>
+                <value>
+                    <fullName>3-Stars = Bought, Deployed, External Reference</fullName>
+                    <default>false</default>
+                    <label>3-Stars = Bought, Deployed, External Reference</label>
+                </value>
+                <value>
+                    <fullName>4-Stars = Premier Reference Customer</fullName>
+                    <default>false</default>
+                    <label>4-Stars = Premier Reference Customer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account__r.State__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>State/Province</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Technology_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Technology/Service Details</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Technology__c</controllingField>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>CAD</fullName>
+                    <default>false</default>
+                    <label>CAD</label>
+                </value>
+                <value>
+                    <fullName>CIFS (File Share / Backup / Replication)</fullName>
+                    <default>false</default>
+                    <label>CIFS (File Share / Backup / Replication)</label>
+                </value>
+                <value>
+                    <fullName>Citrix</fullName>
+                    <default>false</default>
+                    <label>Citrix</label>
+                </value>
+                <value>
+                    <fullName>CRM Integration</fullName>
+                    <default>false</default>
+                    <label>CRM Integration</label>
+                </value>
+                <value>
+                    <fullName>CRM package</fullName>
+                    <default>false</default>
+                    <label>CRM package</label>
+                </value>
+                <value>
+                    <fullName>CTIOS</fullName>
+                    <default>false</default>
+                    <label>CTIOS</label>
+                </value>
+                <value>
+                    <fullName>CUIS</fullName>
+                    <default>false</default>
+                    <label>CUIS</label>
+                </value>
+                <value>
+                    <fullName>Custom Reporting</fullName>
+                    <default>false</default>
+                    <label>Custom Reporting</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Enhanced</fullName>
+                    <default>false</default>
+                    <label>Enhanced</label>
+                </value>
+                <value>
+                    <fullName>Expert Advisor</fullName>
+                    <default>false</default>
+                    <label>Expert Advisor</label>
+                </value>
+                <value>
+                    <fullName>Hosted</fullName>
+                    <default>false</default>
+                    <label>Hosted</label>
+                </value>
+                <value>
+                    <fullName>ICM</fullName>
+                    <default>false</default>
+                    <label>ICM</label>
+                </value>
+                <value>
+                    <fullName>ICM Hosted</fullName>
+                    <default>false</default>
+                    <label>ICM Hosted</label>
+                </value>
+                <value>
+                    <fullName>IPIVR</fullName>
+                    <default>false</default>
+                    <label>IPIVR</label>
+                </value>
+                <value>
+                    <fullName>Lotus Notes</fullName>
+                    <default>false</default>
+                    <label>Lotus Notes</label>
+                </value>
+                <value>
+                    <fullName>Microsoft Exchange</fullName>
+                    <default>false</default>
+                    <label>Microsoft Exchange</label>
+                </value>
+                <value>
+                    <fullName>Microsoft SharePoint</fullName>
+                    <default>false</default>
+                    <label>Microsoft SharePoint</label>
+                </value>
+                <value>
+                    <fullName>Migration from Express</fullName>
+                    <default>false</default>
+                    <label>Migration from Express</label>
+                </value>
+                <value>
+                    <fullName>Moblie Agent</fullName>
+                    <default>false</default>
+                    <label>Moblie Agent</label>
+                </value>
+                <value>
+                    <fullName>MS-SQL (dB apps)</fullName>
+                    <default>false</default>
+                    <label>MS-SQL (dB apps)</label>
+                </value>
+                <value>
+                    <fullName>NFS (UNIX file sharing)</fullName>
+                    <default>false</default>
+                    <label>NFS (UNIX file sharing)</label>
+                </value>
+                <value>
+                    <fullName>Oracle</fullName>
+                    <default>false</default>
+                    <label>Oracle</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Outbound</fullName>
+                    <default>false</default>
+                    <label>Outbound</label>
+                </value>
+                <value>
+                    <fullName>Parent/Child</fullName>
+                    <default>false</default>
+                    <label>Parent/Child</label>
+                </value>
+                <value>
+                    <fullName>Partner/AS</fullName>
+                    <default>false</default>
+                    <label>Partner/AS</label>
+                </value>
+                <value>
+                    <fullName>Peoplesoft</fullName>
+                    <default>false</default>
+                    <label>Peoplesoft</label>
+                </value>
+                <value>
+                    <fullName>Premium</fullName>
+                    <default>false</default>
+                    <label>Premium</label>
+                </value>
+                <value>
+                    <fullName>Presence</fullName>
+                    <default>false</default>
+                    <label>Presence</label>
+                </value>
+                <value>
+                    <fullName>Preview dialing</fullName>
+                    <default>false</default>
+                    <label>Preview dialing</label>
+                </value>
+                <value>
+                    <fullName>QM</fullName>
+                    <default>false</default>
+                    <label>QM</label>
+                </value>
+                <value>
+                    <fullName>Recording</fullName>
+                    <default>false</default>
+                    <label>Recording</label>
+                </value>
+                <value>
+                    <fullName>Remote Printing</fullName>
+                    <default>false</default>
+                    <label>Remote Printing</label>
+                </value>
+                <value>
+                    <fullName>SAP Netweaver</fullName>
+                    <default>false</default>
+                    <label>SAP Netweaver</label>
+                </value>
+                <value>
+                    <fullName>Self Service Apps</fullName>
+                    <default>false</default>
+                    <label>Self Service Apps</label>
+                </value>
+                <value>
+                    <fullName>Siebel</fullName>
+                    <default>false</default>
+                    <label>Siebel</label>
+                </value>
+                <value>
+                    <fullName>SnapMirror</fullName>
+                    <default>false</default>
+                    <label>SnapMirror</label>
+                </value>
+                <value>
+                    <fullName>SRDF/A</fullName>
+                    <default>false</default>
+                    <label>SRDF/A</label>
+                </value>
+                <value>
+                    <fullName>Streaming Video</fullName>
+                    <default>false</default>
+                    <label>Streaming Video</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+                <value>
+                    <fullName>Virtual Blade</fullName>
+                    <default>false</default>
+                    <label>Virtual Blade</label>
+                </value>
+                <value>
+                    <fullName>VMWare</fullName>
+                    <default>false</default>
+                    <label>VMWare</label>
+                </value>
+                <value>
+                    <fullName>Web/Chat</fullName>
+                    <default>false</default>
+                    <label>Web/Chat</label>
+                </value>
+                <value>
+                    <fullName>Web Services</fullName>
+                    <default>false</default>
+                    <label>Web Services</label>
+                </value>
+                <value>
+                    <fullName>WFM</fullName>
+                    <default>false</default>
+                    <label>WFM</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>UC-ICM</controllingFieldValue>
+                <valueName>ICM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-ICM</controllingFieldValue>
+                <valueName>ICM Hosted</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>CIFS (File Share / Backup / Replication)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Citrix</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Lotus Notes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Microsoft Exchange</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Microsoft SharePoint</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>MS-SQL (dB apps)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>NFS (UNIX file sharing)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Oracle</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Peoplesoft</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Remote Printing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>SAP Netweaver</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Siebel</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>SnapMirror</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>SRDF/A</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Streaming Video</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>Virtual Blade</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC-ANS -WAAS</controllingFieldValue>
+                <valueName>VMWare</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <valueName>CAD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>CRM package</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <valueName>CTIOS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Email</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <valueName>Hosted</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Outbound</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <valueName>Parent/Child</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Partner/AS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>QM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Self Service Apps</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Video</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Web/Chat</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Enterprise</controllingFieldValue>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>WFM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>CRM Integration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Custom Reporting</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Enhanced</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Premium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Presence</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Preview dialing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Recording</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UC-Contact Center Express</controllingFieldValue>
+                <valueName>Web Services</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Technology_Multi__c</fullName>
+        <externalId>false</externalId>
+        <label>Technology/Service</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>AS-DC-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-DC-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-DC-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-DC-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-DC-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-DC-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-Optical-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-Optical-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-Optical-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-Optical-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-Optical-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-Optical-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-R/S-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-R/S-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-R/S-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-R/S-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-R/S-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-R/S-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-Security-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-Security-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-Security-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-Security-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-Security-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-Security-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-UC-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-UC-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-UC-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-UC-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-UC-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-UC-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-Wireless-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-Wireless-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-Wireless-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-Wireless-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-Wireless-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-Wireless-PDI</label>
+                </value>
+                <value>
+                    <fullName>DC-All</fullName>
+                    <default>false</default>
+                    <label>DC-All</label>
+                </value>
+                <value>
+                    <fullName>DC-ANS</fullName>
+                    <default>false</default>
+                    <label>DC-ANS</label>
+                </value>
+                <value>
+                    <fullName>DC-ANS-DCAS</fullName>
+                    <default>false</default>
+                    <label>DC-ANS-DCAS</label>
+                </value>
+                <value>
+                    <fullName>DC-ANS -WAAS</fullName>
+                    <default>false</default>
+                    <label>DC-ANS -WAAS</label>
+                </value>
+                <value>
+                    <fullName>DC-Nexus 1000</fullName>
+                    <default>false</default>
+                    <label>DC-Nexus 1000</label>
+                </value>
+                <value>
+                    <fullName>DC-Nexus 2000/5000</fullName>
+                    <default>false</default>
+                    <label>DC-Nexus 2000/5000</label>
+                </value>
+                <value>
+                    <fullName>DC-Nexus 7000</fullName>
+                    <default>false</default>
+                    <label>DC-Nexus 7000</label>
+                </value>
+                <value>
+                    <fullName>DC-Storage</fullName>
+                    <default>false</default>
+                    <label>DC-Storage</label>
+                </value>
+                <value>
+                    <fullName>DC-Unified Computing</fullName>
+                    <default>false</default>
+                    <label>DC-Unified Computing</label>
+                </value>
+                <value>
+                    <fullName>DMS</fullName>
+                    <default>false</default>
+                    <label>DMS</label>
+                </value>
+                <value>
+                    <fullName>Ironport</fullName>
+                    <default>false</default>
+                    <label>Ironport</label>
+                </value>
+                <value>
+                    <fullName>Network Management</fullName>
+                    <default>false</default>
+                    <label>Network Management</label>
+                </value>
+                <value>
+                    <fullName>Optical</fullName>
+                    <default>false</default>
+                    <label>Optical</label>
+                </value>
+                <value>
+                    <fullName>Physical Security</fullName>
+                    <default>false</default>
+                    <label>Physical Security</label>
+                </value>
+                <value>
+                    <fullName>Security-Advanced</fullName>
+                    <default>false</default>
+                    <label>Security-Advanced</label>
+                </value>
+                <value>
+                    <fullName>Security-All</fullName>
+                    <default>false</default>
+                    <label>Security-All</label>
+                </value>
+                <value>
+                    <fullName>Security-Basic</fullName>
+                    <default>false</default>
+                    <label>Security-Basic</label>
+                </value>
+                <value>
+                    <fullName>SNTC (Smart Net Total Care)</fullName>
+                    <default>false</default>
+                    <label>SNTC (Smart Net Total Care)</label>
+                </value>
+                <value>
+                    <fullName>Switching/Routing</fullName>
+                    <default>false</default>
+                    <label>Switching/Routing</label>
+                </value>
+                <value>
+                    <fullName>UC-All</fullName>
+                    <default>false</default>
+                    <label>UC-All</label>
+                </value>
+                <value>
+                    <fullName>UC-Call Control</fullName>
+                    <default>false</default>
+                    <label>UC-Call Control</label>
+                </value>
+                <value>
+                    <fullName>UC-Contact Center Enterprise</fullName>
+                    <default>false</default>
+                    <label>UC-Contact Center Enterprise</label>
+                </value>
+                <value>
+                    <fullName>UC-Contact Center Express</fullName>
+                    <default>false</default>
+                    <label>UC-Contact Center Express</label>
+                </value>
+                <value>
+                    <fullName>UC-Messaging</fullName>
+                    <default>false</default>
+                    <label>UC-Messaging</label>
+                </value>
+                <value>
+                    <fullName>UC-Mobility</fullName>
+                    <default>false</default>
+                    <label>UC-Mobility</label>
+                </value>
+                <value>
+                    <fullName>UC-Presence</fullName>
+                    <default>false</default>
+                    <label>UC-Presence</label>
+                </value>
+                <value>
+                    <fullName>UC-Rich Media/Collaboration</fullName>
+                    <default>false</default>
+                    <label>UC-Rich Media/Collaboration</label>
+                </value>
+                <value>
+                    <fullName>UC-Service Provider</fullName>
+                    <default>false</default>
+                    <label>UC-Service Provider</label>
+                </value>
+                <value>
+                    <fullName>UC-TelePresence</fullName>
+                    <default>false</default>
+                    <label>UC-TelePresence</label>
+                </value>
+                <value>
+                    <fullName>WebEx-All</fullName>
+                    <default>false</default>
+                    <label>WebEx-All</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Connect</fullName>
+                    <default>false</default>
+                    <label>WebEx-Connect</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Event Center</fullName>
+                    <default>false</default>
+                    <label>WebEx-Event Center</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Meeting Center</fullName>
+                    <default>false</default>
+                    <label>WebEx-Meeting Center</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Support Center</fullName>
+                    <default>false</default>
+                    <label>WebEx-Support Center</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Training Center</fullName>
+                    <default>false</default>
+                    <label>WebEx-Training Center</label>
+                </value>
+                <value>
+                    <fullName>Wireless</fullName>
+                    <default>false</default>
+                    <label>Wireless</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Technology__c</fullName>
+        <description>Technology</description>
+        <externalId>false</externalId>
+        <label>Technology/Service</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>--All--</fullName>
+                    <default>false</default>
+                    <label>--All--</label>
+                </value>
+                <value>
+                    <fullName>AS-DC-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-DC-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-DC-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-DC-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-DC-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-DC-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-Optical-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-Optical-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-Optical-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-Optical-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-Optical-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-Optical-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-R/S-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-R/S-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-R/S-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-R/S-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-R/S-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-R/S-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-Security-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-Security-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-Security-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-Security-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-Security-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-Security-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-UC-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-UC-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-UC-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-UC-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-UC-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-UC-PDI</label>
+                </value>
+                <value>
+                    <fullName>AS-Wireless-Consultation</fullName>
+                    <default>false</default>
+                    <label>AS-Wireless-Consultation</label>
+                </value>
+                <value>
+                    <fullName>AS-Wireless-Optimization</fullName>
+                    <default>false</default>
+                    <label>AS-Wireless-Optimization</label>
+                </value>
+                <value>
+                    <fullName>AS-Wireless-PDI</fullName>
+                    <default>false</default>
+                    <label>AS-Wireless-PDI</label>
+                </value>
+                <value>
+                    <fullName>DC-All</fullName>
+                    <default>false</default>
+                    <label>DC-All</label>
+                </value>
+                <value>
+                    <fullName>DC-ANS-DCAS</fullName>
+                    <default>false</default>
+                    <label>DC-ANS-DCAS</label>
+                </value>
+                <value>
+                    <fullName>DC-ANS -WAAS</fullName>
+                    <default>false</default>
+                    <label>DC-ANS -WAAS</label>
+                </value>
+                <value>
+                    <fullName>DC-Nexus 1000</fullName>
+                    <default>false</default>
+                    <label>DC-Nexus 1000</label>
+                </value>
+                <value>
+                    <fullName>DC-Nexus 2000/5000</fullName>
+                    <default>false</default>
+                    <label>DC-Nexus 2000/5000</label>
+                </value>
+                <value>
+                    <fullName>DC-Nexus 7000</fullName>
+                    <default>false</default>
+                    <label>DC-Nexus 7000</label>
+                </value>
+                <value>
+                    <fullName>DC-Storage</fullName>
+                    <default>false</default>
+                    <label>DC-Storage</label>
+                </value>
+                <value>
+                    <fullName>DC-Unified Computing</fullName>
+                    <default>false</default>
+                    <label>DC-Unified Computing</label>
+                </value>
+                <value>
+                    <fullName>DMS</fullName>
+                    <default>false</default>
+                    <label>DMS</label>
+                </value>
+                <value>
+                    <fullName>Ironport</fullName>
+                    <default>false</default>
+                    <label>Ironport</label>
+                </value>
+                <value>
+                    <fullName>Network Management</fullName>
+                    <default>false</default>
+                    <label>Network Management</label>
+                </value>
+                <value>
+                    <fullName>Optical</fullName>
+                    <default>false</default>
+                    <label>Optical</label>
+                </value>
+                <value>
+                    <fullName>Physical Security</fullName>
+                    <default>false</default>
+                    <label>Physical Security</label>
+                </value>
+                <value>
+                    <fullName>Security-Advanced</fullName>
+                    <default>false</default>
+                    <label>Security-Advanced</label>
+                </value>
+                <value>
+                    <fullName>Security-All</fullName>
+                    <default>false</default>
+                    <label>Security-All</label>
+                </value>
+                <value>
+                    <fullName>Security-Basic</fullName>
+                    <default>false</default>
+                    <label>Security-Basic</label>
+                </value>
+                <value>
+                    <fullName>SNTC (Smart Net Total Care)</fullName>
+                    <default>false</default>
+                    <label>SNTC (Smart Net Total Care)</label>
+                </value>
+                <value>
+                    <fullName>Switching/Routing</fullName>
+                    <default>false</default>
+                    <label>Switching/Routing</label>
+                </value>
+                <value>
+                    <fullName>UC-All</fullName>
+                    <default>false</default>
+                    <label>UC-All</label>
+                </value>
+                <value>
+                    <fullName>UC-Call Control</fullName>
+                    <default>false</default>
+                    <label>UC-Call Control</label>
+                </value>
+                <value>
+                    <fullName>UC-Contact Center Enterprise</fullName>
+                    <default>false</default>
+                    <label>UC-Contact Center Enterprise</label>
+                </value>
+                <value>
+                    <fullName>UC-Contact Center Express</fullName>
+                    <default>false</default>
+                    <label>UC-Contact Center Express</label>
+                </value>
+                <value>
+                    <fullName>UC-CVP</fullName>
+                    <default>false</default>
+                    <label>UC-CVP</label>
+                </value>
+                <value>
+                    <fullName>UC-ICM</fullName>
+                    <default>false</default>
+                    <label>UC-ICM</label>
+                </value>
+                <value>
+                    <fullName>UC-Messaging</fullName>
+                    <default>false</default>
+                    <label>UC-Messaging</label>
+                </value>
+                <value>
+                    <fullName>UC-Rich Media/Collaboration</fullName>
+                    <default>false</default>
+                    <label>UC-Rich Media/Collaboration</label>
+                </value>
+                <value>
+                    <fullName>UC-Service Provider</fullName>
+                    <default>false</default>
+                    <label>UC-Service Provider</label>
+                </value>
+                <value>
+                    <fullName>UC-TelePresence</fullName>
+                    <default>false</default>
+                    <label>UC-TelePresence</label>
+                </value>
+                <value>
+                    <fullName>WebEx-All</fullName>
+                    <default>false</default>
+                    <label>WebEx-All</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Connect</fullName>
+                    <default>false</default>
+                    <label>WebEx-Connect</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Event Center</fullName>
+                    <default>false</default>
+                    <label>WebEx-Event Center</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Meeting Center</fullName>
+                    <default>false</default>
+                    <label>WebEx-Meeting Center</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Support Center</fullName>
+                    <default>false</default>
+                    <label>WebEx-Support Center</label>
+                </value>
+                <value>
+                    <fullName>WebEx-Training Center</fullName>
+                    <default>false</default>
+                    <label>WebEx-Training Center</label>
+                </value>
+                <value>
+                    <fullName>Wireless</fullName>
+                    <default>false</default>
+                    <label>Wireless</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>InDevelopment</deploymentStatus>
+    <description>Used for the AT customer reference db.  The object is attached to Accounts.  Used by specific US/Canada AMs and US/Canada AT profile</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>zzCustomer Reference</label>
+    <nameField>
+        <label>Reference Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Customer References</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

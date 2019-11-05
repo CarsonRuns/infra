@@ -1,0 +1,4 @@
+<apex:page showHeader="true" sidebar="true" standardController="Quote__c" extensions="Partner_Quote_Redirect_CTE" action="{!redirect}">
+    <apex:pageMessages rendered="{!hasMessage}" />
+    <apex:outputLink value="javascript:history.back()">Back</apex:outputLink>
+</apex:page>

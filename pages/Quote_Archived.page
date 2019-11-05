@@ -1,0 +1,11 @@
+<apex:page >
+  <h1>The quote you requested has been Archived</h1>
+  <p>
+  For retrieving the Archived Deals and Quotes, you need to open a case with Quoting/CCW Support. 
+  A data-dump will be provided with all the deal/order attributes. 
+  </p>
+  <p>
+  <a href="/{!$CurrentPage.parameters.opptyId}">Back to Opportunity</a>
+  </p>
+  
+</apex:page>

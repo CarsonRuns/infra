@@ -1,0 +1,33 @@
+<!-- 
+   Name    : NGCC_BulkCreateResponse
+   Author  : Ramzil Cleopas
+   Purpose : This will create responses for the selected leads on the list view     
+   Created Date: 3/26/2014
+   Modification History:                                          
+    -->
+<apex:page standardController="Lead" recordSetVar="leads" extensions="NGCC_CreateBulkResponseController">
+   <apex:form id="bulkassignform">
+      <apex:sectionHeader title="CC Response"/>
+      <apex:outputpanel rendered="{!AND(hasSelected, NOT(hasMessages))}">
+         <apex:pageBlock >
+            <apex:pageBlockButtons location="bottom">
+               <apex:commandButton value="Save" action="{!saveLeads}" rerender="bulkassignform"/>
+               <apex:commandButton action="{!CancelRecords}" value="Back" />
+            </apex:pageBlockButtons>
+            <apex:dataTable value="{!response}" var="r" width="100%">
+               <apex:column headerValue="Disposition">
+                  <apex:inputfield value="{!r.Status__c}"/>
+               </apex:column>
+               <apex:column headerValue="Response Type">
+                  <apex:inputfield value="{!r.Response_Type__c}"/>
+               </apex:column>
+               <apex:column headerValue="Notes">
+                  <apex:inputfield value="{!r.Notes__c}" style="width: 600px;"/>
+               </apex:column>
+            </apex:dataTable>
+         </apex:pageBlock>
+      </apex:outputpanel>
+      <apex:pageMessages id="messages" escape="false"/>
+      <apex:commandButton action="{!CancelRecords}" value="Back" rendered="{!hasMessages}"   />
+   </apex:form>
+</apex:page>

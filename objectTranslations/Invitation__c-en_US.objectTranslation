@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- AM Name --></label>
+        <name>AM_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCW Deal Id --></label>
+        <name>CCW_Deal_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCW Invitation Id --></label>
+        <name>CCW_Invitation_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCW Quote Id --></label>
+        <name>CCW_Quote_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal ID --></label>
+        <name>Deal_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Name --></label>
+        <name>Deal_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCW Deal Status --></label>
+        <name>Deal_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invitation Name --></label>
+        <name>Invitation_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invitation Status --></label>
+        <name>Invitation_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Quote Invitations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Contact --></label>
+        <name>Partner_Contact_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Name --></label>
+        <name>Partner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner SFDC Id --></label>
+        <name>Partner_SFDC_Id__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Quote Invitations</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quote Invitations</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Quote Invitations Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- Manage_Deals --></label>
+        <name>Manage_Deals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Manage_Invites --></label>
+        <name>Manage_Invites</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,124 @@
+<apex:page Controller="OpptySearch_CT" Id="thePage" tabStyle="Quote__c">
+   <apex:form >
+   <input type="hidden" name="theHiddenBase" id="theHiddenBase"/>
+   <script>
+   window.onload = function(e){         
+        var hostname = "https://" + window.location.hostname.toLowerCase();        
+        var elem = document.getElementById('theHiddenBase');
+        elem.value = hostname;   
+    }   
+    </script>
+    
+        <apex:pageBlock title="Search and Select Opportunity">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!view}" value="Search" id="searchButton" />
+            </apex:pageBlockButtons>
+            <b>Please enter either a partner or an account.</b>
+            <br/><br/>
+            Fill in as much as you know about the opportunity.
+            <br/><br/>
+            You can use “*” as a wildcard in all fields. For example, if your account is part of ABB, <br/>
+            enter “ABB*”. The results will include e.g. ABB Automation, ABB Transformers Ltd etc.
+            <br/><br/>
+                <apex:pageBlockSection columns="1">
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Account Name " for="AcctName"/>
+                        <apex:inputText id="AcctName" value="{!AcctName}"/>            
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem >           
+                        <apex:outputLabel value="Partner Name " for="PartnerName"/>
+                        <apex:inputText id="PartnerName" value="{!PartnerName}"/>
+                    </apex:pageBlockSectionItem>  
+                    
+                    <apex:pageBlockSectionItem >           
+                        <apex:outputLabel value="Opportunity Name " for="OpptyName"/>
+                        <apex:inputText id="OpptyName" value="{!OpptyName}"/>
+                    </apex:pageBlockSectionItem>  
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Limit to Opportunities I own " for="ownOpptys"/>
+                        <apex:inputCheckbox id="ownOpptys" value="{!OwnOpptys}" selected="true"/>  
+                    </apex:pageBlockSectionItem>
+                    
+                </apex:pageBlockSection>        
+        </apex:pageBlock>
+
+        <input type="hidden" name="theHiddenInput" value="{!$Api.Enterprise_Server_URL_110}" id="theHiddenInput"/>
+        <apex:pageblock id="thePageBlock" title="Opportunity Search Results">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!go}" value="Create Quote" id="theButton" />
+                <apex:commandButton action="{!cancel}" value="Cancel" />
+            </apex:pageBlockButtons>
+            
+            <apex:actionRegion >
+               <apex:outputText value="Records per page: "></apex:outputText>
+               <apex:selectList value="{!pagesize}" size="1">
+                        <apex:selectOption itemLabel="5" itemValue="5" />
+                        <apex:selectOption itemLabel="10" itemValue="10" />
+                        <apex:selectOption itemLabel="25" itemValue="25" />
+                        <apex:actionSupport event="onchange" rerender="thePageBlock, navigation, OpptyTable" status="theStatus" />
+               </apex:selectList>
+               <apex:actionStatus id="theStatus" startText="updating list..." stopText=" Total Result Size: {!resultSize}" />
+            </apex:actionRegion>
+            
+            <apex:actionRegion >
+                <apex:pageBlockTable value="{!OpptySet}" var="o" id="OpptyTable">
+                     <apex:column headerValue="Select">
+                        <input type="radio" name="group1" value="{!o.DealID__c}" id="selectedID"  />
+                    </apex:column>
+
+                    <apex:column value="{!o.Name}" >                
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!SortResultsName}" value="Opportunity" id="Name" rerender="thePageBlock"> </apex:commandLink>
+                        </apex:facet>          
+                    </apex:column>
+
+                    <apex:column value="{!o.Account.Name}">                
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!SortResultsAccount}" value="Account" id="AccountColumn" rerender="thePageBlock"/>
+                        </apex:facet>                  
+                    </apex:column>
+
+                    <apex:column value="{!o.Account.AddressLine1__c}, {!o.Account.City__c}, {!o.Account.State__c}, {!o.Account.Country__c}">                
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!SortResultsAddress}" value="Adresss" id="AddressColumn" rerender="thePageBlock"/>
+                        </apex:facet>                  
+                    </apex:column>
+
+                    <apex:column value="{!o.StageName}">                
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!SortResultsStage}" value="Stage" id="StageName" rerender="thePageBlock"/>
+                        </apex:facet>                  
+                    </apex:column>
+
+                    <apex:column value="{!o.CloseDate}">                
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!SortResultsCloseDate}" value="Expected Book Date" id="CloseDate" rerender="thePageBlock"/>
+                        </apex:facet>                  
+                    </apex:column>
+
+                    <apex:column value="{!o.Owner.Name}">                
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!SortResultsOwner}" value="Opportunity Owner" id="Owner" rerender="thePageBlock"/>
+                        </apex:facet>                  
+                    </apex:column>
+                </apex:pageBlockTable>
+
+                <apex:panelGrid columns="2" id="navigation" >
+                    <apex:outputLink value="javascript:void(0)" rendered="{!hasPrevious}">
+                        Previous
+                        <apex:actionSupport event="onclick" rerender="thePageBlock, navigation" action="{!previous}" /> 
+                    </apex:outputLink>
+                    <apex:outputLink value="javascript:void(0)" rendered="{!hasNext}">Next
+                        <apex:actionSupport event="onclick" rerender="thePageBlock, navigation" action="{!next}" />
+                    </apex:outputLink>
+                </apex:panelGrid>
+            </apex:actionRegion>
+        </apex:pageblock>
+        <BR/><BR/>
+        <b>Can't Find the Opportunity?</b><BR/>
+        <apex:commandLink action="{!newOppty}" value="Create new opportunity..."/>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,475 @@
+<!-- ************************* Change History *************************
+   WR-01199 - Added FP to the PUI page. Added mandatory red bar style.
+   US247300 & US247299 - Added new column Quote net Product Amount and Quote net Service Amount
+   US279633 - Added warning message to Relax Validation Rules on PUI Page
+   ************************* Change History ************************* -->
+ <apex:page showHeader="true" sidebar="true" docType="html-5.0" tabstyle="Opportunity" extensions="AddTechnologyServices_CT,OpportunityForecastPosition_CT" standardController="opportunity" title="Add Technology & Service for {!Opportunity.Name}" id="c">
+    <apex:includeScript value="{!URLFOR($Resource.angular_new_libraries, '/angular_js.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.angular_new_libraries, '/angular_animate.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.angular_new_libraries, '/angular_sanitize.js')}"/>
+   <apex:includeScript value="{!$Resource.jquery22}" />
+   <script type="text/javascript" src="{!URLFOR($Resource.forcetk_fix)}"></script>    
+   <apex:includeScript value="{!URLFOR($Resource.angular_new_libraries, '/ui_bootstrap_tpls.js')}"/>
+   <apex:includeScript value="{!$Resource.bootstrap332}"/>
+   <apex:includeScript value="{!$Resource.bootstrapTypeAhead}"/>
+   <apex:includeScript value="{!URLFOR($Resource.BootstrapSelect, '/BootstrapSelect/js/bootstrap-select.js')}"/>
+    
+   <apex:includeScript value="/support/console/42.0/integration.js"/>
+   
+   <script>
+        /***June 2018 Lightning Release changes: start ***/
+        function inLightningExperience() {
+        return ['Theme4d', 'Theme4u'].indexOf('{!$User.UIThemeDisplayed}') > -1; 
+       }
+       
+       var callCloseTab= function callCloseTab(result) {
+           sforce.console.closeTab(result.id);
+        }
+       
+       var reloadTab = function reloadTab(result){
+           //alert("In reload tab: " + result.id);
+           console.log("In reload tab: " + result.id);
+            sforce.console.refreshPrimaryTabById(result.id);
+           
+       }
+       
+        function saveTab(){
+            console.log("check inside save tab");
+        sforce.console.getEnclosingTabId(callCloseTab); 
+        sforce.console.getEnclosingPrimaryTabId(reloadTab);
+
+       }
+        function closeTab() {     
+            
+                    if(inLightningExperience()){  
+                        
+                        //window.location.href='/{!opportunity.Id}';
+                        sforce.console.getFocusedSubtabId(callCloseTab);
+                        sforce.console.getEnclosingPrimaryTabId(reloadTab);
+                         
+                        
+                        
+                    }
+                    else{
+                        console.log("Check Outside");
+                        window.location.href='/{!opportunity.Id}';
+                    }
+        }
+  
+/**********************************************************************************************************************************************  
+         //populate expected Product and Sevice Amount
+        function populateExpectedOptyAmount(input){        
+            var quoteProductAmount = document.getElementById('c:frm:pb:pbs:pbsi1:netProduct').innerHTML;
+            var quoteServiceAmount = document.getElementById('c:frm:pb:pbs:pbsi2:netService').innerHTML;
+          
+            if(input.checked){
+               if(quoteProductAmount!=null && quoteServiceAmount!= null){
+                 if(quoteProductAmount!="N/A" || quoteServiceAmount!= "N/A"){
+                    if(quoteServiceAmount == "N/A"){
+                     document.getElementById('c:frm:pb:pbs:ExpProduct').value= quoteProductAmount ; 
+                    }else if(quoteProductAmount== "N/A"){
+                      document.getElementById('c:frm:pb:pbs:ExpService').value= quoteServiceAmount;
+                    }else{
+                      document.getElementById('c:frm:pb:pbs:ExpProduct').value= quoteProductAmount ;
+                      document.getElementById('c:frm:pb:pbs:ExpService').value= quoteServiceAmount;
+                    }
+                 }
+               }
+            }
+        }
+**********************************************************************************************************************************************/       
+        
+        /***June 2018 Lightning Release changes: end ***/
+
+      var client = new forcetk.Client();
+      var expectedProductDollar = '{!JSENCODE(TEXT(Opportunity.Expected_Product__c))}'; //May20: Encoding for SCAVA scan
+      var expectedServiceDollar = '{!JSENCODE(TEXT(Opportunity.Expected_Service__c))}'; //May20: Encoding for SCAVA scan
+      var opptyQuoteId = '{!JSENCODE(Opportunity.CCW_BOM_Integrated_Quote_Id__c)}'; //May20: Encoding for SCAVA scan
+      var forcastPostion = '{!JSENCODE(Opportunity.Position__c)}'; //May20: Encoding for SCAVA scan
+      var oppCurrencyCode = "{!JSENCODE(Opportunity.CurrencyIsoCode)}"; //May20: Encoding for SCAVA scan
+      var jsonObj = [], _idArray = [], _obj = [], _prod = [], _mergedObj = [];
+      client.setSessionToken("{!$Api.Session_ID}");
+      var oppId = '{!$CurrentPage.parameters.id}';
+      var serviceCategory = "{!JSENCODE(ServiceCatagory)}"; //May20: Encoding for SCAVA scan
+      var pricebook2id = "{!StandPricebookId }";       
+      var className = '{!$RemoteAction.AddTechnologyServices_CT.UpdateOpptydetails}';
+      var delID = '{!JSENCODE($CurrentPage.parameters.delID)}'; //May20: Encoding for SCAVA scan
+      var delRecName = '{!JSENCODE($CurrentPage.parameters.delRecName)}'; //May20: Encoding for SCAVA scan
+      var addTechErr = "{!$Label.Add_technology}";
+      var addServiceErr = "{!$Label.Add_service}";
+      var expectedServiceErr = "{!$Label.Expected_Service_not_null}";
+      var expectedProductErr = "{!$Label.Expected_Product_not_null}";
+      var techCantaddErr = "{!$Label.Technology_cannot_be_added}";
+      var serviceCantaddErr = "{!$Label.Service_cannot_be_added}";
+      var forcastErr = "{!$Label.Select_Forecasting_Position}";
+      var mixPerMust100 = "{!$Label.mix_must_be_100}";
+      var mixPerNotEmpty = "{!$Label.Mix_not_empty}";
+      var duplicatServiceline = "{!$Label.Duplicate_Service_Line_Items}";
+      var mandatryData =  "{!$Label.Mandatory_Data}";
+      var checkValues = "{!$Label.check_the_values}";
+      var stageName = "{!JSENCODE(Opportunity.StageName)}"; //May20: Encoding for SCAVA scan
+      var EnterpriseAgreementOpportunity = "{!JSENCODE(Opportunity.Enterprise_Agreement_Opportunity__c)}"; //QI2Edit_utr: Pulling EA value from backend, with encoding for SCAVA scan
+      var BOMIntegratedQuoteID = "{!JSENCODE(Opportunity.CCW_BOM_Integrated_Quote_Id__c)}"; //QI2Edit_utr: Pulling quote id from backend, with encoding for SCAVA scan
+      var BOMIntegratedDate = "{!JSENCODE(TEXT(Opportunity.CCW_BOM_Integrated_Date__c))}"; //QI2Edit_utr: Pulling quote date from backend, with encoding for SCAVA scan
+      var ProductQuoteInterationErrorMessage = "{!$Label.ProductQuoteIntegrationError}"; // QI2Edit_vignesh : Pulling quote error message for Products
+      var ServiceQuoteInterationErrorMessage = "{!$Label.ServiceQuoteIntegrationError}"; // QI2Edit_vignesh : Pulling quote error message for Services
+      var isProductQuoteIntegrated = "{!JSENCODE(Opportunity.Is_Product_Quote_Integrated__c)}";
+      var isServiceQuoteIntegrated = "{!JSENCODE(Opportunity.Is_Service_Quote_Integrated__c)}";
+      var buyingProgramErr = "{!$Label.Select_Buying_Program}"; //Pulling error message for Buying Program
+      var chooseEAYesErr = "{!$Label.Select_EA_Yes}";
+      var chooseEANoErr = "{!$Label.Select_EA_No}";
+      //Warnings after Integration--US279633 
+      var zeroMixServiceWarning = "{!$Label.PUI_Relaxation_When_ServiceLines_mix_Zero}";    
+      var zeroServiceLinesWarning = "{!$Label.PUI_Relaxation_Warning_When_ServiceLines_Zero}";
+      var zeroESWarning = "{!$Label.PUI_Relaxation_Warning_When_ES_Zero}";
+      var zeroMixproductWarning = "{!$Label.PUI_Relaxation_When_ProductLines_mix_Zero}";
+      var zeroProductLinesWarning = "{!$Label.PUI_Relaxation_Warning_When_ProductLines_Zero}";
+      var zeroEPWarning = "{!$Label.PUI_Relaxation_Warning_When_EP_Zero}";
+                  
+    </script>
+   <apex:includeScript value="{!$Resource.QI_OpportunityTechnologyController}" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
+   <!-- Cart Model css -->
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck" />
+   <style>     
+      .helpIconWrapper{cursor:pointer;display: inline-block;width: 20px;height: 15px;left: 280px;top: 3px;margin-top: 0px;background: url('/img/help/helpOrbs.gif') no-repeat scroll bottom left transparent; }
+      .helpIconWrapper:hover{background-position:bottom right;}
+      .bPageBlock .pbBody .pbSubheader{ background-color: #F2F2F2; }      
+      .bPageBlock .pbBody .pbSubheader h3{color:black;font-weight: bold;}
+      b, strong { font-weight: bold; }
+      tr.greenBorder { border : 2px solid green!important; }
+      ul, ol {margin-top: 0;margin-bottom: 10px; }
+      ul li, ol li {margin-left: 1.5em;padding-left: 0;}
+      .typeahead {z-index: 1051;}
+      .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,.table>tbody>tr>td, .table>tfoot>tr>td {padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #cfd0d2;}
+      .table-condensed>thead>tr>th, .table-condensed>tbody>tr>th,.table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td,.table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td {padding: 5px;}
+      .dropdown-menu {position: absolute;top: 100%;left: 0;z-index: 1000;display: none;float: left;min-width: 160px;padding: 5px 0;margin: 2px 0 0;list-style: none;font-size: 14px;background-color: #ffffff;border: 1px solid #cccccc;border: 1px solid rgba(0, 0, 0, 0.15);border-radius: 4px;-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);background-clip: padding-box;}
+      .typeahead li {margin-left: 0px !important;}
+      .dropdown-menu>li>a {display: block;padding: 3px 20px;clear: both;font-weight: normal;line-height: 1.42857143;color: #525354;white-space: nowrap;text-decoration: none;}
+      .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{color: #ffffff;text-decoration: none;outline: 0;background-color: #2a94d6;}
+      .typeahead {z-index: 1051;}
+      .typeahead li {margin-left: 0px !important;}
+      .s1utility {color: #557FFF !important;padding-right: 10px;}
+      .list tr th,.list tr td{padding: 4px 2px 0px 5px!important;color: #333!important;border-bottom: 1px solid #e3deb8!important;}
+      .list tr th div,.list tr td span{font-family: Arial,Helvetica,sans-serif;font-size: 1em;}
+      #totalTech{ font-weight:normal; }
+      /* Styles for Show All technologies window */
+      span.showall { padding: 2px 2px; margin: 5px 5px;}        
+      .dataCell {font-size: 12px;}
+      .blueLink{color:blue!important;}
+      .red{color:#c00!important;font-weight:bold;}
+      .yellow{color:#FFA500!important;font-weight:bold;}
+      .blue{color:#0000cc!important;font-weight:bold;}
+      .well {
+      background-color: rgb(132, 109, 209) !important;
+      border: 1px solid rgb(19, 61, 141) !important;
+      }
+      body { font-size: 12px!important;}
+      h2, h3, h4, h5, h6 {
+      font-size: 12px!important;
+      font-weight: bold!important;
+      margin-bottom: 0px!important;
+      margin-top: 0px!important;
+      line-height: 17.14px!important;
+      }
+      div.spinner {
+      display: block;
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      background: url(/img/loading32.gif) no-repeat center #FFFFFF;
+      text-align: center;
+      padding: 10px;
+      font: normal 16px Tahoma, Geneva, sans-serif;
+      /* border: 1px solid #666; */
+      border-radius: 5px;
+      box-shadow: 5px 5px 31px 0px #000000;
+      margin-left: -50px;
+      margin-top: -50px;
+      z-index: 1001;
+      overflow: auto;
+      }       
+      div.modalWindow{
+      background: #000000;
+      opacity: 0.1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 1000;
+      position: fixed;
+      margin-left: -10px;
+      padding: 0px;
+      }
+      .fontred{
+      background-color:#c00;
+      }
+      td.techie a{
+      text-decoration:underline;
+      }
+      .inputSelect{
+      max-width:250px;
+      }
+      @media only screen and (min-width: 600px) and (max-width:1280px){
+      .inputSelect{
+      max-width:140px;
+      }
+      }
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+      .ng-cloak, .x-ng-cloak {
+      display: none !important;
+      }       
+   </style>
+   <div ng-controller="aaa">
+      <div></div>
+   </div>
+   <div id="technologyApp" ng-controller="technologyCtrl" ng-init="init();">
+      <apex:remoteObjects jsNamespace="RemoteObjectModel">
+         <apex:remoteObjectModel name="Opportunity" fields="Id,Expected_Product__c,Expected_Service__c">                        
+         </apex:remoteObjectModel>
+      </apex:remoteObjects>
+      <apex:form id="frm" >
+          
+         <apex:sectionHeader title="Add Technology & Service for {!Opportunity.Name}" help="https://cisco.jiveon.com/docs/DOC-67067" />
+         <apex:pageBlock id="pb">
+            <apex:pageBlockButtons >             
+               <!-- /*June 2018 Lightning Release changes: start */  -->                
+            <!-- <button type="button" id="saveTech" ng-click="saveLineItem();">Save</button>   -->      
+              <!-- <button type="button" id="cancel" onclick="window.location.href='/{!opportunity.Id}'">Cancel</button>  -->
+              <!-- <button type="button" id="saveTech" ng-click="saveLineItem();" onclick="closeTab();">Save</button> -->
+                <button type="button" id="saveTech" ng-click="saveLineItem();">Save</button>
+               <button type="button" id="cancel" onclick="closeTab(); ">Cancel</button>
+               <!-- /*June 2018 Lightning Release changes: end */  -->       
+            </apex:pageBlockButtons>
+             <apex:pageMessages ></apex:pageMessages>
+             <!-- Display warning messages for US279633  --> 
+            <div class="yellow" ng-cloak="true" style="text-align:center;">{{ServiceLinesWarningMessage}}</div> 
+            <div class="yellow" ng-cloak="true" style="text-align:center;">{{ProductLinesWarningMessage}}</div>
+            <div class="red" ng-cloak="true" style="text-align:center;">{{product_quote_error_message}}</div>
+            <div class="red" ng-cloak="true" style="text-align:center;">{{service_quote_error_message}}</div>
+            <div class="red" ng-cloak="true" style="text-align:center;">{{saveErrorMessage}}</div>
+             <div class="red" ng-cloak="true" style="text-align:center;">{{expectedProductErrorMessage}}</div>
+             <div class="red" ng-cloak="true" style="text-align:center;">{{expectedServiceErrorMessage}}</div> 
+            <div class="red" ng-cloak="true" style="text-align:center;">{{saveServiceErrorMessage}}</div>
+            <div class="red" ng-cloak="true" style="text-align:center;">{{saveCommonErrorMessage}}</div>
+            <div class="red" ng-cloak="true" style="text-align:center;">{{forcastCommonErrorMessage}}</div>
+            <div class="red" ng-cloak="true" style="text-align:center;">{{BPCommonErrorMessage}}</div>
+            <!-- <div class="red" ng-cloak="true" style="text-align:center;">{{recurringServiceTermValid}}</div> -->
+            <apex:pageBlockSection title="Opportunity Details" columns="2" collapsible="false" id="pbs">
+               <apex:outputfield value="{!Opportunity.Account.name}"/>
+               <apex:outputfield value="{!Opportunity.CloseDate}"/>
+               <apex:outputfield value="{!Opportunity.Name}"/>
+               <apex:inputField value="{!Opportunity.Expected_Product__c}" Id="ExpProduct" onkeypress="return isNumberKeyExp(event)" onkeyup="checkExpectedProductValue()"/>
+               <apex:outputfield value="{!Opportunity.StageName}"/>
+               <apex:inputField value="{!Opportunity.Expected_Service__c}" Id="ExpService" onkeypress="return isNumberKeyExp(event)" onkeyup="checkExpectedServiceValue()"/>
+               <apex:outputField value="{!Opportunity.DealID__c}"/>
+               <apex:pageBlockSectionItem >
+                  <apex:outputLabel value="Forecasting Position" />
+                  <apex:outputPanel styleClass="requiredInput" layout="block">
+                     <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                     <apex:selectList styleclass="selectPos" value="{!Opportunity.Position__c}"  size="1" id="PositionID" required="true">
+                        <apex:selectOptions value="{!forecastPositionOptions}" />
+                     </apex:selectList>
+                  </apex:outputPanel>
+               </apex:pageBlockSectionItem>
+              
+               <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c != ''}">
+                  <apex:outputLabel value="Quote Name"/>
+                  <a ng-click="ToQuoteNavigation(opptyQuoteId);" style="text-decoration: underline;cursor:pointer;">{{opptyQuoteName}}</a>
+               </apex:pageBlockSectionItem>
+        
+  
+  <!--Start   Changes for Display net Product Amount  US247299  
+             <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c != ''}" id="pbsi1">
+                  <apex:outputLabel value="Quote Net Product Amount({!optyCurrencyCode})"/> 
+                      <apex:outputText value="{!QuoteNetProductAmount }"  Id="netProduct" />                
+               </apex:pageBlockSectionItem>
+    End -->   
+               <!-- May20 EA flag changes starts-->
+               <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c == ''}" /> <!-- To keep EA field on the Right side -->
+               <apex:inputField styleclass="selectEA" value="{!Opportunity.Enterprise_Agreement_Opportunity__c}" Id="EAInputField" rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c == ''}" /> <!-- Allow users to Manually select EA value -->
+               <apex:inputField styleclass="selectEA" value="{!Opportunity.Enterprise_Agreement_Opportunity__c}" Id="EAOutputField" rendered="{!(Opportunity.Enterprise_Agreement_Opportunity__c != '' && Opportunity.CCW_BOM_Integrated_Quote_Id__c != '')}" html-disabled="true"/> <!-- Make EA field as Non-Editable -->
+               <!-- May20 EA flag changes ends-->
+               
+    <!--Start Changes for Display net Service Amount  US247299           
+               <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c != ''}" id="pbsi2" >
+                  <apex:outputLabel value="Quote Net Service Amount({!optyCurrencyCode})"/>   
+                       <apex:outputText value="{!QuoteNetServiceAmount }"  Id="netService" />               
+               </apex:pageBlockSectionItem>    
+     End  -->     
+                 
+               <!--US248529 Buying Program Changes Start-->
+               <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c == ''}"/>
+               <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c == ''}">
+               <apex:outputLabel value="{!$ObjectType.Opportunity.fields.Buying_Program__c.Label}" rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c == ''}"/>
+               <apex:inputField value="{!Opportunity.Buying_Program__c}" styleclass="BuyingProgram" rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c == ''}" />
+               </apex:pageBlockSectionItem>  
+               
+               <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c != ''}"/>  
+     
+              <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c != ''}">  
+              <apex:outputLabel value="{!$ObjectType.Opportunity.fields.Buying_Program__c.Label}" rendered="{!(Opportunity.Enterprise_Agreement_Opportunity__c == 'Yes' && Opportunity.CCW_BOM_Integrated_Quote_Id__c != '')}"/>
+               <apex:inputField styleclass="BuyingProgram" value="{!Opportunity.Buying_Program__c}" rendered="{!(Opportunity.Enterprise_Agreement_Opportunity__c == 'Yes' && Opportunity.CCW_BOM_Integrated_Quote_Id__c != '')}" />
+               </apex:pageBlockSectionItem>
+               <!-- US248529 Buying Program End-->
+         <!--<apex:pageBlockSectionItem rendered="{!(Opportunity.Enterprise_Agreement_Opportunity__c == 'No' && Opportunity.CCW_BOM_Integrated_Quote_Id__c != '')}" /> -->
+    <!-- Start Changes for populate Expected Product and Service Amount US247300  
+            <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c != ''}">
+                     <apex:inputCheckbox value="{!netAmountSyncUpFlag}" id="copyAmount" onclick="populateExpectedOptyAmount(this)" /> 
+                     <apex:outputText value="Sync Opportunity Amounts with Quote Amounts" />
+            </apex:pageBlockSectionItem>
+         
+    
+              <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c != ''}"> </apex:pageBlockSectionItem>
+               <apex:pageBlockSectionItem rendered="{!Opportunity.CCW_BOM_Integrated_Quote_Id__c != ''}">
+                  <apex:outputLabel value="Quote Name"/>
+                  <a ng-click="ToQuoteNavigation(opptyQuoteId);" style="text-decoration: underline;cursor:pointer;">{{opptyQuoteName}}</a>
+               </apex:pageBlockSectionItem>
+        End -->
+                            
+               <apex:inputhidden value="{!Opportunity.id}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Technology" columns="1" collapsible="false">
+               <apex:include pageName="QI_Opportunity_Technology_Desktop"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Service" columns="1" collapsible="false">
+               <apex:include pageName="QI_Opportunity_Service_Desktop"/>
+            </apex:pageBlockSection>
+         </apex:pageBlock>
+      </apex:form>
+   </div>
+   <script type="text/javascript">angular.bootstrap(document.getElementById('technologyApp'),['technologyApp']);</script>
+   <script>
+      
+   function checkExpectedServiceValue(){ <!-- QI2_Edit_utr: For real time check on service/product errors -->
+        var scope = angular.element(
+        document.getElementById("technologyApp")).scope();
+        scope.$apply(function () {
+        console.log("ExpectedService called");
+        scope.checkExpectedService();
+    });
+      }
+    function checkExpectedProductValue(){ <!-- QI2_Edit_utr: For real time check on service/product errors -->
+        var scope = angular.element(
+        document.getElementById("technologyApp")).scope();
+        scope.$apply(function () {
+        console.log("ExpectedProduct called");
+        scope.checkExpectedProduct();
+    });
+      }
+   //var EAedit = checkEAEdit();
+   //console.log(EAedit);
+    
+    ////QI2_Edit_utr: Validation for mix% that allows decimal values upto 2 places
+    var decimalIndex = [];
+    function checkDecimal(element,id,evt){ 
+          var _ind = id.split('_');
+          var ind = _ind[1];
+          var _value = document.getElementById(id).value;
+          var _decimal = _value.toString().split(".");
+          if(decimalIndex[ind] === null || decimalIndex[ind] === undefined || decimalIndex[ind] === NaN){
+              decimalIndex[ind] = 0;    
+          }
+          
+          if(_value === null || _value === undefined || _value === "" || _value === NaN){
+              decimalIndex[ind] = 0;
+          }
+          
+      
+          var charCode = (evt.which) ? evt.which : event.keyCode;
+          if (charCode == 46 || charCode == 190){
+              decimalIndex[ind] = decimalIndex[ind] + 1;
+              
+          } else {
+              if(_decimal[1] === null || _decimal[1] === undefined || _decimal[1] === ""){
+              decimalIndex[ind] = 0;
+              }
+          }
+          if (charCode > 31 && (charCode < 48 || charCode > 57) && !(charCode == 46 || charCode == 8 || charCode == 190))
+                return false;
+          else {
+                var len = $(element).val().length;
+                var index = $(element).val().indexOf('.');
+                if (index >= 0) {
+                  var CharAfterdot = (len + 1) - index;
+                  if (CharAfterdot > 3) {
+                        return false;
+                  }
+                } else 
+                if (charCode === 46 && decimalIndex[ind] === 0){
+                    decimalIndex[ind] = decimalIndex[ind] + 1;
+                    return true;
+                }else if (charCode === 46 && decimalIndex[ind] > 1){
+                    _value = document.getElementById(id).value;
+                    return false;
+                }
+          }
+          _value = document.getElementById(id).value;
+          return true;
+      }
+    
+    var decimalServiceIndex = [];
+    function checkServiceDecimal(element,id,evt){
+          var _ind = id.split('_');
+          var ind = _ind[1];
+          var _value = document.getElementById(id).value;
+          var _decimal = _value.toString().split(".");
+          if(decimalServiceIndex[ind] === null || decimalServiceIndex[ind] === undefined || decimalServiceIndex[ind] === NaN){
+              decimalServiceIndex[ind] = 0;
+              console.log("Index", decimalServiceIndex[ind]);
+          }
+          if(_value === null || _value === undefined || _value === "" || _value === NaN){
+              decimalServiceIndex[ind] = 0;
+          }
+          
+      
+          var charCode = (evt.which) ? evt.which : event.keyCode;
+          if (charCode == 46 || charCode == 190){
+              decimalServiceIndex[ind] = decimalServiceIndex[ind] + 1;
+          } else {
+              if(_decimal[1] === null || _decimal[1] === undefined || _decimal[1] === ""){
+              decimalServiceIndex[ind] = 0;
+          }
+          }
+          if (charCode > 31 && (charCode < 48 || charCode > 57) && !(charCode == 46 || charCode == 8))
+                return false;
+          else {
+                var len = $(element).val().length;
+                var index = $(element).val().indexOf('.');
+                if (index >= 0) {
+                  var CharAfterdot = (len + 1) - index;
+                  if (CharAfterdot > 3) {
+                        return false;
+                  }
+                }
+                if (charCode === 46 && decimalServiceIndex[ind] === 0){
+                    decimalServiceIndex[ind] = decimalServiceIndex[ind] + 1;
+                    return true;
+                }else if (charCode === 46 && decimalServiceIndex[ind] > 1){
+                    return false;
+                }
+          }
+          return true;
+      }
+    
+      function isNumberKey(evt){
+          var charCode = (evt.which) ? evt.which : event.keyCode
+          console.log(charCode);
+          if ( charCode > 31 && (charCode < 48 || charCode > 57) & charCode != 45 )
+              return false;
+          return true;
+      }
+      function isNumberKeyExp(evt){            
+          var charCode = (evt.which) ? evt.which : event.keyCode
+          if(charCode == 45){
+              return true;
+          }
+          if (charCode > 31 && (charCode < 48 || charCode > 57)){                
+              return false;           
+          }           
+          return true;
+      }    
+   </script>
+</apex:page>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Support_Request_URL__c</fullName>
+        <description>URL for corresponding Support Request for redirecting User to external application</description>
+        <externalId>false</externalId>
+        <label>Support Request URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Support_Request__c</fullName>
+        <description>Support Request for SAC</description>
+        <externalId>false</externalId>
+        <label>Support Request</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>SAC Service URLs for extenal application</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Support Request URL</label>
+    <visibility>Public</visibility>
+</CustomObject>

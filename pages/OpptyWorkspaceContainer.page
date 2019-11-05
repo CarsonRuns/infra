@@ -1,0 +1,13 @@
+<apex:page standardController="AT_Workspace__c">
+<chatter:feedWithFollowers entityId="{!AT_Workspace__c.Id}"/>
+    <apex:detail subject="{!AT_Workspace__c.Id}" relatedList="true" inlineEdit="true"/>  
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"/>
+    <script>
+        var j$ = jQuery.noConflict();
+        j$("iframe").each(function(){
+            j$(this).load(function() {
+                j$(this).height( j$(this).contents().find("body").height() );
+            });
+        });
+    </script>
+</apex:page>

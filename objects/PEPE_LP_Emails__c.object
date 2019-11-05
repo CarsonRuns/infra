@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Non_Prod_Email_Alias__c</fullName>
+        <description>Captures the non-prod used emails</description>
+        <externalId>false</externalId>
+        <label>Non Prod Email Alias</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prod_Email_Alias__c</fullName>
+        <description>Captures the prod email aliases</description>
+        <externalId>false</externalId>
+        <label>Prod Email Alias</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>Used for pulling learning partner email aliases both prod and nonprod</description>
+    <enableFeeds>false</enableFeeds>
+    <label>PEPE LP Emails</label>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>LP_Email_Aliases</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Prod_Email_Alias__c</columns>
+        <columns>Non_Prod_Email_Alias__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>LP Email Aliases</label>
+        <language>en_US</language>
+    </listViews>
+</CustomObject>

@@ -1,0 +1,72 @@
+<apex:page standardController="Lead" extensions="SCP_Communities_prmUtils_CT" showheader="true" sidebar="false">
+<apex:detail subject="{!Lead.Id}" inlineEdit="true" showChatter="false"/>
+<script type="text/javascript">
+    //Check deal value is not equal to zero
+    //alert("Check deal on Lead");
+   
+   // SCAVA FIX 
+    if({!JSENCODE(TEXT(Lead.Estimated_Deal_Value_USD__c))} == 0){
+        //INC000033059984 - replaced double quotes with single quite to fix the German label translation issue
+        alert('{!$Label.PRM_updateAmountInfoMessage}');
+       
+       // SCAVA FIX 
+        window.location="/{!JSENCODE($Setup.SCP_Communities_headerlinks__c.community_prefix__c)}/{!Lead.Id}/d";
+        //return false;
+        // SCAVA FIX
+   }else if(('{!Lead.Deal_ID__c}' != null && '{!Lead.Deal_ID__c}' != '') || ('{!JSENCODE(Lead.Partner_Lead_Status__c)}' == 'Deal Created')){
+        //wr-0592 added condtion not allow to redirect when dela is present 
+        alert('{!$Label.PRM_DealID_infomationmessage}');
+       // SCAVA FIX 
+        window.location="/{!JSENCODE($Setup.SCP_Communities_headerlinks__c.community_prefix__c)}/{!Lead.Id}/d";
+    }else{        
+        fUpdateLeadStatus();
+    }
+    
+    function fUpdateLeadStatus() {
+        var amCCOId="";
+        // SCAVA FIX 
+        var sfdcAccountId = "{!JSENCODE(Lead.End_Customer_Account__c)}";
+        var leadId = "{!Lead.Id}";
+        // SCAVA FIX 
+        var prefLang = "{!JSENCODE(languageLocaleKey)}";
+        
+        // SCAVA FIX 
+        var defaultPosition = "{!JSENCODE(Lead.Lead_Owner_Default_Position__c)}";
+        // SCAVA FIX 
+        var SkipOwner = "{!JSENCODE(Lead.Lead_SendOwnerAsNull__c)}";
+        //alert(amCCOId);
+        //alert(sfdcAccountId);
+        //alert(leadId);
+        //alert(prefLang);
+        //alert(defaultPosition);
+        //alert(SkipOwner);
+        
+        if (defaultPosition == null || defaultPosition =="" || SkipOwner =="yes"){
+            amCCOId = "";
+        }else{
+            
+            // SCAVA FIX 
+            var leadOwnerUserName = "{!JSENCODE(Lead.Lead_Owner_Username__c)}";
+            //alert(leadOwnerUserName );
+            var pos = leadOwnerUserName.search("@");
+            //alert(pos);
+            if(pos>0){
+                amCCOId = leadOwnerUserName.substr(0,pos);
+            }
+        }
+        
+        //alert(amCCOId );
+        <!-- SCAVA FIX -->
+        var createAccDealURL = "{!JSENCODE($Setup.CCW_Urls__c.createDealUrl__c)}" +
+        "?amCcoId=" + amCCOId +
+        "&sfdcAccountId=" + sfdcAccountId +
+        "&sfdcLeadFlag=L" +
+        "&targetProspectLeadId=" + leadId +
+        "&localeChanged=" + prefLang;
+        //alert(createAccDealURL);
+        
+        //window.open(createAccDealURL);
+        window.location=createAccDealURL;
+    }
+</script>
+</apex:page>

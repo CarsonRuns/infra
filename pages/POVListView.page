@@ -1,0 +1,17 @@
+<!--
+    Author        : Suresh
+    Date Created  : 9/11/2014
+    Description   : This visualForce use to Proof of values Related List on the Opportunities page to create new Proof of values
+-->
+<apex:page StandardController="Proof_of_Value__c" showHeader="true" tabstyle="Proof_of_Value__c">
+<apex:sectionheader title="Proof of Values" subtitle="Home">
+</apex:sectionheader>
+    <apex:pageMessage severity="INFO"
+        strength="3"
+        title="Info: Proof of values have to be created from the Opportunity page."
+        escape="false"
+        summary="Please use the Proof of values Related List on the Opportunities page to create new Proof of values."
+        rendered="{! IF(OR($CurrentPage.parameters.newRelatedlist= '0',$CurrentPage.parameters.newRelatedlist= ''), TRUE, FALSE) }" >        
+    </apex:pageMessage>
+<apex:ListViews type="Proof_of_Value__c" />
+</apex:page>

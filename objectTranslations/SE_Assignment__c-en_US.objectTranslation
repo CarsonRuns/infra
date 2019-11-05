@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Cisco SE --></label>
+        <name>Cisco_SE__c</name>
+        <relationshipLabel><!-- SE Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contribution % --></label>
+        <name>Contribution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify AM --></label>
+        <name>Notify_AM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify SE --></label>
+        <name>Notify_SE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- SE Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner SE --></label>
+        <name>Partner_SE__c</name>
+    </fields>
+    <fields>
+        <label><!-- SE Assignment Type --></label>
+        <name>SE_Assignment_Type__c</name>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation><!-- Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation><!-- Secondary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SE Engagement Type --></label>
+        <name>SE_Engagement_Type__c</name>
+        <picklistValues>
+            <masterLabel>Contribution Intensity: High</masterLabel>
+            <translation><!-- Contribution Intensity: High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contribution Intensity: Low</masterLabel>
+            <translation><!-- Contribution Intensity: Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contribution Intensity: Medium</masterLabel>
+            <translation><!-- Contribution Intensity: Medium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engaged: Proactive</masterLabel>
+            <translation><!-- Engaged: Proactive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engaged: Reactive</masterLabel>
+            <translation><!-- Engaged: Reactive --></translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>zzSE Assignment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SE Assignments</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>SE_Assignment_Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- SE Assignment records can contain either a Cisco SE or a Partner SE, not both.  If you need to assign an additional SE to this Opportunity, please create a new SE Assignment --></errorMessage>
+        <name>zzCisco_SE_or_Partner_SE_Not_Both</name>
+    </validationRules>
+</CustomObjectTranslation>

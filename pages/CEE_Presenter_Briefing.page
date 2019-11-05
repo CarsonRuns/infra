@@ -1,0 +1,143 @@
+<apex:page standardController="CEE__c" extensions="CEE_PreBriefingController" renderas="pdf" >
+<head>
+<style>
+
+    @page {
+    size: landscape;
+    }
+    
+    table.gridtable {
+        font-family: verdana,arial,sans-serif;
+        font-size:6px;
+        color:#333333;
+        border-width: 1px;
+        border-color: #666666;
+    }
+    
+    table.gridtable th {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        font-weight:bold;
+    }
+    
+    table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+    }
+</style> 
+</head>
+<!---- First Page ----->
+<apex:image url="{!$Resource.ciscologo}" width="100" height="80"/>
+
+<h2>CEE - Presenter Pre-Briefing </h2>
+<br />
+<table>
+<tr><th>Account Name</th>
+    <td><apex:outputField value="{!CEE__c.Primary_Account__c}"/></td>
+    </tr>
+    
+<tr><th>Date</th>
+    <td><!--<apex:outputText value="{!CEE__c.Start_Date_Time__c}"/>-->
+    <apex:outputText value="{0,date,dd' 'MMM' 'yyyy  'at' HH:mm a}"> 
+       <apex:param value="{!CEE__c.Start_Date_Time__c}" />
+    </apex:outputText> 
+    
+    </td>
+   </tr>
+    
+<tr><th>Location</th>
+    <td><apex:outputText value="{!CEE__c.EBC_CBC_Location__c}"/></td>
+    </tr>
+    
+<tr><th>Executive Sponsors</th>
+    <td><apex:outputField value="{!CEE__c.Executive_Sponsors__r.Name}"/></td>
+    </tr>
+
+<tr><th>Previously Engaged By</th>
+    <td><apex:outputText value="{!lstExecs}"/></td>
+    </tr>
+    
+<tr><th>Opportunity</th>
+    <td><apex:outputField value="{!CEE__c.Opportunity__c}"/></td>
+    </tr>
+    
+<tr><th>Competitors</th>
+    <td><apex:outputText value="{!competitors}"/></td>
+    </tr>        
+
+<tr><th>Previous Engagements</th>
+    <td><apex:outputText value="{!relReqs}"/></td>
+    </tr>    
+    
+    <tr><th>Architecture</th>
+    <td><apex:outputField value="{!CEE__c.Architecture__c}"/></td>
+    </tr>  
+    
+    <tr><th>Business Outcomes</th>
+    <td><apex:outputField value="{!CEE__c.Business_Outcomes__c}"/></td>
+    </tr>  
+     
+</table>
+
+
+<h3>Briefing Agenda</h3>
+<apex:repeat value="{!lstAgendaItems}" var="agenda">
+<table> 
+<tr><th>Agenda Item Name</th><td><apex:outputText value="{!agenda.name}" /></td></tr>
+<tr><th>Architecture</th><td><apex:outputText value="{!CEE__c.Architecture__c}"/></td></tr>
+<tr><th>Sub-Architecture</th><td><apex:outputText value="{!CEE__c.Sub_Architecture__c}"/></td></tr>
+<tr><th>Start Date/Time</th>
+<td><!--<apex:outputtext value="{!agenda.Start_Date_Time__c}" />-->
+<!--<apex:outputText value="{0,date,dd'/'MM'/'yyyy  'at' HH:mm z}">-->
+<apex:outputText value="{0,date,dd' 'MMM' 'yyyy  'at' HH:mm a}">
+<apex:param value="{!agenda.Start_Date_Time__c}" />
+</apex:outputText>
+</td></tr>
+<tr><th>End Date/Time</th>
+<td><!--<apex:outputtext value="{!agenda.End_Date_Time__c}" />-->
+<apex:outputText value="{0,date,dd' 'MMM' 'yyyy  'at' HH:mm a}">
+<!--<apex:outputText value="{0,date,dd'/'MM'/'yyyy  'at' HH:mm z}"> -->
+<apex:param value="{!agenda.End_Date_Time__c}" />
+</apex:outputText>
+</td></tr>
+<br></br>
+</table> 
+
+</apex:repeat>
+
+<!----  Second Page ----->
+<!--  <apex:image url="{!$Resource.ciscologo}" width="20%"/> <br /> <br /> -->
+<!--<div style="page-break-before: always"/ >-->
+<div style="page-break-after: always"/> 
+
+<h2 style="margin-top:12%">Presenter Consolidated Agenda</h2>
+<table Id="header" style="width: 100%; " border ="1">     
+     <tr>
+    <td>Start Time </td>
+    <td>End Time </td>
+    <td>Location</td>
+    <td>Presentation Title </td>
+    <td>Delivery</td>
+    <td>Presenters</td>
+    <td>Presentation Objectives</td>
+    
+    </tr>
+    <apex:repeat value="{!lstAgendaItems1}" var="agenda">
+    <tr>
+    <td><apex:outputtext rendered="{!IF(isOBX,true,false)}" value="{!attendeeStartMap[agenda]}"> </apex:outputtext><apex:outputtext rendered="{!IF(isOBX,false,true)}" value="{!itceStartMap[agenda]}"> </apex:outputtext></td>
+    <td><apex:outputtext rendered="{!IF(isOBX,true,false)}" value="{!attendeeEndMap[agenda]}"> </apex:outputtext><apex:outputtext rendered="{!IF(isOBX,false,true)}" value="{!itceEndMap[agenda]}"> </apex:outputtext></td>
+    <td><apex:outputText >{!agenda.Selected_Rooms_Display__c}</apex:outputText></td>
+    <td><apex:outputText >{!agenda.Name}</apex:outputText></td>
+    <td><apex:outputText >{!agenda.Delivery_Method__c}</apex:outputText></td>
+    <td><apex:outputText >{!attendeeMap[agenda]}</apex:outputText></td>
+   <td><apex:outputText >{!agenda.Sales_Objectives__c}</apex:outputText></td>
+    </tr>
+    </apex:repeat>
+  
+</table>
+</apex:page>

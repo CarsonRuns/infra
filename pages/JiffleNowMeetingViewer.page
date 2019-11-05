@@ -1,0 +1,84 @@
+<apex:page standardController="CEE__c" extensions="JiffleNowMeetingSchedular_CTE" id="jnShdler" sidebar="false" tabStyle="Jiffle_Event__c">
+        <script type="text/javascript">
+        function eventStatus(ceeId, sessionmtgId){
+        // SCAVA FIX
+        var eventStatus =  '{!JSENCODE(CEE__c.Jiffle_Event__r.Schedule_Meeting__c)}';
+        var eventactivitystatus = '{!JSENCODE(CEE__c.Jiffle_Event__r.Event_Status__c)}';
+        if (eventactivitystatus == 'Inactive'){
+        alert("{!$Label.JiffleEditInactiveMessage}");
+        }
+        else if (eventStatus === 'Event Completed'){
+        alert("{!$Label.JiffleEditPastMessage}");
+        }
+        else{
+        window.open('/apex/JiffleNowMeetingSchedular?Id='+ceeId+'&sessionId='+sessionmtgId, '_parent')
+        }
+        }
+        </script>
+    <apex:form id="jnShdFrom">
+        <!-- Block to show when user is viewing the Meetings/Session within CEE -->
+        
+        <apex:pageBlock mode="maindetail" rendered="{!eMode}" id="ceeView">
+       
+            <apex:pageblocktable id="meetingLst" value="{!CEESessions}" var="alljf" style="height:10px;">
+                <apex:column headervalue="Action">
+                    <a href="#" onclick="eventStatus('{!CEE__c.Id}','{!alljf.Id}');" > Edit&nbsp;</a>
+                </apex:column>
+                <apex:column headervalue="Salesforce Meeting ID" >
+                    <!--<apex:outputLink target="_parent" value="{!URLFOR($Action.Jiffle_Meeting_Session__c.View, alljf.id)}">{!alljf.name}</apex:outputLink>-->
+                    <a target="_parent" href="{!LEFT($Api.Partner_Server_URL_320, FIND( '/services', $Api.Partner_Server_URL_320))}{!alljf.id}?Id={!CEE__c.id}&sessionId={!alljf.id}">{!alljf.Name}</a>
+                
+                </apex:column>
+                <apex:column headervalue="Meeting Type">
+                    <apex:outputfield value="{!alljf.Meeting_Type__c}">
+                    </apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Meeting Start Date/Time">
+                    <apex:outputfield value="{!alljf.Start_Date_Time__c }">
+                    </apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Meeting End Date/Time">
+                    <apex:outputfield value="{!alljf.End_Date_Time__c}">
+                    </apex:outputfield>
+                </apex:column>
+                <apex:column headervalue="Meeting Agenda">
+                    <apex:outputfield value="{!alljf.Jiffle_Agenda_Item__c }">
+                    </apex:outputfield>
+                </apex:column>
+
+                <apex:column headervalue="Meeting Status">
+                    <apex:outputfield value="{!alljf.Request_Status__c}">
+                    </apex:outputfield>
+                </apex:column>
+            </apex:pageblocktable>
+            <br/>
+            <apex:actionFunction name="getNext" action="{!jiffleCEESession.next}" />
+            <apex:actionFunction name="getfirst" action="{!jiffleCEESession.first}" />
+            <apex:actionFunction name="getlast" action="{!jiffleCEESession.last}" />
+            <apex:actionFunction name="getprevious" action="{!jiffleCEESession.previous}" />
+            <div class="paginator">
+                <span class="prevNextLinks">            
+                    <apex:outputText escape="false" value="{!IF(jiffleCEESession.hasPrevious,'<span class=prevNext><a href=javascript:getfirst() class=prevNextLinks><b><img src=/s.gif class=first alt=First Page/></a></b></span>','<span class=prevNext><img src=/s.gif class=firstoff alt=First Page/>')}"/>
+                    <apex:outputText escape="false" value="{!IF(jiffleCEESession.hasPrevious,'<span class=prevNext><a href=javascript:getprevious() class=prevNextLinks><b><img src=/s.gif class=prev alt=Previous/>Previous</a></b></span>','<span class=prevNext><img src=/s.gif class=prevoff alt=Previous/>Previous')}"/>
+                    <apex:outputText escape="false" value="{!IF(jiffleCEESession.hasNext,'<span class=prevNext><a href=javascript:getNext() class=prevNextLinks><b>Next<img src=/s.gif class=next alt=Next /></a></b></span>','<span class=prevNext>Next<img src=/s.gif class=nextoff alt=Next />')}"/>
+                    <apex:outputText escape="false" value="{!IF(jiffleCEESession.hasNext,'<span class=prevNext><a href=javascript:getlast() class=prevNextLinks><b><img src=/s.gif class=last alt=Last /></a></b></span>','<span class=prevNext><img src=/s.gif class=lastoff alt=Last />')}"/>
+                </span>
+                
+            </div>
+        </apex:pageBlock>        
+    </apex:form>
+    <script language="javascript">
+        function resizeIframe() {
+            var me = window.name;
+            if (me) {
+                var iframes = parent.document.getElementsByName(me);
+                if (iframes && iframes.length == 1) {
+                    height = document.body.offsetHeight;
+                    //if (height <= 300) 
+                    iframes[0].style.height = height + "px";
+                }
+            }
+        }
+        resizeIframe();
+    </script>
+</apex:page>

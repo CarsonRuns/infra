@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>PDP_PPL_RecordType_Change_When_Published</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>PDP_PPL_Status_to_published</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>PLED_PPL_Admin_EMEAR_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Only one approval step.</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>PEPE_Training_Event__c.RecordType</field>
+                <operation>equals</operation>
+                <value>Partner Plus Lounge</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>RejectRecord</ifCriteriaNotMet>
+        <label>step 1</label>
+        <name>step_1</name>
+        <rejectionActions>
+            <action>
+                <name>PDP_PPL_Submitted_to_Deleted</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>This Approval Process is to have a business workflow automation behind the PLED/CCO team and PLED team. PLED Team either approves or rejects the record based on the details provided in the record.</description>
+    <emailTemplate>PEPE_Email_Template_Notifications/PDP_PPL_Plead_notification_when_CCO_PLED_requests_Training_Curriculum</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>( Event_Agenda_Count__c  &gt;= 1 ) &amp;&amp;
+( Duration_Value__c   = Total_EA_Duration__c )&amp;&amp;
+ISPICKVAL( Status__c , &apos;created&apos; ) &amp;&amp;
+ISPICKVAL ( Platform__c , &apos;Partner Plus Lounge&apos; )</formula>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>PDP_PPL_Status_to_submitted</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>PDP_PPL_PLED_CCO_ submits_to_Admin_EMEA</label>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

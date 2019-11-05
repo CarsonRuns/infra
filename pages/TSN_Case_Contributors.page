@@ -1,0 +1,47 @@
+<apex:page standardController="Case" extensions="TSN_Case_Contributors_CTE"  >
+<apex:sectionHeader title="Add Contributors to Case {!caseRecord.caseNumber}"/>
+  <apex:form >
+    <apex:pageblock >
+       <apex:pageMessages />
+       <!-- Section of Team field -->
+       <apex:pageBlockSection >
+          <apex:pageBlockSectionItem > Team 
+            <apex:inputField value="{!caserecord.Team__c}"  >
+              <apex:actionSupport event="onchange" action="{!setListOfUsersForTeam}"  reRender="multiselectPicklist" />
+            </apex:inputField>
+          </apex:pageBlockSectionItem>
+       </apex:pageBlockSection>
+        <!-- Section of Team Member MultiSelect Picklist field -->
+       <apex:pageBlockSection >
+          <apex:pageBlockSectionItem >Team Members
+            <apex:panelGrid columns="3" id="multiselectPicklist">
+               <apex:selectList id="leftSelectList" value="{!leftSelectedValuesList}" multiselect="true" size="5"  ondblclick="{!selectclick}" >
+                   <apex:selectOptions value="{!leftValuesSet}" />
+                   <apex:actionSupport event="ondblclick" action="{!selectclick}" reRender="multiselectPicklist"/>
+               </apex:selectList>
+               <apex:panelGroup >
+                 <br/>
+                 <apex:image value="{!$Resource.TSN_Select_Arrow}">
+                   <apex:actionSupport event="onclick" action="{!selectclick}" reRender="multiselectPicklist"/>
+                 </apex:image>
+                 <br/><br/>
+                 <apex:image value="{!$Resource.TSN_Unselect_Arrow}">
+                    <apex:actionSupport event="onclick" action="{!unselectclick}" reRender="multiselectPicklist"/>
+                 </apex:image>
+               </apex:panelGroup>
+               <apex:selectList id="rightSelectList" value="{!rightSelectedValuesList}" multiselect="true" size="5" ondblclick="{!unselectclick}">
+                 <apex:selectOptions value="{!RightValuesSet}" />
+                    <apex:actionSupport event="ondblclick" action="{!unselectclick}" reRender="multiselectPicklist"/>
+                </apex:selectList>
+            </apex:panelGrid>
+          </apex:pageBlockSectionItem>
+       </apex:pageBlockSection>
+               <!-- Buttons Save and Cancel-->
+       <apex:pageBlockButtons location="bottom">
+          <apex:commandButton value="Save" action="{!Save}" oncomplete="opener.location.reload(true)"/ >
+          <apex:commandButton value="Cancel" action="{!cancel}"  />
+       </apex:pageBlockButtons>
+
+     </apex:pageblock>
+   </apex:form>
+</apex:page>

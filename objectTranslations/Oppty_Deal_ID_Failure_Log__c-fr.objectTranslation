@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Essais</label>
+        <name>Attempts__c</name>
+    </fields>
+    <fields>
+        <label>ID de la transaction</label>
+        <name>DealID__c</name>
+    </fields>
+    <fields>
+        <label>Erreur</label>
+        <name>Error__c</name>
+    </fields>
+    <fields>
+        <label>Opportunité</label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Oppty Deal ID Failure Log --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Oppty Deal ID Failure Log --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Oppty Deal ID Failure Log --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Oppty Deal ID Failure Log Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Oppty Deal ID Failure Log Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informations</label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label>Informations système</label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

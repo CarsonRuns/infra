@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- AM Email Id --></label>
+        <name>AM_Email_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Back Time --></label>
+        <name>Call_Back_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Script Completed --></label>
+        <name>Call_Script_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Script Executed --></label>
+        <name>Call_Script_Executed__c</name>
+    </fields>
+    <fields>
+        <label><!-- CC Call Script --></label>
+        <name>Call_Script__c</name>
+        <relationshipLabel><!-- CC Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Call Status --></label>
+        <name>Call_Status__c</name>
+        <picklistValues>
+            <masterLabel>Call Back Later</masterLabel>
+            <translation><!-- Call Back Later --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call Completed</masterLabel>
+            <translation><!-- Call Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid</masterLabel>
+            <translation><!-- Invalid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid Call Completed</masterLabel>
+            <translation><!-- Invalid Call Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Max Attempts Reached</masterLabel>
+            <translation><!-- Max Attempts Reached --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nuture</masterLabel>
+            <translation><!-- Nuture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PE Cancelled/Completed</masterLabel>
+            <translation><!-- PE Cancelled/Completed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Campaign__c</name>
+        <relationshipLabel><!-- CC Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact Reason --></label>
+        <name>Contact_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Existing Account</masterLabel>
+            <translation><!-- Existing Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Follow up</masterLabel>
+            <translation><!-- Lead Follow up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mis-routed into Sales</masterLabel>
+            <translation><!-- Mis-routed into Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Project</masterLabel>
+            <translation><!-- New Project --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nurture</masterLabel>
+            <translation><!-- Nurture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Optimize</masterLabel>
+            <translation><!-- Optimize --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other/Unknown</masterLabel>
+            <translation><!-- Other/Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Owns Cisco Equipment</masterLabel>
+            <translation><!-- Owns Cisco Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Replace/Upgrade</masterLabel>
+            <translation><!-- Replace/Upgrade --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub-Outcome --></label>
+        <name>Disposition_Sub_Type__c</name>
+        <picklistValues>
+            <masterLabel>Before Convo</masterLabel>
+            <translation><!-- Before Convo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Support</masterLabel>
+            <translation><!-- Cloud Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consultant did not disclose end user contact info</masterLabel>
+            <translation><!-- Consultant did not disclose end user contact info --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contacted via Email</masterLabel>
+            <translation><!-- Contacted via Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contacted via Email &amp; Phone</masterLabel>
+            <translation><!-- Contacted via Email &amp; Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contacted via Phone</masterLabel>
+            <translation><!-- Contacted via Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate Prospect</masterLabel>
+            <translation><!-- Duplicate Prospect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>E-commerce</masterLabel>
+            <translation><!-- E-commerce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GVE-Partner Support</masterLabel>
+            <translation><!-- GVE-Partner Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Product info (Data sheets-Compatability Info-Part Numbers)</masterLabel>
+            <translation><!-- General Product info (Data sheets-Compatability Info-Part Numbers) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Has a Partner</masterLabel>
+            <translation><!-- Has a Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Outsource</masterLabel>
+            <translation><!-- IT Outsource --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Licensing (TAC)</masterLabel>
+            <translation><!-- Licensing (TAC) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Long Billing Cycle</masterLabel>
+            <translation><!-- Long Billing Cycle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No longer with Company</masterLabel>
+            <translation><!-- No longer with Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Fit Wrong Contact</masterLabel>
+            <translation><!-- Not Fit Wrong Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not in purchasing cycle (Evaluating Vendor-Solution)</masterLabel>
+            <translation><!-- Not in purchasing cycle (Evaluating Vendor-Solution) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity</masterLabel>
+            <translation><!-- Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order &amp; Billing</masterLabel>
+            <translation><!-- Order &amp; Billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Cisco Dept</masterLabel>
+            <translation><!-- Other Cisco Dept --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Project Not yet Initiated-Requested Follow Up Info</masterLabel>
+            <translation><!-- Project Not yet Initiated-Requested Follow Up Info --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Provided General Product info</masterLabel>
+            <translation><!-- Provided General Product info --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Residential Support</masterLabel>
+            <translation><!-- Residential Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent to AM</masterLabel>
+            <translation><!-- Sent to AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent to BDR</masterLabel>
+            <translation><!-- Sent to BDR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent to LDR</masterLabel>
+            <translation><!-- Sent to LDR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent to Partner</masterLabel>
+            <translation><!-- Sent to Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent to VSS</masterLabel>
+            <translation><!-- Sent to VSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAC</masterLabel>
+            <translation><!-- TAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training &amp; Certifications</masterLabel>
+            <translation><!-- Training &amp; Certifications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown-Other Reason Provided</masterLabel>
+            <translation><!-- Unknown-Other Reason Provided --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- External Source Contact Id --></label>
+        <name>External_Source_Contact_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inbound Note --></label>
+        <name>Inbound_Note__c</name>
+        <picklistValues>
+            <masterLabel>Complaint</masterLabel>
+            <translation><!-- Complaint --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Dropped Off</masterLabel>
+            <translation><!-- Customer Dropped Off --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Followed Up</masterLabel>
+            <translation><!-- Customer Followed Up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Service</masterLabel>
+            <translation><!-- Customer Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer made bad call</masterLabel>
+            <translation><!-- Customer made bad call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Integrator</masterLabel>
+            <translation><!-- System Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Support</masterLabel>
+            <translation><!-- Technical Support --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Keycode --></label>
+        <name>Key_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>Language__c</name>
+        <picklistValues>
+            <masterLabel>Arabic: ar</masterLabel>
+            <translation><!-- Arabic: ar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Simplified): zh_CN</masterLabel>
+            <translation><!-- Chinese (Simplified): zh_CN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Czech: cs</masterLabel>
+            <translation><!-- Czech: cs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Danish: da</masterLabel>
+            <translation><!-- Danish: da --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch: nl_NL</masterLabel>
+            <translation><!-- Dutch: nl_NL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English: en_US</masterLabel>
+            <translation><!-- English: en_US --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finnish: fi</masterLabel>
+            <translation><!-- Finnish: fi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French: fr</masterLabel>
+            <translation><!-- French: fr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German: de</masterLabel>
+            <translation><!-- German: de --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greek: el</masterLabel>
+            <translation><!-- Greek: el --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hungarian: hu</masterLabel>
+            <translation><!-- Hungarian: hu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian: it</masterLabel>
+            <translation><!-- Italian: it --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese: ja</masterLabel>
+            <translation><!-- Japanese: ja --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean: ko</masterLabel>
+            <translation><!-- Korean: ko --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Polish: pl</masterLabel>
+            <translation><!-- Polish: pl --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese (Brazil): pt_BR</masterLabel>
+            <translation><!-- Portuguese (Brazil): pt_BR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian: ru</masterLabel>
+            <translation><!-- Russian: ru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish: es</masterLabel>
+            <translation><!-- Spanish: es --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swedish: sv</masterLabel>
+            <translation><!-- Swedish: sv --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thai: th</masterLabel>
+            <translation><!-- Thai: th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkish: tr</masterLabel>
+            <translation><!-- Turkish: tr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vietnamese: vi</masterLabel>
+            <translation><!-- Vietnamese: vi --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Lead Admin Email --></label>
+        <name>Lead_Admin_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Description --></label>
+        <name>Lead_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead --></label>
+        <name>Lead__c</name>
+        <relationshipLabel><!-- CC Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MODS Contact --></label>
+        <name>MODS_Contact__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of Question --></label>
+        <name>No_of_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Contact Email Id --></label>
+        <name>Partner_Contact_Email_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Persona --></label>
+        <name>Persona__c</name>
+        <picklistValues>
+            <masterLabel>Cisco Agent (Other Dept.)</masterLabel>
+            <translation><!-- Cisco Agent (Other Dept.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Partner</masterLabel>
+            <translation><!-- Cisco Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consultant/Contractor</masterLabel>
+            <translation><!-- Consultant/Contractor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer/End User</masterLabel>
+            <translation><!-- Customer/End User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home User</masterLabel>
+            <translation><!-- Home User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other/Unknown</masterLabel>
+            <translation><!-- Other/Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reseller</masterLabel>
+            <translation><!-- Reseller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Student</masterLabel>
+            <translation><!-- Student --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Response Date Time --></label>
+        <name>Response_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Type --></label>
+        <name>Response_Type__c</name>
+        <picklistValues>
+            <masterLabel>Inbound Call</masterLabel>
+            <translation><!-- Inbound Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound Chat</masterLabel>
+            <translation><!-- Inbound Chat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound Call</masterLabel>
+            <translation><!-- Outbound Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Inquiry</masterLabel>
+            <translation><!-- Web Inquiry --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Source Event Number --></label>
+        <name>Source_Event_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System Name --></label>
+        <name>Source_System_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date/Time --></label>
+        <name>Start_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outcome --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Call Back</masterLabel>
+            <translation><!-- Call Back --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cust Prefers a different buying method</masterLabel>
+            <translation><!-- Cust Prefers a different buying method --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Dropped Off</masterLabel>
+            <translation><!-- Customer Dropped Off --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Service</masterLabel>
+            <translation><!-- Customer Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid Info</masterLabel>
+            <translation><!-- Invalid Info --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Escalation</masterLabel>
+            <translation><!-- Lead Escalation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Max Attempts Reached</masterLabel>
+            <translation><!-- Max Attempts Reached --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nurture</masterLabel>
+            <translation><!-- Nurture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualified Lead</masterLabel>
+            <translation><!-- Qualified Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer out</masterLabel>
+            <translation><!-- Transfer out --></translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CC Response</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CC Responses</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CC Response Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Lead Informatiion --></label>
+            <section>Lead Informatiion</section>
+        </sections>
+        <sections>
+            <label><!-- Lead and Response Information --></label>
+            <section>Lead and Response Information</section>
+        </sections>
+        <sections>
+            <label><!-- Response Information --></label>
+            <section>Response Information</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Call Back Time must be  future date/time. --></errorMessage>
+        <name>NGCC_Validate_Call_Back_Date</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,20 @@
+<apex:page >
+
+<script type='text/javascript' src='https://c.la4-c2-chi.salesforceliveagent.com/content/g/js/40.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la4-c2-chi.salesforceliveagent.com/chat', '572340000004Cu2', '00D300000000QUu');
+</script>
+
+  <h1>Hello</h1>
+  <p>This is text (button) telling you if chat is working or not available.</p>
+
+<a id="liveagent_button_online_573340000004DIs" href="javascript://Chat" style="display: none;" onclick="liveagent.startChat('573340000004DIs')">Chat Now</a><div id="liveagent_button_offline_573340000004DIs" style="display: none;"><!-- Offline Chat Content --></div><script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('573340000004DIs', document.getElementById('liveagent_button_online_573340000004DIs'));
+liveagent.showWhenOffline('573340000004DIs', document.getElementById('liveagent_button_offline_573340000004DIs'));
+});</script>
+
+
+<div id="liveagent_invite_button_57334000000PBbN" style="display:none;"><span style="cursor: pointer; width: 100px; height: 20px; padding: 5px;" onclick="liveagent.startChat('57334000000PBbN')">Start Chat</span><span style="cursor: pointer; width: 100px; height: 20px; padding: 5px;" onclick="liveagent.rejectChat('57334000000PBbN')">Reject Chat</span></div>
+
+</apex:page>

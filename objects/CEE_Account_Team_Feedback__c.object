@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Accelerate_Sales_Cycle_Virtual_Remote__c</fullName>
+        <description>The % increase in acceleration of sales cycle time</description>
+        <externalId>false</externalId>
+        <label>% Accelerate Sales Cycle - V/R Demo</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Additional_Feedback__c</fullName>
+        <description>Additional Feedback on CXC and CPOC Services</description>
+        <externalId>false</externalId>
+        <label>Additional Feedback</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Additional_Opportunity_Details__c</fullName>
+        <description>Explain Additional Opportunities</description>
+        <externalId>false</externalId>
+        <label>Additional Opportunity Details</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Attributed_to_CPOC_in_Closing_Deal__c</fullName>
+        <description>Likelihood increased for Closing Deal using CPOC Services</description>
+        <externalId>false</externalId>
+        <label>Attributed to CPOC in Closing Deal (%)</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Attributed_to_CXC_in_Closing_Deal__c</fullName>
+        <description>Increase in likelihood of deal closing for FSAT CXC and CPOC</description>
+        <externalId>false</externalId>
+        <label>Attributed to CXC in Closing Deal(%)</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CEC_ID__c</fullName>
+        <description>It is the Cisco ID entered in the Survey</description>
+        <externalId>false</externalId>
+        <label>CEC ID</label>
+        <length>150</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CEE__c</fullName>
+        <description>It is the master-detail relationship with Customer Engagements Event object.</description>
+        <externalId>false</externalId>
+        <label>CEE</label>
+        <referenceTo>CEE__c</referenceTo>
+        <relationshipLabel>Account Team Feedback</relationshipLabel>
+        <relationshipName>CEE_Accounts_Team_Feedback_del2</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>CPOC_helped_create_addtl_Opportunities__c</fullName>
+        <description>Did use of CPOC help create additional Opportunities?</description>
+        <externalId>false</externalId>
+        <label>CPOC helped create addtl Opportunities</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CXC_helped_to_create_addl_opportunities__c</fullName>
+        <description>CXC helped to create additional opportunities for OBX</description>
+        <externalId>false</externalId>
+        <label>CXC helped create addtl opportunities</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Confidence_Increase__c</fullName>
+        <description>Increase in customer confidence level Using FSAT  CXC and CPOC Services</description>
+        <externalId>false</externalId>
+        <label>Customer Confidence Increase(%)</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DLP_order_Mgmt_Time_Saved_in_Days__c</fullName>
+        <description>Time in Days save by not managing any given DLP order</description>
+        <externalId>false</externalId>
+        <label>DLS order Mgmt. Time Saved (in Days)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Estimated_Spend_on_DLP_K_USD__c</fullName>
+        <description>Estimated Spend on DLP ($K USD) in each quarter if CPOC would not be available</description>
+        <externalId>false</externalId>
+        <label>Estimated Spend on DLS ($K USD)</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FSAT_Recommendation_Type__c</fullName>
+        <description>This field is used to store Survey feedback for FSAT OBX and FSAT CPOC. Calculation based below . 
+1. 0-6 Range (Detractors) 
+2. 7-8 Range (Passives) 
+3. 9-10 Range (Promoters)</description>
+        <externalId>false</externalId>
+        <formula>IF(NPS_Rating__c &lt;&gt; '', 
+IF(VALUE(NPS_Rating__c) &lt;= 6 , 'Detractors', 
+IF(AND(VALUE(NPS_Rating__c) &gt;=7,VALUE(NPS_Rating__c) &lt;= 8), 'Passives', 
+'Promoters')),'')</formula>
+        <label>FSAT Recommendation Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FSAT_Survey_Project_Type__c</fullName>
+        <description>This is used to set record type in CEE Account Team Feedback object</description>
+        <externalId>false</externalId>
+        <formula>IF(CEE__r.RecordTypeId = $Setup.ObjectRecordTypeIds__c.CEE_CPOC_Record_Type_ID__c, 'CPOC', 
+IF(CEE__r.RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.CEE_OBX_Record_Type_ID__c,15), 'OBX', 
+NULL))</formula>
+        <label>FSAT Survey Project Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hours_Saved_using_CXC_vs_First_time_Demo__c</fullName>
+        <description>how many hours would you spend setting up your own demonstration  platform for the first time?</description>
+        <externalId>false</externalId>
+        <label>Hrs Saved - CXC vs 1st time Demo Setup</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hrs_Saved_CPOC_vs_1st_time_Demo_Setup__c</fullName>
+        <description>If not used CPOC Services, how many hours would have been spent to set up own demonstration Platform for the First time</description>
+        <externalId>false</externalId>
+        <label>Hrs Saved - CPOC vs 1st time Demo Setup</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NPS_Rating__c</fullName>
+        <description>On a scale of 10 , how likely Cisco is recommend  to a friend or Colleague</description>
+        <externalId>false</externalId>
+        <label>NPS Rating</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <description>This field is used to store the FSAT Survey feedback name for OBX and CPOC</description>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason_for_NPS_Rating__c</fullName>
+        <description>Reason for selecting the NPS Rating</description>
+        <externalId>false</externalId>
+        <label>Reason for NPS Rating</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reduction_in_Sales_Cycle_using_CPOC__c</fullName>
+        <description>The CPOC service reduce the duration in your typical sales cycle by weeks</description>
+        <externalId>false</externalId>
+        <label>Reduction in Sales Cycle using CPOC</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reduction_in_sales_cycle_using_CXC__c</fullName>
+        <description>The CXC service reduce the duration in your typical sales cycle by weeks</description>
+        <externalId>false</externalId>
+        <label>Reduction in Sales Cycle using CXC</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submitted_Date_Time__c</fullName>
+        <description>Survey Submitted Date and Time for FSAT Surveys</description>
+        <externalId>false</externalId>
+        <formula>CreatedDate</formula>
+        <label>Submitted Date Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Account Team Feedback</label>
+    <nameField>
+        <displayFormat>A-{0000}</displayFormat>
+        <label>Account Team Feedback Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Team Feedback</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <recordTypes>
+        <fullName>CPOC_CEE_Accounts_Team_Feedback</fullName>
+        <active>true</active>
+        <description>This will save the CEE Acounts Team Feedback for CPOC request</description>
+        <label>CPOC CEE Accounts Team Feedback</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CXC_CEE_Account_Team_Feedback</fullName>
+        <active>true</active>
+        <description>This will save the CEE Account Team Feedback for OBX request</description>
+        <label>CXC CEE Account Team Feedback</label>
+    </recordTypes>
+</CustomObject>

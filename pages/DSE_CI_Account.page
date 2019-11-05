@@ -1,0 +1,149 @@
+<apex:page standardController="Account" showHeader="false" standardStylesheets="false" docType="html-5.0" applyHtmlTag="true" cache="false">
+   <apex:stylesheet value="{!URLFOR($Resource.ciscobootstrap, '/css/bootstrap.css')}" />
+   <div class="dse-st" style="padding:20px;display:none;height:400px" id="dse-Maintenance">
+      <div class="row">
+         <div class="col-md-3 col-lg-3">
+         </div>
+         <div class="col-md-6 col-lg-6" style="text-align:left;border:1px solid #eee;padding:10px;font-family:CiscoSans;font-size:small;">
+            <apex:outputText escape="false" value="{!$Label.CiscoReadyInMaintenanceMessage}" />
+         </div>
+         <div class="col-md-3 col-lg-3">
+         </div>
+      </div>
+   </div>
+       <div id="ib_banner" style="padding:10px;font-family:CiscoSans;font-size:14px;color:#4b586c;display:none;">
+            <b>Now available - Customer Cisco.com Activity Insights!</b> Access the new Customer Cisco.com Activity tile in combination with Eloqua Profiler, to stay on top of your customers’ interests, identify new opportunities, better prepare for customer conversations and build stronger relationships. For training and support materials, visit the  <a href="https://salesconnect.cisco.com/open.html?h=PAGE-5569" target="_blank">Digital Selling Experience Hub</a> in SalesConnect.        
+   </div>
+   <apex:remoteObjects >
+      <apex:remoteObjectModel name="User" fields="Id,Additional_User_Permissions__c" />
+   </apex:remoteObjects>
+   <div style="padding-top:5px">
+      <iframe src="" id="ib_iframe" width="100%" height="0px" frameborder="0"></iframe>
+   </div>
+   <script type="text/javascript">
+      function inMaintenance(){
+          var flag= '{!$Label.CiscoReadyInMaintenanceFlag}';
+          if(flag === 'true'){
+           
+           document.getElementById("ib_iframe").src = '';
+           document.getElementById("ib_iframe").style.display = 'none';
+           document.getElementById("ib_banner").style.display = 'none';
+           document.getElementById("dse-Maintenance").style.display = 'block';
+          }else{
+              var userName = '{!$user.userName}';
+              // SCAVA FIX
+              var partyId = "{!JSENCODE(account.CSCSiteID__c)}";
+              var SFDCBaseURL = 'https://' + window.location.host;                <!-- Updated By Naresh -->
+              if (partyId == null) {
+              partyId = '10000068';
+              }
+              var param = window.location.search;                                 <!-- Updated By Naresh -->
+              console.log('PARAM======',param);
+              
+              if(param === ''){              
+                  document.getElementById("ib_iframe").src = 'https://dse.cloudapps.cisco.com/dse/ci/detail?un='+userName.substring(0,userName.indexOf('@'))+'&view=ci&partyId='+partyId+'&sourceName=Account&baseURL='+SFDCBaseURL;
+              }else{
+              param = param + '&un='+userName.substring(0,userName.indexOf('@'))+'&partyId='+partyId+'&sourceName=Account&baseURL='+SFDCBaseURL+'&view=ci';
+                  document.getElementById("ib_iframe").src = 'https://dse.cloudapps.cisco.com/dse/ci/detail'+param;
+              }
+              document.getElementById("ib_iframe").style.display = 'block';
+              document.getElementById("ib_banner").style.display = 'block';
+              document.getElementById("dse-Maintenance").style.display = 'none';   
+              console.log('Setting iframe');           
+          }
+      
+      }
+      
+      
+      
+      function validateUserPermission() {
+          console.log('Validating User');
+          var crUser = new SObjectModel.User();
+          crUser.retrieve({
+              where: {
+                  Id: {
+                      eq: '{!$User.Id}'
+                  }
+              }
+          }, function (err, records, event) {
+              if (err) {
+                  alert(err);
+              } else {
+                  
+                  
+                 var addPerm = records[0].get('Additional_User_Permissions__c');
+                 
+                 if(typeof addPerm === "undefined"){
+                 document.getElementById("ib_iframe").src = '';
+                      document.getElementById("ib_iframe").style.height= '0px';
+                      resizeIframenew(true);
+                      console.log('Without You  dont have access to CR');
+                  
+                  }else{
+                      addPerm = addPerm.replace(/\s/g, '');
+                      console.log(addPerm);
+                      if (addPerm.indexOf("DSEContactIntelligence") >= 0) {
+                      console.log('You  have access to CR');
+                      inMaintenance();
+                      document.getElementById("ib_iframe").style.height= '400px';
+                      resizeIframenew(false);
+                  } else {
+                      document.getElementById("ib_iframe").src = '';
+                      document.getElementById("ib_iframe").style.display = 'none'; 
+                      document.getElementById("ib_iframe").style.height= '0px';
+                      resizeIframenew(true);
+                      console.log('You  dont have access to CR');
+                  }
+                  }
+              }
+          });
+          resizeIframenew(false)
+      
+      }
+      
+      function resizeIframenew(h) {
+      
+          var me = window.name;
+          var iframes = parent.document.getElementsByName(me);
+          if (h != true) {
+      
+              if (me) {
+      
+                  if (iframes && iframes.length == 1) {
+                      height = document.body.offsetHeight;
+                      console.log('My height' + height);
+                      console.log('My height Inner' + window.innerHeight);
+                      if (height <= 50) {
+                          iframes[0].style.height = 0 + "px";
+                      } else {
+                          iframes[0].style.height = height + "px";
+                      }
+      
+                  }
+              }
+          } else {
+              iframes[0].style.height = 0 + "px";
+          }
+      }
+      
+      var ib_resize = function (event) {
+          console.log(event.origin);
+          console.log(event.data);
+          if (event.origin !== "https://dse.cloudapps.cisco.com") {
+              return;
+          }
+          var ib_iframe = document.getElementById('ib_iframe');
+          if (ib_iframe) {
+              ib_iframe.style.height = event.data + 70 + "px";
+              resizeIframenew(false);
+          }
+      };
+      if (window.addEventListener) {
+          window.addEventListener("message", ib_resize, false);
+      } else if (window.attachEvent) {
+          window.attachEvent("onmessage", ib_resize);
+      }
+      
+       validateUserPermission();
+   </script>
+</apex:page>

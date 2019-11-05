@@ -1,0 +1,23 @@
+<apex:page standardController="Case">
+<apex:includeScript value="/support/console/22.0/integration.js"/>
+ <script>
+  var caseId = '{!Case.Id}';
+  var divElement=parent.document.getElementById('cas1_ileinner');
+ if(sforce.console.isInConsole())
+  {
+   if(divElement)
+     {
+      var childrenOfDiv=divElement.childNodes[2];
+      childrenOfDiv.href='javascript:srcSelf(%27%2Fapex%2FReAssignCase%3Fid%3D'+caseId+'%26isLink%3D1%26isdtp%3Dvw%27)';
+     }
+  }
+  else
+  {
+   if(divElement)
+     {
+      var childrenOfDiv=divElement.childNodes[2];
+      childrenOfDiv.href='/apex/ReAssignCase?id='+ caseId+'&isLink=1';
+     }
+  }
+ </script>
+</apex:page>

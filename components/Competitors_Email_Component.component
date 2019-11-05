@@ -1,0 +1,6 @@
+<apex:component controller="Competitors_Email_CTC" access="Global">
+<apex:attribute name="EnteredCompetitors" description="Selected Competitors by User" type="String" assignTo="{!EnteredCompetitors}"/>
+<apex:repeat value="{!Competitors}" var="Competitor" id="Competitors">
+<apex:outputLink value="{!Competitor.Competitor_Information}"> {!Competitor.Name} </apex:outputLink> <br/>
+</apex:repeat>
+</apex:component>

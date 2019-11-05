@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Parent Expected Book Date --></label>
+        <name>Parent_Expected_Book_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Expected Product ($&apos;000) --></label>
+        <name>Parent_Expected_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Expected Service ($&apos;000) --></label>
+        <name>Parent_Expected_Service__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Forecast Status --></label>
+        <name>Parent_Forecast_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Opportunity Status --></label>
+        <name>Parent_Opportunity_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Opportunity --></label>
+        <name>Parent_Opportunity__c</name>
+        <relationshipLabel><!-- Related Phases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Parent Stage --></label>
+        <name>Parent_Stage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phase Opportunity --></label>
+        <name>Phase_Opportunity__c</name>
+        <relationshipLabel><!-- Top Level Phase --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Phase</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Phases</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Phase Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- Add_New_Phase_VF --></label>
+        <name>Add_New_Phase_VF</name>
+    </webLinks>
+</CustomObjectTranslation>

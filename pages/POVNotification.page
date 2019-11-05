@@ -1,0 +1,24 @@
+<!--
+    Author        : Suresh
+    Date Created  : 9/11/2014
+    Description   : This visualForce page displays Notification message in POV detail page
+-->
+<apex:page standardController="Proof_of_Value__c" showHeader="false" standardStylesheets="true" >
+    <style>
+        .cs1Text         { font-family: Arial, Helvetica, sans-serif; font-size: small; }
+        .cs1RedBold      { color: red; font-weight: bold; }
+        .cs1FloatLeft    { float: left; }
+    </style>
+      
+    <apex:form id="formid">
+        <apex:outputPanel id="message" layout="block" styleClass="cs1FloatLeft" style="margin-top:5px;" rendered="{!if(Proof_of_Value__c.eSTAR_Order_Status__c == 'ORDER CREATED',True,False)}">                    
+              <apex:outputText value="PoV is approved. Please contact dlp-support@cisco.com for additional information."  styleClass="cs1Text cs1RedBold"/>
+        </apex:outputPanel>
+        <apex:outputPanel id="message1" layout="block" styleClass="cs1FloatLeft" style="margin-top:5px;" rendered="{!if(Proof_of_Value__c.BOMStatus__c== 0 && Proof_of_Value__c.POV_Approval_Status__c=='SAM Work in Progress',True,False)}">                    
+              <apex:outputText value="BOM is not added to POV. Hardware order cannot be created. For Software Only PoV's, please submit for approval."  styleClass="cs1Text cs1RedBold"/>
+        </apex:outputPanel>
+        <apex:outputPanel id="message2" layout="block" styleClass="cs1FloatLeft" style="margin-top:5px;" rendered="{!if(Proof_of_Value__c.BOMStatus__c== 0 && Proof_of_Value__c.POV_Approval_Status__c!='SAM Work in Progress',True,False)}">                    
+              <apex:outputText value="BOM is not added to POV. Hardware order cannot be created."  styleClass="cs1Text cs1RedBold"/>
+        </apex:outputPanel>             
+    </apex:form>
+</apex:page>

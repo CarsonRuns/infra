@@ -1,0 +1,33 @@
+<apex:page showHeader="false" tabStyle="task" >
+<style>
+    .header1{
+        font-size: 10pt !important;
+        font-family: Arial,Helvetica,sans-serif !important;
+        color: red;
+    }
+    .header2{
+        font-size: 10pt !important;
+        font-family: Arial,Helvetica,sans-serif !important;
+        color: blue;
+    }
+    .apexp .bPageBlock .detailList {
+        width: 70%;    
+    }
+</style>
+
+<apex:form >
+    <apex:pageblock title="Important Information">
+        <apex:pageblockSection columns="3" >
+            <apex:pageblocksectionItem >
+                <apex:outputText value="{!$Label.GSTS_Global_Support_Numbers}" escape="false" styleClass="header1"></apex:outputText>
+            </apex:pageblocksectionItem>
+            <apex:pageblocksectionItem >
+                <apex:outputText value="{!$Label.Additional_Cisco_Salesforce_com_Training_Resources}" escape="false" styleClass="header2"></apex:outputText>
+            </apex:pageblocksectionItem>
+            <apex:pageblocksectionItem >
+                <apex:outputText value="{!$Label.Social_Networking_Information}" escape="false" styleClass="header1"></apex:outputText>
+            </apex:pageblocksectionItem>
+        </apex:pageblockSection>
+    </apex:pageblock>
+</apex:form>
+</apex:page>

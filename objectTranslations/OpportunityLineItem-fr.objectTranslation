@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Attrition Reason Code --></label>
+        <name>Attrition_Reason_Code__c</name>
+        <picklistValues>
+            <masterLabel>Adoption - Executive sponsorship</masterLabel>
+            <translation><!-- Adoption - Executive sponsorship --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adoption - Investment for change management &amp; training</masterLabel>
+            <translation><!-- Adoption - Investment for change management &amp; training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adoption - Lacking support from Cisco or partner</masterLabel>
+            <translation><!-- Adoption - Lacking support from Cisco or partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bought more than needed</masterLabel>
+            <translation><!-- Bought more than needed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competition   - Competitor with better capabilities/value</masterLabel>
+            <translation><!-- Competition   - Competitor with better capabilities/value --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competition - Competitor with aggressive price</masterLabel>
+            <translation><!-- Competition - Competitor with aggressive price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer situation   - Internal politics</masterLabel>
+            <translation><!-- Customer situation   - Internal politics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer situation  - Macro Political</masterLabel>
+            <translation><!-- Customer situation  - Macro Political --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer situation - Lack of sponsorship for Cisco</masterLabel>
+            <translation><!-- Customer situation - Lack of sponsorship for Cisco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer situation - Undergoing significant structural/cost changes</masterLabel>
+            <translation><!-- Customer situation - Undergoing significant structural/cost changes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data issue</masterLabel>
+            <translation><!-- Data issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LDOS</masterLabel>
+            <translation><!-- LDOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product  - Quality</masterLabel>
+            <translation><!-- Product  - Quality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product - Missing features</masterLabel>
+            <translation><!-- Product - Missing features --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product - Pricing</masterLabel>
+            <translation><!-- Product - Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service - Pricing</masterLabel>
+            <translation><!-- Service - Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service - Quality</masterLabel>
+            <translation><!-- Service - Quality --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Attrition Reason --></label>
+        <name>Attrition_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Competition</masterLabel>
+            <translation><!-- Competition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer not ready</masterLabel>
+            <translation><!-- Customer not ready --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer sat</masterLabel>
+            <translation><!-- Customer sat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DNR</masterLabel>
+            <translation><!-- DNR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LDOS</masterLabel>
+            <translation><!-- LDOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing</masterLabel>
+            <translation><!-- Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBD</masterLabel>
+            <translation><!-- TBD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Terminated</masterLabel>
+            <translation><!-- Terminated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Entité commerciale</label>
+        <name>Business_Entity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract End Date --></label>
+        <name>Contract_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract Start Date --></label>
+        <name>Contract_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label>Nom de la source de données</label>
+        <name>Data_Source_Name__c</name>
+    </fields>
+    <fields>
+        <label>No de déploiement</label>
+        <name>Deployment_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected ATR ($000s) --></label>
+        <name>Expected_ATR_000s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected ATR $ --></label>
+        <name>Expected_ATR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected TCV ($000s) --></label>
+        <name>Expected_TCV_000s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected TCV $ --></label>
+        <name>Expected_TCV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expired ATR $ --></label>
+        <name>Expired_ATR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Extended Net Price --></label>
+        <name>Extended_Net_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecasted ATR ($) --></label>
+        <name>Forecasted_ATR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecasted Attrition ($) --></label>
+        <name>Forecasted_Attrition__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsActive --></label>
+        <name>IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- LDOS ATR $ --></label>
+        <name>LDOS_ATR__c</name>
+    </fields>
+    <fields>
+        <label>Copie ID d'article</label>
+        <name>Line_Item_ID_Copy__c</name>
+    </fields>
+    <fields>
+        <label>Pourcentage de mélange</label>
+        <name>Mix__c</name>
+    </fields>
+    <fields>
+        <label><!-- Non-Recurring Offer line ($000s) --></label>
+        <name>Non_Recurring_Line_000s__c</name>
+    </fields>
+    <fields>
+        <label>Date de réservation prévue d'opportunité</label>
+        <name>Opportunity_Expected_Book_Date__c</name>
+    </fields>
+    <fields>
+        <label>Valeur de ligne d'opportunité (000 $)</label>
+        <name>Opportunity_Line_Value_Dollars__c</name>
+    </fields>
+    <fields>
+        <label>Valeur_Ligne_Occasion</label>
+        <name>Opportunity_Line_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity RecordTypeId --></label>
+        <name>Opportunity_RecordTypeId__c</name>
+    </fields>
+    <fields>
+        <label>Statut de l'opportunité</label>
+        <name>Opportunity_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opty Services All Multiyear --></label>
+        <name>Opty_Services_All_Multiyear__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior ATR ($000s) --></label>
+        <name>Prior_ATR_000s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior ATR $ --></label>
+        <name>Prior_ATR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior TCV ($000s) --></label>
+        <name>Prior_TCV_000s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior TCV $ --></label>
+        <name>Prior_TCV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior Term --></label>
+        <name>Prior_Term__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Code --></label>
+        <name>Product_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family Id 18 --></label>
+        <name>Product_Family_Id_18__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family ID --></label>
+        <name>Product_Family_Ref__c</name>
+        <relationshipLabel><!-- Opportunity Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Family/Service Level Recurring ? --></label>
+        <name>Product_Family_Service_Level_Recurring__c</name>
+        <picklistValues>
+            <masterLabel>Mixed</masterLabel>
+            <translation><!-- Mixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Famille de produit</label>
+        <name>Product_Family_US__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Product_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote ID --></label>
+        <name>QuoteId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recurring Offer Annual Line ($000s) --></label>
+        <name>Recurring_Offer_ARR_Line_000s__c</name>
+    </fields>
+    <fields>
+        <help><!-- Multi-Year $ --></help>
+        <label><!-- Recurring Offer Multi-Year Line ($000s) --></label>
+        <name>Recurring_Offer_Multi_Year_Line_000s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recurring Offer Line ($000s) --></label>
+        <name>Recurring_Offer_TCV_Line_000s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recurring % --></label>
+        <name>Recurring_Percentage__c</name>
+    </fields>
+    <fields>
+        <label><!-- SalesForce1 Created Updated --></label>
+        <name>SalesForce1_Created_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- SalesForce1 Flag --></label>
+        <name>SalesForce1_Flag__c</name>
+    </fields>
+    <fields>
+        <label>Catégorie de service</label>
+        <name>Service_Category__c</name>
+        <picklistValues>
+            <masterLabel>AS-C-Advanced Services Configurable</masterLabel>
+            <translation>AS-C-Services avancés configurables</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AS-F-Advanced Services Fixed</masterLabel>
+            <translation>AS-F-Services avancés fixes</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASS-Advanced Services Subscription</masterLabel>
+            <translation>ASS-Abonnement aux services avancés</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AST-Advanced Services Transactional</masterLabel>
+            <translation>AST-Services avancés transactionnels</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Consulting Services Subscription</masterLabel>
+            <translation>CSS-Abonnement aux services de conseils</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CST-Consulting Services Transactional</masterLabel>
+            <translation>CST-Services de conseils transactionnels</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaborative Services-AS Subscription</masterLabel>
+            <translation>Serv. collab-Abo. aux services avancés</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaborative Services-AS Transactional</masterLabel>
+            <translation>Services collab.-AS transactionnels</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaborative Services-TS Subscription</masterLabel>
+            <translation>Serv. collab-Abonnement aux serv. tech.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaborative Services-TS Transactional</masterLabel>
+            <translation>Services collab.-TS transactionnels</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Brand Services-TS Subscription</masterLabel>
+            <translation>Services partenaires-Abonn. serv. tech.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Brand Services-TS Transaction</masterLabel>
+            <translation>Services partenaires-TS transactionnels</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSS-Technical Services Subscription</masterLabel>
+            <translation>TSS-Abonnement aux services techniques</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TST-Technical Services Transactional</masterLabel>
+            <translation>TST-Services techniques transactionnels</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Level ID --></label>
+        <name>Service_Level_Ref__c</name>
+        <relationshipLabel><!-- Opportunity Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Niveau de service</label>
+        <name>Service_Level__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Type de service</label>
+        <name>Service_Type__c</name>
+    </fields>
+    <fields>
+        <label>ID source de l'occasion</label>
+        <name>Source_Opp_ID__c</name>
+    </fields>
+    <fields>
+        <label>ID source de l'article de l'occasion</label>
+        <name>Source_Opp_Line_Item_ID__c</name>
+    </fields>
+    <fields>
+        <help>Sélectionnez le principal concurrent pour la technologie</help>
+        <label>Technologie concurrente</label>
+        <name>Technology_Competitor__c</name>
+        <picklistValues>
+            <masterLabel>ADC</masterLabel>
+            <translation><!-- ADC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aastra</masterLabel>
+            <translation><!-- Aastra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adobe</masterLabel>
+            <translation><!-- Adobe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adtran</masterLabel>
+            <translation><!-- Adtran --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adva</masterLabel>
+            <translation><!-- Adva --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advanced Digital Broadcast (ADB)</masterLabel>
+            <translation>Advanced Digital Broadcast (ADB)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerohive</masterLabel>
+            <translation><!-- Aerohive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agere</masterLabel>
+            <translation><!-- Agere --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alaxala Networks</masterLabel>
+            <translation><!-- Alaxala Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alcatel-Lucent</masterLabel>
+            <translation><!-- Alcatel-Lucent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Allied Telesis</masterLabel>
+            <translation><!-- Allied Telesis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alvarion</masterLabel>
+            <translation><!-- Alvarion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ambit</masterLabel>
+            <translation><!-- Ambit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amino</masterLabel>
+            <translation><!-- Amino --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apresia</masterLabel>
+            <translation><!-- Apresia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arista</masterLabel>
+            <translation><!-- Arista --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arris</masterLabel>
+            <translation><!-- Arris --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aruba</masterLabel>
+            <translation><!-- Aruba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atrica</masterLabel>
+            <translation><!-- Atrica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aurora</masterLabel>
+            <translation><!-- Aurora --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Avail Media</masterLabel>
+            <translation><!-- Avail Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Avaya</masterLabel>
+            <translation><!-- Avaya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Avistar</masterLabel>
+            <translation><!-- Avistar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B15</masterLabel>
+            <translation><!-- B15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BTI</masterLabel>
+            <translation><!-- BTI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BelAir Networks</masterLabel>
+            <translation><!-- BelAir Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belden</masterLabel>
+            <translation><!-- Belden --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BigBand</masterLabel>
+            <translation><!-- BigBand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BinTec Communications</masterLabel>
+            <translation><!-- BinTec Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blue coat</masterLabel>
+            <translation>Blue Coat</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brocade</masterLabel>
+            <translation><!-- Brocade --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Carrier Access</masterLabel>
+            <translation><!-- Carrier Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Checkpoint</masterLabel>
+            <translation>Point de contrôle</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ciena</masterLabel>
+            <translation><!-- Ciena --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Citrix</masterLabel>
+            <translation><!-- Citrix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitors</masterLabel>
+            <translation>Concurrents</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comtrend</masterLabel>
+            <translation><!-- Comtrend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corrigent</masterLabel>
+            <translation><!-- Corrigent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cyan</masterLabel>
+            <translation><!-- Cyan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D-Link</masterLabel>
+            <translation><!-- D-Link --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dell</masterLabel>
+            <translation><!-- Dell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital China</masterLabel>
+            <translation><!-- Digital China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMC</masterLabel>
+            <translation><!-- EMC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMC/RSA</masterLabel>
+            <translation><!-- EMC/RSA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterasys</masterLabel>
+            <translation><!-- Enterasys --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entone</masterLabel>
+            <translation><!-- Entone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ericsson</masterLabel>
+            <translation><!-- Ericsson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expand</masterLabel>
+            <translation>Développer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extreme Networks</masterLabel>
+            <translation><!-- Extreme Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>F5</masterLabel>
+            <translation><!-- F5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Falcon IP Complete</masterLabel>
+            <translation>Falcon IP/Complete</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Firetide</masterLabel>
+            <translation><!-- Firetide --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fortinet</masterLabel>
+            <translation><!-- Fortinet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fujitsu</masterLabel>
+            <translation><!-- Fujitsu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Google</masterLabel>
+            <translation><!-- Google --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Google (Postini)</masterLabel>
+            <translation><!-- Google (Postini) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HP</masterLabel>
+            <translation><!-- HP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Harmonic</masterLabel>
+            <translation><!-- Harmonic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hitachi</masterLabel>
+            <translation><!-- Hitachi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Huawei</masterLabel>
+            <translation><!-- Huawei --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Humax</masterLabel>
+            <translation><!-- Humax --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM</masterLabel>
+            <translation><!-- IBM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBM-ISS</masterLabel>
+            <translation><!-- IBM-ISS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infinera</masterLabel>
+            <translation><!-- Infinera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inter-Tel</masterLabel>
+            <translation><!-- Inter-Tel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interactive Intelligence</masterLabel>
+            <translation><!-- Interactive Intelligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Juniper</masterLabel>
+            <translation><!-- Juniper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kedacom</masterLabel>
+            <translation><!-- Kedacom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LG</masterLabel>
+            <translation><!-- LG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LifeSize</masterLabel>
+            <translation><!-- LifeSize --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lumeng</masterLabel>
+            <translation><!-- Lumeng --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magor</masterLabel>
+            <translation><!-- Magor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maipu</masterLabel>
+            <translation><!-- Maipu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>McAfee</masterLabel>
+            <translation><!-- McAfee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meraki</masterLabel>
+            <translation><!-- Meraki --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meru</masterLabel>
+            <translation><!-- Meru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microsoft</masterLabel>
+            <translation><!-- Microsoft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minerva Networks</masterLabel>
+            <translation><!-- Minerva Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mitel Corporation</masterLabel>
+            <translation><!-- Mitel Corporation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motorola</masterLabel>
+            <translation><!-- Motorola --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEC</masterLabel>
+            <translation><!-- NEC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NetInsight</masterLabel>
+            <translation><!-- NetInsight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Netgear</masterLabel>
+            <translation><!-- Netgear --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Appliance</masterLabel>
+            <translation>Appliance réseau</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nokia-Siemens</masterLabel>
+            <translation><!-- Nokia-Siemens --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation>Aucun</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OKI</masterLabel>
+            <translation><!-- OKI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oracle</masterLabel>
+            <translation><!-- Oracle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Autre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pace</masterLabel>
+            <translation><!-- Pace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Palo Alto Networks</masterLabel>
+            <translation><!-- Palo Alto Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phillips</masterLabel>
+            <translation><!-- Phillips --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Polycom</masterLabel>
+            <translation><!-- Polycom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proofpoint</masterLabel>
+            <translation><!-- Proofpoint --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proxim</masterLabel>
+            <translation><!-- Proxim --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qlogic</masterLabel>
+            <translation><!-- Qlogic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RGB Video</masterLabel>
+            <translation>Vidéo RVB</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radvision</masterLabel>
+            <translation><!-- Radvision --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Riverbed</masterLabel>
+            <translation><!-- Riverbed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ruckus</masterLabel>
+            <translation><!-- Ruckus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ruijie</masterLabel>
+            <translation><!-- Ruijie --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP</masterLabel>
+            <translation><!-- SAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sagem</masterLabel>
+            <translation><!-- Sagem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samsung</masterLabel>
+            <translation><!-- Samsung --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scopus</masterLabel>
+            <translation><!-- Scopus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SeaChange International</masterLabel>
+            <translation>SeaChange International</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ShoreTel</masterLabel>
+            <translation><!-- ShoreTel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Siemens Enterprise Communications</masterLabel>
+            <translation>Siemens Enterprise Communications</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver Peak</masterLabel>
+            <translation><!-- Silver Peak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SkyPilot</masterLabel>
+            <translation><!-- SkyPilot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Skype</masterLabel>
+            <translation><!-- Skype --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SonicWall</masterLabel>
+            <translation><!-- SonicWall --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sonus</masterLabel>
+            <translation><!-- Sonus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sony</masterLabel>
+            <translation><!-- Sony --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stratacache</masterLabel>
+            <translation><!-- Stratacache --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strix Systems</masterLabel>
+            <translation><!-- Strix Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Symantec</masterLabel>
+            <translation><!-- Symantec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TELDAT</masterLabel>
+            <translation><!-- TELDAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TP-Link</masterLabel>
+            <translation><!-- TP-Link --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technicolor</masterLabel>
+            <translation><!-- Technicolor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Teleste</masterLabel>
+            <translation><!-- Teleste --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Teliris</masterLabel>
+            <translation><!-- Teliris --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tellabs</masterLabel>
+            <translation><!-- Tellabs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thales</masterLabel>
+            <translation><!-- Thales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Toshiba</masterLabel>
+            <translation><!-- Toshiba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trendmicro</masterLabel>
+            <translation><!-- Trendmicro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tropos</masterLabel>
+            <translation><!-- Tropos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turin Networks</masterLabel>
+            <translation><!-- Turin Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UTStarcom</masterLabel>
+            <translation><!-- UTStarcom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vector</masterLabel>
+            <translation><!-- Vector --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vidyo</masterLabel>
+            <translation><!-- Vidyo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voltaire</masterLabel>
+            <translation><!-- Voltaire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Websense</masterLabel>
+            <translation><!-- Websense --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wisi</masterLabel>
+            <translation><!-- Wisi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xirrus</masterLabel>
+            <translation><!-- Xirrus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YAMAHA</masterLabel>
+            <translation><!-- YAMAHA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ZTE</masterLabel>
+            <translation><!-- ZTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zscaler</masterLabel>
+            <translation>ZScaler</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Term (in Months) --></label>
+        <name>Term_in_Months__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Attrition ($000s) --></label>
+        <name>Total_Attrition_000s__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Attrition --></label>
+        <name>Total_Attrition__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Contract Value Line ($000s) --></label>
+        <name>Total_Contract_Value_Line_000s__c</name>
+    </fields>
+    <layouts>
+        <layout>Global - Opportunity Product_DEV_REL_1.1</layout>
+        <sections>
+            <label>Migration des données</label>
+            <section>Data Migration</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Global - Opportuntiy Product</layout>
+        <sections>
+            <label>Migration des données</label>
+            <section>Data Migration</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Opportunity Product Layout</layout>
+        <sections>
+            <label>Migration des données</label>
+            <section>Data Migration</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- Add --></label>
+        <name>Add</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Technology_Service --></label>
+        <name>Add_Technology_Service</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Technology_Services --></label>
+        <name>Add_Technology_Services</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Edit_All --></label>
+        <name>Edit_All</name>
+    </webLinks>
+</CustomObjectTranslation>

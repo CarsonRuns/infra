@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Extension Period --></label>
+        <name>Extension_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Extension Reason --></label>
+        <name>Extension_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Explicit Extension by Partner</masterLabel>
+            <translation><!-- Explicit Extension by Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Initial Expiration with Prospect Upload</masterLabel>
+            <translation><!-- Initial Expiration with Prospect Upload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Deal Creation</masterLabel>
+            <translation><!-- New Deal Creation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Created Target Prospect Default</masterLabel>
+            <translation><!-- Partner Created Target Prospect Default --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TxM Extension</masterLabel>
+            <translation><!-- TxM Extension --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- New Expiration Date --></label>
+        <name>New_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Expiration Date --></label>
+        <name>Old_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Prospect --></label>
+        <name>Target_Prospect__c</name>
+        <relationshipLabel><!-- Prospect Extensions --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Prospect Extension</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Prospect Extensions</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Prospect Extension Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

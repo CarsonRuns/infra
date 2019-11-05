@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Additional Info --></label>
+        <name>Additional_Info__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days Left --></label>
+        <name>Days_Left__c</name>
+    </fields>
+    <fields>
+        <help><!-- Shown in User&apos;s Local Timezone --></help>
+        <label><!-- End Date/Time --></label>
+        <name>End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Name --></label>
+        <name>Event_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Edit URL --></label>
+        <name>External_Edit_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- JiffleNow Agenda Item --></label>
+        <name>Jiffle_Agenda_Item__c</name>
+        <relationshipLabel><!-- JiffleNow Meeting --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Jiffle Event End Date --></label>
+        <name>Jiffle_Event_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Jiffle Event Start Date --></label>
+        <name>Jiffle_Event_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Jiffle Meeting Location --></label>
+        <name>Jiffle_Meeting_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Jifflenow Meeting/Session Id --></label>
+        <name>Jifflenow_Session_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Duration (in Minutes) --></label>
+        <name>Meeting_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Type --></label>
+        <name>Meeting_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- JiffleNow Meeting UUID --></label>
+        <name>Meeting_UUID__c</name>
+    </fields>
+    <fields>
+        <help><!-- The number of Cisco attendees that are expected to attend this engagement --></help>
+        <label><!-- Number of Cisco Attendees --></label>
+        <name>Number_of_Cisco_Attendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Cisco Executives --></label>
+        <name>Number_of_Cisco_Executives__c</name>
+    </fields>
+    <fields>
+        <help><!-- The number of Customer attendees that are expected to attend this engagement. --></help>
+        <label><!-- Number of Customer Attendees --></label>
+        <name>Number_of_Customer_Attendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Partner Attendees --></label>
+        <name>Number_of_Partner_Attendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Session(PowerOne) --></label>
+        <name>Number_of_Session_PowerOne__c</name>
+    </fields>
+    <fields>
+        <help><!-- Current stage of a briefing request --></help>
+        <label><!-- Request Status --></label>
+        <name>Request_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assigned</masterLabel>
+            <translation><!-- Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deleted</masterLabel>
+            <translation><!-- Deleted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold</masterLabel>
+            <translation><!-- Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation><!-- Requested --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Returned</masterLabel>
+            <translation><!-- Returned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation><!-- Scheduled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Shown in User&apos;s Local Timezone --></help>
+        <label><!-- Start Date/Time --></label>
+        <name>Start_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. of Attendees --></label>
+        <name>Total_Number_Attendees__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>JiffleNow Meeting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>JiffleNow Meeting</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Jiffle Session Layout</layout>
+        <sections>
+            <label><!-- Attendee Count --></label>
+            <section>Attendee Count</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>JiffleNow Meeting Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- Edit_Meeting --></label>
+        <name>Edit_Meeting</name>
+    </webLinks>
+</CustomObjectTranslation>

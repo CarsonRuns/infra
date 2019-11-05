@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- SAVM Group ID --></label>
+        <name>Account_Group_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- SalesAccountView --></label>
+        <name>Account_Group__c</name>
+        <relationshipLabel><!-- Super Group --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Group Detail Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAVM Super Group ID --></label>
+        <name>Super_Group_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Super Group --></label>
+        <name>Super_Group__c</name>
+        <relationshipLabel><!-- SalesAccount --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Direct SAV Super Group Relationship</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Direct SAV Super Group Relationships</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

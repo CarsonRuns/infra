@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Plan comptable</label>
+        <name>Account_Plan_New__c</name>
+        <relationshipLabel><!-- Financial Profile --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Rapport annuel (URL)</label>
+        <name>Annual_Report__c</name>
+    </fields>
+    <fields>
+        <label>Recettes annuelles (000 $)</label>
+        <name>Annual_Revenue_000__c</name>
+    </fields>
+    <fields>
+        <label>Revenus annuels (devise locale)</label>
+        <name>Annual_Revenue_Local_Currency__c</name>
+    </fields>
+    <fields>
+        <label>Utilisation des ressources (URL)</label>
+        <name>Asset_Utilization_URL__c</name>
+    </fields>
+    <fields>
+        <label>CAPEX (000 $)</label>
+        <name>CAPEX_000__c</name>
+    </fields>
+    <fields>
+        <label>État financier du client (URL)</label>
+        <name>Customer_Financial_Statements__c</name>
+    </fields>
+    <fields>
+        <label>Nom de source de données</label>
+        <name>Data_Source_Name__c</name>
+    </fields>
+    <fields>
+        <label>N° déploiement</label>
+        <name>Deployment_No__c</name>
+    </fields>
+    <fields>
+        <label>Dépenses directes contre total (URL)</label>
+        <name>Direct_Expenses_vs_Total_URL__c</name>
+    </fields>
+    <fields>
+        <label>Présentations et rapports de résultats</label>
+        <name>Earnings_Call_and_Reports__c</name>
+    </fields>
+    <fields>
+        <label>Budget informatique (000 $)</label>
+        <name>IT_Spend_000__c</name>
+    </fields>
+    <fields>
+        <label>Indicateurs de performance clés</label>
+        <name>Key_Performance_Indicators__c</name>
+    </fields>
+    <fields>
+        <label>Ratios clés</label>
+        <name>Key_Ratios__c</name>
+    </fields>
+    <fields>
+        <label>Lettre aux actionnaires (URL)</label>
+        <name>Letter_to_Shareholders__c</name>
+    </fields>
+    <fields>
+        <label>Rapport de gestion (URL)</label>
+        <name>Management_Discussion__c</name>
+    </fields>
+    <fields>
+        <label>Marges</label>
+        <name>Margins__c</name>
+    </fields>
+    <fields>
+        <label>Nombre d'employés</label>
+        <name>Number_of_Employees__c</name>
+    </fields>
+    <fields>
+        <label>OPEX (000 $)</label>
+        <name>OPEX__c</name>
+    </fields>
+    <fields>
+        <label>Autres informations</label>
+        <name>Other_Information__c</name>
+    </fields>
+    <fields>
+        <label>Autre URL</label>
+        <name>Other_URL__c</name>
+    </fields>
+    <fields>
+        <label>Recettes générées/employé</label>
+        <name>Revenue_Per_Employee__c</name>
+    </fields>
+    <fields>
+        <label>Tendance des recettes</label>
+        <name>Revenue_Trend__c</name>
+    </fields>
+    <fields>
+        <label>SiteMapIdentifier</label>
+        <name>SiteMapIdentifier__c</name>
+    </fields>
+    <fields>
+        <label>ID du plan comptable source</label>
+        <name>Source_Account_Plan_Id__c</name>
+    </fields>
+    <fields>
+        <label>ID du profil financier source</label>
+        <name>Source_Financial_Profile_Id__c</name>
+    </fields>
+    <fields>
+        <label>Source de la hausse des bénéfices (URL)</label>
+        <name>Source_of_Income_Growth_URL__c</name>
+    </fields>
+    <fields>
+        <label>10K (URL)</label>
+        <name>X10K__c</name>
+    </fields>
+    <fields>
+        <label>10Q (URL)</label>
+        <name>q10q__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Profil financier</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Profil financier</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Fin Profile ID</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CSAPEN Financial Profile Layout - REL_7.0</layout>
+        <sections>
+            <label><!-- Account Plan --></label>
+            <section>Account Plan</section>
+        </sections>
+        <sections>
+            <label>Informations supplémentaires</label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Financials. &lt;SCRIPT src=&quot;/servlet/servlet.FileDownload?file=01580000000va7k&quot; type=text/javascript&gt;&lt;/SCRIPT&gt;&lt;SCRIPT&gt;init();&lt;/SCRIPT&gt; --></label>
+            <section>Customer Financials. &lt;SCRIPT src="/servlet/servlet.FileDownload?file=01580000000va7k" type=text/javascript&gt;&lt;/SCRIPT&gt;&lt;SCRIPT&gt;init();&lt;/SCRIPT&gt;</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Data Links --></label>
+            <section>Financial Data Links</section>
+        </sections>
+        <sections>
+            <label>Séparateur</label>
+            <section>Separator</section>
+        </sections>
+        <sections>
+            <label>Liens utiles</label>
+            <section>Useful Links</section>
+        </sections>
+        <sections>
+            <label>Séparateur</label>
+            <section>separator</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>zz_CSAPEN Financial Profile Layout - REL_7.0_2010_05</layout>
+        <sections>
+            <label><!-- Account Plan --></label>
+            <section>Account Plan</section>
+        </sections>
+        <sections>
+            <label>Informations supplémentaires</label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Financials --></label>
+            <section>Customer Financials</section>
+        </sections>
+        <sections>
+            <label><!-- Financial Data Links --></label>
+            <section>Financial Data Links</section>
+        </sections>
+        <sections>
+            <label>Séparateur</label>
+            <section>Separator</section>
+        </sections>
+        <sections>
+            <label>Liens utiles</label>
+            <section>Useful Links</section>
+        </sections>
+        <sections>
+            <label>Séparateur</label>
+            <section>separator</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

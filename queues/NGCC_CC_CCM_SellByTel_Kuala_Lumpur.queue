@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>NGCC-CC CCM SellByTel(Kuala Lumpur)</name>
+    <queueMembers>
+        <roles>
+            <role>NGCC_CC_Site_Manager_KL_Australia</role>
+            <role>NGCC_CC_Site_Manager_SellByTel_Kuala_Lumpur</role>
+            <role>NGCC_CCM_SellByTel_Kuala_Lumpur</role>
+        </roles>
+        <users>
+            <user>hquah@cisco.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

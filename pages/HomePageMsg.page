@@ -1,0 +1,41 @@
+<apex:page controller="HomePageMsg_CT" showHeader="false"  tabStyle="task" docType="html-5.0" applyBodyTag="False" applyHtmlTag="False">
+   <apex:form >
+    <apex:slds />
+        <apex:pageBlock title="{!$Label.Action_Required}" >
+        
+            <apex:pageBlockSection columns="1" >
+             <apex:pageBlockSectionItem rendered="{!IF( WaitingLeads > 0, true, false) }" >
+                    <apex:outputPanel >
+                        <b><a href='/00Q?fcf={!left(WaitingLeadsID,15)}' target='_top' title="{!$Label.Waiting_Leads}">{!WaitingLeads} {!$Label.Lead_s}</a> <font style="color:#CC0000;font-weight:bold">  {!$Label.Waiting_Status}</font></b>                                      
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem rendered="{!IF( AcceptedLeads > 0, true, false) }" >
+                    <apex:outputPanel >
+                        <b><a href='/00Q?fcf={!left(AcceptedLeadsID,15)}' target='_top' title="{!$Label.Accepted_Leads}">{!AcceptedLeads} {!$Label.Lead_s}</a> <font style="color:#CC0000;font-weight:bold">  {!$Label.Accepted_not_Converted}</font></b>              
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem rendered="{!IF( OptyWithEndDatedTerritory > 0, true, false) }" >
+                   <apex:outputPanel >
+                       <b><a href='/006?fcf={!left(OptyWithEndDatedTerritoryID,15)}' target='_top'>{!OptyWithEndDatedTerritory} {!$Label.Opportunity_s}</a> {!$Label.Linked_to_end_dated_Territory_s} <font style="color:#CC0000">{!$Label.Forecasting_Position_selection}</font></b>
+                    </apex:outputPanel>                  
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem rendered="{!IF( OverDueOpptys > 0, true, false) }" >
+                    <apex:outputPanel >
+                        <b><a href='/006?fcf={!left(OverDueOpptysID,15)}' target='_top' title="{!$Label.Click_to_Select_Opptys_to_Edit}">{!OverDueOpptys} {!$Label.Overdue_Opportunity_s}</a> <font style="color:#CC0000;font-weight:bold"> {!$Label.Preventing_Forecasting}</font>.</b>  <font size="1">{!$Label.Expected_Book_Date_that_is_greater_than_30_days_overdue}</font>                     
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem rendered="{!IF( OverDueOpptysLt30Days > 0, true, false) }" >
+                    <apex:outputPanel >
+                        <b><a href='/006?fcf={!left(OverDueOpptysLt30DaysID,15)}' target='_top' title="{!$Label.Click_to_Select_Opptys_to_Edit}">{!OverDueOpptysLt30Days} {!$Label.Opportunity_s}</a> {!$Label.Overdue_Expected_Book_Date}</b>  <font size="1">{!$Label.Expected_Book_Date_that_is_between_14_days_and_30_days_overdue}</font> 
+                    </apex:outputPanel>                  
+                </apex:pageBlockSectionItem>                
+                <!-- Added for P360 TP Timer-END-->                                 
+                <apex:pageBlockSectionItem rendered="{!IF( (OverDueOpptys == 0) && (AcceptedLeads == 0) && (OverDueOpptysLt30Days == 0) && (WaitingLeads == 0) && (OptyWithEndDatedTerritory == 0), true, false) }" >
+                    <apex:outputPanel >
+                        {!$Label.No_Actions}
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>   
+            </apex:pageBlockSection>                
+        </apex:pageBlock>  
+    </apex:form>       
+</apex:page>

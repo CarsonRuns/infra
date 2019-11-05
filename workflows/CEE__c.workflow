@@ -1,0 +1,2177 @@
+<?xml version="1.0" encoding="utf-8"?><Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Account_Team_Reminder_ITCE</fullName>
+        <description>Account Team Reminder - ITCE - Initial Submission</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Alternate_Primary_Contact_2__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Alternate_Primary_Contact_3__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Alternate_Primary_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Copy_Request_To_2__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Copy_Request_To_3__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Copy_Request_To__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>sfdc-automated-email-donotreply@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/ITCE_Request_SUBMISSION</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Alert_Pending_Cancellation</fullName>
+        <description>CEE Alert the Request of a pending cancellation</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Account Manager</recipient>
+            <type>accountTeam</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Cancellation_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Alert_Request_Cancellation</fullName>
+        <description>CEE Alert the Request of a cancellation</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Account Manager</recipient>
+            <type>accountTeam</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Cancellation_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Assignment_Email</fullName>
+        <description>CEE Scheduler Approved Submission</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Program_Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Assignment_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_CPOC_CSAT_Survey_Reminder_Email_Alert</fullName>
+        <description>CEE CPOC CSAT Survey Reminder Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/CEE_CPOC_Survey_reminder_email_template</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_CPOC_FSAT_Survey_Reminder_Email_Alert</fullName>
+        <description>CEE CPOC FSAT Survey Reminder Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/CEE_CPOC_Survey_reminder_email_template_FSAT</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_CPOC_Survey_Email_Alert</fullName>
+        <description>CEE CPOC Survey Email Alert-Survey Email Process Builder</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/CEE_CPOC_Survey_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Cancellation_Email</fullName>
+        <description>CEE Cancellation Email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Cancellation_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Email_Alert_To_AM_After_Scheduler_Approve_Request</fullName>
+        <description>CEE Email Alert To AM After Scheduler Approve Request</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-sfdc@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Email_Alert_To_AM_After_Scheduler_Approves_Request</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_FSAT_OBX_Survey_Remainder_Email_Alert</fullName>
+        <description>CEE FSAT OBX Survey Reminder Email Alert - Used in Survey Email Process Builder</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Program_Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_OBX_FSAT_Reminder_Survey_Email_template</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_GTE_Missing_Email_Alert</fullName>
+        <ccEmails>ebcforlegalcisco.com@cisco.com</ccEmails>
+        <description>CEE Alert Missing GTE ID</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_GTE_Missing_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_OBX_Survey_Email_Alert</fullName>
+        <description>CEE OBX Survey Email Alert - Used in Survey Email Process Builder</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Program_Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_OBX_Survey_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_OBX_Survey_Remainder_Email_Alert</fullName>
+        <description>CEE OBX Survey Reminder Email Alert - Used in Survey Email Process Builder</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Program_Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_OBX_Reminder_Survey_Email_template</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_OBX_cancellation_alert</fullName>
+        <description>CEE - OBX cancellation alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Meeting_Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>sfdc-automated-email-donotreply@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/OBX_Cancellation</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Request_Cancellation</fullName>
+        <description>CEE Request Cancellation</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Cancellation_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Request_Submission</fullName>
+        <description>CEE Request Submission</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Requestor_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Request_Submission_Alert</fullName>
+        <description>CEE - Alert the Request of successfully submitting engagement request.</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_ITCE_Requestor_Email_Revised</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Requestor_Approved_Alert</fullName>
+        <description>CEE Alert the Requestor of the approval for a request.</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Requestor_Approval_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Requestor_Rejection_Alert</fullName>
+        <description>CEE OBX Reject Submission</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Requestor_Rejection_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>CEE_Scheduler_Rejection_Email</fullName>
+        <description>CEE Scheduler Rejection Email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Scheduler_Rejection</template>
+    </alerts>
+    <alerts>
+        <fullName>CPOC_2_week_before_email_alert</fullName>
+        <description>CPOC 2 week before email alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>CPOC_Templates/CPOC_2_Week_Reminder</template>
+    </alerts>
+    <alerts>
+        <fullName>CPOC_Post_Briefing_Survey_for_Account_Team</fullName>
+        <description>CPOC Post Briefing Survey for Account Team</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-sfdc@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CPOC_Post_Briefing_Survey_for_Account_Team</template>
+    </alerts>
+    <alerts>
+        <fullName>CPOC_Scheduled_Custom_Test_CPOC_Managed</fullName>
+        <description>CPOC Scheduled Custom Test CPOC Managed</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/Custom_Test_CPOC_Managed</template>
+    </alerts>
+    <alerts>
+        <fullName>CPOC_Send_email_upon_submission_of_a_CPOC_request</fullName>
+        <description>CPOC Send_email_upon_submission_of_a_CPOC_request</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/Submission_of_a_CPOC_lab_request</template>
+    </alerts>
+    <alerts>
+        <fullName>Completed_ITCE_APJC_Submission_Notification</fullName>
+        <description>Completed_ITCE_APJC_Submission_Notification used in Process Builder - Completed ITCE Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>itce-apjc-approvers@cisco.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Completed_ITCE</template>
+    </alerts>
+    <alerts>
+        <fullName>Completed_ITCE_Americas_Submission_Notification</fullName>
+        <description>Completed_ITCE_Americas_Submission_Notification used in Process Builder - Completed ITCE Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>itce-americas-approvers@cisco.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Completed_ITCE</template>
+    </alerts>
+    <alerts>
+        <fullName>Completed_ITCE_EMEAR_Submission_Notification</fullName>
+        <description>Completed_ITCE_EMEAR_Submission_Notification used in Process Builder - Completed ITCE Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>itce-emear-approvers@cisco.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Completed_ITCE</template>
+    </alerts>
+    <alerts>
+        <fullName>Completed_ITCE_Security_Submission_Notification</fullName>
+        <description>Completed_ITCE_Security_Submission_Notification used in Process Builder - Completed ITCE Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>itce-americas-approvers@cisco.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/CEE_Completed_ITCE</template>
+    </alerts>
+    <alerts>
+        <fullName>ITCE_PM_Approval</fullName>
+        <description>ITCE PM Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Alternate_Primary_Contact_2__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Alternate_Primary_Contact_3__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Alternate_Primary_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Copy_Request_To_2__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Copy_Request_To_3__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Copy_Request_To__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>sfdc-automated-email-donotreply@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/ITCE_PM_Approval</template>
+    </alerts>
+    <alerts>
+        <fullName>Notification_to_CPOC_Lab_Mailer</fullName>
+        <description>Notification to CPOC Lab Mailer</description>
+        <protected>false</protected>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/New_lab_visit_request_notice</template>
+    </alerts>
+    <alerts>
+        <fullName>Notification_to_Requester_upon_Lab_Redirect</fullName>
+        <description>Notification to Requester upon Lab Redirect</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/Lab_Redirect_for_Requester</template>
+    </alerts>
+    <alerts>
+        <fullName>Notification_upon_CPOC_labredirect</fullName>
+        <description>Notification upon CPOC labredirect</description>
+        <protected>false</protected>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Additional_Secondary_Scheduler2__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Additional_Secondary_Scheduler__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Additional_Secondary_scheduler_3__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Primary_Scheduler__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Secondary_Scheduler__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/Lab_redirect</template>
+    </alerts>
+    <alerts>
+        <fullName>OBX_Post_Briefing_Survey_for_Account_Team</fullName>
+        <description>OBX Post Briefing Survey for Account Team</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Engagement_Contact__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>donotreply-sfdc@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CEE_Email_Templates/OBX_Post_Briefing_Survey_for_Account_Team</template>
+    </alerts>
+    <alerts>
+        <fullName>Return_a_Lab_Request</fullName>
+        <description>Return a Lab Request</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>CPOC_Templates/Request_Returned</template>
+    </alerts>
+    <alerts>
+        <fullName>Scheduled_Lab_Request_Custom_Test_SE_Managed</fullName>
+        <description>Scheduled Lab Request Custom Test SE Managed</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/Custom_Test_SE_Managed</template>
+    </alerts>
+    <alerts>
+        <fullName>Scheduled_Lab_Request_Lab_Tour</fullName>
+        <description>Scheduled Lab Request Lab Tour</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/Lab_Tour</template>
+    </alerts>
+    <alerts>
+        <fullName>Scheduled_Pre_Built_static_type</fullName>
+        <description>Scheduled Pre Built static type</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/CPOC_Pre_Built_Static_Test</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_an_email_to_users_for_pending_CPOC_request</fullName>
+        <description>Send an email to users for pending CPOC request</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/Pending_CPOC_Request</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_an_email_to_users_upon_Cancel_of_CPOC_request</fullName>
+        <description>Send an email to users upon Cancel of CPOC request</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-ciscosales@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>CPOC_Templates/Cancel_a_lab_request</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_an_email_to_users_upon_hold_of_CPOC_request</fullName>
+        <description>Send an email to users upon hold of CPOC request</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Lab_Mailer__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient1__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient2__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>CPOC_Recipient3__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SE_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Your_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>CPOC_Templates/Hold_of_a_Lab_request</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>AM_Approval_Status</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Assigned to PM</literalValue>
+        <name>AM Approval Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AM_Submission_Request_Status_Change</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Submitted by requester</literalValue>
+        <name>AM Submission Request Status Change</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CEE_FY_Copy_EBD_Fiscal_Year</fullName>
+        <description>Copies Fiscal Year of End date time</description>
+        <field>FY_Copy__c</field>
+        <formula>YEAR( FY_Start_Date__c ) + 1</formula>
+        <name>CEE FY Copy EBD Fiscal Year</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CEE_FY_Set_EBD_Fiscal_Week</fullName>
+        <description>Set Fiscal Week of End date</description>
+        <field>Fiscal_Week__c</field>
+        <formula>FLOOR(( DATEVALUE(Start_Date_Time__c) - FY_Start_Date__c ) / 7 ) + 1</formula>
+        <name>CEE FY Set EBD Fiscal Week</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CEE_Final_Approval_Criteria_Check</fullName>
+        <field>Final_Approval_Flag__c</field>
+        <literalValue>1</literalValue>
+        <name>CEE Final Approval Criteria Check</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CEE_Request_Cancel_Date_to_Blank</fullName>
+        <description>Resets Request Cancel Date</description>
+        <field>Request_Cancel_Date__c</field>
+        <name>CEE Request Cancel Date to Blank</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CEE_Request_Cancel_Date_to_Now</fullName>
+        <description>Set CEE Request Cancel Date to current data/time</description>
+        <field>Request_Cancel_Date__c</field>
+        <formula>NOW()</formula>
+        <name>CEE Request Cancel Date to Now</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CEE_Update_Status_AM_PM_on_Request_Held</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Hold (resources held)</literalValue>
+        <name>CEE Update Status (AM/PM) on Request Sta</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CPOC_Lab_Redirect_Fieldupdate</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Lab Redirect</literalValue>
+        <name>CPOC_Lab_Redirect_Fieldupdate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CPOC_Pending_Status_Fieldupdate</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Pending</literalValue>
+        <name>CPOC Pending Status Fieldupdate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CPOC_Update_Status_on_Request_Hold</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Hold</literalValue>
+        <name>CPOC Update Status on Request Sta</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Cancelled_Request_Status</fullName>
+        <description>Update status of cancelled request</description>
+        <field>Request_Status__c</field>
+        <literalValue>Cancelled (all resources released)</literalValue>
+        <name>Cancelled Request Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_status_to_Completed</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Completed</literalValue>
+        <name>Change status to Completed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_status_to_Submitted</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Submitted</literalValue>
+        <name>Change status to Submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_status_to_cancel</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Returned by Scheduler</literalValue>
+        <name>Change status to cancel</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_status_to_schduled</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Scheduled</literalValue>
+        <name>Change status to scheduled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Engagement_Recalled_Request_Status</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Returned (all resources released)</literalValue>
+        <name>Engagement Recalled Request Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>JiffleBookDateVarianceStatus</fullName>
+        <field>Expected_Book_Date_Variance_Status__c</field>
+        <formula>If(Expected_Book_Date_After_30_Days__c &lt;= Expected_Book_Date_Before_Event__c,'Sooner','Later')</formula>
+        <name>JiffleBookDateVarianceStatus</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>JiffleBookedSoonerLater</fullName>
+        <field>Opportunity_Booked__c</field>
+        <formula>If(Date_When_Opportunity_Booked__c &lt;= Expected_Book_Date_Before_Event__c,'Sooner','Later')</formula>
+        <name>JiffleBookedSoonerLater</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>JiffleDaysTakenToBookOpportunity</fullName>
+        <field>Days_Taken_To_Book_Opportunity__c</field>
+        <formula>IF(Date_When_Opportunity_Booked__c &lt;= Expected_Book_Date_Before_Event__c,
+Expected_Book_Date_Before_Event__c -Date_When_Opportunity_Booked__c,Date_When_Opportunity_Booked__c - Expected_Book_Date_Before_Event__c)</formula>
+        <name>JiffleDaysTakenToBookOpportunity</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>JiffleExpectedBookDateDaysVariance</fullName>
+        <field>Expected_Book_Date_Variance_After_30_Day__c</field>
+        <formula>IF(Expected_Book_Date_After_30_Days__c &lt;= Expected_Book_Date_Before_Event__c,
+Expected_Book_Date_Before_Event__c -Expected_Book_Date_After_30_Days__c,Expected_Book_Date_After_30_Days__c - Expected_Book_Date_Before_Event__c)</formula>
+        <name>JiffleExpectedBookDateDaysVariance</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>JiffleNowEndDate</fullName>
+        <field>End_Date_Time__c</field>
+        <name>JiffleNowEndDate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>JiffleNowStartDates</fullName>
+        <field>Start_Date_Time__c</field>
+        <name>JiffleNowStartDates</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>JiffleOpportunityType</fullName>
+        <field>Jiffle_Opportunity_Type__c</field>
+        <literalValue>Existing</literalValue>
+        <name>JiffleOpportunityType</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>JifflePortfolioUpdate</fullName>
+        <field>Business_Segment__c</field>
+        <formula>Jiffle_Event__r.Portfolio__c</formula>
+        <name>JifflePortfolioUpdate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>JiffleUniqueAssociationUpdate</fullName>
+        <field>Unique_Association__c</field>
+        <formula>CASESAFEID(Jiffle_Event__c) + CASESAFEID(Primary_Account__c) + IF(ISBLANK(Opportunity__c),'No Related Opportunity',Opportunity__r.Name)</formula>
+        <name>JiffleUniqueAssociationUpdate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Match_Status_AM_PM_use_c_to_Request_Sta</fullName>
+        <description>Changes Request_Status__c to Cancelled when Status_AM_PM_use__c is changed to canceled.</description>
+        <field>Request_Status__c</field>
+        <literalValue>Cancelled (all resources released)</literalValue>
+        <name>Match Status_AM_PM_use__c to Request Sta</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Match_Status_c_to_Request_Sta</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Cancelled</literalValue>
+        <name>Match Status__c to Request Sta</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Owner_Email</fullName>
+        <field>Owner_Email__c</field>
+        <formula>CreatedBy.Email</formula>
+        <name>Owner Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PM_Approval_Status_Update</fullName>
+        <description>Update the status to Approved when a record is approved</description>
+        <field>Request_Status__c</field>
+        <literalValue>Confirmed</literalValue>
+        <name>PM Approval Status Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PM_Approve_Submission</fullName>
+        <field>Briefing_Status__c</field>
+        <formula>"Accepted"</formula>
+        <name>PM Approve Submission</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PM_Final_Approval_Request_Status</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Confirmed</literalValue>
+        <name>PM Final Approval Request Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PM_Final_Rejection_Request_Status</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Returned (all resources released)</literalValue>
+        <name>PM Final Rejection Request  Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PM_Reject_Submission</fullName>
+        <field>Briefing_Status__c</field>
+        <formula>"Rejected"</formula>
+        <name>PM Reject Submission</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Post_Engagement_Email_Notification_Flag</fullName>
+        <description>Set flag to true.</description>
+        <field>Post_Engagement_Message_Sent__c</field>
+        <literalValue>1</literalValue>
+        <name>Post Engagement Email Notification Flag</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Req_Status_updated_to_Saved_not</fullName>
+        <description>Change the Request status to Save, not submitted once approval process is recalled.</description>
+        <field>Request_Status__c</field>
+        <literalValue>Saved, not Submitted</literalValue>
+        <name>Req Status updated to Saved not</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Request_Status_Update</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Returned (all resources released)</literalValue>
+        <name>Request Status Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Request_Status_updated_to_Saved_not</fullName>
+        <description>Change the Request status to Save, not submitted once approval process is recalled.</description>
+        <field>Request_Status__c</field>
+        <literalValue>Saved, not Submitted</literalValue>
+        <name>Request Status updated to Saved not</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Scheduler_Approval_Status</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Confirmed</literalValue>
+        <name>Scheduler Approval Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Scheduler_Rejection</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Returned (all resources released)</literalValue>
+        <name>Scheduler Rejection</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Request_Status_to_Saved_not_submitt</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>Saved, not submitted</literalValue>
+        <name>Set Request Status to Saved, not submitt</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Submitted_Date_CPOC</fullName>
+        <description>Updated Submitted date</description>
+        <field>Submitted_Date__c</field>
+        <formula>now()</formula>
+        <name>Submitted Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Submitted_date_value</fullName>
+        <description>updated submmitted date value</description>
+        <field>Submitted_Date__c</field>
+        <formula>now()</formula>
+        <name>Submitted date value</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Submitted_date</fullName>
+        <field>Submitted_Date__c</field>
+        <formula>NOW()</formula>
+        <name>Update Submitted date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_reason_on_completed_and_scheduled</fullName>
+        <field>Reason__c</field>
+        <name>Update reason on completed and scheduled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_status_on_Completed_and_Scheduled</fullName>
+        <field>CPOC_Status__c</field>
+        <name>Update status on Completed and Scheduled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_status_on_Reschedule</fullName>
+        <description>This is for updating request status on rescheduled for CPOC Requests.</description>
+        <field>Request_Status__c</field>
+        <literalValue>Scheduled</literalValue>
+        <name>Update status on Reschedule</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>CEE Cancellation</fullName>
+        <actions>
+            <name>CEE_Request_Cancellation</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Cancelled_Request_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Cancelled (all resources released)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>"Jifflenow (Event, Tradeshow, Conference)"</value>
+        </criteriaItems>
+        <description>Workflow rule for scheduler cancellation</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CEE FY EBD Changed</fullName>
+        <actions>
+            <name>CEE_FY_Copy_EBD_Fiscal_Year</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>CEE_FY_Set_EBD_Fiscal_Week</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow copies CEE End date Fiscal Year Start Date, and sets Fiscal Week</description>
+        <formula>($User.Username ='dataload_suppress_user@cisco.com')  ||  (ISCHANGED(Start_Date_Time__c))  || (  ISNULL(FY_Copy__c) &amp;&amp;  NOT(ISNULL(Start_Date_Time__c))  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>CEE GTE 15 Business Day Closure</fullName>
+        <actions>
+            <name>CEE_GTE_Missing_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow rule to alert CEE contacts when GTE is not populate by 15 prior business days (21 days).</description>
+        <formula>RecordTypeId != '012V00000008gcJ' &amp;&amp; ISPICKVAL(Legal__c, "Yes") &amp;&amp;  ISBLANK( Legal_GTE_ID__c )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>CEE_GTE_Missing_Email_Alert</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>CEE__c.Start_Date_Time__c</offsetFromField>
+            <timeLength>-21</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>CEE Request Assignment</fullName>
+        <actions>
+            <name>CEE_Assignment_Email</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Assigned to PM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>"Jifflenow (Event, Tradeshow, Conference)"</value>
+        </criteriaItems>
+        <description>Workflow rule for scheduler request assignment</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CEE Set Request Status to Saved not submitted upon creation</fullName>
+        <actions>
+            <name>Set_Request_Status_to_Saved_not_submitt</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Upcoming IT Customer Engagement Briefing</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>CEE Update Status %28AM%2FPM%29 on Request Status update to Canceled</fullName>
+        <actions>
+            <name>CEE_OBX_cancellation_alert</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Match_Status_AM_PM_use_c_to_Request_Sta</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Outcome Based Experience (OBX - formerly EBC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Status_AM_PM_use__c</field>
+            <operation>equals</operation>
+            <value>Cancelled (all resources released)</value>
+        </criteriaItems>
+        <description>This updates Request_Status__c when the picklist Status_AM_PM_use__c is updated.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CEE Update Status %28AM%2FPM%29 on Request Status update to Held</fullName>
+        <actions>
+            <name>CEE_Update_Status_AM_PM_on_Request_Held</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Outcome Based Experience (OBX - formerly EBC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Status_AM_PM_use__c</field>
+            <operation>equals</operation>
+            <value>Held (resources held)</value>
+        </criteriaItems>
+        <description>This updates Request_Status__c when the picklist Status_AM_PM_use__c is updated.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CEE_Request Cancel Date</fullName>
+        <actions>
+            <name>CEE_Request_Cancel_Date_to_Now</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This workflow will populate the Request Cancel date when the request status changes to Cancel</description>
+        <formula>ISCHANGED( Request_Status__c) 
+&amp;&amp;
+TEXT(Request_Status__c) = 'Cancelled (all resources released)' 
+&amp;&amp;
+ISNULL(Request_Cancel_Date__c)
+&amp;&amp;
+RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.CEE_OBX_Record_Type_ID__c,15)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>CEE_Request Cancel Date to Blank</fullName>
+        <actions>
+            <name>CEE_Request_Cancel_Date_to_Blank</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This workflow will remove the Request Cancel date when the request status changes from Cancel to something else</description>
+        <formula>ISCHANGED( Request_Status__c) 
+&amp;&amp; 
+TEXT(Request_Status__c) != 'Cancelled (all resources released)' 
+&amp;&amp; 
+NOT(ISNULL(Request_Cancel_Date__c)) 
+&amp;&amp; 
+RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.CEE_OBX_Record_Type_ID__c,15)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC Pending Status Update</fullName>
+        <actions>
+            <name>CPOC_Pending_Status_Fieldupdate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.CPOC_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Username</field>
+            <operation>notEqual</operation>
+            <value>sfdc_apex_user@cisco.com</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC Post Briefing Survey for Account Team</fullName>
+        <active>true</active>
+        <description>CPOC Post Briefing Survey for Account Team</description>
+        <formula>RecordTypeId =   LEFT( $Setup.ObjectRecordTypeIds__c.CEE_CPOC_Record_Type_ID__c , 15)  
+&amp;&amp;
+(TEXT(Request_Status__c) = 'Completed' || TEXT(Request_Status__c) = 'Scheduled')
+&amp;&amp; 
+($User.Id != '005300000010pIr')</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>CPOC_Post_Briefing_Survey_for_Account_Team</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>CEE__c.CPOC_End_Date__c</offsetFromField>
+            <timeLength>-4</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>CPOC Reschedule Status Update</fullName>
+        <actions>
+            <name>Update_status_on_Reschedule</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.CPOC_Status__c</field>
+            <operation>equals</operation>
+            <value>Rescheduled</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC Update Status</fullName>
+        <actions>
+            <name>CPOC_Update_Status_on_Request_Hold</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.CPOC_Status__c</field>
+            <operation>equals</operation>
+            <value>Hold</value>
+        </criteriaItems>
+        <description>This updates Request_Status__c when the picklist Status__c is updated.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC Update Status on Request Status update to Canceled</fullName>
+        <actions>
+            <name>Match_Status_c_to_Request_Sta</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.CPOC_Status__c</field>
+            <operation>equals</operation>
+            <value>Cancel</value>
+        </criteriaItems>
+        <description>This updates Request_Status__c when the picklist Status__c is updated.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC_2_Week_Reminder</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Start_Date_Time__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Service_type__c</field>
+            <operation>notEqual</operation>
+            <value>POV</value>
+        </criteriaItems>
+        <description>CPOC 2 Week Reminder</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>CPOC_2_week_before_email_alert</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>CEE__c.Customer_Start_date__c</offsetFromField>
+            <timeLength>-1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>CPOC_Lab_Redirect_status_update</fullName>
+        <actions>
+            <name>Notification_to_Requester_upon_Lab_Redirect</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Notification_upon_CPOC_labredirect</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>CPOC_Lab_Redirect_Fieldupdate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.CPOC_Status__c</field>
+            <operation>equals</operation>
+            <value>Lab Redirect</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC_Return_a_lab_request</fullName>
+        <actions>
+            <name>Return_a_Lab_Request</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Returned by Scheduler</value>
+        </criteriaItems>
+        <description>CPOC Return a lab request</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC_Schedule_Custom_SE_Managed</fullName>
+        <actions>
+            <name>Scheduled_Lab_Request_Custom_Test_SE_Managed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Service_type__c</field>
+            <operation>equals</operation>
+            <value>Custom Test</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Type__c</field>
+            <operation>equals</operation>
+            <value>SE Managed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </criteriaItems>
+        <description>CPOC Schedule Custom Test SE Managed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC_Schedule_Lab_Custom_Test_CPOCManaged</fullName>
+        <actions>
+            <name>CPOC_Scheduled_Custom_Test_CPOC_Managed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Service_type__c</field>
+            <operation>equals</operation>
+            <value>Custom Test</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Type__c</field>
+            <operation>equals</operation>
+            <value>CPOC Managed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </criteriaItems>
+        <description>CPOC Schedule Lab Custom Test CPOC Managed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC_Schedule_Lab_Request_Pre_Built_Static_Test</fullName>
+        <actions>
+            <name>Scheduled_Pre_Built_static_type</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Service_type__c</field>
+            <operation>equals</operation>
+            <value>Pre-Built static test</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </criteriaItems>
+        <description>CPOC Schedule Lab Request Pre Built Static Test</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CPOC_Schedule_Lab_Tour</fullName>
+        <actions>
+            <name>Scheduled_Lab_Request_Lab_Tour</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Service_type__c</field>
+            <operation>equals</operation>
+            <value>Lab tour</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </criteriaItems>
+        <description>CPOC Schedule Lab Tour</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Complete CPOC Request1</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.CPOC_End_Date__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Change_status_to_Completed</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>CEE__c.CPOC_End_Date__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>JiffleBookedOpportunityUpdates</fullName>
+        <actions>
+            <name>JiffleBookedSoonerLater</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>JiffleDaysTakenToBookOpportunity</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( ISCHANGED(Date_When_Opportunity_Booked__c), CONTAINS(RecordType.Name,'Jiffle' ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>JiffleExpectedBookDateOpportunityUpdates</fullName>
+        <actions>
+            <name>JiffleBookDateVarianceStatus</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>JiffleExpectedBookDateDaysVariance</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( ISCHANGED(Expected_Book_Date_After_30_Days__c), CONTAINS(RecordType.Name,'Jiffle' ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>JifflePortfolioupdate</fullName>
+        <actions>
+            <name>JifflePortfolioUpdate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>JifflePortfolioupdate</description>
+        <formula>RecordTypeId = $Label.Jiffle_RecordType   &amp;&amp;  Business_Segment__c  = NULL</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>JiffleUniqueAssociationUpdate</fullName>
+        <actions>
+            <name>JiffleNowEndDate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>JiffleNowStartDates</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>JiffleOpportunityType</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>JifflePortfolioUpdate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>JiffleUniqueAssociationUpdate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 4) OR (3 AND 2 AND 4)</booleanFilter>
+        <criteriaItems>
+            <field>CEE__c.Unique_Association__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>"Jifflenow (Event, Tradeshow, Conference)"</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Business_Segment__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Jiffle_Opportunity_Type__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>OBX Post Briefing Survey for Account Team</fullName>
+        <active>true</active>
+        <description>OBX Post Briefing Survey for Account Team</description>
+        <formula>RecordTypeId =   LEFT($Setup.ObjectRecordTypeIds__c.CEE_OBX_Record_Type_ID__c, 15)  
+&amp;&amp;
+TEXT(Request_Status__c) = 'Confirmed'
+&amp;&amp;
+ FSAT_Survey_URL__c != ''</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>OBX_Post_Briefing_Survey_for_Account_Team</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>CEE__c.End_Date_Time__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Owner Info</fullName>
+        <actions>
+            <name>Owner_Email</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.CreatedById</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send_Email_for_Pending_CPOC_Lab_Request</fullName>
+        <actions>
+            <name>Send_an_email_to_users_for_pending_CPOC_request</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending</value>
+        </criteriaItems>
+        <description>Send Email for Pending CPOC Lab Request</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send_Email_upon_CPOC_Lab_Request_Cancelled</fullName>
+        <actions>
+            <name>Send_an_email_to_users_upon_Cancel_of_CPOC_request</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Cancelled</value>
+        </criteriaItems>
+        <description>Send Email upon CPOC Lab Request Cancelled</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send_Email_upon_CPOC_Lab_Request_Hold</fullName>
+        <actions>
+            <name>Send_an_email_to_users_upon_hold_of_CPOC_request</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Hold</value>
+        </criteriaItems>
+        <description>Send Email upon CPOC Lab Request Hold</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send_Email_upon_CPOC_Lab_Request_Submission</fullName>
+        <actions>
+            <name>CPOC_Send_email_upon_submission_of_a_CPOC_request</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Notification_to_CPOC_Lab_Mailer</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </criteriaItems>
+        <description>Send Email upon CPOC Lab Request Submission</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzCPOC Scheduled Status Update</fullName>
+        <actions>
+            <name>Update_reason_on_completed_and_scheduled</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_status_on_Completed_and_Scheduled</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <booleanFilter>1 AND ( (2 OR 3) AND ((2 AND 4) OR 3))</booleanFilter>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Completed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.CPOC_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Rescheduled</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzComplete CPOC Request</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>CEE__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Proof Of Concept(CPOC)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CEE__c.CPOC_End_Date__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <offsetFromField>CEE__c.CPOC_End_Date__c</offsetFromField>
+            <timeLength>3</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+</Workflow>

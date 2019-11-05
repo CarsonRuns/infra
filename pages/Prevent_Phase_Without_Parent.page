@@ -1,0 +1,529 @@
+<apex:page standardController="Opportunity" extensions="OpportunityNewOverride_CT" id="opptyNewOverride" action="{!save}">
+    <title>Opportunity Redirect</title>
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script src="/soap/ajax/40.0/connection.js"></script>
+    <apex:includeScript value="/support/console/40.0/integration.js" />
+    <apex:stylesheet value="{!URLFOR($Resource.SFBootstrap, '/dist/css/bootstrap.css')}"  />
+    <apex:stylesheet value="{!$Resource.CSS_Styles}" />
+    
+    <!-- Start Cancel override for Lightning (Angela 06/01/2018) -->
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+    <script> 
+    function CloseTab(){
+        sforce.console.getEnclosingPrimaryTabId(closeSubtab);        
+    }
+    var closeSubtab = function closeSubtab(result) {
+        var tabId = result.id;
+        sforce.console.closeTab(tabId);
+    };
+    </script>
+    <!-- End Cancel override for Lightning (Angela 06/01/2018) -->
+    
+    <script language="javascript">
+    //debugger;
+    
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    function isLightningDesktop() {
+        return ['Theme4d', 'Theme4u'].indexOf('{!$User.UIThemeDisplayed}') > -1;  //Komal - Lightning 08/10/2018 Release --Change to allow Lightning Desktop and Lightning Console themes
+    }
+    function isLightningMobile() {
+        return( "{!$User.UIThemeDisplayed }" == "Theme4t");
+    }
+    var rTypeNamePhase = "Phase Opportunity";
+    var rTypeNameParent = "Parent Opportunity";
+    var rTypeNameSolPlan = "Solution Plan";
+    var rTypeNamePartnerParent = "Partner Parent Opportunity";
+    var rTypeNamePartnerPhase = "Partner Phase Opportunity";
+    var rTypeNameGlobalOppty = "Global Deal/Opportunity"; //GDM Q3FY17 Added new recordtype.
+    var rTypeNameRenewalOppty = "Renewals Opportunity"; // SD - 9/13/2018 - Added renewals record type
+    var rTypeNameBookings = "Bookings Opportunity";
+    
+    var IdPhase;
+    var IdParent;
+    var IdSolPlan;
+    var IdPartnerParent;
+    var IdPartnerPhase;
+    var IdGlobal; //GDM Q3FY17 change
+    
+    //Variable to store the Id of Renewals Record Type
+    var IdRenewals;
+    
+    var IdBookings;
+    
+    var parentRecordType;
+    var userPermissions;
+   
+        <!--SCAVA FIX -->
+            var profileDefaultRecordType = "{!JSENCODE(UserDefaultOpportunityRecordType)}";
+    var isBypassingRecordTypeSelection;
+        
+        //Use a trigger to set the theater field with running users.
+        var theatreField = getConstant('New Op TheaterId', 'URL');
+    var org_id = '{!$Organization.Id}';
+    // *********** ANDREWS FIX ****************
+    function parseWindowLocationForISDTP() {
+        var url = location.href;
+        
+        if (url.indexOf('isdtp=mn') > 0) {
+            //alert("isdtp");
+            return true;
+        } else
+            return false;
+    }
+    
+    function displaySf1Message(){
+        var sf1Message = document.getElementById('messageDiv');
+        sf1Message.style.fontSize = '14px';
+        sf1Message.style.fontWeight = 'Normal';
+        sf1Message.style.color = '#3c3d3e';
+        sf1Message.style.fontFamily = 'ProximaNovaSoft-Regular';
+        sf1Message.style.display = 'block';
+    }
+    
+    function redirect() {
+        console.log('checking if sf1');
+        if (isLightningMobile()) {
+            console.log('using sforce.one createRecord redirect');
+          
+                <!--SCAVA FIX -->
+                   <!-- sforce.one.createRecord('Opportunity','{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Parent_Mobile_RecordTypeId__c)}');-->
+             var defaults = {};
+             
+            defaults.Created_Via_Salesforce1__c = true;
+            sforce.one.createRecord('Opportunity','{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Parent_RecordTypeId__c)}',defaults);
+             
+            myVar=setTimeout(function () {displaySf1Message();},3000);
+            //sforce.one.back();
+            //history.go(-1);
+        }else{
+            // *** ANDREWS FIX ***
+            var isISTDP = parseWindowLocationForISDTP();
+            
+            var noParentMsg = "You cannot create "
+            + rTypeNamePhase
+            + " without a Parent.\n\n Please Click on Add Phase Button from a "
+            + rTypeNameParent + "!";
+            
+            var noPartnerParentMsg = "You cannot create "
+            + rTypeNamePartnerPhase
+            + " without a Partner Parent.\n\n Please Click on Add Phase Button from a "
+            + rTypeNamePartnerPhase + "!";
+            
+            //Get record type selected from record type selection screen
+            //var oppRecordTypeId = "{!Opportunity.RecordTypeId}";
+            
+            //oppRecordTypeId = "{!Opportunity.RecordTypeId}";                    
+            //Get record type selected from customize VF pages record type selection screen.
+            if( !isBypassingRecordTypeSelection ){
+                oppRecordTypeId = document.getElementById("{!$Component.opptyNewOverride.theForm.theBlock.theSection.theSectionItem.selectRecordType}").value;
+            } else {
+                oppRecordTypeId = profileDefaultRecordType;
+            }
+            
+            var OptyRecordType = getOptyRecordTypeName(oppRecordTypeId);
+            
+           
+            <!--SCAVA_FIX-->
+            
+            var acctId = '{!JSENCODE($CurrentPage.parameters.acctId)}';
+            var allParams = '{!$CurrentPage.parameters.id}';
+            var stagename = "--None--";             //<!-- Added By Naresh for IS Sprint 1  -->  
+            console.log("Get All Current Page Params: "+ allParams);
+            console.log("Account Id: " + acctId);
+            //var OptyAcctId = '{!Opportunity.AccountId}';
+            var OptyAcctId = acctId;
+            
+            <!--SCAVA_FIX-->
+            var contactId = '{!JSENCODE($Request.conid)}';
+            var theatre = getUserTheater() || "--None--";
+            theatre = escape(theatre); // added to fix '&' issue
+            var userProfileId = '{!$User.ProfileId}';
+            
+            var stage = "1 - Prospect";             // <!-- Added By Naresh for IS Sprint 1  -->
+            var UrlB = "/006/e?retURL=%2F";
+            
+            var UrlE;
+            var userID = '{!$User.Id}';
+            
+            var fname = "{!URLENCODE($User.FirstName)}";
+            var lname = "{!URLENCODE($User.LastName)}";
+            userPermissions = (userPermissions == null) ? ''
+            : userPermissions;
+            var space = " ";
+            var uname = fname.concat(space).concat(lname);
+            
+             // Added by Pradeep for Renewals Release 12/17/2018 : To store Renewal profile id
+            var renewalProfileId = "{!$Setup.ProfileID__c.Cisco_Renewals__c}"; 
+            console.log('renewalProfileId  -->',renewalProfileId+' userProfileId-->'+userProfileId);
+            
+            //for PSS user do not prepoulate the Opportunity Owner AM field Theatre__c
+            if (userProfileId == "00e30000000rrZw" || userProfileId.includes(renewalProfileId)
+                || userPermissions.indexOf('Enable_ePSS') > -1) {
+                UrlE = "&rt=Opportunity&nooverride=1";
+            } else {
+                UrlE = "&CF00N30000002C5mx_lkid=" + userID
+                + "&CF00N30000002C5mx=" + uname
+                + "&rt=Opportunity&nooverride=1";
+            }
+            
+            var wo_AcctUrl = "/setup/ui/recordtypeselect.jsp?retURL=%2F006%2Fo&"
+            + "save_new_url=%2F006%2Fe%3FretURL%3D%252F006%252Fo&ent=Opportunity";
+            
+            var w_AcctUrl = "/setup/ui/recordtypeselect.jsp?"
+            + "retURL=%2F&"
+            + "save_new_url=%2F006%2Fe%3FretURL%3D%252F"
+            + "%26accid%3D&ent=Opportunity";
+            
+            var wc_AcctUrl = "/setup/ui/recordtypeselect.jsp?"
+            + "retURL=%2F" + contactId + "&"
+            + "save_new_url=%2F006%2Fe%3FretURL%3D%252F"
+            + contactId + "%26accid%3D" + contactId
+            + "&ent=Opportunity";
+            
+            getOptyRecordTypeIds();
+            
+            if (OptyRecordType == rTypeNameParent) {
+                parentRecordType = IdParent;
+            } else if (OptyRecordType == rTypeNamePartnerParent) {
+                parentRecordType = IdPartnerParent;
+            }
+            
+            if ((OptyRecordType == rTypeNameParent || OptyRecordType == rTypeNamePartnerParent)
+                && (OptyAcctId == "") && (contactId == "")) {
+                Url = UrlB + "006%2Fo&RecordType=" + parentRecordType
+                + theatreField + theatre + UrlE;
+            } else if ((OptyRecordType == rTypeNameParent || OptyRecordType == rTypeNamePartnerParent)
+                       && (OptyAcctId == "") && (contactId != "")) {
+                Url = UrlB + "006%2Fo&RecordType=" + parentRecordType
+                + theatreField + theatre + "&conid=" + contactId
+                + UrlE;
+            } else if ((OptyRecordType == rTypeNameParent || OptyRecordType == rTypeNamePartnerParent)
+                       && (contactId != "")) {
+                Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                + parentRecordType + theatreField + theatre
+                + "&conid=" + contactId + UrlE;
+            } else if ((OptyRecordType == rTypeNameParent || OptyRecordType == rTypeNamePartnerParent)
+                       && (contactId == "")) {
+                Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                + parentRecordType + theatreField + theatre + UrlE;
+            }else if ((OptyRecordType == rTypeNameSolPlan)
+                      && (OptyAcctId == "")) {
+                Url = UrlB + "006%2Fo&RecordType=" + IdSolPlan + UrlE;
+            } else if (OptyRecordType == rTypeNameSolPlan) {
+                Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                + IdSolPlan + UrlE;
+            } 
+            // GDM adding new recordtype starts here
+                else if (OptyRecordType == rTypeNameGlobalOppty && OptyAcctId == "" && contactId == "") {
+                    Url = UrlB + "006%2Fo&RecordType=" + IdGlobal + theatreField + theatre + UrlE;
+                } else if (OptyRecordType == rTypeNameGlobalOppty && OptyAcctId == "" && contactId != "") { 
+                    Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                    + IdGlobal + theatreField + theatre + "&conid=" + contactId + UrlE;
+                } else if (OptyRecordType == rTypeNameGlobalOppty && contactId != ""){
+                    Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                    + parentRecordType + theatreField + theatre
+                    + "&conid=" + contactId + UrlE;                    
+                } else if (OptyRecordType == rTypeNameGlobalOppty && contactId == ""){
+                    Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                    + IdGlobal + theatreField + theatre + UrlE;           
+                }
+            // GDM Q3FY17 adding new recordtype ends here
+            // SD - 9/13/2018 - Adding renewals recordType
+            /*
+                    else if (OptyRecordType == rTypeNameRenewalOppty && contactId == ""){
+                        Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                        + IdGlobal + theatreField + theatre + UrlE; 
+                    }
+            */
+             else if (OptyRecordType == rTypeNameRenewalOppty && OptyAcctId == "" && contactId == "") {
+                    Url = UrlB + "006%2Fo&RecordType=" + IdRenewals + theatreField + theatre + UrlE;
+                } else if (OptyRecordType == rTypeNameRenewalOppty && OptyAcctId == "" && contactId != "") { 
+                    Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                    + IdRenewals + theatreField + theatre + "&conid=" + contactId + UrlE;
+                } else if (OptyRecordType == rTypeNameRenewalOppty && contactId != ""){
+                    Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                    + IdRenewals + theatreField + theatre
+                    + "&conid=" + contactId + UrlE;                    
+                } else if (OptyRecordType == rTypeNameRenewalOppty && contactId == ""){
+                    Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                    + IdRenewals + theatreField + theatre + UrlE;           
+                }
+                
+                //Bookings
+                else if (OptyRecordType == rTypeNameBookings && OptyAcctId == "" && contactId == "") {
+                    Url = UrlB + "006%2Fo&RecordType=" + IdBookings + theatreField + theatre + UrlE;
+                } else if (OptyRecordType == rTypeNameBookings && OptyAcctId == "" && contactId != "") { 
+                    Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                    + IdBookings + theatreField + theatre + "&conid=" + contactId + UrlE;
+                } else if (OptyRecordType == rTypeNameBookings && contactId != ""){
+                    Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                    + IdBookings + theatreField + theatre
+                    + "&conid=" + contactId + UrlE;                    
+                } else if (OptyRecordType == rTypeNameBookings && contactId == ""){
+                    Url = UrlB + acctId + "&accid=" + acctId + "&RecordType="
+                    + IdBookings + theatreField + theatre + UrlE;           
+                }
+                
+            // SD - Adding renewal record type ends here
+                        else if ((OptyRecordType == rTypeNamePhase || OptyRecordType == rTypeNamePartnerPhase)
+                                 && (OptyAcctId == "")) {
+                            if (OptyRecordType == rTypeNamePhase)
+                                alert(noParentMsg);
+                            else
+                                alert(noPartnerParentMsg);
+                            
+                            Url = wo_AcctUrl;
+                        } else if (OptyRecordType == rTypeNamePhase
+                                   || OptyRecordType == rTypeNamePartnerPhase) {
+                            if (OptyRecordType == rTypeNamePhase)
+                                alert(noParentMsg);
+                            else
+                                alert(noPartnerParentMsg);
+                            if (contactId != "") {
+                                Url = wc_AcctUrl;
+                            } else {
+                                Url = w_AcctUrl;
+                            }
+                        }else{  
+                            alert('functionality for record type [' + OptyRecordType
+                                  + '] is undefined.');
+                            Url = wo_AcctUrl;
+                            if (OptyAcctId != "") {
+                                Url = w_AcctUrl;
+                            }
+                        }
+            
+            // *** ANDREWS FIX ****
+            if (isISTDP){
+                Url += "&isdtp=mn";
+            }
+            
+            if(!isLightningDesktop()){
+                var query = window.location.search.slice((1));
+                query = decodeURIComponent(query);
+                var newQueryStr = '?' + query + '&nooverride=1';                    
+                var hostname = window.location.hostname.toLowerCase();
+                
+                var fnUr = Url+ newQueryStr;
+                    fnUr = fnUr.replace('save_new=1&','');
+                window.location.href = fnUr;
+                    
+            }else{
+                console.log('=========>');
+                var defaults = {};
+                if(acctId != '' && acctId != 'undefined' & acctId != null){
+                    defaults.AccountId = acctId;
+                }
+                if(stagename == "--None--"){                       <!-- Added By Naresh for IS Sprint 1  -->
+                    defaults.StageName = stage;                     <!-- Added By Naresh for IS Sprint 1  -->
+                    defaults.Competitors__c = "Competitors";
+                    }
+                    if(theatre != ''){
+                        defaults.Theater__c = unescape(theatre);
+                    }
+                                            if(contactId != ''){
+                                                defaults.ContactId = contactId;
+                                            }
+                                            
+                                            
+                                            if(userID != '' 
+                                               && userProfileId != "00e30000000rrZw" && userProfileId.indexOf(renewalProfileId) == -1
+                                               && userPermissions.indexOf('Enable_ePSS') == -1){
+                                                defaults.Opportunity_Owner_AM__c =userID;
+                                            } 
+                                            console.log('defaults',defaults);                           
+                                            CloseTab(); //Komal - Lightning 08/10/18 Release - Resolve Stray Tab Issue & Prepopulate fields
+                                            sforce.one.createRecord('Opportunity', oppRecordTypeId,defaults);                          
+                                           }
+            }
+        }
+        
+        function getOptyRecordTypeName(RctTypeId) {
+            if (RctTypeId == '') {
+                var newRecordType = '';
+                var result = sforce.connection
+                .describeSObject("Opportunity");
+                for (var i = 0; i < result.recordTypeInfos.length; i++) {
+                    var rt = result.recordTypeInfos[i];
+                    if (rt.defaultRecordTypeMapping == 'true') {
+                        newRecordType = rt.name;
+                    }
+                }
+                return newRecordType;
+            } else {
+                var qrStr = "Select Name, Id From RecordType where "
+                + "sObjectType = 'Opportunity' and isactive = true and Id ='"
+                + RctTypeId + "'";
+                var qrOptyRecordTypes = sforce.connection.query(qrStr);
+                var records = qrOptyRecordTypes.getArray('records');
+                return records[0].get("Name");
+            }
+            
+        }
+        function getOptyRecordTypeIds() {
+            
+            var qrStr = "Select Name, Id From RecordType where "
+            + "sObjectType = 'Opportunity' and isactive = true";
+            var qrOptyRecordTypes = sforce.connection.query(qrStr);
+            var Name;
+            var Id;
+            for (var i = 0; i < qrOptyRecordTypes.records.length; i++) {
+                Name = qrOptyRecordTypes.records[i].get("Name");
+                Id = qrOptyRecordTypes.records[i].get("Id");
+                if (Name == rTypeNamePhase) {
+                    IdPhase = Id;
+                } else if (Name == rTypeNamePartnerPhase) {
+                    IdPartnerPhase = Id;
+                } else if (Name == rTypeNameParent) {
+                    IdParent = Id;
+                } else if (Name == rTypeNamePartnerParent) {
+                    IdPartnerParent = Id;
+                } else if (Name == rTypeNameSolPlan) {
+                    IdSolPlan = Id;
+                } else if (Name == rTypeNameGlobalOppty){ // GDM Q3FY17 adding new recordtype 
+                    IdGlobal = Id;
+                } else if (Name == rTypeNameRenewalOppty){ // SD - 9/13/2018 - Adding renewal record type 
+                    IdRenewals = Id;
+                } else if (Name == rTypeNameBookings){ // SD - 9/13/2018 - Adding renewal record type 
+                    IdBookings = Id;
+                }   
+                
+            }
+        }
+        function getConstant(i_key, i_oType) {
+            
+            var qrStr = "SELECT prod_value__c, non_prod_value__c "
+            + "FROM Org_Constants__c " + "WHERE Key__c = '" + i_key
+            + "'";
+            try {
+                var queryResult = sforce.connection.query(qrStr);
+                var records = queryResult.getArray('records');
+                var q_value;
+                
+                if (records.length > 0) {
+                    var hostname = window.location.hostname.toLowerCase();
+                    //org_id = '00D300000000QUu'; 
+                    if (org_id == '00D300000000QUu'
+                        && ((hostname.indexOf('ww') && hostname
+                             .indexOf('na')) != -1)) {
+                        q_value = records[0].prod_value__c;
+                    } else {
+                        q_value = records[0].non_prod_value__c;
+                    }
+                } else if (records.length == 0)
+                    alert('No value defined for ' + i_key + ', ' + i_oType);
+                
+                if (q_value == null)
+                    alert(i_key + ', ' + i_oType + ' has a null value');
+                return q_value;
+            } catch (ex) {
+                alert(ex);
+            }
+        }
+        
+        //Function is not being used
+        function getTheData() {
+            var qrStr = "Select Additional_User_Permissions__c From User where "
+            + "Id = '{!$User.Id}' ";
+            var queryResult = sforce.connection.query(qrStr);
+            var records = queryResult.getArray('records');
+            return records[0].Additional_User_Permissions__c;
+        }
+        
+        //Used to get user's theatre and additional permission
+        function getUserTheater() {
+            var qrStr = "Select Theatre__c,Additional_User_Permissions__c From User where "
+            + "Id = '{!$User.Id}' ";
+            var queryResult = sforce.connection.query(qrStr);
+            var records = queryResult.getArray('records');
+            userPermissions = records[0].Additional_User_Permissions__c;
+            return records[0].Theatre__c;
+        }
+        </script>
+    
+    <body>
+        <div id="messageDiv" style="display: none;">
+            <div class="app-content container" style="padding-top: 0px;">
+                <ul class="list-view right-one-icons touch" id="list">
+                    <li class="forceActionRow uiInfiniteListRow" style="padding:20px;  box-shadow: 1px 0px 6px 3px #999;">
+                        <div class="detail-view-table">
+                            <div class="detailRow">This blank screen is a known error to be fixed in the future.</div>
+                            <div class="detailRow">Click the 3 bars icon in top left corner to return to Navigation menu or back arrow to go back to previous screen.</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <center></center>
+        <center>
+            <!--<img src="/img/waiting_dots.gif" /> -->
+        </center>
+<!--    Commenting iframe - 9/26 katandon, no references to iframe and display set to none    -->
+<!--        <iframe frameborder="0" id="theIframe" name="theIframe" src="/setup/ui/recordtypeselect.jsp?ent=Opportunity" title="Content" height ="50%" width="100%" style="display:none;"></iframe>-->
+        <!-- Rendered form only for fullsite users  -->
+        <apex:form rendered="{!($User.UITheme == 'Theme3') || ($User.UITheme == 'Theme4d')|| ($User.UITheme == 'Theme4u')}" id="theForm" style="display:none">
+            <apex:sectionHeader title="New Opportunity" subtitle="Select Opportunity Record Type" />
+            <p>Select a record type for the new opportunity. To skip this page in the future, change your record type settings on your personal setup page.</p>      
+            <apex:pageBlock title="Select Opportunity Record Type" id="theBlock">
+                <apex:pageBlockSection id="theSection">
+                    <apex:pageBlockSectionItem id="theSectionItem">
+                        <apex:outputLabel >Record Type of new record</apex:outputLabel>
+                        <apex:selectList value="{!recordType}" size="1" required="true" id="selectRecordType">
+                            <apex:selectOptions value="{!rtOptions}"></apex:selectOptions>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons location="bottom">
+                    <!--<apex:commandButton value="Continue" onClick="redirect();"/>-->
+                    <input type="button" value="Continue" class="btn" onclick="redirect();return false;" />
+                    <!-- Lightning Override for Cancel - Angela (01/06/2018) -->
+                    <apex:outputPanel rendered="{! $User.UIThemeDisplayed == 'Theme3' }">
+                        <apex:commandButton value="Cancel" action="{!cancel}"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{! ($User.UIThemeDisplayed == 'Theme4d' || $User.UITheme == 'Theme4u')}">
+                        <apex:commandButton onclick="CloseTab()" value="Cancel"/>
+                    </apex:outputPanel>
+                    <!-- Lightning Override for Cancel - Angela (01/06/2018) -->
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+            <apex:outputText >Available Opportunity Record Types</apex:outputText>
+            <apex:dataTable value="{!rts}" var="rt">
+                <apex:column value="{!rt.Name}"/>
+                <apex:column >
+                    <apex:outputText rendered="{!(rt.id == $Setup.ObjectRecordTypeIds__c.Oppty_Renewal_RecordTypeId_18__c || rt.id == $Setup.ObjectRecordTypeIds__c.Oppty_Bookings_RecordTypeId_18__c)}"><font color='red'><strong>&nbsp;&nbsp;{!rt.Description}</strong></font></apex:outputText>
+                    <apex:outputText rendered="{!rt.id != $Setup.ObjectRecordTypeIds__c.Oppty_Renewal_RecordTypeId_18__c && rt.id != $Setup.ObjectRecordTypeIds__c.Oppty_Bookings_RecordTypeId_18__c}">{!rt.Description}</apex:outputText>
+                </apex:column>
+            </apex:dataTable>
+        </apex:form>  
+        <!-- Call redirect function immediately for SF1 users -->
+        <script>
+        var userId = '{!$User.Id}';
+        var UITheme = "{!$User.UIThemeDisplayed}";
+        function userByPassRecordTypeSelection() {
+            //if (document.getElementById('theIframe').contentWindow.document.getElementById('p3') != null) {
+            if ("{!($User.UITheme == 'Theme3')|| ($User.UITheme == 'Theme4d') || ($User.UITheme == 'Theme4u')}"){
+                
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+        //on  page load check if user should be redirected to edit page layout to ceate opportunity
+        window.onload=function(){ 
+            isBypassingRecordTypeSelection = userByPassRecordTypeSelection();
+            console.log('=========>'+isBypassingRecordTypeSelection);
+            if(isBypassingRecordTypeSelection || isLightningMobile()){
+                //redirect if user is running in SF1 or user has selected to bypass record type selection
+                redirect();
+            }else{
+                console.log('=========>'+isLightningMobile());
+                //Users has selected not to bypass record type selection
+                document.getElementById("{!$Component.opptyNewOverride.theForm}").style.display = "block";
+            }
+        }
+        
+        </script>
+    </body>
+</apex:page>

@@ -1,0 +1,29 @@
+<apex:page >
+/* Purpose of this vf page is to call the Tealium API and send tracking parameters for lightning usage metrics. March 2018*/
+  <script type="text/javascript" src="//www.cisco.com/etc/designs/cdc/fw/lib/jQuery/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="//www.cisco.com/c/dam/cdc/t/ctm.js"></script>
+  <script>
+      function myCallback(){
+          //alert("Succcess");
+      }
+      
+      /*function activityName(){
+          var forecastLink = '{!URLFOR($Page.Forecast_Tab_10_0)}';
+          console.log(forecastLink);
+          alert (window.location.href);
+          if(window.location.href.indexOf('lightning') > -1){
+          alert("your url contains the name Lead");
+              return "Lightning Lead";}       
+      }*/
+      //On Page load, invoke the trackEvent function and pass over username and tab name to Tealium
+      function load(){
+          // alert('Loading');
+           console.log(trackEvent);
+           trackEvent.event('view', {
+             un: '{!$User.UserName}',
+             tabName: 'Lightning Lead'
+           });
+        }
+        load();
+  </script>
+</apex:page>

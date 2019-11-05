@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?><AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Web Cases</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>CWR_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp; 
+LEFT(RecordTypeId, 15) = LEFT( $Setup.ObjectRecordTypeIds__c.Case_CWR_RecordType__c, 15)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Customer_Success_Adoption_Requests</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp; 
+LEFT(RecordTypeId, 15) = LEFT(  $Setup.ObjectRecordTypeIds__c.Case_Customer_Success_Adoption_Requests__c  ,15)</formula>
+            <template>Customer_Success_Adoption_Requests/New_Customer_Success_Adoption_Requests</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PXS_GES</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp;
+RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.Proposal_Expert_Service__c,15)&amp;&amp;
+Opportunity_Territory_Level_02__c = 'GLOBAL ENTERPRISE SEGMENT'&amp;&amp;
+$User.Id!='00530000000xQ0K'</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PXS_Global_Service_Provider</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp;
+RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.Proposal_Expert_Service__c,15)&amp;&amp;
+(
+CONTAINS (Opportunity_Territory_Level_02__c, 'GSP_AMERICAS')
+||
+CONTAINS (Opportunity_Territory_Level_02__c, 'GSP APJ')
+||
+CONTAINS (Opportunity_Territory_Level_02__c, 'EMEAR-GSP')
+)&amp;&amp;
+$User.Id!='00530000000xQ0K'</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PXS_Greater_China</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp;
+RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.Proposal_Expert_Service__c,15)&amp;&amp;
+Opportunity_Territory_Level_02__c = 'GREATER_CHINA'&amp;&amp;
+$User.Id!='00530000000xQ0K'</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PXS_APJ</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp;
+RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.Proposal_Expert_Service__c,15)&amp;&amp;
+BEGINS(Opportunity_Territory_Level_01__c, 'APJC') &amp;&amp;
+$User.Id!='00530000000xQ0K'</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PXS_EMEAR</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp;
+RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.Proposal_Expert_Service__c,15)&amp;&amp;
+Opportunity_Territory_Level_01__c = 'EMEAR-REGION'&amp;&amp;
+$User.Id!='00530000000xQ0K'</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PXS_Americas</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp;
+RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.Proposal_Expert_Service__c,15)&amp;&amp;
+$User.Id!='00530000000xQ0K'</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <formula>RecordTypeId = LEFT($Setup.ObjectRecordTypeIds__c.Proposal_Expert_Service__c,15)&amp;&amp;
+NOT(ISNEW()&amp;&amp;
+NOT(ISCHANGED(Opportunity_Territory_Level_01__c)))&amp;&amp;
+$User.Id!='00530000000xQ0K'</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <formula>(
+ NOT ($User.Id!='0053400000Anbya') || 
+ NOT ($User.Id!='00580000003FrC4')
+)
+&amp;&amp;
+  RecordTypeId = $Setup.ObjectRecordTypeIds__c.Case_TSN_RecordType__c 
+&amp;&amp;
+NOT (ISNEW())</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>GVE_Tier_I</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Web</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>GVE Case</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Web_CCO_ID__c</field>
+                <operation>equals</operation>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Contact_Type__c</field>
+                <operation>equals</operation>
+                <value>Partner</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Front_Line</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Web</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>GVE Case</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Web_CCO_ID__c</field>
+                <operation>notEqual</operation>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Contact_Type__c</field>
+                <operation>equals</operation>
+                <value>Cisco</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PDIUnassignedQueue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Web</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>PDI Case</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Web_CCO_ID__c</field>
+                <operation>notEqual</operation>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>ciscocase@cisco.com</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Case.Web_CCO_ID__c</field>
+                <operation>notEqual</operation>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.SuppliedEmail</field>
+                <operation>notEqual</operation>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_Unassigned</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'CX - Unassigned')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'CX - Unassigned',        ISPICKVAL( Case_Queue__c , 'CX - Unassigned')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_Operations</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'CX - Operations')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'CX - Operations',        ISPICKVAL( Case_Queue__c , 'CX - Operations')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_OPPTY_to_QUOTE_Configuration</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',        ISNEW(),        ISPICKVAL(Case_Queue__c, 'OPPORTUNITY to QUOTE - Configuration')    ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',        NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'OPPORTUNITY to QUOTE - Configuration',        ISPICKVAL( Case_Queue__c , 'OPPORTUNITY to QUOTE - Configuration')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_OPPTY_to_QUOTE_Deal_Management</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'OPPORTUNITY to QUOTE - Deal Management')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'OPPORTUNITY to QUOTE - Deal Management',        ISPICKVAL( Case_Queue__c , 'OPPORTUNITY to QUOTE - Deal Management')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_OPPTY_to_QUOTE_Service_Quoting</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'OPPORTUNITY to QUOTE - Service Quoting')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'OPPORTUNITY to QUOTE - Service Quoting',        ISPICKVAL( Case_Queue__c , 'OPPORTUNITY to QUOTE - Service Quoting')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_OPPTY_to_QUOTE_Deal_Quoting</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'OPPORTUNITY to QUOTE - Deal Quoting')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'OPPORTUNITY to QUOTE - Deal Quoting',        ISPICKVAL( Case_Queue__c , 'OPPORTUNITY to QUOTE - Deal Quoting')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_HORIZONTALS_CCW_Functionality</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'HORIZONTALS - CCW Functionality')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'HORIZONTALS - CCW Functionality',        ISPICKVAL( Case_Queue__c , 'HORIZONTALS - CCW Functionality')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_OE_BACKLOG_MGMT_Holds_Management</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'OE &amp; BACKLOG MGMT - Holds Management')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'OE &amp; BACKLOG MGMT - Holds Management',        ISPICKVAL( Case_Queue__c , 'OE &amp; BACKLOG MGMT - Holds Management')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_OE_BACKLOG_MGMT_Order_Booking</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'OE &amp; BACKLOG MGMT - Order Booking')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'OE &amp; BACKLOG MGMT - Order Booking',        ISPICKVAL( Case_Queue__c , 'OE &amp; BACKLOG MGMT - Order Booking')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_OE_BACKLOG_MGMT_Order_Modification</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'OE &amp; BACKLOG MGMT - Order Modification')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'OE &amp; BACKLOG MGMT - Order Modification',        ISPICKVAL( Case_Queue__c , 'OE &amp; BACKLOG MGMT - Order Modification')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_OE_BACKLOG_MGMT_Order_Prioritization</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'OE &amp; BACKLOG MGMT - Order Prioritization')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'OE &amp; BACKLOG MGMT - Order Prioritization',        ISPICKVAL( Case_Queue__c , 'OE &amp; BACKLOG MGMT - Order Prioritization')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_OE_BACKLOG_MGMT_Expedites</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'OE &amp; BACKLOG MGMT - Expedites')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'OE &amp; BACKLOG MGMT - Expedites',        ISPICKVAL( Case_Queue__c , 'OE &amp; BACKLOG MGMT - Expedites')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_SCHEDULING_Global_Order_Scheduling</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'SCHEDULING - Global Order Scheduling')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'SCHEDULING - Global Order Scheduling',        ISPICKVAL( Case_Queue__c , 'SCHEDULING - Global Order Scheduling')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_MAKE_Lead_Time_Mgmt</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'MAKE - Lead Time Mgmt')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'MAKE - Lead Time Mgmt',        ISPICKVAL( Case_Queue__c , 'MAKE - Lead Time Mgmt')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_MAKE_Regional_Manufacturing</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'MAKE - Regional Manufacturing')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'MAKE - Regional Manufacturing',        ISPICKVAL( Case_Queue__c , 'MAKE - Regional Manufacturing')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_MAKE_Recommits</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'MAKE - Recommits')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'MAKE - Recommits',        ISPICKVAL( Case_Queue__c , 'MAKE - Recommits')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>LOGISTICS_Logistics_Optimization</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'LOGISTICS - Logistics Optimization')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'LOGISTICS - Logistics Optimization',        ISPICKVAL( Case_Queue__c , 'LOGISTICS - Logistics Optimization')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>LOGISTICS_Logistics_Shipment_Tracking</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'LOGISTICS - Logistics Shipment Tracking')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'LOGISTICS - Logistics Shipment Tracking',        ISPICKVAL( Case_Queue__c , 'LOGISTICS - Logistics Shipment Tracking')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>LOGISTICS_Delivery_Quality</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'LOGISTICS - Delivery Quality')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'LOGISTICS - Delivery Quality',        ISPICKVAL( Case_Queue__c , 'LOGISTICS - Delivery Quality')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>LOGISTICS_Reverse_Logistics</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'LOGISTICS - Reverse Logistics')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'LOGISTICS - Reverse Logistics',        ISPICKVAL( Case_Queue__c , 'LOGISTICS - Reverse Logistics')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_SOFTWARE_Licensing</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'SOFTWARE - Licensing')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'SOFTWARE - Licensing',        ISPICKVAL( Case_Queue__c , 'SOFTWARE - Licensing')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_SOFTWARE_Annuity_Management</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'SOFTWARE - Annuity Management')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'SOFTWARE - Annuity Management',        ISPICKVAL( Case_Queue__c , 'SOFTWARE - Annuity Management')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_SOFTWARE_Fulfillment</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'SOFTWARE - Fulfillment')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'SOFTWARE - Fulfillment',        ISPICKVAL( Case_Queue__c , 'SOFTWARE - Fulfillment')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_POST_DELIVERY_Post_Invoice_Disputes</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'POST DELIVERY - Post Invoice Disputes')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'POST DELIVERY - Post Invoice Disputes',        ISPICKVAL( Case_Queue__c , 'POST DELIVERY - Post Invoice Disputes')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_POST_DELIVERY_Post_Ship_Support</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'POST DELIVERY - Post Ship Support')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'POST DELIVERY - Post Ship Support',        ISPICKVAL( Case_Queue__c , 'POST DELIVERY - Post Ship Support')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_HORIZONTALS_Order_Tracking</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'HORIZONTALS - CCW Order Tracking')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'HORIZONTALS - CCW Order Tracking',        ISPICKVAL( Case_Queue__c , 'HORIZONTALS - CCW Order Tracking')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_POST_DELIVERY_RMA</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         TEXT(Case_Queue__c) =  'POST DELIVERY - RMA'     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'POST DELIVERY - RMA',        ISPICKVAL( Case_Queue__c , 'POST DELIVERY - RMA')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_HORIZONTALS_Partner_Support</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'HORIZONTALS - Partner Support')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'HORIZONTALS - Partner Support',        ISPICKVAL( Case_Queue__c , 'HORIZONTALS - Partner Support')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_QUALITY_General</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'QUALITY-General')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'QUALITY-General',        ISPICKVAL( Case_Queue__c , 'QUALITY-General')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_HORIZONTALS_CPE_Case_Mgmt</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'HORIZONTALS - CPE Case Mgmt')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'HORIZONTALS - CPE Case Mgmt',        ISPICKVAL( Case_Queue__c , 'HORIZONTALS - CPE Case Mgmt')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CX_SUSTAINABILITY_General</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>OR(    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         ISNEW(),         ISPICKVAL(Case_Queue__c, 'SUSTAINABILITY-General')     ),    AND(        RecordType.DeveloperName =='Customer_Excellence_Case',         NOT(ISNEW()),        TEXT(PRIORVALUE(Case_Queue__c)) != 'SUSTAINABILITY-General',        ISPICKVAL( Case_Queue__c , 'QUALITY-General')    ) )</formula>
+            <template>CX_Email_templates/CX_CASE_QUEUE_ASSIGNED</template>
+        </ruleEntry>
+        <ruleEntry>
+            <formula>AND(     RecordType.DeveloperName =='Customer_Excellence_Case',     NOT(ISNEW()),      NOT(ISCHANGED(Case_Queue__c ))  )</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CIC_Case_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp; RecordType.DeveloperName == 'CIC_Case'</formula>
+            <template>CIC/CIC_Case_Assignment_Template</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>GSSO_Case_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp; RecordType.DeveloperName == 'GSSO_Security_RFP_Team_Request'</formula>
+            <template>GSSO/GSSO_Case_Assignment_Template</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Partner_Delivery_Unassigned</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp;  RecordType.DeveloperName == 'Partner_Delivery_PD'</formula>
+            <template>PD_Email_Template/PD_Case</template>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

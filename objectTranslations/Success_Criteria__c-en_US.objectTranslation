@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Business Objective --></label>
+        <name>Business_Objective__c</name>
+        <relationshipLabel><!-- Success Criteria --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Business Outcome --></label>
+        <name>Business_Outcome__c</name>
+    </fields>
+    <fields>
+        <label><!-- Criteria type --></label>
+        <name>Criteria_type__c</name>
+        <picklistValues>
+            <masterLabel>Customer Milestone</masterLabel>
+            <translation><!-- Customer Milestone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KPI</masterLabel>
+            <translation><!-- KPI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Current State Results --></label>
+        <name>Current_State_Results__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal --></label>
+        <name>Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Measurement --></label>
+        <name>Measurement__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Track</masterLabel>
+            <translation><!-- On Track --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Potential Risk</masterLabel>
+            <translation><!-- Potential Risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk/Roadblock</masterLabel>
+            <translation><!-- Risk/Roadblock --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Target Date --></label>
+        <name>Target_Date__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Success Criteria</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Success Criteria</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Success Criteria Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Business objective cannot be editable --></errorMessage>
+        <name>Business_Objective_non_editable</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,1459 @@
+<apex:page contentType="text/javascript" >
+    angular.module('directives.DSE_table', ['directives.DSE_D3'])
+    .factory('dseHttpService', function ($http) {
+        $http.defaults.useXDomain = true;
+        delete $http.defaults.headers.common["X-Requested-With"];
+        $http.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+        $http.defaults.headers.common["Accept"] = "application/json";
+        $http.defaults.headers.common["Content-Type"] = "application/json";
+        $http.defaults.headers.common['X-User-Agent'] = "DSEUI";
+        $http.defaults.headers.common['Cache-Control'] = "no-cache";
+        var muleEnv = 'https://apmi.cisco.com/it/sales/dse/';
+        //var muleEnv = 'https://apmi.cisco.com/custcare/cm/xrm/';
+        //if(window.parent.location.host !== 'ciscosales.my.salesforce.com'){
+     if(window.location.host !== 'ciscosales.my.salesforce.com'){
+            muleEnv = 'https://apmi-stage.cisco.com/custcare/cm/xrm/';
+        }  
+    console.log('window: ', window);
+        return {
+            apiPostRequest: function (data, apipath,mtoken) {
+                $http.defaults.headers.common.Authorization = 'Bearer ' + mtoken;
+                return $http.post(muleEnv + apipath, data);
+            },
+            apiGetTokenRequest: function () {
+                $http.defaults.headers.common.Authorization = 'Bearer ' + '{!$Api.Session_ID}';
+                return $http.get('/services/apexrest/dsetoken/');
+            },
+            apiGetSFDCRequest: function (data, apiep) {
+                $http.defaults.headers.common.Authorization = 'Bearer ' + '{!$Api.Session_ID}';
+                return $http.post('/services/apexrest/dse/' + apiep, data);
+            },
+            apiLogSFDCRequest: function (data, apiep) {
+                $http.defaults.headers.common.Authorization = 'Bearer ' + '{!$Api.Session_ID}';
+                return $http.post('/services/data/v36.0/sobjects/DSE_Log__c/', data);
+
+
+
+
+            }
+        }
+    })
+    .config(function ($provide, $httpProvider, $sceProvider) {
+        $sceProvider.enabled(false);
+        // Intercept http calls.
+        $provide.factory('dseHttpInterceptor', function ($q, $rootScope) {
+            return {
+                // On request success
+                request: function (config) {
+                    // console.log(config); // Contains the data about the request before it is sent.
+                    // Return the config or wrap it in a promise if blank.
+                    return config || $q.when(config);
+                },
+                // On request failure
+                requestError: function (rejection) {
+                    // console.log(rejection); // Contains the data about the error on the request.
+                    // Return the promise rejection.
+                    return $q.reject(rejection);
+                },
+                // On response success
+                response: function (response) {
+                    // console.log(response); // Contains the data from the response.
+                    // Return the response or promise.
+                    return response || $q.when(response);
+                },
+                // On response failture
+                responseError: function (rejection) {
+                    console.log(rejection); // Contains the data about the error.
+                    if (rejection.status == -1) {
+                       /* if (1 > localStorage.getItem("retry")) {
+                            localStorage.removeItem('accessToken');
+                            location.reload();
+
+                            console.log('Error Occured');
+                            localStorage.retry = 1;
+                        }*/
+                    }
+                    // Return the promise rejection.
+                    return $q.reject(rejection);
+                }
+            };
+        });
+        // Add the interceptor to the $httpProvider.
+        $httpProvider.interceptors.push('dseHttpInterceptor');
+    })
+    .directive('enterPress', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if (event.which === 13) {
+                    scope.$apply(function () {
+                        scope.$eval(attrs.enterPress);
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    })
+    .directive('whenScrolled', function () {
+        return function (scope, elm, attr) {
+            
+            var raw = elm[0];
+            elm.bind('scroll', function () {
+                if (raw.scrollTop + raw.offsetHeight &gt;= raw.scrollHeight) {
+                    scope.$apply(attr.whenScrolled);
+                }
+            });
+        };
+    })
+    .directive('stssTable', function ($http) {
+        return {
+            restrict: 'E',
+            scope: {
+                apitype: '@',
+                apiobject: '@',
+                apipath: '@',
+                sectitle: '@',
+                partyid: '=',
+                oeid: '=',
+                locale: '@',
+                localeformat: '@',
+                timezone: '@',
+                mtoken: '@',
+                pid: '=',
+                childid: '=',
+                filtertype: '=',
+                viewName: '@'                
+            },
+            replace: true,
+            templateUrl: "/apex/DSE_Tabular_HTML_Template_v2",
+            controller: function ($scope,$sce, $http,$log, $location, $filter,filterFilter, dseHttpService) {
+                
+                $scope.tableview = [{
+                    "taccase": [{
+                        "columns": [{
+                            "fieldname": "case_owner",
+                            "caption": "Owner",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": true,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "case_number",
+                            "caption": "Case Number",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "priority",
+                            "searchable": true,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "cr_party_name",
+                            "caption": "Account",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "case_contact_name",
+                            "caption": "Contact",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "party_city_state",
+                            "caption": "Site",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "cr_party_id",
+                            "caption": "CR Party ID",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "case_name",
+                            "caption": "Incident Name",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": true,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "last_updated",
+                            "caption": "Last Updated",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": true,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "technology",
+                            "caption": "Technology",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": true,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "oe_id",
+                            "caption": "OE ID",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "contact_description",
+                            "caption": "Contact Description",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "contract_no",
+                            "caption": "Contract No",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "data_created_dt",
+                            "caption": "Data Created DT",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "sr_id",
+                            "caption": "SR ID",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "created_date",
+                            "caption": "Created",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 120,
+                            "icontype": "date",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "status",
+                            "caption": "Status",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": true,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "contact_type",
+                            "caption": "CONTACT TYPE",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "subject",
+                            "caption": "SUBJECT",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "case_description",
+                            "caption": "CASE DESCRIPTION",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "priority",
+                            "caption": "Priority",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "device_name",
+                            "caption": "DEVICE NAME",
+                            "tabularviewvisibility": false,
+                            "detailviewvisibility": false,
+                            "width": 120,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": false,
+                            "truncation": false,
+                            "charttype": ""
+                            }],
+                        "pagelimit": 100,
+                        "defaultorderby": "created_date",
+                        "defaultorder": true,
+                        "defaultsearchfield": "CASE NUMBER",
+                        "baseuri": "https://mycase.cloudapps.cisco.com/",
+                        "punchout": "https://mycase.cloudapps.cisco.com/",
+                        "helplink": "http://go2.cisco.com/TAC+SFDC+FAQ",
+                        "subject": "Please View Case Status",
+                        "body": "Please review the following TAC Case on the Support Case Manager.",
+                        "basetool": "Go to Support Case Manager",
+                        "primarykey": "case_number",
+                        "primarykeytext": "Open in SCM",
+                        "openins":[
+                            {"icon":""+'{!URLFOR($Resource.dse_icon_tac_os)}'+"/DSE_Icons/dse_openin.png",
+                             "label":"Open in Support Case Manager",
+                             "link":"https://mycase.cloudapps.cisco.com/",
+                             "default":"true"
+                            }                            
+                        ],
+                        "legends": [{
+                            "type": "sev-container sev-1",
+                            //"color": "#E82C0C",
+                            "label": "Sev 1",
+                            "value": "1"
+                            }, {
+                            "type": "sev-container sev-2",
+                            //"color": "#0096d6",
+                            "label": "Sev 2",
+                            "value": "2"
+                            }],
+                        "uifilterdatatype": "String",
+                        "uifilterfield": "priority",
+                        "uifilterfieldoption": [{
+                            "label": "All (Sev 1, Sev 2)",
+                            "value": "$"
+                            }, {
+                            "label": "Sev 1",
+                            "value": "1"
+                            }, {
+                            "label": "Sev 2",
+                            "value": "2"
+                            }],
+                        "tabletitle": "TAC CASES",
+                        "intouch": {
+                            "homeview":{
+                                "nprd":"https://pwc018-dev.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329903?touchpoint=901",
+                                "prd":"https://pwc018.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329903?touchpoint=972"
+                            },
+                            "accountview":{
+                                "nprd":"https://pwc018-dev.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329903?touchpoint=902",
+                                "prd":"https://pwc018.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329903?touchpoint=973"
+                            },
+                            "oeview":{
+                                "nprd":"https://pwc018-dev.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329903?touchpoint=851",
+                                "prd":"https://pwc018.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329903?touchpoint=974"
+                            }
+                        }
+                        }],
+                    "orderstatus": [{
+                        "columns": [
+                            {
+                                "fieldname": "orderstatus",
+                                "caption": "Status",
+                                "tabularviewvisibility": false,
+                                "detailviewvisibility": false,
+                                "width": 10,
+                                "icontype": "",
+                                "combinewith": "",
+                                "searchable": false,
+                                "truncation": false,
+                                "charttype": ""
+                            }, {
+                                "fieldname": "ordernumber",
+                                "caption": "Order #",
+                                "tabularviewvisibility": true,
+                                "detailviewvisibility": true,
+                                "width": 10,
+                                "icontype": "",
+                                "combinewith": "orderstatus",
+                                "searchable": true,
+                                "truncation": false,
+                                "charttype": ""
+                            }, {
+                                "fieldname": "ponumber",
+                                "caption": "PO #",
+                                "tabularviewvisibility": true,
+                                "detailviewvisibility": true,
+                                "width": 10,
+                                "icontype": "",
+                                "combinewith": "",
+                                "searchable": true,
+                                "truncation": false,
+                                "charttype": ""
+                            }, {
+                                "fieldname": "dealid",
+                                "caption": "Deal ID",
+                                "tabularviewvisibility": true,
+                                "detailviewvisibility": true,
+                                "width": 10,
+                                "icontype": "",
+                                "combinewith": "",
+                                "searchable": true,
+                                "truncation": false,
+                                "charttype": ""
+                            }, {
+                                "fieldname": "billto_name",
+                                "caption": "Bill To",
+                                "tabularviewvisibility": true,
+                                "detailviewvisibility": true,
+                                "width": 10,
+                                "icontype": "",
+                                "combinewith": "",
+                                "searchable": true,
+                                "truncation": false,
+                                "charttype": ""
+                            }, {
+                                "fieldname": "createddate",
+                                "caption": "Created",
+                                "tabularviewvisibility": true,
+                                "detailviewvisibility": false,
+                                "width": 10,
+                                "icontype": "date",
+                                "combinewith": "",
+                                "searchable": false,
+                                "truncation": false,
+                                "charttype": ""
+                            },{
+                                "fieldname": "lineitemstatus",
+                                "caption": "LINE ITEM STATUS",
+                                "tabularviewvisibility": false,
+                                "detailviewvisibility": false,
+                                "width": 10,
+                                "icontype": "",
+                                "combinewith": "",
+                                "searchable": false,
+                                "truncation": false,
+                                "charttype": "stbar-chart"
+                            }
+                            ],
+                        "pagelimit": 100,
+                        "defaultorderby": "createddate",
+                        "defaultorder": true,
+                        "defaultsearchfield": "Order #",
+                        "baseuri": "https://apps.cisco.com/Commerce/home",
+                        "punchout": "https://apps.cisco.com/qtc/viewstat/open.order?flow=nextgen",
+                        "helplink": "http://go2.cisco.com/Order+SFDC+FAQ",
+                        "subject": "Please View Order %23",
+                        "body": "Please review the following order on the Cisco Commerce Workspace (CCW).",
+                        "basetool": "Go to Cisco Commerce",
+                        "primarykey": "ordernumber",
+                        "primarykeytext": "Open in Cisco Commerce",
+                        "openins":[
+                            {"icon":""+'{!URLFOR($Resource.dse_icon_tac_os)}'+"/DSE_Icons/dse_openin.png",
+                             "label":"Open in Cisco Commerce",
+                             "link":"https://apps.cisco.com/qtc/viewstat/open.order?flow=nextgen",
+                             "default":"true"
+                            }                           
+                        ],
+                        "legends": [{
+                                "type": "glyphicon glyphicon-stop",
+                                "color": "#0229bf",
+                                "label": "Entered",
+                                "value": "1"
+                            }, {
+                                "type": "glyphicon glyphicon-stop",
+                                "color": "#1999FC",
+                                "label": "Booked",
+                                "value": "2"
+                            },
+                            {
+                                "type": "glyphicon glyphicon-stop",
+                                "color": "#78FDFE",
+                                "label": "Scheduled",
+                                "value": "2"
+                            }, {
+                                "type": "glyphicon glyphicon-stop",
+                                "color": "#0A5591",
+                                "label": "In Progress",
+                                "value": "2"
+                            },
+                            {
+                                "type": "glyphicon glyphicon-stop",
+                                "color": "#159192",
+                                "label": "Shipped",
+                                "value": "2"
+                            }, {
+                                "type": "glyphicon glyphicon-stop",
+                                "color": "#FE4728",
+                                "label": "Cancelled",
+                                "value": "2"
+                            },
+                            {
+                                "type": "glyphicon glyphicon-stop",
+                                "color": "#2c2cff",
+                                "label": "Closed",
+                                "value": "2"
+                            },
+                            {
+                                "type": "glyphicon glyphicon-stop",
+                                "color": "#0f9200",
+                                "label": "Invoicing",
+                                "value": "2"
+                            }],
+                        "uifilterdatatype": "String",
+                        "uifilterfield": "orderstatus",
+                        "uifilterfieldoption": [{
+                                "label": "All Statuses",
+                                "value": "$"
+                            }, {
+                                "label": "Entered",
+                                "value": "entered"
+                            }, {
+                                "label": "Pending Approval",
+                                "value": "pending"
+                            },
+                            {
+                                "label": "Booked",
+                                "value": "booked"
+                            }, {
+                                "label": "Closed",
+                                "value": "closed"
+                            }, {
+                                "label": "Cancelled",
+                                "value": "cancelled"
+                            }],
+                        "tabletitle": "ORDER STATUS",
+                        "intouch": {
+                            "homeview":{
+                                "nprd":"https://pwc018-dev.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329904?touchpoint=904",
+                                "prd":"https://pwc018.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329904?touchpoint=976"
+                            },
+                            "accountview":{
+                                "nprd":"https://pwc018-dev.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329904?touchpoint=904",
+                                "prd":"https://pwc018.cloudapps.cisco.com/wsrp/pwc018/mobile/view/widget/329904?touchpoint=976"
+                            }
+                        }
+                        }],
+                    "account": [{
+                        "columns": [{
+                            "fieldname": "Name",
+                            "caption": "NAME",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 10,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "AddressLine1__c",
+                            "caption": "ADDRESS LINE 1",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 10,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "City__c",
+                            "caption": "CITY",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 10,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "State__c",
+                            "caption": "STATE",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 10,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": false,
+                            "charttype": ""
+                            }, {
+                            "fieldname": "DSE_Owner_Name__c",
+                            "caption": "OWNER NAME",
+                            "tabularviewvisibility": true,
+                            "detailviewvisibility": true,
+                            "width": 10,
+                            "icontype": "",
+                            "combinewith": "",
+                            "searchable": true,
+                            "truncation": false,
+                            "charttype": ""
+                            }],
+                        "pagelimit": 20,
+                        "defaultorderby": "Name",
+                        "defaultorder": false,
+                        "defaultsearchfield": "NAME",
+                        "baseuri": "/",
+                        "punchout": "https://ciscosales.my.salesforce.com/",
+                        "helplink": "http://go2.cisco.com/TAC+SFDC+FAQ",
+                        "subject": "View Account Detail",
+                        "body": "Please review the following Account in Salesforce.",
+                        "primarykey": "Id",
+                        "primarykeytext": "Open in SFDC",
+                        "uifilterdatatype": "String",
+                        "uifilterfield": "",
+                        "openins":[
+                            {"icon":""+'{!URLFOR($Resource.dse_icon_tac_os)}'+"/DSE_Icons/dse_openin.png",
+                             "label":"Open in SFDC",
+                             "link":"https://ciscosales.my.salesforce.com/",
+                             "default":"true"
+                            }                           
+                        ],
+                        "uifilterfieldoption": [{
+                            "label": "All Sites",
+                            "value": "$"
+                            }, {
+                            "label": "My Sites",
+                            "value": "myaccounts"
+                            }],
+                        "tabletitle": "Account Sites"
+                        }]
+                    }];
+              
+                
+                //************************TABLE DISPLAY VARIABLE AND FUNCTIONALITY********************************//
+                // function: To get FieldName from Table Definition based on FieldName
+                $scope.getcolumnname = function (cell) {
+                    return cell.fieldname;
+                }
+
+                // function: To get width from Table Definition based on FieldName
+                $scope.getcolumnwidth = function (cell) {
+                    return cell.width;
+                }
+                
+                $scope.nofieldvisible = 0;
+                // function: To get fields to display from Table Definition based on FieldName
+                $scope.getcolumnShow = function (cell) {
+                    var a = cell.tabularviewvisibility;
+                    if (a == true) {
+                        $scope.nofieldvisible += 1;
+                    }
+                    return a;
+                }
+
+                // function: To get FieldType from Table Definition based on FieldName
+                $scope.getfieldtype = function (cell) {
+                    var a = cell;
+                    return a;
+                }
+                
+                 
+                // Object Definition
+                $scope.secObject = [];
+                switch ($scope.apiobject) {
+                case 'taccase':
+                    $scope.secObject = $scope.tableview[0].taccase[0];
+                    break;
+                case 'orderstatus':
+                    $scope.secObject = $scope.tableview[0].orderstatus[0];
+                    break;
+                case 'account':
+                    $scope.secObject = $scope.tableview[0].account[0];
+                    break;
+                case 'ib':
+                    $scope.secObject = $scope.tableview[0].ib[0];
+                    break;
+                }
+
+                $scope.clientside = true; // flag to represent if clientside processing is needed
+                $scope.mycolumns = $scope.secObject.columns;
+                $scope.baseuri = $scope.secObject.baseuri;
+                var defaultlink = $filter('filter')($scope.secObject.openins,'true');
+                $scope.punchout = defaultlink[0].link;
+                
+                $scope.inTouchConfig = $scope.secObject.intouch;
+                
+                $scope.helplink = $scope.secObject.helplink;
+                $scope.subject = $scope.secObject.subject;
+                $scope.body = $scope.secObject.body;
+                $scope.basetool = $scope.secObject.basetool;
+                $scope.primarykey = $scope.secObject.primarykey;
+                $scope.openinsmenu = $scope.secObject.openins;
+                $scope.primarykeytext = $scope.secObject.primarykeytext;
+                $scope.legends = $scope.secObject.legends;
+                $scope.parentURL = '/apex/DSE_OE_Account?Id=' + $scope.pid + '&amp;childAccId=' + $scope.childid;
+                
+                //Intouch Functionality
+                $scope.openInTouch = function(){
+                    //console.log($scope.inTouchConfig[$scope.viewName]);
+                    var env='prd';
+    //if(window.parent.location.host !== 'ciscosales.my.salesforce.com'){
+                    if(window.location.host !== 'ciscosales.my.salesforce.com'){
+                      env='nprd';
+                    }    
+                    
+                    window.open($scope.inTouchConfig[$scope.viewName][env], '', 'width=800,height=550');               
+                }
+
+                // DETAIL VIEWS
+                $scope.recDetail = true;
+                $scope.recordDetail = {};
+                $scope.showDetail = function (record) {
+                    $scope.recDetail = false;
+                    $scope.recordDetail = record;
+                }
+                $scope.hideDetail = function () {
+                    $scope.recDetail = true;
+                }
+
+                // SEARCH FUNCTIONALITY
+                $scope.resetFilters = function (q) {
+                    $scope.searchText = '';
+                    
+                    $scope.queryByText = q.substring(q.indexOf('@') + 1, q.length);
+                    $scope.filter_criteria = '';
+                }
+
+                $scope.searchToggle = true;
+                $scope.searchToggleBtn = function () {
+                    if ($scope.secObject.primarykey != 'Id') {
+                        $scope.queryBy = $scope.secObject.primarykey + '@' + $scope.secObject.defaultsearchfield;
+                    } else {
+                        $scope.queryBy = $scope.secObject.defaultsearchfield + '@' + $scope.secObject.defaultsearchfield;
+                    }
+                    $scope.queryByText = $scope.secObject.defaultsearchfield;
+                    $scope.searchText = '';
+                    $scope.search_criteria = '';
+
+                    $scope.searchToggle = !$scope.searchToggle;
+                    if ($scope.searchToggle == true) {
+                        //console.log('$scope.searchToggle' + $scope.searchToggle);
+                        $scope.valData = [];
+                        $scope.valData2 = [];
+                        $scope.filter_criteria = '';
+                        clientsidefilters = {};
+                        $scope.pfilter_criteria = '';
+                        $scope.filterCond = '$';
+                        $scope.loadData();
+                    }
+                };
+
+                $scope.searchText = '';
+                $scope.filter_criteria = '';
+                $scope.search_criteria = '';
+                var clientsidesearch = {};
+                var clientsidefilters = {};
+
+
+                $scope.search = function (q, s) {
+
+                    if (s != '') {
+                        q = q.substring(0, q.indexOf("@"));
+
+                        if ($scope.apitype === 'SFDC') {
+                            $scope.search_criteria = 'UPPER(' + q + ') LIKE UPPER(\'%' + s + '%\')';
+                        } else {
+                            $scope.search_criteria = q + '=' + s;
+                        }
+
+                        if ($scope.clientside == false) {
+                            $scope.actiontype = 'search';
+                            $scope.valData = [];
+                            $scope.loadData();
+                        } else {
+                            clientsidefilters = {};
+                            if ($scope.filterCond != '$') {
+                                clientsidefilters[$scope.filterby] = $scope.filterCond;
+                            }
+                            clientsidefilters[q] = s;
+                            $scope.valData = $filter('filter')($scope.valData2, clientsidefilters);
+                            $scope.totalrecords = $scope.valData.length;
+                            if ($scope.valData.length == 0) {
+                                $scope.message = 'No Records Found';
+                                $scope.showmoredisable = false;
+                            } else {
+                                $scope.message = '';
+                                if ($scope.totalrecords &gt; $scope.pageLimit) {
+                                    $scope.showmoredisable = true;
+                                } else {
+                                    $scope.showmoredisable = false;
+                                }
+                            }
+
+                            $scope.filter_criteria = $scope.filterby + ":" + $scope.filterCond + "&amp;&amp;" + q + ":" + s;
+                            $scope.actiontype = 'search';
+                            $scope.calltype = 'local';
+                            $scope.logInteraction();
+
+                        }
+                    } else {
+                        clientsidefilters = {};
+                        $scope.search_criteria = '';
+                        $scope.valData = [];
+                        $scope.loadData();
+                    }
+                }
+
+                $scope.appendToEl = angular.element(document.querySelector('.stcontainer'));                 
+                
+                 console.log("append",$scope.appendToEl );
+                // FILTER VARIABLES AND FUNCTIONALITY
+                $scope.filterby = $scope.secObject.uifilterfield;
+                $scope.filterbyOption = $scope.secObject.uifilterfieldoption;
+                $scope.filterbyDataType = $scope.secObject.uifilterdatatype;
+                $scope.filterCond = '$';
+                $scope.pfilter_criteria = '';
+
+                $scope.filterRecords = function () {
+                    if ($scope.filterCond == '$') {
+                        $scope.pfilter_criteria = '';
+                    } else {
+                        if ($scope.filterbyDataType == 'String') {
+                            $scope.pfilter_criteria = $scope.filterby + '=\'' + $scope.filterCond + '\'';
+                        } else {
+                            $scope.pfilter_criteria = $scope.filterby + '=' + $scope.filterCond;
+                        }
+                    }
+
+                    if ($scope.clientside == false) {
+                        $scope.valData = [];
+                        $scope.loadData();
+                        $scope.actiontype = 'filter';
+                    } else {
+                        clientsidefilters[$scope.filterby] = $scope.filterCond;
+
+                        if ($scope.filterCond == '$') {
+                            $scope.valData = $scope.valData2;
+                            $scope.totalrecords = $scope.valData.length;
+                            $scope.message = '';
+
+                            $scope.show_more_button();
+                        } else {
+                            $scope.valData = $filter('filter')($scope.valData2, clientsidefilters);
+                            $scope.showmoredisable = true;
+                            $scope.totalrecords = $scope.valData.length;
+                            if ($scope.valData.length == 0) {
+                                $scope.message = 'No Records Found';
+                                $scope.showmoredisable = false;
+                            } else {
+                                $scope.message = '';
+                                $scope.show_more_button();
+                            }
+                        }
+                        $scope.filter_criteria = $scope.filterby + ":" + $scope.filterCond;
+                        $scope.actiontype = 'filter';
+                        $scope.calltype = 'local';
+                        $scope.logInteraction();
+                    }
+                };
+
+                $scope.show_more_button = function () {
+                    if ($scope.totalrecords &gt; $scope.pageLimit) {
+                        $scope.showmoredisable = true;
+                    } else {
+                        $scope.showmoredisable = false;
+                    }
+                }
+
+                $scope.getUnixDate = function (date) {
+                    var udate = Date.parse(date.replaceAll("\\s+", ""));
+                    //console.log(udate);
+                    return udate;
+                }
+
+                //**********************************PAGINATION FUNCTIONALITY************************************//               
+                $scope.page = 1;
+
+                $scope.show_more = function () {
+
+                    if ($scope.apiobject == 'account') { //Server Side Sorting
+                        $scope.page += 1;
+                        $scope.loadData();
+                    } else {
+                        if (100 >= $scope.pageLimit) {
+                            $scope.pageLimit += $scope.pageLimit;
+                            $scope.show_more_button();
+                        } else {
+                            $scope.showmoredisable = false;
+                            var tobject = 'accounts';
+                            if($scope.apiobject === "orderstatus"){
+                                tobject = 'orders';
+                            }else if($scope.apiobject === "taccase"){
+                                tobject = 'cases';
+                            }
+                            
+                            
+                            $scope.paginationmessage = 'Only the top 100 '+ tobject + ' are shown. Please use search, sort or filters to find an item.';
+                        }
+                    }
+                    $scope.actiontype = 'Show more';
+                    $scope.calltype = 'local';
+                    $scope.logInteraction();
+                    //console.log('Showmoreclick');
+                    //console.log('Showmoreclick'+$scope.apiobject );
+                    //console.log('Showmoreclick'+$scope.pageLimit );
+                    //console.log('Showmoreclick'+$scope.paginationmessage );
+                    
+                }
+                $scope.showmoredisable = false;
+                $scope.paginationmessage = 'Show More';
+                //**********************************PAGINATION FUNCTIONALITY************************************//               
+
+                //**********************************SORTING FUNCTIONALITY**************************************//
+                $scope.reverse = $scope.secObject.defaultorder;
+                //Sort Order Derivation
+                $scope.orderDir = function () {
+                    //console.log('aobje' + $scope.apiobject);
+                    //console.log('getting' + $scope.reverse);
+                    if ($scope.reverse == true) {
+                        return 'desc';
+                    } else {
+                        return 'asc';
+                    }
+
+                }
+
+                $scope.sort_column_proxy = function (columnname) {
+                    if (columnname == 'createddate' || columnname == 'created_date') {
+                        $scope.predicate = 'customdate';
+                        $scope.colorderby = columnname;
+
+
+                    } else {
+                        $scope.predicate = columnname;
+                        $scope.colorderby = columnname;
+
+                    }
+                }
+                $scope.sort_column = function (columnname) {
+                if(columnname != 'lineitemstatus'){
+                        $scope.sort_column_proxy(columnname);
+                        $scope.reverse = !$scope.reverse;
+                        $scope.currentRecordCount = 0.5;
+                        if ($scope.initload != 0) {
+                            if ($scope.clientside == false) { //Server Side Sorting                            
+                                $scope.valData = [];
+                                $scope.loadData();
+                            } else {
+                                $scope.actiontype = 'Sort';
+                                $scope.calltype = 'local';
+                                $scope.logInteraction();
+                            }
+                        }
+                    }
+                }
+
+                //**********************************SORTING FUNCTIONALITY**************************************//
+                
+                //**********************************HELP LINK**************************************//
+                $scope.openHelp = function (a) {
+                       
+                    window.open(a, '_blank');
+                    $scope.calltype = 'local';
+                    $scope.actiontype = a;
+                    $scope.logInteraction();
+                }
+
+                //**********************************HELP LINK**************************************//
+
+                //**********************************SEND EMAIL**************************************//
+                $scope.shareEmail = function (sub, bdy, punchout, id) {
+                    var stremail
+                    //console.log($scope.apiobject);
+                    //alert('ddd');
+                    if ($scope.apiobject == 'orderstatus') {
+                        stremail = 'mailto:?subject=' + sub + ' ' + id + '&amp;body=Hi,%0D%0A%0D%0A' + bdy + '%0D%0A%0D%0A' + punchout + '%26orderId=' + id + '%26coId=0%26userType=I%26localeChanged=en_US';
+                    } else {
+                        stremail = 'mailto:?subject=' + sub + ' ' + id + '&amp;body=Hi,%0D%0A%0D%0A' + bdy + '%0D%0A%0D%0A' + punchout + id + '';
+                    }
+                    //console.log('sss' + stremail);
+                    window.location.href = (stremail);
+                    $scope.actiontype = 'Send Via Email';
+                    $scope.logInteraction();
+                }
+
+                //**********************************SEND EMAIL**************************************//
+
+                //**********************************OPEN IN**************************************//
+                $scope.openin = function (punchout, id) {
+                    var strOrderurl = punchout + '&amp;orderId=' + id + '&amp;coId=0&amp;userType=I&amp;localeChanged=en_US';
+                    var strtac = punchout + id;
+                    var strsfdc = punchout + id;
+                    var openurl = '';
+                    switch ($scope.apiobject) {
+                    case 'taccase':
+                        openurl = strtac;
+                        break;
+                    case 'orderstatus':
+                        openurl = strOrderurl;
+                        break;
+                    case 'account':
+                        openurl = strsfdc;
+                        break;
+                    }
+
+                    window.open(openurl, '_blank');
+
+                    $scope.actiontype = 'Open In';
+                    $scope.logInteraction();
+                }
+
+                //**********************************OPEN IN**************************************//
+
+                //*********************************DATA REFRESH CALCULATION************************************//
+                $scope.getUTCDate = function (input) {
+                    var reg = /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2}).(\d{1})$/;
+                    var parts = reg.exec(input);
+                    //console.log('parts' + parts);
+                    return parts ? (new Date(Date.UTC(parts[1], parts[2] - 1, parts[3], parts[4], parts[5], parts[6]))) : null
+                }
+
+                //*********************************DATA REFRESH CALCULATION************************************//
+
+                //**************************************API CALLS**********************************************//
+                // REST API Call
+                $scope.loading = false;
+                $scope.valData = [];
+                $scope.initload = 0;
+
+                // Requesting Token from API
+                $scope.getToken = function () {
+                    $scope.initload = 1;
+                    $scope.sort_column_proxy($scope.secObject.defaultorderby);
+                    
+                    /*
+                    if (localStorage.getItem("accessToken") === null) {
+                        dseHttpService.apiGetTokenRequest().then(function (data) {
+                            localStorage.accessToken = btoa(data.data);
+
+                            $scope.loadData();
+                        });
+                    } else {
+
+                        $scope.loadData();
+                    }
+                    */
+                    $scope.loadData();
+                }
+                $scope.currentRecordCount = 0.5;
+                // Requesting SFDC for All Account Site and My Account Site
+                $scope.getSFDC = function () {
+                    $scope.loading = true;
+
+                    var data = {
+                        "req": $scope.postSFDCData()
+
+                    };
+                    //console.log('SFDC' + $scope.postData());
+                    var apiEndpointPath = 'allaccounts';
+                    if ($scope.filterCond === 'myaccounts') {
+                        apiEndpointPath = 'myaccounts';
+                    }
+
+                    dseHttpService.apiGetSFDCRequest(data, apiEndpointPath).then(function (data) {
+                        $scope.message = data.data.message;
+                        $scope.currentRecordCount = $scope.currentRecordCount + data.data.data.length;
+                        $scope.valData = $scope.valData.concat(data.data.data);
+                        $scope.clientside = false;
+                        $scope.loading = false;
+                        //$scope.reverse = !$scope.reverse;
+                        $scope.lastUpdatedDate = "";
+                        $scope.totalrecords = data.data.totalrecords;
+                        if ($scope.totalrecords >= $scope.currentRecordCount) {
+                            $scope.showmoredisable = true;
+                        } else {
+
+                            $scope.showmoredisable = false;
+                        }
+                        $scope.logInteraction();
+                    });
+                }
+
+
+                // Requesting External API for Required Information
+                $scope.getExternalData = function () {
+                    //console.log("oeid: "+$scope.oeid);
+                    //console.log("partyid: "+$scope.partyid);
+                    //console.log($scope.oeid !== "undefined");
+                    //console.log(data.oe_id.length);
+                    //console.log('============='+$scope.mtoken);
+
+                    var data = $scope.postData();
+                    dseHttpService.apiPostRequest(data, $scope.apipath,$scope.mtoken).then(function (data) { //success
+                            localStorage.removeItem('retry');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            $scope.valData = $scope.valData.concat(data.data.data.object);
+
+                            $scope.valData2 = $scope.valData;
+                            $scope.message = data.data.message;
+
+                            $scope.paginationmessage = "Show More";
+                            var gmttime = (new Date() - (new Date().getTimezoneOffset()))/1000;
+                            //console.log('gmttime' + gmttime);
+                            //console.log('Date.parse(data.data.data.last_updated_date)' + data.data.data.last_updated_date);
+                            var diff = gmttime - data.data.data.last_updated_date;
+                            
+                            $scope.totalrecords = data.data.data.totalrecords;
+                            $scope.pageLimit = 20;
+                            $scope.currentRecordCount = $scope.currentRecordCount + Object.keys(data.data.data.object).length;
+
+                            if ($scope.totalrecords > 100) {
+                                $scope.clientside = false;
+                            } else {
+                               // console.log('after api' + $scope.reverse);
+                               // console.log('after api' + $scope.predicate);
+                                //console.log('after api Object' + $scope.apiobject);
+                                //if ($scope.apiobject == 'orderstatus') {
+                                    $scope.reverse = !$scope.reverse;
+                                //}
+                            }
+                            $scope.lastUpdatedDate = "As of " + Math.round(diff / 3600) + "h ago";
+
+                            if ($scope.totalrecords >= $scope.pageLimit) {
+                                $scope.showmoredisable = true;
+                            } else {
+                                $scope.showmoredisable = false;
+                            }
+                            //console.log($scope.showmoredisable);
+                            $scope.loading = false;
+                            $scope.logInteraction();
+                        },
+                        function (data) { //error
+                            $scope.message = 'An error occured.Please try again';
+                            $scope.loading = false;
+                            localStorage.removeItem('accessToken');
+                            localStorage.removeItem('retry');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        });
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                $scope.logInteraction = function () {
+
+                    var logdata = $scope.logData();
+                    dseHttpService.apiLogSFDCRequest(logdata).then(function (data) {
+                        //console.log(data);
+                    });
+                }
+
+                $scope.tokenretry = 0;
+                
+                //*********************************SFDC POST OBJECT************************************//
+                // POST Data JSON for SFDC
+                $scope.postSFDCData = function () {
+                    var userid = '{!$User.email}';
+                    userid = userid.substring(0, userid.indexOf('@'));
+
+                    var postSFDCdata = {
+                        "filter_criteria": $scope.filter_criteria,
+                        "page_no": $scope.page,
+                        "page_size": $scope.secObject.pagelimit,
+                        "sort_by": $scope.colorderby,
+                        "sort_order": $scope.orderDir(),
+                        "pagination": "Y",
+                        "locale": $scope.locale,
+                        "time_zone": $scope.timezone,
+                        "user_id": userid
+                    }
+
+                    //var oe_id = 'oe_id';
+                    //var party_id = 'party_id';
+                    if ($scope.oeid != null) {
+                        postSFDCdata['oe_id'] = $scope.oeid;
+                    } else {
+                        postSFDCdata['party_id'] = $scope.partyid;
+                    }
+                    return postSFDCdata;
+                }                
+
+                //*********************************POST OBJECT************************************//
+                // POST Data JSON for External
+                $scope.postData = function () {
+                    var userid = '{!$User.email}';
+                    userid = userid.substring(0, userid.indexOf('@'));
+
+                    var postdata = {
+                        "search_criteria": $scope.filter_criteria,
+
+                        "page_no": $scope.page,
+                        "page_size": $scope.secObject.pagelimit,
+                        "sort_by": $scope.colorderby,
+                        "sort_order": $scope.orderDir(),
+                        "pagination": "Y",
+                        "locale": $scope.locale,
+                        "time_zone": $scope.timezone,
+                        "user_id": userid
+                    }
+
+                    //var oe_id = 'oe_id';
+                    //var party_id = 'party_id';
+                    if ($scope.filtertype === 'U'){
+    //                  postdata['node_id'] = nodeList;
+                        postdata['filter_type'] = 'U';
+                    } else{
+                            if ($scope.oeid != null) {
+                                postdata['oe_id'] = $scope.oeid;
+                                postdata['filter_type'] = 'O';
+                            } else {
+                                    postdata['party_id'] = $scope.partyid;
+                                    postdata['filter_type'] = 'P';
+                            }
+                    } 
+
+                    return postdata;
+                }
+
+                $scope.logData = function () {
+                    
+                    var oeid = $scope.oeid;
+                    
+                    var oeidnew = '';
+                    if(oeid != undefined){
+                        oeidnew = oeid.toString().substring(1,1000);
+                    }
+                    //console.log('filtertype :'+$scope.filtertype);
+
+                    var postdata = {
+                        "OE_ID__c": "[" + oeidnew + "]",
+                        "party_id__c": "[" + $scope.partyid + "]",
+                        "filter_criteria__c": $scope.filter_criteria,
+                        "page_no__c": $scope.page,
+                        "page_size__c": $scope.secObject.pagelimit,
+                        "sort_by__c": $scope.colorderby,
+                        "sort_order__c": $scope.orderDir(),
+                        "locale__c": $scope.locale,
+                        "time_zone__c": $scope.timezone,
+                        "user__c": '{!$User.Id}',
+                        "Location__c": document.referrer,
+                        "calltype__c": $scope.calltype,
+                        "actiontype__c": $scope.actiontype,
+                        "apiobject__c": $scope.apiobject,
+                        "totalnumberofrecords__c": $scope.totalrecords,
+                        "message__c": $scope.message,
+                        "filter_type__c": $scope.filtertype
+                    }
+                    return postdata;
+                }
+
+
+                //*********************************POST OBJECT************************************// 
+
+                $scope.loadData = function () {
+                        $scope.loading = true;
+                        $scope.recDetail = true;
+                        $scope.calltype = 'API';
+
+
+                        //Filter Logic
+                        if ($scope.pfilter_criteria == '' &amp;&amp; $scope.search_criteria == '') {
+                            $scope.filter_criteria = '';
+                        } else {
+                            if ($scope.pfilter_criteria != '' &amp;&amp; $scope.search_criteria != '') {
+                                $scope.filter_criteria = $scope.pfilter_criteria + ' AND ' + $scope.search_criteria;
+                            } else {
+                                if ($scope.pfilter_criteria != '') {
+                                    $scope.filter_criteria = $scope.pfilter_criteria;
+                                } else {
+                                    $scope.filter_criteria = $scope.search_criteria
+                                }
+                            }
+                        }
+
+                        if ($scope.apitype === 'SFDC') {
+                            $scope.getSFDC();
+                        }
+
+
+
+
+                        if ($scope.apitype === 'external') {
+                     //       console.log("$scope.oeid : "+$scope.oeid);
+                     //       console.log("$scope.partyid : "+$scope.partyid);
+                     //       console.log("$scope.filtertype : "+$scope.filtertype);
+                            if ($scope.partyid !== undefined) {
+                                            $scope.getExternalData();
+                                        } else {
+                                            if ($scope.oeid !==undefined &amp;&amp; $scope.oeid.length > 0) {
+                                                $scope.getExternalData();
+                                            } else {
+
+
+                                if ($scope.filtertype === 'U'){
+                                    //console.log("$scope.filtertype === U"); 
+                                    $scope.getExternalData();
+                                } else {
+                                    $scope.message = "No Records Found";
+                                    $scope.loading = false;
+                                    $scope.showmoredisable = false;
+                                }
+                                            }
+                                        }
+                                    }                        
+                        
+                }
+                   
+                    //ON LOAD GET DATA
+                $scope.getToken();
+            }
+        }
+    }); 
+</apex:page>

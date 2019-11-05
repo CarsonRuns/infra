@@ -1,0 +1,377 @@
+<apex:page standardController="Master_MBO__c"  id="masterMBOPg" extensions="MBOBaseController" tabStyle="Master_MBO__c" >
+  <style>
+.trgt_width {width:50px;}
+.info_msg_hidden {font-weight:bold;font-size:12px;color:red;display:none;}
+.info_msg {font-weight:bold;font-size:12px;color:red;}
+.ltm_err_msg {font-weight:bold;font-size:12px;color:red;position:absolute;}
+.pgm_opt_enbl{background-color:white;color:black;}
+.pgm_opt_disbl{background-color:#9E9E9E;}
+.schd_disbl {display:none;}
+.schd_enbl {font-weight:bold;font-size:12px;color:red;}
+</style>
+<script src="/soap/ajax/25.0/connection.js" type="text/javascript"></script>
+<script type="text/javascript">
+//SCAVA FIX
+var isSchdOnce='{!JSENCODE(bMbo.IsSchdOnce__c)}';
+
+var mboPgmIPId='{!$Component.masterMBOPg.masterMBOForm.masterMBOHdrPgBlk.masterMBOHdrPgBlkSect.mboPgm}';
+var mboPgmLkId=mboPgmIPId+'_lkid';
+var mboPgmIPIdLkupImg=mboPgmIPId+'_lkwgt'; 
+var lItmId='{!$Component.masterMBOPg.masterMBOForm.masterMBOLItmPgBlk.masterMBOLItmPgBlkSect.lItm}';
+var prdSvcId='{!$Component.masterMBOPg.masterMBOForm.masterMBOHdrPgBlk.masterMBOHdrPgBlkSect.mboPrdSvc}';
+
+function doNotAllowEdit(obj)
+{   
+    obj.value=obj.defaultValue;
+    alert('Please select the Partner/Partner Group from the Lookup pop-up.')
+}
+function openclient(obj)  
+{
+    if(obj!=null)
+    { 
+        //var mboPgmLkId='j_id0:formId:pageblockId1:pageblocksectionId1:j_id4_lkid';
+        //var mboPgmIPId='j_id0:formId:pageblockId1:pageblocksectionId1:j_id4';
+        var mboPgmLkIdObj=document.getElementById(mboPgmLkId);
+        var mboPgmIPIdObj=document.getElementById(mboPgmIPId);
+        
+        if(mboPgmIPIdObj!=null && mboPgmIPIdObj.value!='' && mboPgmLkIdObj != null) 
+         {
+            var rowIndex=parseInt(obj.parentElement.parentElement.rowIndex)
+            var pntrType=lItmId+':'+(rowIndex-1)+':partnerType';           
+            var pntrGroup=lItmId+':'+(rowIndex-1)+':pntrGroup';
+    
+            var pntrTypeId=lItmId+':'+(rowIndex-1)+':partnerId';
+            var pntrGroupId=lItmId+':'+(rowIndex-1)+':partnerGroupId';
+            
+            var mboPgmId=mboPgmLkIdObj.value;
+            var type  =   document.getElementById(pntrType).value;
+            var value =   document.getElementById(pntrGroup).value;  
+            var prdSvcDDVal = document.getElementById(prdSvcId).value;                     
+            var urlQuery="stringvalue="+value+"&stringtype="+type+"&pntrTypeId="+pntrTypeId+"&pntrGroupId="+pntrGroupId+"&pntrType="+pntrType+"&pntrGroup="+pntrGroup+'&prdSvcDDVal='+prdSvcDDVal;
+            urlQuery=urlQuery+'&mboPgmId='+mboPgmId;
+            
+            var pgIds= getPGIds();
+            if(pgIds!=null && pgIds != '')
+             urlQuery=urlQuery+'&usedPGIds='+pgIds;
+            
+            window.open("{!$Page.Partner_Search}?"+urlQuery,"lookup","width=750,height=500");
+         }
+         else{
+            alert("MBO Program should be chosen for the Partner Group to be selected");
+         }         
+        return false;     
+     }   
+}
+
+function refreshPage()
+{
+    var mboId='{!bMbo.Id}';  
+    var pageURL='/apex/MBOBaseAddEdit?id=';
+   if(mboId!=null && mboId!='')
+   {
+   pageURL=pageURL+mboId;
+    window.location.href=pageURL;
+   }
+   else
+   {
+   window.location.href='/apex/MBOBaseAddEdit';
+   }
+    
+    
+    
+    
+   
+}
+
+var dataObj=eval('({"MBO":{"MasterMBO":{"PgId":[]}}})');
+var idMap=new Object();
+dataObj.MBO.MasterMBO.PgId=idMap;
+var pgIdMap=dataObj.MBO.MasterMBO.PgId; 
+
+function getPGIds()
+{
+    var commaSepIds=null;
+    //var pntrId='j_id0:formId:pageblockId2:pageblocksectionId2:j_id20:';
+    var pntrEleCnt=0;
+     //alert(pntrEleCnt);
+      //alert(partnerId);
+    var pntrIdObj=document.getElementById(lItmId+':'+pntrEleCnt+':partnerId');
+    while(pntrIdObj != undefined)
+    {
+        //alert(commaSepIds);
+        var pntrGPIdObj=document.getElementById(lItmId+':'+pntrEleCnt+':partnerGroupId');
+        
+        if(pntrIdObj.value!=null && pntrIdObj.value!='')
+        {
+             if(commaSepIds==null)
+                commaSepIds=pntrIdObj.value; 
+            else
+                commaSepIds=commaSepIds+','+pntrIdObj.value;    
+        }
+        
+        if(pntrGPIdObj.value!=null && pntrGPIdObj.value!='')
+        {
+             if(commaSepIds==null)
+                commaSepIds=pntrGPIdObj.value; 
+            else
+                commaSepIds=commaSepIds+','+pntrGPIdObj.value;  
+        }
+        pntrEleCnt=pntrEleCnt+1;
+        pntrIdObj=document.getElementById(lItmId+':'+pntrEleCnt+':partnerId');
+    }
+    
+    return commaSepIds;
+}
+var inPgEvnt='Onload';
+
+function wrpGetTrack()
+{
+    inPgEvnt='OnClk';
+    getTrack();
+}
+
+function getTrack()
+{
+    var mboPgmLkIdObj=document.getElementById(mboPgmLkId);
+    var mboPgmIPIdObj=document.getElementById(mboPgmIPId);
+    var mboPgmIPIdLkupImgObj=document.getElementById(mboPgmIPIdLkupImg);        
+    
+    if(isSchdOnce != undefined && isSchdOnce=='Yes' && mboPgmIPIdLkupImgObj != undefined)
+    { mboPgmIPIdLkupImgObj.style.display='none'; }
+        
+    var mboPgmId=mboPgmLkIdObj.value;
+
+    var query='Select Track__c , Id from MBO_Program__c where Id=\''+mboPgmId+'\'';
+    sforce.connection.query(query, callback);
+    clearTimeout(pgmItvl);
+}
+
+function getSubTrack(pgmId)
+{
+    var query='Select Name from MBO_Sub_Track__c where MBO_Program__c=\''+pgmId+'\'';
+    sforce.connection.query(query, subTrackCallback);
+    //clearTimeout(pgmItvl);
+}
+
+var subTrackCallback = {onSuccess: subTrackSuccess, onFailure: handleFailure};
+function subTrackSuccess(result) {
+   // alert('result------>'+result);
+    var trackDispObj=document.getElementById('track_disp');    
+    var selected=false;
+    if(result.records!=undefined && result.size != '0')  
+    {
+        var subTrackSize=result.size;
+        //var subTrackDDObj=document.getElementById('j_id0:formId:pageblockId1:pageblocksectionId1:j_id9');
+        var subTrackDDObj=document.getElementById(prdSvcId);        
+        if(subTrackDDObj!=undefined)
+        {           
+            for(var count=0;count<subTrackDDObj.options.length;count++)
+            {                   
+                var found=false;
+                if(subTrackSize==1)
+                {
+                    if(subTrackDDObj.options[count].value == '' || subTrackDDObj.options[count].value == result.records.Name)   
+                    {
+                        found=true;
+                    }
+                }
+                else{
+                    for(var innCount=0;innCount<subTrackSize;innCount++)
+                    {                   
+                        if(subTrackDDObj.options[count].value == '')
+                        {
+                            found=true;
+                            break;
+                        }
+                        else if(subTrackDDObj.options[count].value == result.records[innCount].Name)    
+                        {
+                            found=true;
+                        }
+                    }
+                }       
+                if(found == false)
+                {
+                    subTrackDDObj.options[count].className="pgm_opt_disbl"; 
+                    subTrackDDObj.options[count].selected=false;    
+                    subTrackDDObj.options[count].disabled=true;                         
+                }
+                else
+                {
+                    if(!selected && subTrackDDObj.options[count].value!='' && inPgEvnt!='Onload')
+                    {
+                        subTrackDDObj.options[count].selected=true;
+                        selected=true;
+                    }   
+                    
+                    subTrackDDObj.options[count].className="pgm_opt_enbl";
+                    subTrackDDObj.options[count].disabled=false;                    
+                }
+            }
+        }
+    }
+    else if(result.size == '0')
+    {
+        //var subTrackDDObj=document.getElementById('j_id0:formId:pageblockId1:pageblocksectionId1:j_id9');
+        var subTrackDDObj=document.getElementById(prdSvcId);
+        if(subTrackDDObj!=undefined)
+        {                       
+            for(var count=0;count<subTrackDDObj.options.length;count++)
+            {                   
+                subTrackDDObj.options[count].disabled=true;
+            }
+        }   
+    }
+    //subTrackDDObj.options[0].selected=true;
+}
+
+
+var callback = {onSuccess: handleSuccess, onFailure: handleFailure};
+function handleSuccess(result) {
+    var trackDispObj=document.getElementById('track_disp');
+    trackDispObj.innerHTML=result.records.Track__c;
+    getSubTrack(result.records.Id);
+    
+}
+function handleFailure(error) {}
+
+function clearMsg()
+{
+    var infoMsg=document.getElementsByClassName('info_msg_hidden');
+    if(infoMsg!=undefined && infoMsg.length>0)
+    {
+        var messages=infoMsg[0].innerHTML;
+        var savedIdx=messages.indexOf('Saved');
+        var scdIdx=messages.indexOf('scheduled');
+        
+        if(savedIdx == -1 && scdIdx == -1 && infoMsg[0].childElementCount >1)
+        {infoMsg[0].innerHTML="<li>Please review the errors shown below</li>";
+         }
+         infoMsg[0].className="info_msg";       
+    }
+    clearTimeout(msgItvl);
+}
+
+var pgmItvl=setInterval(getTrack,400);
+var msgItvl=setInterval(clearMsg,100);
+
+
+function checkType(imgObj)
+{
+    var rowIndex=imgObj.parentElement.parentElement.rowIndex;
+    rowIndex=parseInt(rowIndex)-1;
+    //var typeObjName='j_id0:formId:pageblockId2:pageblocksectionId2:j_id20:'+rowIndex+':partnerType';
+    var typeObjName=lItmId+':'+rowIndex+':partnerType';    
+    var typeObj=document.getElementById(typeObjName);
+    if(typeObj!=undefined)
+    {
+        if(typeObj.selectedIndex==0)
+        {
+            alert('Please select a Type');
+        }
+        else
+        {
+            openclient(imgObj);
+        }   
+    }
+}   
+
+function clearPGSelection(typeObj)
+{
+    var rowIndex=typeObj.parentElement.parentElement.parentElement.rowIndex;
+    rowIndex=parseInt(rowIndex)-1;
+    //var typeValObjName='j_id0:formId:pageblockId2:pageblocksectionId2:j_id20:'+rowIndex+':pntrGroup';
+    var typeValObjName=lItmId+':'+rowIndex+':pntrGroup';    
+    var typeValObj=document.getElementById(typeValObjName);
+    typeValObj.value='';
+
+    //var pntrId='j_id0:formId:pageblockId2:pageblocksectionId2:j_id20:';
+    var pntrIdName=lItmId+':'+rowIndex+':partnerId';
+    var pntrIdObj=document.getElementById(pntrIdName);
+    
+    var pntrGPIdName=lItmId+':'+rowIndex+':partnerGroupId';
+    var pntrGPIdObj=document.getElementById(pntrGPIdName);
+    
+    if(pntrIdObj != null)
+        pntrIdObj.value='';
+    if(pntrGPIdObj != null)
+        pntrGPIdObj.value='';   
+}
+
+</script>
+
+
+
+   <apex:messages styleClass="info_msg_hidden" />    
+   <apex:form id="masterMBOForm"   > 
+          <!--<apex:inputHidden value="{!hiddenTrack}" id="hiddenTrack"/>   
+          <apex:actionFunction name="updateLabelSize" rerender="track">
+           <apex:param name="program" assignTo="{!program}" value="sdsd" />
+        </apex:actionFunction>   -->
+       <apex:pageBlock mode="detail" id="masterMBOHdrPgBlk">    
+            <apex:pageBlockSection title="MBO" columns="2" id="masterMBOHdrPgBlkSect">
+                <apex:inputField value="{!bMbo.name}" id="mboName" styleClass="{!IF(bMbo.IsSchdOnce__c=='Yes',"a \" disabled=\"disabled", "")}" required="true"  />
+                <apex:inputField value="{!bMbo.MBO_Program__c}" id="mboPgm" styleClass="{!IF(bMbo.IsSchdOnce__c=='Yes',"a \" disabled=\"disabled", "")}" required="true" onchange="wrpGetTrack();" />
+                <apex:inputTextarea cols="50" id="mboDesc" label="MBO Description" value="{!bMbo.MBO_Description__c}" />
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Track" for="track"/><span id="track_disp"> {!track} </span>
+                </apex:pageBlockSectionItem>                
+                <apex:inputField value="{!bMbo.Sub_Track__c}" id="mboPrdSvc" styleClass="{!IF(bMbo.IsSchdOnce__c=='Yes',"a \" disabled=\"disabled", "")}" label="Sub Track" required="true" />                                                                                                                                                             
+               
+            </apex:pageBlockSection>   
+            <apex:pageBlockButtons id="masterMBOHdrPgBlkButn">
+                <apex:commandButton value="Save Changes"  action="{!save}"   />
+                <!--<apex:commandButton value="Save and Schedule Assignments" action="{!exeCalJob}"/> -->
+                <apex:commandButton value="Schedule Assignments" action="{!scheduleAssignments}"/>
+            </apex:pageBlockButtons>
+       </apex:pageBlock>       
+       
+       <apex:pageBlock id="masterMBOLItmPgBlk">
+            <apex:pageBlockButtons id="masterMBOLItmPgBlkButn">
+                <apex:commandButton action="{!newBMBOItem}" value="Add Assignment"  />
+                 <apex:commandButton action="{!deleteBMBOItem}" value="Delete Assignment" /> 
+                <input type="button" name="Cancel" value="Cancel" class="btn" onclick="javascript:refreshPage();" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Target Assignment" columns="2" id="masterMBOLItmPgBlkSect">
+                <apex:actionStatus startText="Updating Assignments...">
+                    <apex:facet name="stop">
+                        <apex:outputPanel id="main">
+                            <table id="tableId">
+                                <tr>
+                                    <apex:repeat value="{!headers}" var="h">
+                                        <td class="hdr">{!h}</td> 
+                                    </apex:repeat>
+                                </tr>
+                                <apex:repeat value="{!BMBOItem}" id="lItm" var="a">
+                                    <tr>
+                                        <td>
+                                            <apex:inputCheckbox value="{!a.selected}" disabled="{!IF(a.mboItem.Status__c=='Scheduled',"true", "false")}"   />                                       
+                                        </td>
+                                        <td><apex:inputField value="{!a.mboItem.Segment__c}" required="true" /> </td>
+                                        <td><apex:inputField required="true" value="{!a.mboItem.Measure_Unit__c}" /></td>                                   
+                                        <td><apex:inputField value="{!a.mboItem.Objective__c}" required="true" /></td>
+                                        <td><apex:inputField value="{!a.mboItem.Target__c}" required="true" styleClass="{!IF(a.anyPMBOUndrCalc=="true"," \"disabled=\"disabled", "")}"  /></td>                                                                          
+                                        <td><apex:inputField value="{!a.mboItem.Q1_Target_Percent__c}" styleClass="{!IF(a.anyPMBOUndrCalc=="true","trgt_width \"disabled=\"disabled", "trgt_width")}" /></td>                                   
+                                        <td><apex:inputField value="{!a.mboItem.Q2_Target_Percent__c}" styleClass="{!IF(a.anyPMBOUndrCalc=="true","trgt_width \"disabled=\"disabled", "trgt_width")}" /></td>                                   
+                                        <td><apex:inputField value="{!a.mboItem.Q3_Target_Percent__c}" styleClass="{!IF(a.anyPMBOUndrCalc=="true","trgt_width \"disabled=\"disabled", "trgt_width")}" /></td>                                   
+                                        <td><apex:inputField value="{!a.mboItem.Q4_Target_Percent__c}" styleClass="{!IF(a.anyPMBOUndrCalc=="true","trgt_width \"disabled=\"disabled", "trgt_width")}" /></td>    
+                                        <td><apex:inputField value="{!a.mboItem.Type__c}" styleClass="{!IF(a.mboItem.Status__c=='Scheduled'," \" disabled=\"disabled", "")}" onchange="clearPGSelection(this)" required="true" id="partnerType"/></td>
+                                        <!--<td><apex:inputField value="{!a.mboItem.Partner_Group__c}" required="true" /> </td>-->
+                                        <td><apex:inputField value="{!a.mboItem.Partner_Information__c}" onchange="doNotAllowEdit(this);"  styleClass="{!IF(a.mboItem.Status__c=='Scheduled'," \"disabled=\"disabled", "")}"   id="pntrGroup" label="Partner/Partner Group" required="true" /> </td>
+                                        
+                                        <td><img onclick='checkType(this);'  title="Owner Lookup (New Window)" onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';" onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" onfocus="this.className = 'lookupIconOn';" onblur="this.className = 'lookupIcon';" class="lookupIcon {!IF(a.mboItem.Status__c=='Scheduled',"schd_disbl", "")}" alt="Owner Lookup (New Window)" src="/s.gif" /></td>                                                                                        
+                                        <td><apex:inputHidden id="partnerId" value="{!a.mboItem.Partner__c}" /></td> 
+                                        <td><apex:inputHidden id="partnerGroupId" value="{!a.mboItem.Partner_Group__c}" /></td> 
+                                        <td>                                            
+                                            <span class="ltm_err_msg" >{!a.errMsg}</span>
+                                        </td>
+                                    </tr>
+                                </apex:repeat>
+                                
+                            </table>
+                        </apex:outputPanel>
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:pageBlockSection>
+       </apex:pageBlock>
+   </apex:form>
+</apex:page>

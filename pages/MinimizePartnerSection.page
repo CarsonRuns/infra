@@ -1,0 +1,14 @@
+<apex:page standardController="opportunity">
+  <script> 
+    var pdrOppty = ''; 
+    if('{!Opportunity.RecordTypeId}' == '0128000000020Dl' || '{!Opportunity.RecordTypeId}' == '0128000000020Dq'){ 
+    pdrOppty = 'y'; 
+    } 
+
+    var partSec = top.document.getElementsByName("Deal/Quote Information")[0]; 
+    if(partSec && ((pdrOppty == '' && partSec.title.indexOf("Hide") != -1) || (pdrOppty != '' && partSec.title.indexOf("Hide") == -1))){ 
+    top.twistSection(partSec); 
+    } 
+
+</script> 
+</apex:page>

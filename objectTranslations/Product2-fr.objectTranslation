@@ -1,0 +1,3580 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Allocated Service Group --></label>
+        <name>Allocated_Service_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Entity Name --></label>
+        <name>Business_Entity_Name__c</name>
+    </fields>
+    <fields>
+        <label>Entité commerciale</label>
+        <name>Business_Entity__c</name>
+        <picklistValues>
+            <masterLabel>AS-S</masterLabel>
+            <translation><!-- AS-S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AS-T</masterLabel>
+            <translation><!-- AS-T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Analytics</masterLabel>
+            <translation><!-- Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration</masterLabel>
+            <translation>Collaboration</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computing Systems</masterLabel>
+            <translation><!-- Computing Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Switching</masterLabel>
+            <translation><!-- Data Center Switching --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Routing</masterLabel>
+            <translation>ROUTAGE D'ENTREPRISE</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Switching</masterLabel>
+            <translation><!-- Enterprise Switching --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOT</masterLabel>
+            <translation>IoT</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial IOT Networking</masterLabel>
+            <translation><!-- Industrial IOT Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meraki</masterLabel>
+            <translation>Meraki</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobility</masterLabel>
+            <translation>MOBILITÉ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Video Infrastructure</masterLabel>
+            <translation><!-- SP Video Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Video Software and Solutions</masterLabel>
+            <translation><!-- SP Video Software and Solutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation>SÉCURITÉ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider Routing</masterLabel>
+            <translation><!-- Service Provider Routing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TS-S</masterLabel>
+            <translation><!-- TS-S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UNKNOWN</masterLabel>
+            <translation><!-- UNKNOWN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless</masterLabel>
+            <translation>SANS FIL</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Gamme de produits 1</label>
+        <name>Product_Family_1__c</name>
+    </fields>
+    <fields>
+        <label>Gamme de produits 2</label>
+        <name>Product_Family_2__c</name>
+    </fields>
+    <fields>
+        <label>Gamme de produits 3</label>
+        <name>Product_Family_3__c</name>
+    </fields>
+    <fields>
+        <label>Gamme de produits 4</label>
+        <name>Product_Family_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Searchable --></label>
+        <name>Searchable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Category --></label>
+        <name>Service_Category__c</name>
+    </fields>
+    <fields>
+        <label>Niveau de service 1</label>
+        <name>Service_Level_1__c</name>
+        <picklistValues>
+            <masterLabel>24x7x2</masterLabel>
+            <translation><!-- 24x7x2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24x7x2OS</masterLabel>
+            <translation><!-- 24x7x2OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24x7x4</masterLabel>
+            <translation><!-- 24x7x4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24x7x4OS</masterLabel>
+            <translation><!-- 24x7x4OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8x5x4</masterLabel>
+            <translation><!-- 8x5x4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8x5x4OS</masterLabel>
+            <translation><!-- 8x5x4OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8x5xNBD</masterLabel>
+            <translation><!-- 8x5xNBD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8x5xNBDOS</masterLabel>
+            <translation><!-- 8x5xNBDOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ACI</masterLabel>
+            <translation><!-- ACI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMSP</masterLabel>
+            <translation><!-- AMSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMSS</masterLabel>
+            <translation><!-- AMSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMST</masterLabel>
+            <translation><!-- AMST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AS Other-Combined Services</masterLabel>
+            <translation>AS-Autre-Services combinés</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATA-Enhanced Managed Service</masterLabel>
+            <translation><!-- ATA-Enhanced Managed Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATA-Premier Managed Service (MTD)</masterLabel>
+            <translation><!-- ATA-Premier Managed Service (MTD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adjustable Price RMS</masterLabel>
+            <translation><!-- Adjustable Price RMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advisory</masterLabel>
+            <translation>Conseil</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assessments Svcs</masterLabel>
+            <translation>Services d'évaluation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLK</masterLabel>
+            <translation><!-- BLK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Best</masterLabel>
+            <translation><!-- Best --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Better</masterLabel>
+            <translation><!-- Better --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bronze</masterLabel>
+            <translation><!-- Bronze --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBAS</masterLabel>
+            <translation><!-- CBAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBAU</masterLabel>
+            <translation><!-- CBAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBDN</masterLabel>
+            <translation><!-- CBDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBNE</masterLabel>
+            <translation><!-- CBNE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBNP</masterLabel>
+            <translation><!-- CBNP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBNT</masterLabel>
+            <translation><!-- CBNT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBO2</masterLabel>
+            <translation><!-- CBO2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBOE</masterLabel>
+            <translation><!-- CBOE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBOP</masterLabel>
+            <translation><!-- CBOP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBOT</masterLabel>
+            <translation><!-- CBOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBSU</masterLabel>
+            <translation><!-- CBSU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUE</masterLabel>
+            <translation><!-- CBUE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUP</masterLabel>
+            <translation><!-- CBUP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUP2</masterLabel>
+            <translation><!-- CBUP2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUS</masterLabel>
+            <translation><!-- CBUS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUT</masterLabel>
+            <translation><!-- CBUT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUU</masterLabel>
+            <translation><!-- CBUU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMCS (Compliance Mgmt &amp; Config Service)</masterLabel>
+            <translation>CMCS (gestion conformité/serv. config)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS CPE</masterLabel>
+            <translation>CMS - CPE</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Collaboration</masterLabel>
+            <translation>CMS - Collaboration</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Data Center</masterLabel>
+            <translation>CMS - Data center</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Enterprise Networks</masterLabel>
+            <translation>CMS - Réseaux d'entreprise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Mobility</masterLabel>
+            <translation>CMS - Mobilité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS SP Collaboration</masterLabel>
+            <translation>CMS : FOURN. SRV. - Collaboration</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS SP Data Center</masterLabel>
+            <translation>CMS - FOURN. SRV. - Data center</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS SP Video</masterLabel>
+            <translation>CMS - FOURN. SRV. - Vidéo</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Security</masterLabel>
+            <translation>CMS - Sécurité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Service Provider Networks</masterLabel>
+            <translation>CMS - Réseaux de prestataires de serv.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS WiFi</masterLabel>
+            <translation>CMS - Wi-Fi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNL1</masterLabel>
+            <translation><!-- CNL1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNL2</masterLabel>
+            <translation><!-- CNL2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNL3</masterLabel>
+            <translation><!-- CNL3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNL4</masterLabel>
+            <translation><!-- CNL4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNLA</masterLabel>
+            <translation><!-- CNLA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNLB</masterLabel>
+            <translation><!-- CNLB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNLC</masterLabel>
+            <translation><!-- CNLC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNLP</masterLabel>
+            <translation><!-- CNLP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNS-HTOM</masterLabel>
+            <translation><!-- CNS-HTOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNS-HTTS</masterLabel>
+            <translation><!-- CNS-HTTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPE-as-a-Service</masterLabel>
+            <translation><!-- CPE-as-a-Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CS2P</masterLabel>
+            <translation><!-- CS2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSAS</masterLabel>
+            <translation><!-- CSAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSC2</masterLabel>
+            <translation><!-- CSC2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSDN</masterLabel>
+            <translation><!-- CSDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-AMP Security Migration Svcs</masterLabel>
+            <translation>CSS-Serv. de migration de sécurité AMP</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-AMP Security Plan &amp; Build (PDI)Svcs</masterLabel>
+            <translation>CSS-Serv. planific./création (PDI) AMP</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Collaborative Professional Svcs-CPS</masterLabel>
+            <translation>CSS-Services prof. collaboratifs-CPS</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Content Security Migration Svcs</masterLabel>
+            <translation>CSS-Serv. migration sécurité du contenu</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Content Security Plan&amp;Build(PDI)Svcs</masterLabel>
+            <translation>CSS-Serv. plan./créat.(PDI) séc. contenu</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Network Security Migration Svcs</masterLabel>
+            <translation>CSS-Serv. migration sécurité du réseau</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Network Security Plan&amp;Build(PDI)Svcs</masterLabel>
+            <translation>CSS-Serv. plan./créat. (PDI) séc. réseau</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Security Consulting Svcs/Advisory</masterLabel>
+            <translation>CSS-Serv. de conseil en sécurité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Security Optimization Svcs</masterLabel>
+            <translation>CSS-Serv. d'optimisation de la sécurité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Security Validation Svcs</masterLabel>
+            <translation>CSS-Serv. de validation de la sécurité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSP2</masterLabel>
+            <translation><!-- CSSP2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPD</masterLabel>
+            <translation><!-- CSSPD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPE</masterLabel>
+            <translation><!-- CSSPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPP</masterLabel>
+            <translation><!-- CSSPP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPS</masterLabel>
+            <translation><!-- CSSPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPU</masterLabel>
+            <translation><!-- CSSPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CTE</masterLabel>
+            <translation><!-- CTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Technical Education</masterLabel>
+            <translation>Formation technique Cisco</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco WebEx Virtual Conf Svc(Trans)</masterLabel>
+            <translation>Serv. réu. virtuelle Cisco WebEx(Trans)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration</masterLabel>
+            <translation><!-- Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration-as-a-Service</masterLabel>
+            <translation>Collaboration en tant que service</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract Networking Svcs</masterLabel>
+            <translation>Serv. de réseau de sous-traitants</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core Networking</masterLabel>
+            <translation><!-- Core Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Curriculum Planning</masterLabel>
+            <translation>Cisco Curriculum Planning</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center and Cloud</masterLabel>
+            <translation><!-- Data Center and Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataVirtualization Active Cluster</masterLabel>
+            <translation>Cluster actif-Virtualisation des données</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataVirtualization CIS Server</masterLabel>
+            <translation>Serveur CIS de virtualisation de données</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataVirtualization Failover/Bkup License</masterLabel>
+            <translation>Lic. sauveg./basculmnt-Virtual. données</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataVirtualization Performance+Adapters</masterLabel>
+            <translation>Perf.+adaptateurs virtualisation données</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deployment Svcs</masterLabel>
+            <translation>Services de déploiement</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Svcs(Development&amp;Guidance)</masterLabel>
+            <translation>Serv. conception (dévelopmnt+conseils)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Capabilities</masterLabel>
+            <translation><!-- Digital Capabilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EC4P</masterLabel>
+            <translation><!-- EC4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EC4T</masterLabel>
+            <translation><!-- EC4T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECD</masterLabel>
+            <translation><!-- ECD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECDN</masterLabel>
+            <translation><!-- ECDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECDO</masterLabel>
+            <translation><!-- ECDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECE</masterLabel>
+            <translation><!-- ECE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECEO</masterLabel>
+            <translation><!-- ECEO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECMU</masterLabel>
+            <translation><!-- ECMU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECPM</masterLabel>
+            <translation><!-- ECPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESW</masterLabel>
+            <translation><!-- ESW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education Subscriptions</masterLabel>
+            <translation>Abonnements - Formation</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EnergyWise-as-a-Service</masterLabel>
+            <translation>EnergyWise en tant que service</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energywise Data Center</masterLabel>
+            <translation>Data center EnergyWise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energywise Distributed Office</masterLabel>
+            <translation>Bureau distribué EnergyWise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enhanced</masterLabel>
+            <translation><!-- Enhanced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Networking</masterLabel>
+            <translation>Réseau d'entreprise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extended Support</masterLabel>
+            <translation><!-- Extended Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FDA</masterLabel>
+            <translation><!-- FDA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FIXED PRICE RMS</masterLabel>
+            <translation><!-- FIXED PRICE RMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTSS-HTE</masterLabel>
+            <translation><!-- FTSS-HTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTSS-HTOM</masterLabel>
+            <translation><!-- FTSS-HTOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTSS-HTTS</masterLabel>
+            <translation><!-- FTSS-HTTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTSS-TSOM</masterLabel>
+            <translation><!-- FTSS-TSOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Focal Engineer(FE)</masterLabel>
+            <translation>Ingénieur central (FE)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Formal Training</masterLabel>
+            <translation>Formation officielle</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HAD</masterLabel>
+            <translation><!-- HAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HCS</masterLabel>
+            <translation><!-- HCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HTE</masterLabel>
+            <translation><!-- HTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HTOM</masterLabel>
+            <translation><!-- HTOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HTTS</masterLabel>
+            <translation><!-- HTTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hosted Collaboration Service</masterLabel>
+            <translation><!-- Hosted Collaboration Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hosted Identity Services</masterLabel>
+            <translation><!-- Hosted Identity Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IAM</masterLabel>
+            <translation><!-- IAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT</masterLabel>
+            <translation><!-- IoT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Knowledge Svcs</masterLabel>
+            <translation>Services de connaissances</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MTINT-Integrate Service</masterLabel>
+            <translation>MTINT-Intégration de service</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MTMNG-Operations Manage Svc</masterLabel>
+            <translation>MTMNG-Services de gestion des opérations</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MTSSPT - Solution Support Service</masterLabel>
+            <translation>MTSSPT - Services d'assist. solutions</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed CPE-as-a-Service</masterLabel>
+            <translation>CPE géré en tant que service</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Collaboration</masterLabel>
+            <translation><!-- Managed Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Data Center</masterLabel>
+            <translation><!-- Managed Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Enterprise Networks</masterLabel>
+            <translation><!-- Managed Enterprise Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed SP Networks</masterLabel>
+            <translation><!-- Managed SP Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Security</masterLabel>
+            <translation><!-- Managed Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Metapod-SOW</masterLabel>
+            <translation><!-- Metapod-SOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Migrate on Failure</masterLabel>
+            <translation><!-- Migrate on Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAIS</masterLabel>
+            <translation><!-- NAIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAIS-CE</masterLabel>
+            <translation><!-- NAIS-CE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAIS-CE-APAC</masterLabel>
+            <translation><!-- NAIS-CE-APAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAIS-CE-EM</masterLabel>
+            <translation><!-- NAIS-CE-EM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NC2P</masterLabel>
+            <translation><!-- NC2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NC4P</masterLabel>
+            <translation><!-- NC4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NC4S</masterLabel>
+            <translation><!-- NC4S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NCS</masterLabel>
+            <translation><!-- NCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NDA</masterLabel>
+            <translation><!-- NDA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NE4N</masterLabel>
+            <translation><!-- NE4N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NE4T</masterLabel>
+            <translation><!-- NE4T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOS-T</masterLabel>
+            <translation><!-- NOS-T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOSC</masterLabel>
+            <translation><!-- NOSC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSAS</masterLabel>
+            <translation><!-- NSAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSAU</masterLabel>
+            <translation><!-- NSAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSO2</masterLabel>
+            <translation><!-- NSO2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSOE</masterLabel>
+            <translation><!-- NSOE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSOP</masterLabel>
+            <translation><!-- NSOP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSOS</masterLabel>
+            <translation><!-- NSOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSS2</masterLabel>
+            <translation><!-- NSS2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSSE</masterLabel>
+            <translation><!-- NSSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSSP</masterLabel>
+            <translation><!-- NSSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSST</masterLabel>
+            <translation><!-- NSST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSSW</masterLabel>
+            <translation><!-- NSSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-as-a-Service</masterLabel>
+            <translation><!-- Network-as-a-Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service Borderless</masterLabel>
+            <translation>Service d'exploitation - Sans frontières</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service Collaboration</masterLabel>
+            <translation>Service d'exploitation - Collaboration</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service DC/Cloud and VXI</masterLabel>
+            <translation>Service d'exploitation - DC/cloud et VXI</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service Mobility</masterLabel>
+            <translation>Service d'exploitation-Mobilité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service NGN</masterLabel>
+            <translation>Service d'exploitation - NGN</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service SP Video</masterLabel>
+            <translation>Service d'exploitation-Vidéo FOURN. SRV.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service SP Wi-Fi</masterLabel>
+            <translation>Service d'exploitation-SP Wi-Fi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PEDN</masterLabel>
+            <translation><!-- PEDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1OE</masterLabel>
+            <translation><!-- PM1OE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1OP</masterLabel>
+            <translation><!-- PM1OP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1OS</masterLabel>
+            <translation><!-- PM1OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1S</masterLabel>
+            <translation><!-- PM1S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1SE</masterLabel>
+            <translation><!-- PM1SE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1SP</masterLabel>
+            <translation><!-- PM1SP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1ST</masterLabel>
+            <translation><!-- PM1ST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1U</masterLabel>
+            <translation><!-- PM1U --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2OE</masterLabel>
+            <translation><!-- PM2OE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2OP</masterLabel>
+            <translation><!-- PM2OP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2OS</masterLabel>
+            <translation><!-- PM2OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2S</masterLabel>
+            <translation><!-- PM2S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2S2</masterLabel>
+            <translation><!-- PM2S2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2SE</masterLabel>
+            <translation><!-- PM2SE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2SP</masterLabel>
+            <translation><!-- PM2SP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2ST</masterLabel>
+            <translation><!-- PM2ST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2U</masterLabel>
+            <translation><!-- PM2U --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PO</masterLabel>
+            <translation><!-- PO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PS4N</masterLabel>
+            <translation><!-- PS4N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSBU</masterLabel>
+            <translation><!-- PSBU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSCU</masterLabel>
+            <translation><!-- PSCU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSDN</masterLabel>
+            <translation><!-- PSDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSEN</masterLabel>
+            <translation><!-- PSEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSRT</masterLabel>
+            <translation><!-- PSRT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSSD</masterLabel>
+            <translation><!-- PSSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSSE</masterLabel>
+            <translation><!-- PSSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSSP</masterLabel>
+            <translation><!-- PSSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSSW</masterLabel>
+            <translation><!-- PSSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUE</masterLabel>
+            <translation><!-- PSUE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUP</masterLabel>
+            <translation><!-- PSUP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUS</masterLabel>
+            <translation><!-- PSUS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUT</masterLabel>
+            <translation><!-- PSUT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUU</masterLabel>
+            <translation><!-- PSUU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PU2P</masterLabel>
+            <translation><!-- PU2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Physical Security</masterLabel>
+            <translation>Sécurité physique</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum</masterLabel>
+            <translation><!-- Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service Borderless</masterLabel>
+            <translation>Service préventif - Sans frontières</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service Collaboration</masterLabel>
+            <translation>Service préventif - Collaboration</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service DC/Cloud and VXI</masterLabel>
+            <translation>Service préventif - DC/cloud et VXI</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service Mobility</masterLabel>
+            <translation>Service préventif - Mobilité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service NGN</masterLabel>
+            <translation>Service préventif - NGN</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service SP Video</masterLabel>
+            <translation>Service préventif - Vidéo FOURN. SRV.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service SP Wi-Fi</masterLabel>
+            <translation>Service préventif - Wi-Fi FOURN. SRV.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Premium</masterLabel>
+            <translation><!-- Premium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Cloud-as-a-Service</masterLabel>
+            <translation>Cloud privé en tant que service</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REF</masterLabel>
+            <translation><!-- REF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RMS Security Services</masterLabel>
+            <translation><!-- RMS Security Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROST-SOW BILLING</masterLabel>
+            <translation><!-- ROST-SOW BILLING --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAS</masterLabel>
+            <translation><!-- SAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAU</masterLabel>
+            <translation><!-- SAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBC4S</masterLabel>
+            <translation><!-- SBC4S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBN4</masterLabel>
+            <translation><!-- SBN4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBO4</masterLabel>
+            <translation><!-- SBO4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBP4</masterLabel>
+            <translation><!-- SBP4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCAN</masterLabel>
+            <translation><!-- SCAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCAO</masterLabel>
+            <translation><!-- SCAO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCAP</masterLabel>
+            <translation><!-- SCAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCD</masterLabel>
+            <translation><!-- SCD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCIN</masterLabel>
+            <translation><!-- SCIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCIO</masterLabel>
+            <translation><!-- SCIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCIP</masterLabel>
+            <translation><!-- SCIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCN</masterLabel>
+            <translation><!-- SCN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCO</masterLabel>
+            <translation><!-- SCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCP</masterLabel>
+            <translation><!-- SCP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCS1</masterLabel>
+            <translation><!-- SCS1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCS4</masterLabel>
+            <translation><!-- SCS4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCU1</masterLabel>
+            <translation><!-- SCU1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCU4</masterLabel>
+            <translation><!-- SCU4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCVS</masterLabel>
+            <translation><!-- SCVS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SECIN</masterLabel>
+            <translation><!-- SECIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SES1</masterLabel>
+            <translation><!-- SES1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SES4</masterLabel>
+            <translation><!-- SES4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SESN</masterLabel>
+            <translation><!-- SESN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SESO</masterLabel>
+            <translation><!-- SESO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SESP</masterLabel>
+            <translation><!-- SESP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SESV</masterLabel>
+            <translation><!-- SESV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFA1</masterLabel>
+            <translation><!-- SFA1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFA2</masterLabel>
+            <translation><!-- SFA2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFA3</masterLabel>
+            <translation><!-- SFA3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFA4</masterLabel>
+            <translation><!-- SFA4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFC1</masterLabel>
+            <translation><!-- SFC1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFC2</masterLabel>
+            <translation><!-- SFC2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFC3</masterLabel>
+            <translation><!-- SFC3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFC4</masterLabel>
+            <translation><!-- SFC4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFRF</masterLabel>
+            <translation><!-- SFRF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFSW</masterLabel>
+            <translation><!-- SFSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SNTE</masterLabel>
+            <translation><!-- SNTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOS-Spares-on-Site</masterLabel>
+            <translation>SOS-Pièces de rechange sur site</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Assurance Operate</masterLabel>
+            <translation>FOURN. SRV. - Assurance Operate</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Cloud</masterLabel>
+            <translation><!-- SP Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Mobility</masterLabel>
+            <translation>FOURN. SRV. - Mobilité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Networking</masterLabel>
+            <translation>FOURN. SRV. - Réseau</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Preemptive</masterLabel>
+            <translation>FOURN. SRV. - Service préventif</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Solution Support</masterLabel>
+            <translation>FOURN. SRV. - Assistance solution</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Video</masterLabel>
+            <translation>SP - Vidéo</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPC4S</masterLabel>
+            <translation><!-- SPC4S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SU1</masterLabel>
+            <translation><!-- SU1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SU2</masterLabel>
+            <translation><!-- SU2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SU3</masterLabel>
+            <translation><!-- SU3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SU4</masterLabel>
+            <translation><!-- SU4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUBSCRIPTION RMS</masterLabel>
+            <translation><!-- SUBSCRIPTION RMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUO1</masterLabel>
+            <translation><!-- SUO1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUO2</masterLabel>
+            <translation><!-- SUO2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUO3</masterLabel>
+            <translation><!-- SUO3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUO4</masterLabel>
+            <translation><!-- SUO4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUSA</masterLabel>
+            <translation><!-- SUSA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUSW</masterLabel>
+            <translation><!-- SUSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SW</masterLabel>
+            <translation><!-- SW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation>Sécurité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceGrid Ecosystem Builder</masterLabel>
+            <translation>Cisco ServiceGrid Ecosystem Builder</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceGrid Ecosystem Manager</masterLabel>
+            <translation>Cisco ServiceGrid Ecosystem Manager</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceGrid Ecosystem Participant</masterLabel>
+            <translation>Participant écosystème Cisco ServiceGrid</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver</masterLabel>
+            <translation><!-- Silver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Threat Service</masterLabel>
+            <translation><!-- Smart Threat Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard</masterLabel>
+            <translation><!-- Standard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TS Other</masterLabel>
+            <translation>TS - Autre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSOM</masterLabel>
+            <translation><!-- TSOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tailored</masterLabel>
+            <translation><!-- Tailored --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telepresence</masterLabel>
+            <translation>Téléprésence</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UTILITY RMS</masterLabel>
+            <translation><!-- UTILITY RMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Contract Center</masterLabel>
+            <translation>Centre de contrats unifié</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vertical Capabilities</masterLabel>
+            <translation><!-- Vertical Capabilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual Stream Svcs</masterLabel>
+            <translation>Services de flux virtuels</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Audio Stream Svc(Fixed)</masterLabel>
+            <translation>Service de flux audio WebEx (fixe)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Audio Stream Svc(Trans)</masterLabel>
+            <translation>Service de flux audio WebEx (trans.)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx On Demand Video Stream Svc(Fixed)</masterLabel>
+            <translation>Flux vidéo à la demande WebEx (fixe)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx On Demand Video Stream Svc(Trans)</masterLabel>
+            <translation>Flux vidéo à demande WebEx (trans.)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Premium Video Stream Svc(Fixed)</masterLabel>
+            <translation>Serv. de flux vidéo premium WebEx (fixe)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Premium Video Stream Svc(Trans)</masterLabel>
+            <translation>Serv. flux vidéo premium WebEx (trans.)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Standard Video Stream Svc(Fixed)</masterLabel>
+            <translation>Service flux vidéo standard WebEx (fixe)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Standard Video Stream Svc(Trans)</masterLabel>
+            <translation>Serv. flux vidéo standard WebEx (trans.)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless</masterLabel>
+            <translation><!-- Wireless --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Niveau de service 2</label>
+        <name>Service_Level_2__c</name>
+        <picklistValues>
+            <masterLabel>AR</masterLabel>
+            <translation><!-- AR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C2P</masterLabel>
+            <translation><!-- C2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C4P</masterLabel>
+            <translation><!-- C4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C4S</masterLabel>
+            <translation><!-- C4S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CP</masterLabel>
+            <translation><!-- CP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CS</masterLabel>
+            <translation><!-- CS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for Collaboration</masterLabel>
+            <translation>Connected Analytics pour collaboration</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for Contact Center</masterLabel>
+            <translation>Connected Analytics pour centre contact</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for IoE</masterLabel>
+            <translation>Connected Analytics pour IoE</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for NetworkDeployment</masterLabel>
+            <translation>Connected Analytics (déploiement réseau)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for Retail</masterLabel>
+            <translation>Connected Analytics pour le commerce</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for SP General</masterLabel>
+            <translation>Connected Analytics pour FOURN.SRV.-Gén.</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for SP Mobility</masterLabel>
+            <translation>Connected Analytics FOURN. SRV.-Mobilité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for Venues</masterLabel>
+            <translation>Connected Analytics pour les sites</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCP</masterLabel>
+            <translation><!-- DCP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSC</masterLabel>
+            <translation><!-- DSC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSCO</masterLabel>
+            <translation><!-- DSCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSE</masterLabel>
+            <translation><!-- DSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSES</masterLabel>
+            <translation><!-- DSES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSN</masterLabel>
+            <translation><!-- DSN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSNO</masterLabel>
+            <translation><!-- DSNO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSO</masterLabel>
+            <translation><!-- DSO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSS1</masterLabel>
+            <translation><!-- DSS1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSU1</masterLabel>
+            <translation><!-- DSU1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESP</masterLabel>
+            <translation><!-- ESP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HCS</masterLabel>
+            <translation><!-- HCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEDN</masterLabel>
+            <translation><!-- NEDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEDO</masterLabel>
+            <translation><!-- NEDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEEN</masterLabel>
+            <translation><!-- NEEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEEO</masterLabel>
+            <translation><!-- NEEO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEMU</masterLabel>
+            <translation><!-- NEMU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NLAS</masterLabel>
+            <translation><!-- NLAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NLAU</masterLabel>
+            <translation><!-- NLAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NLS1</masterLabel>
+            <translation><!-- NLS1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NLSW</masterLabel>
+            <translation><!-- NLSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NS2P</masterLabel>
+            <translation><!-- NS2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSNT</masterLabel>
+            <translation><!-- NSNT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSTE</masterLabel>
+            <translation><!-- NSTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSTP</masterLabel>
+            <translation><!-- NSTP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSU1</masterLabel>
+            <translation><!-- NSU1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSU2</masterLabel>
+            <translation><!-- NSU2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSU3</masterLabel>
+            <translation><!-- NSU3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSU4</masterLabel>
+            <translation><!-- NSU4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSUA</masterLabel>
+            <translation><!-- NSUA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSUW</masterLabel>
+            <translation><!-- NSUW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NTPB</masterLabel>
+            <translation><!-- NTPB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUD5</masterLabel>
+            <translation><!-- NUD5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUD7</masterLabel>
+            <translation><!-- NUD7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUO1</masterLabel>
+            <translation><!-- NUO1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUO2</masterLabel>
+            <translation><!-- NUO2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUO3</masterLabel>
+            <translation><!-- NUO3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUO4</masterLabel>
+            <translation><!-- NUO4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Device Security Assess (NDSA)</masterLabel>
+            <translation><!-- Network Device Security Assess (NDSA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PDI Services for Email and Web Content</masterLabel>
+            <translation><!-- PDI Services for Email and Web Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S2P</masterLabel>
+            <translation><!-- S2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBAR1</masterLabel>
+            <translation><!-- SBAR1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBAR2</masterLabel>
+            <translation><!-- SBAR2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBAR3</masterLabel>
+            <translation><!-- SBAR3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBAR4</masterLabel>
+            <translation><!-- SBAR4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBASE</masterLabel>
+            <translation><!-- SBASE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBC2P</masterLabel>
+            <translation><!-- SBC2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBC4P</masterLabel>
+            <translation><!-- SBC4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBCMU</masterLabel>
+            <translation><!-- SBCMU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBCS</masterLabel>
+            <translation><!-- SBCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBESW</masterLabel>
+            <translation><!-- SBESW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFA1</masterLabel>
+            <translation><!-- SBFA1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFA2</masterLabel>
+            <translation><!-- SBFA2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFA3</masterLabel>
+            <translation><!-- SBFA3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFA4</masterLabel>
+            <translation><!-- SBFA4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFC1</masterLabel>
+            <translation><!-- SBFC1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFC2</masterLabel>
+            <translation><!-- SBFC2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFC3</masterLabel>
+            <translation><!-- SBFC3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFC4</masterLabel>
+            <translation><!-- SBFC4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFRF</masterLabel>
+            <translation><!-- SBFRF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFSW</masterLabel>
+            <translation><!-- SBFSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBRTF</masterLabel>
+            <translation><!-- SBRTF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBSAS</masterLabel>
+            <translation><!-- SBSAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBSAU</masterLabel>
+            <translation><!-- SBSAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB3</masterLabel>
+            <translation><!-- SMB3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB5</masterLabel>
+            <translation><!-- SMB5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMBS</masterLabel>
+            <translation><!-- SMBS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SNT</masterLabel>
+            <translation><!-- SNT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SNTP</masterLabel>
+            <translation><!-- SNTP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPAR1</masterLabel>
+            <translation><!-- SPAR1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPAR2</masterLabel>
+            <translation><!-- SPAR2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPAR3</masterLabel>
+            <translation><!-- SPAR3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPAR4</masterLabel>
+            <translation><!-- SPAR4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPB</masterLabel>
+            <translation><!-- SPB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPC2P</masterLabel>
+            <translation><!-- SPC2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPC4P</masterLabel>
+            <translation><!-- SPC4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPCMU</masterLabel>
+            <translation><!-- SPCMU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPCPE</masterLabel>
+            <translation><!-- SPCPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPCS</masterLabel>
+            <translation><!-- SPCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPESW</masterLabel>
+            <translation><!-- SPESW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPEXWR</masterLabel>
+            <translation><!-- SPEXWR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPHCS</masterLabel>
+            <translation><!-- SPHCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPRFR</masterLabel>
+            <translation><!-- SPRFR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPRTF</masterLabel>
+            <translation><!-- SPRTF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPSAS</masterLabel>
+            <translation><!-- SPSAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPSAU</masterLabel>
+            <translation><!-- SPSAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPVSS</masterLabel>
+            <translation><!-- SPVSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STRN</masterLabel>
+            <translation><!-- STRN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Ent License Agreement (ELA) Svc</masterLabel>
+            <translation><!-- Security Ent License Agreement (ELA) Svc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Fixed Price Services</masterLabel>
+            <translation><!-- Security Fixed Price Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Migration Services (SMS)</masterLabel>
+            <translation><!-- Security Migration Services (SMS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Optimization Service</masterLabel>
+            <translation><!-- Security Optimization Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Plan, Design, &amp; Impl (PDI) Svc</masterLabel>
+            <translation><!-- Security Plan, Design, &amp; Impl (PDI) Svc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Services Exchange Platform</masterLabel>
+            <translation>Plate-forme d'échange de services</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VSS</masterLabel>
+            <translation><!-- VSS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Niveau de service 3</label>
+        <name>Service_Level_3__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation>Aucun</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Niveau de service 4</label>
+        <name>Service_Level_4__c</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Autre</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Level Name 1 --></label>
+        <name>Service_Level_Name_1__c</name>
+        <picklistValues>
+            <masterLabel>24x7x2</masterLabel>
+            <translation><!-- 24x7x2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24x7x2OS</masterLabel>
+            <translation><!-- 24x7x2OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24x7x4</masterLabel>
+            <translation><!-- 24x7x4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24x7x4OS</masterLabel>
+            <translation><!-- 24x7x4OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8x5x4</masterLabel>
+            <translation><!-- 8x5x4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8x5x4OS</masterLabel>
+            <translation><!-- 8x5x4OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8x5xNBD</masterLabel>
+            <translation><!-- 8x5xNBD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8x5xNBDOS</masterLabel>
+            <translation><!-- 8x5xNBDOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMSP</masterLabel>
+            <translation><!-- AMSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMSS</masterLabel>
+            <translation><!-- AMSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMST</masterLabel>
+            <translation><!-- AMST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AS Other-Combined Services</masterLabel>
+            <translation><!-- AS Other-Combined Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATA-Enhanced Managed Service</masterLabel>
+            <translation><!-- ATA-Enhanced Managed Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATA-Premier Managed Service (MTD)</masterLabel>
+            <translation><!-- ATA-Premier Managed Service (MTD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aci</masterLabel>
+            <translation><!-- Aci --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advisory</masterLabel>
+            <translation><!-- Advisory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assessments Svcs</masterLabel>
+            <translation><!-- Assessments Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BLK</masterLabel>
+            <translation><!-- BLK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Best</masterLabel>
+            <translation><!-- Best --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Better</masterLabel>
+            <translation><!-- Better --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bronze</masterLabel>
+            <translation><!-- Bronze --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBAS</masterLabel>
+            <translation><!-- CBAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBAU</masterLabel>
+            <translation><!-- CBAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBDN</masterLabel>
+            <translation><!-- CBDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBNE</masterLabel>
+            <translation><!-- CBNE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBNP</masterLabel>
+            <translation><!-- CBNP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBNT</masterLabel>
+            <translation><!-- CBNT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBO2</masterLabel>
+            <translation><!-- CBO2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBOE</masterLabel>
+            <translation><!-- CBOE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBOP</masterLabel>
+            <translation><!-- CBOP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBOT</masterLabel>
+            <translation><!-- CBOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBSU</masterLabel>
+            <translation><!-- CBSU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUE</masterLabel>
+            <translation><!-- CBUE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUP</masterLabel>
+            <translation><!-- CBUP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUP2</masterLabel>
+            <translation><!-- CBUP2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUS</masterLabel>
+            <translation><!-- CBUS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUT</masterLabel>
+            <translation><!-- CBUT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBUU</masterLabel>
+            <translation><!-- CBUU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMCS (Compliance Mgmt &amp; Config Service)</masterLabel>
+            <translation><!-- CMCS (Compliance Mgmt &amp; Config Service) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS CPE</masterLabel>
+            <translation><!-- CMS CPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Collaboration</masterLabel>
+            <translation><!-- CMS Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Data Center</masterLabel>
+            <translation><!-- CMS Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Enterprise Networks</masterLabel>
+            <translation><!-- CMS Enterprise Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Mobility</masterLabel>
+            <translation><!-- CMS Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS SP Collaboration</masterLabel>
+            <translation><!-- CMS SP Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS SP Data Center</masterLabel>
+            <translation><!-- CMS SP Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS SP Video</masterLabel>
+            <translation><!-- CMS SP Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Security</masterLabel>
+            <translation><!-- CMS Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS Service Provider Networks</masterLabel>
+            <translation><!-- CMS Service Provider Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS WiFi</masterLabel>
+            <translation><!-- CMS WiFi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNL1</masterLabel>
+            <translation><!-- CNL1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNL2</masterLabel>
+            <translation><!-- CNL2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNL3</masterLabel>
+            <translation><!-- CNL3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNL4</masterLabel>
+            <translation><!-- CNL4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNLA</masterLabel>
+            <translation><!-- CNLA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNLB</masterLabel>
+            <translation><!-- CNLB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNLC</masterLabel>
+            <translation><!-- CNLC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNLP</masterLabel>
+            <translation><!-- CNLP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNS-HTOM</masterLabel>
+            <translation><!-- CNS-HTOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNS-HTTS</masterLabel>
+            <translation><!-- CNS-HTTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPE-as-a-Service</masterLabel>
+            <translation><!-- CPE-as-a-Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CS2P</masterLabel>
+            <translation><!-- CS2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSAS</masterLabel>
+            <translation><!-- CSAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSC2</masterLabel>
+            <translation><!-- CSC2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSDN</masterLabel>
+            <translation><!-- CSDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-AMP Security Migration Svcs</masterLabel>
+            <translation><!-- CSS-AMP Security Migration Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-AMP Security Plan &amp; Build (PDI)Svcs</masterLabel>
+            <translation><!-- CSS-AMP Security Plan &amp; Build (PDI)Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Collaborative Professional Svcs-CPS</masterLabel>
+            <translation><!-- CSS-Collaborative Professional Svcs-CPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Content Security Migration Svcs</masterLabel>
+            <translation><!-- CSS-Content Security Migration Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Content Security Plan&amp;Build(PDI)Svcs</masterLabel>
+            <translation><!-- CSS-Content Security Plan&amp;Build(PDI)Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Network Security Migration Svcs</masterLabel>
+            <translation><!-- CSS-Network Security Migration Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Network Security Plan&amp;Build(PDI)Svcs</masterLabel>
+            <translation><!-- CSS-Network Security Plan&amp;Build(PDI)Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Security Consulting Svcs/Advisory</masterLabel>
+            <translation><!-- CSS-Security Consulting Svcs/Advisory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Security Optimization Svcs</masterLabel>
+            <translation><!-- CSS-Security Optimization Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS-Security Validation Svcs</masterLabel>
+            <translation><!-- CSS-Security Validation Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSP2</masterLabel>
+            <translation><!-- CSSP2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPD</masterLabel>
+            <translation><!-- CSSPD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPE</masterLabel>
+            <translation><!-- CSSPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPP</masterLabel>
+            <translation><!-- CSSPP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPS</masterLabel>
+            <translation><!-- CSSPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSSPU</masterLabel>
+            <translation><!-- CSSPU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CTE</masterLabel>
+            <translation><!-- CTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Technical Education</masterLabel>
+            <translation><!-- Cisco Technical Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco WebEx Virtual Conf Svc(Trans)</masterLabel>
+            <translation><!-- Cisco WebEx Virtual Conf Svc(Trans) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration</masterLabel>
+            <translation><!-- Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collaboration-as-a-Service</masterLabel>
+            <translation><!-- Collaboration-as-a-Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract Networking Svcs</masterLabel>
+            <translation><!-- Contract Networking Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core Networking</masterLabel>
+            <translation><!-- Core Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Curriculum Planning</masterLabel>
+            <translation><!-- Curriculum Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center and Cloud</masterLabel>
+            <translation><!-- Data Center and Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataVirtualization Active Cluster</masterLabel>
+            <translation><!-- DataVirtualization Active Cluster --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataVirtualization CIS Server</masterLabel>
+            <translation><!-- DataVirtualization CIS Server --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataVirtualization Failover/Bkup License</masterLabel>
+            <translation><!-- DataVirtualization Failover/Bkup License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DataVirtualization Performance+Adapters</masterLabel>
+            <translation><!-- DataVirtualization Performance+Adapters --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deployment Svcs</masterLabel>
+            <translation><!-- Deployment Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Svcs(Development&amp;Guidance)</masterLabel>
+            <translation><!-- Design Svcs(Development&amp;Guidance) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Capabilities</masterLabel>
+            <translation><!-- Digital Capabilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EC4P</masterLabel>
+            <translation><!-- EC4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EC4T</masterLabel>
+            <translation><!-- EC4T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECD</masterLabel>
+            <translation><!-- ECD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECDN</masterLabel>
+            <translation><!-- ECDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECDO</masterLabel>
+            <translation><!-- ECDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECE</masterLabel>
+            <translation><!-- ECE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECEO</masterLabel>
+            <translation><!-- ECEO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECMU</masterLabel>
+            <translation><!-- ECMU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECPM</masterLabel>
+            <translation><!-- ECPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESW</masterLabel>
+            <translation><!-- ESW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education Subscriptions</masterLabel>
+            <translation><!-- Education Subscriptions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EnergyWise-as-a-Service</masterLabel>
+            <translation><!-- EnergyWise-as-a-Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energywise Data Center</masterLabel>
+            <translation><!-- Energywise Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energywise Distributed Office</masterLabel>
+            <translation><!-- Energywise Distributed Office --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enhanced</masterLabel>
+            <translation><!-- Enhanced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Networking</masterLabel>
+            <translation><!-- Enterprise Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Extended Support</masterLabel>
+            <translation><!-- Extended Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FDA</masterLabel>
+            <translation><!-- FDA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTSS-HTE</masterLabel>
+            <translation><!-- FTSS-HTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTSS-HTOM</masterLabel>
+            <translation><!-- FTSS-HTOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTSS-HTTS</masterLabel>
+            <translation><!-- FTSS-HTTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FTSS-TSOM</masterLabel>
+            <translation><!-- FTSS-TSOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Focal Engineer(FE)</masterLabel>
+            <translation><!-- Focal Engineer(FE) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Formal Training</masterLabel>
+            <translation><!-- Formal Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HAD</masterLabel>
+            <translation><!-- HAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HCS</masterLabel>
+            <translation><!-- HCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HTE</masterLabel>
+            <translation><!-- HTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HTOM</masterLabel>
+            <translation><!-- HTOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HTTS</masterLabel>
+            <translation><!-- HTTS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hosted Collaboration Service</masterLabel>
+            <translation><!-- Hosted Collaboration Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hosted Identity Services</masterLabel>
+            <translation><!-- Hosted Identity Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IAM</masterLabel>
+            <translation><!-- IAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IoT</masterLabel>
+            <translation><!-- IoT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Knowledge Svcs</masterLabel>
+            <translation><!-- Knowledge Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MTINT-Integrate Service</masterLabel>
+            <translation><!-- MTINT-Integrate Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MTMNG-Operations Manage Svc</masterLabel>
+            <translation><!-- MTMNG-Operations Manage Svc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MTSSPT - Solution Support Service</masterLabel>
+            <translation><!-- MTSSPT - Solution Support Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed CPE-as-a-Service</masterLabel>
+            <translation><!-- Managed CPE-as-a-Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Collaboration</masterLabel>
+            <translation><!-- Managed Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Data Center</masterLabel>
+            <translation><!-- Managed Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Enterprise Networks</masterLabel>
+            <translation><!-- Managed Enterprise Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed SP Networks</masterLabel>
+            <translation><!-- Managed SP Networks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Security</masterLabel>
+            <translation><!-- Managed Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Metapod-SOW</masterLabel>
+            <translation><!-- Metapod-SOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Migrate on Failure</masterLabel>
+            <translation><!-- Migrate on Failure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAIS</masterLabel>
+            <translation><!-- NAIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAIS-CE</masterLabel>
+            <translation><!-- NAIS-CE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAIS-CE-APAC</masterLabel>
+            <translation><!-- NAIS-CE-APAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAIS-CE-EM</masterLabel>
+            <translation><!-- NAIS-CE-EM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NC2P</masterLabel>
+            <translation><!-- NC2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NC4P</masterLabel>
+            <translation><!-- NC4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NC4S</masterLabel>
+            <translation><!-- NC4S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NCS</masterLabel>
+            <translation><!-- NCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NDA</masterLabel>
+            <translation><!-- NDA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NE4N</masterLabel>
+            <translation><!-- NE4N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NE4T</masterLabel>
+            <translation><!-- NE4T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOS-T</masterLabel>
+            <translation><!-- NOS-T --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOSC</masterLabel>
+            <translation><!-- NOSC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSAS</masterLabel>
+            <translation><!-- NSAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSAU</masterLabel>
+            <translation><!-- NSAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSO2</masterLabel>
+            <translation><!-- NSO2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSOE</masterLabel>
+            <translation><!-- NSOE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSOP</masterLabel>
+            <translation><!-- NSOP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSOS</masterLabel>
+            <translation><!-- NSOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSS2</masterLabel>
+            <translation><!-- NSS2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSSE</masterLabel>
+            <translation><!-- NSSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSSP</masterLabel>
+            <translation><!-- NSSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSST</masterLabel>
+            <translation><!-- NSST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSSW</masterLabel>
+            <translation><!-- NSSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network-as-a-Service</masterLabel>
+            <translation><!-- Network-as-a-Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service Borderless</masterLabel>
+            <translation><!-- Operate Service Borderless --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service Collaboration</masterLabel>
+            <translation><!-- Operate Service Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service DC/Cloud and VXI</masterLabel>
+            <translation><!-- Operate Service DC/Cloud and VXI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service Mobility</masterLabel>
+            <translation><!-- Operate Service Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service NGN</masterLabel>
+            <translation><!-- Operate Service NGN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service SP Video</masterLabel>
+            <translation><!-- Operate Service SP Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operate Service SP Wi-Fi</masterLabel>
+            <translation><!-- Operate Service SP Wi-Fi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PEDN</masterLabel>
+            <translation><!-- PEDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1OE</masterLabel>
+            <translation><!-- PM1OE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1OP</masterLabel>
+            <translation><!-- PM1OP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1OS</masterLabel>
+            <translation><!-- PM1OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1S</masterLabel>
+            <translation><!-- PM1S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1SE</masterLabel>
+            <translation><!-- PM1SE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1SP</masterLabel>
+            <translation><!-- PM1SP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1ST</masterLabel>
+            <translation><!-- PM1ST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM1U</masterLabel>
+            <translation><!-- PM1U --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2OE</masterLabel>
+            <translation><!-- PM2OE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2OP</masterLabel>
+            <translation><!-- PM2OP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2OS</masterLabel>
+            <translation><!-- PM2OS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2S</masterLabel>
+            <translation><!-- PM2S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2S2</masterLabel>
+            <translation><!-- PM2S2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2SE</masterLabel>
+            <translation><!-- PM2SE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2SP</masterLabel>
+            <translation><!-- PM2SP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2ST</masterLabel>
+            <translation><!-- PM2ST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM2U</masterLabel>
+            <translation><!-- PM2U --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PO</masterLabel>
+            <translation><!-- PO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PS4N</masterLabel>
+            <translation><!-- PS4N --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSBU</masterLabel>
+            <translation><!-- PSBU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSCU</masterLabel>
+            <translation><!-- PSCU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSDN</masterLabel>
+            <translation><!-- PSDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSEN</masterLabel>
+            <translation><!-- PSEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSRT</masterLabel>
+            <translation><!-- PSRT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSSD</masterLabel>
+            <translation><!-- PSSD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSSE</masterLabel>
+            <translation><!-- PSSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSSP</masterLabel>
+            <translation><!-- PSSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSSW</masterLabel>
+            <translation><!-- PSSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUE</masterLabel>
+            <translation><!-- PSUE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUP</masterLabel>
+            <translation><!-- PSUP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUS</masterLabel>
+            <translation><!-- PSUS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUT</masterLabel>
+            <translation><!-- PSUT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSUU</masterLabel>
+            <translation><!-- PSUU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PU2P</masterLabel>
+            <translation><!-- PU2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Physical Security</masterLabel>
+            <translation><!-- Physical Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum</masterLabel>
+            <translation><!-- Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service Borderless</masterLabel>
+            <translation><!-- Preemptive Service Borderless --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service Collaboration</masterLabel>
+            <translation><!-- Preemptive Service Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service DC/Cloud and VXI</masterLabel>
+            <translation><!-- Preemptive Service DC/Cloud and VXI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service Mobility</masterLabel>
+            <translation><!-- Preemptive Service Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service NGN</masterLabel>
+            <translation><!-- Preemptive Service NGN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service SP Video</masterLabel>
+            <translation><!-- Preemptive Service SP Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preemptive Service SP Wi-Fi</masterLabel>
+            <translation><!-- Preemptive Service SP Wi-Fi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Premium</masterLabel>
+            <translation><!-- Premium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Cloud-as-a-Service</masterLabel>
+            <translation><!-- Private Cloud-as-a-Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REF</masterLabel>
+            <translation><!-- REF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RMS Security Services</masterLabel>
+            <translation><!-- RMS Security Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAS</masterLabel>
+            <translation><!-- SAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAU</masterLabel>
+            <translation><!-- SAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBC4S</masterLabel>
+            <translation><!-- SBC4S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBN4</masterLabel>
+            <translation><!-- SBN4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBO4</masterLabel>
+            <translation><!-- SBO4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBP4</masterLabel>
+            <translation><!-- SBP4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCAN</masterLabel>
+            <translation><!-- SCAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCAO</masterLabel>
+            <translation><!-- SCAO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCAP</masterLabel>
+            <translation><!-- SCAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCD</masterLabel>
+            <translation><!-- SCD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCIN</masterLabel>
+            <translation><!-- SCIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCIO</masterLabel>
+            <translation><!-- SCIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCIP</masterLabel>
+            <translation><!-- SCIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCN</masterLabel>
+            <translation><!-- SCN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCO</masterLabel>
+            <translation><!-- SCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCP</masterLabel>
+            <translation><!-- SCP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCS1</masterLabel>
+            <translation><!-- SCS1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCS4</masterLabel>
+            <translation><!-- SCS4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCU1</masterLabel>
+            <translation><!-- SCU1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCU4</masterLabel>
+            <translation><!-- SCU4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCVS</masterLabel>
+            <translation><!-- SCVS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SECIN</masterLabel>
+            <translation><!-- SECIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SES1</masterLabel>
+            <translation><!-- SES1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SES4</masterLabel>
+            <translation><!-- SES4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SESN</masterLabel>
+            <translation><!-- SESN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SESO</masterLabel>
+            <translation><!-- SESO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SESP</masterLabel>
+            <translation><!-- SESP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SESV</masterLabel>
+            <translation><!-- SESV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFA1</masterLabel>
+            <translation><!-- SFA1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFA2</masterLabel>
+            <translation><!-- SFA2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFA3</masterLabel>
+            <translation><!-- SFA3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFA4</masterLabel>
+            <translation><!-- SFA4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFC1</masterLabel>
+            <translation><!-- SFC1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFC2</masterLabel>
+            <translation><!-- SFC2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFC3</masterLabel>
+            <translation><!-- SFC3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFC4</masterLabel>
+            <translation><!-- SFC4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFRF</masterLabel>
+            <translation><!-- SFRF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SFSW</masterLabel>
+            <translation><!-- SFSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SNTE</masterLabel>
+            <translation><!-- SNTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOS-Spares-on-Site</masterLabel>
+            <translation><!-- SOS-Spares-on-Site --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Assurance Operate</masterLabel>
+            <translation><!-- SP Assurance Operate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Cloud</masterLabel>
+            <translation><!-- SP Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Mobility</masterLabel>
+            <translation><!-- SP Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Networking</masterLabel>
+            <translation><!-- SP Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Preemptive</masterLabel>
+            <translation><!-- SP Preemptive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Solution Support</masterLabel>
+            <translation><!-- SP Solution Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SP Video</masterLabel>
+            <translation><!-- SP Video --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPC4S</masterLabel>
+            <translation><!-- SPC4S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SU1</masterLabel>
+            <translation><!-- SU1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SU2</masterLabel>
+            <translation><!-- SU2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SU3</masterLabel>
+            <translation><!-- SU3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SU4</masterLabel>
+            <translation><!-- SU4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUO1</masterLabel>
+            <translation><!-- SUO1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUO2</masterLabel>
+            <translation><!-- SUO2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUO3</masterLabel>
+            <translation><!-- SUO3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUO4</masterLabel>
+            <translation><!-- SUO4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUSA</masterLabel>
+            <translation><!-- SUSA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUSW</masterLabel>
+            <translation><!-- SUSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SW</masterLabel>
+            <translation><!-- SW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation><!-- Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceGrid Ecosystem Builder</masterLabel>
+            <translation><!-- ServiceGrid Ecosystem Builder --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceGrid Ecosystem Manager</masterLabel>
+            <translation><!-- ServiceGrid Ecosystem Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ServiceGrid Ecosystem Participant</masterLabel>
+            <translation><!-- ServiceGrid Ecosystem Participant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver</masterLabel>
+            <translation><!-- Silver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Threat Service</masterLabel>
+            <translation><!-- Smart Threat Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard</masterLabel>
+            <translation><!-- Standard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TS Other</masterLabel>
+            <translation><!-- TS Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSOM</masterLabel>
+            <translation><!-- TSOM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tailored</masterLabel>
+            <translation><!-- Tailored --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telepresence</masterLabel>
+            <translation><!-- Telepresence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Contract Center</masterLabel>
+            <translation><!-- Unified Contract Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vertical Capabilities</masterLabel>
+            <translation><!-- Vertical Capabilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual Stream Svcs</masterLabel>
+            <translation><!-- Virtual Stream Svcs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Audio Stream Svc(Fixed)</masterLabel>
+            <translation><!-- WebEx Audio Stream Svc(Fixed) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Audio Stream Svc(Trans)</masterLabel>
+            <translation><!-- WebEx Audio Stream Svc(Trans) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx On Demand Video Stream Svc(Fixed)</masterLabel>
+            <translation><!-- WebEx On Demand Video Stream Svc(Fixed) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx On Demand Video Stream Svc(Trans)</masterLabel>
+            <translation><!-- WebEx On Demand Video Stream Svc(Trans) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Premium Video Stream Svc(Fixed)</masterLabel>
+            <translation><!-- WebEx Premium Video Stream Svc(Fixed) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Premium Video Stream Svc(Trans)</masterLabel>
+            <translation><!-- WebEx Premium Video Stream Svc(Trans) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Standard Video Stream Svc(Fixed)</masterLabel>
+            <translation><!-- WebEx Standard Video Stream Svc(Fixed) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WebEx Standard Video Stream Svc(Trans)</masterLabel>
+            <translation><!-- WebEx Standard Video Stream Svc(Trans) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless</masterLabel>
+            <translation><!-- Wireless --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Level Name 2 --></label>
+        <name>Service_Level_Name_2__c</name>
+        <picklistValues>
+            <masterLabel>AR</masterLabel>
+            <translation><!-- AR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C2P</masterLabel>
+            <translation><!-- C2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C4P</masterLabel>
+            <translation><!-- C4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C4S</masterLabel>
+            <translation><!-- C4S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CP</masterLabel>
+            <translation><!-- CP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CS</masterLabel>
+            <translation><!-- CS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for Collaboration</masterLabel>
+            <translation><!-- ConnectedAnalytics for Collaboration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for Contact Center</masterLabel>
+            <translation><!-- ConnectedAnalytics for Contact Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for IoE</masterLabel>
+            <translation><!-- ConnectedAnalytics for IoE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for NetworkDeployment</masterLabel>
+            <translation><!-- ConnectedAnalytics for NetworkDeployment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for Retail</masterLabel>
+            <translation><!-- ConnectedAnalytics for Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for SP General</masterLabel>
+            <translation><!-- ConnectedAnalytics for SP General --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for SP Mobility</masterLabel>
+            <translation><!-- ConnectedAnalytics for SP Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ConnectedAnalytics for Venues</masterLabel>
+            <translation><!-- ConnectedAnalytics for Venues --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCP</masterLabel>
+            <translation><!-- DCP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSC</masterLabel>
+            <translation><!-- DSC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSCO</masterLabel>
+            <translation><!-- DSCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSE</masterLabel>
+            <translation><!-- DSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSES</masterLabel>
+            <translation><!-- DSES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSN</masterLabel>
+            <translation><!-- DSN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSNO</masterLabel>
+            <translation><!-- DSNO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSO</masterLabel>
+            <translation><!-- DSO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSS1</masterLabel>
+            <translation><!-- DSS1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSU1</masterLabel>
+            <translation><!-- DSU1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESP</masterLabel>
+            <translation><!-- ESP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HCS</masterLabel>
+            <translation><!-- HCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEDN</masterLabel>
+            <translation><!-- NEDN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEDO</masterLabel>
+            <translation><!-- NEDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEEN</masterLabel>
+            <translation><!-- NEEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEEO</masterLabel>
+            <translation><!-- NEEO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEMU</masterLabel>
+            <translation><!-- NEMU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NLAS</masterLabel>
+            <translation><!-- NLAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NLAU</masterLabel>
+            <translation><!-- NLAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NLS1</masterLabel>
+            <translation><!-- NLS1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NLSW</masterLabel>
+            <translation><!-- NLSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NS2P</masterLabel>
+            <translation><!-- NS2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSNT</masterLabel>
+            <translation><!-- NSNT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSTE</masterLabel>
+            <translation><!-- NSTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSTP</masterLabel>
+            <translation><!-- NSTP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSU1</masterLabel>
+            <translation><!-- NSU1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSU2</masterLabel>
+            <translation><!-- NSU2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSU3</masterLabel>
+            <translation><!-- NSU3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSU4</masterLabel>
+            <translation><!-- NSU4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSUA</masterLabel>
+            <translation><!-- NSUA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSUW</masterLabel>
+            <translation><!-- NSUW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NTPB</masterLabel>
+            <translation><!-- NTPB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUD5</masterLabel>
+            <translation><!-- NUD5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUD7</masterLabel>
+            <translation><!-- NUD7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUO1</masterLabel>
+            <translation><!-- NUO1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUO2</masterLabel>
+            <translation><!-- NUO2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUO3</masterLabel>
+            <translation><!-- NUO3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUO4</masterLabel>
+            <translation><!-- NUO4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Device Security Assess (NDSA)</masterLabel>
+            <translation><!-- Network Device Security Assess (NDSA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PDI Services for Email and Web Content</masterLabel>
+            <translation><!-- PDI Services for Email and Web Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S2P</masterLabel>
+            <translation><!-- S2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBAR1</masterLabel>
+            <translation><!-- SBAR1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBAR2</masterLabel>
+            <translation><!-- SBAR2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBAR3</masterLabel>
+            <translation><!-- SBAR3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBAR4</masterLabel>
+            <translation><!-- SBAR4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBASE</masterLabel>
+            <translation><!-- SBASE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBC2P</masterLabel>
+            <translation><!-- SBC2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBC4P</masterLabel>
+            <translation><!-- SBC4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBCMU</masterLabel>
+            <translation><!-- SBCMU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBCS</masterLabel>
+            <translation><!-- SBCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBESW</masterLabel>
+            <translation><!-- SBESW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFA1</masterLabel>
+            <translation><!-- SBFA1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFA2</masterLabel>
+            <translation><!-- SBFA2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFA3</masterLabel>
+            <translation><!-- SBFA3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFA4</masterLabel>
+            <translation><!-- SBFA4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFC1</masterLabel>
+            <translation><!-- SBFC1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFC2</masterLabel>
+            <translation><!-- SBFC2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFC3</masterLabel>
+            <translation><!-- SBFC3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFC4</masterLabel>
+            <translation><!-- SBFC4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFRF</masterLabel>
+            <translation><!-- SBFRF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBFSW</masterLabel>
+            <translation><!-- SBFSW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBRTF</masterLabel>
+            <translation><!-- SBRTF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBSAS</masterLabel>
+            <translation><!-- SBSAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBSAU</masterLabel>
+            <translation><!-- SBSAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB3</masterLabel>
+            <translation><!-- SMB3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB5</masterLabel>
+            <translation><!-- SMB5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMBS</masterLabel>
+            <translation><!-- SMBS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SNT</masterLabel>
+            <translation><!-- SNT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SNTP</masterLabel>
+            <translation><!-- SNTP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPAR1</masterLabel>
+            <translation><!-- SPAR1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPAR2</masterLabel>
+            <translation><!-- SPAR2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPAR3</masterLabel>
+            <translation><!-- SPAR3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPAR4</masterLabel>
+            <translation><!-- SPAR4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPB</masterLabel>
+            <translation><!-- SPB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPC2P</masterLabel>
+            <translation><!-- SPC2P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPC4P</masterLabel>
+            <translation><!-- SPC4P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPCMU</masterLabel>
+            <translation><!-- SPCMU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPCPE</masterLabel>
+            <translation><!-- SPCPE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPCS</masterLabel>
+            <translation><!-- SPCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPESW</masterLabel>
+            <translation><!-- SPESW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPEXWR</masterLabel>
+            <translation><!-- SPEXWR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPHCS</masterLabel>
+            <translation><!-- SPHCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPRFR</masterLabel>
+            <translation><!-- SPRFR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPRTF</masterLabel>
+            <translation><!-- SPRTF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPSAS</masterLabel>
+            <translation><!-- SPSAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPSAU</masterLabel>
+            <translation><!-- SPSAU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPVSS</masterLabel>
+            <translation><!-- SPVSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STRN</masterLabel>
+            <translation><!-- STRN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Ent License Agreement (ELA) Svc</masterLabel>
+            <translation><!-- Security Ent License Agreement (ELA) Svc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Fixed Price Services</masterLabel>
+            <translation><!-- Security Fixed Price Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Migration Services (SMS)</masterLabel>
+            <translation><!-- Security Migration Services (SMS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Optimization Service</masterLabel>
+            <translation><!-- Security Optimization Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Plan, Design, &amp; Impl (PDI) Svc</masterLabel>
+            <translation><!-- Security Plan, Design, &amp; Impl (PDI) Svc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Services Exchange Platform</masterLabel>
+            <translation><!-- Services Exchange Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VSS</masterLabel>
+            <translation><!-- VSS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Level Name 3 --></label>
+        <name>Service_Level_Name_3__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Level Name 4 --></label>
+        <name>Service_Level_Name_4__c</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Program --></label>
+        <name>Service_Program__c</name>
+    </fields>
+    <fields>
+        <label>Type de service</label>
+        <name>Service_Type__c</name>
+        <picklistValues>
+            <masterLabel>AS</masterLabel>
+            <translation><!-- AS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCS</masterLabel>
+            <translation><!-- CCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMS</masterLabel>
+            <translation><!-- CMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSS</masterLabel>
+            <translation><!-- CSS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TS</masterLabel>
+            <translation><!-- TS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Business Entity Name --></label>
+        <name>Sub_Business_Entity_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Business Entity --></label>
+        <name>Sub_Business_Entity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique BE-SubBE --></label>
+        <name>Unique_BE_SubBE__c</name>
+    </fields>
+    <layouts>
+        <layout>Product Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Product Family / Service Levels --></label>
+            <section>Product Family / Service Levels</section>
+        </sections>
+        <sections>
+            <label><!-- Service Information --></label>
+            <section>Service Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Product_End_User_7.0</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informations sur la description</label>
+            <section>Description Information</section>
+        </sections>
+        <sections>
+            <label>Informations sur le produit</label>
+            <section>Product Information</section>
+        </sections>
+        <sections>
+            <label>Informations système</label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

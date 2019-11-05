@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>EmailTemplateForAM/Partner</name>
+    <style>none</style>
+    <subject>Action required: {!Lead.Originating_Marketing_Pipeline__c}, {!Lead.QABudget__c}&gt; Lead for your review</subject>
+    <textOnly>Hello,  
+
+A new lead is created with immediate timeframe. This needs your immediate attention</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

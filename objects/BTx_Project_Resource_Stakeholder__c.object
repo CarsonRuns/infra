@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Cisco_Partner_Resource_Name__c</fullName>
+        <description>Add name of Cisco or Partner resource assigned to the engagement.  Complete one Engagement Resource record for each resource working on the engagement.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Add name of Cisco or Partner resource assigned to the engagement.  Complete one Engagement Resource record for each resource working on the engagement.</inlineHelpText>
+        <label>Cisco/Partner/Account Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <description>Provide any additional information relevant to the role  the resource or stakeholder will play in the engagement process.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide any additional information relevant to the role  the resource or stakeholder will play in the engagement process.</inlineHelpText>
+        <label>Comments</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Stakeholder_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Select a customer stakeholder name from the available customer contacts.  If contact record doesn't exist, add the contact to the customer database.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select a customer stakeholder name from the available customer contacts.  If contact record doesn't exist, add the contact to the customer database.</inlineHelpText>
+        <label>Customer Stakeholder Name</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>BTx_Engagement_Resources_Stakeholders</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Date_Engaged__c</fullName>
+        <description>Identify the date on which the resource or stakeholder began work on the engagement.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identify the date on which the resource or stakeholder began work on the engagement.</inlineHelpText>
+        <label>Date Engaged</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Phase_Engaged__c</fullName>
+        <description>Identify the phase of the engagement when the resource/stakeholder became involved.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identify the phase of the engagement when the resource/stakeholder became involved.</inlineHelpText>
+        <label>Phase Engaged</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Identify and Engage</fullName>
+                    <default>false</default>
+                    <label>Identify and Engage</label>
+                </value>
+                <value>
+                    <fullName>Discover</fullName>
+                    <default>false</default>
+                    <label>Discover</label>
+                </value>
+                <value>
+                    <fullName>Propose</fullName>
+                    <default>false</default>
+                    <label>Propose</label>
+                </value>
+                <value>
+                    <fullName>Prove</fullName>
+                    <default>false</default>
+                    <label>Prove</label>
+                </value>
+                <value>
+                    <fullName>Implement and Develop</fullName>
+                    <default>false</default>
+                    <label>Implement and Develop</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <description>Engagement to which the resource is related to.</description>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>BTx_Engagement_Activity__c</referenceTo>
+        <relationshipLabel>BTx Project Resources/Stakeholders</relationshipLabel>
+        <relationshipName>Engagement_Resources_Stakeholders</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Title__c</fullName>
+        <description>Identify the title of resource or stakeholder for the Resource/Stakeholder name entered above.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identify the title of resource or stakeholder for the Resource/Stakeholder name entered above.</inlineHelpText>
+        <label>Title</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CEO</fullName>
+                    <default>false</default>
+                    <label>CEO</label>
+                </value>
+                <value>
+                    <fullName>CFO</fullName>
+                    <default>false</default>
+                    <label>CFO</label>
+                </value>
+                <value>
+                    <fullName>CIO</fullName>
+                    <default>false</default>
+                    <label>CIO</label>
+                </value>
+                <value>
+                    <fullName>CMIO</fullName>
+                    <default>false</default>
+                    <label>CMIO</label>
+                </value>
+                <value>
+                    <fullName>CMO</fullName>
+                    <default>false</default>
+                    <label>CMO</label>
+                </value>
+                <value>
+                    <fullName>CMO-HC</fullName>
+                    <default>false</default>
+                    <label>CMO-HC</label>
+                </value>
+                <value>
+                    <fullName>CNO</fullName>
+                    <default>false</default>
+                    <label>CNO</label>
+                </value>
+                <value>
+                    <fullName>CXO-Other</fullName>
+                    <default>false</default>
+                    <label>CXO-Other</label>
+                </value>
+                <value>
+                    <fullName>Director</fullName>
+                    <default>false</default>
+                    <label>Director</label>
+                </value>
+                <value>
+                    <fullName>Sr. Manager/Manager</fullName>
+                    <default>false</default>
+                    <label>Sr. Manager/Manager</label>
+                </value>
+                <value>
+                    <fullName>SVP</fullName>
+                    <default>false</default>
+                    <label>SVP</label>
+                </value>
+                <value>
+                    <fullName>VP</fullName>
+                    <default>false</default>
+                    <label>VP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>Identify the type of resource or stakeholder for the Resource/Stakeholder name entered above.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identify the type of resource or stakeholder for the Resource/Stakeholder name entered above.</inlineHelpText>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>IT Sponsor</fullName>
+                    <default>false</default>
+                    <label>IT Sponsor</label>
+                </value>
+                <value>
+                    <fullName>LOB Sponsor</fullName>
+                    <default>false</default>
+                    <label>LOB Sponsor</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Business Transformation (BTx) is a sales process that targets our customers' critical business needs. It enables account teams to identify sales opportunities and best position Cisco products, services and solutions.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>BTx Project Resource/Stakeholder</label>
+    <nameField>
+        <displayFormat>BTx Resource-{0}</displayFormat>
+        <label>BTx Resource</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>BTx Project Resources/Stakeholders</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Project__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Title__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Customer_Stakeholder_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Cisco_Partner_Resource_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Date_Engaged__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Phase_Engaged__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Comments__c</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Project__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Cisco_Partner_Resource_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Customer_Stakeholder_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Date_Engaged__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Phase_Engaged__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Title__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Comments__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Cisco_Partner_Resource_Name__c</searchFilterFields>
+        <searchFilterFields>Customer_Stakeholder_Name__c</searchFilterFields>
+        <searchFilterFields>Date_Engaged__c</searchFilterFields>
+        <searchFilterFields>Project__c</searchFilterFields>
+        <searchFilterFields>Phase_Engaged__c</searchFilterFields>
+        <searchFilterFields>Title__c</searchFilterFields>
+        <searchResultsAdditionalFields>Project__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Title__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Customer_Stakeholder_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Cisco_Partner_Resource_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Date_Engaged__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Phase_Engaged__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Comments__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <validationRules>
+        <fullName>Multiple_Resource_Check</fullName>
+        <active>true</active>
+        <description>Prevents user from selecting multiple names for a resource record</description>
+        <errorConditionFormula>NOT( ISBLANK(Cisco_Partner_Resource_Name__c)) &amp;&amp;
+NOT(  ISBLANK(Customer_Stakeholder_Name__c ))</errorConditionFormula>
+        <errorMessage>Please enter either "Cisco/Partner Resource Name" or "Customer Stakeholder Name" but not both.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Resource_Required</fullName>
+        <active>true</active>
+        <description>Prevents user from saving the resource record without resource</description>
+        <errorConditionFormula>ISBLANK(TRIM(Cisco_Partner_Resource_Name__c)) &amp;&amp;
+ISBLANK(Customer_Stakeholder_Name__c )</errorConditionFormula>
+        <errorMessage>Please enter either "Cisco/Partner Resource Name" or "Customer Stakeholder Name".</errorMessage>
+    </validationRules>
+</CustomObject>

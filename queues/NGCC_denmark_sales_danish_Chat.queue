@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>NGCC-denmark-sales-danish-Chat</name>
+    <queueMembers>
+        <users>
+            <user>adarling@cisco.com</user>
+            <user>brybenne@cisco.com</user>
+            <user>dakoel@cisco.com</user>
+            <user>davidl4@cisco.com</user>
+            <user>denhorn@cisco.com</user>
+            <user>hyurek@cisco.com</user>
+            <user>micrich2@cisco.com</user>
+            <user>mirusu@cisco.com</user>
+            <user>pasmit@cisco.com</user>
+            <user>tzadi@cisco.com</user>
+            <user>zaabdull@cisco.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Omnichannel_Routing</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveAgentSession</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

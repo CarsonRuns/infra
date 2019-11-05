@@ -1,0 +1,351 @@
+<apex:page controller="Spark_System_Config" showHeader="true">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,300,700' type='text/css' />
+    <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' type='text/css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <apex:includeScript value="/soap/ajax/36.0/connection.js"/>
+	<apex:remoteObjects >
+    	<apex:remoteObjectModel name="Spark_Config__c" fields="ApplicationScopes__c"/>
+	</apex:remoteObjects>
+
+<style type="text/css">
+.pbHeader
+{
+    padding: 2px 5px 2px 5px;
+}
+    
+.credentials 
+{
+    width:300px;
+}
+</style>
+<script>
+var j$   				    = jQuery.noConflict();
+sforce.connection.sessionId = '{!GETSESSIONID()}';
+
+j$(function() {
+    setAppScopes();
+    getSparkCredentials(); 
+    getConfiguredPages();
+    j$('#submitAuth').click(setSparkCredentials);
+    j$('#submitPages').click(setConfiguredPages);
+    j$('#triggerObj').change(function(){
+         getObjectFields(''+j$(this).val()+'');
+    });
+    j$('#triggerTable').on("click", ".addTrigger", function() {        
+    	addTrigger(this);
+    });
+    j$('#triggerTable').on("click", ".removeTrigger", function() {        
+    	removeTrigger(this);
+    });
+    
+    
+});
+
+function setAppScopes() 
+{
+    
+    var sparkConfigObj          = sforce.connection.describeSObject("Spark_Config__c");
+    var options = '';
+    var optobj  = '';
+    j$.each(sparkConfigObj.fields, function(key, val) {
+        if (val.name === 'ApplicationScopes__c')
+        {
+          var field = val;
+          j$.each(field.picklistValues, function(k,v){
+                options += '<option value="' + v.value + '">' + v.value + '</option>';
+          });
+        }
+        if (val.name === 'ConfiguredObjects__c')
+        {
+          var field = val;
+          j$.each(field.picklistValues, function(k,v){
+                optobj += '<option value="' + v.value + '">' + v.value + '</option>';
+          });
+        }
+        j$('#appScope').html(options);
+        j$('#confObj').html(optobj);
+        
+    });
+}    
+    
+function getSparkCredentials() 
+{
+            Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.Spark_System_Config.getAuthConfig}', function(result, event) {
+                        if (event.status) {
+                            j$('#machineId').val(result.MachineId__c);                          
+                            j$('#machineSecret').val(result.MachineSecret__c);
+                            j$('#machineOrg').val(result.MachineOrg__c);
+                            j$('#appId').val(result.ApplicationId__c);
+                            j$('#appSecret').val(result.ApplicationSecret__c);
+                            j$('#authId').val(result.Id);
+                            j$('#machineUid').val(result.MachineUid__c);
+                            var scopes = result.ApplicationScopes__c;
+                            
+                            if (typeof scopes !== 'undefined')
+                            {
+                            var res    = scopes.split(";");
+                                j$.each(res, function(k,v){             
+                                    j$('#appScope option[value="'+v+'"]').attr('selected','selected');
+                                });
+                            }
+                            var pages = result.ConfiguredObjects__c;
+                            
+                            if (typeof pages !== 'undefined')
+                            {
+                            var page  = pages.split(";");
+                                var triggerobj = '';                         
+                                j$.each(page, function(r,p){             
+                                    j$('#confObj option[value="'+p+'"]').attr('selected','selected');
+                                    triggerobj += '<option value="' + p + '">' + p + '</option>';
+                                });
+                                j$("#triggerObj").html(triggerobj);
+                            }
+                        } else {
+                            console.log(event.message);
+                        }
+                    }, {
+                        escape : true
+                    });
+}
+
+function setSparkCredentials() 
+{
+    var auth    = new Spark_Config__c();
+    var id      = j$('#authId').val();
+    var action  = 'insert';
+    if ( id.length > 10 ){
+    auth.Id                     = j$('#authId').val();
+    action                      = 'update';
+    }
+    auth.MachineId__c           = j$('#machineId').val();
+    auth.MachineSecret__c       = j$('#machineSecret').val();
+    auth.MachineOrg__c          = j$('#machineOrg').val();
+    auth.ApplicationId__c       = j$('#appId').val();
+    auth.ApplicationSecret__c   = j$('#appSecret').val();
+    auth.ApplicationScopes__c   = j$('#appScope').val();
+    var newauth = new Array(auth);
+    
+    Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.Spark_System_Config.setAuthConfig}', newauth,action, function(result, event) {
+              if (event.status){ getSparkCredentials(); }
+         }, { escape : true });
+    
+}
+
+function setConfiguredPages() 
+{
+    var page                   = new Spark_Config__c();
+    var id                     = j$('#authId').val();
+    page.Id                    = j$('#authId').val();
+    page.ConfiguredObjects__c  = j$('#confObj').val(); 
+    var pages = new Array(page);
+    var sesID = "{!$Api.Session_ID}";
+    if (id.length > 10){    
+        Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.Spark_System_Config.setPageConfig}', pages, sesID, function(result, event) {
+              if (event.status){
+                 getSparkCredentials();
+                 getConfiguredPages(); }
+         }, { escape : true });   
+    } else {
+    alert('You must set and Save your Credentials before you can associate objects.');
+    } 
+}
+
+    
+function Spark_Config__c(){}
+    
+function getConfiguredPages() 
+{
+            Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.Spark_System_Config.getConfiguredPages}', function(result, event) {
+                        var options = '<tr><td><u>Page Name</u></td></tr>';
+                        if (event.status) {
+                            
+                            j$.each(result, function(k,v){             
+                                options += '<tr><td>'+v.Name+'</td></tr>';
+                             });
+                           
+                        } else {
+                            console.log(event.message);
+                        }
+                        j$('#pageTable').html(options);
+                    }, {
+                        escape : true
+                    });
+}
+
+function getObjectFields(selectedobject)
+{
+    listTrigger(function(response)
+    {
+       var sparkConfigObj = sforce.connection.describeSObject(selectedobject);
+       var options        = '<thead class="thead-default"><tr><th>' + selectedobject + ' Fields</th><th>Add Trigger</th></thead><tbody>';
+  	
+    	j$.each(sparkConfigObj.fields, function(key, val) {
+            var fullFieldName = selectedobject+'.'+val.name;
+            if (jQuery.inArray(fullFieldName, response) != -1)
+            {             
+                options += '<tr><td>'+val.label+'</td><td><input type="button" class="btn-danger btn-xs removeTrigger" data-object="' + selectedobject + '" data-trigger="'+val.name+'" value="Remove Trigger" ></td></tr>';   		   
+            }  else {
+                options += '<tr><td>'+val.label+'</td><td><input type="button" class="btn-primary btn-xs addTrigger" data-object="' + selectedobject + '" data-trigger="'+val.name+'" value="Add Trigger" ></td></tr>';   		   
+            }
+      	});
+        options += '</tbody>';
+    j$("#triggerTable").html(options);
+    });   
+}
+    
+function addTrigger(obj)
+{
+    var selectedObject  = j$(obj).data('object');
+    var selectedTrigger = j$(obj).data('trigger');
+    Visualforce.remoting.Manager.invokeAction(
+       '{!$RemoteAction.Spark_System_Config.setTrigger}',selectedObject,selectedTrigger, function(result, event) {
+       		if (event.status) { 
+          	getObjectFields(selectedObject);
+        	}
+        });
+}
+function removeTrigger(obj)
+{
+    var selectedObject  = j$(obj).data('object');
+    var selectedTrigger = j$(obj).data('trigger');
+    Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.Spark_System_Config.removeTrigger}',selectedObject,selectedTrigger, function(result, event) {
+                        if (event.status) { 
+                        getObjectFields(selectedObject);
+                        }
+                    });
+}
+    
+function listTrigger(callback)
+{
+    Visualforce.remoting.Manager.invokeAction(
+    '{!$RemoteAction.Spark_System_Config.listTrigger}', function(result, event) {
+    	if (event.status) {            
+        	return callback(result);
+        }
+    });
+}
+    
+
+</script>
+    
+
+
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Spark Integration Credentials</div>
+                <div class="panel-body">
+                    <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign">
+                        </span> Please completely fill in your Machine and Application account credentials below, and select the scopes that 
+                        should be associated with the integration. In most cases, you would select all the available scopes.</div>
+                
+                    <form class="form-horizontal" role="form"> 
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="machineId">Machine Account Id:</label>
+                    <div class="col-sm-5">                   
+                        <input type="text" class="form-control" id="machineId" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="machineSecret">Machine Account Secret:</label>
+                    <div class="col-sm-5">                   
+                        <input type="text" class="form-control" id="machineSecret" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="machineOrg">Machine Account Org:</label>
+                    <div class="col-sm-5">                   
+                        <input type="text" class="form-control" id="machineOrg" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="appId">Application Id:</label>
+                     <div class="col-sm-5">                   
+                        <input type="text" class="form-control" id="appId" />                       
+                     </div>
+                 </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="appId">Application Secret:</label>
+                    <div class="col-sm-5">                   
+                        <input type="text" class="form-control" id="appSecret" />
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="appScope">Application Scopes:</label>
+                    <div class="col-sm-5">                   
+                        <select class="form-control" id="appScope" multiple="multiple" size="4" ></select>
+                        <input type="hidden" id="authId" value="" />
+                    </div>
+                </div>
+                <div class="form-group">                    
+                    <div class="col-sm-offset-2 col-sm-10">
+                    <button type="default" id="submitAuth" class="control-label btn btn-default">Save Credentials</button>
+                    </div>
+                </div>
+                
+                </form>
+                </div>                
+                </div>
+    
+                <div class="panel panel-default">
+                    <div class="panel-heading">Spark Object Association</div>
+                <div class="panel-body">
+                    
+                    <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> In this release, the visual force wrapper page, to integrate into the associated object layout, 
+                    needs to be manually created and is a one time task. Below, you must still select which standard objects you want to associate Spark with.  After
+                    creating the wrapper VFP, the configured page name will be visible in the list below.</div>
+               
+                    
+                <form class="form-horizontal" role="form">
+                    
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="confObj">Objects to Associate:</label>
+                    <div class="col-sm-5">                   
+                        <select class="form-control" id="confObj" multiple="multiple" size="4" ></select>
+                    </div>
+                </div>
+                <div class="form-group">                    
+                    <div class="col-sm-offset-2 col-sm-10">
+                    <button type="default" id="submitPages" class="control-label btn btn-default">Associate Objects</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pageTable">Manually Created Wrapper Pages:</label>
+                    <div class="col-sm-5">               
+                        <table id="pageTable"></table>                        
+                    </div>
+                </div>  
+                </form>
+                </div>                
+                </div>
+    
+                <div class="panel panel-default">
+                    <div class="panel-heading">Spark Field Trigger Selection</div>
+                <div class="panel-body">
+                    <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> Click on the object name below and wait for the field list to appear.  You can then add trigger fields for the selected object.</div>
+                <form class="form-horizontal" role="form">
+                    
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="triggerObj">Select an Object:</label>
+                    <div class="col-sm-5">                   
+                        <select class="form-control" id="triggerObj" multiple="multiple" size="4" ></select>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <table id="triggerTable" class="table table-bordered table-striped"></table> 
+                </div>   
+                
+                
+                </form>
+                </div>                
+                </div>
+
+</apex:page>

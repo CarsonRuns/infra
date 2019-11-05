@@ -1,0 +1,54 @@
+<!-----------------------------------------------------------------------------------------------------------
+Name    : NGCC_CallScript_Preview_Mgmt
+Author  : Mukesh Srivastava
+Purpose : UI to Preview the call script before launching
+Created Date: 4/30/2014
+Modification History: 
+-------------------------------------------------------------------------------------------------------------->
+
+<apex:page standardController="CC_Response__c" extensions="NGCC_CallScript_Preview_Mgmt_CTE" action="{!validateCallScript}">
+    <style> .headerRow .headerStyle{text-align:center;} </style>
+    
+   <apex:pageMessages />
+   <apex:sectionHeader title="Call Script" subtitle="Launch Previewer"/>
+   <p>
+      Use this page to preview the call script in a prefered language. Previewer allow to validate:
+   <ul>
+      <li>Layout of Tabs</li>
+      <li>Layout of Questions and Answers including sequence</li>
+      <li>Email and Number input validation</li>
+      <li>Mandatory, Conditional and numeric range validation</li>
+      <li>Language Translation</li>
+   </ul>
+   </p>
+   
+   <apex:form >
+      <apex:inputfield value="{!response.Language__c}"/>
+      <apex:commandButton value="Preview Call Script" action="{!launchCallScript}"/>
+      <p>
+      <h3>Below tables show which of the MODS questions are required in a Call Script to successfully update all information captured through call script and 
+      satisfied Lead Qualication process.</h3>
+      </p>
+      <apex:pageBlock >
+      <apex:pageBlockSection columns="1" collapsible="true" title="Lead Qualification and Routing">
+      <apex:pageBlockTable value="{!lstLeadQualification}" var="vCSQ" width="100%">
+          <apex:column value="{!vCSQ.purpose}" headerValue="Question" width="40%"/>
+          <apex:column value="{!vCSQ.modsCode}" headerValue="MODS Question Code" width="40%"/>
+          <apex:column headerValue="Included in Call Script" headerClass="headerStyle" width="20%" style="text-align:center;" > 
+              <apex:outputtext value="{!if(vCSQ.available,'<img src=/img/msg_icons/confirm16.png>','<img src=/img/msg_icons/warning16.png>')}" escape="false"/>
+          </apex:column>         
+      </apex:pageBlockTable>
+      </apex:pageBlockSection>
+      <apex:pageBlockSection columns="1" collapsible="true" title="Lead Attributes">
+      
+      <apex:pageBlockTable value="{!lstLeadAttribute}" var="vCS" >
+          <apex:column value="{!vCS.purpose}" headerValue="Question" width="40%"/>
+          <apex:column value="{!vCS.modsCode}" headerValue="MODS Question Code" width="40%"/>
+          <apex:column headerValue="Included in Call Script" width="20%" headerClass="headerStyle"  style="text-align:center;">     
+              <apex:outputtext value="{!if(vCS.available,'<img src=/img/msg_icons/confirm16.png>','<img src=/img/msg_icons/warning16.png>')}" escape="false"/>     
+          </apex:column>  
+      </apex:pageBlockTable>
+      </apex:pageBlockSection>
+      </apex:pageBlock>
+   </apex:form>
+</apex:page>

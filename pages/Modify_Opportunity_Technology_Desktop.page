@@ -1,0 +1,94 @@
+<apex:page docType="html-5.0" standardController="opportunity">
+  
+    <div id="technologyApplication">
+        <apex:remoteObjects jsNamespace="RemoteObjectModel">        
+             <apex:remoteObjectModel name="OpportunityLineItem" fields="Id,Mix__c,Product_Family_US__c,PricebookEntryId,OpportunityId">                        
+             </apex:remoteObjectModel>        
+        </apex:remoteObjects>        
+
+                <div style="margin : 20px 0px;">
+                    <input type="Text" size="50" class="smallInput" placeholder="Search & Add BE/Product Family" />  &nbsp; 
+                    <div class="helpIconWrapper" data-toggle="tooltip" data-placement="top" title="Type the Product information you are looking for"></div> &nbsp;
+                    <span class="cartlink" style="marign: 20px 0px " data-toggle="tooltip" data-placement="top" title="Select from the complete list of Products"><button type="button" data-toggle="modal" data-target="#myModal2">Show All</button></span>
+                    <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block;" ng-cloak="true">{{mixPercentValid}}</div>
+                </div>
+                <div>                    
+                    <table class="table table-condensed list" border="1" width="100%" id="technologyTable">
+                        <colgroup span="4"></colgroup>
+                        <thead>
+                            <tr class="headerRow">
+                                <th width="5%" class="headerRow">Action</th>
+                                <th width="25%" class="headerRow">Business Entity/Sub Entity</th>
+                                <th width="10%" class="headerRow">Mix%</th>
+                                <th width="25%" class="headerRow">Product Family</th>
+                                <!--th width="15%" class="headerRow"><div>PF Mix %</div></th-->
+                                <th width="15%" class="headerRow">{!$ObjectType.Opportunity.Fields.Expected_Product__c.Label}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="mainTbody">
+                            <tr class="dataRow even first last">
+                                <td colspan="6" class="dataCell">
+                                    <table cellpadding="0" cellspacing="0" width="100%" border="0">
+                                        <tbody>
+                                            <tr data-ng-repeat="techObj in scopeobj track by $index" style="height: 31px;" >
+                                                <td width="5%" style="border:0px;vertical-align: top;" class="dataCell"><a href="javascript:void(0);" class="del s1utility" ng-click="deleteLineItem($index,$event);">Del</a></td>
+                                                <td style="border:0px;vertical-align: top;" class="dataCell techie"><span class="red" ng-if="techObj.isActive==false" ng-cloak="true">{{techObj.tech}}</span><a href="javascript:void(0);" ng-if="techObj.isActive==true"  ng-click="selectObject(techObj.tech);" ng-class="(techObj.isActive==false)?'red':''" ng-cloak="true">{{techObj.tech}}</a><span class="red" ng-if="techObj.isActive==false" style="padding-left:10px;" ng-cloak="true">Inactive</span></td>
+                                                <td style="border:0px;vertical-align: top;clear:left;" class="dataCell"><div class="requiredBlock pull-left" style="position: relative;display: block;width: 3px;height: 22px;margin-right: 2px;background-color:#c00;"></div><input size="5" class="mixClass inputSelect" id="mixPercentageIdValue_{{$index}}" ng-model="techObj.mixPercentage" ng-init="checkTotal($index);" ng-cloak="true" onkeypress="return isNumberKey(event)" ng-class="indvidualCost = expectedProductCost*techObj.mixPercentage/100;" ng-keyup="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100;" ng-keydown="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100;" min="1" max="100" type="number" value="techObj.mixPercentage" /></td>
+                                                <td style="border:0px;vertical-align: top;"  class="dataCell prodFamily" ng-init="outerIndex = $index;" dummyIndex="{{outerIndex}}">
+                                                    <div class="productFamily hideLink" ng-repeat="products in techObj.value track by $index">
+                                                        <span class="showLink"><a href="javascript:void(0);" class="delProd s1utility" ng-click="deleteProdFamily(outerIndex,$index,$event);">Del</a></span>
+                                                        <span style="display:inline-block;" class="dummyPad" ng-cloak="true">{{products}}</span>
+                                                    </div>
+                                                </td>
+                                                <td width="5%" style="border:0px;vertical-align: top;" align="center" class="showTotal" ng-class="setTotal();" ng-cloak="true">{{(indvidualCost)| number:0}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="5%" class="dataCell">&nbsp;</td>
+                                                <td width="25%" class="dataCell">&nbsp;</td>
+                                                <td width="10%" class="dataCell"><span>Total : <label id="totalTech" ng-cloak="true">{{total}}</label></span></td>
+                                                <td width="25%" class="dataCell">&nbsp;</td>
+                                                <!--td width="15%" class="dataCell"></td -->
+                                                <td width="15%" class="dataCell">&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="myModal2" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">All Technologies and Product Family List</h4>
+                            </div>
+                            <div class="modal-body">
+                                <span class="showall"><a href="javascript:void(0);" class="blueLink" ng-click="doToggleAll($event,'collapse');">Collapse All</a> | <a href="javascript:void(0);" class="blueLink" ng-click="doToggleAll($event,'expand');">Expand All</a></span>
+                                <div class="well" style="width:100%; padding: 8px 0;">
+                                    <div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">
+                                        <ul class="nav nav-list">
+                                            <li ng-repeat="prodFamily in productFamilies" class="mainCategory"><label class="tree-toggler nav-header"><i class="glyphicon glyphicon-triangle-right" ng-click="doToggle($event);" style="cursor:pointer;font-size: 12px;padding-right: 5px;"></i>
+                                                <a href="javascript:void(0);" id="techNameToExpand" ng-class="(checkisActiveProductName(prodFamily.name) == false)?'blue':''" style="padding: 2px 15px 2px 15px;" ng-click="addLineItemTech(prodFamily.id,prodFamily.name)">{{prodFamily.name}}</a></label>                                                
+                                               <ul class="nav nav-list tree" style="display:none;">
+                                                    <li ng-repeat="listProductFamily in prodFamily.product">
+                                                        <a href="javascript:void(0);" style="padding: 2px 15px 2px 15px;" ng-if="checkisActive(listProductFamily) == true" ng-click="addLineItem(prodFamily.id,prodFamily.name,listProductFamily)">{{listProductFamily}}</a>
+                                                        <span style="padding: 2px 15px 2px 15px; color:#CCCCCC;" ng-if="checkisActive(listProductFamily) == false">{{listProductFamily}}</span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+    </div>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+    
+</apex:page>

@@ -1,0 +1,321 @@
+<apex:page showHeader="false" id="myPage">
+<apex:includeScript value="{!$Resource.jquery}"/>
+<apex:includeScript value="{!$Resource.SOFTPHONE_POPUP_VERSION_ZIP}"/>
+<apex:includeScript value="{!$Resource.cwicV1}"/>
+<script src="/support/api/25.0/interaction.js"></script>
+<script src="/soap/ajax/26.0/connection.js" type="text/javascript"></script>
+<!-- Jabber SDK - Audio -->
+<!--<apex:includeScript value="{!$Resource.cwic}"/> -->
+<script type="text/javascript">
+sforce.connection.sessionId = "{!$Api.Session_ID}";
+
+        var cucmServerIP;
+        var userID ;
+        var password; 
+        var callObject;
+        var callContainer;
+        var caller;
+        window.addEventListener("storage", storageEventHandler, false);
+        function storageEventHandler(e){
+
+             if (e.key == 'phoneNumber') {
+                //alert('pop='+e.newValue);
+                //makeCall(getLocalStorageValue(e.newValue));
+                if(e.newValue != 'null' && e.newValue != ''){
+                   localStorage.setItem('endCall','false');
+                   localStorage.setItem('Mute','null');
+                    //makeCall('1123');
+                    makeCall(e.newValue);
+                    //alert('Called made');
+                 }
+             }
+             if(e.key == 'endCall'){
+                 if(e.newValue == 'true'){
+                     endCall('#'+callContainer.attr("id"));
+                 }
+             }    
+             if(e.key == 'Mute'){
+                 if(e.newValue == 'true'){
+                     muteAudio('#'+callContainer.attr("id"));
+                 }
+                 else if(e.newValue == 'false')
+                 {
+                    unmuteAudio('#'+callContainer.attr("id"));
+                 }
+                 
+             } 
+             if(e.key == 'Hold'){
+             
+                 if(e.newValue == 'true'){
+                     holdCall('#'+callContainer.attr("id"));
+                 }
+                 else if(e.newValue == 'false')
+                 {
+                    unholdCall('#'+callContainer.attr("id"));
+                 }
+             } 
+             if(e.key == 'IVRNumber'){
+                if(e.newValue != 'null'){
+                    $('#phonecontainer').cwic('sendDTMF',e.newValue,callObject.callId);
+                }
+            }
+        }
+       
+        $(document).ready(function() {
+            $('#ImageConnected').hide();
+            $('#ImageWindow').hide();
+            $('#devicedetails').hide();
+            populateCredentials();
+            resetLocalStorage();
+           /* $('#loginlinkId').click(function(){
+                    validate();
+                });*/
+                
+            
+        });
+        
+        $(document).keypress(function(e){
+              if(e.which==13){
+                  alert('Please press login button');
+              }
+        });
+        
+        function populateCredentials(){
+        sforce.connection.sessionId = '{!$Api.Session_ID}';
+
+        try
+        {
+           var queryResult =  sforce.connection.query( "Select JabberUserID__c,CUCMServer__c,Jabber_Password__c From User where Id='" + '{!$User.Id}' + "'" );
+        }
+        catch(error) { alert (error);}
+        if (queryResult.size > 0) {
+        var records = queryResult.getArray('records');
+        for (var i = 0; i < records.length; i++) {
+           var user = records[i];
+           cucmServerIP = user.CUCMServer__c;
+           userID = user.JabberUserID__c;
+           password = user.Jabber_Password__c;
+        }
+          $('#userName').html('User ID: <font color="#A9F5E1" >'+userID +'</font>');
+        $('#CUCMServer').html('   CUCM: <font color="#A9F5E1" >'+cucmServerIP +'</font>' );
+        }
+    }
+        function setLocalStorageValue(name,value){
+            localStorage.setItem(name, value);
+        }
+
+        function getLocalStorageValue(name){
+            return localStorage.getItem(name);
+        }
+
+        function setLocalStorageObject(key, value) {
+            setLocalStorageValue(key, JSON.stringify(value));
+        }
+
+        function getLocalStorageObject(key) {
+            var value = getLocalStorageValue(key);
+            return value && JSON.parse(value);
+        }
+        window.onunload=function(){
+            resetLocalStorage();
+            window.opener.location.reload(true);
+        };
+    
+    function resetLocalStorage()
+    {
+        localStorage.setItem('CallId', null);
+        localStorage.setItem('CallState', null);
+        localStorage.setItem('Registered', null);
+        localStorage.setItem('PhoneMode',null);
+            
+        localStorage.setItem('phoneNumber', null);
+        localStorage.setItem('CallId', null);
+        localStorage.setItem('callingFrom', null);
+        localStorage.setItem('Caller', null);
+        localStorage.setItem('Mute',null);
+        localStorage.setItem('Hold',null);
+        localStorage.setItem('endCall', null);
+        localStorage.setItem('continuingCall',null);
+        localStorage.setItem('eventId',null);
+        localStorage.setItem('ObjectIdentifier',null);
+        localStorage.setItem('RecordId',null);
+        localStorage.setItem('ParentRecordId',null);
+        localStorage.setItem('RecordName',null);
+        localStorage.setItem('Time',null);
+        localStorage.setItem('isConference',null);
+    }
+    function updateUIhandler(obj,activeCallContainer){
+        callObject = obj;
+        //alert('obj--->'+obj);
+        //alert('activeCallContainer--->'+activeCallContainer);
+        if(obj.callType == 'Incoming')
+        {
+            console.log("INFO: callType is " + obj.callType);
+            console.log("INFO: Incoming call has been blocked");
+            return;
+        }
+        
+        // controll conference call and transfer calls
+        var callIdCatch = localStorage.getItem('CallId');
+        if(callIdCatch != 'null' && callIdCatch != '' && callIdCatch != null &&
+            callIdCatch != obj.callId)
+        {
+            console.log("INFO: conference/transfer call has been blocked");
+            console.log("INFO: Blocked Call Id" + obj.callId);
+            return;
+        }
+        callContainer = activeCallContainer;
+        caller = obj.participant.recipient;
+        localStorage.setItem('Caller',caller);
+        localStorage.setItem('CallId',obj.callId);
+        localStorage.setItem('callingFrom', obj.callingPartyNumber);
+        if(obj.audioMuted == true){
+            localStorage.setItem('Mute','true');   
+        } 
+        if(obj.callState == 'OnHook')
+        {
+            localStorage.setItem('CallId', null);
+            localStorage.setItem('phoneNumber', null);
+            localStorage.setItem('continuingCall','No');
+            localStorage.setItem('callingFrom', null);
+            localStorage.setItem('isConference',null);
+        }
+        console.log("Caller: " + caller);
+        console.log("callType: " + obj.callType);
+        console.log("CallId: " + obj.callId);
+        console.log("callingPartyName: " + obj.callingPartyName);
+        console.log("callingPartyNumber: " + obj.callingPartyNumber);
+        console.log("obj.calledPartyNumber: " + obj.calledPartyNumber);
+        
+        // set call state only if any new response come from jabber
+        if(localStorage.getItem('isConference') != obj.isConference)
+        {
+            localStorage.setItem('isConference',obj.isConference);
+        }
+        
+        // set call state only if any new response come from jabber
+        if(localStorage.getItem('CallState') != obj.callState)
+        {
+            console.log("callState: " + obj.callState);
+            localStorage.setItem('CallState',obj.callState);
+        }
+        console.log("isConference: " + obj.isConference);
+        console.log("--------------------------------------------" );
+    }  
+    function validate(){
+        password = document.getElementById('Password').value;
+        if(password == null || password == ''){
+            alert('Please populate the password');
+        }else{
+            //var phoneMode = $('#phoneModeSelect').val();
+            localStorage.setItem('PhoneMode','DeskPhone');
+            $('#loginSection').hide(); 
+            $('#phone_mode_div').hide();
+            fnConnect2(userID,password,cucmServerIP);
+            $('#devicedetails').show(); 
+        } 
+    }
+ </script>
+ <style>
+ #console {
+    position:relative;
+    left:0px;
+    right:0px;
+    display:hidden;
+}
+#userName {
+    position:relative;
+    background-color:#3db5dc;
+    color:#FFF;
+    padding:5px;
+    font-weight:bold;
+    left:0px;
+    right:0px;
+}
+#phone_mode_div {
+    position:relative;
+    background-color:#3db5dc;
+    color:#FFF;
+    padding:5px;
+    font-weight:bold;
+    left:0px;
+    right:0px;
+}
+#CUCMServer {
+    position:relative;
+    background-color:#3db5dc;
+    color:#FFF;
+    padding:5px;
+    font-weight:bold;
+    left:0px;
+    right:0px;
+}
+
+#password {
+    position:relative;
+    background-color:#A4A4A4;
+    color:#FFF;
+    padding:5px;
+    font-weight:bold;
+    left:0px;
+    right:0px;
+}
+body{
+    background-color:#E7F5FB;
+}
+</style> 
+<body>
+<apex:form id="myForm">
+     <div id="phone_mode_div">
+        <!--<select id="phoneModeSelect" name="phoneModeSelect">
+            <option selected="selected" value="DeskPhone" >Desk phone</option>
+            <option  value="SoftPhone">Soft phone</option>
+        </select>  -->
+        Desk Phone Mode
+     </div>
+    <div id="loginSection">
+    <table align='left' border='0' cellspacing="0">
+            <tr>
+                <div id="userName">User ID:</div>
+            </tr>
+             <tr>
+                <div id="CUCMServer">CUCM:</div>
+            </tr>
+
+              <tr id="password">
+                 <td size="15%">
+                     <font color="#FFF"> Password :</font>
+                </td>
+                <td>
+                    <!--apex:inputSecret styleClass="requiredInput" id="Password" style="Width: 100px;background-color: white;"/-->
+                    <input type="password" id="Password"></input>
+              <a id="loginlinkId" href="javascript: validate();">
+               <apex:image id="theLoginButton" value="{!$Resource.login_button}" />
+               </a>
+                </td>
+             </tr>
+         </table>
+       </div>
+     <div id="phonecontainer"></div>   
+     <span id="registrationStatus"></span><br/>
+     <div id="ImageConnected">
+        <!-- <apex:image value="{!$Resource.connected}" />   -->
+       <center> 
+           <apex:image value="/img/loading32.gif"/> <br/>
+           <apex:outputtext value="Connecting.." style="font-weight:bold;"/>
+        </center>
+     </div>
+     <div id="ImageWindow">
+         <!--apex:image value="{!$Resource.window}" /-->
+        <b> <span id="message"></span> </b><br/>
+         <b><span id="message1"></span></b>
+     </div>
+     <span id="loginStatus"></span>
+     <div id="devicedetails">
+            <label for="devices"><b>Device:</b></label><select id="devices"></select>
+            <button id="connectbtn" type="button">Connect</button>
+     </div>
+
+    </apex:form>
+    </body>
+</apex:page>

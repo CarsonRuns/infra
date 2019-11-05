@@ -1,0 +1,167 @@
+<!--
+Author          : 
+Release         : 
+Created         : 
+Functionality   : For creating Qualification record
+
+Modification History:
+****************************************************************************************************************
+Itrack#        Date        Author                        Change  
+DE253169 - 05/28/19-        mkella-         Pre-Populating Oppty Record Id in New qualification record
+****************************************************************************************************************
+-->
+
+<apex:page tabStyle="Qualification__c" standardController="Qualification__c" extensions="NBM_Qualification_Controller" action="{!redirect}">
+<script type="text/javascript" src="/js/functions.js"></script>
+<script src="/soap/ajax/40.0/connection.js"></script>
+        
+    <!--<script>
+var resizeflag = "true" ;
+
+function reload()
+{
+    //var ArchHiddenElem = "{!$Component.Mainform.MainPB.pageBlock.pbsect.architecture}";    
+    //var MarketAdj = "{!$Component.Mainform.MainPB.pageBlock.pbsect.marketAdj}";
+    var qualmember = "{!(IsQualMember)}";
+
+    if(qualmember.indexOf('true') != -1 && resizeflag =="true")
+    {
+        var stratimperative = "{!$Component.Mainform.MainPB.Reviewblock.Theaterpbsect.stratimperative}";    
+        //resizedata(ArchHiddenElem);
+        //resizedata(MarketAdj);    
+        resizedata(stratimperative);
+        resizeflag ="false";
+    }            
+}
+
+function resizedata(HiddenElem)
+{
+    var sElem=getElementByIdCS(HiddenElem + "_selected");
+    var uElem=getElementByIdCS(HiddenElem + "_unselected");uElem.style.width = null;
+    sElem.style.width = null;
+    if(!sElem.style.width)
+    {
+        var selW=(sElem.scrollWidth>uElem.scrollWidth)?sElem.scrollWidth:uElem.scrollWidth;
+        selW=selW+233;
+        sElem.style.width=selW+"px";
+        uElem.style.width=selW+"px";
+    }
+}
+
+</script>-->
+
+<script type="text/javascript" src="/js/functions.js"></script>
+<script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+<script> 
+           var callCloseTab= function callCloseTab(result) {
+               //alert('Tab Id: '+result.id);
+                sforce.console.closeTab(result.id);
+            } ;      
+           function closeTab() {
+                sforce.console.getEnclosingTabId(callCloseTab);
+            }
+    
+</script>
+
+    
+<apex:sectionHeader title="NBM Qualification Edit" subtitle="{!lead.Name}" help="http://iwe.cisco.com/iwe/web/new-business-models/home" rendered="{!gspobdm}"/>
+
+<apex:pagemessage strength="3" severity="info" summary="Permission not available for creating/accessing this record." rendered="{! !gspobdm && ! !isLightng}" ></apex:pagemessage> 
+
+<apex:Form rendered="{!gspobdm}" >
+
+<apex:outputLink value="/servlet/servlet.FileDownload?file=01580000000zmW1" id="theLink">How to identify potential NBM Opportunities</apex:outputLink>
+<br/>
+<br/> 
+
+<!--
+<div id="container">
+<a id="show" onclick="YAHOO.example.container.simpledialog1.show()" href="#">How to identify potential NBM Opportunities</a>
+</div><br/>  -->
+
+
+</apex:Form>
+
+  
+ <apex:form rendered="{!AND(related,gspobdm)}">
+<apex:outputText >  Multiple NBM Qualifications cannot be created for the same Opportunity.</apex:outputText><br/>
+<br/><apex:commandLink action="/{!lead.opportunity__c}" value="Click here"/>
+<apex:outputText value=" to go back to the previous page"></apex:outputText>
+
+ </apex:form>
+    
+    <!-- mkella DE253169 start changes. Placed the Script in Form with rendered option-->
+  <apex:Form rendered="{!isLightningOptyId}">
+    <script>
+       // debugger;
+        sforce.connection.sessionId = "{!$Api.Session_ID}";
+        function isLightningDesktop() {
+                  return ['Theme4d', 'Theme4u'].indexOf('{!$User.UIThemeDisplayed}') > -1;  //Komal - Lightning 08/10/2018 Release --Change to allow Lightning Desktop and Lightning Console themes
+        }
+        function isLightningMobile() {
+                  return( "{!$User.UIThemeDisplayed }" == "Theme4t");
+        }
+    
+       if(isLightningDesktop()){
+           // SCAVA FIX 
+            var opid = '{!JSENCODE($CurrentPage.parameters.CF00N80000004IXXz)}';
+           //mkella- DE253169 Start changes: Changed opid to opptyId and passing record type id create record.
+           var recordTypeId = '{!JSENCODE($CurrentPage.parameters.RecordType)}';
+           var opptyId = '{!JSENCODE($CurrentPage.parameters.CF00N80000004IXXz_lkid)}';
+		   //mkella- DE253169 End
+           //added by Kavya for default record type
+          if(recordTypeId == null || recordTypeId == '')
+               recordTypeId = "{!defaultRecordtype}";
+           //ends here
+            console.log("Opportunity Id: " + opid);   
+           
+             var defaults = {};
+            var userID = '{!$User.Id}';
+           // var opname = getOpptyName(opid);
+           //  alert('Oppty Name --->'+opname);
+           //mkella- DE253169 changing opid to OpptyId in below if conditions
+           if(opptyId != ''){
+                 if(opptyId.startsWith("006")) {
+                     defaults.Opportunity__c = opptyId;
+                     
+                  } 
+                else {
+                      alert('Warning : The Opportunity name will not be prepopulated'); 
+                    // defaults.Opportunity__c = '';
+                     
+                  //  defaults.CF00N80000004IXXz_lkid = opid;
+                 }
+             }
+        //   if(opname != ''){
+        //     defaults.CF00N80000004IXXz = opname; 
+        //    } 
+                           
+              if(userID != ''){
+                defaults.Requester_Name__c = userID;
+               }
+             
+              console.log('defaults',defaults); 
+              closeTab();
+           /* if(defaults.Opportunity__c = '') {
+                  alert('Invalid Opportunity--->'+opid);
+              } */
+           //mkella- passing recordtypeid param for DE253169 changes
+              sforce.one.createRecord('Qualification__c',recordTypeId,defaults); 
+           //closeTab();
+         }  
+         
+    /* function getOpptyName(oppid) {
+                   
+                   if(oppid != '')
+                   {
+                        var qrStr = "Select Name From Opportunity where Id ='" + oppid + "'";
+                        var qryOppName = sforce.connection.query(qrStr);
+                        var records = qryOppName.getArray('records');
+                        var oppname = records[0].get("Name");
+                        return oppname;
+                    }
+
+      }  */
+    </script>
+      </apex:Form>    
+</apex:page>

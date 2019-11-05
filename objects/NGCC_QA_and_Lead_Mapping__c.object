@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Call_Status__c</fullName>
+        <description>Corresponding Call Status for the Disposition value</description>
+        <externalId>false</externalId>
+        <label>Call Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FieldName__c</fullName>
+        <description>Addition field need to be updated when the disposition is selected .API name of Lead attribute which need to be updated</description>
+        <externalId>false</externalId>
+        <label>FieldName</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FieldValue__c</fullName>
+        <description>Desired value to be set for the additional fields</description>
+        <externalId>false</externalId>
+        <label>Field Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field_Type__c</fullName>
+        <description>Values should only be these
+DateTime
+Boolean
+Numeric
+Date
+CharLimit-40</description>
+        <externalId>false</externalId>
+        <label>Field Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Status__c</fullName>
+        <description>If Lead Status also need to be update along with Disposition then desired value</description>
+        <externalId>false</externalId>
+        <label>Lead Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Purpose__c</fullName>
+        <description>Call Disposition - Additional or Call Disposition
+a.	Call Disposition - Additional : When addition field is defined to be update
+b.	Call Disposition: When only Disposition need to be update</description>
+        <externalId>false</externalId>
+        <label>Purpose</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Theater__c</fullName>
+        <description>Comma separated Theater Name as in when needed
+
+Americas,EMEAR,APJ,Greater China</description>
+        <externalId>false</externalId>
+        <label>Theater</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>True_Value__c</fullName>
+        <description>If in case checkbox at lead level then specify what value crossponding value</description>
+        <externalId>false</externalId>
+        <label>True Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Update_Lead_Status__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If Lead Status need to be Updated then set it as true</description>
+        <externalId>false</externalId>
+        <label>Update Lead Status</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>Mapping of MODS question code with Lead Attributes and various actions need to be performed after each response. This object also helps to define theater specific lead qualification and routing questions.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>NGCC QA and Lead Mapping</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,28 @@
+<apex:page showHeader="true" tabstyle="Opportunity" controller="OpportunityTabOverride_CT" action="{!checkUserProfile}">
+    <apex:enhancedList type="Opportunity" height="500" rowsPerPage="25" id="QuoteList"></apex:enhancedList>
+<br></br>
+<apex:form >
+<div id="btnPartnerOpportunities">
+{!$Label.Quote_view_button_Opty}
+<br></br>
+<apex:commandButton value="{!$Label.Quote_view_button_Opty1}" id="theButton" action="{!init}" reRender="test"/>
+
+</div>
+<br></br>
+<apex:outputPanel id="test">
+<apex:iframe rendered="{!link!=null}" scrolling="false" src="{!link}{!IF(addSessionId, '&sessionid='+$Api.Session_ID, '')}"  height="800" width="1000" id="fs1"/>
+</apex:outputPanel>
+</apex:form>
+<script>
+// SCAVA FIX
+var pgPr = '{!JSENCODE($CurrentPage.parameters.displaypartnerfunnel)}';
+var manageDeal= '{!JSENCODE($CurrentPage.parameters.manageDeal)}';
+var biddingDeal= '{!JSENCODE($CurrentPage.parameters.biddingDeal)}';
+if(pgPr != null && pgPr != ''){
+window.scrollTo(0,500);
+}
+if(manageDeal != ''|| biddingDeal!= ''){
+window.scrollTo(0,500);
+}
+</script>
+</apex:page>

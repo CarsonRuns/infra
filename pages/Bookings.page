@@ -1,0 +1,15 @@
+<apex:page tabStyle="Bookings__tab" controller="Bookings_CT" title="My Bookings">
+
+    <apex:sectionHeader title="My Bookings" />
+        <apex:pageBlock >
+            Go to 
+            <apex:outputLink id="theLink" style="color:blue" onclick="window.open('https://mbr.cloudapps.cisco.com/mbr')"> My Business Reports</apex:outputLink> 
+            for My Business Reports (MBR - access for Sales Management only) and My Business Reports AM (MBR AM - access for Account Management only) 
+            <BR/>
+            <BR/>
+            Go to 
+            <apex:outputLink id="pssLink" style="color:blue" onclick="window.open('https://mchnps.cisco.com/analytics');"> psschn.cisco.com</apex:outputLink>              
+            for MBR Channels (Applicable to partner Support Organizations) and PSS Bookings Reports (Applicable to PSS)                           
+        </apex:pageBlock>
+        <BR/>        
+</apex:page>

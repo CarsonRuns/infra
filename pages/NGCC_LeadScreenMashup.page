@@ -1,0 +1,201 @@
+<!-- 
+Name    : NGCCLeadScreenMashup
+Author  : Mukesh Srivastava
+Purpose : This page will show the Sales History of opportunity on the Lead Page      
+Created Date: 1/23/2014
+Modification History: 
+    1.  Author : Ramzil cleopas - 10 March 2014 - US5665: Sales History Sprint 4
+        Added code to show the sales history of the leads 
+
+    2.  Author  : Ghattamaneni Chaithanya
+        Purpose : Scava Fixes
+        Changes : 
+            1. Added SCAVA Fixes in MODS_Search() method
+        date    : Oct 16,2018
+-->
+<apex:page standardController="Lead" extensions="NGCC_LeadScreenMashupCTL" id="thePage" showHeader="false" sidebar="false" cache="true">
+    <apex:form >
+        <style>
+            .activeTab {background-color: #1797C0;font-weight:bold;box-shadow: 5px 5px 2px #888888;color:#FFFFFF !important;font-size:12px;height:25px;cursor:pointer;border:0px solid #FFFFFF !important;
+            background-image:none}
+            .inactiveTab {background-color: #e2f1f6;font-weight:bold;color:#000000!important;font-size:12px;height:20px;cursor:pointer;border:0px;border-radius:1px; 
+            background-image:none}
+            .headerDataList{
+            background-color: #e2f1f6; color:black;font-weight:bold;
+            }
+            a.tooltip {outline:none; }
+            a.tooltip strong {line-height:30px;}
+            a.tooltip:hover {text-decoration:none;} 
+            a.tooltip span {
+            display:none; padding:14px 20px;
+            margin-top:0px; margin-left:-200px;
+            width:200px; line-height:16px;height: Auto;
+            }
+            a.tooltip:hover span{
+            display:block; position:absolute; color:#111;
+            border:1px solid #DCA; background:#fffAF0;
+            }
+            .callout {
+            position:absolute;top:-12px;border:0;right:10px;
+            }
+            div.header {
+            background-color: #1797C0;border:2px solid #FFFFFF;border-radius:5px;font-weight: bold;color: #FFFFFF;padding: .2em;padding-left:10px;margin-left:-10px;
+            }
+            .noLink, .noLink:hover
+            {
+            color:black;
+            text-decoration:none;
+            cursor:default
+            }
+        </style>
+        <apex:pageBlock mode="maindetail">
+            <apex:tabPanel switchType="client" selectedTab="SalesHistory"  
+                           id="AccountTabPanel" tabClass="activeTab" 
+                           inactiveTabClass="inactiveTab">
+                <apex:tab style="border:0px;background-color: white;height:120px;" label="Account Sales History" name="SalesHistory" id="tabSalesHistory">
+                    <apex:pageMessages id="messages"/>
+                    <div class="header" style="width:100%" >
+                        <apex:outputText style="font-weight:bold;font-size:12px" value="{!IF(NOT(ISNULL(noOfLeadRecords)),IF(noOfLeadRecords>0,'Lead History','Lead History: No Lead History Found'),false)}"/>
+                    </div>
+                    <apex:outputPanel id="leads">
+                        <apex:outputPanel id="region1" style="overflow:scroll;height:300px;" layout="block"  rendered="{!IF(NOT(ISNULL(noOfLeadRecords)),IF(noOfLeadRecords>0,true,false),false)}">
+                            <apex:pageBlockTable headerClass="headerDataList1" value="{!Leads}" width="100%" cellpadding="2px" id="pb1" var="a" border="1" style="border-style:solid;border-width:.5px;font-size:11px;"  styleClass="tableClass">
+                                <apex:repeat value="{!$ObjectType.Lead.FieldSets.NGCCLeadSalesHistory}" var="f">
+                                    <apex:column value="{!a[f]}" styleClass="noLink">                                        
+                                    </apex:column>
+                                </apex:repeat>
+                                <apex:column headervalue="Description">
+                                    <a class="tooltip" target="_blank">View
+                                        <span>
+                                            <img class="callout" src="{!strTooltip}" />
+                                            {!IF(ISBLANK(a.description),'No Description',a.description)}</span>
+                                    </a>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:outputPanel>
+                        <center>
+                            <apex:panelGrid columns="7" rendered="{!IF(NOT(ISNULL(noOfLeadRecords)),IF(noOfLeadRecords>0,true,false),false)}" >
+                                <apex:commandButton status="fetchStatus1" reRender="region,leads" value="First |<" action="{!setLead.first}" disabled="{!!setLead.hasPrevious}" title="First Page"/>
+                                <apex:commandButton status="fetchStatus1" reRender="region,leads" value="Previous <" action="{!setLead.previous}" disabled="{!!setLead.hasPrevious}" title="Previous Page"/>
+                                <apex:commandButton status="fetchStatus1" reRender="region,leads" value="Next >" action="{!setLead.next}" disabled="{!!setLead.hasNext}" title="Next Page"/>
+                                <apex:commandButton status="fetchStatus1" reRender="region,leads" value="Last >|" action="{!setLead.last}" disabled="{!!setLead.hasNext}" title="Last Page"/>
+                                <apex:outputText >{!(setLead.pageNumber * size)+1-size}-{!IF(AND(NOT(ISNULL(setLead.pageNumber)),(setLead.pageNumber * size)>noOfLeadRecords), noOfLeadRecords,(setLead.pageNumber * size))} of {!noOfLeadRecords}</apex:outputText>
+                                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                                    <apex:actionStatus id="fetchStatus1" startText="Fetching..." stopText=""/>
+                                </apex:outputPanel>
+                            </apex:panelGrid>
+                        </center>
+                    </apex:outputPanel>
+                    <div class="header" style="width:100%">
+                        <apex:outputText style="font-weight:bold;font-size:12px" value="{!IF(NOT(ISNULL(noOfRecords)),IF(noOfRecords>0,'Opportunity History','Opportunity History: No Opportunity History Found'),false)}"/>
+                    </div>
+                    <apex:outputPanel id="oppty">
+                        <apex:outputPanel id="region" style="overflow:scroll;height:300px;" layout="block" rendered="{!IF(NOT(ISNULL(noOfRecords)),IF(noOfRecords>0,true,false),false)}">
+                            <apex:pageBlockTable headerClass="headerDataList" value="{!Opptys}" width="100%" cellpadding="2px" id="pb" var="a" border="1" style="border-style:solid;border-width:.5px;font-size:11px;"  styleClass="tableClass" rendered="{!IF(NOT(ISNULL(noOfRecords)),IF(noOfRecords>0,true,false),false)}">
+                                <apex:repeat value="{!$ObjectType.Opportunity.FieldSets.NGCCSalesHistory}" var="f">
+                                    <apex:column value="{!a[f]}">    
+                                    </apex:column>
+                                </apex:repeat>
+                                <apex:column headervalue="Description">
+                                    <a class="tooltip" target="_blank">View
+                                        <span>
+                                            <img class="callout" src="{!strTooltip}" />
+                                            {!IF(ISBLANK(a.description),'No Description',a.description)}</span>
+                                    </a>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:outputPanel>
+                        <center>
+                            <apex:panelGrid columns="7" rendered="{!IF(NOT(ISNULL(noOfRecords)),IF(noOfRecords>0,true,false),false)}">
+                                <apex:commandButton status="fetchStatus" reRender="region,oppty" value="First |<" action="{!setOppty.first}" disabled="{!!setOppty.hasPrevious}" title="First Page"/>
+                                <apex:commandButton status="fetchStatus" reRender="region,oppty" value="Previous <" action="{!setOppty.previous}" disabled="{!!setOppty.hasPrevious}" title="Previous Page"/>
+                                <apex:commandButton status="fetchStatus" reRender="region,oppty" value="Next >" action="{!setOppty.next}" disabled="{!!setOppty.hasNext}" title="Next Page"/>
+                                <apex:commandButton status="fetchStatus" reRender="region,oppty" value="Last >|" action="{!setOppty.last}" disabled="{!!setOppty.hasNext}" title="Last Page"/>
+                                <apex:outputText >{!(setOppty.pageNumber * size)+1-size}-{!IF(AND(NOT(ISNULL(setOppty.pageNumber)),(setOppty.pageNumber * size)>noOfRecords), noOfRecords,(setOppty.pageNumber * size))} of {!noOfRecords}</apex:outputText>
+                                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                                    <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                                </apex:outputPanel>
+                            </apex:panelGrid>
+                        </center>
+                    </apex:outputPanel>
+                </apex:tab>
+                <!--<apex:actionFunction name="getContact" action="{!getMODSData}" rerender="contact,tabMarketingHistory" />-->
+                <apex:tab style="border:0px;background-color: white;height:120px;" immediate="false" label="Contact Marketing History" name="MarketingHistory" id="tabMarketingHistory">
+                    <apex:actionFunction name="MODSSearch" action="{!getMODSData}" rerender="contact,visibility" status="resize">               
+                        <apex:param name="node" value="" />
+                    </apex:actionFunction>
+                    <apex:outputPanel id="visibility">
+                        <apex:commandButton oncomplete="MODS_Search()" value="Marketing History"/>
+                        <apex:actionStatus id="resize" onstop="resizeIframe()"/>
+                        <apex:pageBlockSection >
+                            <apex:pageBlockSectionItem > </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem />
+                        </apex:pageBlockSection>
+                        <apex:dataTable headerClass="headerDataList" value="{!activities}" var="c" border="1" bgcolor="white"  width="100%" style="border-style:solid;border-width:.5px;font-size:11px;"  styleClass="tableClass" rendered="{!showMktg}" >
+                            <apex:column headerValue="Activity Date" value="{!c.activity_Date}"/>
+                            <apex:column headerValue="Activity Type" value="{!c.activity_Type}"/>
+                            <apex:column headerValue="Offer Name" value="{!c.offer_Name}"/>
+                            <apex:column headerValue="Offer Architecture" value="{!c.offer_Architecture}"/>
+                            <apex:column headerValue="Offer Type" value="{!c.offer_Type_Name}"/>
+                            <apex:column headerValue="Offer Description" value="{!c.offer_Description}"/>
+                            <apex:column headerValue="Call Status" value="{!c.call_Status}"/>
+                            <apex:column headerValue="Call Notes" value="{!c.call_Notes}"/>
+                        </apex:dataTable>
+                        <div class="header" style="width:100%">
+                            <apex:outputText style="font-weight:bold;font-size:12px" rendered="{!showNoMktg}">Marketing History: No Marketing History Found.</apex:outputText>
+                        </div>
+                    </apex:outputPanel>
+                </apex:tab>
+            </apex:tabPanel>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <script src="/soap/ajax/31.0/connection.js"></script>
+    <apex:includeScript value="{!$Resource.jquery}" />
+        <apex:includeScript value="{!$Resource.utilities}" />
+            <script type="text/javascript">
+                j$ = jQuery.noConflict();
+    </script>
+    <script language="javascript"> 
+    function ShowAlert() { alert("You are going to fetch contact history from MODS so please wait."); } 
+    
+    function MODS_Search() {
+        // SCAVA
+        var MODSCon = '{!JSENCODE(MODSConstring)}';
+        // SCAVA
+        sforce.connection.sessionId = "{!$Api.Session_ID}";
+        
+        var url = getConstant('NGCC MODS Marketing History','URL')+'?appid=MCC'
+        + '&partyid=' +MODSCon                 
+        + '&callbackFunction=?';
+        console.log(url);
+        
+        j$.ajax({
+            url : url,
+            type : 'get',
+            dataType : "jsonp",
+            callback : 'Test',
+            jsonpCallback : 'Test',
+            success : function(response) {
+                delete Array.prototype.toJSON;
+                MODSSearch(JSON.stringify(response));
+            }
+        });
+        
+    }
+    function resizeIframe() {
+        var me = window.name;
+        if (me) {
+            var iframes = parent.document.getElementsByName(me);
+            if (iframes && iframes.length == 1) {
+                height = document.body.offsetHeight;
+                //if (height <= 300) 
+                iframes[0].style.height = height + "px";
+                
+            }
+        }
+    }
+    resizeIframe(); 
+    
+    </script>
+</apex:page>

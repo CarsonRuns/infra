@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- GSPO Qualification --></label>
+        <name>GSPO_Qualification__c</name>
+        <relationshipLabel><!-- GSPO Qualification Revenues --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Revenue ($&apos;000) --></label>
+        <name>Revenue_000__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue Source --></label>
+        <name>Revenue_Source__c</name>
+        <picklistValues>
+            <masterLabel>Cisco Hypervisor</masterLabel>
+            <translation><!-- Cisco Hypervisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Nexus</masterLabel>
+            <translation><!-- Cisco Nexus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Other</masterLabel>
+            <translation><!-- Cisco Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco UCS</masterLabel>
+            <translation><!-- Cisco UCS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Ecosystems</masterLabel>
+            <translation><!-- Partner Ecosystems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Others</masterLabel>
+            <translation><!-- Partner Others --></translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>GSPO Qualification Revenue</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>GSPO Qualification Revenues</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>GSPO Qualification Revenue Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Please enter the Revenue value --></errorMessage>
+        <name>GSPO_Revenue_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select the Revenue Source --></errorMessage>
+        <name>Mandatory_Revenue_Source</name>
+    </validationRules>
+</CustomObjectTranslation>

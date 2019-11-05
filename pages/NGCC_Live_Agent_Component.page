@@ -1,0 +1,41 @@
+<apex:page standardController="Lead" >
+    
+    <apex:outputText rendered="{!OR(NOT(CONTAINS($UserRole.Name, 'N3')),ISBLANK($UserRole.Name))}">Your profile role does not have privileges to use this feature. Please collapse this sidebar to hide this message.</apex:outputText>
+    
+    <apex:iframe src="https://citile.cloudapps.cisco.com/?email={!Lead.Email}" rendered="{!AND((CONTAINS($UserRole.Name, 'N3')),NOT(ISBLANK($UserRole.Name)))}"/> 
+  
+     
+    <script language="javascript"> 
+    
+      function uiTheme() { 
+            var uiTheme ;
+            uiTheme = "{! $User.UIThemeDisplayed }";
+            if( uiTheme === 'Theme4d'){
+                return 'lightning';
+             }
+            else if( uiTheme === 'Theme2' || uiTheme === 'Theme3') {
+                return 'classic';
+            }
+        };
+    
+       function resizeIframe() {            
+          var me = window.name;
+          var newHeight = document.body.offsetHeight;         
+          uiTheme = uiTheme();
+          if(uiTheme === 'classic'){
+            if (me) {
+                var iframes = parent.document.getElementsByName(me);
+                if (iframes && iframes.length == 1) {
+                    //if (height <= 300) 
+                    iframes[0].style.height = newHeight + "px";                            
+                }
+            } 
+          }
+          else if(uiTheme === 'lightning'){
+                
+            window.parent.postMessage({ event: 'resize', height: newHeight , element: me}, "*");
+          }
+      }
+      resizeIframe(); 
+    </script>
+</apex:page>

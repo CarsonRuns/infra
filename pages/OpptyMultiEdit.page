@@ -1,0 +1,763 @@
+<!--
+Author          : 
+Release         : 
+Created         : 
+Functionality   : Multi Edit for Oppty List View and Based on Additional User Permission
+
+Modification History:
+****************************************************************************************************************
+Itrack#        Date        Author                        Change  
+US273885 - 02/21/19-        mkella-         Multi Edit w/o Assignment Logic for SE Users
+US281955 - 03/14/19         mkella          PSS/SE MultiEdit View Switch
+****************************************************************************************************************
+-->
+
+<apex:page standardController="Opportunity" recordSetVar="opportunities" sidebar="false" showHeader="true" extensions="OpptyMultiEdit_CTE" id="thePage" lightningStylesheets="true">
+    <!-- mkella- US281955 commented this code and moved this code to form id section to accomodate changes for SE and Specialist View-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <style>
+        .TH_Class
+        {
+            white-space: normal !important;
+        }
+    .hideme
+    {
+        display:none;
+        visibility:hidden;
+    }  
+    </style>
+    
+    <script>
+        /*
+        $(document).ready(function() {
+        $('.fixme').fixheadertable({
+            height  : 800
+            
+        });
+    });*/
+        </script>  
+    <!-- mkella- US281955 commented this code and moved this code to form id section to accomodate changes for SE and Specialist View-->
+    
+    <!-- <div style="color:#CC0000" id="ApexMsgsTop"/>  -->  
+    <apex:form id="theForm" >
+        
+        <!-- mkella- US281955 moved above code to this section to accomodate changes for SE and Specialist View-->
+        <!-- Moving code here -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script src="{!$Resource.jqueryfixheadertable}"></script>
+        <apex:stylesheet value="{!$Resource.base}" />
+        <apex:stylesheet value="{!$Resource.themefile}" />
+        <style>
+            .TH_Class
+            {
+            white-space: normal !important;
+            }
+            .hideme
+            {
+            display:none;
+            visibility:hidden;
+            }
+            <!--added by Kavya -->
+            <!--  .dropbtn {
+background-color: white;
+color: blue;
+padding: 4px;
+font-size: 14px;
+}-->
+            
+            .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-right:15px;
+            }
+            
+            /* Dropdown Content (Hidden by Default) */
+            .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            z-index: 1;
+            }
+            
+            /* Links inside the dropdown */
+            .btnCls {
+            float:left;
+            width: 100%;
+            text-align: left !important;
+            margin-left: 0px !important;
+            }
+            
+            
+            
+            /* Change color of dropdown links on hover */
+            .btnCls:hover {background-color: #ddd}
+            
+            .show {display:block;}
+            
+            .hide{
+            display:none;
+            }
+            
+            <!--ends here-->
+        </style>
+        
+        <script>
+        $(document).ready(function() {
+            $('.fixme').fixheadertable({
+                height  : 800
+                
+            });
+        });
+        //added by Kavya
+        $(document).ready(function() {
+            $('.sefixme').seFixHeaderTable({
+                height  : 800
+                
+            });
+        });
+        //ends here
+        //added by Shivi
+        function myInit() {
+            $(document).ready(function() {
+                $('.fixheader').fixheadertable({
+                    height  : 100
+                    
+                });
+            });
+        }
+        myInit();
+       
+        //added by Kavya
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        //ends here
+        </script>
+        
+        <!-- Moving code here End -->
+        <!-- mkella- US281955 moved above code to this section to accomodate changes for SE and Specialist View--> 
+        
+        <!-- ------------------------------------------------------------------------------- -->        
+        <!--                Modified By Naresh for 10/06/08 Lighnting Release start          -->
+        <!--  ------------------------------------------------------------------------------ -->
+        
+        <div style="color:#CC0000"><apex:pageMessages ></apex:pageMessages></div>
+        <input type="hidden" id="OpptyCount" value="{!OpptyCount}"/>
+        <!--US273885 -mkella: Added existingMultiEditUser boolean check and rendering pageblock based on existing user permission-->
+        <apex:pageBlock mode="edit" rendered="{!existingMultiEditUser}">
+            <apex:pageBlockButtons >            
+                <apex:commandButton action="{!ExtensionSave}"  value="Save" />            
+                <input type="button" class="btn" value="Cancel" onclick="goToOpptyHome();"/>
+            </apex:pageBlockButtons>
+            
+            
+            
+            <apex:pageBlockTable value="{!OpptyList}" var="oppty"  cellpadding="4"  id="Mulitoppty" styleclass="fixme">
+                <apex:column headerValue="Deal/Acct/Oppty Name" style="width:50px">
+                    <apex:outputPanel >
+                        {!oppty.DealID__c}
+                        <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 130px;" title="{!oppty.Account.Name}">{!oppty.Account.Name}</div>                                       
+                        <a target="_top"  href="/{!oppty.id}"><div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 130px;" title="{!oppty.Name}">{!oppty.Name}</div></a>
+                        
+                    </apex:outputPanel>
+                </apex:column>                                                                                  
+                
+                <apex:column headerValue="{!$ObjectType.opportunity.fields.stageName.label}" headerClass="headerClass"> 
+                    <apex:inputField value="{!oppty.stageName}" id="OPPTY_STAGE"/>
+                    <apex:actionSupport event="onchange" reRender="lostcancelled" /> 
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Closing Date</apex:facet>            
+                    <apex:inputField value="{!oppty.closedate}"/>
+                </apex:column>           
+                
+                <apex:column headervalue="Exp Product" headerClass="headerClass">
+                    
+                    <div class="INPUT_SHRINK">                       
+                        <!-- <apex:inputField value="{!oppty.Expected_Product__c}" required="true" style="width:90px" />-->
+                          <apex:inputField value="{!oppty.Expected_Product__c}" required="true" style="width:90px" rendered="{!NOT(CONTAINS(oppty.RecordType.Name, 'Renewals Opportunity'))}" />
+                        <apex:outputField value="{!oppty.Expected_Product__c}" style="width:90px" rendered="{!CONTAINS(oppty.RecordType.Name, 'Renewals Opportunity')}" />  
+
+                       
+                    </div>                  
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Exp Service</apex:facet>                        
+                    <div class="INPUT_SHRINK">            
+                        <!-- <apex:inputField value="{!oppty.Expected_Service__c}" required="true" style="width:90px"/>-->       
+                          <apex:inputField value="{!oppty.Expected_Service__c}" required="true" style="width:90px" rendered="{!NOT(CONTAINS(oppty.RecordType.Name, 'Renewals Opportunity'))}" />
+                        <apex:outputField value="{!oppty.Expected_Service__c}" style="width:90px" rendered="{!CONTAINS(oppty.RecordType.Name, 'Renewals Opportunity')}" /> 
+                       </div>                 
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.opportunity.fields.Description.label}</apex:facet>                        
+                    <div class="INPUT_SHRINK">            
+                        <apex:inputField value="{!oppty.Description}"/>
+                    </div>                  
+                </apex:column>  
+                
+                <!--<apex:column headerValue="Competitor" styleClass="requiredInput" > 
+                    <div class="requiredInput">        
+                        <apex:outputPanel layout="block" styleClass="requiredBlock"  rendered="{!NOT(CONTAINS(oppty.Competitors__c, ';'))}" />
+                        <apex:selectList id="Competitors"  size="1"  value="{!oppty.Competitors__c}" style="width: 80px" rendered="{!NOT(CONTAINS(oppty.Competitors__c, ';'))}" >
+                            <apex:selectOptions value="{!CompetitorsPicklist}"/>
+                        </apex:selectList> 
+                        <apex:outputPanel id="CompReqd"/>
+                    </div>
+                    <apex:outputField value="{!oppty.Competitors__c}"  rendered="{!CONTAINS(oppty.Competitors__c, ';')}" />
+                    
+                </apex:column> -->
+                <apex:column > 
+                    <apex:facet name="header">
+                        Competitor/<br/>Other Competitor
+                    </apex:facet>
+                    <div class="requiredInput">        
+                        <apex:outputPanel layout="block" styleClass="requiredBlock"  rendered="{!NOT(CONTAINS(oppty.Competitors__c, ';'))}" />
+                        <apex:selectList id="Competitors"  size="1"  value="{!oppty.Competitors__c}" style="width: 130px" rendered="{!NOT(CONTAINS(oppty.Competitors__c, ';'))}" >
+                            <apex:selectOptions value="{!CompetitorsPicklist}"/>
+                        </apex:selectList><br/>
+                        <apex:outputPanel id="CompReqd"/>
+                    </div>
+                    <apex:outputPanel >
+                        <center>
+                            <apex:outputField value="{!oppty.Competitors__c}"  rendered="{!CONTAINS(oppty.Competitors__c, ';')}" /><br/> 
+                            <br/> 
+                            <apex:inputField value="{!oppty.Other_Competitor__c}" />
+                        </center>
+                    </apex:outputPanel>
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Primary Partner</apex:facet>                        
+                    <div class="INPUT_SHRINK">            
+                        <apex:inputField value="{!oppty.Primary_Partner__c}"  style="width:90px"/>
+                    </div>                  
+                </apex:column>
+                
+                <apex:column headerValue="Win/Loss comms" >
+                    <apex:inputField value="{!oppty.Win_Loss_Comments__c}" id="Win_Loss_Comments_"  style="width: 80px"/>
+                </apex:column>       
+                
+                <apex:column headerValue="Lost/Can Reason" id="lostcancelled"> 
+                    <div class="INPUT_SHRINK">   
+                        <apex:inputField value="{!oppty.Lost_Cancelled_Reason__c}" required="true" style="width: 80px"/>  
+                    </div>                 
+                </apex:column> 
+                <apex:column style="width:20%">
+                    <apex:facet name="header" >Partner Req'd</apex:facet>
+                    <apex:inputField value="{!oppty.Partner_Required__c}" id="Partner_Required"  style="width: 10px"/>
+                </apex:column>                                                              
+            </apex:pageBlockTable>
+        </apex:pageBlock> 
+        
+        
+        <!-- start            Page Block for Specialist        -->
+        
+        <apex:outputPanel id="SpecialistPage" rendered="{!specialistPermission}">
+            <apex:pageBlock mode="edit" id="OpportunityTable" >
+                <apex:pageBlockButtons >
+                    <!-- mkella - US281955 SE and Specialist Change Start-->
+                    
+                    <apex:commandButton action="{!showSE}" value="Switch to SE View" reRender="SEPage,theForm" rendered="{!specialistSEPermission}"></apex:commandButton>
+                    
+                    <!-- mkella- US281955 SE and Specialist Change End -->
+                    <apex:commandButton action="{!processSelected}"  value="Save" />            
+                    <input type="button" class="btn" value="Cancel" onclick="goToOpptyHome();"/>
+                </apex:pageBlockButtons>
+                <!--<apex:pageBlockTable value="{!OpptyList}" var="oppty"  cellpadding="4"  id="Mulitoppty" styleclass="fixme">-->
+                <apex:pageBlockTable value="{!wrapOpportunityList}" var="wrapOppty"  cellpadding="4"  id="OpportunityList" styleclass="fixme">   
+                    <apex:column headerValue="Deal/Acct/Oppty Name" style="width:50px">
+                        <apex:outputPanel >
+                            {!wrapOppty.opp.DealID__c}
+                            <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 130px;" title="{!wrapOppty.opp.Account.Name}">{!wrapOppty.opp.Account.Name}</div>                                       
+                            <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 130px;" title="{!wrapOppty.opp.Name}"><a target="_top"  href="/{!wrapOppty.opp.id}">{!wrapOppty.opp.Name}</a></div>                            
+                        </apex:outputPanel>
+                    </apex:column>                                                                                                       
+                    <apex:column headerValue="{!$ObjectType.opportunity.fields.stageName.label}" headerClass="headerClass"> 
+                        <apex:outputField value="{!wrapOppty.opp.stageName}" id="OPPTY_STAGE"/>
+                        <apex:actionSupport event="onchange" reRender="lostcancelled" /> 
+                    </apex:column>                    
+                    <apex:column >
+                        <apex:facet name="header">Closing Date</apex:facet>            
+                        <apex:outputField value="{!wrapOppty.opp.closedate}"/>
+                    </apex:column>                              
+                    <apex:column headervalue="Exp Product" headerClass="headerClass">                        
+                        <div class="INPUT_SHRINK">                       
+                            <!--<apex:inputField value="{!wrapOppty.opp.Expected_Product__c}" required="true" style="width:90px"/>-->
+                            <apex:outputField value="{!wrapOppty.opp.Expected_Product__c}"  style="width:90px" />
+                        </div>                  
+                    </apex:column>                    
+                    <apex:column >
+                        <apex:facet name="header">Exp Service</apex:facet>                        
+                        <div class="INPUT_SHRINK">            
+                            <!--<apex:inputField value="{!wrapOppty.opp.Expected_Service__c}" required="true" style="width:90px"/>-->
+                            <apex:outputField value="{!wrapOppty.opp.Expected_Service__c}"  style="width:90px"/>
+                        </div>                  
+                    </apex:column>                   
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.opportunity.fields.Description.label}</apex:facet>                        
+                        <div class="INPUT_SHRINK">            
+                            <apex:outputField value="{!wrapOppty.opp.Description}"/>
+                        </div>                  
+                    </apex:column>                     
+                    <apex:column headerValue="Competitor" styleClass="requiredInput" > 
+                        <div class="requiredInput">        
+                            <apex:outputPanel layout="block" styleClass="requiredBlock"  rendered="{!NOT(CONTAINS(wrapOppty.opp.Competitors__c, ';'))}" />
+                            <!-- <apex:selectList id="Competitors"  size="1"  value="{!wrapOppty.opp.Competitors__c}" style="width: 80px" rendered="{!NOT(CONTAINS(wrapOppty.opp.Competitors__c, ';'))}" >
+<apex:selectOptions value="{!CompetitorsPicklist}"/>
+</apex:selectList> -->
+                            <apex:outputField id="Competitors"   value="{!wrapOppty.opp.Competitors__c}" style="width: 80px" rendered="{!NOT(CONTAINS(wrapOppty.opp.Competitors__c, ';'))}" />
+                            
+                            <apex:outputPanel id="CompReqd"/>
+                        </div>
+                        <apex:outputField value="{!wrapOppty.opp.Competitors__c}"  rendered="{!CONTAINS(wrapOppty.opp.Competitors__c, ';')}" />                       
+                    </apex:column>                             
+                    <apex:column >
+                        <apex:facet name="header">Primary Partner</apex:facet>                        
+                        <div class="INPUT_SHRINK">            
+                            <apex:outputField value="{!wrapOppty.opp.Primary_Partner__c}"  style="width:90px"/>
+                        </div>                  
+                    </apex:column>                
+                    <apex:column headerValue="Win/Loss comms" >
+                        <apex:outputField value="{!wrapOppty.opp.Win_Loss_Comments__c}" id="Win_Loss_Comments_"  style="width: 80px"/>
+                    </apex:column>                           
+                    <apex:column headerValue="Lost/Can Reason" id="lostcancelled"> 
+                        <div class="INPUT_SHRINK">   
+                            <!--<apex:inputField value="{!wrapOppty.opp.Lost_Cancelled_Reason__c}" required="true" style="width: 80px"/>  -->
+                            <apex:outputField value="{!wrapOppty.opp.Lost_Cancelled_Reason__c}"  style="width: 80px"/>  
+                        </div>                 
+                    </apex:column> 
+                    <apex:column style="width:20%">
+                        <apex:facet name="header" >Partner Req'd</apex:facet>
+                        <apex:outputField value="{!wrapOppty.opp.Partner_Required__c}" id="Partner_Required"  style="width: 10px"/>
+                    </apex:column>                    
+                    <!--
+<apex:column headerValue="TECHNOLOGIES" headerClass="headerClass"> 
+<apex:outputField value="{!wrapOppty.opp.Technology_Merge_Field__c}" id="Tech"/>                        
+</apex:column>
+<apex:column headerValue="SERVICES" headerClass="headerClass"> 
+<apex:outputField value="{!wrapOppty.opp.Service_Merge_Field__c}" id="Service"/>                        
+</apex:column> 
+-->
+                    <apex:column headerValue="Tech/Service" headerClass="headerClass">
+                        <apex:outputPanel >
+                            <apex:repeat value="{!wrapOppty.opp.OpportunityLineItems}" var="opptyLineItems" >
+                                <apex:outputPanel rendered="{!opptyLineItems.PriceBookEntry.ProductCode='Technology'}" >
+                                    <div style="white-space: normal;" title="{!opptyLineItems.Product2.Business_Entity__c}- {!FLOOR(opptyLineItems.Mix__c)}">
+                                        <a target="_blank"  href="/{!opptyLineItems.id}">{!opptyLineItems.Product2.Business_Entity__c}</a>                           
+                                        &nbsp;{!FLOOR(opptyLineItems.Mix__c)}
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:repeat>
+                            <br/>
+                            <apex:repeat value="{!wrapOppty.opp.OpportunityLineItems}" var="opptyLineItems" >
+                                <apex:outputPanel rendered="{!opptyLineItems.PriceBookEntry.ProductCode='Service'}">
+                                    <div style="white-space: normal;" title="{!opptyLineItems.Service_Category__c}- {!FLOOR(opptyLineItems.Mix__c)}">
+                                        <a target="_blank"  href="/{!opptyLineItems.id}">{!opptyLineItems.Service_Category__c}</a>
+                                        &nbsp;{!FLOOR(opptyLineItems.Mix__c)}
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:repeat>
+                        </apex:outputPanel>
+                    </apex:column>                  
+                    <apex:column headerValue="SPECIALIST ROLE" styleClass="requiredInput" > 
+                        <apex:selectList id="TeamRole"  value="{!wrapOppty.teamRole}" size="1"   style="width: 80px" multiselect="false" >
+                            <apex:selectOptions value="{!TeamRolePicklist}" />                                 
+                        </apex:selectList>                                                                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">ASSIGN
+                            <!--<apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>-->
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!wrapOppty.selected}" id="inputId"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:outputPanel>
+        <!-- end            Page Block for Specialist        -->
+        
+        <!-- Manikant Kella -Start US273885 Lightning Mar 2019- SE User Multi Edit --> 
+        <!-- Start  Page Block for SE User based on seUserPermission = true from controller    -->
+        
+        <apex:outputPanel id="SEPage" rendered="{!seUserPermission}"> 
+            <apex:actionStatus id="counterStatus">
+                <apex:facet name="start">
+                    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.75; z-index: 1000; background-color: grey;">
+                    </div>
+                    <div style="display: block;width: 100px;height: 100px;position: absolute;top: 50%;left: 50%;text-align: center;padding: 10px;font: normal 16px Tahoma, Geneva, sans-serif;border-radius: 5px;
+                                box-shadow: 5px 5px 31px 0px #000000;margin-left: -50px;margin-top: -50px;z-index: 1001; overflow: auto; background-color: white;">
+                        <div style="padding: 24px">
+                            <img src="/img/loading32.gif"/></div>
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+            <div class="se-view">
+                <apex:pageBlock mode="edit">
+                    <!--Added by Hari krishna : US328604-->             
+                    <apex:outputPanel > 
+                        <div id="spinner" class="spinner hide"/>
+                        <div style="float:left;">
+                            <apex:outputLabel value="Order of Operations"/>                    
+                            <li>Step 1 – Assignment Actions (use check boxes on left, then Action button)</li>                            
+                            <li>Step 2 – Update Oppty Fields (update fields, then Save button)</li>                    
+                        </div>
+                        <div style="float: right">
+                            
+                            <!--<apex:pageBlockButtons >            -->
+                            <!-- SE and Specialist Change Start-->
+                            
+                            <apex:commandButton action="{!showSpecialist}" value="Switch to Specialist View" reRender="SpecialistPage,theForm" rendered="{!specialistSEPermission}"/>
+                            
+                            <!-- SE and Specialist Change End -->
+                            <!--added by Kavya-->
+                            <div class="dropdown">
+                                <apex:commandButton styleClass="dropbtn" onclick="OpenMenu();return false;" value="Action"/>
+                                <div class="dropdown-content" id="myDropdown">
+                                    <apex:commandButton styleClass="btnCls" value="Assign Myself" action="{!seassignMyself}" reRender="SEPage,theForm" onclick="loadspinner()" status="counterStatus" /> 
+                                    <apex:commandButton styleClass="btnCls" value="Assign Someone Else" action="{!seAssignSomeoneElse}" reRender="SEPage,theForm,assignSomeone,assignSomeoneElse" oncomplete="myInit()"  rendered="{!isSEMOrSED}"/>
+                                    
+                                </div>
+                            </div>
+                            <!--ends here-->
+                            <apex:commandButton action="{!seUserSave}"  value="Save" />            
+                            <input type="button" class="btn" value="Cancel" onclick="goToOpptyHome();"/>
+                            
+                            <!--</apex:pageBlockButtons>-->
+                        </div>
+                        
+                    </apex:outputPanel><br/>
+                    <div style="clear: right;clear: left;">
+                        <apex:pageBlockTable value="{!seWrapperList}"  var="seOppty"  cellpadding="4"  id="OpportunityList" styleclass="sefixme"> 
+                            
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')" id="headerCheck" value="{!seOppty.headerSelected}"/>
+                                </apex:facet>
+                                <apex:inputCheckbox style="margin-left: 20%;" value="{!seOppty.selected}" id="inputId">
+                                    <apex:actionSupport event="onchange" action="{!checkBoxAction}" rerender="theBlock"/>
+                                </apex:inputCheckbox>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">
+                                    Deal/Acct/<br/>Oppty Name/Owner
+                                </apex:facet>
+                                
+                                <apex:outputPanel >
+                                    {!seOppty.seOpp.DealID__c}
+                                    <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 130px;" title="{!seOppty.seOpp.Account.Name}">{!seOppty.seOpp.Account.Name}</div>                                       
+                                    <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 130px;" title="{!seOppty.seOpp.Name}"><a target="_blank"  href="/{!seOppty.seOpp.id}">{!seOppty.seOpp.Name}</a></div>
+                                    <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 130px;" title="{!seOppty.seOpp.Owner.Name}">{!seOppty.seOpp.Owner.Name}</div>                                                                   
+                                </apex:outputPanel>
+                            </apex:column>                                                                                                       
+                            <apex:column headerValue="{!$ObjectType.opportunity.fields.stageName.label}/CLOSE DATE" headerClass="headerClass">                             
+                                <center>
+                                    <apex:outputField value="{!seOppty.seOpp.stageName}" id="OPPTY_STAGE"/> <br/>
+                                    <apex:outputField value="{!seOppty.seOpp.closedate}"/>      
+                                </center>
+                            </apex:column>    
+                            <!--Removed and appended to Stage Name: by: R.Hari Krishna:US328604 Jul 12,2019-->
+                            <!--<apex:column >
+<apex:facet name="header">Closing Date</apex:facet>            
+<center><apex:outputField value="{!seOppty.seOpp.closedate}"/></center>
+</apex:column> -->
+                            
+                            <apex:column >
+                                <apex:facet name="header">
+                                    Exp Product/<br/>Service ($000s)
+                                </apex:facet>
+                                
+                                <apex:outputPanel >
+                                    <center><apex:outputField value="{!seOppty.seOpp.Expected_Product__c}" /><br/>
+                                        <br/><apex:outputField value="{!seOppty.seOpp.Expected_Service__c}" /></center>                        
+                                    
+                                </apex:outputPanel>
+                                
+                            </apex:column>
+                            <apex:column headerValue="SE Status" headerClass="headerClass"> 
+                                <apex:inputField value="{!seOppty.seOpp.SE_Status__c}" id="SEStatus"/>                        
+                            </apex:column> 
+                            <apex:column >
+                                <apex:facet name="header">{!$ObjectType.opportunity.fields.Description.label}</apex:facet>                        
+                                <div class="INPUT_SHRINK">            
+                                    <apex:inputField value="{!seOppty.seOpp.Description}"/>
+                                </div>                 
+                            </apex:column>
+                            <!--<apex:column headerValue="Competitor" styleClass="requiredInput" > 
+                                <div class="requiredInput">        
+                                    <apex:outputPanel layout="block" styleClass="requiredBlock"  rendered="{!NOT(CONTAINS(seOppty.seOpp.Competitors__c, ';'))}" />
+                                    <apex:selectList id="Competitors"  multiselect="true" size="3"  value="{!seOppty.seOpp.Competitors__c}" style="width: 130px" rendered="{!NOT(CONTAINS(seOppty.seOpp.Competitors__c, ';'))}" >
+                                        <apex:selectOptions value="{!CompetitorsPicklist}"/>
+                                    </apex:selectList> 
+                                    <apex:outputPanel id="CompReqd"/>
+                                </div>
+                                <apex:outputField value="{!seOppty.seOpp.Competitors__c}"  rendered="{!CONTAINS(seOppty.seOpp.Competitors__c, ';')}" />                       
+                            </apex:column>-->
+                            <apex:column > 
+                                <apex:facet name="header">
+                                    Competitor/<br/>Other Competitor
+                                </apex:facet>
+                                <div class="requiredInput">        
+                                    <apex:outputPanel layout="block" styleClass="requiredBlock"  rendered="{!NOT(CONTAINS(seOppty.seOpp.Competitors__c, ';'))}" />
+                                    <apex:selectList id="Competitors"  multiselect="true" size="3"  value="{!seOppty.seOpp.Competitors__c}" style="width: 130px" rendered="{!NOT(CONTAINS(seOppty.seOpp.Competitors__c, ';'))}" >
+                                        <apex:selectOptions value="{!CompetitorsPicklist}"/>
+                                    </apex:selectList>
+                                    <apex:outputPanel id="CompReqd"/>
+                                 </div>
+                                <apex:outputPanel >
+                                    <center>
+                                        <apex:outputField value="{!seOppty.seOpp.Competitors__c}"  rendered="{!CONTAINS(seOppty.seOpp.Competitors__c, ';')}" /><br/> 
+                                        <br/>             
+                                        <apex:inputField value="{!seOppty.seOpp.Other_Competitor__c}"/>
+                                    </center>
+                                </apex:outputPanel>
+                            </apex:column>
+                            <apex:column headerValue="Tech/Service" headerClass="headerClass">
+                                <apex:outputPanel >
+                                    <apex:repeat value="{!seOppty.tech}" var="opptyLineItems" >
+                                        <apex:outputPanel rendered="{!(ROUND(opptyLineItems.techMixPercent,0))>0}">
+                                            <div style="white-space: normal;" title="{!opptyLineItems.techBE}- {!ROUND(opptyLineItems.techMixPercent,0)}%">
+                                                {!ROUND(opptyLineItems.techMixPercent,0)}% 
+                                                &nbsp; <a target="_blank"  href="/apex/QI_ProductUI_New?id={!seOppty.seOpp.id}">{!opptyLineItems.techBE}</a>
+                                                
+                                            </div>
+                                        </apex:outputPanel> 
+                                    </apex:repeat>
+                                    <br/>
+                                    <apex:repeat value="{!seOppty.service}" var="opptyLineItems" >
+                                        <apex:outputPanel rendered="{!(ROUND(opptyLineItems.serviceMixPercent,0))>0}">
+                                            <div style="white-space: normal;" title="{!opptyLineItems.serviceBE}- {!ROUND(opptyLineItems.serviceMixPercent,0)}%">
+                                                {!ROUND(opptyLineItems.serviceMixPercent,0)}%
+                                                &nbsp;<a target="_blank"  href="/apex/QI_ProductUI_New?id={!seOppty.seOpp.id}">{!opptyLineItems.serviceBE}</a>
+                                                
+                                            </div>
+                                        </apex:outputPanel>   
+                                    </apex:repeat>
+                                </apex:outputPanel>
+                            </apex:column>
+                            
+                            
+                            <!--Added by Hari Krishna : US328604 Start-->
+                            <apex:column id="secolid">
+                                <apex:facet name="header">
+                                    SE Count and <br/>Assignment
+                                </apex:facet>
+                                <apex:outputPanel id="OpportunityListTable">
+                                    SE Count: {!seOppty.seOpp.SE_Count__c}
+                                    <div class="se-assignment"> 
+                                        <table border = "1" cellpadding = "5" cellspacing = "5">
+                                            <tr>
+                                                <th title="Resource Name">Name</th>
+                                                <th title="Resource Role">Role</th> 
+                                                <th title="Resource Status">Status</th> 
+                                                <th title="Assignment Status">Assignment Status</th> 
+                                            </tr>
+                                            <apex:repeat value="{!seOppty.seOpp.Requests_and_Assignments__r}" var="reqResAssgn1" >  
+                                                <tr>
+                                                    <td>
+                                                        <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" title="{!reqResAssgn1.Resource_Name__r.Name}">
+                                                            <apex:outputPanel >
+                                                                <!--added by Kavya to display cec id -->
+                                                           {!LEFT(reqResAssgn1.Resource_Name__r.UserName,Find("@", reqResAssgn1.Resource_Name__r.UserName)-1)}                                                     
+                                                            </apex:outputPanel>
+                                                        </div>
+                                                    </td>
+                                                    <td title="{!reqResAssgn1.SE_SAGE_Role__c}">{!reqResAssgn1.SE_SAGE_Role__c}</td>  
+                                                    <td title="{!reqResAssgn1.Resource_Status__c}">{!reqResAssgn1.Resource_Status__c}</td>
+                                                    <td title="{!reqResAssgn1.Assignment_Status__c}">{!reqResAssgn1.Assignment_Status__c}</td>
+                                                </tr>
+                                                
+                                            </apex:repeat>      
+                                        </table>  
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:column>  
+                            <!--Added by Hari Krishna : US328604 End--> 
+                        </apex:pageBlockTable>
+                    </div>
+                </apex:pageBlock>
+            </div>
+        </apex:outputPanel>
+        <!-- End            Page Block for SE User        -->
+        <!-- Manikant Kella- End US273885 Lightning Mar 2019- SE User Multi Edit -->
+        
+        <apex:inputHidden id="GoToUrl" value="{!GoToUrl}"/> 
+        <!-- ------------------------------------------------------------------------------- -->        
+        <!--                Modified by Naresh for 10/06/08 Lighnting Release End            -->
+        <!--  ------------------------------------------------------------------------------ -->
+        
+        <apex:actionFunction name="passUserId" action="{!passUserId}" reRender="">
+                        <apex:param value="" name="myParam" assignto="{!radioHidden}"/>
+                    </apex:actionFunction>
+    </apex:form>
+    
+    <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.PUI_SR,'pui.css')}" />
+    <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.yui241,'build/container/assets/container.css')}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/yahoo-dom-event/yahoo-dom-event.js')}"></script> 
+    <script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/animation/animation-min.js')}"></script> 
+    <script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/container/container-min.js')}"></script> 
+    
+    <script>       
+        
+        var type = '{!$User.UIThemeDisplayed}';
+    var ApexMsgs = document.getElementById("{!$Component.thePage.ApexMsgs}");
+    var INTER_URL = "{!URLFOR($Resource.yui241,'assets/rel_interstitial_loading.gif')}";
+    
+    var NoOpptysMsg = 'Please select one or more valid opportunity(s).';
+    var goToUrl_El = document.getElementById("{!$Component.thePage.theForm.GoToUrl}");
+    var currentPageName = 'OpptyMultiEdit';
+    var ListView = '{!JSENCODE(prevListviewId)}'; <!--  Added By Naresh for 10/06/08 Lighnting Release   -->
+        
+        var Stage1 = '{!JSENCODE(Stage1)}';    <!-- Naresh: Encoding for SCAVA scan -->
+        var Stage2 = '{!JSENCODE(Stage2)}';   <!-- Naresh: Encoding for SCAVA scan -->
+        var Stage3 = '{!JSENCODE(Stage3)}';  <!-- Naresh: Encoding for SCAVA scan -->
+        var Stage4 = '{!JSENCODE(Stage4)}';   <!-- Naresh: Encoding for SCAVA scan -->
+        var Stage5 = '{!JSENCODE(Stage5)}';  <!-- Naresh: Encoding for SCAVA scan -->
+        
+        </script>
+    <script type="text/javascript" src="{!URLFOR($Resource.OpptyMultiEdit)}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.seFixHeaderTable)}"></script>
+    
+    <!--shivisri US259669- SE Evol - Engage Resource - Mass Assign Someone Else-->
+    <apex:form id="assignSomeone">
+        <apex:outputPanel id="assignSomeoneElse">
+            <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                
+                <apex:outputText value="{!errorMessage}" styleClass="errorMsg" rendered="{!displayError}" />
+                <br/>
+                Search By :&nbsp;&nbsp;&nbsp;
+                <apex:selectList id="getSelect" size="1" value="{!getSelected}">
+                    <apex:selectOptions value="{!searchBy}"></apex:selectOptions>
+                </apex:selectList> 
+                <!--<input id="searchKey" type="text" name="theTextInput" value="{!searchKey}"/>-->
+                <apex:inputText id="searchKey" value="{!searchKey}" onkeypress="ignoreEnterKey(event);" />
+                <apex:commandButton value="Search" action="{!search}" oncomplete="myInit()" rerender="assignSomeoneElse,thisTable" status="loading"/>
+                <br/><br/>
+                <apex:actionStatus id="loading">
+                    <apex:facet name="start">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.75; z-index: 1000; width:650px; background-color: grey;">
+                        </div>
+                        <div style="display: block;width: 100px;height: 100px;position: absolute;top: 50%;left: 50%;text-align: center;padding: 10px;font: normal 16px Tahoma, Geneva, sans-serif;border-radius: 5px;
+                                    box-shadow: 5px 5px 31px 0px #000000;margin-left: -50px;margin-top: -50px;z-index: 1001; overflow: auto; background-color: white;">
+                            <div style="padding: 24px">
+                                <img src="/img/loading32.gif"/></div>
+                        </div>
+                    </apex:facet>                                    
+                </apex:actionStatus>
+                <!--Data Table-->
+                <apex:outputPanel layout="block" styleclass="fixheader" id="thisTable">                    
+                    <apex:dataTable value="{!users}" var="user"
+                                    rowClasses="odd,even"> 
+                        
+                        <apex:column >
+                            <apex:facet name="header">Request</apex:facet>
+                            <input type="radio" name="userName" id="r1"
+                                   onclick="assignValue(this.value);" value="{!user}"/>
+                            <!--<apex:inputHidden value="{!radioHidden}" id="hidValId" />-->
+                            
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">First Name</apex:facet>
+                            <apex:outputText value="{!user.firstname}" />
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">Last Name</apex:facet>
+                            <apex:outputText value="{!user.lastname}"/>
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">Email</apex:facet>
+                            <apex:outputText style="width:100px; word-wrap:break-word; display:inline-block;" value="{!user.email}"/>
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">SE Role</apex:facet>
+                            <apex:outputText value="{!user.SE_SAGE_Role__c}"/>
+                        </apex:column>
+                    </apex:dataTable>
+                    <apex:outputText value="{!moreDataPresent}" styleClass="errorMsg" rendered="{!displayData}" />
+                </apex:outputPanel><br/>
+                Comments 
+                <apex:inputTextarea id="comments" value="{!commentsSec}"/><br/>
+                
+                <apex:commandButton value="Save" action="{!saveNClose}" onclick="this.onclick=function(){return false;}" rerender="assignSomeoneElse,SEPage,theForm" status="loading"/>
+                <apex:commandButton value="Save and New" action="{!saveNew}" rerender="assignSomeoneElse,OpportunityListTable" oncomplete="myInit()" status="loading"/>
+                <apex:commandButton value="Cancel" action="{!closePopup}" rerender="assignSomeoneElse" onclick="this.onclick=function(){return false;}" status="loading"/>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        
+    </apex:form>
+    <script language="JavaScript" type="text/javascript">
+    function assignValue(val){
+        var textVal=val;
+       // alert('ID is '+textVal);
+        passUserId(textVal);
+    }
+        
+    function ignoreEnterKey(e){
+        if ((window.event&&window.event.keyCode==13) || e.which==13) {
+            event.preventDefault();
+            return false;
+        } else {
+            return true;
+        };
+    } 
+    function loadspinner(){
+        var spinner  = document.getElementById("spinner");
+        spinner.classList.add("show");
+    }
+    </script>
+    <style type="text/css">
+        .se-view tr td{
+        border-color: #ccc!important;
+        border-bottom-width: 1px!important;
+        }
+        .se-assignment th,.se-assignment tr{
+        border: 1px solid rgb(221, 219, 218)!important;
+        }
+        .errorMsg{
+        color:red;
+        }
+        .custPopup{
+        background-color: white;
+        border-width: 2px;
+        border-style: solid;
+        border-color: grey;
+        z-index: 9999;
+        left: 45%;
+        padding:10px;
+        position: absolute;
+        /* These are the 3 css properties you will need to change so the popup 
+        displays in the center of the screen. First set the width. Then set 
+        margin-left to negative half of what the width is. You can add 
+        the height property for a fixed size pop up if you want.*/
+        width: 650px;
+        margin-left: -250px;
+        top:100px;
+        }
+        .popupBackground{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom:0;
+        right:0;
+        z-index: 9998;
+        }
+        
+    </style>
+</apex:page>

@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account_Plan_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Plan</label>
+        <referenceTo>Account_Plan__c</referenceTo>
+        <relationshipLabel>Customer Goals and Initiatives</relationshipLabel>
+        <relationshipName>Customer_Goals</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <description>Category of the customer’s goal.</description>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Business</fullName>
+                    <default>false</default>
+                    <label>Business</label>
+                </value>
+                <value>
+                    <fullName>IT</fullName>
+                    <default>false</default>
+                    <label>IT</label>
+                </value>
+                <value>
+                    <fullName>Marketing</fullName>
+                    <default>false</default>
+                    <label>Marketing</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Customer_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Clickable reference to the main customer contact associated with this goal. Users will be able to search and select the appropriate customer contact from a list of all the contacts in SFDC.</description>
+        <externalId>false</externalId>
+        <label>Customer Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>R00N30000001VfUqEAK</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Initiative_1__c</fullName>
+        <description>Customer Initiative Description</description>
+        <externalId>false</externalId>
+        <label>Customer Initiative 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Initiative_2__c</fullName>
+        <description>Customer Initiative Description</description>
+        <externalId>false</externalId>
+        <label>Customer Initiative 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Initiative_3__c</fullName>
+        <description>Customer Initiative Description</description>
+        <externalId>false</externalId>
+        <label>Customer Initiative 3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Initiative_4__c</fullName>
+        <description>Customer Initiative Description</description>
+        <externalId>false</externalId>
+        <label>Customer Initiative 4</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Source_Name__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Data Source Name</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_Completed__c</fullName>
+        <description>Date of completion of the goal.</description>
+        <externalId>false</externalId>
+        <label>Date Completed</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Deployment_No__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Deployment No</label>
+        <length>15</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Goal_Description__c</fullName>
+        <description>More information on the goal.  Integrated with Factiva.  Text field for a more detailed description of the goal. Users can use Factiva to populate this field. To do so, click the “Get Customer Goals (Source: Factiva)” link in the “Useful Links” section of the customer goal page.</description>
+        <externalId>false</externalId>
+        <label>Goal Description</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_1_Customer_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Customer Contact associated with customer initiative.</description>
+        <externalId>false</externalId>
+        <label>Initiative 1 Customer Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Customer Goals and Initiatives (Initiative 1 Customer Contact)</relationshipLabel>
+        <relationshipName>Customer_Goals_and_Initiatives_Contact1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Initiative_1_Other_Information__c</fullName>
+        <description>Other Customer Initiative Information</description>
+        <externalId>false</externalId>
+        <label>Initiative 1 Other Information</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_1_Status__c</fullName>
+        <description>Customer Initiative Implementation Status</description>
+        <externalId>false</externalId>
+        <label>Initiative 1 Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Open</fullName>
+                    <default>false</default>
+                    <label>Open</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initiative_1_Strategy__c</fullName>
+        <description>Customer Initiative Implementation Strategy</description>
+        <externalId>false</externalId>
+        <label>Initiative 1 Strategy</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_1_Tactics__c</fullName>
+        <description>Customer Initiative Implementation Tactics</description>
+        <externalId>false</externalId>
+        <label>Initiative 1 Tactics</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_1_Time_Frame__c</fullName>
+        <description>Customer Initiative Implementation Time</description>
+        <externalId>false</externalId>
+        <label>Initiative 1 Time Frame</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>0-12 months</fullName>
+                    <default>false</default>
+                    <label>0-12 months</label>
+                </value>
+                <value>
+                    <fullName>12-18 months</fullName>
+                    <default>false</default>
+                    <label>12-18 months</label>
+                </value>
+                <value>
+                    <fullName>18-36 Months</fullName>
+                    <default>false</default>
+                    <label>18-36 Months</label>
+                </value>
+                <value>
+                    <fullName>3-5 years</fullName>
+                    <default>false</default>
+                    <label>3-5 years</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initiative_1_Type_Customer_Actions_Taken__c</fullName>
+        <description>Customer Initiative Implementation Initiative Type/Customer Actions Taken</description>
+        <externalId>false</externalId>
+        <label>Initiative 1 Type/Customer Actions Taken</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_2_Customer_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Customer Contact associated with customer initiative.</description>
+        <externalId>false</externalId>
+        <label>Initiative 2 Customer Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Customer Goals and Initiatives (Initiative 2 Customer Contact)</relationshipLabel>
+        <relationshipName>Customer_Goals_and_Initiatives_Contact2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Initiative_2_Other_Information__c</fullName>
+        <description>Other Customer Initiative Information</description>
+        <externalId>false</externalId>
+        <label>Initiative 2 Other Information</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_2_Status__c</fullName>
+        <description>Customer Initiative Implementation Status</description>
+        <externalId>false</externalId>
+        <label>Initiative 2 Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Open</fullName>
+                    <default>false</default>
+                    <label>Open</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initiative_2_Strategy__c</fullName>
+        <description>Customer Initiative Implementation Strategy</description>
+        <externalId>false</externalId>
+        <label>Initiative 2 Strategy</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_2_Tactics__c</fullName>
+        <description>Customer Initiative Implementation Tactics</description>
+        <externalId>false</externalId>
+        <label>Initiative 2 Tactics</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_2_Time_Frame__c</fullName>
+        <description>Customer Initiative Implementation Time Frame</description>
+        <externalId>false</externalId>
+        <label>Initiative 2 Time Frame</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>0-12 months</fullName>
+                    <default>false</default>
+                    <label>0-12 months</label>
+                </value>
+                <value>
+                    <fullName>12-18 months</fullName>
+                    <default>false</default>
+                    <label>12-18 months</label>
+                </value>
+                <value>
+                    <fullName>18-36 Months</fullName>
+                    <default>false</default>
+                    <label>18-36 Months</label>
+                </value>
+                <value>
+                    <fullName>3-5 years</fullName>
+                    <default>false</default>
+                    <label>3-5 years</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initiative_2_Type_Customer_Actions_Taken__c</fullName>
+        <description>Customer Initiative Implementation Initiative Type/Customer Actions Taken</description>
+        <externalId>false</externalId>
+        <label>Initiative 2 Type/Customer Actions Taken</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_3_Customer_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Customer Contact associated with customer initiative.</description>
+        <externalId>false</externalId>
+        <label>Initiative 3 Customer Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Customer Goals and Initiatives (Initiative 3 Customer Contact)</relationshipLabel>
+        <relationshipName>Customer_Goals_and_Initiatives_Contact3</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Initiative_3_Other_Information__c</fullName>
+        <description>Other Customer Initiative Information</description>
+        <externalId>false</externalId>
+        <label>Initiative 3 Other Information</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_3_Status__c</fullName>
+        <description>Customer Initiative Implementation Status</description>
+        <externalId>false</externalId>
+        <label>Initiative 3 Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Open</fullName>
+                    <default>false</default>
+                    <label>Open</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initiative_3_Strategy__c</fullName>
+        <description>Customer Initiative Implementation Strategy</description>
+        <externalId>false</externalId>
+        <label>Initiative 3 Strategy</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_3_Tactics__c</fullName>
+        <description>Customer Initiative Implementation Tactics</description>
+        <externalId>false</externalId>
+        <label>Initiative 3 Tactics</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_3_Time_Frame__c</fullName>
+        <description>Customer Initiative Implementation Time Frame</description>
+        <externalId>false</externalId>
+        <label>Initiative 3 Time Frame</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>0-12 months</fullName>
+                    <default>false</default>
+                    <label>0-12 months</label>
+                </value>
+                <value>
+                    <fullName>12-18 months</fullName>
+                    <default>false</default>
+                    <label>12-18 months</label>
+                </value>
+                <value>
+                    <fullName>18-36 Months</fullName>
+                    <default>false</default>
+                    <label>18-36 Months</label>
+                </value>
+                <value>
+                    <fullName>3-5 years</fullName>
+                    <default>false</default>
+                    <label>3-5 years</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initiative_3_Type_Customer_Actions_Taken__c</fullName>
+        <description>Customer Initiative Implementation Initiative Type/Customer Actions Taken</description>
+        <externalId>false</externalId>
+        <label>Initiative 3 Type/Customer Actions Taken</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_4_Customer_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Customer Contact associated with customer initiative.</description>
+        <externalId>false</externalId>
+        <label>Initiative 4 Customer Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Customer Goals and Initiatives (Initiative 4 Customer Contact)</relationshipLabel>
+        <relationshipName>Customer_Goals_and_Initiatives_Contact4</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Initiative_4_Other_Information__c</fullName>
+        <description>Other Customer Initiative Information</description>
+        <externalId>false</externalId>
+        <label>Initiative 4 Other Information</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_4_Status__c</fullName>
+        <description>Customer Initiative Implementation Status</description>
+        <externalId>false</externalId>
+        <label>Initiative 4 Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Open</fullName>
+                    <default>false</default>
+                    <label>Open</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initiative_4_Strategy__c</fullName>
+        <description>Customer Initiative Implementation Strategy</description>
+        <externalId>false</externalId>
+        <label>Initiative 4 Strategy</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_4_Tactics__c</fullName>
+        <description>Customer Initiative Implementation Tactics</description>
+        <externalId>false</externalId>
+        <label>Initiative 4 Tactics</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Initiative_4_Time_Frame__c</fullName>
+        <description>Customer Initiative Implementation Time Frame</description>
+        <externalId>false</externalId>
+        <label>Initiative 4 Time Frame</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>0-12 months</fullName>
+                    <default>false</default>
+                    <label>0-12 months</label>
+                </value>
+                <value>
+                    <fullName>12-18 months</fullName>
+                    <default>false</default>
+                    <label>12-18 months</label>
+                </value>
+                <value>
+                    <fullName>18-36 Months</fullName>
+                    <default>false</default>
+                    <label>18-36 Months</label>
+                </value>
+                <value>
+                    <fullName>3-5 years</fullName>
+                    <default>false</default>
+                    <label>3-5 years</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initiative_4_Type_Customer_Actions_Taken__c</fullName>
+        <description>Customer Initiative Implementation Initiative Type/Customer Actions Taken</description>
+        <externalId>false</externalId>
+        <label>Initiative 4 Type/Customer Actions Taken</label>
+        <length>1500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_Information__c</fullName>
+        <description>Field used to capture any other important information relevant to better understand, and track the customer’s goal.</description>
+        <externalId>false</externalId>
+        <label>Other Information</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_URL__c</fullName>
+        <description>URL field for link to other relevant information.</description>
+        <externalId>false</externalId>
+        <label>Other URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Performance_Measurement__c</fullName>
+        <description>Metrics that will be tracked to quantify the goal. Use this field to understand how the Customer measures success/progress for this goal.</description>
+        <externalId>false</externalId>
+        <label>Performance Measurement</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SiteMapIdentifier__c</fullName>
+        <description>Determines how the record displays on the site map</description>
+        <externalId>false</externalId>
+        <formula>Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SiteMapIdentifier</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Account_Plan_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Account Plan Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Cust_Goal_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Cust Goal Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status of the goal.</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Open</fullName>
+                    <default>false</default>
+                    <label>Open</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Timeframe__c</fullName>
+        <description>Approximate time over which the customer will pursue this goal.</description>
+        <externalId>false</externalId>
+        <label>Timeframe</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>0-12 months</fullName>
+                    <default>false</default>
+                    <label>0-12 months</label>
+                </value>
+                <value>
+                    <fullName>12-18 months</fullName>
+                    <default>false</default>
+                    <label>12-18 months</label>
+                </value>
+                <value>
+                    <fullName>18-36 Months</fullName>
+                    <default>false</default>
+                    <label>18-36 Months</label>
+                </value>
+                <value>
+                    <fullName>3-5 years</fullName>
+                    <default>false</default>
+                    <label>3-5 years</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Customer Goals and Initiatives</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Customer Goal and Initiatives</label>
+    <nameField>
+        <label>Customer Goal</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Customer Goals and Initiatives</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Category__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Timeframe__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

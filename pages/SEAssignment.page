@@ -1,0 +1,254 @@
+<apex:page Controller="SE_Assignment_CT" tabstyle="Opportunity" title="Edit SE Assignment for {!Opportunity.Name}" id="SEA_page">
+<div style="color:#CC0000;font-weight:BOLD">{!Error_msg}</div>
+
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.yui241,'build/container/assets/container.css')}" />
+<script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/yahoo-dom-event/yahoo-dom-event.js')}"></script> 
+<script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/animation/animation-min.js')}"></script> 
+<script type="text/javascript" src="{!URLFOR($Resource.yui241,'build/container/container-min.js')}"></script> 
+
+<script language="javascript">
+
+var delRowNumId = "{!$Component.SEA_page.SEA_form.delRowNum}";
+var INTER_URL = "{!URLFOR($Resource.yui241,'assets/rel_interstitial_loading.gif')}";
+var submitPage = true;
+
+var OpptyId = "{!Opportunity.Id}";
+function cancel(){
+    top.location.href='/'+ OpptyId;
+}   
+
+function userMsg(msg){
+    document.getElementById('MSG_TOP').innerHTML = msg;
+    document.getElementById('MSG_BOTTOM').innerHTML = msg;  
+}
+
+var processingDialog = new YAHOO.widget.SimpleDialog("PROCESSING_DLG", {  
+        fixedcenter:true,
+        modal:true, 
+        close:false,
+        visible:false, 
+        draggable:false
+         }); 
+    //  processingDialog.setHeader('Processing....'); 
+        processingDialog.setBody('<center>Processing...</center><BR><image src="'+ INTER_URL +'" />'); 
+        processingDialog.render(document.body);     
+
+
+function validateSave(){
+    
+    submitPage=true;
+    var msg = '';
+    
+    userMsg(msg);
+    
+    var count = validateCount();
+    if(!count){
+        msg += 'At least One SE is required.<br>';
+    }
+
+    if (count){
+        var oneSe = partnerOrCsco();
+        if(!oneSe){
+            msg +=  'Enter one SE for each row.<br>';
+        }   
+        
+        var validContr = validateContribution();
+        if(!validContr){
+            msg +=  'Contribution % must total 100.<br>';
+        }       
+    
+        var onePrimary = validatePrimary();
+        if(!onePrimary){
+            msg +=  'Please select only one Primary Assignment Type.<br>';
+        }           
+    }
+
+    
+    if ( !count || !oneSe || !validContr || !onePrimary ){
+            submitPage = false;
+            userMsg(msg);
+    }   
+    else{
+        //alert('show dialog');submitPage = false;
+        processingDialog.show();
+    }
+}
+
+function setRowToDelete (id) {
+    var pieces=id.split(":");
+    var number=pieces[pieces.length-2]; 
+    document.getElementById(delRowNumId).value = number;    
+}
+
+function validateCount(){//ensures at least one SE has been added
+    var valid = true;
+    var inputs = document.getElementsByTagName('input');    
+    var sERowCount = 0;
+    for ( i=0; i < inputs.length; i++ ){
+        if ( inputs[i].id.indexOf('SE_PARTNER') != -1 ){
+            sERowCount = 1;
+        }
+    }
+    if (sERowCount == 0){document.getElementById('NO_SE_MSG').style.visibility = 'visible'; valid = false;}
+    return valid;
+}
+
+function partnerOrCsco(){//only one SE per row.
+    var inputs = document.getElementsByTagName('input');    
+    var valid = true; 
+    for ( i=0; i < inputs.length; i++ ){
+        if ( inputs[i].id.indexOf('SE_PARTNER') != -1 ){
+
+            var se_partner = inputs[i].value;
+            var se_csco_id = inputs[i].id.replace('SE_PARTNER','SE_CSCO');
+            var se_csco = document.getElementById(se_csco_id).value;
+            var se_msg_el = document.getElementById(inputs[i].id.replace('SE_PARTNER','SE_MSG'));
+            //se_msg_el.innerHTML = '';
+            se_msg_el.style.fontWeight='normal';
+            se_msg_el.style.color='black';
+
+            if ( (se_partner == '' && se_csco == '') || (se_partner.length > 0 && se_csco.length > 0) ){
+                se_msg_el.style.fontWeight='bold';
+                se_msg_el.style.color='#CC0000';
+                //se_msg_el.innerHTML = '< or >';
+                valid = false;
+            }
+        }
+    }
+    return valid;
+}
+
+function validateContribution(){
+    var inputs = document.getElementsByTagName('input');    
+    var valid = true;
+    var total = 0;
+    for ( i=0; i < inputs.length; i++ ){
+        if ( inputs[i].id.indexOf('SE_CONTRIBUTION') != -1 ){
+            var contr = inputs[i].value;
+            if ( contr > 100 || isNaN(contr) || contr < 0 ){
+                inputs[i].value = '';
+            }
+            else{
+                total += +contr;
+            }
+        }
+    }
+    if ( total != 100 ){
+        valid = false;
+    }       
+    return valid;   
+}       
+
+function validatePrimary(){
+    var valid = true;
+    var inputs = document.getElementsByTagName('SELECT');
+    var primaryCount = 0;
+    for ( i=0; i < inputs.length; i++ ){
+        if ( inputs[i].id.indexOf('SE_ASS_TYPE') != -1 ){   
+            if (inputs[i].value == 'Primary' ){
+                primaryCount++;
+            }
+        }
+    }
+    if ( primaryCount > 1 ){
+        valid = false;
+    }
+    return valid;
+}   
+
+function calculateContributionTotal(){
+    var inputs = document.getElementsByTagName('input');    
+    var total = 0;
+    for ( i=0; i < inputs.length; i++ ){
+        if ( inputs[i].id.indexOf('SE_CONTRIBUTION') != -1 ){
+            total += +inputs[i].value;
+        }
+    }       
+    document.getElementById('CONTR_TOTAL').innerHTML = total;   
+}
+function noDecimal(el){
+    el.value=Math.floor(el.value);
+}   
+
+</script>
+
+    <apex:sectionHeader title="Edit SE Assignment for {!Opportunity.Name}"/>
+    <apex:outputPanel id="SE_op"> 
+        <div id="MSG_TOP" style="color:#CC0000;font-weight:BOLD"></div> 
+        <apex:actionstatus id="SE_op_rerender_status">
+            <apex:facet name="start">
+                <center><table><tr><td align="center">
+                    Processing
+                </td></tr><tr><td>
+                    <img src="{!URLFOR($Resource.yui241,'assets/rel_interstitial_loading.gif')}" /> 
+                </td></tr></table></center>
+            </apex:facet>
+            <apex:facet name="stop">    
+                <apex:form id="SEA_form" onsubmit="return submitPage;"> 
+                    <apex:inputHidden id="delRowNum" value="{!RowNum}" />    
+                    <apex:pageBlock >
+                        <apex:pageBlockSection >
+                            <apex:dataTable value="{!assignments}" var="SE_Assignment__c" cellpadding="10px">
+                                <apex:column style="border-bottom:solid 1px #e3deb8;white-space: nowrap;">
+                                    <apex:facet name="header">
+                                        Cisco SE
+                                        <div id="NO_SE_MSG" style="visibility:hidden;font-weight:normal">No SE has been added</div>                                                                        
+                                    </apex:facet>
+                                    <apex:facet name="footer">&nbsp;</apex:facet>                                                                                                                           
+                                    <b>
+                                        <apex:commandLink value="Del" onclick="userMsg('');submitPage = true;setRowToDelete(this.id)" id="DEL_link" action="{!delSE}" rerender="SE_op" status="SE_op_rerender_status"/>
+                                    </b>
+                                    &nbsp;      
+                                    <apex:inputField ID="SE_CSCO" value="{!SE_Assignment__c.Cisco_SE__c}"/>
+                                    &nbsp;&nbsp;                                            
+                                    <apex:outputPanel ID="SE_MSG">&lt; or &gt;</apex:outputPanel>                                                                                                       </apex:column>
+                                <apex:column style="border-bottom:solid 1px #e3deb8;white-space: nowrap;">                
+                                    <apex:facet name="header">Partner SE</apex:facet>
+                                    <apex:facet name="footer">&nbsp;</apex:facet>                                                                                                                           
+                                    <apex:inputField ID="SE_PARTNER" value="{!SE_Assignment__c.Partner_SE__c}"/>
+                                </apex:column>                    
+                                <apex:column style="border-bottom:solid 1px #e3deb8;">                
+                                    <apex:facet name="header">Assignment Type</apex:facet>                
+                                    <apex:facet name="footer">&nbsp;</apex:facet>                                           
+                                    <apex:inputField ID="SE_ASS_TYPE" value="{!SE_Assignment__c.SE_Assignment_Type__c}"/>
+                                </apex:column>  
+                                <apex:column style="border-bottom:solid 1px #e3deb8;">                
+                                    <apex:facet name="header">Contribution %</apex:facet>                
+                                    <apex:facet name="footer"><div id="CONTR_TOTAL"/></apex:facet>                                                                                      
+                                    <apex:inputField ID="SE_CONTRIBUTION" value="{!SE_Assignment__c.Contribution__c}" onblur="noDecimal(this);calculateContributionTotal();"/>
+                                </apex:column>                                              
+                                <apex:column style="border-bottom:solid 1px #e3deb8;">                
+                                    <apex:facet name="header">Notify AM</apex:facet>                  
+                                    <apex:inputField value="{!SE_Assignment__c.Notify_AM__c}"/>
+                                </apex:column>  
+                                <apex:column style="border-bottom:solid 1px #e3deb8;">                
+                                    <apex:facet name="header">Notify SE</apex:facet>                  
+                                    <apex:inputField value="{!SE_Assignment__c.Notify_SE__c}"/>
+                                </apex:column>                                                                                                  
+                                <apex:column style="border-bottom:solid 1px #e3deb8;">                
+                                    <apex:facet name="header">Engagement Type</apex:facet>                
+                                    <apex:inputField value="{!SE_Assignment__c.SE_Engagement_Type__c}"/>
+                                </apex:column>                                      
+<!--                                <apex:column style="border-bottom:solid 1px #e3deb8;">                
+                                    <apex:facet name="header">Contribution Intensity</apex:facet>                  
+                                    <apex:inputField value="{!SE_Assignment__c.Contribution_Intensity__c}"/>
+                                </apex:column>                
+-->                             
+                            </apex:dataTable>
+                        </apex:pageBlockSection>
+<script language="javascript">
+    validateCount();
+    calculateContributionTotal();
+</script>                           
+                        <apex:pageBlockButtons >
+                            <apex:commandButton action="{!addSE}" value="Add" rerender="SE_op" status="SE_op_rerender_status" onclick="userMsg('');submitPage = true;" /> 
+                            <apex:commandButton action="{!save}" value="Save" onclick="validateSave();" />
+                            <input type="button" onclick="cancel();" value="Cancel" class="btn" />    
+                        </apex:pageBlockButtons>            
+                    </apex:pageBlock>      
+                </apex:form>    
+            </apex:facet>
+        </apex:actionstatus>
+        <div id="MSG_BOTTOM" style="color:#CC0000;font-weight:BOLD"></div>      
+    </apex:outputPanel>
+</apex:page>

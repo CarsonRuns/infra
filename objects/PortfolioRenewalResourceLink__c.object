@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>IconName__c</fullName>
+        <externalId>false</externalId>
+        <label>IconName</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Url__c</fullName>
+        <externalId>false</externalId>
+        <label>Url</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>To store static urls for each link in the portfolio page renewal resource component.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>PortfolioRenewalResourceLink</label>
+    <visibility>Public</visibility>
+</CustomObject>

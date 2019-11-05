@@ -1,0 +1,542 @@
+<apex:page showHeader="false" id="myPage">
+<apex:includeScript value="{!$Resource.jquery}"/>
+<apex:includeScript value="{!$Resource.SOFTPHONE_POPUP_VERSION_ZIP}"/>
+<apex:includeScript value="{!$Resource.cwicV1}"/>
+<script src="/support/api/27.0/interaction.js"></script>
+<script src="/soap/ajax/27.0/connection.js" type="text/javascript"></script>
+<script type="text/javascript">  
+sforce.connection.sessionId = "{!$Api.Session_ID}";
+    
+        var cucmServerIP;
+        var userID ;
+        var password; 
+    
+    function setLocalStorageValue(name,value){
+            localStorage.setItem(name, value);
+    }
+
+    function getLocalStorageValue(name){
+        return localStorage.getItem(name);
+    }
+
+    function setLocalStorageObject(key, value) {
+        setLocalStorageValue(key, JSON.stringify(value));
+    }
+
+    function getLocalStorageObject(key) {
+        var value = getLocalStorageValue(key);
+        return value && JSON.parse(value);
+    }
+        
+    var callList = {};
+    var outGoingCallLine;
+    function addActiveCall(activeCallObject, activeCallContainer)
+    {
+        var callWrapperInstance = {"Obj": activeCallObject, "divTag":activeCallContainer};
+        callList[activeCallObject.callId] = callWrapperInstance;
+        
+        /*if(!(callList[activeCallObject.callId]))
+        {
+            callList[activeCallObject.callId] = callWrapperInstance;
+        }*/
+    }
+    function removeDeadCall(activeCallId)
+    {
+        delete callList[activeCallId];
+    }
+    function clearCallList()
+    {
+        callList = {};
+    }
+    function getActiveCallObject(activeCallId)
+    {
+        return callList[activeCallId].Obj;
+    }
+    function getActiveCallContainer(activeCallId)
+    {
+        return callList[activeCallId].divTag;
+    }
+    // Verify the available lines based on the call type.
+    function getAvailableLine(callType)
+    {
+        var JabberL1CallId = localStorage.getItem('L1CallId');
+        var JabberL2CallId = localStorage.getItem('L2CallId');
+        var L1CallStatus = localStorage.getItem('L1CallState');
+        var L2CallStatus = localStorage.getItem('L2CallState');
+        if(callType == 'Incoming')
+        {
+            if(JabberL1CallId == 'null' || JabberL1CallId == null || L1CallStatus == 'OnHook' || L1CallStatus == 'Reorder')
+            {
+                return 'L1';
+            }
+            else if(JabberL2CallId == 'null' || JabberL2CallId == null || L2CallStatus == 'OnHook' || L2CallStatus == 'Reorder')
+            {
+                return 'L2';
+            }
+        }
+        else if(callType == 'Outgoing')
+        {
+            return outGoingCallLine;
+        }
+        return null;
+        
+    }
+    function isCallExist(callId)
+    {
+        var l1CallId = localStorage.getItem('L1CallId');
+        var l2CallId = localStorage.getItem('L2CallId');
+        
+        if(callList[callId] && l1CallId == callId)
+        {
+            return true;
+        }
+        else if(callList[callId] && l2CallId == callId)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    function getEngagedCallLine(callId)
+    {
+        var l1CallId = localStorage.getItem('L1CallId');
+        var l2CallId = localStorage.getItem('L2CallId');
+        if(callList[callId] && l1CallId == callId)
+        {
+            return 'L1';
+        }
+        else if(callList[callId] && l2CallId == callId)
+        {
+            return 'L2';
+        }
+        else
+        {
+            return null;
+        }
+    }
+    function updateLocalStorage(activeCallObj, LineInfo)
+    {
+        localStorage.setItem(LineInfo+'CallType',activeCallObj.callType);
+        localStorage.setItem(LineInfo+'CallId',activeCallObj.callId);
+        
+        // set call state only if any new response come from jabber
+        if(localStorage.getItem(LineInfo+'CallState') != activeCallObj.callState)
+        {
+            console.log("callState: " + activeCallObj.callState);
+            localStorage.setItem(LineInfo+'CallState',activeCallObj.callState);
+        }
+        
+        if(activeCallObj.callState == 'OnHook')
+        {
+            removeDeadCall(activeCallObj.CallId);
+        }
+        console.log("callType: " + activeCallObj.callType);
+        console.log("CallId: " + activeCallObj.callId);
+        console.log("callingPartyName: " + activeCallObj.callingPartyName);
+        console.log("callingPartyNumber: " + activeCallObj.callingPartyNumber);
+        console.log("calledPartyNumber: " + activeCallObj.calledPartyNumber);
+        console.log("caller: " + activeCallObj.caller);
+        
+    }
+    window.addEventListener("storage", storageEventHandler, false);
+    function storageEventHandler(e)
+    {
+        if(e.key == 'LoginMode' && e.newValue == 'Extension'){
+            window.close();
+        }
+        if (e.key == 'L1PhoneNumber' || e.key == 'L2PhoneNumber') 
+        {
+            outGoingCallLine = e.key.substr(0,2);
+            var callId = localStorage.getItem(outGoingCallLine+'CallId');
+            var callSate = localStorage.getItem(outGoingCallLine+'CallState');
+            console.log("trying to make out bound call ....");
+            if(e.newValue != 'null' && e.newValue != '' &&  (callId == null || callId == 'null' || callId == '' || callSate == 'OnHook' || callSate == 'Reorder'))
+            {
+                
+                makeCall(e.newValue);
+            }
+            else
+            {
+                outGoingCallLine = null;
+            }
+        }
+        if(e.key == 'L1EndCall' || e.key == 'L2EndCall')
+        {
+            if(e.newValue == 'true')
+            {
+                var endCallLineNo = e.key.substr(0,2);
+                var endCallId = localStorage.getItem(endCallLineNo+'CallId');
+                endCall('#'+callList[endCallId].divTag.attr("id"));
+            }
+        }
+        if(e.key == 'L1IsAnswered' || e.key == 'L2IsAnswered'){
+            var incomingCallLineNo = e.key.substr(0,2),incomingCallId = localStorage.getItem(incomingCallLineNo+'CallId');
+            if(e.newValue == 'Yes'){
+                answerCall('#'+callList[incomingCallId].divTag.attr("id"));
+            } else if(e.newValue == 'No'){
+                declineCall('#'+callList[incomingCallId].divTag.attr("id"));
+            }
+        }
+        if(e.key == 'L1Hold' || e.key == 'L2Hold')
+        {
+            if(e.newValue != null && e.newValue != 'null')
+            {
+                var holdCallLineNo = e.key.substr(0,2);
+                var holdCallId = localStorage.getItem(holdCallLineNo+'CallId');
+                if(e.newValue == 'true')
+                {
+                    holdCall('#'+callList[holdCallId].divTag.attr("id"));
+                }
+                else if(e.newValue == 'false')
+                {
+                   unholdCall('#'+callList[holdCallId].divTag.attr("id"));
+                }
+            }
+        } 
+        if(e.key == 'L1DTMFInput' || e.key == 'L2DTMFInput')
+        {
+            if(e.newValue != 'null' && e.newValue != null)
+            {
+                var DTMFLine = e.key.substr(0,2);
+                var DTMFCallId = localStorage.getItem(DTMFLine+'CallId');
+                $('#phonecontainer').cwic('sendDTMF',e.newValue,DTMFCallId);
+            }
+        }  
+        if(e.key == 'ConferenceWith')
+        {
+            if(e.newValue != 'null' && e.newValue != null)
+            {
+                var currentLineNo = e.newValue;
+                var sourceLineNo;
+                if(currentLineNo == 'L1')
+                {
+                    sourceLineNo = 'L2';
+                }
+                else if(currentLineNo == 'L2')
+                {
+                    sourceLineNo = 'L1';
+                }
+                var currentCallId = localStorage.getItem(currentLineNo+'CallId');
+                var SourceCallId = localStorage.getItem(sourceLineNo+'CallId');
+                console.log('*** Line#'+ currentLineNo + ' is conferenced with ' + sourceLineNo);
+                conferenceCall('#'+callList[SourceCallId].divTag.attr("id"), currentCallId);
+            }
+        }
+        if(e.key == 'TransferTo')
+        {
+            if(e.newValue != 'null' && e.newValue != null)
+            {
+                var currentLineNo = e.newValue;
+                var sourceLineNo;
+                if(currentLineNo == 'L1')
+                {
+                    sourceLineNo = 'L2';
+                }
+                else if(currentLineNo == 'L2')
+                {
+                    sourceLineNo = 'L1';
+                }
+                var currentCallId = localStorage.getItem(currentLineNo+'CallId');
+                var SourceCallId = localStorage.getItem(sourceLineNo+'CallId');
+                
+                transferCall('#'+callList[currentCallId].divTag.attr("id"), SourceCallId);
+            }
+        }  
+        /*if(e.key == 'Mute'){
+            if(e.newValue == 'true'){
+                muteAudio('#'+callContainer.attr("id"));
+            }
+            else if(e.newValue == 'false')
+            {
+               unmuteAudio('#'+callContainer.attr("id"));
+            }
+            
+        }*/
+        
+        /*if(e.key == 'IsAnswered')
+             {
+                if(e.newValue == 'yes')
+                {
+                    answerCall('#'+callContainer.attr("id"));
+                }
+                else if(e.newValue == 'no')
+                {
+                    declineCall('#'+callContainer.attr("id"));
+                }
+             }
+         */
+         
+    }
+       
+        $(document).ready(function() {
+            $('#ImageConnected').hide();
+            $('#ImageWindow').hide();
+            $('#devicedetails').hide();
+            populateCredentials();
+            resetLocalStorage();
+           console.log('####');
+           $('#phonecontainer').cwic('unregisterPhone',{
+                forceLogout : true,
+                complete: function() {
+                    console.log('phone is unregistered');
+                }
+           });
+        });
+        
+        $(document).keypress(function(e){
+              if(e.which==13){
+                  alert('Please press login button');
+              }
+        });
+        
+        function populateCredentials(){
+        var msg = '';
+        sforce.connection.sessionId = '{!$Api.Session_ID}';
+
+        try
+        {
+           var queryResult =  sforce.connection.query( "Select JabberUserID__c,CUCMServer__c,Jabber_Password__c From User where Id='" + '{!$User.Id}' + "'" );
+        }
+        catch(error) { alert (error);}
+        if (queryResult.size > 0) {
+        var records = queryResult.getArray('records');
+        for (var i = 0; i < records.length; i++) {
+           var user = records[i];
+           cucmServerIP = user.CUCMServer__c;
+           userID = user.JabberUserID__c;
+           password = user.Jabber_Password__c;
+        }
+        
+        if(cucmServerIP == ''){
+            $('#loginSection').hide(); 
+            $('#phone_mode_div').hide();
+            msg += '<div>Error: Jabber server details not configured in user profile. </div>';
+            msg += '<div style="width:25%;margin:0 auto;"><button type="button" id="jabberInterfaceClose">Close</button></div>'
+            $('#registrationStatus').html(msg);
+            $('#ImageConnected').hide();
+            $('#jabberInterfaceClose').live('click',function(){
+                window.close();
+            });
+        } else {
+            $('#userName').html('User ID: <font color="#A9F5E1" >'+userID +'</font>');
+            $('#CUCMServer').html('   CUCM: <font color="#A9F5E1" >'+cucmServerIP +'</font>' );
+        }
+        }
+    }
+        
+    window.onunload=function(){
+        if(localStorage['LoginMode'] != 'Extension'){
+            resetLocalStorage();
+        }
+        window.opener.location.reload(true);
+    };
+    function updateUIhandler(obj,activeCallContainer)
+    {
+        if(isCallExist(obj.callId))
+        {
+            addActiveCall(obj,activeCallContainer);
+            
+            var callLine = getEngagedCallLine(obj.callId);
+            if(obj.callType == 'Incoming' && localStorage.getItem(callLine + 'IsAnswered') != 'Yes' && obj.callState == 'Connected' &&
+                localStorage.getItem(callLine+'CallState') != obj.callState)
+            {
+                localStorage.setItem(callLine+'CallState', 'OffHook');
+                removeDeadCall(obj.callId);
+                return;
+                //console.log('*** about to run apex call');
+                //sforce.interaction.runApex('JabberPhoneUtils', 'createCallLog', 'strCallType='+obj.callType+'&strPhoneNumber='+obj.callingPartyNumber+'&strCallId='+obj.callId,insertLogCallBack);
+                //sforce.interaction.runApex('JabberPhoneUtils', 'createCallLog', 'strCallType=Incoming&strPhoneNumber=12345&strCallId=1');
+            }
+            updateLocalStorage(obj,getEngagedCallLine(obj.callId));
+            
+        }
+        /* find the available line by checking the call id in localstorage and
+         * place the new incoming call
+         */
+        else if(obj.callType == 'Incoming' && isCallExist(obj.callId) == false && 
+            getAvailableLine(obj.callType) != null && 
+            (obj.callState == 'Ringin' || obj.callState == 'Proceed'))
+        {
+        
+            var availableLine = getAvailableLine(obj.callType);
+            var engagedLine = availableLine == 'L1'? 'L2':'L1';
+            // show only one incoming call alert at the same time
+            if(localStorage.getItem(engagedLine+'CallState') != 'Ringin' && localStorage.getItem(engagedLine+'CallState') != 'Proceed')
+            {
+                localStorage.setItem(availableLine + 'CallId',obj.callId);
+                localStorage.setItem(availableLine + 'PhoneNumber',obj.callingPartyNumber);
+                addActiveCall(obj,activeCallContainer);
+                updateLocalStorage(obj,availableLine);
+            }
+        }
+        /* find the available line by checking the call id in localstorage and
+         * place the new incoming call
+         */
+        else if(obj.callType == 'Outgoing' && isCallExist(obj.callId) == false && 
+            getAvailableLine(obj.callType) != null && 
+            (obj.callState == 'Ringin' || obj.callState == 'Proceed'))
+        {
+            var availableLine = getAvailableLine(obj.callType);
+            console.log('**** Outgoing Line: '+ availableLine);
+            localStorage.setItem(availableLine + 'CallId',obj.callId);
+            
+            // reset the identifier to handle other calls
+            outGoingCallLine = null;
+            
+            addActiveCall(obj,activeCallContainer);
+            updateLocalStorage(obj,availableLine);
+        }
+        else
+        {
+            console.log("INFO: all the lines are active at this moment, can not handle this call");
+            console.log("INFO: callType is " + obj.callType);
+            console.log("INFO: callId is " + obj.callId);
+            console.log("INFO: callId is " + obj.callId);
+            console.log("callingPartyNumber: " + obj.callingPartyNumber);
+            console.log("calledPartyNumber: " + obj.calledPartyNumber);
+            
+            return;
+        }
+        
+    }  
+    function validate(){
+        password = document.getElementById('Password').value;
+        if(password == null || password == ''){
+            alert('Please populate the password');
+        }else{
+            //var phoneMode = $('#phoneModeSelect').val();
+            localStorage.setItem('PhoneMode','DeskPhone');
+            $('#loginSection').hide(); 
+            $('#phone_mode_div').hide();
+            fnConnect2(userID,password,cucmServerIP);
+        } 
+    }
+    function insertLogCallBack(response)
+    {
+        console.log('*** incoming call result '+ response);
+        
+        if (response.result) {
+            alert(response.result);
+        } else {
+            alert(response.error);
+        }
+
+        /*var callId = response.result[0];
+        var callLine = getEngagedCallLine(obj.callId);
+        if(response.result.length == 2)
+        {
+            localStorage.setItem(callLine+'EventId', response.result[2]);
+        }*/
+    }
+ </script>
+ <style>
+ #console {
+    position:relative;
+    left:0px;
+    right:0px;
+    display:hidden;
+}
+#userName {
+    position:relative;
+    background-color:#3db5dc;
+    color:#FFF;
+    padding:5px;
+    font-weight:bold;
+    left:0px;
+    right:0px;
+}
+#phone_mode_div {
+    position:relative;
+    background-color:#3db5dc;
+    color:#FFF;
+    padding:5px;
+    font-weight:bold;
+    left:0px;
+    right:0px;
+}
+#CUCMServer {
+    position:relative;
+    background-color:#3db5dc;
+    color:#FFF;
+    padding:5px;
+    font-weight:bold;
+    left:0px;
+    right:0px;
+}
+
+#password {
+    position:relative;
+    background-color:#A4A4A4;
+    color:#FFF;
+    padding:5px;
+    font-weight:bold;
+    left:0px;
+    right:0px;
+}
+body{
+    background-color:#E7F5FB;
+}
+#registrationStatus {
+    color : #ff0000;
+    font-weight : bold;
+    margin : 9px;
+}
+</style> 
+<body>
+<apex:form id="myForm">
+     <div id="phone_mode_div">
+        <!--<select id="phoneModeSelect" name="phoneModeSelect">
+            <option selected="selected" value="DeskPhone" >Desk phone</option>
+            <option  value="SoftPhone">Soft phone</option>
+        </select>  -->
+        Desk Phone Mode
+     </div>
+    <div id="loginSection">
+    <button type="button" id="JabberLoginFlag" value="null" style="display:none;"></button>
+    <table align='left' border='0' cellspacing="0">
+            <tr>
+                <div id="userName">User ID:</div>
+            </tr>
+             <tr>
+                <div id="CUCMServer">CUCM:</div>
+            </tr>
+
+              <tr id="password">
+                 <td size="15%">
+                     <font color="#FFF"> Password :</font>
+                </td>
+                <td>
+                    <!--apex:inputSecret styleClass="requiredInput" id="Password" style="Width: 100px;background-color: white;"/-->
+                    <input type="password" id="Password"></input>
+              <a id="loginlinkId" href="javascript: validate();">
+               <apex:image id="theLoginButton" value="{!URLFOR($Resource.JabberImages,'JabberImages/login_button.png')}" />
+               </a>
+                </td>
+             </tr>
+         </table>
+       </div>
+     <div id="phonecontainer"></div>   
+     <div id="registrationStatus"></div>
+     <div id="ImageConnected">
+        <!-- <apex:image value="{!$Resource.connected}" />   -->
+       <center> 
+           <apex:image value="{!URLFOR($Resource.JabberImages,'JabberImages/loading32.gif')}"/> <br/>
+           <apex:outputtext value="Connecting.." style="font-weight:bold;"/>
+        </center>
+     </div>
+     <div id="ImageWindow">
+         <!--apex:image value="{!$Resource.window}" /-->
+        <b> <span id="message"></span> </b><br/>
+         <b><span id="message1"></span></b>
+     </div>
+     <span id="loginStatus"></span>
+     <div id="devicedetails">
+            <label for="devices"><b>Device:</b></label><select id="devices"></select>
+            <button id="connectbtn" type="button">Connect</button>
+     </div>
+
+    </apex:form>
+    </body>
+</apex:page>

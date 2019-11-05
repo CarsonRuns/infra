@@ -1,0 +1,42 @@
+<apex:page standardController="Opportunity" extensions="Opportunity_Forecasting_Position_CT" showHeader="false" id="OpportunityForecastingPositionField" >
+<script>
+function isLightningDesktop() {
+return( "{!$User.UIThemeDisplayed }" == "Theme4d" || "{!$User.UIThemeDisplayed }" == "Theme4u" ||"{!$User.UIThemeDisplayed }" == "Theme4t" );
+}
+</script>
+<apex:slds />
+<apex:outputPanel rendered="{!($User.UITheme == 'Theme4d') || ($User.UITheme == 'Theme4u') || ($User.UITheme == 'Theme4t')}" >
+<div class="slds">
+{!Opportunity.Position__c}&nbsp;<a href="{!$Page.Forecast_Position_LX}?id={!Opportunity.Id}" id="tab-scoped-2__item">[Change]</a>
+</div>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!($User.UITheme == 'Theme3')}" >
+<apex:outputlabel styleClass="content-block" id="Position__c">{!Opportunity.Position__c}</apex:outputlabel>&nbsp;<apex:outputLink id="ChangeForecastingPosition" value="{!$Page.ForecastPosition}?id={!Opportunity.Id}" styleClass="content-block" target="_top">[Change]</apex:outputLink>
+</apex:outputPanel>
+
+<script>
+if( (typeof sforce != 'undefined') && (sforce != null) ) {
+    document.getElementById("{!$Component.ChangeForecastingPosition}").style.visibility = 'hidden';
+    var position = document.getElementById("{!$Component.Position__c}");
+    position.style.fontSize = '14px';
+    position.style.fontWeight = 'Normal';
+    position.style.color = '#3c3d3e';
+    position.style.fontFamily = 'ProximaNovaSoft-Regular';
+    
+    var hasInValidTech = {!JSENCODE(IF(redirectTechnology,"true", "false"))};             // Updated By Naresh for SCAVA Fix
+    var hasInValidServ =  {!JSENCODE(IF(redirectService,"true", "false"))};               // Updated By Naresh for SCAVA Fix
+    var hasForecastingPosition =  {!JSENCODE(IF(hasForecastingPosition,"true", "false"))};  //Updated By Naresh for SCAVA Fix
+
+    //Komal - 08/10/18 Lightning/Mobile Release - Verbiage Update on messages
+    if(!hasForecastingPosition){
+        alert('Change your Forecasting Position on desktop at this time.');
+    } else if( hasInValidTech && hasInValidServ ){
+            alert('Quote/Technology & Service is best performed on desktop.');
+    } else if ( hasInValidTech && !hasInValidServ ){
+        alert('Quote/Technology & Service is best performed on desktop.');
+    } else if ( !hasInValidTech && hasInValidServ ){
+        alert('Quote/Technology & Service is best performed on desktop.');
+    }
+}
+</script>
+</apex:page>

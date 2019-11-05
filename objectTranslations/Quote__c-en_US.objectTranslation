@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Name__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CBN Status --></label>
+        <name>CBN_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCW Deal Status --></label>
+        <name>CCW_Deal_Status_MQ__c</name>
+    </fields>
+    <fields>
+        <label><!-- CCW Deal Status_old --></label>
+        <name>CCW_Deal_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote ID --></label>
+        <name>DM_Quote_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal ID --></label>
+        <name>Deal_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Source --></label>
+        <name>Deal_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Type --></label>
+        <name>Deal_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expiration Date --></label>
+        <name>Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Initiated By --></label>
+        <name>Initiated_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integrate Status --></label>
+        <name>Integrate_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inprogress</masterLabel>
+            <translation><!-- Inprogress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passed</masterLabel>
+            <translation><!-- Passed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Integrated Quote --></label>
+        <name>Integrated_Quote__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Collaborated? --></label>
+        <name>Is_Collaborated__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Dummy Quote --></label>
+        <name>Is_Dummy_Quote__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Finalized --></label>
+        <name>Is_Finalized__c</name>
+    </fields>
+    <fields>
+        <label><!-- Non Standard Status --></label>
+        <name>Non_Standard_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Deal ID --></label>
+        <name>Old_Deal_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Partner Account ID --></label>
+        <name>Old_Partner_Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Deal Type --></label>
+        <name>Opportunity_Deal_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Opportunity_Name__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Owner ID --></label>
+        <name>Opportunity_Owner1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Status --></label>
+        <name>Opportunity_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner --></label>
+        <name>PartnerAcctId__c</name>
+        <relationshipLabel><!-- Quotes (Partner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner --></label>
+        <name>Partner_del__c</name>
+    </fields>
+    <fields>
+        <help><!-- The list of all flags applied to this Quote object.
+&apos;Archived&apos; indicates that the quote has been archived in CCW and is only available by opening a case --></help>
+        <label><!-- Quote Flags --></label>
+        <name>Quote_Flags__c</name>
+        <picklistValues>
+            <masterLabel>Archived</masterLabel>
+            <translation><!-- Archived --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote Last Modified By --></label>
+        <name>Quote_Last_Modified_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Last Updated --></label>
+        <name>Quote_Last_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Product List Amount --></label>
+        <name>Quote_Product_List_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Product Net Amount --></label>
+        <name>Quote_Product_Net_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Service List Amount --></label>
+        <name>Quote_Service_List_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Service Net Amount --></label>
+        <name>Quote_Service_Net_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- If a opportunity is having three quotes then Only One Quote can be &apos;Finalized&apos;. Remaining al quote will be &apos;Unfinalized&apos; --></help>
+        <label><!-- Quote Status --></label>
+        <name>Quote_Status__c</name>
+        <picklistValues>
+            <masterLabel>Finalized</masterLabel>
+            <translation><!-- Finalized --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unfinalized</masterLabel>
+            <translation><!-- Unfinalized --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote Summary --></label>
+        <name>Quote_Summary_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Summary --></label>
+        <name>Quote_Summary__c</name>
+        <relationshipLabel><!-- Quotes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales Account View --></label>
+        <name>Sales_Account_View__c</name>
+    </fields>
+    <fields>
+        <label><!-- Territory --></label>
+        <name>Territory__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Quote</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quotes</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Partner Quote Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- Deal_Consumption --></label>
+        <name>Deal_Consumption</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Integrate_Quote --></label>
+        <name>Integrate_Quote</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Quote_Overview --></label>
+        <name>Quote_Overview</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Cisco_Commerce_Quotes --></label>
+        <name>View_Cisco_Commerce_Quotes</name>
+    </webLinks>
+</CustomObjectTranslation>

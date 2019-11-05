@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used to grant additional permission to Partner Admin users</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>SCP_Communities_partnerAdminPermSet</label>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Assigned_Partner__c.Assigned_Partner_Sales_Rep_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Assigned_Partner__c.Assigned_Partner_Sales_Rep_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Assigned_Partner__c.Assigned_Partner_Sales_Rep__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.PSR_1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.PSR_2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.PSR_3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+</PermissionSet>

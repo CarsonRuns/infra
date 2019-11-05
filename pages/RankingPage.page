@@ -1,0 +1,46 @@
+<apex:page standardController="Ranking__c" extensions="RankingEdit" standardStylesheets="true" >
+
+    <apex:pageMessages />
+    <apex:form >
+       <apex:sectionHeader title="Ranking Edit" />
+       <apex:pageBlock id="p1b" >
+                 <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!saveRank}" value="Save" id="save"/>
+                 <apex:commandButton action="{!cancel}" value="Cancel" id="cancel"/>
+           </apex:pageBlockButtons>
+           <br/> 
+           Region:&nbsp; <apex:outputField id="Theatre" label="Region: " value="{!Ranking__c.Theatre__c}"/>     <br/>   <br/>   
+           Attribute Name:&nbsp; <apex:inputField id="AttrName" label="Attribute Name: " value="{!Ranking__c.Attribute_Name__c}"/> <br/><br/>
+           Attribute Value:&nbsp; <apex:inputField id="AttrVal" label="Attribute Value: " value="{!Ranking__c.Attribute_Value__c}"/> <br/><br/>
+           Attribute Ranking:&nbsp; <apex:inputField id="AttrRank" label="Attribute Ranking" value="{!Ranking__c.Attribute_Ranking__c}"/> <br/><br/>
+         
+           
+		Created by:&nbsp; <apex:outputField id="createdBy" label="Created By:" value="{!Ranking__c.CreatedbyID}" />
+  
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="pb">
+            <script>twistSection(document.getElementById("{!$Component.section1}").childNodes[0].childNodes[0]); </script>
+            <apex:pageBlockTable value="{!ranks}" var="r" width="20">
+                <apex:column headerValue="Action">
+                    <apex:outputLink target="_parent" value="/{!r.id}/e?retURL=%2Fa4k%3Ffcf%3D00B18000000MHWo%26rolodexIndex%3D-1%26page%3D1">Edit</apex:outputLink>
+                    </apex:column> 
+                    <apex:column value="{!r.Theatre__c}" />  
+                    <apex:column value="{!r.Attribute_Name__c}" />
+                    <apex:column value="{!r.Attribute_Value__c}" />  
+                    <apex:column value="{!r.Attribute_Ranking__c}" />
+           	</apex:pageBlockTable>
+                                <apex:panelGrid columns="7">
+                                <apex:commandButton status="fetchStatus" reRender="pb" value="|<" action="{!first}" disabled="{!!hasPrevious}" title="First Page"/>
+                                <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!previous}" disabled="{!!hasPrevious}" title="Previous Page"/>
+                                <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!next}" disabled="{!!hasNext}" title="Next Page"/>
+                                <apex:commandButton status="fetchStatus" reRender="pb" value=">|" action="{!last}" disabled="{!!hasNext}" title="Last Page"/>
+                                <apex:outputText >{!(pageNumber * size)+1-size}-{!IF((pageNumber * size)>noOfRecords, noOfRecords,(pageNumber * size))} of {!noOfRecords}</apex:outputText>
+                               
+                                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                                <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                                </apex:outputPanel>
+                                </apex:panelGrid>
+                                </apex:pageBlock>
+                                </apex:form>
+                                </apex:page>

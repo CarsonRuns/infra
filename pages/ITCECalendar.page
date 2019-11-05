@@ -1,0 +1,1036 @@
+<apex:page standardStylesheets="true" Controller="ITCECalendarCtrl" cache="false" sidebar="false" showHeader="true">
+<apex:stylesheet value="{!URLFOR($Resource.Calendar, 'css/Standard/bootstrap.min.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.Calendar, 'css/fullcalendar.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.Calendar, 'css/calendarPage.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.Calendar, 'css/loader.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.Calendar, 'css/Standard/select.css')}"/>
+
+
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/Standard/jquery-3.1.1.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/Standard/angular.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/Standard/ui-bootstrap-tpls-2.2.0.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/Standard/moment.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/Standard/jstz.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/Standard/moment-timezone-with-data.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/scripts/fullcalendar.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/scripts/uiCalendarAppLoader.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/scripts/Controller/uiCalendarCtrl.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/scripts/Directive/uiCalendarDirective.js')}"/>
+
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/Standard/angular-animate.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/Standard/angular-sanitize.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Calendar, 'js/Standard/select.js')}"/>
+
+
+
+<html lang="en" ng-app="calendarApp" id="top">
+<head>
+
+
+<title>ITCE Calendar</title>
+<style>
+.modal-body {
+    overflow-x: auto;
+    overflow-y: auto;
+
+    word-wrap: break-word;
+}
+.presenterhighlight {
+    background-color: #00a0d6; ;
+    color: white;
+}
+.selectheight {
+height:25px;
+
+}
+.presenterhighlight a {
+    color: white !important;
+    text-decoration: none !important;
+}
+.tablowermargin {
+    margin-top: 10px;
+}
+.table,.table thead th{
+text-align:center;
+}
+.timezonenote {
+    color:red;
+    margin-bottom:-10px !important;
+}
+.summary tbody td{
+  border-top: none !important;
+  text-align:left !important;
+}
+.summary{
+    margin-bottom:0;
+}
+.summarypanel {
+   margin-top:20px;
+   margin-bottom: -5px;
+
+}
+.table-borderright {
+  /*border-right: 1px solid !important;*/
+  border-color: #dddddd !important;
+ width: 1%;
+ white-space: nowrap;
+}
+.table-borderleft::before {
+    content: ":";
+}
+.button{
+    color: black !important;
+}
+
+.btn-primary
+{
+    color: black !important;
+ }
+.modal-dialog .modal-lg {
+        width: 130% !important;
+    }
+
+.calendarloader {
+    text-align: center;
+    height: 100px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.panel-primary
+{
+    border-color: white !important;
+}
+
+.with-nav-tabs.panel-primary .nav-tabs > li > a,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+    color: black;
+}
+.with-nav-tabs.panel-primary .nav-tabs > .open > a,
+.with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+    color: #337ab7;
+    background-color: #f0f0f0;
+    border-color: #f0f0f0; !important
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+    color: #f0f0f0;
+    background-color: #337ab7;
+    border-bottom-color: #f0f0f0; !important
+}
+
+
+</style>
+</head>
+<body data-spy="scroll">
+    <div class="ng-cloak">
+        <section id="directives-calendar" ng-controller="CalendarCtrl">
+        <div class="panel with-nav-tabs panel-primary" ng-if="isShadower=='true'">
+
+        <span >
+            <div><ul class="nav nav-tabs nav-justified">
+              <li ng-class="{active:isSet('presenter')}"><a href="#tab1primary" ng-click="setTab('presenter')">Presenter view</a></li>
+              <li ng-class="{active:isSet('shadower')}"><a href="#tab2primary" ng-click="setTab('shadower')">Shadower view</a></li>
+            </ul></div>
+        </span>
+        
+         </div>
+            <div class="well">
+                <div class="row-fluid">
+                    <div class="pull-right" style="font-size:12px;margin-bottom:10px">
+                      <div class="row">
+
+                      <!-- Dropdowns -->
+                      <span ng-if="isPmScheduler=='true'">
+                      Requests: <select ng-model="schedulerFilter.selected" class="selectheight" ng-options="item for item in schedulerFilterValues" ng-change="changeSchedulerView()"></select>
+                      </span>
+                      Agenda: <select ng-model="agendaFilter.selected" class="selectheight" ng-options="item for item in agendaFilterValues|orderBy:'toString()'" ng-change="hasChanged()"></select>
+                      <span ng-if="isPmScheduler=='true' || isShadower=='true'">
+                          <span ng-if= "isShadower=='false'">
+                              Presenter: <select ng-model="presenterFilter.selected" class="selectheight" ng-options="item.Name for item in presenterFilterValues|orderBy:'Name'" ng-change="presenterHasChanged()"></select>
+                          </span>
+                          <span ng-if="isShadower=='true'">
+                              <span ng-hide="isSet('presenter')">
+                                  Presenter: <select ng-model="presenterFilter.selected" class="selectheight" ng-options="item.Name for item in presenterFilterValues|orderBy:'Name'" ng-change="presenterHasChanged()"></select>
+                              </span>
+                         </span>
+                      </span>
+                      CXC Location: <select ng-model="locationFilter.selected" class="selectheight" ng-options="item for item in filterValues" ng-change="hasChanged()"></select>
+                      </div>
+
+                      </div>
+
+                </div>
+                <div class="row-fluid">
+                    <div class="btn-toolbar" ng-if="showCalendar && !noSessions">
+                        <div class="btn-group">
+                            <button class="btn btn-info button" ng-click="changeView('agendaDay', 'myCalendar')"> Day </button>
+                            <button class="btn btn-info button" ng-click="changeView('agendaWeek', 'myCalendar')"> Week </button>
+                            <button class="btn btn-info button" ng-click="changeView('month', 'myCalendar')"> Month </button>
+                        </div>
+                    </div>
+
+                    <!-- calling the calendar directive to display the calendar -->
+
+                    <div ng-if="showCalendar && !noSessions">
+                    <div  class="calendar" ng-model="eventSources" calendar="myCalendar"
+                         ui-calendar="uiConfig.calendar"></div>
+                         </div>
+                         <div ng-if="!showCalendar" style="height:400px">
+                         <div class="calendarloader"><p>The Calendar is loading. Please wait ...</p>
+                           <div class="loader"></div>
+                           </div>
+                         </div>
+                         <div ng-if="noSessions && isShadower=='false'" style="height:400px">
+                         <div class="calendarloader">You do not have any Customer engagement</div>
+                         </div>
+                         <div ng-if="noSessions && isShadower=='true' && view=='shadower'" style="height:400px">
+                         <div class="calendarloader">The presenter is not available to shadow. Please select another presenter</div>
+                         </div>
+                        <div ng-if="noSessions && isShadower=='true' && view=='presenter'" style="height:400px">
+                         <div class="calendarloader">You do not have any Customer engagement</div>
+                         </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
+
+<!-- Modal Template begins here -->
+
+<script type="text/ng-template" id="modaltemplate.html">
+<div class="modal-header">
+    <button class="close" type="button" ng-click="cancel()">
+        <span aria-hidden="true">X</span>
+    </button>
+
+    
+    <div class="panel panel-default summarypanel" style="font-size:13px !important;">
+        <div class="panel-body">
+            <table class="table summary">
+                <tbody>
+                    <tr>
+                        <td class="table-borderright">Account</td>
+                        <td>: {{event.account}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-borderright">Request ID</td>
+                         <td ng-if="isShadower=='true' && isSet('shadower')">: {{event.requestid}}</td>
+                         <td ng-if="isShadower=='true' && isSet('presenter')">: <a ng-href="{{instanceURL}}/{{event.ceeObjectID}}" target="_blank">{{event.requestid}}</a> </td>
+                         <td ng-if="isShadower!='true'">: <a ng-href="{{instanceURL}}/{{event.ceeObjectID}}" target="_blank">{{event.requestid}}</a></td>
+                    </tr>
+                    <tr>
+                        <td class="table-borderright">Briefing Type</td>
+                        <td>: {{event.BriefingType}}</td>
+                    </tr>
+
+                    <tr ng-show="event.EBCLocation">
+                        <td class="table-borderright">EBC Location</td>
+                        <td>: {{event.EBCLocation}} {{event.Room}}</br>
+                        <p class="timezonenote">* PLEASE REFER TO OUTLOOK INVITE FOR EBC LOCATION <p>
+                        </td>
+                    </tr>
+                    <tr ng-hide="isShadower=='true' && isSet('shadower')">
+                        <td class="table-borderright">Point of Contact</td>
+                        <td>: {{event.poc}}</br>
+                        <p class="timezonenote">* TIME IS DISPLAYED ACCORDING TO YOUR LAPTOP TIMEZONE <p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-body" id="modal-body">
+    
+    <!-- For presenter view -->
+    <span ng-if="isSet('presenter')">
+        <uib-tabset active="active"> <uib-tab index="0"
+        heading="Agenda">
+    <table class="table table-condensed table-striped" style="font-size:12px !important;">
+        <thead>
+            <tr>
+                <th>Presenter</th>
+                <th>Topic</th>
+                <th>Email</th>
+                <th>Presenter Title</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="sessions in event.allsessions">
+                <td  ng-class="cssselector(sessions.email)">{{sessions.presenter }}</td>
+                <td ng-class="cssselector(sessions.email)">{{ sessions.topic }}</td>
+                <td ng-show="sessions.salesforceuser == true" ng-class="cssselector(sessions.email)"><a ng-href="http://wwwin-tools.cisco.com/dir/reports/{{sessions.email}}" target="_blank">{{sessions.email}}</a></td>
+                <td ng-show="sessions.salesforceuser == false" ng-class="cssselector(sessions.email)">{{sessions.email}}</td>
+                <td ng-class="cssselector(sessions.email)" ng-bind-html="sessions.title | break"></td>
+                <td ng-class="cssselector(sessions.email)">{{sessions.starttime | date:'MM/dd/yyyy'}} </br>{{sessions.starttime | date:'hh:mm a'}} {{sessions.starttime | timezone}}</td>
+                <td ng-class="cssselector(sessions.email)">{{sessions.endtime | date:'MM/dd/yyyy'}} </br>{{sessions.endtime | date:'hh:mm a'}} {{sessions.endtime | timezone}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </uib-tab> <uib-tab index="1" heading="Customer Attendees">
+    <div class="tablowermargin" ng-show="event.customers.length == 0">
+        <h4>Customer data is not available</h4>
+    </div>
+    <div ng-show="event.customers.length > 0">
+        <table class="table table-striped" style="font-size:12px !important;">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Customer Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="customer in event.customers">
+                    <td>{{ customer.Name }}</td>
+                    <td>{{ customer.Title }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </uib-tab> <uib-tab index="2" heading="Customer Objectives">
+      <div class="tablowermargin" style="font-size:12px !important;">
+          <p>{{event.customerObjectives}}</p>
+          <p ng-show="event.customerObjectives!=event.agendaObjectives">{{event.agendaObjectives}}</p>
+      </div>
+      </uib-tab>
+    </uib-tabset>
+    </span>
+    
+    <!-- For Shadower view -->
+    <span ng-if="isSet('shadower')">
+        <table class="table table-condensed table-striped" style="font-size:12px !important;">
+        <thead>
+            <tr>
+                <th>Presenter</th>
+                <th>Topic</th>
+                <th>Email</th>
+                <th>Presenter Title</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="sessions in event.allsessions | filter: {email : presenterFilter.selected.Alias}">       
+                <td  ng-class="cssselector(sessions.email)">{{sessions.presenter }}</td>
+                <td ng-class="cssselector(sessions.email)">{{ sessions.topic }}</td>
+                <td ng-show="sessions.salesforceuser == true" ng-class="cssselector(sessions.email)"><a ng-href="http://wwwin-tools.cisco.com/dir/reports/{{sessions.email}}" target="_blank">{{sessions.email}}</a></td>
+                <td ng-show="sessions.salesforceuser == false" ng-class="cssselector(sessions.email)">{{sessions.email}}</td>
+                <td ng-class="cssselector(sessions.email)" ng-bind-html="sessions.title | break"></td>
+                <td ng-class="cssselector(sessions.email)">{{sessions.starttime | date:'MM/dd/yyyy'}} </br>{{sessions.starttime | date:'hh:mm a'}} {{sessions.starttime | timezone}}</td>
+                <td ng-class="cssselector(sessions.email)">{{sessions.endtime | date:'MM/dd/yyyy'}} </br>{{sessions.endtime | date:'hh:mm a'}} {{sessions.endtime | timezone}}</td>
+            </tr>
+        </tbody>
+        </table>
+        
+        <a class="btn btn-primary btn-block" ng-click="goShadow(event.Id)" ng-href="{{shadowURL}}"> Shadow </a>
+    </span>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-info" type="button" ng-click="cancel()">Close</button>
+</div>
+
+
+</script>
+
+
+
+<!-- modal template ends here -->
+
+
+
+
+
+<!-- Javascript starts here -->
+
+<script>
+
+<!-- Main Controller -->
+
+angular.module('calendarApp', [ 'ngAnimate', 'ngSanitize', 'ui.bootstrap','ui.calendar' ,'ui.select']);
+
+angular.module('calendarApp').controller('ModalInstanceCtrl',function($uibModalInstance, $scope) {
+            $scope.cancel = function() {
+                $uibModalInstance.dismiss('cancel');
+            };
+        });
+
+
+/* Data Service has a function called getData which obtains the data from apex and converts it into json */
+
+angular.module('calendarApp').service('DataService',function() {
+
+            this.getData = function(selectedUser,result,view,isShadower) {
+
+                // requestIDArray stores all the CEE IDs from which data has to be obtained
+
+                // sessionArray stores all the data from all the sessions in raw format
+
+
+                var requestIDArray = result.requestIDArray;
+                var sessionArray = result.sessionArray;
+                
+                //limits the number of shadowers per session
+                var limit = 1; 
+                
+                //limits the number of shadowers a presenter can have in a month
+                var shadowLimit = 5;
+                
+                //stores the number of shadowers the presenter has every month
+                var shadowMonthList = [0,0,0,0,0,0,0,0,0,0,0,0]
+                
+                //find out the number of shadowers a presenter has in every month of the year
+                for (var i = 0;i < sessionArray.length; i++ )
+                {
+                    try
+                    {
+                        var isSalesforceUser = sessionArray[i].Salesforce_User__r ? true : false;
+                        var isPresenter = false;
+                        if(isSalesforceUser)
+                        {
+                            isPresenter = sessionArray[i].Salesforce_User__r.Alias == selectedUser ? true : false;
+                        }
+                        if(isPresenter && sessionArray[i].Agenda_Item__r && sessionArray[i].CEE_Attendees__r)
+                        {
+                            if(sessionArray[i].CEE_Attendees__r.length > 0)
+                            {
+                                var d = new Date(sessionArray[i].Agenda_Item__r.Start_Date_Time__c);
+                                var m = d.getMonth();
+                                shadowMonthList[m] +=1
+                            }
+                        }
+                    }
+                    catch(err){
+                        continue;
+                    }
+                }
+                
+              
+
+                var sessions = [];
+
+                for (var i = 0; i < requestIDArray.length; i++) {
+                    var account, presenter, country;
+                    var otherSessions = [];
+                    var customers = [];
+                    var session = {};
+                    var startdatelist = [];
+                    var enddatelist = [];
+                    var sessionnamelist = [];
+                    var Ids = [];
+                    
+                    for (var j = 0; j < sessionArray.length; j++)
+                    {
+
+                        <!-- Check if the outlook status is accepted by the presenter -->
+
+                        var outlookStatusTester = function()
+                        {
+                            var outlookstatus = sessionArray[j].CEE_Invites__r[0].Outlook_Status__c;
+                            if(sessionArray[j].Type__c == 'Presenter' && (outlookstatus=="Declined" || outlookstatus=="Pending"))
+                            {
+                                  return false;
+                            }
+                            else
+                            {
+                                  return true;
+                            }
+
+                        };
+
+                        <!-- Details about the customer -->
+                        var customerData = function()
+                        {
+                            var customerInfo = {};
+                            customerInfo.Name = sessionArray[j].Name;
+                            customerInfo.Title = sessionArray[j].Title__c;
+                            if(!customerInfo.Title){  customerInfo.Title = "Not Available"; }
+                            customers.push(customerInfo);
+                        }
+
+                        <!-- Details abouth the session by presenter -->
+                        var presenterSessionData = function()
+                        {
+                                    session.account = sessionArray[j].Customer_Engagement_Events__r.Account_Name_English__c;
+                                    
+                                  //  session.shadowers = sessionArray[j].CEE_Attendees_r;
+                                    session.presenter = sessionArray[j].Name;
+                                    session.country = sessionArray[j].Customer_Engagement_Events__r.Primary_Account__r.Country__c;
+                                    session.BriefingType = sessionArray[j].Customer_Engagement_Events__r.RecordType.Name;
+                                    session.Room = sessionArray[j].Agenda_Item__r.Selected_Rooms_Display__c;
+                                    session.EBCLocation = sessionArray[j].Customer_Engagement_Events__r.EBC_CBC_Location__c;
+                                    session.customerObjectives = sessionArray[j].Customer_Engagement_Events__r.Additional_Solution_Details__c;
+                                    session.agendaObjectives = sessionArray[j].Customer_Engagement_Events__r.Agenda_Objective__c;
+                                    session.ceeObjectID =  sessionArray[j].Customer_Engagement_Events__c;
+                                    if(sessionArray[j].Customer_Engagement_Events__r.Engagement_Contact__r)
+                                    {
+                                        session.poc = sessionArray[j].Customer_Engagement_Events__r.Engagement_Contact__r.Name + "("+sessionArray[j].Customer_Engagement_Events__r.Engagement_Contact__r.Alias+")";
+                                    }
+                                    else
+                                    {
+                                        session.poc = sessionArray[j].Customer_Engagement_Events__r.CreatedBy.Name + "("+sessionArray[j].Customer_Engagement_Events__r.CreatedBy.Alias+")";
+                                    }
+                        }
+
+                        <!-- Other session details -->
+                        var otherSessionsData = function(otherSessionInfo)
+                        {
+                                otherSessionsInfo.title = sessionArray[j].Title__c;
+                                        if(!otherSessionsInfo.title)
+                                        {
+                                            otherSessionsInfo.title = "Not Available";
+                                        }
+                                        otherSessionsInfo.topic = sessionArray[j].Agenda_Item__r.Name;
+                                        otherSessionsInfo.starttime = sessionArray[j].Agenda_Item__r.Start_Date_Time__c;
+                                        otherSessionsInfo.endtime = sessionArray[j].Agenda_Item__r.End_Date_Time__c;
+                                        otherSessions.push(otherSessionsInfo);
+                                        
+                        }
+
+
+                        var isValidCEC = sessionArray[j].Customer_Engagement_Events__r.Name == requestIDArray[i] ? true : false;
+
+                        var isCustomer = sessionArray[j].Type__c == 'Customer' ? true : false;
+
+                        var isPartner = sessionArray[j].Type__c == 'Partner' ? true : false;
+
+                        var isSalesforceUser = sessionArray[j].Salesforce_User__r ? true : false;
+
+                        if (isValidCEC)
+                        {
+                            var otherSessionsInfo = {};
+                            try
+                            {
+                                if (isCustomer || isPartner)
+                                {
+                                    customerData();
+                                    continue;
+                                }
+                                else
+                                {
+                                    if(isSalesforceUser)
+                                    {
+                                        var isPresenter = sessionArray[j].Salesforce_User__r.Alias == selectedUser ? true : false;
+                                        if(isPresenter)
+                                        {
+                                            //ensure that a presenter can have only 'shadowLimit' number of shadowers
+                                            //once presenter has 'shadowLimit' shadowers in a month, do not show any other session for that month
+                                            if(view=='shadower' && isShadower=="true")
+                                            {
+                                                if(sessionArray[i].Agenda_Item__r)
+                                                {
+                                                
+                                                        var d = new Date(sessionArray[j].Agenda_Item__r.Start_Date_Time__c);
+                                                        var m = d.getMonth();
+                                                        if(shadowMonthList[m]>=shadowLimit)
+                                                        {
+                                                            continue;
+                                                        }
+                                                    
+                                                }
+                                            }
+                                            
+                                            //ensure not to show session which already have 'limit' number of shadowers
+                                            if(sessionArray[j].CEE_Attendees__r && view=='shadower' && isShadower=="true")
+                                            {  
+                                                
+                                                if(sessionArray[j].CEE_Attendees__r.length >= limit)
+                                                        continue;
+                                      
+                                                else
+                                                        presenterSessionData();                                
+                                            }
+                                            else
+                                            {
+                                                presenterSessionData();
+                                            }
+                                          
+
+                                            otherSessionsInfo.presenter = session.presenter;
+                                            otherSessionsInfo.email = sessionArray[j].Salesforce_User__r.Alias;
+                                            otherSessionsInfo.salesforceuser = true;
+
+                                            if(outlookStatusTester()){}
+                                            else{ continue; }
+
+                                           otherSessionsData(otherSessionsInfo);
+
+                                           startdatelist.push(otherSessionsInfo.starttime);
+                                           enddatelist.push(otherSessionsInfo.endtime);
+                                            Ids.push(sessionArray[j].Id);
+                                           sessionnamelist.push(otherSessionsInfo.topic);
+
+                                        }
+
+                                        <!-- If not a presenter -->
+
+                                        else
+                                        {
+                                            otherSessionsInfo.presenter = sessionArray[j].Name;
+                                            otherSessionsInfo.email = sessionArray[j].Salesforce_User__r.Alias;
+                                            otherSessionsInfo.salesforceuser = true;
+                                            if(outlookStatusTester()){}
+                                            else{ continue; }
+
+                                            otherSessionsData(otherSessionsInfo);
+                                        }
+                                    }
+
+                                <!-- If not a salesforce user -->
+
+                                else
+                                {
+                                    otherSessionsInfo.presenter = sessionArray[j].Name;
+                                    otherSessionsInfo.email = sessionArray[j].Email__c.split('@')[0];
+                                    otherSessionsInfo.salesforceuser = false;
+                                    if(outlookStatusTester()){}
+                                    else{ continue; }
+
+                                    otherSessionsData(otherSessionsInfo);
+                                }
+                                }
+                            }
+                            catch (err) {
+                                continue;
+                            }
+                    }
+                  }
+
+
+                    <!-- All information related with each session is combined here -->
+                    for (var k = 0; k < sessionnamelist.length; k++) {
+                        var sessiontemp = {
+                                Id : Ids[k],
+                                account : session.account,
+                                country : session.country,
+                                EBCLocation : session.EBCLocation,
+                                Room : session.Room,
+                                presenter : session.presenter,
+                                BriefingType : session.BriefingType,
+                                customerObjectives : session.customerObjectives,
+                                agendaObjectives : session.agendaObjectives,
+                                ceeObjectID : session.ceeObjectID,
+                                poc : session.poc,
+                                title : sessionnamelist[k],
+                                start : startdatelist[k],
+                                end : enddatelist[k],
+                                starttime : startdatelist[k],
+                                endtime : enddatelist[k],
+                                allsessions : otherSessions,
+                                customers : customers,
+                                allDay : false,
+                                requestid : requestIDArray[i],
+                                labelValues : {
+                                    title : {
+                                        value:sessionnamelist[k],
+                                        format: "bold"
+                                    },
+                                    requestid: {
+                                        value:requestIDArray[i]
+                                    },
+                                    account: {
+                                        value:session.account
+                                    }
+                                }
+                        };
+                        sessions.push(sessiontemp);
+                    }
+                }
+                
+                return sessions;
+                
+            }
+        });
+
+
+<!-- Main Controller -->
+
+angular.module('calendarApp').controller('CalendarCtrl',function($uibModal, $scope, $timeout,$filter,$location, uiCalendarConfig, DataService) {
+
+
+            
+            $scope.noSessions = false;
+
+            $scope.view = 'presenter';
+
+            <!-- Setting view based of the tab selected -->
+            $scope.setTab = function(viewId)
+            {
+                  $scope.view = viewId;
+                  $scope.changeSchedulerView();
+            }
+
+            <!-- Checking the current view -->
+            $scope.isSet = function (viewId) {
+                  return $scope.view === viewId;
+            }
+
+
+            <!-- Populate location values -->
+            var loadLocationDropdownData = function(allEvents)
+            {
+                var lookup = {};
+                $scope.filterValues = [];
+                $scope.filterValues.push("All");
+                for(var eventKey in allEvents)
+                {
+                    var location = allEvents[eventKey]["EBCLocation"];
+
+                    <!-- Distinct locations-->
+
+                    if(location)
+                    {
+                        if(!(location in lookup))
+                        {
+                            lookup[location] = 1;
+                            $scope.filterValues.push(location);
+                        }
+                    }
+                }
+
+            };
+
+            <!-- Populate Agenda values -->
+            var loadAgendaDropdownData = function(allEvents)
+            {
+                var lookup = {};
+                $scope.agendaFilterValues = [];
+                $scope.agendaFilterValues.push("All");
+                for(var eventKey in allEvents)
+                {
+                    var agenda = allEvents[eventKey]["title"];
+
+                    <!-- Distinct agendas -->
+
+                    if(agenda)
+                    {
+                        if(!(agenda in lookup))
+                        {
+                            lookup[agenda] = 1;
+                            $scope.agendaFilterValues.push(agenda);
+                        }
+                    }
+                }
+
+            };
+
+            <!-- Populate request values -->
+            var loadPMSchedulerDropdownData = function()
+            {
+
+                $scope.schedulerFilterValues = ["All Requests","My Assigned Requests"];
+            }
+
+            <!-- Setting default presenter -->
+            var setDefaultPresenter = function(presenterList)
+            {
+                 if(presenterList.length>0)
+                  {
+                    $scope.presenterFilter = {selected: $filter('filter')($scope.presenterFilterValues,{Alias : $scope.user})[0]}
+                    if(!$scope.presenterFilter.selected)
+                    {
+                        if($scope.view == 'presenter')
+                            $scope.presenterFilter.selected = {Alias : $scope.user, Name: $scope.username};
+                        if($scope.view == 'shadower'  || $scope.isPmScheduler=="true")
+                            $scope.presenterFilter.selected = $scope.presenterFilterValues[0];
+                    }
+                  }
+                  else
+                  {
+                    if($scope.view == 'presenter')
+                        $scope.presenterFilter.selected = {Alias : $scope.user, Name: $scope.username};
+                    if($scope.view == 'shadower'   || $scope.isPmScheduler=="true")
+                        $scope.presenterFilter = {selected: $filter('filter')($scope.presenterFilterValues,{Alias : "None"})[0] }
+                  } 
+            }
+
+            <!-- Populate presenter values -->
+            var loadPresenterDropdownData = function(presenterList)
+            {
+                $scope.presenterFilterValues = [];
+                if(presenterList.length>0)
+                {
+                    var lookup = {};
+                    for(var presenterKey in presenterList)
+                    {
+                        var presenterName = presenterList[presenterKey]["Name"];
+                        if(presenterList[presenterKey]["Salesforce_User__r"])
+                        {
+
+                            var presenterAlias = presenterList[presenterKey]["Salesforce_User__r"]["Alias"];
+
+                            <!-- Distinct presenters -->
+
+                            if(!(presenterAlias in lookup))
+                            {
+                                lookup[presenterAlias] = 1;
+                                var tempPresenterJson = {
+                                        Name: presenterName,
+                                        Alias: presenterAlias
+                                };
+
+                                $scope.presenterFilterValues.push(tempPresenterJson);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    var tempPresenterJson = {
+                            Name: "None",
+                            Alias: "None"
+                    };
+                    $scope.presenterFilterValues.push(tempPresenterJson);
+
+                }
+            };
+
+            // The event json is put in $scope.events
+
+            $scope.presenterFilterValues = [];
+
+            $scope.user = "{!JSENCODE(HTMLENCODE(userEmail))}";
+            $scope.username = "{!JSENCODE(HTMLENCODE(username))}";
+            $scope.instanceURL = "{!JSENCODE(HTMLENCODE(instanceURL))}";
+            $scope.isPmScheduler = "{!isPmScheduler}"
+            $scope.isShadower = "{!isShadower}"
+            if($scope.isShadower=="true")
+            {
+                $scope.view = 'shadower';
+            }
+            
+            $scope.goShadow = function(eventID)
+            {
+                $scope.shadowURL = $scope.instanceURL + '/apex/CEE_Attendee_Edit?type=Shadow&presenter=' + eventID;
+            };
+
+           // $scope.presenterList = [];
+           
+            <!-- Functions to be called based on different roles -->
+            if($scope.isPmScheduler=="true")
+            {
+              $scope.presenterList = JSON.parse("{!JSENCODE(presenterListArray)}");
+              $scope.presenterListPMOnly = JSON.parse("{!JSENCODE(presenterListArrayPMOnly)}");
+              loadPresenterDropdownData($scope.presenterList);
+              setDefaultPresenter($scope.presenterList);
+            }
+            else if($scope.isShadower=="true")
+            {
+
+                $scope.presenterList = JSON.parse("{!JSENCODE(presenterListArray)}");
+                 loadPresenterDropdownData($scope.presenterList);
+                  setDefaultPresenter($scope.presenterList);
+            }
+            else
+            {
+                $scope.presenterFilter = {selected: {Alias: $scope.user}};
+             }
+             
+             
+            //     var allEvents = DataService.getData($scope.presenterFilter.selected.Alias);
+            //      loadLocationDropdownData(allEvents);
+            
+            $scope.eventSources = [];
+
+            <!-- Functionality based on change of dropdown values -->
+            $scope.hasChanged = function()
+            {
+                $scope.noSessions = false;
+
+                if($scope.locationFilter.selected == "All" && $scope.agendaFilter.selected == "All")
+                {
+                    $scope.tempevents = $scope.events;
+                }
+                else if($scope.locationFilter.selected == "All")
+                {
+                    $scope.tempevents = $filter('filter')($scope.events,{title: $scope.agendaFilter.selected});
+                }
+                else if($scope.agendaFilter.selected == "All")
+                {
+                    $scope.tempevents = $filter('filter')($scope.events,{EBCLocation: $scope.locationFilter.selected});
+                }
+                else
+                {
+                    $scope.tempeventsLocation = $filter('filter')($scope.events,{EBCLocation: $scope.locationFilter.selected});
+
+                    $scope.tempevents = $filter('filter')($scope.tempeventsLocation,{title: $scope.agendaFilter.selected});
+                }
+
+                if($scope.tempevents.length <= 0)
+                {
+                    $scope.noSessions = true;
+                }
+                $scope.eventSources[0] =  $scope.tempevents ;
+
+            }
+
+            //reload location and agenda filters to default value of "All"
+            var reloadFilters = function()
+            {
+                $scope.locationFilter = {};
+                $scope.locationFilter.selected = "All";
+                $scope.agendaFilter = {
+                        selected: "All"
+                }
+
+            }
+
+            <!-- Load calendar on changing view -->
+            $scope.changeSchedulerView = function()
+            {
+              if($scope.schedulerFilter.selected == 'All Requests')
+              {
+                 if($scope.isPmScheduler=="true" || $scope.isShadower=="true")
+                 {
+                      loadPresenterDropdownData($scope.presenterList);
+                      setDefaultPresenter($scope.presenterList);
+                 }
+              }
+              else
+              {
+                    loadPresenterDropdownData($scope.presenterListPMOnly);
+                      setDefaultPresenter($scope.presenterListPMOnly);
+              }
+              $scope.presenterHasChanged();
+            }
+
+            <!-- Functionality on change of presenter value -->
+            $scope.presenterHasChanged = function(){
+
+                $scope.noSessions = false;
+                $scope.showCalendar = false;
+                Visualforce.remoting.Manager.invokeAction(
+                        '{!$RemoteAction.ITCECalendarCtrl.loadSelectedPresenterData}',
+                        $scope.presenterFilter.selected.Alias,
+                        $scope.schedulerFilter.selected,
+                        $scope.view,
+                        function(result, event){
+                            if (event.status) {
+                                var allEvents = DataService.getData($scope.presenterFilter.selected.Alias,result,$scope.view,$scope.isShadower);
+                                
+                                $scope.events = allEvents;
+                                if($scope.events.length <= 0)
+                                {
+                                    $scope.noSessions = true;
+                                }
+                                $scope.eventSources[0] =  $scope.events ;
+                                reloadFilters();
+                                loadLocationDropdownData(allEvents);
+                                loadAgendaDropdownData(allEvents);
+                                loadPMSchedulerDropdownData();
+
+                                // Get DOM IDs for HTML and Visualforce elements like this
+                                $scope.$apply(function(){
+                                    $scope.showCalendar = true;
+                                });
+                            } else if (event.type === 'exception') {
+                            } else {
+                            }
+                        },
+                        {escape: true}
+                );
+            }
+              $scope.schedulerFilter = {
+                        selected: "All Requests"
+                }
+
+            
+            $scope.changeSchedulerView();
+
+            <!-- Highlight the presenter session -->
+            $scope.cssselector = function(email) {
+                if($scope.presenterFilter.selected.Alias == email)
+                    return "presenterhighlight";
+            };
+
+            /* alert on eventClick */
+            $scope.alertOnEventClick = function(event, jsEvent, view) {
+                $scope.event = event;
+                $ctrl.open('lg');
+
+            };
+
+            /* Change View */
+            $scope.changeView = function(view, calendar) {
+                uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
+            };
+
+            /* Rendering the calendar */
+            $scope.renderCalendar = function(calendar) {
+                $timeout(function() {
+                    if (uiCalendarConfig.calendars[calendar]) {
+                        uiCalendarConfig.calendars[calendar]
+                        .fullCalendar('render');
+                    }
+                });
+            };
+
+            /* config object */
+            $scope.uiConfig = {
+                    calendar : {
+                        height : 600,editable : false,timezone : "local",
+                        header : {
+                            left : 'title',
+                            center : '',
+                            right : 'today prev,next'
+                        },
+                        scrollTime : '07:45:00',
+                        eventClick : $scope.alertOnEventClick,
+                        eventRender : $scope.eventRender,
+                        defaultView : 'month'
+                    }
+            };
+
+
+            // modal options are given here. This is used to point to the right modal tempelate
+            var $ctrl = this;
+            $ctrl.animationsEnabled = true;
+            $ctrl.open = function(size) {
+                var modalInstance = $uibModal.open({
+                    animation : $ctrl.animationsEnabled,
+                    controller: 'ModalInstanceCtrl',
+                    ariaLabelledBy : 'modal-title',
+                    ariaDescribedBy : 'modal-body',
+                    templateUrl : 'modaltemplate.html',
+                    scope : $scope,
+                    size : size
+
+                });
+            };
+        });
+
+        <!-- Other functionalities -->
+        angular.module('calendarApp').filter("break", function($sce){
+            return function(value){
+                if (!angular.isString(value)) return value;
+                return $sce.trustAsHtml(value.split(".").join(".<br/>"));
+            };
+        });
+        angular.module('calendarApp').filter("timezone", function($sce){
+            return function(value){
+                if (!angular.isString(value)) return "";
+                return $sce.trustAsHtml(moment(value).tz(jstz.determine().name()).format('z'));
+            };
+        });
+
+
+</script>
+</apex:page>

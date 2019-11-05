@@ -1,0 +1,14 @@
+<apex:page standardController="Account" showHeader="true" sidebar="false" extensions="SCP_Communities_AccountDetail_CT"   action="{!redirect}">
+	<style>
+		form.leadbtnsform {
+			float: right;
+		}
+	</style>
+
+
+	<apex:form styleclass="leadbtnsform">
+		<apex:pageMessages />
+	</apex:form>
+	
+	<apex:detail subject="{!account.Id}" inlineEdit="true" showChatter="false" />
+</apex:page>

@@ -1,0 +1,46 @@
+<apex:page standardController="NGCC_Rule_Assignment__c" extensions="NGCC_NewRuleCreation" id="pg">
+    
+    
+  <apex:form id="frm">
+      
+      <apex:sectionHeader title="New Assignment Rule" subtitle="Edit Rule"/>
+
+      <apex:pageMessages id="errorid" ></apex:pageMessages>
+
+      <apex:actionFunction name="actionfunction" action="{!reRenderThePage}" rerender="out"/>
+      <apex:pageblock title="Information" id="pb">
+          
+          <apex:pageblockButtons >
+              <apex:commandButton value="Save" action="{!saveRec}" />
+              <apex:commandButton value="Save & New" action="{!saveandNew}" rendered="{!If(recID == null, true, false)}" />
+              <apex:commandButton value="Cancel" action="{!cancel}"/>
+          </apex:pageblockButtons>
+          <apex:pageBlockSection columns="1" id="out" title="Lead Administration" >
+              <apex:inputField value="{!ngcc.Theater__c}"/>
+              
+              <apex:inputField value="{!ngcc.MODS_Leads__c}" onchange="actionfunction()" />
+              
+                
+              <apex:pageblockSectionItem rendered="{!iF(ngcc.MODS_Leads__c = 'Lead Attribute',TRUE,FALSE)}">
+                  <apex:outputlabel >Lead Attributes </apex:outputlabel>
+                  <apex:selectList value="{!ngcc.Lead_Attribute__c}" size="1">
+                      <apex:selectOption itemLabel="-None-" itemValue=""></apex:selectOption>
+                      <apex:selectOptions value="{!custompicklist}"/>
+                  </apex:selectList>
+              </apex:pageblockSectionItem>
+              
+              <apex:inputField value="{!ngcc.MODS_Q_A__c}" rendered="{!iF(ngcc.MODS_Leads__c = 'MODS Q/A',TRUE,FALSE)}"/>
+                  
+              <apex:inputField value="{!ngcc.Value__c}"/>
+
+              <apex:inputField value="{!ngcc.All_Countries__c}" id="allc"/>
+             <!-- <apex:inputField value="{!ngcc.All_Countries__c}" id="allc" onchange="hideCountries('{!$Component.this}','{!$Component.cntrys}')"/>-->
+              <apex:inputField value="{!ngcc.Countries__c}"  id="cntrys"/>
+              <apex:inputField value="{!ngcc.Rank__c}"/>
+              <apex:inputField value="{!ngcc.Priority__c}"/>
+              <apex:inputField value="{!ngcc.Active__c}"/>
+
+          </apex:pageBlockSection>
+      </apex:pageblock>
+  </apex:form>
+</apex:page>

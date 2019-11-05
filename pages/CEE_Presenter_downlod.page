@@ -1,0 +1,81 @@
+<apex:page standardController="CEE__c" extensions="CEE_PresenterViewController"  contentType="application/msword#presenter.doc" cache="true">
+<apex:form >
+<head>
+<style>
+
+    @page {
+    size: landscape;
+    }
+    
+    table {
+    border-collapse: collapse;
+}
+table, td, th {
+    border: 1px solid black;
+}
+    table.gridtable {
+        font-family: verdana,arial,sans-serif;
+        font-size:6px;
+        color:#333333;
+        border-width: 1px;
+        border-color: #666666;
+    }
+    
+    table.gridtable th {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        font-weight:bold;
+    }
+    
+    table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+    }
+  
+   
+</style> 
+</head>
+<!--<apex:image url="{!$Resource.ciscologo}" width="10%"/>-->
+<apex:image url="{!$Label.Cisco_Url}"  width="20%"/><br /> <br />
+<!--<img src="https://ciscosales--qtr--c.cs15.content.force.com/servlet/servlet.ImageServer?id=01580000001efhK&oid=00DM0000001YGqQ"/><br /> <br />-->
+
+<h1>Presenter Consolidated Agenda</h1>
+
+<h3>Account Name : {!AccountName}</h3>
+<h3>Engagement Contact : {!EngagementContact}</h3>
+<h3>Request Id : {!briefing.Name}</h3>
+
+<table  Id="header" style="width: 100%; " border ="1">  
+     <tr>
+    <td>Start Time </td>
+    <td>End Time </td>
+    <td>Location</td>
+    <td>Presentation Title </td>
+    <td>Delivery</td>
+    <td>Presenters</td>
+    </tr>
+    
+    <apex:repeat value="{!lstAgendaItems}" var="agenda">
+    <tr>
+    <td><apex:outputtext rendered="{!IF(isOBX,true,false)}" value="{!attendeeStartMap[agenda]}"> </apex:outputtext><apex:outputtext rendered="{!IF(isOBX,false,true)}" value="{!itceStartMap[agenda]}"> </apex:outputtext></td>
+    <td><apex:outputtext rendered="{!IF(isOBX,true,false)}" value="{!attendeeEndMap[agenda]}"> </apex:outputtext><apex:outputtext rendered="{!IF(isOBX,false,true)}" value="{!itceEndMap[agenda]}"> </apex:outputtext></td>
+    <td><apex:outputText >{!agenda.Selected_Rooms_Display__c}</apex:outputText></td>
+    <td><apex:outputText >{!agenda.Name}</apex:outputText></td>
+    <td><apex:outputText >{!agenda.Delivery_Method__c}</apex:outputText></td>
+    <td><apex:outputText >{!attendeeMap[agenda]}</apex:outputText></td>
+   <!-- <td><apex:outputText >{!agenda.Sales_Objectives__c}</apex:outputText></td> -->
+    </tr>
+    </apex:repeat>
+    </table> 
+    
+
+          
+</apex:form>
+
+
+</apex:page>

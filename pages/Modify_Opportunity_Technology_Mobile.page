@@ -1,0 +1,147 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0" standardController="opportunity" standardStylesheets="false" extensions="AddTechnologyServices_CT">
+    <apex:stylesheet value="{!URLFOR($Resource.SFBootstrap, '/dist/css/bootstrap.css')}"  />
+    <apex:stylesheet value="{!URLFOR($Resource.MobileTemplates,'common/css/app.min.css')}"/>
+    <apex:includeScript value="{!$Resource.jquery22}" />
+    <apex:includeScript value="{!URLFOR($Resource.angular, '/angular/angular.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.BootstrapSelect, '/BootstrapSelect/js/bootstrap-select.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileTemplates,'common/js/jquery.touchwipe.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileTemplates,'common/js/main.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jqmobile,'/jqueryMobile/jquery.mobile-1.4.5.min.js')}"/>
+    <apex:stylesheet value="{!$Resource.MobileAppCss}"/>
+    <apex:includeScript value="{!$Resource.bootstrap332}"/>
+    <apex:includeScript value="{!$Resource.bootstrapTypeAhead}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jqmobile,'/jqueryMobile/jquery.mobile-1.4.5.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.forcetk)}" />
+    <!-- Including script for canvas -->
+    <script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+    <script>
+    var jsonObj = [],_idArray = [],_obj = [],_prod = [],_mergedObj = [];
+    var client = new forcetk.Client();
+    var oppId = '{!$CurrentPage.parameters.id}';
+    var oppCurrencyCode = "{!Opportunity.CurrencyIsoCode}";
+    var expectedProductDollar = '{!Opportunity.Expected_Product__c}'; 
+    var expectedServiceDollar = '{!Opportunity.Expected_Service__c}';
+    var forcastPostion = '{!Opportunity.Position__c}'; 
+    var pricebook2id = "{!StandPricebookId}"; 
+    var addTechErr = "{!$Label.Add_technology}";
+    var addServiceErr = "{!$Label.Add_service}";
+    var techCantaddErr = "{!$Label.Technology_cannot_be_added}";
+    var serviceCantaddErr = "{!$Label.Service_cannot_be_added}";
+    var forcastErr = "{!$Label.Select_Forecasting_Position}";
+    var mixPerMust100 = "{!$Label.mix_must_be_100}";
+    var mixPerNotEmpty = "{!$Label.Mix_not_empty}";
+    var duplicatServiceline = "{!$Label.Duplicate_Service_Line_Items}";
+    var mandatryData =  "{!$Label.Mandatory_Data}";
+    var checkValues = "{!$Label.check_the_values}";  
+    client.setSessionToken("{!$Api.Session_ID}");
+    var className = '{!$RemoteAction.AddTechnologyServices_CT.UpdateOpptydetails}';
+    var delID="";
+    var delRecName = "";
+    </script>
+    <apex:includeScript value="{!$Resource.TechnologyController}" />
+    <apex:stylesheet value="{!$Resource.CSS_Styles}" />
+    <style>
+    .prodFamily ul li{padding:5px 0px 5px 0px!important;margin:0px;box-shadow:0px 0px 0px 0px transparent!important;border-radius:0px;}
+    </style>
+    <div class="app-wrapper container" id="technologyApplication" data-role="page" ng-controller="technologyCtrl" ng-init="initializePopup();myVar = false;" style="padding-left:2px;padding-right:2px;">
+        <apex:remoteObjects jsNamespace="RemoteObjectModel">        
+             <apex:remoteObjectModel name="OpportunityLineItem" fields="Id,Mix__c,Product_Family_US__c,PricebookEntryId,OpportunityId">                        
+             </apex:remoteObjectModel>        
+        </apex:remoteObjects>
+        <apex:remoteObjects jsNamespace="RemoteObjectModel">        
+             <apex:remoteObjectModel name="Opportunity" fields="Id,Expected_Product__c,Expected_Service__c">                        
+             </apex:remoteObjectModel>        
+        </apex:remoteObjects>
+        <div class="app-content" style="margin:0px 10px 12px 0px;padding:0px;">
+            <!-- SADUVVUR: 3/11/15 : Removed % at the end of the Label Total Mix% -->
+            <div class="pull-left" style="font-size: 1.5em;width:100%;">
+                <div style="text-align:center;width: 100%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{!Opportunity.Name}</div>
+                <div style="width:100%;margin-top:10px;">
+                    <div style="width:50%;font-size:13px;font-weight:bold;" class="pull-left form-control-text">
+                        <div>{!$ObjectType.Opportunity.Fields.Expected_Product__c.Label}:</div>
+                        <div style="width:50%;margin-top:10px;"><input type="text" id="expProd" onkeypress="return isNumberKeyExp(event)" name="expProd" pattern="[0-9]*" class="form-control" style="border: 0px;" ng-model="expectedProductCostDollar" /></div>
+                    </div>
+                    <div style="width:50%;text-align:right;font-size:13px;font-weight:bold;" class="pull-left" ng-cloak="true">Mix%: {{total}}</div>
+                    <div class="pull-right" style="width:30%;"><div style="text-align:right;"><a href="javascript:void(0);" ng-click="toggleDown();" style="color: #2a94d6;text-decoration:none;display:none;">Modify <i class="glyphicon glyphicon-chevron-right"></i></a></div></div>
+                    <div class="clearFix"></div>
+                </div>
+            </div>
+            <div class="clearFix"></div>
+        </div>
+        <div class="app-content" style="margin:0px 10px 0px 0px;padding:0px;">
+            <div class="content">
+                <div class="form-control-group">
+                    <div class="form-control-text">
+                        <input type="text" id="technologyName" name="technologyName" class="form-control" placeholder="Search & Add BE/Product Family" style="border: 0px;" />
+                    </div>
+                </div>
+            </div><!--.content-->
+        </div>
+        <div style="position:relative;">
+            <div style="color: rgb(204, 0, 0); font-weight: bold;  position: absolute;top: -9px;left:15%;right:15%;width:70%;text-align:center;" ng-cloak="true">{{mixPercentValid}} {{saveErrorMessage}}</div>
+        </div>
+        <div class="app-content" data-role="main"  style="margin:40px 10px 0px 0px;  padding-top: 0px;">
+            <ul class="list-view right-one-icons touch" id="list" data-role="listview" data-icon="false" data-split-icon="delete">
+                <li class="forceActionRow uiInfiniteListRow" ng-repeat="techObj in scopeobj track by $index" data-index="$index" style="padding:20px;">
+                    <div class="detail-view-table">
+                        <div class="detailRow">
+                            <div class="iconWrapper pull-right" style="background-color: #2a94d6;" ng-click="deleteLineItem($index,$event);">
+                                <img src="{!$Resource.trashcan}" class="trashcanImg" />
+                            </div>
+                            <div class="pull-left" style="padding-left:5px;"><b style="font-size: 1rem;" ng-class="(techObj.isActive==false)?'red':''" ng-cloak="true">{{techObj.tech}}</b><span class="red" ng-if="techObj.isActive==false" style="padding-left:10px;" ng-cloak="true">Inactive</span></div>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="detailRow" style="padding-top: 10px;">
+                            <div class="pull-left">
+                                <div class="requiredBlock pull-left" style="position: relative;display: block;width: 3px;height: 35px;margin-right: 2px;background-color:#c00;"></div>
+                                <input size="5" class="mixClass" id="mixPercentageIdValue_{{$index}}" style="width:100px;height:35px;" ng-model="techObj.mixPercentage" placeholder="Mix %" ng-init="checkTotal($index);" ng-keyup="checkTotal($index);setCost();techObj.expectedProduct = expectedProductCostDollar*techObj.mixPercentage/100;" onkeypress="return isNumberKey(event)" ng-class="techObj.expectedProduct = expectedProductCostDollar*techObj.mixPercentage/100;" ng-keydown="checkTotal($index);setCost();techObj.expectedProduct = expectedProductCostDollar*techObj.mixPercentage/100;" type="number" min="1" max="100" pattern="[1-9]*" value="techObj.mixPercentage" /><span>%</span>
+                            </div>
+                            <div class="pull-right">
+                                <input type="hidden" name="expectedProductCosts" id="expectedProductCosts" ng-model="techObj.expectedProduct" />
+                                <div style="margin-top: 4px;  font-size: 1.3em;" ng-cloak="true">${{(techObj.expectedProduct)| number:0}}K</div>
+                            </div>
+                            <div class="clearFix"></div>
+                        </div>
+                        <div class="" ng-class="setTotal();" style="padding-left:5px;">
+                            <div ng-class="setCost();" style="padding-bottom: 5px;  padding-top: 10px;font-size: 1rem;font-weight:bold; color:#CCC;">Product Family</div>
+                            <div class="prodFamily">
+                                <ul class="productList clearFix" ng-init="outerIndex = $index;">
+                                    <li class="productValue" ng-repeat="products in techObj.value" data-product-index="$index">
+                                        <div class="iconWrapper pull-right" style="background-color: #2a94d6;display: inline-block;" ng-click="deleteProdFamily(outerIndex,$index,$event);">
+                                            <img src="{!$Resource.trashcan}" class="trashcanImg" />
+                                        </div>
+                                        <font face="Symbol" style="font-weight: bold;font-size:1rem;">&#183;</font><b style="  padding-left: 10px;font-size: 1.25em;font-weight: normal;" ng-cloak="true">{{products}}</b>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clearFix"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        angular.bootstrap(document.getElementById('technologyApplication'),['technologyApp']);
+        $(function(){
+            $('.ui-loader').hide();
+        });
+        
+         function isNumberKey(evt){
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+        function isNumberKeyExp(evt){            
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if(charCode == 45){
+                return true;
+            }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)){                
+                return false;           
+            }           
+            return true;
+        }        
+    </script>
+</apex:page>

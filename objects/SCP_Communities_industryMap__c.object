@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>mappedIndustries__c</fullName>
+        <description>Contains the set of Lead/TP industry picklist options assoicated with an industry name. For example industry name 'Education' is associated with Lead/TP industry picklist options started with 'ED'</description>
+        <externalId>false</externalId>
+        <label>mappedIndustries</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>Maps Industry Name to set of Lead/TP industry picklist options.  Used to help create where clause on Lead/TP industry picklist field</description>
+    <enableFeeds>false</enableFeeds>
+    <label>SCP_Communities_industryMap</label>
+    <visibility>Protected</visibility>
+</CustomObject>

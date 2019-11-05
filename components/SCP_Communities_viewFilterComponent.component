@@ -1,0 +1,377 @@
+<apex:component id="comp1"
+    controller="SCP_Communities_viewFilterComponent_CT" allowDML="true"
+    layout="block">
+    <style>
+    .hidefilter{
+        display:none;
+    }
+    </style>
+    <!-- <apex:includeScript value="{!$Resource.jquery}" />-->
+     <script type = "text/javascript">
+          var js$ = jQuery.noConflict();
+          
+        function openWindow() {
+          leftOffset = (screen.width/2) - 900/2;
+          topOffset = (screen.height/2) - 300/2;
+       
+       //    var URI = 'https://tools-dev-was7.cisco.com/gtms/p360f/view/jsp/leadUpload2.jsp';
+             var URI = "{!$Setup.P360_urls__c.Lead_upload__c}";
+            // window.open(URI,'','width=206,height=390,dependent=yes,scrollbars=0,resizable=0');
+               var ccoid = js$("label[id$='ccoid']"); 
+               var acccId= js$("label[id$='parentAccId']"); 
+                var uid = js$("label[id$='Uid']"); 
+                var prefLang= js$("label[id$='prefLang']"); 
+                var channelAccount= js$("label[id$='channelAccount']");  
+                URI = URI +'?ccoId='+ccoid.text()+'&parentAccountId='+acccId.text()+'&userId='+uid.text()+'&prefLang='+prefLang.text()+'&channelAccount='+channelAccount.text();
+              window.open(URI,'myWindow','width=500,height=300,resizable=no');
+        //    window.open(URI, this.target, 'left=' + leftOffset + ',top=' + topOffset + ',width=900' ',height=300' ,resizable,scrollbars=no');
+             return false;
+        }
+      
+      function downLeadTempDocuments(){
+        var DocId = "{!DocId}";
+          
+        if(DocId != null && DocId != '') {
+            var urlDoc ="{!URLFOR($Action.Document.Download,DocId)}";
+            window.location.href= urlDoc;
+            return false;
+        }
+      }
+   
+    </script>
+    
+    
+    <apex:attribute name="sObjectType" type="String" required="true"
+        assignTo="{!sObjectName}" default="Lead"
+        description="Attribute to decide the type of Sobject" />
+    <apex:form id="filterform" styleClass="prmviewFilterTable leadpageclass">
+        <apex:pageBlock title="{!$ObjectType.Lead.labelPlural}" id="block1">
+
+            <apex:pageMessages />
+
+
+            <apex:outputLabel styleclass="labelCol">{!$Label.PRM_View}:</apex:outputLabel>
+
+            <apex:dynamicComponent componentValue="{!viewListComponent}" />
+
+            <!--                
+                <apex:selectList id="viewList" styleClass="view_list_class dataCol uiMultiSelectMain" value="{!selectedView}" size="1">
+                    <apex:actionSupport event="onchange" action="{!doSearch}"  reRender="lead_table,pgbuttons2,pgbk2,pgbk3" status="searching"/>
+                    <apex:selectOptions value="{!ViewOptions}" />
+                </apex:selectList>
+                -->
+            <apex:actionStatus id="searching"
+                onstart="js$('#loading').show();hideComp();"
+                onstop="js$('#loading').hide();showComp();" />
+
+            <apex:outputpanel id="leadbtns" styleclass="LeadBtns">
+
+        <!--          <apex:commandbutton id="btn-download-temp" value="Upload Leads" onclick="openWindow()"/>--> 
+                
+        <!--  Lead Upload Integration start -->     
+                <apex:outputLabel id="Uid"  style="display:none">{!$User.Id}</apex:outputLabel>
+                <apex:outputLabel id="ccoid"  style="display:none">{!CCOId}</apex:outputLabel>
+                <apex:outputlabel id="prefLang" style="display:none">{!Userlang}</apex:outputlabel>
+                <apex:outputLabel id="parentAccId"  style="display:none">{!Currentuseraccount}</apex:outputLabel>
+                 <apex:outputLabel id="channelAccount"  style="display:none">{!channelAccount}</apex:outputLabel>
+                 <button type="button" onclick="openWindow();">{!$Label.PRM_UploadLeads}</button>
+    <!--  Lead Upload Integration End -->
+    
+
+                <apex:outputpanel rendered="{!IF(DocId != null, true, false)}"
+                   ><input  id="theLink" type="button" onclick="downLeadTempDocuments(); return false;" value = "{!$Label.PRM_DownloadLeadTemplate}" /></apex:outputpanel>
+
+
+
+            </apex:outputpanel>
+            <apex:outputpanel id="filterpanel"  layout="block" styleclass="hidefilter">
+            <apex:pageblocksection title="{!$Label.PRM_Filter}" columns="3"
+                id="filterList">
+                <apex:pageblockSectionItem dataStyleClass="tableCellData1"
+                    labelStyleClass="tableCellLabel1">
+                    <apex:outputLabel styleclass="x-form-item-label"
+                        value="{!$Label.PRM_Customer_Name}:" for="ext-gen1110;" />
+                    <apex:inputText value="{!customerName}"
+                        styleClass="x-form-field x-form-text" />
+                </apex:pageblockSectionItem>
+
+                <apex:pageblocksectionItem dataStyleClass="tableCellData2"
+                    labelStyleClass="tableCellLabel2">
+                    <apex:outputLabel value="{!$ObjectType.Lead.fields.Lead_Category__c.Label}:"
+                        styleclass="x-form-item-label " />
+
+                    <apex:selectList value="{!selectedLeadCategory}" size="5"
+                        multiselect="true"
+                        styleClass="dataCol uiMultiSelect" onfocus="filterHide()">
+                        <apex:selectOptions value="{!leadCategoryList}" />
+                    </apex:selectList>
+
+
+
+                </apex:pageblocksectionItem>
+                <apex:pageblocksectionItem dataStyleClass="tableCellData3"
+                    labelStyleClass="tableCellLabel3">
+                    <apex:outputLabel value="{!$ObjectType.Lead.fields.LeadSource.Label}:"
+                        styleClass="x-form-item-label " />
+                    <apex:selectList value="{!selectedLeadSource}" size="5"
+                        multiselect="true"
+                        styleclass="dataCol selectOpenOpp">
+                        <apex:selectOptions value="{!leadSourceList}" />
+                    </apex:selectList>
+                </apex:pageblocksectionItem>
+
+                <apex:pageblocksectionItem dataStyleClass="tableCellData1"
+                    labelStyleClass="tableCellLabel1">
+                    <apex:outputLabel value="{!$ObjectType.Lead.fields.Industry.Label}:"
+                        styleclass="x-form-item-label " />
+                    <apex:selectList value="{!selectedIndustries}" size="5"
+                        multiselect="true"
+                        styleclass="dataCol uiMultiSelect " >
+                        <apex:selectOptions value="{!leadIndustryList}" />
+                    </apex:selectList>
+                </apex:pageblocksectionItem>
+
+                <apex:pageblocksectionItem dataStyleClass="tableCellData2"
+                    labelStyleClass="tableCellLabel2">
+                    <apex:outputLabel value="{!$ObjectType.Lead.fields.Main_Technology__c.Label}:"
+                        styleclass="x-form-item-label " />
+
+                    <apex:selectList value="{!selectedMainTechnology}" size="5"
+                        multiselect="true"
+                        styleclass="dataCol uiMultiSelect ">
+                        <apex:selectOptions value="{!leadMainTechnologyList}" />
+                    </apex:selectList>
+
+                </apex:pageblocksectionItem>
+
+                <apex:pageblocksectionItem dataStyleClass="tableCellData3"
+                    labelStyleClass="tableCellLabel3">
+                    <apex:outputLabel value="{!$ObjectType.Lead.fields.Program_Event_Name__c.Label}:"
+                        styleclass="x-form-item-label " />
+                    <apex:inputText value="{!programEventName}"
+                        styleclass="x-form-field x-form-text" />
+                </apex:pageblocksectionItem>
+
+                <apex:pageblocksectionItem dataStyleClass="tableCellData1"
+                    labelStyleClass="tableCellLabel1">
+                    <apex:outputLabel value="{!$ObjectType.Lead.fields.CustomCountry__c.Label}:"
+                        styleclass="x-form-item-label " />
+                    <apex:selectList value="{!selectedCountries}" size="5"
+                        multiselect="true"
+                        styleclass="dataCol uiMultiSelect ">
+                        <apex:selectOptions value="{!countryList}" />
+                    </apex:selectList>
+                </apex:pageblocksectionItem>
+
+                <apex:pageblockSectionItem dataStyleClass="tableCellData2"
+                    labelStyleClass="tableCellLabel2">
+                    <apex:outputLabel value="{!$ObjectType.Lead.fields.CustomState__c.Label}:"
+                        styleclass="x-form-item-label " />
+                    <apex:inputText value="{!stateProvince}"
+                        styleclass="x-form-field x-form-text" />
+                </apex:pageblockSectionItem>
+
+                <apex:pageblocksectionItem dataStyleClass="tableCellData3"
+                    labelStyleClass="tableCellLabel3">
+                    <apex:outputLabel value="{!$ObjectType.Lead.fields.CustomCity__c.Label}:"
+                        styleclass="x-form-item-label" />
+                    <apex:inputText value="{!city}"
+                        styleclass="x-form-field x-form-text" />
+                </apex:pageblocksectionItem>
+
+                <apex:panelGrid columns="3">
+                    <apex:commandButton action="{!doSearch}" 
+                        value="{!$Label.PRM_Apply_Filter}"
+                        reRender="pgbk2,pgbk3,lead_table,qr,pgSize" status="searching" />
+                    <apex:commandButton action="{!clearFields}"
+                        value="{!$Label.PRM_Clear_Filter}" />
+                </apex:panelGrid>
+                <div id="loading" style="display: none;">
+                    <img src="{!$Resource.Processingicon}" />
+                </div>
+            </apex:pageblocksection>
+        </apex:outputpanel>
+            <apex:pageBlock id="pgbk2">
+                <!-- 
+                    page block to display pop up for assigning PSR
+                 -->
+                 <apex:outputpanel styleclass="ptreglinks">
+                    <apex:outputlabel >{!$Label.PRM_Partner_Register_Link1}&nbsp;&nbsp;</apex:outputlabel>
+                    <apex:outputlink value="{!$Setup.CCW_Urls__c.PSR_PSS_Link__c}" target="_blank" >{!$Label.PRM_Partner_Register_Link2}</apex:outputlink><br/>
+                    <apex:outputlabel ><span style="color:red">*</span>{!$Label.PRM_Partner_Register_Link3}</apex:outputlabel>
+                </apex:outputpanel>
+                <apex:pageBlockSection id="psrpgblck" title="PSR Selection"
+                    columns="3">
+                    <apex:pageBlockSectionItem id="pgsec2" rendered="{!isPA}">
+                        <apex:outputPanel id="psrop" layout="block">
+
+                            <apex:panelGrid id="pgd2" columns="4">
+
+                                <apex:outputLabel styleclass="labelCol" id="psr1_label"
+                                    value="{!$Label.PRM_PSR_1}:" />
+                                <apex:inputText id="psr1_name" value="{!psr1_name}" />
+                                <apex:inputHidden id="psr1_id" value="{!psr1_Id}" />
+                                <apex:outputLink id="psr1" value="#"
+                                    onclick="openPopUpWindow('psr1');return false;" target="_blank">
+                                    <img src="/s.gif" alt="PSR 1 Lookup (New Window)"
+                                        class="lookupIcon" onblur="this.className = 'lookupIcon';"
+                                        onfocus="this.className = 'lookupIconOn';"
+                                        onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';"
+                                        onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';"
+                                        title="PSR 1 Lookup (New Window)" />
+                                </apex:outputLink>
+
+                                <apex:outputLabel styleclass="labelCol" id="psr2_label"
+                                    value="{!$Label.PRM_PSR2}:" />
+                                <apex:inputText id="psr2_name" value="{!psr2_name}" />
+                                <apex:inputHidden id="psr2_id" value="{!psr2_Id}" />
+                                <apex:outputLink id="psr2" value="#"
+                                    onclick="openPopUpWindow('psr2');return false;" target="_blank">
+                                    <img src="/s.gif" alt="PSR 2 Lookup (New Window)"
+                                        class="lookupIcon" onblur="this.className = 'lookupIcon';"
+                                        onfocus="this.className = 'lookupIconOn';"
+                                        onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';"
+                                        onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';"
+                                        title="PSR 2 Lookup (New Window)" />
+                                </apex:outputLink>
+
+                                <apex:outputLabel styleclass="labelCol" id="psr3_label"
+                                    value="{!$Label.PRM_PSR3}:" />
+                                <apex:inputText id="psr3_name" value="{!psr3_name}" />
+                                <apex:inputHidden id="psr3_id" value="{!psr3_Id}" />
+                                <apex:outputLink id="psr3" value="#"
+                                    onclick="openPopUpWindow('psr3');return false;" target="_blank">
+                                    <img src="/s.gif" alt="PSR 3 Lookup (New Window)"
+                                        class="lookupIcon" onblur="this.className = 'lookupIcon';"
+                                        onfocus="this.className = 'lookupIconOn';"
+                                        onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';"
+                                        onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';"
+                                        title="PSR 3 Lookup (New Window)" />
+                                </apex:outputLink>
+                            </apex:panelGrid>
+                            <apex:commandButton value="{!$Label.PRM_Assign_to_PSR}"
+                                action="{!assignPSRs}" reRender="pgbk3,lead_table,pgbuttons2,pgbk2"
+                                status="searching"  />
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                
+                <!-- PSR Assignment -->
+
+                <!-- c:SCP_Communities_PSRBulkAssignment pageCon="{!this}" componentKey="{!psrKey}" /-->
+                <!-- <div id="tbadiv" style="overflow: auto; width: 100%;"> -->
+                </apex:pageBlock>
+                
+                <apex:pageBlock id="pgbk3">
+                <apex:pageBlockTable styleClass="leadTB"
+                    value="{!pageRecords}" var="l" id="lead_table">
+                    <apex:column rendered="{! AND(isPA,isNewlyAssignedLeads)}">
+                        <apex:facet name="header">
+                            <input type="checkbox" id="select_all" />
+                        </apex:facet>
+                        <apex:inputCheckBox styleclass="chkbox" value="{!l.isSelected}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$Label.PRM_Customer_Name}</apex:facet>
+                        <apex:outputLink value="{!URLFOR($Action.Lead.View, l.leadRec.Id, null)}"
+                            id="theLink">{!l.hyperlink}</apex:outputLink>
+                        <br />
+                        <apex:outputpanel rendered="{! NOT(isEnglish)}">
+                                    {!l.cname_en}
+                                </apex:outputpanel>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Assigned_Partner__c.fields.Partner_Status__c.label}</apex:facet>
+                        <apex:outputfield value="{!l.leadRec.Partner_Lead_Status__c}" />
+                    </apex:column>
+                    <apex:column value="{!l.leadRec.Cisco_Rec_PSR__c}">
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Cisco_Rec_PSR__c.Label}</apex:facet>
+                    </apex:column>
+
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Date_Added__c.label}</apex:facet>
+                        <apex:outputfield value="{!l.leadRec.Date_Added__c }" />
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Lead_Qualified_Date__c.label}</apex:facet>
+                        <apex:outputfield value="{!l.leadRec.Lead_Qualified_Date__c}"/>
+                    </apex:column>
+
+                    <apex:column >
+                        <apex:facet name="header">{!$Label.PRM_PSR_1}</apex:facet>
+                        <apex:outputField value="{!l.leadRec.PSR_1__c}" />
+                    </apex:column>
+
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Lead_Category__c.Label}</apex:facet>
+                                {!l.leadRec.Lead_Category__c }
+                            </apex:column>
+
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.LeadSource.Label}</apex:facet>
+                                {!l.leadRec.LeadSource }
+                            </apex:column>
+
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Industry.Label}</apex:facet>
+                        <!-- Removed outputfield to fix issue with translation in french laguage-->
+                       <!-- <apex:outputfield value="{!l.leadRec.Industry }" /> -->
+                          {!l.leadRec.Industry }
+                    </apex:column>
+
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Main_Technology__c.Label}</apex:facet>
+                                {!l.leadRec.Main_Technology__c}
+                            </apex:column>
+
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Deal_ID__c.Label}</apex:facet>
+                        <apex:outputfield value="{!l.leadRec.Deal_ID__c}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$Label.PRM_Budget}</apex:facet>
+                                {!l.leadRec.QABudget__c}
+                            </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.Program_Event_Name__c.Label}</apex:facet>
+                                {!l.leadRec.Program_Event_Name__c}
+                            </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Account.fields.AddressLine1__c.Label}</apex:facet>
+                        <apex:outputpanel rendered="{! NOT(isEnglish)}">
+                                    {!l.address_loc}<br />
+                        </apex:outputpanel>
+                                {!l.address_en}
+                            </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.CustomCity__c.Label}</apex:facet>
+                        <apex:outputpanel rendered="{! NOT(isEnglish)}">
+                                    {!l.city_loc}<br />
+                        </apex:outputpanel>
+                                {!l.city_en}
+                            </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.CustomState__c.Label}</apex:facet>
+                        <apex:outputpanel rendered="{! NOT(isEnglish)}">
+                                    {!l.state_loc}<br />
+                        </apex:outputpanel>
+                                {!l.state_en}
+                            </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.CustomZip__c.Label}</apex:facet>
+                                {!l.leadRec.Zip_Postal_Code_English__c}
+                            </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">{!$ObjectType.Lead.fields.CustomCountry__c.Label}</apex:facet>
+                        <apex:outputpanel rendered="{! NOT(isEnglish)}">
+                                    {!l.country_loc}<br />
+                        </apex:outputpanel>
+                                {!l.country_en}
+                            </apex:column>
+                </apex:pageBlockTable>
+                <!-- </div> -->
+            </apex:pageBlock>
+        </apex:pageBlock>
+    </apex:form>
+</apex:component>

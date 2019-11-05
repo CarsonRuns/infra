@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account_Plan_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Plan</label>
+        <referenceTo>Account_Plan__c</referenceTo>
+        <relationshipLabel>Other Technology Landscape</relationshipLabel>
+        <relationshipName>Other_Technology_Landscape</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Active_Cisco_Partner__c</fullName>
+        <description>Yes/No picklist to identify if the Customer Supplier is an active Cisco partner.</description>
+        <externalId>false</externalId>
+        <label>Active Cisco Partner?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Cisco_to_Customer_Alignment__c</fullName>
+        <description>Picklist to identify how well Cisco and the customer align for the specific Technology.</description>
+        <externalId>false</externalId>
+        <label>Cisco to Customer Alignment</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Low</fullName>
+                    <default>false</default>
+                    <label>1 - Low</label>
+                </value>
+                <value>
+                    <fullName>2 - Medium Low</fullName>
+                    <default>false</default>
+                    <label>2 - Medium Low</label>
+                </value>
+                <value>
+                    <fullName>3 - Medium</fullName>
+                    <default>false</default>
+                    <label>3 - Medium</label>
+                </value>
+                <value>
+                    <fullName>4 - Medium High</fullName>
+                    <default>false</default>
+                    <label>4 - Medium High</label>
+                </value>
+                <value>
+                    <fullName>5 - High</fullName>
+                    <default>false</default>
+                    <label>5 - High</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Customer_Supplier__c</fullName>
+        <description>Picklist of Technology supplier’s.</description>
+        <externalId>false</externalId>
+        <label>Customer Supplier</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AUTOMATIC DATA PROCESSING</fullName>
+                    <default>false</default>
+                    <label>AUTOMATIC DATA PROCESSING</label>
+                </value>
+                <value>
+                    <fullName>BENQ</fullName>
+                    <default>false</default>
+                    <label>BENQ</label>
+                </value>
+                <value>
+                    <fullName>BMC Software</fullName>
+                    <default>false</default>
+                    <label>BMC Software</label>
+                </value>
+                <value>
+                    <fullName>BRIGHTPOINT</fullName>
+                    <default>false</default>
+                    <label>BRIGHTPOINT</label>
+                </value>
+                <value>
+                    <fullName>CANON</fullName>
+                    <default>false</default>
+                    <label>CANON</label>
+                </value>
+                <value>
+                    <fullName>CASIO COMPUTER</fullName>
+                    <default>false</default>
+                    <label>CASIO COMPUTER</label>
+                </value>
+                <value>
+                    <fullName>CDW</fullName>
+                    <default>false</default>
+                    <label>CDW</label>
+                </value>
+                <value>
+                    <fullName>CHI MEI OPTOELECTRONICS</fullName>
+                    <default>false</default>
+                    <label>CHI MEI OPTOELECTRONICS</label>
+                </value>
+                <value>
+                    <fullName>CHINA MOBILE (HONG KONG)</fullName>
+                    <default>false</default>
+                    <label>CHINA MOBILE (HONG KONG)</label>
+                </value>
+                <value>
+                    <fullName>CHINA TELECOM</fullName>
+                    <default>false</default>
+                    <label>CHINA TELECOM</label>
+                </value>
+                <value>
+                    <fullName>CHINA UNICOM</fullName>
+                    <default>false</default>
+                    <label>CHINA UNICOM</label>
+                </value>
+                <value>
+                    <fullName>COGNIZANT TECH. SOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>COGNIZANT TECH. SOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>COMPAL ELECTRONIC</fullName>
+                    <default>false</default>
+                    <label>COMPAL ELECTRONIC</label>
+                </value>
+                <value>
+                    <fullName>COMPUTER SCIENCES</fullName>
+                    <default>false</default>
+                    <label>COMPUTER SCIENCES</label>
+                </value>
+                <value>
+                    <fullName>DELL</fullName>
+                    <default>false</default>
+                    <label>DELL</label>
+                </value>
+                <value>
+                    <fullName>D-Link</fullName>
+                    <default>false</default>
+                    <label>D-Link</label>
+                </value>
+                <value>
+                    <fullName>ELECTRONIC ARTS</fullName>
+                    <default>false</default>
+                    <label>ELECTRONIC ARTS</label>
+                </value>
+                <value>
+                    <fullName>Epson</fullName>
+                    <default>false</default>
+                    <label>Epson</label>
+                </value>
+                <value>
+                    <fullName>FUJITSU</fullName>
+                    <default>false</default>
+                    <label>FUJITSU</label>
+                </value>
+                <value>
+                    <fullName>HEWLETT-PACKARD</fullName>
+                    <default>false</default>
+                    <label>HEWLETT-PACKARD</label>
+                </value>
+                <value>
+                    <fullName>HON HAI PRECISION IND</fullName>
+                    <default>false</default>
+                    <label>HON HAI PRECISION IND</label>
+                </value>
+                <value>
+                    <fullName>Hyperion Solutions Corp.</fullName>
+                    <default>false</default>
+                    <label>Hyperion Solutions Corp.</label>
+                </value>
+                <value>
+                    <fullName>IBM</fullName>
+                    <default>false</default>
+                    <label>IBM</label>
+                </value>
+                <value>
+                    <fullName>INFOSYS TECHNOLOGIES</fullName>
+                    <default>false</default>
+                    <label>INFOSYS TECHNOLOGIES</label>
+                </value>
+                <value>
+                    <fullName>INTEL</fullName>
+                    <default>false</default>
+                    <label>INTEL</label>
+                </value>
+                <value>
+                    <fullName>JABIL CIRCUIT</fullName>
+                    <default>false</default>
+                    <label>JABIL CIRCUIT</label>
+                </value>
+                <value>
+                    <fullName>Juniper</fullName>
+                    <default>false</default>
+                    <label>Juniper</label>
+                </value>
+                <value>
+                    <fullName>KDDI</fullName>
+                    <default>false</default>
+                    <label>KDDI</label>
+                </value>
+                <value>
+                    <fullName>Kronos</fullName>
+                    <default>false</default>
+                    <label>Kronos</label>
+                </value>
+                <value>
+                    <fullName>Kronos Incorporated</fullName>
+                    <default>false</default>
+                    <label>Kronos Incorporated</label>
+                </value>
+                <value>
+                    <fullName>L-3 COMMUNICATIONS HOLDINGS</fullName>
+                    <default>false</default>
+                    <label>L-3 COMMUNICATIONS HOLDINGS</label>
+                </value>
+                <value>
+                    <fullName>Lawson Software</fullName>
+                    <default>false</default>
+                    <label>Lawson Software</label>
+                </value>
+                <value>
+                    <fullName>Level</fullName>
+                    <default>false</default>
+                    <label>Level</label>
+                </value>
+                <value>
+                    <fullName>LEXAR MEDIA</fullName>
+                    <default>false</default>
+                    <label>LEXAR MEDIA</label>
+                </value>
+                <value>
+                    <fullName>LEXMARK INTERNATIONAL</fullName>
+                    <default>false</default>
+                    <label>LEXMARK INTERNATIONAL</label>
+                </value>
+                <value>
+                    <fullName>LG ELECTRONICS</fullName>
+                    <default>false</default>
+                    <label>LG ELECTRONICS</label>
+                </value>
+                <value>
+                    <fullName>LITE-ON TECHNOLOGY</fullName>
+                    <default>false</default>
+                    <label>LITE-ON TECHNOLOGY</label>
+                </value>
+                <value>
+                    <fullName>MEDIATEK</fullName>
+                    <default>false</default>
+                    <label>MEDIATEK</label>
+                </value>
+                <value>
+                    <fullName>MICROSOFT</fullName>
+                    <default>false</default>
+                    <label>MICROSOFT</label>
+                </value>
+                <value>
+                    <fullName>MMO2</fullName>
+                    <default>false</default>
+                    <label>MMO2</label>
+                </value>
+                <value>
+                    <fullName>MOBILE TELESYSTEMS</fullName>
+                    <default>false</default>
+                    <label>MOBILE TELESYSTEMS</label>
+                </value>
+                <value>
+                    <fullName>MOTOROLA</fullName>
+                    <default>false</default>
+                    <label>MOTOROLA</label>
+                </value>
+                <value>
+                    <fullName>NCR</fullName>
+                    <default>false</default>
+                    <label>NCR</label>
+                </value>
+                <value>
+                    <fullName>NEC</fullName>
+                    <default>false</default>
+                    <label>NEC</label>
+                </value>
+                <value>
+                    <fullName>NEXTEL COMMUNICATIONS</fullName>
+                    <default>false</default>
+                    <label>NEXTEL COMMUNICATIONS</label>
+                </value>
+                <value>
+                    <fullName>NII HOLDINGS</fullName>
+                    <default>false</default>
+                    <label>NII HOLDINGS</label>
+                </value>
+                <value>
+                    <fullName>NOVATEK MICROELECTRONICS</fullName>
+                    <default>false</default>
+                    <label>NOVATEK MICROELECTRONICS</label>
+                </value>
+                <value>
+                    <fullName>NTT DOCOMO</fullName>
+                    <default>false</default>
+                    <label>NTT DOCOMO</label>
+                </value>
+                <value>
+                    <fullName>Open Text Corporation</fullName>
+                    <default>false</default>
+                    <label>Open Text Corporation</label>
+                </value>
+                <value>
+                    <fullName>ORACLE</fullName>
+                    <default>false</default>
+                    <label>ORACLE</label>
+                </value>
+                <value>
+                    <fullName>QUALCOMM</fullName>
+                    <default>false</default>
+                    <label>QUALCOMM</label>
+                </value>
+                <value>
+                    <fullName>QUANTA COMPUTER</fullName>
+                    <default>false</default>
+                    <label>QUANTA COMPUTER</label>
+                </value>
+                <value>
+                    <fullName>ROGERS WIRELESS COMM</fullName>
+                    <default>false</default>
+                    <label>ROGERS WIRELESS COMM</label>
+                </value>
+                <value>
+                    <fullName>Ryoyu Systems Co.</fullName>
+                    <default>false</default>
+                    <label>Ryoyu Systems Co.</label>
+                </value>
+                <value>
+                    <fullName>SAMSUNG ELECTRONICS</fullName>
+                    <default>false</default>
+                    <label>SAMSUNG ELECTRONICS</label>
+                </value>
+                <value>
+                    <fullName>SANDISK</fullName>
+                    <default>false</default>
+                    <label>SANDISK</label>
+                </value>
+                <value>
+                    <fullName>SAP</fullName>
+                    <default>false</default>
+                    <label>SAP</label>
+                </value>
+                <value>
+                    <fullName>SHARP</fullName>
+                    <default>false</default>
+                    <label>SHARP</label>
+                </value>
+                <value>
+                    <fullName>SK TELECOM</fullName>
+                    <default>false</default>
+                    <label>SK TELECOM</label>
+                </value>
+                <value>
+                    <fullName>SOFTBANK</fullName>
+                    <default>false</default>
+                    <label>SOFTBANK</label>
+                </value>
+                <value>
+                    <fullName>SSA Global Technologies</fullName>
+                    <default>false</default>
+                    <label>SSA Global Technologies</label>
+                </value>
+                <value>
+                    <fullName>STET HELLAS TELECOMM</fullName>
+                    <default>false</default>
+                    <label>STET HELLAS TELECOMM</label>
+                </value>
+                <value>
+                    <fullName>Sybase</fullName>
+                    <default>false</default>
+                    <label>Sybase</label>
+                </value>
+                <value>
+                    <fullName>SYMANTEC</fullName>
+                    <default>false</default>
+                    <label>SYMANTEC</label>
+                </value>
+                <value>
+                    <fullName>SYNNEX TECHNOLOGY INTL.</fullName>
+                    <default>false</default>
+                    <label>SYNNEX TECHNOLOGY INTL.</label>
+                </value>
+                <value>
+                    <fullName>TAIWAN SEMICONDUCTOR MFG</fullName>
+                    <default>false</default>
+                    <label>TAIWAN SEMICONDUCTOR MFG</label>
+                </value>
+                <value>
+                    <fullName>TECH DATA</fullName>
+                    <default>false</default>
+                    <label>TECH DATA</label>
+                </value>
+                <value>
+                    <fullName>TELEFONICA</fullName>
+                    <default>false</default>
+                    <label>TELEFONICA</label>
+                </value>
+                <value>
+                    <fullName>TELENOR</fullName>
+                    <default>false</default>
+                    <label>TELENOR</label>
+                </value>
+                <value>
+                    <fullName>TELIASONERA</fullName>
+                    <default>false</default>
+                    <label>TELIASONERA</label>
+                </value>
+                <value>
+                    <fullName>TEXAS INSTRUMENTS</fullName>
+                    <default>false</default>
+                    <label>TEXAS INSTRUMENTS</label>
+                </value>
+                <value>
+                    <fullName>TPV TECHNOLOGY</fullName>
+                    <default>false</default>
+                    <label>TPV TECHNOLOGY</label>
+                </value>
+                <value>
+                    <fullName>Tsinghua</fullName>
+                    <default>false</default>
+                    <label>Tsinghua</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Customer_to_Supplier_Alignment__c</fullName>
+        <description>Picklist to identify how well the customer and the Customer Supplier align for a specific Technology.</description>
+        <externalId>false</externalId>
+        <label>Customer to Supplier Alignment</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Low</fullName>
+                    <default>false</default>
+                    <label>1 - Low</label>
+                </value>
+                <value>
+                    <fullName>2 - Medium Low</fullName>
+                    <default>false</default>
+                    <label>2 - Medium Low</label>
+                </value>
+                <value>
+                    <fullName>3 - Medium</fullName>
+                    <default>false</default>
+                    <label>3 - Medium</label>
+                </value>
+                <value>
+                    <fullName>4 - Medium High</fullName>
+                    <default>false</default>
+                    <label>4 - Medium High</label>
+                </value>
+                <value>
+                    <fullName>5 - High</fullName>
+                    <default>false</default>
+                    <label>5 - High</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Data_Source_Name__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Data Source Name</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deployment_No__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Deployment No</label>
+        <length>15</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Message_Alignment_Cisco_to_Supplier__c</fullName>
+        <description>Picklist to identify how well Cisco’s messaging and the Customer Supplier’s messaging align.</description>
+        <externalId>false</externalId>
+        <label>Message Alignment - Cisco to Supplier</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Low</fullName>
+                    <default>false</default>
+                    <label>1 - Low</label>
+                </value>
+                <value>
+                    <fullName>2 - Medium Low</fullName>
+                    <default>false</default>
+                    <label>2 - Medium Low</label>
+                </value>
+                <value>
+                    <fullName>3 - Medium</fullName>
+                    <default>false</default>
+                    <label>3 - Medium</label>
+                </value>
+                <value>
+                    <fullName>4 - Medium High</fullName>
+                    <default>false</default>
+                    <label>4 - Medium High</label>
+                </value>
+                <value>
+                    <fullName>5 - High</fullName>
+                    <default>false</default>
+                    <label>5 - High</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Mission_Critical_to_Cisco__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to identify if this landscape is Mission Critical to Cisco.</description>
+        <externalId>false</externalId>
+        <label>Mission Critical to Cisco</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Other_Information__c</fullName>
+        <description>Text field used to capture any other relevant information that will help better understand the Other Technology Landscape.</description>
+        <externalId>false</externalId>
+        <label>Other Information</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_URL__c</fullName>
+        <description>URL field to link to other relevant information.</description>
+        <externalId>false</externalId>
+        <label>Other URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>SiteMapIdentifier__c</fullName>
+        <description>Determines how the record displays on the site map</description>
+        <externalId>false</externalId>
+        <formula>Name &amp; "-" &amp; CASE(Technology__c, "Archiving", "Archiving", "Building Systems Management", "Building Systems Management", "Cabling", "Cabling", "CRM", "CRM", "Desktop H/W", "Desktop H/W", "Desktop S/W", "Desktop S/W", "Document Library", "Document Library", "Email", "Email", "PS System", "POS System", "Printing Services", "Printing Services", "Publishing", "Publishing", "Servers", "Servers", "Other", "Other", "--None--","NOT DEFINED","")</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SiteMapIdentifier</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Account_Plan_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Account Plan Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Other_Tech_Land_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Other Tech Land Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Supplier_Contact__c</fullName>
+        <description>The contact name for the Customer Supplier.</description>
+        <externalId>false</externalId>
+        <label>Supplier Contact</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Supplier_to_Cisco_Alignment__c</fullName>
+        <description>Picklist to identify how well the Customer Supplier and Cisco align for the Technology.</description>
+        <externalId>false</externalId>
+        <label>Supplier to Cisco Alignment</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Low</fullName>
+                    <default>false</default>
+                    <label>1 - Low</label>
+                </value>
+                <value>
+                    <fullName>2 - Medium Low</fullName>
+                    <default>false</default>
+                    <label>2 - Medium Low</label>
+                </value>
+                <value>
+                    <fullName>3 - Medium</fullName>
+                    <default>false</default>
+                    <label>3 - Medium</label>
+                </value>
+                <value>
+                    <fullName>4 - Medium High</fullName>
+                    <default>false</default>
+                    <label>4 - Medium High</label>
+                </value>
+                <value>
+                    <fullName>5 - High</fullName>
+                    <default>false</default>
+                    <label>5 - High</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Target_Cisco_Partner__c</fullName>
+        <description>Dependent picklist field, editable if Active Cisco Partner? is set to No.  This picklist is used to identify if the Customer Supplier is targeted to be a Cisco partner.</description>
+        <externalId>false</externalId>
+        <label>Target Cisco Partner?</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Active_Cisco_Partner__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Yes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>No</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Technology__c</fullName>
+        <description>A specific Technology that the Other Technology Landscape represents.</description>
+        <externalId>false</externalId>
+        <label>Technology</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Archiving</fullName>
+                    <default>false</default>
+                    <label>Archiving</label>
+                </value>
+                <value>
+                    <fullName>Building Systems Management</fullName>
+                    <default>false</default>
+                    <label>Building Systems Management</label>
+                </value>
+                <value>
+                    <fullName>Cabling</fullName>
+                    <default>false</default>
+                    <label>Cabling</label>
+                </value>
+                <value>
+                    <fullName>Collaborative Tool</fullName>
+                    <default>false</default>
+                    <label>Collaborative Tool</label>
+                </value>
+                <value>
+                    <fullName>CRM</fullName>
+                    <default>false</default>
+                    <label>CRM</label>
+                </value>
+                <value>
+                    <fullName>Desktop H/W</fullName>
+                    <default>false</default>
+                    <label>Desktop H/W</label>
+                </value>
+                <value>
+                    <fullName>Desktop S/W</fullName>
+                    <default>false</default>
+                    <label>Desktop S/W</label>
+                </value>
+                <value>
+                    <fullName>Document Library</fullName>
+                    <default>false</default>
+                    <label>Document Library</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>POS System</fullName>
+                    <default>false</default>
+                    <label>POS System</label>
+                </value>
+                <value>
+                    <fullName>Printing Services</fullName>
+                    <default>false</default>
+                    <label>Printing Services</label>
+                </value>
+                <value>
+                    <fullName>Publishing</fullName>
+                    <default>false</default>
+                    <label>Publishing</label>
+                </value>
+                <value>
+                    <fullName>Servers</fullName>
+                    <default>false</default>
+                    <label>Servers</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Other Technology Landscape</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Other Technology Landscape</label>
+    <nameField>
+        <displayFormat>{0}</displayFormat>
+        <label>Landscape Component</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Other Technology Landscape</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

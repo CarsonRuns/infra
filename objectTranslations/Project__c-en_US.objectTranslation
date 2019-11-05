@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Delivery Date --></label>
+        <name>Delivery_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delivery Fiscal Year --></label>
+        <name>Delivery_Fiscal_Year__c</name>
+        <picklistValues>
+            <masterLabel>FY2015</masterLabel>
+            <translation><!-- FY2015 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FY2016</masterLabel>
+            <translation><!-- FY2016 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FY2017</masterLabel>
+            <translation><!-- FY2017 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Delivery Quarter --></label>
+        <name>Delivery_Quarter__c</name>
+        <picklistValues>
+            <masterLabel>Q1</masterLabel>
+            <translation><!-- Q1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2</masterLabel>
+            <translation><!-- Q2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3</masterLabel>
+            <translation><!-- Q3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4</masterLabel>
+            <translation><!-- Q4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Organization Producing Business Outcomes --></label>
+        <name>Organization_Producing_Business_Outcomes__c</name>
+        <picklistValues>
+            <masterLabel>CITS</masterLabel>
+            <translation><!-- CITS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Project Count --></label>
+        <name>Project_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Offering --></label>
+        <name>Service_Offering__c</name>
+        <picklistValues>
+            <masterLabel>Account Management</masterLabel>
+            <translation><!-- Account Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Management</masterLabel>
+            <translation><!-- Contact Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Issue Management</masterLabel>
+            <translation><!-- Customer Issue Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Demand Generation</masterLabel>
+            <translation><!-- Demand Generation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Forecasting</masterLabel>
+            <translation><!-- Forecasting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Management</masterLabel>
+            <translation><!-- Lead Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Management</masterLabel>
+            <translation><!-- Opportunity Management --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Delivered</masterLabel>
+            <translation><!-- Delivered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Flight</masterLabel>
+            <translation><!-- In-Flight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Planned</masterLabel>
+            <translation><!-- Planned --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Work Request Number --></label>
+        <name>Work_Request_Number__c</name>
+        <relationshipLabel><!-- Projects --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Project</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Projects</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Project Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Delivery date cannot be in the future. --></errorMessage>
+        <name>Delivery_Date_Status_Check</name>
+    </validationRules>
+</CustomObjectTranslation>

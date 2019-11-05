@@ -1,0 +1,618 @@
+<!-- *************** CHANGE HISTORY ****************
+ WR-01286 - Added static banner message - Jabber_Supported_Browser_Message
+ **************** CHANGE HISTORY **************** -->
+
+<apex:page showHeader="true" sidebar="false" controller="JabberPhoneController">
+    <script src="/support/api/27.0/interaction.js"></script>
+    <script src="/soap/ajax/27.0/connection.js" type="text/javascript"></script>
+    <apex:includeScript value="{!$Resource.jquery}"/>
+    <apex:stylesheet value="{!$Resource.dataTableStyle}"  />
+    <apex:includeScript value="{!$Resource.jQueryDataTable}"/>
+    <apex:includeScript value="{!$Resource.SOFTPHONE_POPUP_VERSION_ZIP}"/>
+    <apex:includeScript value="{!$Resource.cwicV1}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}"  />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}"  />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.accordion.js')}"  />
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/themes/ui-lightness/jquery.ui.all.css')}"  />
+    <apex:stylesheet value="{!$Resource.JabberPhoneStyleSheet}"  />
+    <style type="text/css">
+        .jabberLogo {
+            background: url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberLogo.png')}') no-repeat scroll left 50% transparent;
+            background-size: 57px 48px;
+            background-position: 0px -3px;
+            height: 35px;
+            padding: 10px 0px 1px 55px;
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 20px;
+            width : 26%;
+            margin : 0 auto;
+        }
+        .jabberFaq {
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabbberHelp.png')}') no-repeat scroll left center transparent;
+            padding : 0px 0px 0px 20px;
+        }
+        .jabberReset {
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberResetIco.png')}') no-repeat scroll left center transparent;
+            padding : 0px 0px 0px 20px;
+        }
+        .round{
+            background :url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberHeader.jpg')}') repeat scroll left center transparent;
+            position: relative;
+            padding : 9px 9px 11px 9px;
+        }
+        .accordionHeader {
+            background : none #1797C0;
+            width : 100%;
+            height : 20px;
+        }
+        .ui-widget-content {
+        }
+        #jabberDiagonisticDetails.ui-accordion .ui-accordion-content {
+            padding: 3px 3px 0px 3px;
+            border-radius: 0;
+        }
+        #jabberDiagonisticDetails.ui-accordion .ui-accordion-header {
+            border-radius: 0;
+            font-weight : bold;
+            padding-left: 2.2em;
+            margin-top: 11px;
+        }
+        #jabberDiagonisticDetails .ui-icon-triangle-1-e{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/expandIcon.gif')}') no-repeat scroll left center transparent;
+        }
+        #jabberDiagonisticDetails .ui-icon-triangle-1-s{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/collapseIcon.gif')}') no-repeat scroll left center transparent;
+        }
+        #jabberDiagonisticDetails .ui-icon{
+            position: absolute;
+            left: .5em;
+            margin-top: 4px;
+        }
+        #jabberDiagonisticDetails .enable{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/tickIcon.gif')}') no-repeat scroll 14% center transparent;
+        }
+        #jabberDiagonisticDetails .disable{
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/crossIcon.gif')}') no-repeat scroll 14% center transparent;
+        }
+        .spaceRGT {
+            margin-right: 7px;
+        }
+        .spaceLGT a{
+            background : #DCDCDC;
+            padding : 1px 4px 1px 4px;
+            cursor : pointer;
+            text-decoration : none;
+            border-radius : 0.4em;
+            color : #000000;
+            border : 1px solid #CCC;
+            width : 40px;
+        }
+        .spaceLGT span{
+            background : #DEDEDE;
+            padding : 1px 4px 1px 4px;
+            text-decoration : none;
+            border-radius : 0.4em;
+            color : #000000;
+            border : 1px solid #CCC;
+            width : 40px;
+        }
+        .spaceLGT a:hover{
+            background : #FFFFFF;
+            text-decoration : none;
+        }
+        #jabberDiagonisticDetails .ui-helper-reset{
+            line-height:2.3;
+        }
+        #jabberDiagonisticDetails table.dataTable tr.odd{
+            background : none #FFFFFF;
+        }
+        .rightMargin {
+            position: absolute;
+            right: 9px;
+            top: 24px;
+        }
+        .messageInner {
+            background : none #ffc;
+            border-radius : 0.4em;
+            border : 1px solid #ff0000;
+            padding :15px 10px 15px 49px;
+            color : #FF0000;
+            font-size : 1.3em;
+        }
+        .messageInnerIco {
+            background : url('{!URLFOR($Resource.JabberImages,'JabberImages/jabberAlertIco.png')}') no-repeat scroll 10px center #ffc;
+        }
+        [data-tip] {
+            position:relative;
+            cursor:pointer;
+        }
+        [data-tip]:before {
+            content:'';
+            /* hides the tooltip when not hovered */
+            display:none;
+            border:5px solid #fefdb9;
+            /* 4 border technique to create the arrow */
+            border-top-color:orange;
+            border-right-color:transparent;
+            border-bottom-color:transparent;
+            border-left-color:transparent;
+            position:absolute;
+            top:-15px;
+            right:10px;
+            z-index:8;
+            font-size:0;
+            line-height:0;
+            width:0;
+            height:0;
+        }
+        [data-tip]:after {
+            display:none;
+            content:attr(data-tip);
+            position:absolute;
+            top:-45px;
+            right:0px;
+            padding:5px 8px;
+            background:orange;
+            color:#fff;
+            z-index:9;
+            font-size: 0.75em;
+            height:18px;
+            line-height:18px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            white-space:nowrap;
+            word-wrap:normal;
+            text-decoration : none;
+        }
+        [data-tip]:hover:before,
+        [data-tip]:hover:after {
+            display:block;
+        }
+        .helpTxt {
+            color:#fefdb9;
+        }
+        .helpTxt[data-tip]:before {
+            border-top-color:orange;
+            border-right-color:transparent;
+            border-bottom-color:transparent;
+            border-left-color:transparent;
+        }
+        .helpTxt[data-tip]:after {
+            background:#fefdb9;
+            color:#000;
+            border : 1px solid orange;
+            text-decoration : none;
+        }
+        .tip-below[data-tip]:after {
+            top:19px;
+            right:0px;
+            text-decoration : none;
+        }
+        .tip-below[data-tip]:before {
+            border-top-color:transparent;
+            border-right-color:transparent;
+            border-bottom-color:orange;
+            border-left-color:transparent;
+            top:9px;
+            right:10px; 
+        }
+        .tip-below.helpTxt[data-tip]:before {
+            border-top-color:transparent;
+            border-right-color:transparent;
+            border-bottom-color:orange;
+            border-left-color:transparent;
+        }
+        .resetHelp {
+            background : #FFFFFF!important;
+        }
+        .resetHelp ul li {
+            margin-left : -15px;
+        }
+        a.helpTxt{
+            text-decoration : none;
+        }
+        a.helpTxt:hover{
+            text-decoration : none;
+        }
+        .txtUline {
+            text-decoration : underline;
+        }
+    </style>
+    <script type="text/javascript">
+sforce.connection.sessionId = "{!$Api.Session_ID}";
+
+        var CISCO = {};
+        CISCO.jabber = {
+            osName : null,
+            browserName : null,
+            browserVersion : null,
+            dataOS : null,
+            settings : null,
+            aboutObject : null,
+            browserUpgrationStatus : null,
+            cucmValue : null,
+            init : function(_dataOS,_settings){
+                var userAgent = navigator.userAgent.toLowerCase(); 
+                alert('userAgent'+userAgent);
+                dataOS = _dataOS;
+                settings = _settings;
+                osName = getOS(_dataOS);
+                browserName = getBrowserName();
+                if($.browser.safari){
+                    userAgent = userAgent.substring(userAgent.indexOf('version/') +8);
+                    userAgent = userAgent.substring(0,userAgent.indexOf(' '));
+                    $.browser.version = userAgent;
+                }
+                browserVersion = parseFloat($.browser.version);
+                browserUpgrationStatus = isBrowserUpgradeRequired(browserName,browserVersion);
+                alert('browserUpgrationStatus'+browserUpgrationStatus);
+                try{
+                    alert('init'+settings);
+                    console.log('settings'+settings);
+                    $('#phonecontainer').cwic('init', settings);
+                    
+                } catch(e){
+                    alert('Exception'+e);
+                    console.log('Plugin not available'+e);
+                }
+                $('#jabberDiagonisticDetails').togglepanels();
+                $('#jabberDiagonisticDetails').find('h1').trigger('click');
+                $('.jabberRadio').live('click',function(){
+                    var _eleName = $(this).attr('name'),_url;
+                    switch(_eleName){
+                        case "syncA" :
+                            ($(this).val()=='yes')?$(this).parent('td').next('td').html('<a target="_blank" class="helpTxt tip-below" data-tip="Sync Password (ACE Network User)" href="http://wwwin.cisco.com/it/ace/pinspwds_phone.shtml"><span class="txtUline">Sync your CEC Password</span></a>'):$(this).parent('td').next('td').html('');
+                            break;
+                        case "syncB" :
+                            ($(this).val()=='yes')?$(this).parent('td').next('td').html('<a target="_blank" class="helpTxt tip-below" data-tip="Sync Password (Non-ACE Network User)" href="http://phone.cisco.com"><span class="txtUline">Sync your CEC Password</span></a>'):$(this).parent('td').next('td').html('');
+                            break;
+                        case "tech" :
+                            ($(this).val()=='yes')?$(this).parent('td').next('td').html('<a target="_blank"  class="helpTxt" data-tip="Attach screenshot of this page to the support case" href="http://alli-prd.cisco.com/arsys/shared/login.jsp?/arsys/forms/alli-prd-rcdn/SRS:ServiceRequestConsole/?&mode=submit"><span class="txtUline">Submit IT Request</span></a>'):$(this).parent('td').next('td').html('');
+                            break;
+                        default :
+                    }
+                });
+                $('a.update').live('click',function(){
+                    cucmValue = $(this).parent().prev().text();
+                    $(this).parent().prev().html('<input type="text" name="cucmServer" id="cucmServer" value="'+cucmValue+'"/>');
+                    $(this).parent().html('<a href="javascript:void(0)" class="spaceRGT btnCTRL save">Save</a><a href="javascript:void(0)" class="spaceRGT btnCTRL cancel">Cancel</a>');
+                });
+                $('a.save').live('click',function(){
+                    var _input = $(this).parent().prev().find('input[type=text]').val(),msgId = '_selfDiagnostic_msg_id';
+                    if(_input != ''){
+                        $(this).parent().html('<span class="btnCTRL save">InProgress...</span>');
+                        updateCUCMServer(_input);
+                    } else {
+                        $(this).parent().prev().append('<div class="callout border-callout" id="'+msgId+'">Enter CUCM Server Address.<b class="border-notch notch"></b><b class="notch"></b></div>');
+                        setTimeout(function(){$('#'+msgId).remove(); },2000);
+                        return false;
+                    }
+                });
+                $('a.cancel').live('click',function(){
+                    $(this).parent().prev().html(cucmValue);
+                    $(this).parent().html('<a href="javascript:void(0)" class="btnCTRL update">Update</a>');
+                });
+                $('.rightMargin a').live('click',function(){
+                    if($(this).find('span').hasClass('jabberFaq')){
+                        window.open('http://iwe.cisco.com/web/view-post/post/-/posts?postId=380500072','_blank','');
+                    } else {
+                        resetLocalStorage();
+                    }
+                });
+            },
+            populateDataTable : function(error){
+                var _cnt = 0;
+                var _compatibleBrowser = ['Microsoft Internet Explorer','Chrome','Safari','Firefox'];
+                var userAgent = navigator.userAgent.toLowerCase(); 
+                var _compatibleOS = ['Windows','Mac'];
+                $('#jabberSystemInfo').dataTable({
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bInfo": false,
+                    "bPaginate": false,
+                    "bSortClasses": false,
+                    "bSort": false,
+                    "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+                        var _displayName = $(nRow).find('td:eq(0)').text(),_browserVer;
+                        switch(_displayName){
+                            case "Browser":
+                                $('td:eq(1)',nRow).html(browserName);
+                                if($.inArray(browserName,_compatibleBrowser)==-1){
+                                    if($('td:eq(2)',nRow).hasClass('enable')) $('td:eq(2)',nRow).addClass('disable');
+                                } else {
+                                    if($('td:eq(2)',nRow).hasClass('disable')) $('td:eq(2)',nRow).addClass('enable');
+                                }
+                                break;
+                            case "Browser Version":
+                                if($.browser.safari){
+                                    userAgent = userAgent.substring(userAgent.indexOf('version/') +8);
+                                    userAgent = userAgent.substring(0,userAgent.indexOf(' '));
+                                    $.browser.version = userAgent;
+                                } else if(userAgent.indexOf('opr')!=-1){
+                                    userAgent = userAgent.substring((userAgent.indexOf('opr/')+4),userAgent.length);
+                                    userAgent = parseFloat(userAgent);
+                                    $.browser.version = userAgent;
+                                }
+                                $('td:eq(1)',nRow).html($.browser.version);
+                                if(browserUpgrationStatus!=null){
+                                    if($('td:eq(2)',nRow).hasClass('enable')) $('td:eq(2)',nRow).addClass('disable');
+                                    $('td:eq(3)',nRow).append('<a target="_blank" class="helpTxt tip-below" data-tip="Upgrade browser version" href="'+browserUpgrationStatus+'"><span class="txtUline">Upgrade your browser</span></a>');
+                                } else {
+                                    if($('td:eq(2)',nRow).hasClass('disable')) $('td:eq(2)',nRow).addClass('enable');
+                                    $('td:eq(3)',nRow).html('');
+                                }
+                                break;
+                            case "Operating System":
+                                $('td:eq(1)',nRow).html(osName);
+                                if($.inArray(osName,_compatibleOS) == -1){
+                                    if($('td:eq(2)',nRow).hasClass('enable')) $('td:eq(2)',nRow).addClass('disable');
+                                } else {
+                                    if($('td:eq(2)',nRow).hasClass('disable')) $('td:eq(2)',nRow).addClass('enable');
+                                }
+                                break;
+                            case "Jabber Plugin":
+                                if(typeof error != 'undefined' && error!=''){
+                                    $('#jabberSelfDiagnosticErrMsg').html(error.message).show();
+                                    $('td:eq(1)',nRow).html("Not Available");
+                                    $('td:eq(2)',nRow).addClass('disable');
+                                    
+                                    if(osName == 'Windows')
+                                        $('td:eq(3)',nRow).append('<a target="_blank" class="helpTxt tip-below" data-tip="Download/Upgrade Jabber Plugin" href="http://iwe.cisco.com/c/post_action/get_attachment?postId=400400054&postVersionId=1&attachmentId=603407607"><span class="txtUline">Download/Upgrade Jabber Plugin</span></a>');
+                                    else if(osName == 'Mac')
+                                        $('td:eq(3)',nRow).append('<a target="_blank" class="helpTxt tip-below" data-tip="Download/Upgrade Jabber Plugin" href="http://iwe.cisco.com/c/post_action/get_attachment?postId=400400054&postVersionId=1&attachmentId=603407621"><span class="txtUline">Download/Upgrade Jabber Plugin</span></a>');
+                                    else
+                                        $('td:eq(3)',nRow).append('');
+                                }else {
+                                    $('#jabberSelfDiagnosticErrMsg').html('').hide();
+                                    $('td:eq(1)',nRow).html(aboutObject.plugin.version.plugin);
+                                    if(aboutObject.upgrade.plugin){
+                                        if($('td:eq(2)',nRow).hasClass('enable')) $('td:eq(2)',nRow).addClass('disable');
+                                            $('td:eq(3)',nRow).append('<a target="_blank" class="helpTxt tip-below" data-tip="Upgrade Jabber Plugin" href="http://software.cisco.com/download/release.html?mdfid=283882159&softwareid=283995793&release=9.2(0)&relind=AVAILABLE&rellifecycle=&reltype=latest"><span class="txtUline">Upgrade Jabber Plugin</span></a>');
+                                    } else {
+                                        if($('td:eq(2)',nRow).hasClass('disable')) $('td:eq(2)',nRow).addClass('enable');
+                                        $('td:eq(3)',nRow).html('');
+                                    }
+                                }   
+                                break;
+                            default :
+                        }
+                    }
+                });
+                $('#jabberTechnicalInfo').dataTable({
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bInfo": false,
+                    "bPaginate": false,
+                    "bSortClasses": false,
+                    "bSort": false,
+                    "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+                    }
+                });
+                $('#jabberAdditionalInfo').dataTable({
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bInfo": false,
+                    "bPaginate": false,
+                    "bSortClasses": false,
+                    "bSort": false,
+                    "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+                        if(typeof error =='undefined'){
+                            switch(iDisplayIndex){
+                                case 0:
+                                    $(nRow).find('td:eq(1)').html('<span class="spaceRGT" >{!$User.CUCMServer__c}</span><span class="spaceLGT"><a href="javascript:void(0)" class="btnCTRL update">Update</a></span>');
+                                    break;
+                                case 1:
+                                    $(nRow).find('td:eq(1)').html(aboutObject.javascript.version);
+                                    break;
+                                case 2:
+                                    $(nRow).find('td:eq(1)').html(aboutObject.jquery.version);
+                                    break;
+                                case 3:
+                                    $(nRow).find('td:eq(1)').html(aboutObject.plugin.version.plugin);
+                                    break;
+                                case 4:
+                                    $(nRow).find('td:eq(1)').html(aboutObject.plugin.version.system_release);
+                                    break;
+                                case 5:
+                                    $(nRow).find('td:eq(1)').html(aboutObject.plugin.version.ecc);
+                                    break;
+                                default :
+                            }
+                        }
+                    },
+                    "fnInitComplete": function(oSettings, json) {
+                        if(typeof error !='undefined' && error != ''){
+                            //$(this).find('tbody tr').remove();
+                            //$(this).find('tbody').append('<tr><td colspan="2" align="center">'+error.message+'</td></tr>');
+                            $(this).parent().parent().hide().prev().hide();
+                        } 
+                    }
+                });
+            },
+            phoneReadyCallback : function(defaults,phoneRegistered, phoneMode){
+                var _about = $('#phonecontainer').cwic('about'),_pluginURL;
+                aboutObject = _about;
+                CISCO.jabber.populateDataTable();
+            },
+            phoneErrorCallback : function(error,exception){
+                CISCO.jabber.populateDataTable(error);
+            }
+        };
+        $(document).ready(function() { 
+            var _dataOS = [{string: navigator.platform,subString: "Win",identity: "Windows"},{string: navigator.platform,subString: "Mac",identity: "Mac"},{string: navigator.userAgent,subString: "iPhone",identity: "iPhone/iPod"},{string: navigator.platform,subString: "Linux",identity: "Linux"}]
+            var _settings = {ready: CISCO.jabber.phoneReadyCallback,error: CISCO.jabber.phoneErrorCallback};
+            CISCO.jabber.init(_dataOS,_settings);
+        });
+        var updateCallBack = function(){
+            var _msgId = '_selfDiagnostic_msg_id1',_saveEle = $('span.save'),_cucmVal = $('#cucmServer').val();
+            if($('#msgId').val()=='false'){
+                _saveEle.parent().prev().append('<div class="callout border-callout" id="'+msgId+'">Update failed. Please try after some time.<b class="border-notch notch"></b><b class="notch"></b></div>');
+                setTimeout(function(){$('#'+msgId).remove(); },2000);
+            } else {
+                _saveEle.parent().prev().html(_cucmVal);
+                _saveEle.parent().html('<a href="javascript:void(0)" class="btnCTRL update">Update</a>');
+            }
+        }
+        $.fn.togglepanels = function(){
+          return this.each(function(){
+            $(this).addClass("ui-accordion ui-accordion-icons ui-widget ui-helper-reset")
+          .find("h1")
+            .addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom")
+            .hover(function() { $(this).toggleClass("ui-state-hover"); })
+            .prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>')
+            .click(function() {
+              $(this)
+                .toggleClass("ui-accordion-header-active ui-state-active ui-state-default ui-corner-bottom")
+                .find("> .ui-icon").toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s").end()
+                .next().slideToggle();
+              return false;
+            })
+            .next()
+              .addClass("ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom")
+              .hide();
+          });
+        };
+    </script>
+    <apex:form >
+    <div id="phonecontainer"></div>
+    <div class="mainContent">
+        <div class="round">
+            <div class="jabberLogo">Jabber Self-Diagnostic and Support</div>
+            <div class="rightMargin">
+                <a href="javascript:void(0);" class="helpTxt tip-below" data-tip="Frequently asked questions and answers"><span class="jabberFaq">FAQ</span></a>
+                <a href="javascript:void(0);" class="helpTxt tip-below" data-tip="Disconnect the Salesforce-Jabber connection and restart the Jabber Phone"><span class="jabberReset">Reset</span></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clearHeight"></div>
+        <div class="messageInner messageInnerIco" id="jabberSelfDiagnosticErrMsg" style="display:none;"></div>
+        <!-- WR-01286 Banner message-->
+        <apex:pagemessage title="{!$Label.Jabber_Supported_Browser_Message}" severity="warning" strength="3" escape="false"/>
+        <div id="jabberDiagonisticDetails">
+            <h1>Step 1: Check System Compatibility</h1>
+            <div>
+                <table cellpadding="0" cellspacing="0" border="0" class="display" id="jabberSystemInfo" width="100%">
+                    <thead>
+                        <tr>
+                            <th width="40%">&nbsp;</th>
+                            <th width="20%">Information</th>
+                            <th width="20%">Compatibility</th>
+                            <th width="20%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jabber Plugin</td>
+                            <td></td>
+                            <td class="enable"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Browser</td>
+                            <td></td>
+                            <td class="enable"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Browser Version</td>
+                            <td></td>
+                            <td class="enable"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td></td>
+                            <td class="enable"></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h1>Step 2: Troubleshoot </h1>
+            <div>
+                <table cellpadding="0" cellspacing="0" border="0" class="display" id="jabberTechnicalInfo" width="100%">
+                    <thead>
+                        <tr>
+                            <th width="40%">&nbsp;</th>
+                            <th width="40%">Response</th>
+                            <th width="20%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Do you want to sync your password?(ACE Network User)?</td>
+                            <td><input type="radio" name="syncA" class="jabberRadio" value="yes" id="syncA1" />Yes<input type="radio" name="syncA" class="jabberRadio" value="no" id="syncA2" />No</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Do you want to sync your password?(Non-ACE Network User)?</td>
+                            <td><input type="radio" name="syncB" class="jabberRadio" value="yes" id="syncB1" />Yes<input type="radio" name="syncB" class="jabberRadio" value="no" id="syncB2" />No</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Need Technical Support?</td>
+                            <td><input type="radio" name="tech" class="jabberRadio" value="yes" id="tech1" />Yes<input type="radio" name="tech" class="jabberRadio" value="no" id="tech2" />No</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h1>Step 3: Verify following settings before open a support case</h1>
+            <div class="resetHelp">
+                <ul>
+                    <li>Check that Javascript is turned on in your browser.</li>
+                    <li>If you have any pop-up blockers, please disable them. </li>
+                    <li>Ensure that you are logged into extension mobility.</li>
+                    <li>Ensure that you are not logged into Jabber in another browser, window or tab.</li>
+                </ul>
+            </div>
+            <h1>Step 4: Open a support case with  following information</h1>
+            <div>
+                <table cellpadding="0" cellspacing="0" border="0" class="display" id="jabberAdditionalInfo" width="100%">
+                    <thead>
+                        <tr>
+                            <th width="40%">&nbsp;</th>
+                            <th width="60%">Information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CUCM Server</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>CWIC Version</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>Jquery Version</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>Plugin Version</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>CUCM Release</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>ECC Version</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <apex:actionFunction action="{!updateCUCMServer}" name="updateCUCMServer"  oncomplete="updateCallBack();">
+    <apex:param name="firstParam" assignTo="{!strServerAddr}" value="" />
+    </apex:actionFunction>
+
+    <apex:inputHidden value="{!strStatusMessage}" id="msgId" />
+    
+    </apex:form>
+</apex:page>

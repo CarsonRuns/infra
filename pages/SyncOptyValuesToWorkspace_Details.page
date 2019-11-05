@@ -1,0 +1,85 @@
+<!-- Used for Sync the Opty With Workspace in Workspace Details page-->
+
+<apex:page standardController="AT_Workspace__c"  extensions="SyncOptyValuesToWS_CTE" id="pg">
+<apex:form >
+<apex:actionFunction name="CopyOptyValuesToWS" action="{!CopyOptyValuesToWS}" reRender="pg"/> 
+</apex:form>
+<script type = "text/javascript">
+
+CopyOptyValuesToWS();
+
+</script>
+<apex:form >
+
+    <apex:includeScript value="{!$Resource.jquery22}"/>
+    <apex:includeScript value="{!$Resource.Bootstrapmodelwindow}"/>
+    <apex:includeScript value="{!$Resource.BootStrapDialogMinJs}"/>
+    <script src="/soap/ajax/28.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/28.0/apex.js" type="text/javascript"></script>
+    <apex:stylesheet value="/resource/BootstrapUpdateCssModelPosition"/>
+    <apex:stylesheet value="/resource/BootstrapDialogMin"/>
+    <script type="text/javascript">
+        var j$ = jQuery.noConflict(); 
+        var isOpen = true; 
+        var noWS = "{!isworkspace}";
+        
+        //SCAVA FIX
+        var url = '{!JSENCODE($CurrentPage.parameters.retUrl)}';
+        
+        var workId = '{!$CurrentPage.parameters.id}';
+        var isDetails= "{!isDetails}";
+        
+        <!-- SCAVA FIX -->
+        var err = '{!JSENCODE(errorMsg)}';
+        j$(document).ready(function(){ 
+        //Creation of Model box starts here 
+        var dialogInstance = new BootstrapDialog({ 
+        size: BootstrapDialog.SIZE_Large, 
+        title: 'Sync Opportunity Values with Workspace', 
+        closable: false, 
+        message: '<div><img src="/resource/loading"/>{!$Label.QuoteDilogLoading}</div>', //loading Image 
+        onshown: function(dilogref) { 
+        dilogref.setMessage('<div><img src="/resource/loading"/>Loading..</div>'); //Loading Image
+        if(noWS == 'false'){
+            dilogref.setTitle("Opportunity Sync with Workspace");
+            dilogref.setType(BootstrapDialog.TYPE_WARNING); 
+            
+            dilogref.setMessage("Please Select Workspaces to sync with Opportunity");
+            
+        }
+        else {
+            dilogref.setTitle("Opportunity Sync with Workspace");
+            dilogref.setType(BootstrapDialog.TYPE_PRIMARY); 
+            dilogref.setMessage('<div><img src="/resource/loading"/>Sync is in progress..</div>');
+            if(err == ''){
+            if(isDetails == 'true'){
+                window.top.location= '/'+workId;
+            }else{
+                window.top.location= url;
+            }
+            }
+            else{
+                console.log(err);
+                dilogref.setMessage('<div>' + err + '</div>');
+               
+            }
+        }
+        },
+        buttons: [{ 
+        label: "Close", 
+        action: function(dialogRef) {  
+        
+            window.top.location= url; //function to redirect opportunity UI on click of back button from Model box
+        } 
+        }] 
+        }); 
+        
+        if (isOpen) 
+        { 
+            console.log('Inside Initialization');
+            dialogInstance.open();  // Opening Model box on click of New Quote button 
+        } 
+        });    
+    </script>
+</apex:form>
+</apex:page>

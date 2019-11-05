@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Business Outcome Description --></label>
+        <name>Business_Outcome_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Leader --></label>
+        <name>Leader__c</name>
+        <picklistValues>
+            <masterLabel>Brian Jeffries</masterLabel>
+            <translation><!-- Brian Jeffries --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chris Dedicoat</masterLabel>
+            <translation><!-- Chris Dedicoat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chuck Robbins</masterLabel>
+            <translation><!-- Chuck Robbins --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gary Moore</masterLabel>
+            <translation><!-- Gary Moore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gilles Leyrat</masterLabel>
+            <translation><!-- Gilles Leyrat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guillermo Diaz</masterLabel>
+            <translation><!-- Guillermo Diaz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Joe Pinto</masterLabel>
+            <translation><!-- Joe Pinto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>John L. Kern</masterLabel>
+            <translation><!-- John L. Kern --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Joseph Puthussery</masterLabel>
+            <translation><!-- Joseph Puthussery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lance Perry</masterLabel>
+            <translation><!-- Lance Perry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nick Adamo</masterLabel>
+            <translation><!-- Nick Adamo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rebecca Jacoby</masterLabel>
+            <translation><!-- Rebecca Jacoby --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robert Lloyd</masterLabel>
+            <translation><!-- Robert Lloyd --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ron Ricci</masterLabel>
+            <translation><!-- Ron Ricci --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Metric Type --></label>
+        <name>Metric_Type__c</name>
+        <picklistValues>
+            <masterLabel>Adoption</masterLabel>
+            <translation><!-- Adoption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Impact</masterLabel>
+            <translation><!-- Impact --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Metric Description --></label>
+        <name>Metric__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Project__c</name>
+        <relationshipLabel><!-- Business Outcomes --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Business Outcome</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Business Outcomes</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Business Outcome Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

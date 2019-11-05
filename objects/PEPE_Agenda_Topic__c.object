@@ -1,0 +1,3368 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Agenda_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Agenda Description</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Agenda_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Agenda Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                    <label>Inactive</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Agenda_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Agenda Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BREAK</fullName>
+                    <default>false</default>
+                    <label>BREAK</label>
+                </value>
+                <value>
+                    <fullName>AGENDA</fullName>
+                    <default>true</default>
+                    <label>AGENDA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Agenda__c</fullName>
+        <externalId>false</externalId>
+        <label>Agenda Title</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Architecture__c</fullName>
+        <description>This will define the type of Architecture.</description>
+        <externalId>false</externalId>
+        <label>Architecture</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Agenda_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cloud</fullName>
+                    <default>false</default>
+                    <label>Cloud</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Cross-Architecture</fullName>
+                    <default>false</default>
+                    <label>Cross-Architecture</label>
+                </value>
+                <value>
+                    <fullName>Data Center / Virtualization</fullName>
+                    <default>false</default>
+                    <label>Data Center / Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Enterprise Networking</fullName>
+                    <default>false</default>
+                    <label>Enterprise Networking</label>
+                </value>
+                <value>
+                    <fullName>Internet of Things (IoT)</fullName>
+                    <default>false</default>
+                    <label>Internet of Things (IoT)</label>
+                </value>
+                <value>
+                    <fullName>None Specified</fullName>
+                    <default>false</default>
+                    <label>None Specified</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Service Provider</fullName>
+                    <default>false</default>
+                    <label>Service Provider</label>
+                </value>
+                <value>
+                    <fullName>Software</fullName>
+                    <default>false</default>
+                    <label>Software</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Cloud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Collaboration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Cross-Architecture</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Data Center / Virtualization</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Enterprise Networking</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Internet of Things (IoT)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>None Specified</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Service Provider</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Software</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Audiences__c</fullName>
+        <description>For Oct Release 2016</description>
+        <externalId>false</externalId>
+        <label>Audience</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CXO</fullName>
+                    <default>false</default>
+                    <label>CXO</label>
+                </value>
+                <value>
+                    <fullName>SME</fullName>
+                    <default>false</default>
+                    <label>SME</label>
+                </value>
+                <value>
+                    <fullName>MM</fullName>
+                    <default>false</default>
+                    <label>MM</label>
+                </value>
+                <value>
+                    <fullName>Multi</fullName>
+                    <default>false</default>
+                    <label>Multi</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Learning_Partner__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Learning Partner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Delivery_Team__c</controllingField>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>5i</fullName>
+                    <default>false</default>
+                    <label>5i</label>
+                </value>
+                <value>
+                    <fullName>Cluster Learning</fullName>
+                    <default>false</default>
+                    <label>Cluster Learning</label>
+                </value>
+                <value>
+                    <fullName>Concept Sales</fullName>
+                    <default>false</default>
+                    <label>Concept Sales</label>
+                </value>
+                <value>
+                    <fullName>DUMMY</fullName>
+                    <default>false</default>
+                    <label>DUMMY</label>
+                </value>
+                <value>
+                    <fullName>DUMMY1</fullName>
+                    <default>false</default>
+                    <label>DUMMY1</label>
+                </value>
+                <value>
+                    <fullName>Fastlane</fullName>
+                    <default>false</default>
+                    <label>Fastlane</label>
+                </value>
+                <value>
+                    <fullName>Firefly</fullName>
+                    <default>false</default>
+                    <label>Firefly</label>
+                </value>
+                <value>
+                    <fullName>Global Knowledge</fullName>
+                    <default>false</default>
+                    <label>Global Knowledge</label>
+                </value>
+                <value>
+                    <fullName>Innovise</fullName>
+                    <default>false</default>
+                    <label>Innovise</label>
+                </value>
+                <value>
+                    <fullName>NIL</fullName>
+                    <default>false</default>
+                    <label>NIL</label>
+                </value>
+                <value>
+                    <fullName>Quadmark</fullName>
+                    <default>false</default>
+                    <label>Quadmark</label>
+                </value>
+                <value>
+                    <fullName>Summit Group</fullName>
+                    <default>false</default>
+                    <label>Summit Group</label>
+                </value>
+                <value>
+                    <fullName>Tomato Tomato</fullName>
+                    <default>false</default>
+                    <label>Tomato Tomato</label>
+                </value>
+                <value>
+                    <fullName>UpDate</fullName>
+                    <default>false</default>
+                    <label>UpDate</label>
+                </value>
+                <value>
+                    <fullName>Vortex6</fullName>
+                    <default>false</default>
+                    <label>Vortex6</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>5i</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Cluster Learning</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Concept Sales</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>DUMMY</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>DUMMY1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Fastlane</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Firefly</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Global Knowledge</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Innovise</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>NIL</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Quadmark</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Summit Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Tomato Tomato</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>UpDate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business Learning Partner</controllingFieldValue>
+                <valueName>Vortex6</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>DW_ID__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please enter DW ID in the format 'DW-NNNNN-NNNNN'</inlineHelpText>
+        <label>DW ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_Team__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery Team</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Agenda_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cisco</fullName>
+                    <default>false</default>
+                    <label>Cisco</label>
+                </value>
+                <value>
+                    <fullName>Business Learning Partner</fullName>
+                    <default>false</default>
+                    <label>Business Learning Partner</label>
+                </value>
+                <value>
+                    <fullName>Distributors</fullName>
+                    <default>false</default>
+                    <label>Distributors</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Cisco</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Business Learning Partner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Distributors</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Duration_Unit__c</fullName>
+        <externalId>false</externalId>
+        <label>Duration Unit</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hours</fullName>
+                    <default>true</default>
+                    <label>Hours</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>End_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Estimated_Cost__c</fullName>
+        <defaultValue>0.0</defaultValue>
+        <externalId>false</externalId>
+        <label>Estimated Cost</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Event_Agenda_Count__c</fullName>
+        <description>Roll-up field to calculate the Event Agenda records related to AT record</description>
+        <externalId>false</externalId>
+        <label>Event Agenda Count</label>
+        <summaryForeignKey>PEPE_Event_Agenda__c.Agenda_Id__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Advanced</fullName>
+                    <default>false</default>
+                    <label>Advanced</label>
+                </value>
+                <value>
+                    <fullName>Foundational</fullName>
+                    <default>false</default>
+                    <label>Foundational</label>
+                </value>
+                <value>
+                    <fullName>Intermediate</fullName>
+                    <default>false</default>
+                    <label>Intermediate</label>
+                </value>
+                <value>
+                    <fullName>Specialist</fullName>
+                    <default>false</default>
+                    <label>Specialist</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Primary_Focus__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary Focus</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Operations</fullName>
+                    <default>false</default>
+                    <label>Operations</label>
+                </value>
+                <value>
+                    <fullName>Marketing</fullName>
+                    <default>false</default>
+                    <label>Marketing</label>
+                </value>
+                <value>
+                    <fullName>Sales</fullName>
+                    <default>false</default>
+                    <label>Sales</label>
+                </value>
+                <value>
+                    <fullName>Technology</fullName>
+                    <default>false</default>
+                    <label>Technology</label>
+                </value>
+                <value>
+                    <fullName>Multi Focus</fullName>
+                    <default>false</default>
+                    <label>Multi Focus</label>
+                </value>
+                <value>
+                    <fullName>Talent</fullName>
+                    <default>false</default>
+                    <label>Talent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Session_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Session Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Agenda_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Lab</fullName>
+                    <default>false</default>
+                    <label>Lab</label>
+                </value>
+                <value>
+                    <fullName>Local breakout</fullName>
+                    <default>false</default>
+                    <label>Local breakout</label>
+                </value>
+                <value>
+                    <fullName>Local session</fullName>
+                    <default>false</default>
+                    <label>Local session</label>
+                </value>
+                <value>
+                    <fullName>Virtual session</fullName>
+                    <default>false</default>
+                    <label>Virtual session</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Lab</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Local breakout</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Local session</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Virtual session</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Start_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Start Date Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Technology__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Technology</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Technology__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Web Security</fullName>
+                    <default>false</default>
+                    <label>Web Security</label>
+                </value>
+                <value>
+                    <fullName>Email Security</fullName>
+                    <default>false</default>
+                    <label>Email Security</label>
+                </value>
+                <value>
+                    <fullName>Cloud Access Security</fullName>
+                    <default>false</default>
+                    <label>Cloud Access Security</label>
+                </value>
+                <value>
+                    <fullName>Cloud Web Security</fullName>
+                    <default>false</default>
+                    <label>Cloud Web Security</label>
+                </value>
+                <value>
+                    <fullName>Cisco ASA with FirePower Services</fullName>
+                    <default>false</default>
+                    <label>Cisco ASA with FirePower Services</label>
+                </value>
+                <value>
+                    <fullName>Cisco Virtual Adaptive Security Appliance (ASAv)</fullName>
+                    <default>false</default>
+                    <label>Cisco Virtual Adaptive Security Appliance (ASAv)</label>
+                </value>
+                <value>
+                    <fullName>Cisco Firepower NGIPS Appliance</fullName>
+                    <default>false</default>
+                    <label>Cisco Firepower NGIPS Appliance</label>
+                </value>
+                <value>
+                    <fullName>Cisco Identity Services Engine (ISE)</fullName>
+                    <default>false</default>
+                    <label>Cisco Identity Services Engine (ISE)</label>
+                </value>
+                <value>
+                    <fullName>Cisco TrustSec</fullName>
+                    <default>false</default>
+                    <label>Cisco TrustSec</label>
+                </value>
+                <value>
+                    <fullName>Cisco AnyConnect Secure Mobility Client</fullName>
+                    <default>false</default>
+                    <label>Cisco AnyConnect Secure Mobility Client</label>
+                </value>
+                <value>
+                    <fullName>Advanced Malware Protection (AMP)</fullName>
+                    <default>false</default>
+                    <label>Advanced Malware Protection (AMP)</label>
+                </value>
+                <value>
+                    <fullName>AMP + ThreatGrid</fullName>
+                    <default>false</default>
+                    <label>AMP + ThreatGrid</label>
+                </value>
+                <value>
+                    <fullName>ACI Security Solution</fullName>
+                    <default>false</default>
+                    <label>ACI Security Solution</label>
+                </value>
+                <value>
+                    <fullName>Cyber Threat Defense (CTD)</fullName>
+                    <default>false</default>
+                    <label>Cyber Threat Defense (CTD)</label>
+                </value>
+                <value>
+                    <fullName>Enterprise License Agreement (ELA)</fullName>
+                    <default>false</default>
+                    <label>Enterprise License Agreement (ELA)</label>
+                </value>
+                <value>
+                    <fullName>Network-as-a-Sensor/Network-as-an-Enforcer (Naas/NaaE)</fullName>
+                    <default>false</default>
+                    <label>Network-as-a-Sensor/Network-as-an-Enforcer (Naas/NaaE)</label>
+                </value>
+                <value>
+                    <fullName>Secure Data Center</fullName>
+                    <default>false</default>
+                    <label>Secure Data Center</label>
+                </value>
+                <value>
+                    <fullName>Cisco Application Centric Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Cisco Application Centric Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Cisco Nexus 9000 Series Switches</fullName>
+                    <default>false</default>
+                    <label>Cisco Nexus 9000 Series Switches</label>
+                </value>
+                <value>
+                    <fullName>Microsoft Applications on Cisco UCS</fullName>
+                    <default>false</default>
+                    <label>Microsoft Applications on Cisco UCS</label>
+                </value>
+                <value>
+                    <fullName>Big Data</fullName>
+                    <default>false</default>
+                    <label>Big Data</label>
+                </value>
+                <value>
+                    <fullName>SAP applications on Cisco UCS</fullName>
+                    <default>false</default>
+                    <label>SAP applications on Cisco UCS</label>
+                </value>
+                <value>
+                    <fullName>Cisco Desktop Virtualization solutions</fullName>
+                    <default>false</default>
+                    <label>Cisco Desktop Virtualization solutions</label>
+                </value>
+                <value>
+                    <fullName>Cisco ONE for Data Center</fullName>
+                    <default>false</default>
+                    <label>Cisco ONE for Data Center</label>
+                </value>
+                <value>
+                    <fullName>Cisco UCS Director</fullName>
+                    <default>false</default>
+                    <label>Cisco UCS Director</label>
+                </value>
+                <value>
+                    <fullName>Cisco ONE Enterprise Cloud suite</fullName>
+                    <default>false</default>
+                    <label>Cisco ONE Enterprise Cloud suite</label>
+                </value>
+                <value>
+                    <fullName>Data Center Designs: Converged Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Data Center Designs: Converged Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Flexpod</fullName>
+                    <default>false</default>
+                    <label>Flexpod</label>
+                </value>
+                <value>
+                    <fullName>Versastack solution</fullName>
+                    <default>false</default>
+                    <label>Versastack solution</label>
+                </value>
+                <value>
+                    <fullName>UCS Open Stack</fullName>
+                    <default>false</default>
+                    <label>UCS Open Stack</label>
+                </value>
+                <value>
+                    <fullName>Cisco UCS Mini</fullName>
+                    <default>false</default>
+                    <label>Cisco UCS Mini</label>
+                </value>
+                <value>
+                    <fullName>Data Center Switching</fullName>
+                    <default>false</default>
+                    <label>Data Center Switching</label>
+                </value>
+                <value>
+                    <fullName>Storage Networking</fullName>
+                    <default>false</default>
+                    <label>Storage Networking</label>
+                </value>
+                <value>
+                    <fullName>Storage Solutions</fullName>
+                    <default>false</default>
+                    <label>Storage Solutions</label>
+                </value>
+                <value>
+                    <fullName>Cisco UCS C3160 Rack Server</fullName>
+                    <default>false</default>
+                    <label>Cisco UCS C3160 Rack Server</label>
+                </value>
+                <value>
+                    <fullName>Data Center Designs : Data Center Security</fullName>
+                    <default>false</default>
+                    <label>Data Center Designs : Data Center Security</label>
+                </value>
+                <value>
+                    <fullName>Servers - Unified Computing</fullName>
+                    <default>false</default>
+                    <label>Servers - Unified Computing</label>
+                </value>
+                <value>
+                    <fullName>IaaS: Monetizing the Data Center &amp; Cloud</fullName>
+                    <default>false</default>
+                    <label>IaaS: Monetizing the Data Center &amp; Cloud</label>
+                </value>
+                <value>
+                    <fullName>Hybrid IT</fullName>
+                    <default>false</default>
+                    <label>Hybrid IT</label>
+                </value>
+                <value>
+                    <fullName>Multi-Sub-Technology</fullName>
+                    <default>false</default>
+                    <label>Multi-Sub-Technology</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Security Solutions</controllingFieldValue>
+                <valueName>ACI Security Solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security Solutions</controllingFieldValue>
+                <valueName>Cyber Threat Defense (CTD)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security Solutions</controllingFieldValue>
+                <valueName>Enterprise License Agreement (ELA)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security Solutions</controllingFieldValue>
+                <valueName>Network-as-a-Sensor/Network-as-an-Enforcer (Naas/NaaE)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security Solutions</controllingFieldValue>
+                <valueName>Secure Data Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security Solutions</controllingFieldValue>
+                <controllingFieldValue>Smart and Connected Communities</controllingFieldValue>
+                <controllingFieldValue>Software Applications</controllingFieldValue>
+                <controllingFieldValue>Solutions</controllingFieldValue>
+                <controllingFieldValue>SP DC</controllingFieldValue>
+                <controllingFieldValue>SP Mobility</controllingFieldValue>
+                <controllingFieldValue>SP Networks</controllingFieldValue>
+                <controllingFieldValue>SP Routing</controllingFieldValue>
+                <controllingFieldValue>SP Video</controllingFieldValue>
+                <controllingFieldValue>Storage</controllingFieldValue>
+                <controllingFieldValue>Collab Other</controllingFieldValue>
+                <controllingFieldValue>Switching</controllingFieldValue>
+                <controllingFieldValue>Compute</controllingFieldValue>
+                <controllingFieldValue>Transformative Networking</controllingFieldValue>
+                <controllingFieldValue>Conferencing</controllingFieldValue>
+                <controllingFieldValue>Transportation</controllingFieldValue>
+                <controllingFieldValue>Connected Safety and Security</controllingFieldValue>
+                <controllingFieldValue>UC as a Service based on HCS (HCS)</controllingFieldValue>
+                <controllingFieldValue>Contact Center</controllingFieldValue>
+                <controllingFieldValue>UC Endpoints</controllingFieldValue>
+                <controllingFieldValue>Contact Center as a Service based on HCS (HCS_CC)</controllingFieldValue>
+                <controllingFieldValue>UC Infrastructure</controllingFieldValue>
+                <controllingFieldValue>Content Security</controllingFieldValue>
+                <controllingFieldValue>DC Security</controllingFieldValue>
+                <controllingFieldValue>DC Software</controllingFieldValue>
+                <controllingFieldValue>ACI</controllingFieldValue>
+                <controllingFieldValue>Advanced Threat</controllingFieldValue>
+                <controllingFieldValue>Application Experience as a Service (AXaaS)</controllingFieldValue>
+                <controllingFieldValue>BE6000</controllingFieldValue>
+                <controllingFieldValue>BYOD as a Service (BYODaaS)</controllingFieldValue>
+                <controllingFieldValue>CIN</controllingFieldValue>
+                <controllingFieldValue>Cisco Cloud Services or Cisco SaaS</controllingFieldValue>
+                <controllingFieldValue>Cisco Strategic Partnerships</controllingFieldValue>
+                <controllingFieldValue>Cloud Cell Architecture for SAP HANA (SAP HANA)</controllingFieldValue>
+                <controllingFieldValue>Unified Access / Mobility</controllingFieldValue>
+                <controllingFieldValue>Unified Communications</controllingFieldValue>
+                <controllingFieldValue>Utilities</controllingFieldValue>
+                <controllingFieldValue>Video</controllingFieldValue>
+                <controllingFieldValue>DC Switching</controllingFieldValue>
+                <controllingFieldValue>Video and Telepresence as a Service (TPaaS)</controllingFieldValue>
+                <controllingFieldValue>Desktop as a Service (DaaS)</controllingFieldValue>
+                <controllingFieldValue>Webex/CMR</controllingFieldValue>
+                <controllingFieldValue>Desktop Virtualization</controllingFieldValue>
+                <controllingFieldValue>Wireless</controllingFieldValue>
+                <controllingFieldValue>Disaster Recovery as a Service (DRaaS)</controllingFieldValue>
+                <controllingFieldValue>Workspace</controllingFieldValue>
+                <controllingFieldValue>Foundation for Software as a Service (FnSaaS)</controllingFieldValue>
+                <controllingFieldValue>Hosted Security as a Service (HSS)</controllingFieldValue>
+                <controllingFieldValue>Hybrid Cloud (Intercloud Fabric)</controllingFieldValue>
+                <controllingFieldValue>Infrastructure as a Service (IaaS)</controllingFieldValue>
+                <controllingFieldValue>IoT-AS=Advanced Services</controllingFieldValue>
+                <controllingFieldValue>IoT-CCS=Cisco Consulting Services</controllingFieldValue>
+                <controllingFieldValue>IoT-CIE=Connected Industries and Energy</controllingFieldValue>
+                <controllingFieldValue>IoT Others</controllingFieldValue>
+                <controllingFieldValue>IoT-Sports &amp; Entertainment =Sports &amp; Entertainment</controllingFieldValue>
+                <controllingFieldValue>IoT-TS=Technical Services</controllingFieldValue>
+                <controllingFieldValue>Managed Services</controllingFieldValue>
+                <controllingFieldValue>Manufacturing</controllingFieldValue>
+                <controllingFieldValue>Network Security</controllingFieldValue>
+                <controllingFieldValue>Others</controllingFieldValue>
+                <controllingFieldValue>Policy &amp; Access</controllingFieldValue>
+                <controllingFieldValue>Private Cloud</controllingFieldValue>
+                <controllingFieldValue>Routing</controllingFieldValue>
+                <controllingFieldValue>SDN / CiscoONE</controllingFieldValue>
+                <controllingFieldValue>SDN / Network Programming</controllingFieldValue>
+                <valueName>Multi-Sub-Technology</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Solutions</controllingFieldValue>
+                <valueName>Microsoft Applications on Cisco UCS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Solutions</controllingFieldValue>
+                <valueName>Big Data</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Solutions</controllingFieldValue>
+                <valueName>SAP applications on Cisco UCS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Solutions</controllingFieldValue>
+                <valueName>Cisco Desktop Virtualization solutions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Storage</controllingFieldValue>
+                <valueName>Storage Networking</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Storage</controllingFieldValue>
+                <valueName>Storage Solutions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Storage</controllingFieldValue>
+                <valueName>Cisco UCS C3160 Rack Server</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Compute</controllingFieldValue>
+                <valueName>IaaS: Monetizing the Data Center &amp; Cloud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Compute</controllingFieldValue>
+                <valueName>Hybrid IT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Contact Center as a Service based on HCS (HCS_CC)</controllingFieldValue>
+                <controllingFieldValue>Content Security</controllingFieldValue>
+                <valueName>Web Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Contact Center as a Service based on HCS (HCS_CC)</controllingFieldValue>
+                <controllingFieldValue>Content Security</controllingFieldValue>
+                <valueName>Email Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Contact Center as a Service based on HCS (HCS_CC)</controllingFieldValue>
+                <controllingFieldValue>Content Security</controllingFieldValue>
+                <valueName>Cloud Access Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Contact Center as a Service based on HCS (HCS_CC)</controllingFieldValue>
+                <controllingFieldValue>Content Security</controllingFieldValue>
+                <valueName>Cloud Web Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Converged Infrastructure</controllingFieldValue>
+                <valueName>Data Center Designs: Converged Infrastructure</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Converged Infrastructure</controllingFieldValue>
+                <valueName>Flexpod</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Converged Infrastructure</controllingFieldValue>
+                <valueName>Versastack solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Converged Infrastructure</controllingFieldValue>
+                <valueName>UCS Open Stack</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Converged Infrastructure</controllingFieldValue>
+                <valueName>Cisco UCS Mini</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC Software</controllingFieldValue>
+                <valueName>Cisco ONE for Data Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC Software</controllingFieldValue>
+                <valueName>Cisco UCS Director</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC Software</controllingFieldValue>
+                <valueName>Cisco ONE Enterprise Cloud suite</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ACI</controllingFieldValue>
+                <valueName>Cisco Application Centric Infrastructure</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ACI</controllingFieldValue>
+                <valueName>Cisco Nexus 9000 Series Switches</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advanced Threat</controllingFieldValue>
+                <valueName>Advanced Malware Protection (AMP)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advanced Threat</controllingFieldValue>
+                <valueName>AMP + ThreatGrid</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Security</controllingFieldValue>
+                <valueName>Cisco ASA with FirePower Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Security</controllingFieldValue>
+                <valueName>Cisco Virtual Adaptive Security Appliance (ASAv)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Security</controllingFieldValue>
+                <valueName>Cisco Firepower NGIPS Appliance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Policy &amp; Access</controllingFieldValue>
+                <valueName>Cisco Identity Services Engine (ISE)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Policy &amp; Access</controllingFieldValue>
+                <valueName>Cisco TrustSec</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Policy &amp; Access</controllingFieldValue>
+                <valueName>Cisco AnyConnect Secure Mobility Client</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Technology__c</fullName>
+        <externalId>false</externalId>
+        <label>Technology</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Architecture__c</controllingField>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>ACI</fullName>
+                    <default>false</default>
+                    <label>ACI</label>
+                </value>
+                <value>
+                    <fullName>Advanced Threat</fullName>
+                    <default>false</default>
+                    <label>Advanced Threat</label>
+                </value>
+                <value>
+                    <fullName>Application Experience as a Service (AXaaS)</fullName>
+                    <default>false</default>
+                    <label>Application Experience as a Service (AXaaS)</label>
+                </value>
+                <value>
+                    <fullName>BE6000</fullName>
+                    <default>false</default>
+                    <label>BE6000</label>
+                </value>
+                <value>
+                    <fullName>BYOD as a Service (BYODaaS)</fullName>
+                    <default>false</default>
+                    <label>BYOD as a Service (BYODaaS)</label>
+                </value>
+                <value>
+                    <fullName>CIN</fullName>
+                    <default>false</default>
+                    <label>CIN</label>
+                </value>
+                <value>
+                    <fullName>Cisco Cloud Services or Cisco SaaS</fullName>
+                    <default>false</default>
+                    <label>Cisco Cloud Services or Cisco SaaS</label>
+                </value>
+                <value>
+                    <fullName>Cisco Strategic Partnerships</fullName>
+                    <default>false</default>
+                    <label>Cisco Strategic Partnerships</label>
+                </value>
+                <value>
+                    <fullName>Cloud Cell Architecture for SAP HANA (SAP HANA)</fullName>
+                    <default>false</default>
+                    <label>Cloud Cell Architecture for SAP HANA (SAP HANA)</label>
+                </value>
+                <value>
+                    <fullName>Collab Other</fullName>
+                    <default>false</default>
+                    <label>Collab Other</label>
+                </value>
+                <value>
+                    <fullName>Compute</fullName>
+                    <default>false</default>
+                    <label>Compute</label>
+                </value>
+                <value>
+                    <fullName>Conferencing</fullName>
+                    <default>false</default>
+                    <label>Conferencing</label>
+                </value>
+                <value>
+                    <fullName>Connected Safety and Security</fullName>
+                    <default>false</default>
+                    <label>Connected Safety and Security</label>
+                </value>
+                <value>
+                    <fullName>Contact Center</fullName>
+                    <default>false</default>
+                    <label>Contact Center</label>
+                </value>
+                <value>
+                    <fullName>Contact Center as a Service based on HCS (HCS_CC)</fullName>
+                    <default>false</default>
+                    <label>Contact Center as a Service based on HCS (HCS_CC)</label>
+                </value>
+                <value>
+                    <fullName>Content Security</fullName>
+                    <default>false</default>
+                    <label>Content Security</label>
+                </value>
+                <value>
+                    <fullName>Converged Infrastructure</fullName>
+                    <default>false</default>
+                    <label>Converged Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>DC Security</fullName>
+                    <default>false</default>
+                    <label>DC Security</label>
+                </value>
+                <value>
+                    <fullName>DC Software</fullName>
+                    <default>false</default>
+                    <label>DC Software</label>
+                </value>
+                <value>
+                    <fullName>DC Switching</fullName>
+                    <default>false</default>
+                    <label>DC Switching</label>
+                </value>
+                <value>
+                    <fullName>Desktop as a Service (DaaS)</fullName>
+                    <default>false</default>
+                    <label>Desktop as a Service (DaaS)</label>
+                </value>
+                <value>
+                    <fullName>Desktop Virtualization</fullName>
+                    <default>false</default>
+                    <label>Desktop Virtualization</label>
+                </value>
+                <value>
+                    <fullName>Disaster Recovery as a Service (DRaaS)</fullName>
+                    <default>false</default>
+                    <label>Disaster Recovery as a Service (DRaaS)</label>
+                </value>
+                <value>
+                    <fullName>Foundation for Software as a Service (FnSaaS)</fullName>
+                    <default>false</default>
+                    <label>Foundation for Software as a Service (FnSaaS)</label>
+                </value>
+                <value>
+                    <fullName>Hosted Security as a Service (HSS)</fullName>
+                    <default>false</default>
+                    <label>Hosted Security as a Service (HSS)</label>
+                </value>
+                <value>
+                    <fullName>Hybrid Cloud (Intercloud Fabric)</fullName>
+                    <default>false</default>
+                    <label>Hybrid Cloud (Intercloud Fabric)</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure as a Service (IaaS)</fullName>
+                    <default>false</default>
+                    <label>Infrastructure as a Service (IaaS)</label>
+                </value>
+                <value>
+                    <fullName>IoT-AS=Advanced Services</fullName>
+                    <default>false</default>
+                    <label>IoT-AS=Advanced Services</label>
+                </value>
+                <value>
+                    <fullName>IoT-CCS=Cisco Consulting Services</fullName>
+                    <default>false</default>
+                    <label>IoT-CCS=Cisco Consulting Services</label>
+                </value>
+                <value>
+                    <fullName>IoT-CIE=Connected Industries and Energy</fullName>
+                    <default>false</default>
+                    <label>IoT-CIE=Connected Industries and Energy</label>
+                </value>
+                <value>
+                    <fullName>IoT Others</fullName>
+                    <default>false</default>
+                    <label>IoT Others</label>
+                </value>
+                <value>
+                    <fullName>IoT-Sports &amp; Entertainment =Sports &amp; Entertainment</fullName>
+                    <default>false</default>
+                    <label>IoT-Sports &amp; Entertainment =Sports &amp; Entertainment</label>
+                </value>
+                <value>
+                    <fullName>IoT-TS=Technical Services</fullName>
+                    <default>false</default>
+                    <label>IoT-TS=Technical Services</label>
+                </value>
+                <value>
+                    <fullName>Managed Services</fullName>
+                    <default>false</default>
+                    <label>Managed Services</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing</fullName>
+                    <default>false</default>
+                    <label>Manufacturing</label>
+                </value>
+                <value>
+                    <fullName>Multi-Technology</fullName>
+                    <default>false</default>
+                    <label>Multi-Technology</label>
+                </value>
+                <value>
+                    <fullName>Network Security</fullName>
+                    <default>false</default>
+                    <label>Network Security</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+                <value>
+                    <fullName>Policy &amp; Access</fullName>
+                    <default>false</default>
+                    <label>Policy &amp; Access</label>
+                </value>
+                <value>
+                    <fullName>Private Cloud</fullName>
+                    <default>false</default>
+                    <label>Private Cloud</label>
+                </value>
+                <value>
+                    <fullName>Routing</fullName>
+                    <default>false</default>
+                    <label>Routing</label>
+                </value>
+                <value>
+                    <fullName>SDN / CiscoONE</fullName>
+                    <default>false</default>
+                    <label>SDN / CiscoONE</label>
+                </value>
+                <value>
+                    <fullName>SDN / Network Programming</fullName>
+                    <default>false</default>
+                    <label>SDN / Network Programming</label>
+                </value>
+                <value>
+                    <fullName>Security Solutions</fullName>
+                    <default>false</default>
+                    <label>Security Solutions</label>
+                </value>
+                <value>
+                    <fullName>Smart and Connected Communities</fullName>
+                    <default>false</default>
+                    <label>Smart and Connected Communities</label>
+                </value>
+                <value>
+                    <fullName>Software Applications</fullName>
+                    <default>false</default>
+                    <label>Software Applications</label>
+                </value>
+                <value>
+                    <fullName>Solutions</fullName>
+                    <default>false</default>
+                    <label>Solutions</label>
+                </value>
+                <value>
+                    <fullName>SP DC</fullName>
+                    <default>false</default>
+                    <label>SP DC</label>
+                </value>
+                <value>
+                    <fullName>SP Mobility</fullName>
+                    <default>false</default>
+                    <label>SP Mobility</label>
+                </value>
+                <value>
+                    <fullName>SP Networks</fullName>
+                    <default>false</default>
+                    <label>SP Networks</label>
+                </value>
+                <value>
+                    <fullName>SP Routing</fullName>
+                    <default>false</default>
+                    <label>SP Routing</label>
+                </value>
+                <value>
+                    <fullName>SP Video</fullName>
+                    <default>false</default>
+                    <label>SP Video</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>Switching</fullName>
+                    <default>false</default>
+                    <label>Switching</label>
+                </value>
+                <value>
+                    <fullName>Transformative Networking</fullName>
+                    <default>false</default>
+                    <label>Transformative Networking</label>
+                </value>
+                <value>
+                    <fullName>Transportation</fullName>
+                    <default>false</default>
+                    <label>Transportation</label>
+                </value>
+                <value>
+                    <fullName>UC as a Service based on HCS (HCS)</fullName>
+                    <default>false</default>
+                    <label>UC as a Service based on HCS (HCS)</label>
+                </value>
+                <value>
+                    <fullName>UC Endpoints</fullName>
+                    <default>false</default>
+                    <label>UC Endpoints</label>
+                </value>
+                <value>
+                    <fullName>UC Infrastructure</fullName>
+                    <default>false</default>
+                    <label>UC Infrastructure</label>
+                </value>
+                <value>
+                    <fullName>Unified Access / Mobility</fullName>
+                    <default>false</default>
+                    <label>Unified Access / Mobility</label>
+                </value>
+                <value>
+                    <fullName>Unified Communications</fullName>
+                    <default>false</default>
+                    <label>Unified Communications</label>
+                </value>
+                <value>
+                    <fullName>Utilities</fullName>
+                    <default>false</default>
+                    <label>Utilities</label>
+                </value>
+                <value>
+                    <fullName>Video</fullName>
+                    <default>false</default>
+                    <label>Video</label>
+                </value>
+                <value>
+                    <fullName>Video and Telepresence as a Service (TPaaS)</fullName>
+                    <default>false</default>
+                    <label>Video and Telepresence as a Service (TPaaS)</label>
+                </value>
+                <value>
+                    <fullName>Webex/CMR</fullName>
+                    <default>false</default>
+                    <label>Webex/CMR</label>
+                </value>
+                <value>
+                    <fullName>Wireless</fullName>
+                    <default>false</default>
+                    <label>Wireless</label>
+                </value>
+                <value>
+                    <fullName>Workspace</fullName>
+                    <default>false</default>
+                    <label>Workspace</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Application Experience as a Service (AXaaS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>BYOD as a Service (BYODaaS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Cisco Cloud Services or Cisco SaaS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Cloud Cell Architecture for SAP HANA (SAP HANA)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Contact Center as a Service based on HCS (HCS_CC)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Desktop as a Service (DaaS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Disaster Recovery as a Service (DRaaS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Foundation for Software as a Service (FnSaaS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Hosted Security as a Service (HSS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Hybrid Cloud (Intercloud Fabric)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Infrastructure as a Service (IaaS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>UC as a Service based on HCS (HCS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cloud</controllingFieldValue>
+                <valueName>Video and Telepresence as a Service (TPaaS)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Collaboration</controllingFieldValue>
+                <valueName>Collab Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Collaboration</controllingFieldValue>
+                <valueName>Conferencing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Collaboration</controllingFieldValue>
+                <valueName>Contact Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Collaboration</controllingFieldValue>
+                <controllingFieldValue>Cross-Architecture</controllingFieldValue>
+                <controllingFieldValue>Data Center / Virtualization</controllingFieldValue>
+                <controllingFieldValue>Enterprise Networking</controllingFieldValue>
+                <controllingFieldValue>Internet of Things (IoT)</controllingFieldValue>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <controllingFieldValue>Service Provider</controllingFieldValue>
+                <controllingFieldValue>Software</controllingFieldValue>
+                <valueName>Multi-Technology</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Collaboration</controllingFieldValue>
+                <valueName>UC Endpoints</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Collaboration</controllingFieldValue>
+                <valueName>UC Infrastructure</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Collaboration</controllingFieldValue>
+                <valueName>Video</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cross-Architecture</controllingFieldValue>
+                <controllingFieldValue>Enterprise Networking</controllingFieldValue>
+                <controllingFieldValue>Software</controllingFieldValue>
+                <valueName>Others</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cross-Architecture</controllingFieldValue>
+                <valueName>SDN / CiscoONE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center / Virtualization</controllingFieldValue>
+                <valueName>ACI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center / Virtualization</controllingFieldValue>
+                <valueName>Compute</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center / Virtualization</controllingFieldValue>
+                <valueName>Converged Infrastructure</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center / Virtualization</controllingFieldValue>
+                <valueName>DC Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center / Virtualization</controllingFieldValue>
+                <valueName>DC Software</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center / Virtualization</controllingFieldValue>
+                <valueName>DC Switching</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center / Virtualization</controllingFieldValue>
+                <valueName>Solutions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Data Center / Virtualization</controllingFieldValue>
+                <valueName>Storage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Enterprise Networking</controllingFieldValue>
+                <valueName>Routing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Enterprise Networking</controllingFieldValue>
+                <valueName>Switching</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Enterprise Networking</controllingFieldValue>
+                <valueName>Wireless</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internet of Things (IoT)</controllingFieldValue>
+                <valueName>Connected Safety and Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internet of Things (IoT)</controllingFieldValue>
+                <valueName>IoT Others</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internet of Things (IoT)</controllingFieldValue>
+                <valueName>Manufacturing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internet of Things (IoT)</controllingFieldValue>
+                <valueName>Smart and Connected Communities</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internet of Things (IoT)</controllingFieldValue>
+                <valueName>Transportation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Internet of Things (IoT)</controllingFieldValue>
+                <valueName>Utilities</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Advanced Threat</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Content Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Network Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Policy &amp; Access</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security</controllingFieldValue>
+                <valueName>Security Solutions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Provider</controllingFieldValue>
+                <valueName>Managed Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Provider</controllingFieldValue>
+                <valueName>SP DC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Provider</controllingFieldValue>
+                <valueName>SP Mobility</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Provider</controllingFieldValue>
+                <valueName>SP Networks</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Provider</controllingFieldValue>
+                <valueName>SP Video</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Training_Types__c</fullName>
+        <externalId>false</externalId>
+        <label>Training Types</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Agenda_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Business Acumen</fullName>
+                    <default>false</default>
+                    <label>Business Acumen</label>
+                </value>
+                <value>
+                    <fullName>Marketing</fullName>
+                    <default>false</default>
+                    <label>Marketing</label>
+                </value>
+                <value>
+                    <fullName>Operations</fullName>
+                    <default>false</default>
+                    <label>Operations</label>
+                </value>
+                <value>
+                    <fullName>Programs, Tools and Incentives</fullName>
+                    <default>false</default>
+                    <label>Programs, Tools and Incentives</label>
+                </value>
+                <value>
+                    <fullName>Sales</fullName>
+                    <default>false</default>
+                    <label>Sales</label>
+                </value>
+                <value>
+                    <fullName>Sales Excellence</fullName>
+                    <default>false</default>
+                    <label>Sales Excellence</label>
+                </value>
+                <value>
+                    <fullName>Services</fullName>
+                    <default>false</default>
+                    <label>Services</label>
+                </value>
+                <value>
+                    <fullName>Soft Skills</fullName>
+                    <default>false</default>
+                    <label>Soft Skills</label>
+                </value>
+                <value>
+                    <fullName>Technical</fullName>
+                    <default>false</default>
+                    <label>Technical</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Business Acumen</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Marketing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Operations</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Programs, Tools and Incentives</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Sales</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Sales Excellence</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Services</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Soft Skills</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>AGENDA</controllingFieldValue>
+                <valueName>Technical</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>Agenda Topic</label>
+    <nameField>
+        <displayFormat>AT-{00000000}</displayFormat>
+        <label>Agenda Topic ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Agenda Topics</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <searchLayouts>
+        <customTabListAdditionalFields>Agenda__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Delivery_Team__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Architecture__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Technology__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Agenda_Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Business_Learning_Partner__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Session_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Training_Types__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Agenda__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Architecture__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Agenda_Description__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Business_Learning_Partner__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Session_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Delivery_Team__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Technology__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Training_Types__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Agenda_Description__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Agenda__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Architecture__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Business_Learning_Partner__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Session_Type__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Delivery_Team__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Estimated_Cost__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Technology__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Training_Types__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>OBJECT_ID</searchFilterFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Agenda_Type__c</searchFilterFields>
+        <searchFilterFields>Agenda_Description__c</searchFilterFields>
+        <searchFilterFields>Agenda__c</searchFilterFields>
+        <searchFilterFields>Architecture__c</searchFilterFields>
+        <searchFilterFields>Business_Learning_Partner__c</searchFilterFields>
+        <searchFilterFields>Session_Type__c</searchFilterFields>
+        <searchFilterFields>Delivery_Team__c</searchFilterFields>
+        <searchFilterFields>Technology__c</searchFilterFields>
+        <searchResultsAdditionalFields>Agenda__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Training_Types__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Architecture__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Technology__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Agenda_Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Business_Learning_Partner__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Session_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Delivery_Team__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Agenda_Description__c</columns>
+        <columns>Agenda__c</columns>
+        <columns>Architecture__c</columns>
+        <columns>Business_Learning_Partner__c</columns>
+        <columns>Delivery_Team__c</columns>
+        <columns>Duration_Unit__c</columns>
+        <columns>Technology__c</columns>
+        <columns>Training_Types__c</columns>
+        <columns>Agenda_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>PEPE_AGENDA</fullName>
+        <columns>NAME</columns>
+        <columns>Agenda__c</columns>
+        <columns>Architecture__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <columns>Agenda_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>PEPE AGENDA</label>
+        <language>en_US</language>
+    </listViews>
+    <recordTypes>
+        <fullName>REC_AGENDA</fullName>
+        <active>true</active>
+        <description>Default Agenda Page</description>
+        <label>Agenda</label>
+        <picklistValues>
+            <picklist>Agenda_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Agenda_Type__c</picklist>
+            <values>
+                <fullName>AGENDA</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>BREAK</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Architecture__c</picklist>
+            <values>
+                <fullName>Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collaboration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cross-Architecture</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center %2F Virtualization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Networking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet of Things %28IoT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None Specified</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Audiences__c</picklist>
+            <values>
+                <fullName>CXO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SME</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Business_Learning_Partner__c</picklist>
+            <values>
+                <fullName>5i</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cluster Learning</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Concept Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DUMMY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DUMMY1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fastlane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firefly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Knowledge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Innovise</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quadmark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Summit Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tomato Tomato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UpDate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vortex6</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Delivery_Team__c</picklist>
+            <values>
+                <fullName>Business Learning Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Distributors</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Duration_Unit__c</picklist>
+            <values>
+                <fullName>Hours</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Level__c</picklist>
+            <values>
+                <fullName>Advanced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Foundational</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intermediate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Specialist</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_Focus__c</picklist>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi Focus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Talent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Technology</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Session_Type__c</picklist>
+            <values>
+                <fullName>Lab</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local breakout</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual session</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Technology__c</picklist>
+            <values>
+                <fullName>ACI Security Solution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP %2B ThreatGrid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Advanced Malware Protection %28AMP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Big Data</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco ASA with FirePower Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco AnyConnect Secure Mobility Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Application Centric Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Desktop Virtualization solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Firepower NGIPS Appliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Identity Services Engine %28ISE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Nexus 9000 Series Switches</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco ONE Enterprise Cloud suite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco ONE for Data Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco TrustSec</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco UCS C3160 Rack Server</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco UCS Director</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco UCS Mini</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Virtual Adaptive Security Appliance %28ASAv%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud Access Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud Web Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cyber Threat Defense %28CTD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Designs %3A Data Center Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Designs%3A Converged Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Switching</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise License Agreement %28ELA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flexpod</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hybrid IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IaaS%3A Monetizing the Data Center %26 Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Microsoft Applications on Cisco UCS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi-Sub-Technology</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network-as-a-Sensor%2FNetwork-as-an-Enforcer %28Naas%2FNaaE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAP applications on Cisco UCS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secure Data Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Servers - Unified Computing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage Networking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UCS Open Stack</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Versastack solution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web Security</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Technology__c</picklist>
+            <values>
+                <fullName>ACI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Advanced Threat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Application Experience as a Service %28AXaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BE6000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BYOD as a Service %28BYODaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Cloud Services or Cisco SaaS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Strategic Partnerships</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud Cell Architecture for SAP HANA %28SAP HANA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collab Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compute</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conferencing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Connected Safety and Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contact Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contact Center as a Service based on HCS %28HCS_CC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Content Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Converged Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Software</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Switching</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desktop Virtualization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desktop as a Service %28DaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disaster Recovery as a Service %28DRaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Foundation for Software as a Service %28FnSaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hosted Security as a Service %28HSS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hybrid Cloud %28Intercloud Fabric%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Infrastructure as a Service %28IaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Others</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-AS%3DAdvanced Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-CCS%3DCisco Consulting Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-CIE%3DConnected Industries and Energy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-Sports %26 Entertainment %3DSports %26 Entertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-TS%3DTechnical Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Managed Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi-Technology</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Others</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Policy %26 Access</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Routing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SDN %2F CiscoONE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SDN %2F Network Programming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP DC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP Mobility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP Networks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP Routing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP Video</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Security Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smart and Connected Communities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software Applications</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Switching</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformative Networking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transportation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UC Endpoints</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UC Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UC as a Service based on HCS %28HCS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unified Access %2F Mobility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unified Communications</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Utilities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video and Telepresence as a Service %28TPaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webex%2FCMR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wireless</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Workspace</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Training_Types__c</picklist>
+            <values>
+                <fullName>Business Acumen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Programs%2C Tools and Incentives</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Excellence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soft Skills</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Technical</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>REC_AGENDA_WITHOUT_DELETE</fullName>
+        <active>true</active>
+        <description>Displays the Agenda Page without Delete Button</description>
+        <label>AGENDA_WITHOUT_DELETE</label>
+        <picklistValues>
+            <picklist>Agenda_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Agenda_Type__c</picklist>
+            <values>
+                <fullName>AGENDA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BREAK</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Architecture__c</picklist>
+            <values>
+                <fullName>Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collaboration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cross-Architecture</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center %2F Virtualization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise Networking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet of Things %28IoT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None Specified</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Audiences__c</picklist>
+            <values>
+                <fullName>CXO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SME</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Business_Learning_Partner__c</picklist>
+            <values>
+                <fullName>5i</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cluster Learning</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Concept Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DUMMY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DUMMY1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fastlane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Firefly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Knowledge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Innovise</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quadmark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Summit Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tomato Tomato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UpDate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vortex6</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Delivery_Team__c</picklist>
+            <values>
+                <fullName>Business Learning Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Distributors</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Duration_Unit__c</picklist>
+            <values>
+                <fullName>Hours</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Level__c</picklist>
+            <values>
+                <fullName>Advanced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Foundational</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intermediate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Specialist</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_Focus__c</picklist>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi Focus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Talent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Technology</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Session_Type__c</picklist>
+            <values>
+                <fullName>Lab</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Local breakout</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local session</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual session</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sub_Technology__c</picklist>
+            <values>
+                <fullName>ACI Security Solution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMP %2B ThreatGrid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Advanced Malware Protection %28AMP%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Big Data</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco ASA with FirePower Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco AnyConnect Secure Mobility Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Application Centric Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Desktop Virtualization solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Firepower NGIPS Appliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Identity Services Engine %28ISE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Nexus 9000 Series Switches</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco ONE Enterprise Cloud suite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco ONE for Data Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco TrustSec</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco UCS C3160 Rack Server</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco UCS Director</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco UCS Mini</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Virtual Adaptive Security Appliance %28ASAv%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud Access Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud Web Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cyber Threat Defense %28CTD%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Designs %3A Data Center Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Designs%3A Converged Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Switching</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enterprise License Agreement %28ELA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flexpod</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hybrid IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IaaS%3A Monetizing the Data Center %26 Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Microsoft Applications on Cisco UCS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi-Sub-Technology</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network-as-a-Sensor%2FNetwork-as-an-Enforcer %28Naas%2FNaaE%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAP applications on Cisco UCS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secure Data Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Servers - Unified Computing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage Networking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UCS Open Stack</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Versastack solution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web Security</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Technology__c</picklist>
+            <values>
+                <fullName>ACI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Advanced Threat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Application Experience as a Service %28AXaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BE6000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BYOD as a Service %28BYODaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CIN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Cloud Services or Cisco SaaS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cisco Strategic Partnerships</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud Cell Architecture for SAP HANA %28SAP HANA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collab Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compute</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conferencing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Connected Safety and Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contact Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contact Center as a Service based on HCS %28HCS_CC%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Content Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Converged Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Software</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Switching</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desktop Virtualization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Desktop as a Service %28DaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disaster Recovery as a Service %28DRaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Foundation for Software as a Service %28FnSaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hosted Security as a Service %28HSS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hybrid Cloud %28Intercloud Fabric%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Infrastructure as a Service %28IaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Others</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-AS%3DAdvanced Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-CCS%3DCisco Consulting Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-CIE%3DConnected Industries and Energy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-Sports %26 Entertainment %3DSports %26 Entertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT-TS%3DTechnical Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Managed Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi-Technology</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Others</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Policy %26 Access</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Routing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SDN %2F CiscoONE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SDN %2F Network Programming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP DC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP Mobility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP Networks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP Routing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP Video</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Security Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smart and Connected Communities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Software Applications</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Switching</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transformative Networking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transportation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UC Endpoints</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UC Infrastructure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UC as a Service based on HCS %28HCS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unified Access %2F Mobility</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unified Communications</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Utilities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video and Telepresence as a Service %28TPaaS%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webex%2FCMR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wireless</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Workspace</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Training_Types__c</picklist>
+            <values>
+                <fullName>Business Acumen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Programs%2C Tools and Incentives</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Excellence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soft Skills</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Technical</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <validationRules>
+        <fullName>PPL_NON_EDIT_FIELDS</fullName>
+        <active>true</active>
+        <description>Delivery Team and BLP Name cannot be changed after Event Agenda are created</description>
+        <errorConditionFormula>AND ((Event_Agenda_Count__c&gt;0 ), OR( ISCHANGED(Delivery_Team__c) , ISCHANGED(Business_Learning_Partner__c)))</errorConditionFormula>
+        <errorMessage>Event Agenda has been created for this Agenda Topic, Delivery Team and Business Learning Partner cannot be changed</errorMessage>
+    </validationRules>
+</CustomObject>

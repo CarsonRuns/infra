@@ -1,0 +1,16 @@
+<apex:page standardController="Account" sidebar="false" showHeader="false">
+<script language = "javascript"> 
+var sectElement = top.document.getElementsByName("Super Group Information")[0];
+if(sectElement && sectElement.title.indexOf("Hide") != -1){
+
+      top.twistSection(sectElement);
+ }
+else{
+
+if(sectElement && sectElement.title.indexOf("Hide") == -1){
+
+     top.twistSection(sectElement);
+   }
+} 
+</script> 
+</apex:page>

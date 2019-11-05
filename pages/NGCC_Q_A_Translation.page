@@ -1,0 +1,31 @@
+<!-----------------------------------------------------------------------------------------------------------
+Name    : NGCC_Q&A_Translation
+Author  : Mukesh Srivastava
+Purpose : Page to show all the available translated options for a particular question in the specified lanugage
+Created Date: 4/19/2014
+Modification History: 
+-------------------------------------------------------------------------------------------------------------->
+
+<apex:page standardController="CC_Question_Answer_Translations__c" extensions="NGCC_Q_A_Translation_Anwers_CTE" action="{!getAnswerTrans}">
+   <apex:messages />
+   <apex:form >
+   <center>
+       <apex:commandButton value="Add Translation" action="{!cmdAddTranslation}" status="wait" onComplete="window.top.location='/{!CC_Question_Answer_Translations__c.id}';" rendered="{!AND(bAvailableOption, bNewTranslation)}" />  
+   </center>    
+      <apex:pageBlock rendered="{!AND(NOT(bNewTranslation),bAvailableOption)}">
+         <apex:pageblockButtons >
+            <apex:commandButton value="Update" action="{!cmdUpdate}" rendered="{!AND(bAvailableOption,NOT(bNewTranslation))}"/>            
+            <apex:actionStatus startText="Please wait.." stopText="" id="wait"/>
+         </apex:pageblockButtons>
+         
+         
+         <apex:pageBlockTable value="{!qansTrans}" var="at" rendered="{!AND(bAvailableOption,NOT(bNewTranslation))}">
+            <apex:column value="{!at.Answer_Text__c}"/>
+            <apex:column headervalue="Translated Text">
+               <apex:inputfield value="{!at.Translated_Value__c}" style="width:400px;height:16px;"/>
+            </apex:column>
+         </apex:pageBlockTable>
+      </apex:pageBlock>
+             
+   </apex:form>
+</apex:page>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Add name of Cisco or Partner resource assigned to the engagement.  Complete one Engagement Resource record for each resource working on the engagement. --></help>
+        <label><!-- Cisco/Partner/Account Name --></label>
+        <name>Cisco_Partner_Resource_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide any additional information relevant to the role  the resource or stakeholder will play in the engagement process. --></help>
+        <label>Commentaires</label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select a customer stakeholder name from the available customer contacts.  If contact record doesn&apos;t exist, add the contact to the customer database. --></help>
+        <label><!-- Customer Stakeholder Name --></label>
+        <name>Customer_Stakeholder_Name__c</name>
+        <relationshipLabel><!-- BTx Project Resources/Stakeholders --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Identify the date on which the resource or stakeholder began work on the engagement. --></help>
+        <label><!-- Date Engaged --></label>
+        <name>Date_Engaged__c</name>
+    </fields>
+    <fields>
+        <help><!-- Identify the phase of the engagement when the resource/stakeholder became involved. --></help>
+        <label><!-- Phase Engaged --></label>
+        <name>Phase_Engaged__c</name>
+        <picklistValues>
+            <masterLabel>Discover</masterLabel>
+            <translation><!-- Discover --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Identify and Engage</masterLabel>
+            <translation><!-- Identify and Engage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Implement and Develop</masterLabel>
+            <translation><!-- Implement and Develop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Propose</masterLabel>
+            <translation><!-- Propose --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prove</masterLabel>
+            <translation><!-- Prove --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Projet</label>
+        <name>Project__c</name>
+        <relationshipLabel><!-- BTx Project Resources/Stakeholders --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Identify the title of resource or stakeholder for the Resource/Stakeholder name entered above. --></help>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+        <picklistValues>
+            <masterLabel>CEO</masterLabel>
+            <translation><!-- CEO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CFO</masterLabel>
+            <translation><!-- CFO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIO</masterLabel>
+            <translation><!-- CIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMIO</masterLabel>
+            <translation><!-- CMIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMO</masterLabel>
+            <translation>Directeur marketing</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMO-HC</masterLabel>
+            <translation><!-- CMO-HC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CNO</masterLabel>
+            <translation><!-- CNO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CXO-Other</masterLabel>
+            <translation><!-- CXO-Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Director</masterLabel>
+            <translation><!-- Director --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SVP</masterLabel>
+            <translation><!-- SVP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sr. Manager/Manager</masterLabel>
+            <translation><!-- Sr. Manager/Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VP</masterLabel>
+            <translation><!-- VP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Identify the type of resource or stakeholder for the Resource/Stakeholder name entered above. --></help>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>IT Sponsor</masterLabel>
+            <translation><!-- IT Sponsor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOB Sponsor</masterLabel>
+            <translation><!-- LOB Sponsor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- BTx Project Resource/Stakeholder --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- BTx Project Resource/Stakeholder --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- BTx Resource --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>BTx Project Resource/Stakeholder Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage>Veuillez entrer le « Nom de ressource Cisco/Partenaire » ou le « Nom de la partie prenante du client » mais pas les deux.</errorMessage>
+        <name>Multiple_Resource_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Veuillez entrer le « Nom de ressource Cisco/Partenaire » ou le « Nom de la partie prenante du client ».</errorMessage>
+        <name>Resource_Required</name>
+    </validationRules>
+</CustomObjectTranslation>

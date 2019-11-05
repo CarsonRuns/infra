@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Assigned_Partner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Flag to indicate if triggers are enabled/disabled for Target Prospect object</description>
+        <externalId>false</externalId>
+        <label>Assigned_Partner__c</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Lead__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Flag to indicate if trigger to disable/enable for Lead</description>
+        <externalId>false</externalId>
+        <label>Lead</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Custom settings to enabled disable execution of SCP triggers</description>
+    <enableFeeds>false</enableFeeds>
+    <label>SCP_triggerFlag</label>
+    <visibility>Protected</visibility>
+</CustomObject>

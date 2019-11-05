@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address Line 1 --></label>
+        <name>Address_Line_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address Line 2 --></label>
+        <name>Address_Line_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Building --></label>
+        <name>Building__c</name>
+    </fields>
+    <fields>
+        <label><!-- CEE Location --></label>
+        <name>CEE_Location__c</name>
+        <relationshipLabel><!-- CEE Rooms --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Facing --></label>
+        <name>Customer_Facing__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Name --></label>
+        <name>Display_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- EBC/CBC Location --></label>
+        <name>EBC_CBC_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Code --></label>
+        <name>Email_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exchange Email Nickname --></label>
+        <name>Exchange_Email_Nickname__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Telepresence --></label>
+        <name>Is_Telepresence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Postal Code --></label>
+        <name>Postal_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Priority of room, rated 1 (highest) to 3 (lowest) --></help>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
+    </fields>
+    <fields>
+        <label><!-- Proxy Status --></label>
+        <name>Proxy_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Room Details --></label>
+        <name>Room_Details__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of people room can hold --></help>
+        <label><!-- Size --></label>
+        <name>Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- State Province --></label>
+        <name>State_Province__c</name>
+    </fields>
+    <fields>
+        <help><!-- Has Telepresence capabilities --></help>
+        <label><!-- Telepresence --></label>
+        <name>Telepresence__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CEE Room</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CEE Rooms</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CEE Room Layout</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

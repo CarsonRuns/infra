@@ -1,0 +1,4 @@
+<apex:page standardController="Assigned_Partner__c">
+(<apex:outputLabel rendered="{!NOT Assigned_Partner__c.has_Customer_Intelligence__c}" value="{!$Label.Prm_noCiData}"/>
+<apex:outputLink target="_parent" rendered="{!Assigned_Partner__c.has_Customer_Intelligence__c}" style="color: #007fc5; cursor: pointer;" value="../{!Assigned_Partner__c.Customer_Account_ID__c}">{!$Label.Prm_customIntelligence}</apex:outputLink>)<br/>
+</apex:page>

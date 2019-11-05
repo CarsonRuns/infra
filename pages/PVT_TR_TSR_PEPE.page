@@ -1,0 +1,137 @@
+<apex:page standardController="PEPE_Training_Request__c" extensions="VFCntrl_PVT_TR_TSR_PEPE" action="{!redirectToPage}">
+<apex:form id="MainForm">
+<apex:pageBlock id="MainPageBlock">
+    <!--<apex:pageMessages />-->
+  <apex:sectionHeader title="Training Request Edit"/>
+  <apex:pageBlockButtons >
+        <apex:commandButton value="Save" action="{!saveTRAndTSR}" reRender="MainForm"/>
+        <!--<apex:commandButton value="Save & New" action="{!saveTRAndTSR}" id="saveAndNew"/>
+       <apex:param assignTo="{!paramSaveAndNew}" value="saveAndNew"/>-->
+        <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+    </apex:pageBlockButtons>
+    <apex:pageBlockSection title="Training Requests Details" columns="2" collapsible="false">
+    
+   <!--<apex:inputField value="{!TRObj.Status__c}" required="true"/>-->
+   <apex:pageBlockSectionItem >
+   <apex:outputLabel >Status </apex:outputLabel>
+   <apex:outputPanel styleClass="requiredInput" layout="block"> 
+   <apex:outputPanel layout="block" styleClass="requiredBlock"></apex:outputPanel>
+   <apex:inputField value="{!TRObj.Status__c}"/>
+   </apex:outputPanel>
+   </apex:pageBlockSectionItem>
+   
+   <apex:outputField value="{!TRObj.RecordTypeId}" />
+ 
+   <!--<apex:inputField value="{!TRObj.Geography__c}" required="true"/>-->
+   <apex:pageBlockSectionItem >
+   <apex:outputLabel >Geography</apex:outputLabel>
+   <apex:outputPanel styleClass="requiredInput" layout="block"> 
+   <apex:outputPanel layout="block" styleClass="requiredBlock"></apex:outputPanel>
+   <apex:inputField value="{!TRObj.Geography__c}"/>
+   </apex:outputPanel>
+   </apex:pageBlockSectionItem>
+
+   <!--<apex:inputField value="{!TRObj.Cisco_Location__c}" required="true"/>-->
+   
+   <apex:pageBlockSectionItem >
+   <apex:outputLabel >Cisco Location</apex:outputLabel>
+   <apex:outputPanel styleClass="requiredInput" layout="block"> 
+   <apex:outputPanel layout="block" styleClass="requiredBlock"></apex:outputPanel>
+   <apex:inputField value="{!TRObj.Cisco_Location__c}"/>
+   </apex:outputPanel>
+   </apex:pageBlockSectionItem>
+  
+   <apex:inputField value="{!TRObj.Theatre_Region__c}" required="true"/>
+
+   <!--<apex:inputField value="{!TRObj.Address_1__c}" required="true"/>-->
+   
+   <apex:pageBlockSectionItem >
+   <apex:outputLabel >Address 1</apex:outputLabel>
+   <apex:outputPanel styleClass="requiredInput" layout="block"> 
+   <apex:outputPanel layout="block" styleClass="requiredBlock"></apex:outputPanel>
+   <apex:inputField value="{!TRObj.Address_1__c}"/>
+   </apex:outputPanel>
+   </apex:pageBlockSectionItem>
+
+   <apex:inputField value="{!TRObj.Country_Cluster__c}" required="true"/>
+
+   <apex:inputField value="{!TRObj.Address_2__c}"/>
+  
+   <apex:inputField value="{!TRObj.Country__c}" required="true"/>
+  
+   <apex:inputField value="{!TRObj.Address_3__c}"/>
+  
+   <!--<apex:inputField value="{!TRObj.Location__c}"/>-->
+
+   <!--<apex:inputField value="{!TRObj.City__c}" required="true"/>-->
+   
+   <apex:pageBlockSectionItem >
+   <apex:outputLabel >City</apex:outputLabel>
+   <apex:outputPanel styleClass="requiredInput" layout="block"> 
+   <apex:outputPanel layout="block" styleClass="requiredBlock"></apex:outputPanel>
+   <apex:inputField value="{!TRObj.City__c}"/>
+   </apex:outputPanel>
+   </apex:pageBlockSectionItem>
+   
+   <apex:inputField value="{!TRObj.Training_Offering_Id__c}" required="true">
+   <apex:actionSupport event="onselect" reRender="MainForm" action="{!loadEveDayDtlsForLst}"/>
+</apex:inputField>
+  
+  <apex:pageBlockSectionItem >
+   <apex:inputField value="{!TRObj.RecordTypeId}" style="display:none"/>
+   </apex:pageBlockSectionItem>
+  </apex:pageBlockSection>
+  <br/>
+  <div style="text-align: center;">
+   <p><b><font size="3" color="red">Note** Select below which of available Days/Tracks of the event you wish to host and add required details.</font></b></p>
+   </div>
+  <br/>
+  <br/>
+  <apex:outputPanel id="eventDayPanelId">
+        <apex:outputText value="No Event Days available" rendered="{!trEventDayList.size=0}" style="border: 1px solid #e0e3e5;"/>
+
+  <apex:pageBlockTable var="EDVar" value="{!trEventDayList}" id="EDLstTableId" rendered="{!trEventDayList.size > 0}">
+     <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Event Day </apex:facet>                                                                                               
+    <apex:commandLink id="EDName" value="{!EDVar.edName}" action="/{!EDVar.eventDayId}" immediate="true">
+     </apex:commandLink>
+     </apex:column>
+     
+     <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Training Event Name </apex:facet>                                                                                               
+    <apex:commandLink id="EDEveName" value="{!EDVar.eveName}" action="/{!EDVar.TENameId}" immediate="true">
+    </apex:commandLink>
+     </apex:column>
+   
+   <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">TP Room Name </apex:facet>                                                                                               
+    <apex:inputField value="{!EDVar.wTSR.TP_Room_Name__c}"/>
+     </apex:column>
+    <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Room Capacity </apex:facet>                                                                                               
+    <apex:inputField value="{!EDVar.wTSR.Room_Capacity__c}"/>
+     </apex:column>
+    
+    <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Host Name </apex:facet>                                                                                               
+    <apex:inputField value="{!EDVar.wTSR.Host_Name__c}"/>
+     </apex:column>
+     
+    <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Host Email </apex:facet>                                                                                               
+    <apex:inputField value="{!EDVar.wTSR.Host_Email__c}"/>
+     </apex:column> 
+     
+     <apex:column style="border-bottom:solid 1px #e3deb8;">                
+    <apex:facet name="header">Action </apex:facet>                                                                                               
+    <apex:commandLink value="Clear" action="{!removingRow}" reRender="eventDayPanelId">
+     <apex:param name="index" value="{!EDVar.counterWrap}"/>  
+     </apex:commandLink>
+     </apex:column> 
+  </apex:pageBlockTable>
+</apex:outputPanel>
+  
+   
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

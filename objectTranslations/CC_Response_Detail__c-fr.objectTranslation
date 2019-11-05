@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Answer Options Id --></label>
+        <name>Answer_Options_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Answer Options Text --></label>
+        <name>Answer_Options_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- CC Master Question/Answer Bank --></label>
+        <name>CC_Master_Question_Answer_Bank__c</name>
+        <relationshipLabel><!-- CC Response Detail (CC Master Question/Answer Bank) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Guide d'appel CC</label>
+        <name>Call_Script__c</name>
+        <relationshipLabel>Détail de la réponse CC</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Terminé</label>
+        <name>Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Conditionally Required Criteria --></label>
+        <name>Conditionally_Required_Criteria__c</name>
+        <picklistValues>
+            <masterLabel>NOT NULL</masterLabel>
+            <translation><!-- NOT NULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NULL</masterLabel>
+            <translation><!-- NULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation>Autres</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Conditionally Required Value --></label>
+        <name>Conditionaly_Required_If__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Response Detail (Local) --></label>
+        <name>Customer_Response_Detail_Local__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Response Detail (English) --></label>
+        <name>Customer_Response_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Response --></label>
+        <name>Customer_Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- CC Call Script Q/A --></label>
+        <name>Dependent_Question__c</name>
+        <relationshipLabel>Détail de la réponse CC</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Help Text --></label>
+        <name>Help_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language Used --></label>
+        <name>Language_Used__c</name>
+    </fields>
+    <fields>
+        <label><!-- Local to SFDC --></label>
+        <name>Local_to_SFDC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maximum(If Number Validation) --></label>
+        <name>Maximum_If_Number_Validation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Minimum(If Number Validation) --></label>
+        <name>Minimum_If_Number_Validation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Preferred Partner Account --></label>
+        <lookupFilter>
+            <errorMessage>Le partenaire sélectionné n'est pas un partenaire actif enregistré.</errorMessage>
+        </lookupFilter>
+        <name>Preferred_Partner_Account__c</name>
+        <relationshipLabel><!-- CC Response Detail (Preferred Partner Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Question Categories --></label>
+        <name>Question_Categories__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question Category --></label>
+        <name>Question_Category__c</name>
+        <picklistValues>
+            <masterLabel>1:Contact Information</masterLabel>
+            <translation><!-- 1:Contact Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2:Account Information</masterLabel>
+            <translation><!-- 2:Account Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3:Lead Information</masterLabel>
+            <translation><!-- 3:Lead Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4:Additional Information</masterLabel>
+            <translation><!-- 4:Additional Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5:Campaign Information</masterLabel>
+            <translation><!-- 5:Campaign Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6:Partner Information</masterLabel>
+            <translation><!-- 6:Partner Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7:Call Information</masterLabel>
+            <translation><!-- 7:Call Information --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Conditionally Required on Question --></label>
+        <name>Question_Required__c</name>
+        <relationshipLabel><!-- CC Response Detail (Depended Question) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Question Text --></label>
+        <name>Question_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question Type --></label>
+        <name>Question_Type__c</name>
+        <picklistValues>
+            <masterLabel>Country</masterLabel>
+            <translation>Pays</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DateTime</masterLabel>
+            <translation><!-- DateTime --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation>E-mail</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Long Text</masterLabel>
+            <translation><!-- Long Text --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MultiSelect</masterLabel>
+            <translation><!-- MultiSelect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number</masterLabel>
+            <translation><!-- Number --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Picklist</masterLabel>
+            <translation><!-- Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preferred Partner</masterLabel>
+            <translation><!-- Preferred Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radio</masterLabel>
+            <translation><!-- Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Route To AM</masterLabel>
+            <translation>Router vers AM</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Route To PSR</masterLabel>
+            <translation>Router vers PSR</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Route To Partner</masterLabel>
+            <translation><!-- Route To Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text</masterLabel>
+            <translation><!-- Text --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Requis</label>
+        <name>Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Required on Lead Description --></label>
+        <name>Required_on_Lead_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response Detail Date/Time --></label>
+        <name>Response_Detail_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- CC Response --></label>
+        <name>Response_Id__c</name>
+        <relationshipLabel>Détail de la réponse CC</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Router vers AM</label>
+        <name>Route_To_AM__c</name>
+        <relationshipLabel><!-- CC Response Detail (Route To AM) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Router vers PSR</label>
+        <name>Route_To_PSR__c</name>
+        <relationshipLabel><!-- CC Response Detail (Route To PSR) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Route To Partner --></label>
+        <lookupFilter>
+            <errorMessage>Le partenaire sélectionné n'est pas un partenaire actif agréé SCP ou figure sur la liste des partenaires refusés. Sélectionnez un partenaire SCP agréé valide.</errorMessage>
+            <informationalMessage>Cette recherche renverra uniquement les partenaires inscrits dans le programme SCP. Toutefois, si vous souhaitez référencer des comptes admissibles pour l'affectation de lead, reportez-vous au lien des partenaires inscrits P360 à gauche de l'écran.</informationalMessage>
+        </lookupFilter>
+        <name>Route_To_Partner__c</name>
+        <relationshipLabel>Détail de la réponse CC</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sequence --></label>
+        <name>Sequence__c</name>
+    </fields>
+    <fields>
+        <label>Numéro de l'événement source</label>
+        <name>Source_Event_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source System Name --></label>
+        <name>Source_System_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source Transaction Date --></label>
+        <name>Source_Transaction_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Translation Required --></label>
+        <name>Translation_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Validation(Both Conditional or Required) --></label>
+        <name>Validation_Both_Conditional_or_Required__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- CC Response Detail --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- CC Response Detail --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- CC Response Detail Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <fieldSets>
+        <label><!-- NGCCCallScriptQuery --></label>
+        <name>NGCCCallScriptQuery</name>
+    </fieldSets>
+    <layouts>
+        <layout>CC Response Detail Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Response Detail --></label>
+            <section>Customer Response Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Layout --></label>
+            <section>Layout</section>
+        </sections>
+        <sections>
+            <label><!-- Routing Information --></label>
+            <section>Routing Information</section>
+        </sections>
+        <sections>
+            <label>VALIDATION</label>
+            <section>Validation</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

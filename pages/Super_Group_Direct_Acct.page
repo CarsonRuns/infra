@@ -1,0 +1,75 @@
+<apex:page showHeader="false" sidebar="false" StandardController="Super_Group__c" extensions="Super_Group_Direct_Acct_CTE">
+<apex:pageblock id="thePageBlock" title="End User Accounts">
+        <apex:form > 
+             <apex:pageMessages />
+             <table cellspacing = "0" cellpadding = "0" width = "100%">
+                <tr>
+                    <td align = "right"> 
+                        <apex:commandLink target="_top" action="{!exportDirectAcctLink}" value="[ Excel Export ]" oncomplete="CloseAndRefresh();" title="Export Data is limited to 15 MB"/>
+                    </td>
+                </tr>
+            </table>
+                   <apex:pageBlockTable value="{!AccountRecords}" var="acct" id="table">
+                              <apex:column headerValue="Account Name">
+                                 <apex:facet name="header">   
+                                   <apex:commandLink action="{!OrderData}" value="Account Name{!IF(sortOrderNew == '','▼',
+                                                                           IF(sortColumnNameNew == 'Name',IF(sortOrderNew == 'DESC','▲','▼'),''))}">
+                                                                           
+                                       <apex:param assignTo="{!sortOrderNew}" value="DESC"/>
+                                       <apex:param assignTo="{!sortColumnNameNew}" value="Name"/>
+                                       
+                                   </apex:commandLink>
+                                 </apex:facet>
+                                 <apex:outputLink value="/{!acct.Id}" target="_top">{!acct.Name}</apex:outputLink>
+                              </apex:column>
+                              <apex:column value="{!acct.Owner.Name}" headerValue="Account Owner">
+                                 <apex:facet name="header">   
+                                   <apex:commandLink action="{!OrderData}" value="Account Owner {!IF(sortColumnNameNew == 'Owner.Name',
+                                                                           IF(sortOrderNew == 'DESC','▲','▼'),'')}">
+                                                                           
+                                       <apex:param assignTo="{!sortOrderNew}" value="ASC"/>
+                                       <apex:param assignTo="{!sortColumnNameNew}" value="Owner.Name"/>
+                                       
+                                   </apex:commandLink>
+                                 </apex:facet>
+                              </apex:column>  
+                               <apex:column value="{!acct.HQ_Party_ID__c}" headerValue="HQ Party ID"/>    
+                               <apex:column value="{!acct.CSCSiteID__c}" headerValue="Party ID"/> 
+                               <apex:column value="{!acct.DUNSNumber__c}" headerValue="D&B Number"/> 
+                               <apex:column value="{!acct.AddressLine1__c}" headerValue="Address Line 1"/>  
+                               <apex:column value="{!acct.City__c}" headerValue="City"/>
+                               <apex:column value="{!acct.State__c}" headerValue="State/Province"/>  
+                               <apex:column value="{!acct.Country__c}" headerValue="Country"/>    
+                   </apex:pageBlockTable>
+
+            <apex:pageBlockSection >
+                    <apex:pageBlockSectionItem >
+                             <apex:outputPanel >
+                                    <apex:commandLink action="{!ACCTCON.previous}" rendered="{!ACCTCON.hasprevious}">Previous&nbsp;|</apex:commandlink>
+                                    <apex:commandLink action="{!ACCTCON.next}" rendered="{!ACCTCON.hasnext}" >&nbsp;Next</apex:commandlink>
+                              </apex:outputPanel>
+                     </apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >
+                             <apex:outputPanel style="float:right;" rendered="{!IF(ACCTCON == null,false,true)}">
+                                       <apex:outputText value="{!ACCTCON.pageNumber}/{!totalpages}" rendered="{!IF(totalpages == 0,false,true)}">Pages : </apex:outputText>
+                              </apex:outputPanel>
+                   </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+          </apex:form>
+</apex:pageblock>
+<script language = "javascript">
+function resizeIframe() {
+    var me = window.name;
+    if (me) {
+      var iframes = parent.document.getElementsByName(me);
+      if (iframes && iframes.length == 1) {
+        height = document.body.offsetHeight;
+        //if (height <= 300) 
+            iframes[0].style.height = height + "px";
+        
+      }
+    }
+  }
+ resizeIframe(); 
+</script>
+</apex:page>

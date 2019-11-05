@@ -1,0 +1,37 @@
+<apex:page standardController="Lead" extensions="NGCC_LeadUtitlities_CTE" sidebar="false" showHeader="false" >
+<!---
+<script>
+    
+    function refreshPage(){
+          
+              window.top.location='/{!Lead.id}';
+         } 
+        
+</script>  
+-->
+<apex:sectionHeader title="Choose Approver"/>
+  <apex:form >
+     
+      <apex:pageBlock >
+          <apex:pageBlockButtons >
+              <apex:commandButton value="Send to Next Approver" action="{!assignvalue}" />
+              <apex:commandButton value="Cancel" action="{!Cancel}"/>
+          </apex:pageBlockButtons>
+          
+          <table style="margin-left:200px;">
+              <tr>
+                  <td>
+                      <!--<apex:pageMessage detail="{!msg}"  severity="info"  escape="false" />-->
+                      <!--SCAVA-->
+                      <apex:pageMessage detail="{!JSENCODE(msg)}"  severity="info"  escape="false" />
+                  </td>
+              </tr>    
+          </table>
+          <apex:pageBlockSection >
+              <apex:inputField value="{!Lead.OwnerId}" label="Next Approver"/>
+          </apex:pageBlockSection>
+               
+      </apex:pageBlock>
+     
+  </apex:form>
+</apex:page>

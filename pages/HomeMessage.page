@@ -1,0 +1,341 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="true" controller="HomeMessage_CT">
+<!--<link rel="stylesheet" type="text/css" href="/servlet/servlet.FileDownload?file=015S0000000PNzm" /><!--container.css-->
+<!--<link href="/dCSS/Theme2/default/common.css" type="text/css" media="handheld,print,projection,screen,tty,tv" rel="stylesheet" />-->
+<!--<apex:stylesheet value="{!URLFOR($Resource.CssLib, 'common.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.CssLib, 'container.css')}"/>-->
+<!--<script type="text/javascript" src="/servlet/servlet.FileDownload?file=015S0000000PNzr"></script><!--yahoo-dom-event.js-->
+<!--<script type="text/javascript" src="/servlet/servlet.FileDownload?file=015S0000000PNzw"></script><!--animation-min.js-->
+<!--<script type="text/javascript" src="/servlet/servlet.FileDownload?file=015S0000000PO01"></script><!--container-min.js-->
+<!--<script type="text/javascript" src="/js/functions.js"></script>-->
+<!--<apex:includeScript value="{!URLFOR($Resource.JsLibFiles, 'yahoo-dom-event.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.JsLibFiles, 'animation-min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.JsLibFiles, 'container-min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.JsLibFiles, 'function.js')}"/>-->
+<style>
+    .yui-simple-dialog{
+        top: 0px !important;
+        height: 100px;
+    }
+    .messageClass {
+        font-size: 10pt !important;
+        font-family: Arial,Helvetica,sans-serif !important;
+     }
+     
+     .messageHeaderClass {
+        font-size: 13pt !important;
+        font-family: Arial,Helvetica,sans-serif !important;
+        font-weight: bold;
+     }
+</style>
+<script type="text/javascript" language="javascript">
+    var __sfdcSessionId = '{!GETSESSIONID()}';
+    console.log("#### __sfdcSessionId  : "+__sfdcSessionId );
+    
+    var debugFlag = {!debug};
+    console.log("### debug L "+debugFlag);
+    
+    var scripts = ["{!URLFOR($Resource.JsLibFiles, 'yahoo-dom-event.js')}",
+    "{!URLFOR($Resource.JsLibFiles, 'animation-min.js')}",
+    "{!URLFOR($Resource.JsLibFiles, 'container-min.js')}",
+    "{!URLFOR($Resource.JsLibFiles, 'function.js')}"];
+    var links = ["{!URLFOR($Resource.CssLib, 'common.css')}",
+    "{!URLFOR($Resource.CssLib, 'container.css')}"];
+    var scriptCounter = scripts.length;
+    var scriptLoadHanlder = function() {
+        scriptCounter--;
+        if (scriptCounter <=0 ) {
+            console.log('yahoo ready');
+
+        }
+    }
+    var head = top.document.head;
+    for(var i=0; i<scripts.length; i++) {
+        var s = document.createElement('script');
+        s.src = scripts[i];
+        s.async = false;
+        s.defer = false;
+        s.onload = scriptLoadHanlder;
+        head.appendChild(s);
+    }
+    for(var i=0; i<links.length; i++) {
+        var s = document.createElement('link');
+        s.href = links[i];
+        s.rel = 'stylesheet';
+        s.type = 'text/css';
+        head.appendChild(s);
+    }
+</script>
+<script src="/soap/ajax/10.0/connection.js"></script>
+<script type="text/javascript" language="javascript">
+function showDlg(MSG)
+{
+    var PIECES = MSG.split(":XX:");
+    var MSGID = PIECES[0];
+    var TYPEOFMSG = PIECES[1];
+    var HEADER = PIECES[2];
+    var BODY = PIECES[3];
+    var MODAL = false;
+    var CLOSE = true;
+    var ID = "PMT_dlg_"+MSGID;
+    
+    var closeDialog = function ()
+        {
+            this.hide();        
+        }
+
+    var handleAcknowledge = function() 
+        { 
+            this.hide(); 
+            sendUpdate('Purge this message', MSGID);
+        } 
+
+    if (TYPEOFMSG == 'Critical')
+    {
+        MODAL = true;
+        CLOSE = false;  
+        var myButtons = [ { text:"Acknowledge",  
+                        handler:handleAcknowledge }];   
+
+        if (!{!If(isProduction, 'true', 'false')})
+        {
+            var myButtons = [ { text:"Close [nonProd only]",
+                            handler:closeDialog },          
+                            { text:"Acknowledge",  
+                            handler:handleAcknowledge }];           
+        }                       
+    }           
+    else
+    {
+        var myButtons = [ { text:"Remind Me Later",  
+                        handler:closeDialog },
+                        { text:"OK", 
+                        handler:handleAcknowledge }
+                        ];      
+    }
+
+    blankDialog = new top.YAHOO.widget.SimpleDialog("blankId", {  
+        width: "30em",  
+        zIndex:800,
+        close:true,
+        modal:false, 
+        fixedcenter:true,
+        iframe:true,
+        visible:true,       
+        draggable:true }); 
+        blankDialog.setHeader('...'); 
+        blankDialog.render(top.document.body);
+        blankDialog.show();
+
+    mySimpleDialog = new top.YAHOO.widget.SimpleDialog(ID, {  
+        width: "30em",  
+        effect:{effect:top.YAHOO.widget.ContainerEffect.FADE, 
+        duration:0.10},  
+        zIndex:800,
+        close:CLOSE,
+        modal:MODAL,
+        iframe:true,
+        fixedcenter:true,       
+        visible:true, 
+        draggable:true }); 
+        mySimpleDialog.cfg.queueProperty("buttons", myButtons);                 
+        mySimpleDialog.setHeader(TYPEOFMSG +': '+HEADER); 
+        mySimpleDialog.setBody(BODY); 
+        mySimpleDialog.render(top.document.body);
+        mySimpleDialog.show();
+
+        blankDialog.hide();     
+}    
+</script><!--PMT Dialog -->
+
+<script type="text/javascript" language="javascript">
+    var ciscoEndpoint = '{!ciscoEndpoint}';
+
+    //Migrate to webservice class and make a remote action in controller to call webservice
+    function sendPMTRequest(request) {
+
+        var soapMsgArr = new Array();
+        soapMsgArr
+                .push("<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' ");
+        soapMsgArr
+                .push("xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ");
+        soapMsgArr.push("xmlns:xsd='http://www.w3.org/2001/XMLSchema'>");
+
+        soapMsgArr.push("<soapenv:Body>");
+        soapMsgArr
+                .push("<ns1:processRequest soapenv:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' xmlns:ns1='http://www.abc.com'>");
+        soapMsgArr
+                .push("<ns1:Application-Id xsi:type='xsd:String'>SFDC</ns1:Application-Id>");
+        soapMsgArr.push("<ns1:User-Id xsi:type='xsd:String'>{!username}</ns1:User-Id>");
+        soapMsgArr.push("</ns1:processRequest>");
+        soapMsgArr.push("</soapenv:Body>");
+        soapMsgArr.push("</soapenv:Envelope>");
+
+        var soapMsg = soapMsgArr.join("");
+
+        var response = sforce.connection.remoteFunction({
+            url : ciscoEndpoint,
+            requestHeaders : {
+                "Content-Type" : "text/xml",
+                "SOAPAction" : "\"\""
+            },
+            requestData : soapMsg,
+            method : "POST",
+            onSuccess : pmtResponse,
+            onFailure : pmtError,
+            mimeType : "text/xml"
+        })
+
+    }
+
+    //Dont migrate, render nothing on failed PMT request
+    function pmtError(error) {
+        //      var divObj = document.getElementById("messagesId");
+        //      divObj.innerHTML = "PMT Error:\n" + error;
+    }
+
+    //Keep function to start remote action call to kick off PMT service use pmtResponse to render PMT response payload
+    function homePageCheck() {
+        //var url = (top.location.href).split("/");
+        //alert('hp check commented in pmt svc');
+        //if (url[3] == 'home')
+            sendPMTRequest();
+    }
+
+    //FUnction is responsbile for rendering the PMT message payload.  Use angular JS to render
+    function pmtResponse(response) {
+        if (!top.YAHOO) {
+            console.log('yahoo not ready');
+            setTimeout(function(){pmtResponse(response)}, 500);
+            return;
+        }
+        console.log('shoe message')
+        var BANNER = 'Banner';
+        var CRITICAL = 'Critical';
+        var INFORMATIONAL = 'Informational';
+        var MSG = '';
+        var INFORMATIONALMSGS = new Array();
+        var CRITICALMSGS = new Array();
+        var j = 0;
+        var k = 0;
+        var DELIMITER = ":XX:";
+
+        var outputStr = '';
+        var messages = response.getElementsByTagName("Message");
+
+        for (x = 0; x < messages.length; x++) {
+
+            var msgId = messages[x].getElementsByTagName("Message-Id");
+            var msgType = messages[x].getElementsByTagName("Message-Type");
+
+            var msgHeader = messages[x].getElementsByTagName("Message-Header");
+
+            var msgBody = messages[x].getElementsByTagName("Message-Body");
+            var msgBodyNormalize = msgBody[0].normalize();
+
+            /*       alert("Message Id : " + msgId[0].firstChild.data +"\n"+
+                    "Message Type : " + msgType[0].firstChild.data +"\n"+
+                    "Message-Header : " + msgHeader[0].firstChild.data +"\n"+
+                    "Message-Body : " + msgBody[0].firstChild.data); */
+
+            var TYPEOFMSG = msgType[0].firstChild.data;
+            if (TYPEOFMSG == BANNER) {
+                outputStr += msgBody[0].firstChild.data;
+            } else {
+                MSG = msgId[0].firstChild.data + DELIMITER
+                        + msgType[0].firstChild.data + DELIMITER
+                        + msgHeader[0].firstChild.data + DELIMITER
+                        + msgBody[0].firstChild.data;
+
+                if (TYPEOFMSG == CRITICAL)
+                    CRITICALMSGS[k++] = MSG;
+                else
+                    INFORMATIONALMSGS[j++] = MSG;
+            }
+
+        }
+
+        var testMsgBody = 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum.';
+        var divObj = document.getElementById("messagesId");
+         if(false) { //if ( debugFlag ) {//display banner message only for testing
+            showDlg('55:XX:Informational:XX:MsgHdr1:XX:MsgBody1');
+            outputStr = 'some test message';
+            showDlg('53:XX:Informational:XX:MsgHdr3:XX:'+testMsgBody+'');
+            showDlg('54:XX:Informational:XX:MsgHdr2:XX:MsgBody2');  
+            showDlg('56:XX:Critical:XX:MsgHdrCr1:XX:MsgBodyCr1');
+            showDlg('5:XX:Critical:XX:MsgHdrCr2:XX:MsgBodyCr2');    
+         }
+        divObj.innerHTML = outputStr;
+        //var testMsgBody = 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum.';
+
+        for (var i = 0; i < INFORMATIONALMSGS.length; i++) {
+            showDlg(INFORMATIONALMSGS[i]);
+        }
+
+        for (var i = 0; i < CRITICALMSGS.length; i++) {
+            showDlg(CRITICALMSGS[i]);
+        }
+
+    }
+
+    function sendUpdate(action, msgId) {
+
+        var soapMsgArr = new Array();
+
+        soapMsgArr.push("<soapenv:Envelope ");
+        soapMsgArr.push("xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/' ");
+        soapMsgArr.push("xmlns:xsd='http://www.w3.org/2001/XMLSchema' ");
+        soapMsgArr.push("xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>   <soapenv:Body> ");
+        soapMsgArr.push("<ns1:updateUserAction soapenv:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' ");
+        soapMsgArr.push("xmlns:ns1='http://www.abc.com'>");
+        soapMsgArr.push("<ns1:Message-Id xsi:type='xsd:String'>");
+        soapMsgArr.push(msgId);
+        soapMsgArr.push("</ns1:Message-Id>");
+        soapMsgArr.push("<ns1:Action xsi:type='xsd:String'>");
+        soapMsgArr.push(action);
+        soapMsgArr.push("</ns1:Action>");
+        soapMsgArr.push("<ns1:User-Id xsi:type='xsd:String'>{!username}</ns1:User-Id>");
+        soapMsgArr.push("</ns1:updateUserAction></soapenv:Body>");
+        soapMsgArr.push("</soapenv:Envelope>");
+
+        var soapMsg = soapMsgArr.join("");
+
+        var responseUserUpdate = sforce.connection.remoteFunction({
+            url : ciscoEndpoint,
+            requestHeaders : {
+                "Content-Type" : "text/xml",
+                "SOAPAction" : "\"\""
+            },
+            requestData : soapMsg,
+            method : "POST",
+            onSuccess : pmtUserUpdateResponse,
+            onFailure : pmtUserUpdateError,
+            mimeType : "text/xml"
+        })
+
+    }
+
+    function pmtUserUpdateResponse() {
+        console.log("**** request updated successfully");
+        //alert("successfully updated in PMT");
+    }
+
+    function pmtUserUpdateError() {
+        console.log("**** request updated failed");
+        //alert("error updating PMT");
+    }
+</script>
+
+    <apex:form >
+        <apex:pageblock title="{!$Label.Messages}">
+            <apex:pageBlockSection columns="1">
+                <apex:outputPanel >
+                    <div id="messagesId"></div>
+                </apex:outputPanel>
+            </apex:pageBlockSection>           
+        </apex:pageblock>
+    </apex:form>
+                  
+    <script>
+        homePageCheck();
+    </script>
+</apex:page>

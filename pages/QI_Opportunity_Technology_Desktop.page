@@ -1,0 +1,305 @@
+<apex:page docType="html-5.0" standardController="opportunity" extensions="lxToMakePUIReadOnlyForPSS">
+    <style>
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+        }
+        input[type=number] {
+        -moz-appearance:textfield;
+        }
+        .pagination>li>a,.pagination>li>a:focus, .pagination>li>a:hover{
+        background-color:transparent;
+        border:0px;
+        border-color:transparent;
+        }
+        .pagination>.disabled>a, .pagination>.disabled>a:focus,.pagination>.disabled>a:hover{
+        background-color:transparent;
+        border-color:transparent;
+        }
+        .helpIconWrapper + .tooltip > .tooltip-inner {
+        background-color: #FEFDBA;
+        color: #000000;
+        border: 1px solid #F3A205;
+        }
+        .cartlink + .tooltip > .tooltip-inner {
+        background-color: #FEFDBA;
+        color: #000000;
+        border: 1px solid #F3A205;
+        }
+        .helpIconWrapper .tooltiptext{
+        visibility: hidden;
+        background-color: #FEFDBA;
+        color: #000000;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 11px;
+        padding: 5px 0;
+        border: 1px solid #F3A205;
+        position: absolute;
+        width: 300px;
+        left: 78%;
+        margin-top: -55px;
+        }
+        .helpIconWrapper:hover .tooltiptext {
+        visibility: visible;
+        }
+        .helpIconWrapper .tooltiptext2{
+        visibility: hidden;
+        background-color: #FEFDBA;
+        color: #000000;
+        border-radius: 4px;
+        text-align: center;
+        padding: 5px 0;
+        border: 1px solid #F3A205;
+        position: absolute;
+        width: 190px;
+        left: 29%;
+        margin-top: -55px;
+        }
+        .helpIconWrapper:hover .tooltiptext2 {
+        visibility: visible;
+        }
+        .cartlink .tooltiptext{
+        visibility: hidden;
+        background-color: #FEFDBA;
+        color: #000000;
+        border-radius: 4px;
+        text-align: center;
+        padding: 5px 0;
+        border: 1px solid #F3A205;
+        position: absolute;
+        width: 190px;
+        left:34%;
+        margin-top: -55px;
+        }
+        .cartlink:hover .tooltiptext {
+        visibility: visible;
+        }
+        .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,.table>tbody>tr>td, .table>tfoot>tr>td {padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #cfd0d2;}
+    </style>
+    <script id="pagination.html" type="text/ng-template">
+    <ul class="pagination" style="margin:10px 0 10px 0px !important">              
+        <li ng-if="directionLinks" ng-class="{disabled: noPrevious()}">
+            <a href ng-click="selectPage(page - 1)" title="Previous Page">
+                <span class="glyphicon glyphicon-triangle-left" style="top:2.5px;"></span>Previous
+                </a>
+                </li>               
+                <li ng-if="directionLinks" ng-class="{disabled: noNext()}"><a href ng-click="selectPage(page + 1)" title="Next Page">Next<span class="glyphicon glyphicon-triangle-right" style="top:2.5px;"></span></a></li>                
+                </ul>
+                </script>
+    <div id="technologyApplication" style="position:relative;">
+        <apex:remoteObjects jsNamespace="RemoteObjectModel">        
+            <apex:remoteObjectModel name="OpportunityLineItem" fields="Id,Mix__c,Product_Family_US__c,PricebookEntryId,OpportunityId">                        
+            </apex:remoteObjectModel>        
+        </apex:remoteObjects>        
+        <!-- <div style="margin : 20px 0px;" class="pbSubsection" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'"> -->
+        <div style="margin : 20px 0px;" class="pbSubsection" ng-if="isProductIntegrated === 'Yes'">
+            <span style="font-weight:bold;">Technologies were integrated with a CCW BOM on &nbsp;<apex:outputField value="{!Opportunity.CCW_BOM_Integrated_Date__c}"/>.  <span ng-if = "'{!Opportunity.CCW_BOM_Integrated_Quote_Id__c}'" >Please click on quote link above to make changes to your technologies.</span></span>
+            <div style="color: rgb(204, 0, 0); font-weight: bold;" ng-cloak="true">{{product_quote_error_message}}<br/></div>
+        </div>
+        <!-- <div style="margin : 20px 0px;" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'"> -->
+        <div style="margin : 20px 0px;" ng-if="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''">
+            <!--<input type="Text" size="50" class="smallInput" placeholder="Search & Add BE/Product Family" />  &nbsp; -->
+            <!--added by Kavya to make fields read only for pss user-->
+            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                <input type="text" class="productsmallInput" ng-model="tempProduct" placeholder="Search & Add BE/Product Family" uib-typeahead="product as product.name for product in getProducts($viewValue)" typeahead-on-select="setSearch($item,$event,tempProduct)" style="width:35%;"/>  
+            </apex:outputPanel>
+            
+            <!--added by Kavya to make fields read only for pss user-->
+            <apex:outputPanel rendered="{!isPSSEditable}">
+                <input type="text" disabled="disabled" class="productsmallInput" ng-model="tempProduct" placeholder="Search & Add BE/Product Family" uib-typeahead="product as product.name for product in getProducts($viewValue)" typeahead-on-select="setSearch($item,$event,tempProduct)" style="width:35%;"/>  
+            </apex:outputPanel>
+            
+            <div class="helpIconWrapper" data-toggle="tooltip" data-placement="top"><span class="tooltiptext2">Type the Product information you are looking for</span></div> &nbsp;
+            <span class="cartlink" style="marign: 20px 0px " data-toggle="tooltip" data-placement="top"><span class="tooltiptext">Select from the complete list of Products</span>
+                <!--added by Kavya to make fields read only for pss user-->
+                <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                    <button type="button" data-toggle="modal" data-target="#myModal2">Show All</button></apex:outputPanel>
+                <apex:outputPanel rendered="{!isPSSEditable}">
+                    <button type="button" disabled="disabled" data-toggle="modal" data-target="#myModal2">Show All</button></apex:outputPanel>
+            </span>
+            <span style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px;width:450px" ng-cloak="true" >
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; width: 500px;" ng-cloak="true">{{saveErrorMessage}}<br/></div> <!-- QI2_Edit_utr: Product error display in the product section --> 
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block;width: 100%;" ng-cloak="true">{{mixPercentValid}}</div>
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; width: 100%;" ng-cloak="true" ng-if="recurringTechTermFlag">{{recurringTechTermValid}}<br/></div> <!-- QI2_Edit_utr: Product term warning display in the product section --> 
+                <!-- <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block;width:100%;" ng-cloak="true" >recurringServiceTermValid}}</div> -->
+            </span>
+        </div>
+        
+        <div>                    
+            <table class="table table-condensed list" border="1" width="100%" style="margin-bottom:0px !important;" id="technologyTable">
+                <colgroup span="4"></colgroup>
+                <thead>
+                    <tr class="headerRow">
+                        <!-- <th width="5%" class="headerRow" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Action</th> -->
+                        <th width="5%" class="headerRow" ng-if="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''">Action</th>
+                        <th width="25%" class="headerRow">Business Entity/Sub-Entity</th>
+                        <th width="35%" class="headerRow">Product Family</th>
+                        <th width="10%" class="headerRow" style="text-align: center;">Mix%</th>
+                        <th width="10%" class="headerRow" style="text-align: center;">Expected Line Value ($000s)</th>                                                              
+                        <!-- <th width="10%" class="headerRow" style="text-align: center;">{!$ObjectType.OpportunityLineItem.Fields.Opportunity_Line_Value__c.Label}</th> -->
+                        <th width="10%" class="headerRow" style="text-align: center;"><span style="vertical-align: top;">Recurring Product Family?</span>&nbsp;<div class="helpIconWrapper" data-toggle="tooltip" data-placement="top"><span class="tooltiptext">Indicates whether the Product Family is RO in nature</span></div></th>
+                        <th width="5%" class="headerRow" style="text-align: center;">Term (Months)</th>
+                    </tr>
+                </thead>                    
+                <tbody class="mainTbody">
+                    <tr class="dataRow even first last" data-ng-repeat="techObj in scopeobj | limitTo:itemsPerPage:itemsPerPage*(currentPage-1) track by $index" style="height: 31px;">                                                                
+                        <!--<td width="5%" class="dataCell" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'"><a href="javascript:void(0);" class="del s1utility" ng-click="deleteLineItem((currentPage - 1)*itemsPerPage+$index,$event);">Del</a></td> -->
+                        <!--<td width="25%" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:200px;" ><span class="red" ng-if="techObj.isActive==false" ng-cloak="true" title="{{techObj.tech}}">{{techObj.tech}}</span><span class="red" ng-if="techObj.isActive==false" style="padding-left:10px;" ng-cloak="true">Inactive</span><div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px; vertical-align: top;" title="{{techObj.tech}}">{{techObj.tech}}</div></td> -->
+                        <td width="5%" style="vertical-align: top" class="dataCell" ng-if="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''">
+                            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                                <a href="javascript:void(0);" class="del s1utility" ng-click="deleteLineItem((currentPage - 1)*itemsPerPage+$index,$event);">Del</a>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!isPSSEditable}">
+                                <a class="del s1utility" ng-click="return false;">Del</a>
+                            </apex:outputPanel>
+                        </td>
+                        <td width="25%" ng-if="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:200px; vertical-align: top" ><span class="red" ng-if="techObj.isActive==false" ng-cloak="true" title="{{techObj.tech}}">{{techObj.tech}}</span><span class="red" ng-if="techObj.isActive==false" style="padding-left:10px;" ng-cloak="true">Inactive</span><div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px;" title="{{techObj.tech}}">{{techObj.tech}}</div></td>
+                        <!-- <td width="25%" class="dataCell" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'" title="{{techObj.title}}">{{techObj.tech}}</td> -->
+                        <td width="25%" style= "vertical-align: top" class="dataCell" ng-if="isProductIntegrated === 'Yes'" title="{{techObj.title}}">{{techObj.tech}}</td>
+                        <td width="50%" class="dataCell" style="vertical-align:top;">
+                            <div class="productFamily hideLink">
+                                <!--<div style="display:inline-block;" class="showLink"><a href="javascript:void(0);" class="delProd s1utility" ng-click="deleteProdFamily(outerIndex,$index,$event);">Del</a></div>-->
+                                <div style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" class="dummyPad" ng-cloak="true" title="{{techObj.prod}}">{{techObj.prod}}</div>                                                       
+                            </div>                                                   
+                        </td> 
+                        <td style="border:0px;clear:left;" class="dataCell">
+                            
+                            <!--added by Kavya to make fields read only for pss user-->
+                            <apex:outputPanel rendered="{!isPSSEditable}">
+                                <div >
+                                    <div class="requiredBlock pull-left" style="position: relative;display: block;width: 3px;height: 22px;margin-right: 2px;background-color:#c00;"></div>
+                                    <input ng-size="5" class="mixClass1 inputSelect" disabled="disabled" id="mixPercentageIdValue_{{$index}}" ng-model="techObj.mixPercentage" step="0.01" ng-init="checkTotal($index);" ng-blur="checkValidPercentage($index,techObj)" ng-click="removePercentageZero($index,techObj)" ng-cloak="true" ng-class="indvidualCost = expectedProductCost*techObj.mixPercentage/100;" ng-keyup="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100;" ng-keydown="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100;" onkeypress="return checkDecimal(this,this.id,event)"  min="0" max="100" type="number" style="width:43px;" value="techObj.mixPercentage" />
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!NOT(isPSSEditable)}">
+                                <div ng-show="isProductIntegrated === 'Yes'">
+                                    <div ng-size="5" style="padding-right:45px;" class="mixClass inputSelect" id="mixPercentageIdValueNotEditable_{{$index}}" align = "right" ng-model="techObj.mixPercentage" ng-init="checkTotal($index);" ng-cloak="true" onkeypress="return isNumberKey(event)"  ng-class="indvidualCost = expectedProductCost*techObj.mixPercentage/100;" ng-keyup="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100;" ng-keydown="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100;" value="techObj.mixPercentage">{{techObj.mixPercentage| number:2}}</div>
+                                </div>
+                                
+                                <div ng-show="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''">
+                                    <div class="requiredBlock pull-left" style="position: relative;display: block;width: 3px;height: 22px;margin-right: 2px;background-color:#c00;"></div>
+                                    <input ng-size="5" class="mixClass1 inputSelect" id="mixPercentageIdValue_{{$index}}" ng-model="techObj.mixPercentage" step="0.01" ng-init="checkTotal($index);" ng-blur="checkValidPercentage($index,techObj)" ng-click="removePercentageZero($index,techObj)" ng-cloak="true" ng-class="indvidualCost = expectedProductCost*techObj.mixPercentage/100;" ng-keyup="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100;" ng-keydown="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100;" onkeypress="return checkDecimal(this,this.id,event)"  min="0" max="100" type="number" style="width:43px;" value="techObj.mixPercentage" />
+                                </div>
+                            </apex:outputPanel>
+                            <!--ends here-->
+                        </td>
+                        
+                        <td width="10%" ng-show="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''" class="dataCell showTotal" ng-class="setTotal();" ng-cloak="true" align="center">{{(indvidualCost)| number:2}}</td>
+                        <td width="10%" ng-show="isProductIntegrated === 'Yes'" class="dataCell showTotal" ng-class="setTotal();" ng-cloak="true" align="right" style="padding-right:45px !important;">{{(indvidualCost)| number:2}}</td>                                                                                          
+                        
+                        <td ng-if= "isProductIntegrated === 'Yes'" width="8%" style="text-align: left;">{{techObj.ACVFlag}}</td>
+                        <td ng-if= "isProductIntegrated !== 'Yes' && techObj.flagForMixed !== 'Mixed'" width="8%" style="text-align: left;">{{techObj.ACVFlag}}</td>
+                        
+                        <!--added by Kavya to make fields read only for pss user-->
+                        <apex:outputPanel rendered="{!isPSSEditable}"> 
+                            <td ng-if= "techObj.flagForMixed === 'Mixed' && isProductIntegrated !== 'Yes'" width="8%" style="text-align: left;">
+                                <select disabled="disabled" ng-options="item for item in acvFlagSelection" ng-model="techObj.ACVFlag" ng-selected="techObj.ACVFlag"></select>
+                            </td>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!NOT(isPSSEditable)}"> 
+                            <td ng-if= "techObj.flagForMixed === 'Mixed' && isProductIntegrated !== 'Yes'" width="8%" style="text-align: left;">
+                                <select ng-options="item for item in acvFlagSelection" ng-model="techObj.ACVFlag" ng-selected="techObj.ACVFlag"></select>
+                            </td>
+                        </apex:outputPanel>
+                        <!-- <td width="5%" ng-if="techObj.ACVFlag === 'Yes' && !'{!Opportunity.CCW_BOM_Integrated_Date__c}'"> -->
+                        <!--added by Kavya to make fields read only for pss user-->
+                        <apex:outputPanel rendered="{!isPSSEditable}"> 
+                            
+                            <td width="5%" >
+                                <div>
+                                    <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#fff;width: 3px;height: 22px;margin-right: 2px;"></div>
+                                    <input style="width:50px; text-align: right; margin-left: 5px;" disabled="disabled" id="termMonths_{{$index}}" class="inputSelect" ng-model="techObj.term" ng-class="setTotal();" value="techObj.term" onkeypress="return isNumberKey(event)"  step="1" type="number"/>   
+                                </div>
+                            </td>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!NOT(isPSSEditable)}"> 
+                            <td width="5%" ng-if="techObj.ACVFlag === 'Yes' && isProductIntegrated !== 'Yes'">
+                                <div>
+                                    <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div>
+                                    <input style="width:50px; text-align: right; margin-left: 5px;" id="termMonths_{{$index}}" class="inputSelect" ng-model="techObj.term" ng-class="setTotal();" ng-init="checkTerm($index);" ng-change="checkTerm($index);" ng-blur="checkTerm($index);" value="techObj.term" onkeypress="return isNumberKey(event)"  step="1" type="number"/>   
+                                </div>
+                            </td>
+                            <!-- <td width="5%" ng-if="techObj.ACVFlag === 'Yes' && '{!Opportunity.CCW_BOM_Integrated_Date__c}'"> -->
+                            <td width="5%" ng-if="techObj.ACVFlag === 'Yes' && isProductIntegrated === 'Yes'">
+                                <div>
+                                    <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#fff;width: 3px;height: 22px;margin-right: 2px;"></div>
+                                    <input style="width:50px; text-align: right; margin-left: 5px;" disabled="disabled" id="termMonths_{{$index}}" class="inputSelect" ng-model="techObj.term" ng-class="setTotal();" value="techObj.term" onkeypress="return isNumberKey(event)"  step="1" type="number"/>   
+                                </div>
+                            </td>
+                            <td width="5%" ng-if="techObj.ACVFlag != 'Yes'" >
+                                <div>
+                                    <div class="requiredBlock pull-left" style="position: absolute;display: block;background-color:#fff;width: 3px;height: 22px;margin-right: 2px;"></div>
+                                    <input style="width:50px; text-align: right; margin-left: 5px;" id="termMonths_{{$index}}" class="inputSelect" ng-class="setTotal();" onkeypress="return isNumberKey(event)"  step="1" min="1" max="120" type="number" disabled="disabled"/>   
+                                </div>
+                            </td>
+                        </apex:outputPanel>
+                        <!--ends here-->
+                    </tr>
+                    <!-- <tr ng-show="'{!Opportunity.CCW_BOM_Integrated_Date__c}'"> -->
+                    <tr ng-if="isProductIntegrated === 'Yes'">
+                        <td width="5%" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="35%" style="border:0px;text-align:right;" class="dataCell"><span>Grand Total :</span></td>                                                
+                        <td width="10%" style="border:0px;text-align:right;padding-left:12px!important;padding-right:45px!important;" class="dataCell">
+                            <label id="totalTech" ng-cloak="true">{{total| number:2}}</label>                                                                                                      
+                        </td>
+                        <td width="10%"  style="border:0px;text-align:right;padding-right: 45px!important;" class="dataCell"><label id="totalTech" ng-class="totalProductCost = expectedProductCost*total/100;" ng-cloak="true">{{(totalProductCost)| number:2}}</label></td> 
+                        <td width="20%" style="border:0px; width:205px;" class="dataCell">&nbsp;</td>
+                        <td width="20%" style="border:0px; width:205px;" class="dataCell">&nbsp;</td>
+                    </tr>
+                    <!-- <tr ng-show="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'"> -->
+                    <tr ng-if="isProductIntegrated === 'No' || isProductIntegrated === 'null' || isProductIntegrated === ''">
+                        <td width="5%" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="5%" style="border:0px;" class="dataCell">&nbsp;</td>                                   
+                        <td width="35%" style="border:0px;text-align:right;" class="dataCell"><span>Grand Total :</span></td>                                                
+                        <td width="10%" style="border:0px;padding-left:12px!important;" class="dataCell">
+                            <label id="totalTech" ng-cloak="true">{{total| number:2}}</label>                                                                                                      
+                        </td>
+                        <td width="10%"  style="border:0px;text-align:center;" class="dataCell"><label id="totalTech" ng-class="totalProductCost = expectedProductCost*total/100;" ng-cloak="true">{{(totalProductCost)| number:2}}</label></td> 
+                        <td width="25%" style="border:0px;width:205px;" class="dataCell">&nbsp;</td> 
+                        <td width="10%" style="border:0px; width:205px;" class="dataCell">&nbsp;</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <ul uib-pagination="true" total-items="scopeobj.length" template-url="pagination.html" ng-model="currentPage" items-per-page="itemsPerPage" class="pagination-sm pull-right" style="margin:0px;"></ul>
+        </div>
+        <div id="myModal2" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="spinner" style="display:none"></div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">All Technologies and Product Family List</h4>
+                    </div>
+                    <div class="modal-body">                                                        
+                        <div class="well" style="width:100%; padding: 8px 0;">
+                            <div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">                                     
+                                <ul class="nav nav-list">
+                                    
+                                    <li ng-repeat="prodFamily in productFamilies track by $index" class="mainCategory"><label class="tree-toggler nav-header"><i class="glyphicon glyphicon-triangle-right" ng-class="accordionOpenIndex === $index?'glyphicon glyphicon-triangle-bottom':'glyphicon glyphicon-triangle-right'" ng-click="doToggle($event,prodFamily.name,$index);" style="cursor:pointer;font-size: 12px;padding-right: 5px;"></i>
+                                        <a href="javascript:void(0);" id="techNameToExpand" ng-class="(checkisActiveProductName(prodFamily.name) == false)?'blue':''" style="padding: 2px 15px 2px 15px;" ng-click="doToggle($event,prodFamily.name,$index);">{{prodFamily.name}}</a></label>                                                
+                                        <ul class="nav nav-list tree" ng-if="accordionOpenIndex === $index">
+                                            <li ng-repeat="listProductFamily in productFamiliesToggle">
+                                                <a href="javascript:void(0);" style="padding: 2px 15px 2px 15px;"  ng-click="addLineItem(listProductFamily.id,listProductFamily.name,listProductFamily.prodId,listProductFamily.product)">{{listProductFamily.product}}</a>
+                                                
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>                                   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+    <script>             
+        </script>
+    
+</apex:page>

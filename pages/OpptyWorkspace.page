@@ -1,0 +1,76 @@
+<apex:page standardController="AT_Workspace__c" sidebar="false" showHeader="false">
+    <apex:form >
+        
+        <apex:pageBlock mode="view" rendered="{!NOT(AT_Workspace__c.Is_Multi_Tech__c)}">
+        
+            <apex:pageBlockSection title="Product Information" columns="1">
+            
+                <apex:pageblockSectionItem >
+                <apex:outputLabel ><b>{!$ObjectType.AT_Workspace__c.fields.AT_Technology__c.label}</b></apex:outputLabel>
+                    <apex:outputField value="{!AT_Workspace__c.AT_Technology__c}" />      
+                </apex:pageblockSectionItem>
+                
+                <apex:pageblockSectionItem >
+                <apex:outputLabel ><b>{!$ObjectType.AT_Workspace__c.fields.AT_Sub_Technology__c.label}</b></apex:outputLabel>
+                    <apex:outputField value="{!AT_Workspace__c.AT_Sub_Technology__c}" />      
+                </apex:pageblockSectionItem>
+                
+                <apex:pageblockSectionItem >
+                <apex:outputLabel ><b>{!$ObjectType.AT_Workspace__c.fields.AT_Product__c.label}</b></apex:outputLabel>
+                    <apex:outputField value="{!AT_Workspace__c.AT_Product__c}" />      
+                </apex:pageblockSectionItem>
+            
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Use Case Information" columns="1" rendered="{!NOT(AT_Workspace__c.Is_Multi_Tech__c)}">
+        
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel ><b>{!$ObjectType.AT_Workspace__c.fields.Business_Driver__c.label}</b></apex:outputLabel>
+                    <apex:outputField value="{!AT_Workspace__c.Business_Driver__c}" />      
+                </apex:pageblockSectionItem>
+        
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel ><b>{!$ObjectType.AT_Workspace__c.fields.Solution_Offer__c.label}</b></apex:outputLabel>
+                    <apex:outputField value="{!AT_Workspace__c.Solution_Offer__c}" />      
+                </apex:pageblockSectionItem>
+        
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel ><b>{!$ObjectType.AT_Workspace__c.fields.Application__c.label}</b></apex:outputLabel>
+                    <apex:outputField value="{!AT_Workspace__c.Application__c}" />      
+                </apex:pageblockSectionItem>
+        
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel ><b>{!$ObjectType.AT_Workspace__c.fields.Additional_Use_Case_Info__c.label}</b></apex:outputLabel>
+                    <apex:outputField value="{!AT_Workspace__c.Additional_Use_Case_Info__c}" />      
+                </apex:pageblockSectionItem>
+            
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageBlock mode="view" rendered="{!AT_Workspace__c.Is_Multi_Tech__c}">
+        
+            <apex:pageBlockSection title="Workspace Technologies" columns="1">
+                  
+                <apex:pageBlockTable value="{!AT_Workspace__c.Workspace_Technologies__r}" var="lineitem">
+                    
+                     <apex:column value="{!lineitem.Business_Entity__c}"/>
+                     <apex:column value="{!lineitem.Business_Sub_Entity__c}"/>
+                     <apex:column value="{!lineitem.Product_Family__c}"/>
+                     <apex:column value="{!lineitem.Expected_000__c}"/>
+                     <apex:column value="{!lineitem.Service_Source__c}"/>
+                     <apex:column value="{!lineitem.Model__c}"/>
+                     <!-- Nov'2014 Adding the Technology Specialist to Multi-tech Display Layout-->
+                     <apex:column value="{!lineitem.Technology_Specialist__c}"/>
+                     <apex:column value="{!lineitem.Partner__c}"/>
+                     <apex:column value="{!lineitem.Distibutor__c}"/>
+                     <apex:column value="{!lineitem.Comments__c}"/>
+                    
+                </apex:pageblockTable>
+             
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+
+    </apex:form>      
+
+</apex:page>

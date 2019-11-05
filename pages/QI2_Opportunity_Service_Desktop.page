@@ -1,0 +1,218 @@
+<apex:page docType="html-5.0" standardController="opportunity">
+    <style>
+        b, strong { font-weight: bold; }
+        ul, ol {margin-top: 0;margin-bottom: 10px; }
+        ul li, ol li {margin-left: 1.5em;padding-left: 0;}
+        .typeahead {z-index: 1051;}
+        .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,.table>tbody>tr>td, .table>tfoot>tr>td {padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #cfd0d2;}
+        .table-condensed>thead>tr>th, .table-condensed>tbody>tr>th,.table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td,.table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td {padding: 5px;}
+        .dropdown-menu {position: absolute;top: 100%;left: 0;z-index: 1000;display: none;float: left;min-width: 160px;padding: 5px 0;margin: 2px 0 0;list-style: none;font-size: 14px;background-color: #ffffff;border: 1px solid #cccccc;border: 1px solid rgba(0, 0, 0, 0.15);border-radius: 4px;-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);background-clip: padding-box;}
+        .typeahead li {margin-left: 0px !important;}
+        .dropdown-menu>li>a {display: block;padding: 3px 20px;clear: both;font-weight: normal;line-height: 1.42857143;color: #525354;white-space: nowrap;text-decoration: none;}
+        .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{color: #ffffff;text-decoration: none;outline: 0;background-color: #2a94d6;}
+        .typeahead {z-index: 1051;}
+        .typeahead li {margin-left: 0px !important;}
+        .s1utility {color: #557FFF !important;padding-right: 10px;}
+        .list tr th,.list tr td{padding: 4px 2px 0px 5px!important;color: #333!important;border-bottom: 1px solid #e3deb8!important;}
+        .list tr th div,.list tr td span{font-family: Arial,Helvetica,sans-serif;font-size: 0.9em;}
+        #totalTech{ font-weight:normal; }
+        /* Styles for Show All technologies window */
+        span.showall { padding: 2px 2px; margin: 5px 5px;}        
+        .dataCell {font-size: 12px;}
+        .blueLink{color:blue!important;}
+        .red{color:#c00!important;font-weight:bold;}        
+        .well {
+            background-color: rgb(132, 109, 209) !important;
+            border: 1px solid rgb(19, 61, 141) !important;
+        }
+        .helpIconWrapper + .tooltip > .tooltip-inner {
+            background-color: #FEFDBA;
+            color: #000000;
+            border: 1px solid #F3A205;
+        }
+        .helpIconWrapper .tooltiptext1{
+            visibility: hidden;
+            background-color: #FEFDBA;
+            color: #000000;
+            border-radius: 4px;
+            text-align: center;
+            padding: 5px 0;
+            border: 1px solid #F3A205;
+            position: absolute;
+            width: 190px;
+            left: 29%;
+            margin-top: -55px;
+            }
+        .helpIconWrapper:hover .tooltiptext1 {
+            visibility: visible;
+        }
+        .cartlink + .tooltip > .tooltip-inner {
+            background-color: #FEFDBA;
+            color: #000000;
+            border: 1px solid #F3A205;
+        }
+        .cartlink .tooltiptext1{
+            visibility: hidden;
+            background-color: #FEFDBA;
+            color: #000000;
+            border-radius: 4px;
+            text-align: center;
+            padding: 5px 0;
+            border: 1px solid #F3A205;
+            position: absolute;
+            width: 190px;
+            left: 34%;
+            margin-top: -55px;
+            }
+        .cartlink:hover .tooltiptext1 {
+            visibility: visible;
+        }
+        .serviceCategory:hover {
+            color: #0000ff;
+            text-decoration: underline;
+        }
+    </style>
+    <script id="paginationService.html" type="text/ng-template">
+            <ul class="pagination" style="margin:10px 0 10px 0px !important">              
+                <li ng-if="directionLinks" ng-class="{disabled: noPrevious()}">
+                    <a href ng-click="selectPage(page - 1)" title="Previous Page">
+                        <span class="glyphicon glyphicon-triangle-left"></span>Previous
+                    </a>
+                </li>               
+                <li ng-if="directionLinks" ng-class="{disabled: noNext()}"><a href ng-click="selectPage(page + 1)" title="Next Page">Next<span class="glyphicon glyphicon-triangle-right"></span></a></li>                
+            </ul>
+    </script>
+    <div id="serviceApp" ng-init="initServices();" style="position:relative;">
+        <apex:remoteObjects jsNamespace="RemoteObjectModel">        
+             <apex:remoteObjectModel name="OpportunityLineItem" fields="Id,Mix__c,Product_Family_US__c,PricebookEntryId,OpportunityId">                        
+             </apex:remoteObjectModel>        
+        </apex:remoteObjects>
+        <div style="margin : 20px 0px;">
+             <!--  <input type="Text" size="50" class="smallInputService" placeholder="Search & Add Service Category/Program/Level" />  &nbsp;            -->
+              <input type="text" class="servicesmallInput" ng-model="tempService" placeholder="Search & Add Service Category/Program/Level" uib-typeahead="service as service.name for service in getServices($viewValue)" typeahead-on-select="setSearchService($item,$event,tempService)" style="width:35%;"/>                    
+            <div class="helpIconWrapper" data-toggle="tooltip" data-placement="top"><span class="tooltiptext1">Type the Service information you are looking for</span></div> &nbsp;
+            <span class="cartlink" style="marign: 20px 0px " data-toggle="tooltip" data-placement="top" ><span class="tooltiptext1">Select from the complete list of Services</span><button type="button" data-toggle="modal" data-target="#myModal3">Show All</button></span>
+            <span style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px;" ng-cloak="true">
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px; width: 100%;" ng-cloak="true">{{saveServiceErrorMessage}}<br/></div><!-- QI2_Edit_utr: Service error display in the service section -->
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px; width: 100%;" ng-cloak="true" ng-if="mixServicePercentFlag">{{mixServicePercentValid}}<br/></div>
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px; width: 100%" ng-cloak="true" ng-if="recurringServPercentageFlag">{{recurringServPercentageValid}}<br/></div>
+                <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px; width: 100%" ng-cloak="true" ng-if="recurringServiceTermFlag">{{recurringServiceTermValid}}</div>
+            </span>
+        </div>
+        <div>
+            <table class="table table-condensed list" border="1" width="1328px" style="margin-bottom:0px !important;" id="technologyTable">
+                <colgroup span="4"></colgroup>
+                <thead>
+                    <tr class="headerRow">
+                        <th width="52px" class="headerRow">Action</th>
+                        <th width="170px" class="headerRow">Service Category</th>
+                        <th width="160px" class="headerRow">Service Program</th>
+                        <th width="160px" class="headerRow">Service Level</th>
+                        <th width="120px" class="headerRow">Mix%</th>
+                        <th width="165px" height="40px" style="font-size: 1em !important;" class="headerRow"><div>Expected Line </div><div>Value ($000s)</div></th>
+                        <th width="160px" height="40px" style="font-size: 1em !important;" class="headerRow"><div>Recurring Service </div><div>Category?</div></th>
+                        <th width="115px" class="headerRow">Recurring %</th>
+                        <th width="135px" height="40px" style="font-size: 1em !important;" class="headerRow"><div>Recurring Service </div><div>Value ($000s)</div></th>
+                        <th width="95px" class="headerRow">Term (Months)</th>
+                    </tr>
+                </thead>
+                <tbody class="mainTbody">
+                    <tr class="dataRow even first last" data-ng-repeat="serviceObj in scopeserviceobj | limitTo:itemsPerPage:itemsPerPageService*(currentPageService-1) track by $index" style="height: 31px;">
+                        <td width="52px" style="border:0px;vertical-align: top;" class="dataCell"><a href="javascript:void(0);" class="del s1utility" ng-click="deleteServiceLineItem($index,$event);">Del</a></td>
+                        <td width="170px" style="vertical-align: top;" class="dataCell">
+                            <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 200px;" title="{{serviceObj.serviceCategory}}">{{serviceObj.serviceCategory}}</div>
+                            
+                        </td>
+                        <td style="border:0px;vertical-align: top; width:160px" class="dataCell" width="160px"><div ng-class="(serviceObj.isActive==false)?'red':''" style="font-size:12px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 200px;" ng-cloak="true" title="{{serviceObj.program}}">{{serviceObj.program}}</div><span class="red" ng-if="serviceObj.isActive==false" style="padding-left:10px;" ng-cloak="true">Inactive</span></td>
+                        <td width="160px" style="vertical-align: top;" class="dataCell">
+                            <div  style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 200px;" title="{{serviceObj.serviceLevel}}">{{serviceObj.serviceLevel}}</div>
+                            
+                        </td>
+                        
+                        <td width="120px" style="border:0px;vertical-align: top;clear:left; min-width:60px" class="dataCell">
+                            <div style="float:right; display:inline-block;">
+                            <div class="requiredBlock pull-left" style="position: relative;display: inline-block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px; margin-left:-3px;"></div>
+                            <input onfocus="checkZeroValueOnFocus(this.id)" onblur="setZeroValueOnBlurPerc(this.id)" class="mixClass inputSelect" id="mixPercentageServiceId_{{$index}}" max="100" min="0" ng-class="indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100; recurringServCost = indvidualServiceCost * (serviceObj.recurringPercentage/100);"  ng-init="checkServiceTotal($index);" ng-keydown="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100; recurringServCost = indvidualServiceCost * (serviceObj.recurringPercentage/100);" ng-keyup="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*serviceObj.mixPercentage/100; recurringServCost = indvidualServiceCost * (serviceObj.recurringPercentage/100);" ng-model="serviceObj.mixPercentage" ng-size="5" onkeypress="return checkServiceDecimal(this,this.id,event)" step="0.01" type="number" value="serviceObj.mixPercentage" style="width:45px; text-align:right; float: right; padding: 0px; margin-right:-2px;"/>        
+                            </div>
+                        </td>
+                        <td width="165px" style="border:0px;vertical-align: top; text-align: right; width:165px; padding-right: 20px !important;" class="dataCell showTotal" ng-class="setServiceTotal();" ng-cloak="true">{{(indvidualServiceCost)| number:2}}</td>
+                        
+                        <td width="160px" style="vertical-align: top; text-align: left">{{serviceObj.AcvFlag}} </td>
+                        <td ng-if="serviceObj.AcvFlag === 'Mixed'" width="115px" style="vertical-align: top;" class="dataCell">
+                            <div style="float:right; display:inline-block;">
+                            <div class="requiredBlock pull-left" style="position: relative;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div>
+                            <input onfocus="checkZeroValueOnFocus(this.id)" onblur="setZeroValueOnBlurPerc(this.id)" style="width:58px; text-align: right; float: right;" id="recurringPercentServiceIdValue_{{$index}}" class="inputSelect" ng-class="setTotal();" ng-init="checkRecurringServiceTotal($index);" ng-model="serviceObj.recurringPercentage" onkeypress="return checkServiceRecDecimal(this,this.id,event)"  ng-change="recurringServCost = indvidualServiceCost * (serviceObj.recurringPercentage/100); checkRecurringServiceTotal($index);" value="servObj.recurringPercentage" step="0.01" min="0" max="100" type="number"></input>
+                            </div>
+                        </td>
+                        <td ng-if="serviceObj.AcvFlag === 'Yes'" width="115px" style="vertical-align: top; text-align: right;" class="dataCell" ng-init="checkRecurringServiceTotal($index);"> {{ serviceObj.recurringPercentage | number:2}} </td>
+                        <td ng-if="serviceObj.AcvFlag === 'No'" width="115px" style="vertical-align: top; text-align: right;" class="dataCell" ng-init="serviceObj.recurringPercentage = 0; checkRecurringServiceTotal($index);">{{ serviceObj.recurringPercentage | number:2}} </td>
+                        
+                        <td ng-if="serviceObj.AcvFlag === 'Mixed' && (serviceObj.recurringPercentage > 0 && serviceObj.recurringPercentage <=100)" width="135px" style="vertical-align: top; text-align: right;" class="dataCell showTotal" ng-class="setTotal();">{{ recurringServCost | number: 2}}</td>
+                        <td ng-if="serviceObj.AcvFlag === 'Mixed' && (serviceObj.recurringPercentage === 0 || serviceObj.recurringPercentage === null || serviceObj.recurringPercentage === undefined)" width="135px" style="vertical-align: top; text-align: right;" class="dataCell showTotal" ng-class="setTotal();"><input id="recurringServCost_{{$index}}"  type="number" class="w3-input w3-border w3-round" onkeypress="return isNumberKey(event)" style="width:130px; float:right;" disabled="disabled"></input></td>
+                        <td ng-if="serviceObj.AcvFlag === 'Yes'" width="135px" style="vertical-align: top; text-align: right;" class="dataCell showTotal" ng-class="setTotal();">{{ recurringServCost|number: 2 }}</td>
+                        <td ng-if="serviceObj.AcvFlag === 'No'" width="135px" style="vertical-align: top; text-align: right;" class="dataCell showTotal" ng-class="setTotal();"><input id="recurringServCost_{{$index}}"  type="number" class="w3-input w3-border w3-round" onkeypress="return isNumberKey(event)" style="width:130px; float:right;" disabled="disabled" tabindex="-1"></input></td>
+                        
+
+                        <td ng-if="serviceObj.AcvFlag === 'Mixed' && (serviceObj.recurringPercentage > 0 && serviceObj.recurringPercentage <=100)" width="95px" style="vertical-align: top;" class="dataCell">
+                            <div style="float:right; display:inline-block;">
+                                <div class="requiredBlock pull-left" style="position: relative;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div>
+                                <input id="termServiceMonths_{{$index}}" style="width:70px; text-align: right; float: right;" class="inputSelect" ng-class="setTotal();" ng-init="checkServiceTerm($index);" ng-model="serviceObj.term" onkeypress="return isNumberKey(event)"  ng-change="checkServiceTerm($index);" value="serviceObj.term" step="1" min="1" max="60" type="number"></input>
+                            </div>
+                        </td>                                                                                     
+                        <td ng-if="serviceObj.AcvFlag === 'Mixed' && (serviceObj.recurringPercentage === 0 || serviceObj.recurringPercentage === null || serviceObj.recurringPercentage === undefined)" width="95px" style="vertical-align: top;" class="dataCell"><input id="termServiceMonths_{{$index}}" style="width:70px; float:right;" min="1" max="60" type="number" class="w3-input w3-border w3-round" onkeypress="return isNumberKey(event)" disabled="disabled"></input></td> 
+                        <td ng-if="serviceObj.AcvFlag === 'Yes'" width="95px" style="vertical-align: top;" class="dataCell">
+                            <div style="float:right; display:inline-block;">
+                                <div class="requiredBlock pull-left" style="position: relative;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div>
+                                <input id="termServiceMonths_{{$index}}" style="width:70px; text-align: right; float: right;" class="inputSelect" ng-class="setTotal();" ng-init="checkServiceTerm($index);" ng-model="serviceObj.term" onkeypress="return isNumberKey(event)"  ng-change="checkServiceTerm($index);" value="serviceObj.term" step="1" min="1" max="60" type="number"></input>
+                            </div>
+                        </td>
+                        <td ng-if="serviceObj.AcvFlag === 'No'" width="95px" style="vertical-align: top;" class="dataCell"><input id="termServiceMonths_{{$index}}" style="width:70px;float:right;" min="1" max="60" type="number" class="w3-input w3-border w3-round" onkeypress="return isNumberKey(event)" disabled="disabled" tabindex="-1"></input></td> 
+                        </tr>
+                    <tr>
+                        <td width="52px" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="170px" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="160px" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="160px" style="border:0px;text-align:right;" class="dataCell"><span><b>Total :</b></span></td>
+                        <td width="120px" style="border:0px;padding-left:12px!important; text-align:right;" class="dataCell"><label id="totalTech" ng-cloak="true" style="text-align: right;">{{totalService| number:2}}</label></td>
+                        <td width="165px" style="border:0px;text-align:right; padding-right: 20px !important;" class="dataCell"><label id="totalTech" ng-class="totalServiceCost = expectedServiceCost*totalService/100;" ng-cloak="true">{{(totalServiceCost)| number:2}}</label></td>
+                        <td width="160px" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="115px" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="135px" class="dataCell" style="border:0px; text-align: right;" ng-class="checkRecurringServiceTotal(0);">{{recurringServTotalCost| number:2}}</td>
+                        <td width="95px" style="border:0px;" class="dataCell">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>         
+            <ul uib-pagination="true" total-items="scopeserviceobj.length" template-url="paginationService.html" ng-model="currentPageService" items-per-page="itemsPerPageService" class="pagination-sm pull-right" style="margin:0px;"></ul>
+        </div>
+        <div id="myModal3" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">All Service Programs</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="well" style="width:100%; padding: 8px 0;">
+                            <div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">
+                                <ul class="nav nav-list">
+                                    <li ng-repeat="servFamily in serviceFamilies track by $index" class="mainCategory"><label class="tree-toggler nav-header">
+                                                <div><div class="glyphicon glyphicon-triangle-right" ng-class="accordionOpenIndex === $index?'glyphicon glyphicon-triangle-bottom':'glyphicon glyphicon-triangle-right'" ng-click="doToggleService($event,servFamily.name,$index);" style="cursor:pointer;font-size: 12px;padding-right: 5px;"></div>
+                                                <div class="serviceCategory" href="" id="servNameToExpand" ng-class="(checkServiceisActive(servFamily.name) == false)?'blue':''" ng-click="doToggleService($event,servFamily.name,$index);" style="padding: 2px 15px 2px 30px; margin-top: -20px;" >{{servFamily.name}}</div></div></label>                                                
+                                               <ul class="nav nav-list tree" ng-if="accordionOpenIndex === $index">
+                                                    <li ng-repeat="listServiceFamily in serviceFamiliesToggle">
+                                                        <a href="javascript:void(0);" style="padding: 2px 15px 2px 15px;" ng-click="addServiceLineItem(listServiceFamily.id,listServiceFamily.name,listServiceFamily.serviceId,listServiceFamily.service,listServiceFamily.program,listServiceFamily.category)">{{listServiceFamily.service}}</a>
+                                                    </li>
+                                                </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:page>

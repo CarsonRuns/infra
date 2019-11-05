@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Custom_Label__c</fullName>
+        <description>Hold the name of the custom label to be used to display each value</description>
+        <externalId>false</externalId>
+        <label>Custom Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ObjectType__c</fullName>
+        <defaultValue>"Lead"</defaultValue>
+        <description>This field should contain value TP or Lead used to determine for which object these views corresponds to</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field should contain value TP or Lead</inlineHelpText>
+        <label>ObjectType</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <description>Filed to hold the order in which this views should display per object / language</description>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <precision>3</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PA_Status__c</fullName>
+        <description>Comma separated list of Partner Lead status values the corresponding view should include for PA</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comma separated list of Partner Lead status values the corresponding view should include for PA</inlineHelpText>
+        <label>PA Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PSR_Status__c</fullName>
+        <description>Comma separated list of Partner Lead status values the corresponding view should include for PSR</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comma separated list of Partner Lead status values the corresponding view should include for PSR</inlineHelpText>
+        <label>PSR Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>View_Alias__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Alias view name used for mapping</description>
+        <externalId>true</externalId>
+        <label>View Alias</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>CS to store the lead filter views and corresponding status values for PA's and PSR's</description>
+    <enableFeeds>false</enableFeeds>
+    <label>SCP_Communities_listviews</label>
+    <visibility>Protected</visibility>
+    <listViews>
+        <fullName>Lead</fullName>
+        <columns>NAME</columns>
+        <columns>SETUP_TYPE</columns>
+        <columns>SETUP_OWNER_NAME</columns>
+        <columns>Custom_Label__c</columns>
+        <columns>PA_Status__c</columns>
+        <columns>PSR_Status__c</columns>
+        <columns>Order__c</columns>
+        <columns>ObjectType__c</columns>
+        <columns>View_Alias__c</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ObjectType__c</field>
+            <operation>equals</operation>
+            <value>Lead</value>
+        </filters>
+        <label>Lead</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>TP</fullName>
+        <columns>NAME</columns>
+        <columns>SETUP_OWNER_NAME</columns>
+        <columns>Custom_Label__c</columns>
+        <columns>PA_Status__c</columns>
+        <columns>PSR_Status__c</columns>
+        <columns>Order__c</columns>
+        <columns>ObjectType__c</columns>
+        <columns>View_Alias__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ObjectType__c</field>
+            <operation>equals</operation>
+            <value>TP</value>
+        </filters>
+        <label>TP</label>
+        <language>en_US</language>
+    </listViews>
+</CustomObject>

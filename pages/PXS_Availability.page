@@ -1,0 +1,128 @@
+<apex:page standardController="case" sidebar="false" extensions="PXS_Availability_Controller">
+    <apex:includeScript value="{!$Resource.jquery22}" />
+    <script>
+          var $j = jQuery.noConflict();
+          function loading(val) {
+            if (val) {
+               $j('#load_scrl').css('top', $j(document).scrollTop() + 100);
+               $j('.loadingBox').show();
+            }
+            else {
+               $j('.loadingBox').hide();
+            }
+        }
+    </script>
+    <style>                     
+    .empty-column-content {
+        display: none;
+    }
+    .overlay {
+            display: none;
+            height: 100%;
+            left: 0;
+            position: fixed;
+            top: 0;
+            opacity: 0.3;
+            -moz-opacity: 0.3;
+            width: 100%;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+            filter: alpha(opacity=30);
+            background: #000;
+            -khtml-opacity: 0.3;
+            z-index: 1000;
+        }
+        .loader {
+            background: url('/img/loading32.gif') scroll no-repeat 0 0;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            left: 50%;
+        }
+    </style> 
+      
+    <apex:form >
+        <apex:pageBlock title="Bid Manager Availability ">
+            <div id="load_scrl" class="loadingBox loader" style="display:none"> </div>
+            <div class="loadingBox overlay"> </div>  
+            <!-- Criteria choices for Month and SalesRegion-->
+            <apex:pageBlockSection columns="2" showHeader="false">                              
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Month" for="monthList"></apex:outputLabel>
+                    <apex:selectList id="monthList" multiSelect="false" size="1" value="{!selMonth}" title="Month">
+                        <apex:selectOptions value="{!dynMonth}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange" action="{!ShowAvailability}" status="loading"  rerender="allgrids"/> 
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+               
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Opportunity Territory Level 01" for="siteList"></apex:outputLabel>
+                    <apex:selectList id="siteList" multiSelect="false" size="1" value="{!selSite}" title="Site" >
+                        <apex:selectOptions value="{!dynSite}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange" action="{!ShowAvailability}" status="loading" rerender="allgrids"/> 
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>                
+            </apex:pageBlockSection>
+            <table border="1px" width="60%">
+                <tr height="40px" style="text-align:center">
+                   <td><b>Color Legend</b></td>
+                   <apex:repeat var="cl" value="{!AllColourCode}">
+                   <!--SCAVA FIX-->
+                   <td style="background-color:{!HTMLENCODE(cl.Level_of_Service_color_code__c)};" align="center"><b>{!cl.Name}</b></td>  
+                   </apex:repeat> </tr> 
+                                                 
+            </table>    
+            <br/>
+            <!-- Calendar section -->
+            <apex:outputPanel id="allgrids">
+           <apex:outputPanel id="calendarRender">
+                <apex:pageMessages id="pageMsg" />  
+                <apex:pageblock id="calendarList" >
+                    <apex:datatable id="calendarTable" value="{!caseBIDMAvailability}" cellpadding="5" border="1" var="i" rendered="{!calendarVisible}">
+                         <apex:column headerValue="Bid Manager">                           
+                                <apex:outputText value="{!i.bPersonal.FirstName + ' ' + i.bPersonal.LastName}" /> 
+                        </apex:column> 
+                        <apex:column headerValue="Account">                           
+                                <apex:outputText value="{!i.caseData.Opportunity_Account_Name__c}" />                           
+                        </apex:column> 
+                        <apex:column headerValue="Case Number">
+                            <apex:outputLink title="{!i.caseData.Owner_Change_Date__c} - {!i.caseData.Proposal_Due_Date__c}" value="/{!i.caseData.id}">
+                                <apex:outputText value="{!i.caseData.CaseNumber}" />
+                            </apex:outputLink>
+                        </apex:column> 
+                        <apex:column headerValue="Due Date">                           
+                               
+                                <apex:outputText value="{0,Date,MM'/'dd'/'yyyy}">
+                                    <apex:param value="{!i.caseData.Proposal_Due_Date__c}" /> 
+                                </apex:outputText>                         
+                        </apex:column>            
+                                                
+                        <!-- Dynamic List of Days based on # days in a month -->  
+                        <apex:repeat var="day" value="{!i.days}"> 
+                        <!--SCAVA FIX-->
+                                                  
+                            <apex:column headerValue="null Day" style="background-color:{!HTMLENCODE(day.display)}">
+                                <apex:outputText value="{!If(day.value > 0 ,'','')}"/>
+                            </apex:column>                          
+                        </apex:repeat>      
+                        
+                       <apex:repeat var="header" value="{!headers}">
+                            <apex:column styleClass="empty-column-content">
+                                <apex:facet name="header">
+                                    {!header.top} 
+                                    <br/>
+                                    {!header.bottom}
+                                </apex:facet>
+                                
+                            </apex:column>
+                            <!--<apex:column headerValue="{!header}" styleClass="empty-column-content" />  -->
+                        </apex:repeat>  
+                    </apex:datatable> 
+                   <apex:outputLabel value="No records" rendered="{!!calendarVisible}" styleClass="noRowsHeader"></apex:outputLabel>
+                </apex:pageblock>
+            </apex:outputPanel>      
+             
+            <apex:actionStatus id="loading" onstart="loading(true)" onstop="loading(false)" /> 
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

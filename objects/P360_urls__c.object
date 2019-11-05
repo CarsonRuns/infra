@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Lead_Export_Url__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead Export Url</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Lead_upload__c</fullName>
+        <description>Lead Upload url to P360 Jvm</description>
+        <externalId>false</externalId>
+        <label>Lead_upload</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Used to store P360 jvm urls</description>
+    <enableFeeds>false</enableFeeds>
+    <label>P360_urls</label>
+    <visibility>Public</visibility>
+</CustomObject>

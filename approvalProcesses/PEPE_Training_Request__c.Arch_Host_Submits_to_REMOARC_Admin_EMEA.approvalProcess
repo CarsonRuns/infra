@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>PDP_Requested_to_Event_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>PEPE_ARCH_is_used_for_reviewing_the_TR_requested_status</name>
+                <type>Alert</type>
+            </action>
+            <action>
+                <name>PEPE_Arch_REMOTE_Requested_RT_to_LPBC</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>PEPE_ARCH_EMEAR_ADMIN_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>This app step is to req for lpbc.</description>
+        <entryCriteria>
+            <formula>ISPICKVAL (Training_Offering_Id__r.Platform__c, &apos;Architectures&apos;)&amp;&amp; 
+( 
+ISPICKVAL( Training_Offering_Id__r.Type_of_Architecture_Event__c, &apos;Standard Remote&apos;) || 
+ISPICKVAL( Training_Offering_Id__r.Type_of_Architecture_Event__c, &apos;Multiple Sessions Remote&apos;) 
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>RejectRecord</ifCriteriaNotMet>
+        <label>Step 1</label>
+        <name>Step_1</name>
+        <rejectionActions>
+            <action>
+                <name>PDP_Requested_to_Request_Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>PEPE_ARCH_EMAIL_ALERT_for_cancellation</name>
+                <type>Alert</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>This Approval Process is to have a business workflow automation behind the Architecture country hosts team and Arch Admin team. Admin Team either approves or rejects the record based on the details provided in the record.</description>
+    <emailTemplate>PEPE_Email_Template_Notifications/PEPE_ARCH_country_hosts_requested_for_TR_approval_to_EMEAR_ARCH_Admin</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>ISPICKVAL( Status__c ,&apos;Added into cart&apos;) &amp;&amp; 
+Training_Event_Name__c != &apos;&apos; &amp;&amp; 
+ISPICKVAL( Training_Offering_Id__r.Platform__c, &apos;Architectures&apos; )&amp;&amp; 
+( 
+ISPICKVAL( Training_Offering_Id__r.Type_of_Architecture_Event__c, &apos;Standard Remote&apos;) || 
+ISPICKVAL( Training_Offering_Id__r.Type_of_Architecture_Event__c, &apos;Multiple Sessions Remote&apos;)
+)</formula>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>PDP_Added_into_cart_to_Requested</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Arch Host Submits to REMOARCH Admin EMEA</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- The stakeholder who will own this success priority --></help>
+        <label><!-- Key Stakeholder --></label>
+        <name>Key_Stakeholder__c</name>
+        <relationshipLabel><!-- Success Priorities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- LastModifiedBoDate --></label>
+        <name>LastModifiedBoDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Updated --></label>
+        <name>Last_Updated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offer --></label>
+        <name>Offer__c</name>
+        <relationshipLabel><!-- Success Priorities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Planned End Date --></label>
+        <name>Planned_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned Start Date --></label>
+        <name>Planned_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Track</masterLabel>
+            <translation><!-- On Track --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Potential Risk</masterLabel>
+            <translation><!-- Potential Risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk/Roadblock</masterLabel>
+            <translation><!-- Risk/Roadblock --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Success Plan --></label>
+        <name>Success_Plan__c</name>
+        <relationshipLabel><!-- Success Priorities --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Success Priority</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Success Priorities</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Success Priority Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- End Date Must be After Start Date --></errorMessage>
+        <name>Greate_Plan_End_Date</name>
+    </validationRules>
+</CustomObjectTranslation>

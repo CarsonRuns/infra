@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>NGCC-israel-sales-english-Chat</name>
+    <queueMembers>
+        <users>
+            <user>atashiba@cisco.com</user>
+            <user>mafarid@cisco.com</user>
+            <user>anelias@cisco.com</user>
+            <user>chcastil@cisco.com</user>
+            <user>dgsexton@cisco.com</user>
+            <user>edcarrer@cisco.com</user>
+            <user>flmichau@cisco.com</user>
+            <user>geakenny@cisco.com</user>
+            <user>hyurek@cisco.com</user>
+            <user>jolszowy@cisco.com</user>
+            <user>mdyc@cisco.com</user>
+            <user>micrich2@cisco.com</user>
+            <user>sguarino@cisco.com</user>
+            <user>tzadi@cisco.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Omnichannel_Routing</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveAgentSession</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

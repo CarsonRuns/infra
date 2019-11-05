@@ -1,0 +1,40 @@
+<apex:page showHeader="true" sidebar="false" standardController="opportunity">
+<style>
+.normalText
+{
+font-family: 'Arial', 'Helvetica';
+font-weight: bold;
+font-size: 16pt;
+color: #000000;
+text-decoration: none;
+}
+
+.errorMsg
+{
+font-family: 'Arial', 'Helvetica';
+font-weight: bold;
+font-size: 8pt;
+color: #990000;
+}
+</style>
+<b>Please wait ...</b>
+<script>
+function initPage() {
+var parentId='{!JSENCODE(Opportunity.Parent_ID__c)}';
+var OppID = '{!Opportunity.Id}';
+var dealId = '{!JSENCODE(Opportunity.DealID__c)}';
+var parentId15Char = parentId.substring(0,15);
+var OppId15Char = OppID.substring(0,15);
+if (parentId == '') 
+    parent.frames.location.replace("/00O30000000f1z4?pv0="+dealId+"&pv1="+OppID);
+else {  
+    parent.frames.location.replace("/00O30000000f1z4?pv0="+dealId+"&pv1=" + parentId);
+}
+return;
+}
+</script>
+
+<body>
+<script>initPage();</script>
+</body>
+</apex:page>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Compte</label>
+        <name>Account__c</name>
+        <relationshipLabel>Engagements sur plusieurs comptes</relationshipLabel>
+    </fields>
+    <fields>
+        <help>Saisissez l'objet, l'objectif, les détails sur le participant, etc.</help>
+        <label>Commentaires</label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label>Engagement du client</label>
+        <name>Customer_Engagement__c</name>
+        <relationshipLabel>Engagements sur plusieurs comptes</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Nombre de participants du client</label>
+        <name>Num_of_Customer_Attendees__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de dirigeants du client</label>
+        <name>Num_of_Customer_Executives__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de participants partenaires</label>
+        <name>Num_of_Partner_Attendees__c</name>
+    </fields>
+    <fields>
+        <label>Opportunité</label>
+        <name>Opportunity__c</name>
+        <relationshipLabel>Engagements sur plusieurs comptes</relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Multi-Account Engagement --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Multi-Account Engagement --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- ID --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Briefing Account Layout</layout>
+        <sections>
+            <label>Informations sur le participant</label>
+            <section>Attendee Details</section>
+        </sections>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Détails de l'engagement</label>
+            <section>Engagement Detail</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

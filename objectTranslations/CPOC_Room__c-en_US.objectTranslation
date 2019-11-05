@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Room End Date --></label>
+        <name>CPOC_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Room Start Date --></label>
+        <name>CPOC_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Engagements &amp; Events --></label>
+        <name>Customer_Engagements_Events__c</name>
+        <relationshipLabel><!-- CPOC Rooms --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Room --></label>
+        <name>Room__c</name>
+        <relationshipLabel><!-- CPOC Rooms --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CPOC Room</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CPOC Rooms</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Visit End Date should not be greater  than CPOC&apos;s End Date --></errorMessage>
+        <name>Visit_End_Date_Greaterthan</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CPOC Start date should be less than CPOC End date --></errorMessage>
+        <name>Visit_End_date_should_be_more</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Visit Start Date should not be less than CPOC&apos;s Start Date --></errorMessage>
+        <name>Visit_Start_Date_not_lessthan</name>
+    </validationRules>
+</CustomObjectTranslation>

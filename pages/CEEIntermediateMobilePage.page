@@ -1,0 +1,123 @@
+<!-------------------------------------------------------------------------------
+   @Author :Laxman Thadaka
+   @name :CEEIntermediatePage
+   @CreateDate : 08/05/2015
+   @Description :This page Populate values on CEE detail page.
+   @Version :1.0
+   //************************* Change History ****************************
+   // Sudi : 5/10/2016 - US10714: Added Banner link for eXperience Services
+   // Prashanth: OCT/28/2016: Added Help link and removed theater field
+  ------------------------------------------------------------------------------->
+<apex:page doctype="html-5.0" standardController="CEE__c" docType="html-5.0"  showHeader="false" sidebar="false" standardStylesheets="true" extensions="CEEIntermediatePageController" id="page1"> 
+<apex:includeScript value="{!$Resource.jquery22}" />
+<script>
+  function redirect(){     
+    sforce.one.back();
+  }
+  function onContinue(){    
+    if(!isValidate())
+    { 
+         // SCAVA FIX 
+         sforce.one.createRecord('CEE__c','{!JSENCODE($CurrentPage.parameters.recordType)}'); 
+    }   
+  }
+  function RedirectNext(){  
+    var ddlValue = $("[id$='serVal']").val();
+    if(ddlValue == "Disagree & Cancel Request"){        
+        DisagreeCancelRequest(); 
+        alert('{!$Label.CEE_Service_Charge_Disagree}');  
+        window.location.href = document.URL;                  
+    }    
+  }
+  
+  function disableService(){
+    var ddlEventValue = $("[id$='eventType']").val();         
+    var ddlFSOLocation = $("[id$='FSOLocation']").val();
+    if(ddlFSOLocation == '{!$Label.CEE_SanJoseExperienceCenter}' && ddlEventValue == "Good Will Visit" ){        
+        $("[id$='serVal'] option:first-child").attr("selected", "selected");
+        $("[id$='serVal']").attr('disabled','disabled');         
+    } 
+    else if(ddlFSOLocation == '{!$Label.CEE_SanJoseExperienceCenter}'){ 
+            $("[id$='serVal'] option:first-child").attr("selected", "selected");
+            $("[id$='serVal']").removeAttr('disabled');
+        }       
+     
+  }
+  function isValidate(){
+    if($("[id$='FSOLocation']").val() == ''){
+        return true;
+    }
+    console.log("Value",$("[id$='FSOLocation']").val());
+    if($("[id$='FSOLocation']").val() == "Other/FSO" && ($("[id$='otherfso']")).val() == ''){
+       $("[id$='otherfso']").attr("required",true);
+        return true;
+    }    
+    if($("[id$='eventType']").val() == ''){ 
+         $("[id$='otherfso']").attr("required",false);
+         $("[id$='eventType']").attr("required",true);
+        return true;
+    }
+    if($("[id$='MeetingDel']").val() == ''){ 
+         $("[id$='otherfso']").attr("required",false);       
+        return true;
+    }
+    if($("[id$='BrfTheater']").val() == ''){   
+         $("[id$='otherfso']").attr("required",false);   
+        return true;
+    }
+  
+    if($("[id$='FSOLocation']").val() == '{!$Label.CEE_SanJoseExperienceCenter}' && $("[id$='serVal']").val() == ''&& ($("[id$='eventType']").val() !== "Good Will Visit")){
+        $("[id$='serVal']").attr("required",true);
+        return true;
+    }
+    
+  }
+  function setEventTypeFirst(){
+    $("[id$='otherfso']").attr("required",false);
+  } 
+  
+</script>
+<style>
+    .CancelButton{
+            color: #333;
+            margin: 1px;
+            padding: 2px 3px;
+            border: 1px solid #b5b5b5;
+            border-bottom-color: #7f7f7f;
+            background: #e8e8e9 url('/img/alohaSkin/btn_sprite.png') repeat-x right top;
+            font-weight: bold;
+            font-size: .9em;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            padding: 4px 3px;
+            cursor: pointer;
+    }
+    .cs1Text         { font-family: Arial, Helvetica, sans-serif; font-size: small; }
+    .cs1RedBold      { color: red; font-weight: bold; }
+    .cs1BlueBold      { color: blue; font-weight: bold; }
+    .cs1FloatLeft    { float: left; }
+</style>
+<apex:form id="fm">
+<apex:actionFunction action="{!DisagreeCancelRequest}" name="DisagreeCancelRequest" reRender="dummpy">
+</apex:actionFunction>
+<apex:pageBlock title="Customer Engagements & Events Edit" id="pbl1">
+<span class="cs1BlueBold">Please click <a class="cs1Text cs1BlueBold" href="#" onClick='window.open("http://xs.cisco.com")'>here</a> {!$Label.CEE_IntermediatePage_Banner} </span>
+<apex:pageBlockSection columns="1" id="pbSec">
+<apex:inputField value="{!CEE.EBC_CBC_Location__c}"  id="FSOLocation" onchange="setEventTypeFirst();" required="true">
+</apex:inputField>      
+<apex:inputField value="{!CEE.Primary_FSO__c}" id="otherfso" />
+<apex:inputField value="{!CEE.Event_Type__c}" required="true" onchange="disableService();" id="eventType"/> 
+<apex:inputField value="{!CEE.Meeting_Delivery_Type__c}" id="MeetingDel" required="true" />
+<!--<apex:inputField value="{!CEE.Briefing_Theatre__c}" required="true" />-->
+<apex:inputField value="{!CEE.Service_Charge_1K_USD_to_Engagement__c}" onchange="RedirectNext();" required="true" id="serVal">
+<a href="javascript:void(0)" onClick="javascript:window.open('{!serviceChargInfolink}','_blank')">More Details on Service Charge</a>
+</apex:inputField>            
+</apex:pageBlockSection>
+<apex:pageBlockButtons location="bottom">
+<apex:CommandButton value="Continue" id="BtnNext" onclick="onContinue();"></apex:CommandButton>
+<input type="button" value="Cancel" onclick="redirect();" class="CancelButton"/>
+</apex:pageBlockButtons>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

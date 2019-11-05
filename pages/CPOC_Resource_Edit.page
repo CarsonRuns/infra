@@ -1,0 +1,112 @@
+<!--
+    Project : CPOC 
+    Author  : Priyanka
+    Release : 13-Feb-2016
+    Functionality: Schduler should be able to add engineers for CPOC lab request
+    
+    Modification History
+        UserStory#               Date         Author                Change          
+        Normalization Fix       Aug 17 2016   Sudi             Change hard code labels giving field api labels.
+    -->
+
+<apex:page standardController="CPOC_Shared_Resource__c" extensions="CPOC_ResourceEditController">
+     <apex:includeScript value="{!$Resource.jquery22}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}"/>   
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/themes/ui-lightness/jquery.ui.all.css')}"/>  
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery-ui.custom.js')}"/>
+    <apex:pageMessages id="pageMsg"/> 
+    <apex:sectionHeader title="CPOC Resource Edit" subtitle="{!pageDisplay}"/>
+    <apex:form >
+        <apex:actionFunction name="getResourceStatus" action="{!returnResourceAvaibilityStatus}" rerender="resourceRender" oncomplete="saveData('{!sResStatus}')" >
+        <apex:param name="firstParam" assignTo="{!sResStatus}" value="" />
+        </apex:ActionFunction>
+        <apex:actionFunction name="saveResourceData" action="{!doSave}" rerender="pageMsg,resourceRender"> 
+        </apex:actionFunction>
+        <apex:pageBlock title="CPOC Resource Edit">        
+            <apex:pageBlockButtons > 
+                <apex:commandButton onclick="getResourceStatus();return false;" value="Save" />                
+                <apex:outputPanel rendered="{! $User.UIThemeDisplayed == 'Theme3' }"> 
+                <apex:commandButton action="{!Cancel}" value="Cancel"/>
+                 </apex:outputPanel> 
+                 
+                 <!-- Added By Naresh (nkalahas@cisco.com) on 31/01/2018  to dispaly cancel button lightning -->
+                             
+               <apex:outputPanel rendered="{! $User.UIThemeDisplayed == 'Theme4d' }">
+                <apex:commandButton action="{!doCancel}" value="Cancel"/>
+                 </apex:outputPanel> 
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection title="Briefing" columns="2">
+                <apex:outputField value="{!CPOC_Shared_Resource__c.Customer_Engagements_Events__c}"/>
+                <apex:pageBlockSectionItem />
+                <apex:outputField value="{!briefing.Requested_Customer_Arrival_Date__c}"/>
+                <apex:outputField value="{!briefing.Requested_Customer_End_Date__c}"/>
+            </apex:pageBlockSection>
+            
+            <apex:outputPanel id="resourceRender">
+                <apex:pageBlockSection title="Information" columns="2">
+                    <!-- Sudi -Aug 17 2016: Add below code remove hard coded labels and used field labels.  -->
+                    <apex:inputField value="{!CPOC_Shared_Resource__c.CPOC_Start_Date__c}" required="true"/>
+                    <apex:inputField value="{!CPOC_Shared_Resource__c.CPOC_End_Date__c}" required="true"/> 
+                <apex:pageBlockSectionItem > 
+                        <apex:outputLabel value="CPOC Resources" for="ResourceList"></apex:outputLabel>                         
+                        <apex:actionRegion >
+                            <apex:outputPanel layout="block" styleClass="requiredInput">
+                                <apex:selectlist id="resourceList" value="{!selResource}" size="1">
+                                    <apex:outputPanel layout="block" styleClass="requiredBlock"/>
+                                    <apex:selectOptions value="{!resourceOptions}" />
+                                </apex:selectlist>
+                            </apex:outputPanel>                    
+                        </apex:actionRegion>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                 <!-- This div is used for overbook popup window -->
+                <div id="overBook" style="display:none">
+                    <p>{!selResName} is not available</p>
+                    <apex:repeat value="{!lstResources}" var="pr">
+                      <p>{!pr.CPOC_All_Shared_Resource__r.Resource_Name__c} is reserved for the {!pr.Customer_Engagements_Events__r.Primary_Account__r.Name} from &nbsp;<apex:outputField value="{!pr.CPOC_Start_Date__c}" /> to &nbsp;<apex:outputField value="{!pr.CPOC_End_Date__c}"/></p>
+                     </apex:repeat>
+                    <p>The resources listed above are already scheduled for the dates you specified.You can still schedule this activity</p>
+                    <p>However the resources will be overbooked.Press the overbook function to schedule these resources anyway.Or,press the cancel button to go back and make changes.</p>
+                    <apex:commandButton onclick="saveResourceData();return false;" value="Over Book"/>&nbsp;&nbsp;&nbsp;
+                    <apex:commandButton onclick="javascriptCancel();return false;" value="Cancel"/>
+                 </div>
+            </apex:outputPanel>
+         </apex:pageBlock>
+    </apex:form>
+      <script>
+        var j$ = jQuery.noConflict(); 
+        var j$modalDialog; 
+        //This method is used to save the data.
+        function saveData(status){              
+            if(status == 'Booked'){
+              showModal();             
+            }
+            else{                       
+                saveResourceData();             
+            }
+        } 
+    //This method is used to cancel the over book popup
+    function javascriptCancel(){
+        j$modalDialog.dialog('close');  
+    }
+    //This method is used to load the over book popup
+    function showModal(){           
+            j$modalDialog = j$('#overBook')           
+            .dialog({
+                autoOpen: false,
+                title: 'Over Book Status',
+                resizable: false,
+                width: 700,
+                height: 300,
+                autoResize: true,
+                modal: true,
+                draggable: true,
+                id:"dialog"                
+            });
+     
+        j$modalDialog.dialog('open');        
+    }       
+    </script>
+</apex:page>

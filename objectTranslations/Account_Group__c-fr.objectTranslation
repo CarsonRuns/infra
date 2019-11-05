@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>ID groupe FDEV</label>
+        <name>Account_Group_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Account Team Flag --></label>
+        <name>Account_Group_Team_Flag__c</name>
+    </fields>
+    <fields>
+        <label>Date de fin</label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label>Alias du groupe de compte FDEV</label>
+        <name>FDEV_Account_Group_Alias__c</name>
+    </fields>
+    <fields>
+        <label>Propriétaire du compte de ventes</label>
+        <name>FDEV_Account_Group_Owner__c</name>
+    </fields>
+    <fields>
+        <label>ID territoire parent</label>
+        <name>ParentTerritoryID__c</name>
+    </fields>
+    <fields>
+        <label>Territoire parent</label>
+        <name>Parent_Territory__c</name>
+    </fields>
+    <fields>
+        <label>Adresse principale</label>
+        <name>Primary_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Renewal Manager --></label>
+        <name>Renewal_Manager__c</name>
+        <relationshipLabel><!-- SalesAccountView --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Sous-segment</label>
+        <name>Segment__c</name>
+    </fields>
+    <fields>
+        <label>Date_début</label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label>ID territoire</label>
+        <name>TerritoryID__c</name>
+    </fields>
+    <fields>
+        <label>Territoire</label>
+        <name>Territory_Name__c</name>
+    </fields>
+    <fields>
+        <label>Détail principal vertical</label>
+        <name>Vertical_Primary_Detail__c</name>
+    </fields>
+    <fields>
+        <label>Sous-vertical</label>
+        <name>Vertical_Primary_Sub__c</name>
+    </fields>
+    <fields>
+        <label>Vertical</label>
+        <name>Vertical_Primary_Top__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- SalesAccountView --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- SalesAccountView --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Sales Account Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>SalesAccountView Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Heatmap --></label>
+            <section>Customer Heatmap</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>zzSalesAccountView _SuperGroup_Release</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label>Afficher les sites</label>
+        <name>View_Sites</name>
+    </webLinks>
+</CustomObjectTranslation>

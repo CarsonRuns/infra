@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>URL pièce jointe</label>
+        <name>Attachement_URL__c</name>
+    </fields>
+    <fields>
+        <label>Âge du dossier</label>
+        <name>Case_Age__c</name>
+    </fields>
+    <fields>
+        <label>Description dossier</label>
+        <name>Case_Description__c</name>
+    </fields>
+    <fields>
+        <label>Longueur dossier</label>
+        <name>Case_Length__c</name>
+    </fields>
+    <fields>
+        <label>ID propriétaire dossier</label>
+        <name>Case_Owner_Id__c</name>
+    </fields>
+    <fields>
+        <label>Propriétaire dossier</label>
+        <name>Case_Owner__c</name>
+    </fields>
+    <fields>
+        <label>Priorité dossier</label>
+        <name>Case_Priority__c</name>
+        <picklistValues>
+            <masterLabel>P1 - 4 hrs</masterLabel>
+            <translation><!-- P1 - 4 hrs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P2 - 24 hrs</masterLabel>
+            <translation><!-- P2 - 24 hrs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P3 - 48 hrs</masterLabel>
+            <translation><!-- P3 - 48 hrs --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SFDC Case Requester --></label>
+        <name>Case_Requester__c</name>
+        <relationshipLabel><!-- Resource Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Type service dossier</label>
+        <name>Case_Service_Type__c</name>
+    </fields>
+    <fields>
+        <label>État dossier</label>
+        <name>Case_Status__c</name>
+        <picklistValues>
+            <masterLabel>Assigned</masterLabel>
+            <translation>Affecté</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation>fermé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation>En attente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resolved</masterLabel>
+            <translation><!-- Resolved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unassigned</masterLabel>
+            <translation>Non attribué</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Résumé dossier</label>
+        <name>Case_Summary__c</name>
+    </fields>
+    <fields>
+        <label>Nom équipe dossier</label>
+        <name>Case_Team_Name__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de dossiers</label>
+        <name>Case_count__c</name>
+    </fields>
+    <fields>
+        <label>Méthode de résolution dossier</label>
+        <name>Case_resolution_method__c</name>
+        <picklistValues>
+            <masterLabel>Business Unit Escalations</masterLabel>
+            <translation><!-- Business Unit Escalations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSN Knowledge Base</masterLabel>
+            <translation><!-- TSN Knowledge Base --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Date de fermeture</label>
+        <name>Closed_Date__c</name>
+    </fields>
+    <fields>
+        <label>Commentaires</label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Company --></label>
+        <name>Company__c</name>
+    </fields>
+    <fields>
+        <label>Méthode contact</label>
+        <name>Contact_Method__c</name>
+        <picklistValues>
+            <masterLabel>E-mail</masterLabel>
+            <translation><!-- E-mail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation>Téléphone</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web</masterLabel>
+            <translation><!-- Web --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disable Email Notification --></label>
+        <name>Disable_Email_Notification__c</name>
+    </fields>
+    <fields>
+        <label>Date d'échéance</label>
+        <name>Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is External User --></label>
+        <name>Is_External_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is SFDC Requester --></label>
+        <name>Is_SFDC_Requester__c</name>
+    </fields>
+    <fields>
+        <label>Langue</label>
+        <name>Language__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation>Anglais</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation>Japonais</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean</masterLabel>
+            <translation>Coréen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mandarin</masterLabel>
+            <translation><!-- Mandarin --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Date d'échéance respectée</label>
+        <name>Met_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label>Nombre de jours jusqu'à date d'échéance</label>
+        <name>No_of_days_to_due_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requester Email --></label>
+        <name>Non_SFDC_Requester_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requester Name --></label>
+        <name>Non_SFDC_Requester_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requester Title --></label>
+        <name>Non_SFDC_Requester_Role__c</name>
+    </fields>
+    <fields>
+        <label>Nom de l'opportunité</label>
+        <name>Opportunity_Name__c</name>
+        <relationshipLabel><!-- Resource Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Téléphone</label>
+        <name>Phone_No__c</name>
+    </fields>
+    <fields>
+        <label>Enregistrement verrouillé pour modif.</label>
+        <name>Record_Locked_for_Edit__c</name>
+    </fields>
+    <fields>
+        <label>Heure résolution</label>
+        <name>Resolution_Time__c</name>
+    </fields>
+    <fields>
+        <label>Temps de réponse</label>
+        <name>Response_Time__c</name>
+    </fields>
+    <fields>
+        <label>Date d'exp du contrat de niv de service</label>
+        <name>SLA_Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <label>Contrat de niveau de service expiré</label>
+        <name>SLA_Expired__c</name>
+    </fields>
+    <fields>
+        <label>Date de début du contrat de niv de serv</label>
+        <name>SLA_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label>Code motif état</label>
+        <name>Status_Reason_Code__c</name>
+        <picklistValues>
+            <masterLabel>Child Case</masterLabel>
+            <translation>Dossier enfant</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Not Supported</masterLabel>
+            <translation>Client non pris en charge</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Response</masterLabel>
+            <translation>Réponse du client</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Close Pending</masterLabel>
+            <translation>En attente de conclusion de la vente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalation Response</masterLabel>
+            <translation>Réponse à la montée au niveau supérieur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insufficient lead time</masterLabel>
+            <translation>Délai lead insuffisant</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Language Not Supported</masterLabel>
+            <translation>Langue non prise en charge</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opened by mistake</masterLabel>
+            <translation>Ouvert par erreur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resolved Successfully</masterLabel>
+            <translation>Résolu</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Not Supported</masterLabel>
+            <translation>Service non pris en charge</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TSN Response</masterLabel>
+            <translation>Réponse TSN</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tech Not Supported</masterLabel>
+            <translation><!-- Tech Not Supported --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Sous-technologie</label>
+        <name>Sub_Technology__c</name>
+    </fields>
+    <fields>
+        <label>ID équipe</label>
+        <name>Team_ID__c</name>
+    </fields>
+    <fields>
+        <label>Niveau équipe</label>
+        <name>Team_Level__c</name>
+    </fields>
+    <fields>
+        <label>Technologie</label>
+        <name>Technology__c</name>
+    </fields>
+    <fields>
+        <label>Enregistrement verr nom utilisateur</label>
+        <name>Username_locked_Record__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Dossier de ressource</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Dossier de ressource</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Case ID</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

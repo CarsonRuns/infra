@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- CMS Relationship Alignment Name --></label>
+        <name>CMS_Relationship_Alignment_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cell Phone --></label>
+        <name>Cell_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Type --></label>
+        <name>Contact_Type__c</name>
+        <picklistValues>
+            <masterLabel>Additional Contact</masterLabel>
+            <translation><!-- Additional Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Primary</masterLabel>
+            <translation><!-- Cisco Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cisco Secondary</masterLabel>
+            <translation><!-- Cisco Secondary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Primary</masterLabel>
+            <translation><!-- Customer Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Secondary</masterLabel>
+            <translation><!-- Customer Secondary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Crisis Management Contacts --></label>
+        <name>Crisis_Management_Contacts__c</name>
+        <relationshipLabel><!-- Crisis Management Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Contacts --></label>
+        <name>Key_Contacts__c</name>
+        <relationshipLabel><!-- Key Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Last Contact Date --></label>
+        <name>Last_Contact_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Work Phone --></label>
+        <name>Work_Phone__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CRMDB Contact</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CRMDB Contacts</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CRMDB Contact Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Crisis Management Contact --></label>
+        <name>Crisis_Contact</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Key Contact --></label>
+        <name>Key_Contact</name>
+    </recordTypes>
+</CustomObjectTranslation>

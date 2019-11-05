@@ -1,0 +1,75 @@
+<apex:page standardController="OpportunityLineItem" extensions="AddTechnology,lxToMakePUIReadOnlyForPSS">
+<script>
+    var delID = "{!JSENCODE($Request.delID)}"; //Encoding for SCAVA scan
+    var url ="";
+    var renewalRecordTypeId = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Oppty_Renewal_RecordTypeId_18__c)}";
+    var opptyRecTypeId = '{!OpportunityLineItem.Opportunity.RecordTypeId}';
+    var integratedFlag='{!JSENCODE(TEXT(OpportunityLineItem.Opportunity.CCW_BOM_Integrated_Date__c))}'; //Encoding for SCAVA scan
+    var qiprofiles = "{!JSENCODE(QIProfiles)}"; //Encoding for SCAVA scan
+    var qi2profilelist = qiprofiles.split(";");
+    var isCheck = 'false';
+    var pfileId = "{!$Profile.Id}".substring(0,15);
+    
+     //Test to check created by flag
+    var data_source ='{!JSENCODE(OpportunityLineItem.Data_Source_Name__c)}';	
+    
+     for(var i=0; i<qi2profilelist.length; i++){
+         console.log('isCheck==>'+qi2profilelist[i] +'::: '+pfileId);
+        if(pfileId == qi2profilelist[i])
+        {                    
+            isCheck  = 'true';
+        }
+    }
+    var isPSSEditable = {!(isPSSEditable)};
+   
+    if(data_source === 'CX' && renewalRecordTypeId == opptyRecTypeId){
+        alert("You cannot delete loaded Opportunity Line Items");
+        url = "/apex/QI_ProductUI_Renew?id={!OpportunityLineItem.OpportunityId}";
+	}
+    else if(integratedFlag || isPSSEditable){
+       
+        if(integratedFlag)
+        {
+           alert('This Technology has been integrated with a quote and cannot be deleted.');
+		}
+        if(isCheck == 'true'){
+           <!--  url = "{!URLFOR($Page.QI2_ProductUI_New)}?id={!OpportunityLineItem.OpportunityId}"; -->
+             url = "/apex/QI2_ProductUI_New?id={!OpportunityLineItem.OpportunityId}&isPSSEditable="+isPSSEditable;    <!-- Modified by Naresh to fix the issue in lighning while delting -->
+        }else{
+            <!-- url = "{!URLFOR($Page.QI_ProductUI_New)}?id={!OpportunityLineItem.OpportunityId}"; -->
+             url = "/apex/QI_ProductUI_New?id={!OpportunityLineItem.OpportunityId}&isPSSEditable="+isPSSEditable;    <!-- Modified by Naresh to fix the issue in lighning while delting -->
+        }
+        // } 
+    }
+    else{
+        if (delID){
+            if(isCheck == 'true'){
+                <!-- url = "{!URLFOR($Page.QI2_ProductUI_New)}?id={!OpportunityLineItem.OpportunityId}&delRecName={!OpportunityLineItem.Product2.Name}&delID=" + delID; -->
+               url = "/apex/QI2_ProductUI_New?id={!OpportunityLineItem.OpportunityId}&delRecName={!OpportunityLineItem.Product2.Name}&delID=" + delID;    <!-- Modified by Naresh to fix the issue in lighning while delting -->
+            }else{
+             <!-- url = "{!URLFOR($Page.QI_ProductUI_New)}?id={!OpportunityLineItem.OpportunityId}&delRecName={!OpportunityLineItem.Product2.Name}&delID=" + delID;  --> 
+                 //added by skamkipa : Navigate to Renewal add tech/service page when user clicks on delete button from related tab
+                 if(renewalRecordTypeId == opptyRecTypeId){
+                 	url = "/apex/QI_ProductUI_Renew?id={!OpportunityLineItem.OpportunityId}&delRecName={!OpportunityLineItem.Product2.Name}&delID=" + delID;
+                 }
+                else{
+           			 url = "/apex/QI_ProductUI_New?id={!OpportunityLineItem.OpportunityId}&delRecName={!OpportunityLineItem.Product2.Name}&delID=" + delID;    <!-- Modified by Naresh to fix the issue in lighning while delting -->
+              } 
+              }   
+        }
+        else{
+            if(isCheck == 'true'){
+           <!--  url = "{!URLFOR($Page.QI2_ProductUI_New)}?id={!OpportunityLineItem.OpportunityId}";  -->
+                 url = "/apex/QI2_ProductUI_New?id={!OpportunityLineItem.OpportunityId}"    <!-- Modified by Naresh to fix the issue in lighning while delting -->
+             
+            }else{
+            <!-- url = "{!URLFOR($Page.QI_ProductUI_New)}?id={!OpportunityLineItem.OpportunityId}"; -->    
+                 url = "/apex/QI_ProductUI_New?id={!OpportunityLineItem.OpportunityId}"    <!-- Modified by Naresh to fix the issue in lighning while delting -->
+            } 
+        }    
+        
+    }
+    location.href = url;
+</script>
+
+</apex:page>

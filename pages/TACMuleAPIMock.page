@@ -1,0 +1,54 @@
+<apex:page controller="TACMuleAPIMock">
+	<apex:form >  
+		<apex:pageBlock title="Services API Tester"> 
+			<apex:pageMessages />
+			
+			<apex:pageBlockSection title="URL Details" columns="2">
+				<apex:inputText label="Root URL" value="{!rootURL}"/>
+				<apex:inputText label="Client Id" value="{!clientId}"/>
+				<apex:inputText label="Auth Token" value="{!pingToken}"/>
+				<apex:inputText label="Client Secret" value="{!clientSecret}"/>
+				<apex:pageBlockSectionItem />
+				<apex:pageBlockSectionItem >
+					<apex:commandButton value="Populate Token" action="{!callPingFederate}"/><br/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			
+			<apex:pageBlockSection title="/crparties/installsite/">
+				<apex:inputText label="Install Site ID" value="{!installSiteId}"/>
+				<apex:pageBlockSectionItem >
+					<apex:commandButton value="InstallSite GET" action="{!callInstallSite}"/><br/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			
+			<apex:pageBlockSection title="/crparties/installsite/search">
+				<apex:inputTextArea cols="100" rows="3" label="Install Site ID Body" value="{!installSiteIdBody}"/>
+				<apex:pageBlockSectionItem >
+					<apex:commandButton value="InstallSite POST" action="{!callInstallSiteSearch}"/><br/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			
+			<apex:pageBlockSection title="/accounts/crparty/">
+				<apex:inputText label="CR Party ID" value="{!crParty}"/>
+				<apex:pageBlockSectionItem >
+					<apex:commandButton value="InstallSite GET" action="{!callAccount}"/><br/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			
+			<apex:pageBlockSection title="/accounts/crparty/search">
+				<apex:inputTextArea cols="100" rows="3" label="CR Party ID Body" value="{!crPartyBody}"/>
+				<apex:pageBlockSectionItem >
+					<apex:commandButton value="InstallSite POST" action="{!callAccountSearch}"/><br/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			
+			<apex:pageBlockSection >
+				<apex:inputTextArea cols="200" rows="20" label="Raw" value="{!httpResult}"/>
+			</apex:pageBlockSection>
+			
+		</apex:pageBlock>
+	
+	
+	
+	</apex:form>
+</apex:page>

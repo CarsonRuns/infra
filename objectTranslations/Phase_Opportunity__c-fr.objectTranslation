@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Date de réservation prévue du parent</label>
+        <name>Parent_Expected_Book_Date__c</name>
+    </fields>
+    <fields>
+        <label>Produit prévu du parent000$</label>
+        <name>Parent_Expected_Product__c</name>
+    </fields>
+    <fields>
+        <label>Service prévu du parent (000 $)</label>
+        <name>Parent_Expected_Service__c</name>
+    </fields>
+    <fields>
+        <label>État des prévisions du parent</label>
+        <name>Parent_Forecast_Status__c</name>
+    </fields>
+    <fields>
+        <label>État de l'opportunité du parent</label>
+        <name>Parent_Opportunity_Status__c</name>
+    </fields>
+    <fields>
+        <label>Opportunité parente</label>
+        <name>Parent_Opportunity__c</name>
+        <relationshipLabel>Phases connexes</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Étape du parent</label>
+        <name>Parent_Stage__c</name>
+    </fields>
+    <fields>
+        <label>Opportunité phase</label>
+        <name>Phase_Opportunity__c</name>
+        <relationshipLabel>Phase de niveau supérieur</relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Phase --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Phase --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Phase ID --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Phase Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label>Ajouter une nouvelle phase</label>
+        <name>Add_New_Phase_VF</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Customer_Contract__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Contract</label>
+        <referenceTo>CRMDB__c</referenceTo>
+        <relationshipName>Customer_Contract_Services</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Service_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ENTERPRISE NETWORKING</fullName>
+                    <default>false</default>
+                    <label>ENTERPRISE NETWORKING</label>
+                </value>
+                <value>
+                    <fullName>SP NETWORKING</fullName>
+                    <default>false</default>
+                    <label>SP NETWORKING</label>
+                </value>
+                <value>
+                    <fullName>MANAGED SERVICES ACCELERATOR</fullName>
+                    <default>false</default>
+                    <label>MANAGED SERVICES ACCELERATOR</label>
+                </value>
+                <value>
+                    <fullName>DC INFRASTRUCTURE</fullName>
+                    <default>false</default>
+                    <label>DC INFRASTRUCTURE</label>
+                </value>
+                <value>
+                    <fullName>CLOUD AUTOMATION &amp; ORCHESTRATION</fullName>
+                    <default>false</default>
+                    <label>CLOUD AUTOMATION &amp; ORCHESTRATION</label>
+                </value>
+                <value>
+                    <fullName>MANAGED VOICE</fullName>
+                    <default>false</default>
+                    <label>MANAGED VOICE</label>
+                </value>
+                <value>
+                    <fullName>MANAGED VIDEO</fullName>
+                    <default>false</default>
+                    <label>MANAGED VIDEO</label>
+                </value>
+                <value>
+                    <fullName>MANAGED CONTACT CENTER</fullName>
+                    <default>false</default>
+                    <label>MANAGED CONTACT CENTER</label>
+                </value>
+                <value>
+                    <fullName>ATA ESSENTIAL</fullName>
+                    <default>false</default>
+                    <label>ATA ESSENTIAL</label>
+                </value>
+                <value>
+                    <fullName>ATA PREMIER</fullName>
+                    <default>false</default>
+                    <label>ATA PREMIER</label>
+                </value>
+                <value>
+                    <fullName>DETECTION &amp; RESPONSE</fullName>
+                    <default>false</default>
+                    <label>DETECTION &amp; RESPONSE</label>
+                </value>
+                <value>
+                    <fullName>Ngena</fullName>
+                    <default>false</default>
+                    <label>Ngena</label>
+                </value>
+                <value>
+                    <fullName>UCAAS</fullName>
+                    <default>false</default>
+                    <label>UCAAS</label>
+                </value>
+                <value>
+                    <fullName>VaaS</fullName>
+                    <default>false</default>
+                    <label>VaaS</label>
+                </value>
+                <value>
+                    <fullName>CCaaS</fullName>
+                    <default>false</default>
+                    <label>CCaaS</label>
+                </value>
+                <value>
+                    <fullName>XAAS</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>XAAS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Sub_Category_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Sub Category Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Service_Name__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACI</fullName>
+                    <default>false</default>
+                    <label>ACI</label>
+                </value>
+                <value>
+                    <fullName>CCaaS</fullName>
+                    <default>false</default>
+                    <label>CCaaS</label>
+                </value>
+                <value>
+                    <fullName>Cloud Center</fullName>
+                    <default>false</default>
+                    <label>Cloud Center</label>
+                </value>
+                <value>
+                    <fullName>Converged/HCI</fullName>
+                    <default>false</default>
+                    <label>Converged/HCI</label>
+                </value>
+                <value>
+                    <fullName>Crosswork</fullName>
+                    <default>false</default>
+                    <label>Crosswork</label>
+                </value>
+                <value>
+                    <fullName>CVIM</fullName>
+                    <default>false</default>
+                    <label>CVIM</label>
+                </value>
+                <value>
+                    <fullName>Device Management</fullName>
+                    <default>false</default>
+                    <label>Device Management</label>
+                </value>
+                <value>
+                    <fullName>DNA-C</fullName>
+                    <default>false</default>
+                    <label>DNA-C</label>
+                </value>
+                <value>
+                    <fullName>EPN5.0</fullName>
+                    <default>false</default>
+                    <label>EPN5.0</label>
+                </value>
+                <value>
+                    <fullName>IP/MPLS/Optical</fullName>
+                    <default>false</default>
+                    <label>IP/MPLS/Optical</label>
+                </value>
+                <value>
+                    <fullName>LAN/WAN</fullName>
+                    <default>false</default>
+                    <label>LAN/WAN</label>
+                </value>
+                <value>
+                    <fullName>Managed Contact Center</fullName>
+                    <default>false</default>
+                    <label>Managed Contact Center</label>
+                </value>
+                <value>
+                    <fullName>Managed Video</fullName>
+                    <default>false</default>
+                    <label>Managed Video</label>
+                </value>
+                <value>
+                    <fullName>Managed Voice</fullName>
+                    <default>false</default>
+                    <label>Managed Voice</label>
+                </value>
+                <value>
+                    <fullName>MDR</fullName>
+                    <default>false</default>
+                    <label>MDR</label>
+                </value>
+                <value>
+                    <fullName>Mobile Cloud</fullName>
+                    <default>false</default>
+                    <label>Mobile Cloud</label>
+                </value>
+                <value>
+                    <fullName>MSX</fullName>
+                    <default>false</default>
+                    <label>MSX</label>
+                </value>
+                <value>
+                    <fullName>Network/Storage</fullName>
+                    <default>false</default>
+                    <label>Network/Storage</label>
+                </value>
+                <value>
+                    <fullName>NSO</fullName>
+                    <default>false</default>
+                    <label>NSO</label>
+                </value>
+                <value>
+                    <fullName>Optical</fullName>
+                    <default>false</default>
+                    <label>Optical</label>
+                </value>
+                <value>
+                    <fullName>SAE</fullName>
+                    <default>false</default>
+                    <label>SAE</label>
+                </value>
+                <value>
+                    <fullName>SAP Hana / Hadoop</fullName>
+                    <default>false</default>
+                    <label>SAP Hana / Hadoop</label>
+                </value>
+                <value>
+                    <fullName>SD-WAN</fullName>
+                    <default>false</default>
+                    <label>SD-WAN</label>
+                </value>
+                <value>
+                    <fullName>Tetration</fullName>
+                    <default>false</default>
+                    <label>Tetration</label>
+                </value>
+                <value>
+                    <fullName>Threat Management</fullName>
+                    <default>false</default>
+                    <label>Threat Management</label>
+                </value>
+                <value>
+                    <fullName>UCAAS</fullName>
+                    <default>false</default>
+                    <label>UCAAS</label>
+                </value>
+                <value>
+                    <fullName>UCS-M/C/D</fullName>
+                    <default>false</default>
+                    <label>UCS-M/C/D</label>
+                </value>
+                <value>
+                    <fullName>UCS Software (UCSD)</fullName>
+                    <default>false</default>
+                    <label>UCS Software (UCSD)</label>
+                </value>
+                <value>
+                    <fullName>VaaS</fullName>
+                    <default>false</default>
+                    <label>VaaS</label>
+                </value>
+                <value>
+                    <fullName>VDI</fullName>
+                    <default>false</default>
+                    <label>VDI</label>
+                </value>
+                <value>
+                    <fullName>Virtual Branch</fullName>
+                    <default>false</default>
+                    <label>Virtual Branch</label>
+                </value>
+                <value>
+                    <fullName>Webex Teams</fullName>
+                    <default>false</default>
+                    <label>Webex Teams</label>
+                </value>
+                <value>
+                    <fullName>White Box</fullName>
+                    <default>false</default>
+                    <label>White Box</label>
+                </value>
+                <value>
+                    <fullName>WiFi-Meraki</fullName>
+                    <default>false</default>
+                    <label>WiFi-Meraki</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>DETECTION &amp; RESPONSE</controllingFieldValue>
+                <valueName>MDR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ngena</controllingFieldValue>
+                <controllingFieldValue>DC INFRASTRUCTURE</controllingFieldValue>
+                <valueName>CVIM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCAAS</controllingFieldValue>
+                <valueName>UCAAS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>UCAAS</controllingFieldValue>
+                <controllingFieldValue>VaaS</controllingFieldValue>
+                <controllingFieldValue>CCaaS</controllingFieldValue>
+                <controllingFieldValue>MANAGED VOICE</controllingFieldValue>
+                <controllingFieldValue>MANAGED VIDEO</controllingFieldValue>
+                <controllingFieldValue>MANAGED CONTACT CENTER</controllingFieldValue>
+                <valueName>Webex Teams</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>VaaS</controllingFieldValue>
+                <valueName>VaaS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCaaS</controllingFieldValue>
+                <valueName>CCaaS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ENTERPRISE NETWORKING</controllingFieldValue>
+                <valueName>DNA-C</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ENTERPRISE NETWORKING</controllingFieldValue>
+                <valueName>LAN/WAN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ENTERPRISE NETWORKING</controllingFieldValue>
+                <valueName>Optical</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ENTERPRISE NETWORKING</controllingFieldValue>
+                <valueName>SD-WAN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ENTERPRISE NETWORKING</controllingFieldValue>
+                <valueName>Virtual Branch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ENTERPRISE NETWORKING</controllingFieldValue>
+                <valueName>WiFi-Meraki</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP NETWORKING</controllingFieldValue>
+                <valueName>Crosswork</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP NETWORKING</controllingFieldValue>
+                <valueName>EPN5.0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP NETWORKING</controllingFieldValue>
+                <valueName>IP/MPLS/Optical</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP NETWORKING</controllingFieldValue>
+                <valueName>Mobile Cloud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP NETWORKING</controllingFieldValue>
+                <valueName>White Box</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MANAGED SERVICES ACCELERATOR</controllingFieldValue>
+                <valueName>MSX</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC INFRASTRUCTURE</controllingFieldValue>
+                <valueName>ACI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC INFRASTRUCTURE</controllingFieldValue>
+                <valueName>Converged/HCI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC INFRASTRUCTURE</controllingFieldValue>
+                <valueName>Network/Storage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC INFRASTRUCTURE</controllingFieldValue>
+                <valueName>SAE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC INFRASTRUCTURE</controllingFieldValue>
+                <valueName>SAP Hana / Hadoop</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC INFRASTRUCTURE</controllingFieldValue>
+                <valueName>Tetration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC INFRASTRUCTURE</controllingFieldValue>
+                <valueName>UCS-M/C/D</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DC INFRASTRUCTURE</controllingFieldValue>
+                <valueName>VDI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CLOUD AUTOMATION &amp; ORCHESTRATION</controllingFieldValue>
+                <valueName>Cloud Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CLOUD AUTOMATION &amp; ORCHESTRATION</controllingFieldValue>
+                <valueName>NSO</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CLOUD AUTOMATION &amp; ORCHESTRATION</controllingFieldValue>
+                <valueName>UCS Software (UCSD)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MANAGED VOICE</controllingFieldValue>
+                <valueName>Managed Voice</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MANAGED VIDEO</controllingFieldValue>
+                <valueName>Managed Video</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MANAGED CONTACT CENTER</controllingFieldValue>
+                <valueName>Managed Contact Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ATA ESSENTIAL</controllingFieldValue>
+                <valueName>Device Management</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ATA PREMIER</controllingFieldValue>
+                <valueName>Threat Management</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Service_Sub_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Offer Capability</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Customer Contract Offer</label>
+    <nameField>
+        <label>Offer</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Customer Contract Offers</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

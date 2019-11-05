@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>sfdc_sac_sap@cisco.com</email>
+    <name>SAP HANA</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>SAC_SAP_HANA</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Support_Request_Detail__c</sobjectType>
+    </queueSobject>
+</Queue>

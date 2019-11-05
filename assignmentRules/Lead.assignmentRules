@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?><AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Lead Assignment</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <formula>NOT( ISNEW() )
+&amp;&amp; (
+$User.Id != '00580000007HXXA'
+|| ISPICKVAL(LeadSource,'TAC Generated Lead')
+)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>sfdc2sfdc_csone_connection@cisco.com</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.LeadSource</field>
+                <operation>equals</operation>
+                <value>TAC Generated Lead</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CSCSiteID__c</field>
+                <operation>notEqual</operation>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>TAC_Leads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.LeadSource</field>
+                <operation>equals</operation>
+                <value>TAC Generated Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Lead.LeadSource</field>
+                <operation>equals</operation>
+                <value>SourceFire</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <formula>TEXT(LeadSource) = 'Lead Candidate'
+||
+TEXT(LeadSource) = 'Eloqua Hand Raiser'
+||
+TEXT(LeadSource) = 'Eloqua Lead Candidate'
+||
+TEXT(LeadSource) = 'Eloqua Scored Lead'</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>TAAUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Program_Event_Name__c</field>
+                <operation>startsWith</operation>
+                <value>TAA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Lead.LeadSource</field>
+                <operation>equals</operation>
+                <value>SELLIT</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Lead.Lead_Type__c</field>
+                <operation>equals</operation>
+                <value>Partner Generated Lead</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>ANZUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>MICRONESIA,VANUATU,FRENCH POLYNESIA,FIJI,NEW CALEDONIA,SAMOA,NAURU,AUSTRALIA,TUVALU,NORFOLK ISLAND,NEW ZEALAND,SOLOMON ISLANDS,PITCAIRN,TONGA,COCOS (KEELING) ISLANDS,PAPUA NEW GUINEA,Kiribat</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>ThailandUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>THAILAND,MYANMAR,LAO PEOPLE'S DEMOCRATIC REPUBLIC,CAMBODIA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>GermanyUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>GERMANY</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>IndiaUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>INDIA,BANGLADESH,BHUTAN,MALDIVES,SRI LANKA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>IndonesiaUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>INDONESIA,East Timor</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>SpainUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>SPAIN,ANDORRA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>HongKongUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>HONG KONG,MACAU</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MalaysiaUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>MALAYSIA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PhilippinesUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>PHILIPPINES</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>SingaporeUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>SINGAPORE</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>TaiwanUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>TAIWAN</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>VietnamUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>VIETNAM,VIET NAM</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>GCCUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>IRAN,Abu Dhabi,Dubai</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>RussiaUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>KYRGYZSTAN</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>AustriaUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>AUSTRIA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>BelgiumUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>BELGIUM,LIECHTENSTEIN,LUXEMBOURG</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>NorwayUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>BOUVET ISLAND,ICELAND,NORWAY</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>UKUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>UK,Ocean Territory,GIBRALTAR,UNITED KINGDOM,GREAT BRITAIN</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>GreeceUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>CYPRUS,GREECE,MALTA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>DenmarkUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>DENMARK,FAROE ISLANDS,GREENLAND</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>FinlandUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>FINLAND</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>FranceUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>FRANCE,MAYOTTE,FRENCH SOUTHERN TERRITORIES,FRENCH POLYNESIA,FRENCH SOUTHN TERRITORIES,MONACO</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>IrelandUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>IRELAND</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>IsraelUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>ISRAEL,Palestinian Terr,Occupied</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>ItalyUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>ITALY,SAN MARINO,Holy See</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>NetherlandsUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>NETHERLANDS</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>PortugalUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>PORTUGAL</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>SwedenUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>SWEDEN</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>SwitzerlandUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>SWITZERLAND</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>ChinaUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>CHINA,MONGOLIA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>JapanUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>JAPAN</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>KoreaUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>KOREA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>EMLTAMUnallocated</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>CHILE,BAHAMAS,COSTA RICA,BELIZE,ANGUILLA,ANTIGUA AND BARBUDA,CUBA,ARUBA,ARGENTINA,FRENCH GUIANA,ECUADOR,FALKLAND ISLANDS,BRAZIL,DOMINICAN REPUBLIC,BARBADOS,EL SALVADOR,BERMUDA,CAYMAN ISLANDS,BOLIVIA,COLOMBIA,BRITISH VIRGIN ISLANDS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>HAITI,SAINT HELENA,TURKS AND CAICOS ISLANDS,GUATEMALA,MARTINIQUE,GUYANA,VENEZUELA,PARAGUAY,PANAMA,MEXICO,MONTSERRAT,PERU,PUERTO RICO,JAMAICA,HONDURAS,SAINT LUCIA,SAINT KITTS AND NEVIS,NETHERLANDS ANTILLES,DOMINICA,NICARAGUA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>SURINAME,SAINT VINCENT AND THE GRENADINES,TRINIDAD AND TOBAGO,GUADELOUPE,SAINT-PIERRE AND MIQUELON,VIRGIN ISLANDS,URUGUAY</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>Tortola,Saint Thomas,Falkland,Saint John,Jost Van Dyke,GRENADA,Islas Malvinas,Anegada,Virgin Gorda,Saint Croix</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>EECentralUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>ANGOLA,BURKINA FASO,BENIN,BURUNDI,BOTSWANA,COTE D'IVOIRE,CHAD,CONGO,CENTRAL AFRICAN REPUBLIC,ALGERIA,COMORES,CAPE VERDE,CAMEROON</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>EGYPT,ETHIOPIA,GAMBIA,DEMOCRATIC REPUBLIC OF CONGO -DRC (EX-ZAIRE),DJIBOUTI,IVORY COAST,ERITREA,EQUATORIAL GUINEA,GHANA,GABON,GUINEA-BISSAU,GUINEA,IRAQ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>KENYA,MOZAMBIQUE,NIGER,LIBERIA,NIGERIA,NAMIBIA,LEBANON,LIBYAN ARAB JAMAHIRIYA,MAURITANIA,MOROCCO,MAURITIUS,MALAWI,JORDAN,MADAGASCAR,MALI,LESOTHO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>TANZANIA,TUNISIA,RWANDA,SAO TOME AND PRINCIPE,SWAZILAND,UGANDA,SUDAN,SOMALIA,SYRIAN ARAB REPUBLIC,SENEGAL,REUNION,ZAMBIA,SEYCHELLES,SIERRA LEONE,ZIMBABWE,TOGO,SOUTH AFRICA,PALESTINE</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>EEEastUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR 2 OR 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>Kazakstan,ARMENIA,ESTONIA,CZECH REPUBLIC,BULGARIA,HUNGARY,ALBANIA,BAHRAIN,CROATIA,LITHUANIA,LATVIA,GEORGIA,AZERBAIJAN,AFGHANISTAN,BELARUS,KUWAIT,KOSOVO,KAZAKHSTAN,BOSNIA AND HERZEGOVINA,YUGOSLAVIA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>RUSSIAN FEDERATION,ROMANIA,UKRAINE,TAJIKISTAN,MONTENEGRO,SL,TURKMENISTAN,THE FORMER YUGOSLAV REPUBLIC OF,MACEDONIA,TURKEY,SLOVENIA,SLOVAKIA,SERBIA,YEM,QATAR,OMAN,MOLDOVA,MOLDAVIA,SAUDI ARABIA,UZBEKISTAN,UNITED ARAB EMIRATES,POLAND,PAKISTAN</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>SLOVAK REPUBLIC</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>EEWestUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>GRENADA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CanadaUnallocatedQueue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>equals</operation>
+                <value>CANADA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>USUnallocatedLeads180611</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>US,UNITED STATES</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>AmericanInternationalUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.CustomCountry__c</field>
+                <operation>contains</operation>
+                <value>Savan,West Caicos,Providenci,North Caicos,Bonaire,south Caicos,Baliceaux Island,Petit Canouan,Saba,Saint Eustatius,Mustique,Union Island,Tobago Cays,Petit Saint Vincent,Canouan,Palm,East Caicos,Middle Caicos,Mayreau,Grand Turk,Klein Curazao,Curazao,Bequia</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>OtherUnallocatedLeads</assignedTo>
+            <assignedToType>Queue</assignedToType>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

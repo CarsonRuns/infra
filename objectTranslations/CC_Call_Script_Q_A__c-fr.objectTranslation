@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Do Not Edit. This should be edited. --></help>
+        <label><!-- Answer Options --></label>
+        <name>Answer_Options__c</name>
+    </fields>
+    <fields>
+        <help><!-- Master Question Record Reference used in Call Script Q&amp;A --></help>
+        <label><!-- CC Master Question Bank --></label>
+        <name>CC_Master_Question_Bank__c</name>
+        <relationshipLabel><!-- CC Call Scripts Q/A --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Call Script Reference for the associated Call Script Q&amp;A --></help>
+        <label>Guide d'appel CC</label>
+        <name>Call_Script__c</name>
+        <relationshipLabel><!-- CC Call Scripts Q/A --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Provide Valid Critieria for Conditional Validation: 1) NULL: Dependent Question Answer is NULL 2) NOT NULL: Dependent Question Answer is Populated 3) Others: Dependent Question Answer is Specific to the Text. --></help>
+        <label><!-- Conditionally Required Criteria --></label>
+        <name>Conditionally_Required_Criteria__c</name>
+        <picklistValues>
+            <masterLabel>NOT NULL</masterLabel>
+            <translation><!-- NOT NULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NULL</masterLabel>
+            <translation><!-- NULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation>Autres</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Provide exact value expected from Dependent question on which this question is required. Multiple Options cacn be provided using Comma --></help>
+        <label><!-- Conditionally Required Value --></label>
+        <name>Conditionaly_Required_If__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide the Dependent Question on which the Question is required --></help>
+        <label><!-- CC Call Script Q/A --></label>
+        <name>Dependent_Question__c</name>
+        <relationshipLabel><!-- CC Call Scripts Q/A --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Provide Help Text to help agent to get reference on dependent questions --></help>
+        <label><!-- Help Text --></label>
+        <name>Help_Text__c</name>
+    </fields>
+    <fields>
+        <help><!-- Define if the Question need to be integrated with MODS --></help>
+        <label><!-- Local to SFDC --></label>
+        <name>Local_to_SFDC__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide Maximum Number which can not be exceeded --></help>
+        <label><!-- Maximum(If Number Validation) --></label>
+        <name>Maximum_If_Number_Validation__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide Minimum Number which can not be exceeded --></help>
+        <label><!-- Minimum(If Number Validation) --></label>
+        <name>Minimum_If_Number_Validation__c</name>
+    </fields>
+    <fields>
+        <help><!-- Provide the Tab name for the Call Script --></help>
+        <label><!-- Question Category --></label>
+        <name>Question_Category__c</name>
+        <picklistValues>
+            <masterLabel>1:Contact Information</masterLabel>
+            <translation><!-- 1:Contact Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2:Account Information</masterLabel>
+            <translation><!-- 2:Account Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3:Lead Information</masterLabel>
+            <translation><!-- 3:Lead Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4:Additional Information</masterLabel>
+            <translation><!-- 4:Additional Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5:Campaign Information</masterLabel>
+            <translation><!-- 5:Campaign Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6:Partner Information</masterLabel>
+            <translation><!-- 6:Partner Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7:Call Information</masterLabel>
+            <translation><!-- 7:Call Information --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Conditionally required question for which the question will be required --></help>
+        <label><!-- Conditionally Required on Question --></label>
+        <name>Question_Required__c</name>
+        <relationshipLabel><!-- CC Call Scripts Q/A (Question Required) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- English Question Text for the Call Script --></help>
+        <label><!-- Question Text --></label>
+        <name>Question_Text__c</name>
+    </fields>
+    <fields>
+        <help><!-- Question Type how the Question will be presented in Call Script --></help>
+        <label><!-- Question Type --></label>
+        <name>Question_Type__c</name>
+        <picklistValues>
+            <masterLabel>Country</masterLabel>
+            <translation>Pays</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DateTime</masterLabel>
+            <translation><!-- DateTime --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation>E-mail</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Long Text</masterLabel>
+            <translation><!-- Long Text --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MultiSelect</masterLabel>
+            <translation><!-- MultiSelect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number</masterLabel>
+            <translation><!-- Number --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Picklist</masterLabel>
+            <translation><!-- Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Preferred Partner</masterLabel>
+            <translation><!-- Preferred Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radio</masterLabel>
+            <translation><!-- Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Route To AM</masterLabel>
+            <translation>Router vers AM</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Route To PSR</masterLabel>
+            <translation>Router vers PSR</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Route To Partner</masterLabel>
+            <translation><!-- Route To Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text</masterLabel>
+            <translation><!-- Text --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Define the Question as Mandatory Required --></help>
+        <label>Requis</label>
+        <name>Required__c</name>
+    </fields>
+    <fields>
+        <help><!-- Define the Questions which need to appended to Lead Description after Call Script Completion --></help>
+        <label><!-- Required on Lead Description --></label>
+        <name>Required_on_Lead_Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- Define the Sequence of the Question with Call Script Specific Tab --></help>
+        <label><!-- Sequence --></label>
+        <name>Sequence__c</name>
+    </fields>
+    <fields>
+        <help><!-- Define if any of the Validation is needed --></help>
+        <label><!-- Validation(Both Conditional or Required) --></label>
+        <name>Validation_Both_Conditional_or_Required__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- CC Call Script Q/A --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- CC Call Script Q/A --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- CC Call Script Q/A Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>CC Call Script Q/A Layout</layout>
+        <sections>
+            <label><!-- Assign Answers --></label>
+            <section>Assign Answers</section>
+        </sections>
+        <sections>
+            <label><!-- Conditional Validation --></label>
+            <section>Conditional Validation</section>
+        </sections>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Layout --></label>
+            <section>Layout</section>
+        </sections>
+        <sections>
+            <label>VALIDATION</label>
+            <section>Validation</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Please enter valid criteria for validation.
+Mandatory  Required OR Number Validation: Minimum(If Number Validation) and Maximum(If Number Validation) OR
+Conditionally Required: Question Required and Conditionaly Required If --></errorMessage>
+        <name>NGCC_Validate_Conditional_and_Reqd</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Maximum Value should be greater than Minimum value --></errorMessage>
+        <name>NGCC_Validate_Min_and_Max_Values</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please assign valid options to the Question --></errorMessage>
+        <name>NGCC_Validation_Answer_Options</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cant update Q&amp;A for active Call Script --></errorMessage>
+        <name>NGCC_Validation_for_Call_Script_Status</name>
+    </validationRules>
+</CustomObjectTranslation>

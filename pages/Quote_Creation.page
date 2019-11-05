@@ -1,0 +1,29 @@
+<apex:page showHeader="true" sidebar="true" standardController="Quote__c" extensions="Quote_Creation_CTE" action="{!check}">
+    <script type="text/javascript">
+    //display error hasMessage
+    if ({!IF(hasMessage,'true','false')}) {
+        alert('{!message}');
+        history.back();
+    }
+
+    //enforce redirect by javascript
+    if ({!IF(hasMessage,'false','true')}) { 
+        var opptyType = 'partnerQuote'; 
+        var opptyRecordTypeId = "{!oppty.RecordTypeId}";
+        opptyRecordTypeId  = opptyRecordTypeId.substring(0,15);
+        if(opptyRecordTypeId == '0123000000003yk' || opptyRecordTypeId == '012300000000CDL') 
+            opptyType = 'fieldQuote';             
+        var opptyId='{!oppty.Id}';        
+        //window.location.href='{!link}{!If(addSessionId,'&sessionId=' + $Api.Session_ID,'')}';
+        var dealTypevar = '{!oppty.Deal_Type__c}'; //Q1FY16 SW change
+        var hostname = "https://" + window.location.hostname.toLowerCase(); 
+        //window.location.href='{!link}'+ '&sessionId={$Api.Session_ID}';
+        var url1 = "{!baseUrl}" + "/SFDCRequestHandler?at=" + opptyType + "&optyNumber={!oppty.DealID__c}&dealtype=" + dealTypevar + "&userid={!$User.Id}&email={!$User.Email}&sessionid={!$Api.Session_ID}&url={!$Api.Enterprise_Server_URL_110}&hostname=" + hostname + '&cancel=' + opptyId;
+        console.log("redirect url : ");
+        console.log(url1);
+        top.location.href=  url1;                     
+    }
+    </script>
+    <apex:pageMessages rendered="{!hasMessage}" />
+    <apex:outputLink value="/{!oppty.Id}">Back</apex:outputLink>
+</apex:page>

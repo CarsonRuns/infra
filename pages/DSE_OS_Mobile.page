@@ -1,0 +1,42 @@
+<apex:page showheader="false" standardStylesheets="false" standardController="Account" extensions="DSE_Main_CTE" docType="html-5.0">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <META name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<META HTTP-EQUIV="Cache-Control" CONTENT="max-age=0" />-->
+    <!--<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache" />-->
+    <!--<META http-equiv="expires" content="0" />-->
+
+    <apex:stylesheet value="{!URLFOR($Resource.ciscobootstrap, '/css/bootstrap.min.css')}" />
+    <!--<apex:stylesheet value="{!URLFOR($Resource.ciscobootstrap, '/css/bootstrap-theme.min.css')}" />-->
+ 
+    <link rel="stylesheet" href="/apex/DSE_Mob_CSS" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
+    <!--<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>-->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="/apex/DSE_D3_Directives"></script>
+    <script src="/apex/DSE_OS_Mob_Directive"></script>
+    
+
+    <style>
+      .stmenucolor {
+      background-color: #eee;
+      }
+      .dse-searchselect {
+      -moz-appearance: menulist-button;
+      text-indent: 0.01px;
+      text-overflow: '';
+      }
+    </style>
+ 
+    <script>
+        angular.module('myApp', ['directives.DSE_table','directives.DSE_D3']);
+        
+    </script>
+    <div ng-app="myApp">
+
+       <stss-Table apipath="oecaseorderapi/v1.0/orders/summary" apitype="external" mtoken="{!mtoken}" apiobject="orderstatus" timezone="{!tzCode}" localeformat="{!localeformat}" sectitle="ORDER STATUS" locale="{!locale}" oeid="" partyid="[{!account.CSCSiteID__c}]" pid='"{!account.parentId}"' childid='"{!account.Id}"'>
+        </stss-Table>                         
+
+    </div>
+    </html>
+</apex:page>

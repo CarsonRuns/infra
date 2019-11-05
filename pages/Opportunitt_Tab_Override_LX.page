@@ -1,0 +1,50 @@
+<apex:page showHeader="true" tabstyle="Opportunity" controller="OpportunityTabOverride_CT" action="{!checkUserProfile}">
+    <apex:enhancedList type="Opportunity" height="500" rowsPerPage="25" id="QuoteList"></apex:enhancedList>
+<br></br>
+<apex:form >
+    <!--start: comment out for March 2018 release to show Cisco Commerce Quotes conversion  in lighting -->
+    <!--
+<apex:outputpanel id="desktopPanel" rendered="{!$User.UITheme == 'Theme4d'}">
+      <apex:slds />
+      <div class="slds-scope">
+         <div class="slds-box slds-align_absolute-center" style="height:100px">
+            <div data-reactroot="" class="slds-text-heading_medium">
+               Cisco Commerce Quotes conversion is not currently supported in Lightning.
+               <p class="slds-text-heading_small">Please switch back to <a href="/lightning/switcher?destination=classic" target="_self">Classic</a></p>
+            </div>
+         </div>
+      </div>
+</apex:outputpanel>
+-->
+    <!--
+<apex:outputpanel id="desktopPanel1" rendered="{!$User.UITheme == 'Theme3'}">
+    -->
+    <!-- end -->
+    <apex:outputpanel id="desktopPanel1" >
+<div id="btnPartnerOpportunities">
+{!$Label.Quote_view_button_Opty}
+<br></br>
+<apex:commandButton value="{!$Label.Quote_view_button_Opty1}" id="theButton1" action="{!init}" reRender="test"/>
+</div>
+<br></br>
+<apex:outputPanel id="test">
+<apex:iframe rendered="{!link!=null}" scrolling="false" src="{!link}{!IF(addSessionId, '&sessionid='+$Api.Session_ID, '')}"  height="800" width="1000" id="fs1"/>
+</apex:outputPanel>
+</apex:outputPanel>
+</apex:form>
+<script>
+function isLightningDesktop() {
+  return( "{! $User.UIThemeDisplayed }" == "Theme4d");
+}
+// SCAVA_Fix
+var pgPr = '{!JSENCODE($CurrentPage.parameters.displaypartnerfunnel)}';
+var manageDeal= '{!JSENCODE($CurrentPage.parameters.manageDeal)}';
+var biddingDeal= '{!JSENCODE($CurrentPage.parameters.biddingDeal)}';
+if(pgPr != null && pgPr != ''){
+window.scrollTo(0,500);
+}
+if(manageDeal != ''|| biddingDeal!= ''){
+window.scrollTo(0,500);
+}
+</script>
+</apex:page>

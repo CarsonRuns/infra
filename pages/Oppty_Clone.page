@@ -1,0 +1,170 @@
+<apex:page standardController="Opportunity">
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+    
+    <script src="/soap/ajax/10.0/connection.js"></script>
+    <script src="/soap/ajax/10.0/apex.js"></script>
+    <script>
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    var type = '{!$User.UIThemeDisplayed}';
+    var clonedOpptyID = '';
+    var redirectToPath = '';
+    
+    function init() {
+     var recordType = '{!Opportunity.RecordTypeId}';
+     var oppId = '{!Opportunity.Id}'
+        
+        var urlRedirect = "/" + oppId;
+        
+        recordType = recordType.substring(0, 15);
+        
+        ProfileName = '{!$Profile.Name}';
+        //Only allow if oppty record type is 'Parent Opportunity'. 
+        if (recordType != '0123000000003yk') {
+            alert("Partner Opportunities created from CCW cannot be cloned");
+            //parent.location.href = "/" + oppId;
+        } else {
+            // Added to not allow a PSS to create a phase 
+            if (ProfileName == 'Cisco_PSS') {
+                alert("Users on PSS profile cannot clone opportunities");
+                //parent.location.href = "/" + oppId;
+            } else {
+                sforce.connection.sessionId = "{!$Api.Session_ID}";
+                var result = sforce.apex.execute('OpptyClone', 'clone',
+                                                 {
+                                                     OpportunityID : oppId,
+                                                     RecordType : recordType
+                                                 });
+                
+                urlRedirect = '/' + '{!Opportunity.Id}';
+                 console.log('Result==>'+result[0]);
+                 console.log('Result Length==>'+result[0].length);
+                switch (result[0]) {
+                    case "1":
+                        alert('Invalid Opportunity Id, Please open a case with GSTS');
+                        //parent.frames.location.replace('/' + '{!Opportunity.Id}');
+                        break;
+                    case "2":
+                        alert('Phase Opportunity cannot be cloned, please navigate to the parent opportunity');
+                        //parent.frames.location.replace('/' + '{!Opportunity.Id}');
+                        break;
+                    case "3":
+                        alert('This opportunity can not be cloned as maximum Limit is reached to clone this Opportunity!');
+                        //parent.frames.location.replace('/' + '{!Opportunity.Id}');
+                        break;
+                    case "4":
+                        alert('Opportunity cannot be cloned as Opportunity currency code and User Currency codes are different!');
+                        //parent.frames.location.replace('/' + '{!Opportunity.Id}');
+                        break;
+                    case "5":
+                        alert('Opportunity cannot be cloned as Account is not an End User Account!');
+                        //parent.frames.location.replace('/' + '{!Opportunity.Id}');
+                        break;
+                    default:
+                        if (result[0].length == 18) {
+                            clonedOpptyID = result[0];
+                             if( (typeof sforce.one != 'undefined') && (sforce.one != null) ) {
+                                console.log('Cloning in SF1');
+                                console.log(clonedOpptyID);
+                                //console.log(clonedOpptyID.join(""));
+                                if (type == 'Theme4d' || type == 'Theme4u'){         //Komal - Lightning 08/10/2018 Release --Change to allow Lightning Desktop and Lightning Console themes
+                                   // console.log('Cloning in Lightning');
+                              if(result[1]=='Y'){
+                                    alert('All the line items were not cloned from the original Opportunity as they are no longer valid. Please add appropriate valid lines to the cloned opportunity');
+                                  }
+                                    urlRedirect = '/' + clonedOpptyID + '/view';
+                                }
+                                else{
+                                  
+                               if(result[1]=='Y'){
+                                    alert('All the line items were not cloned from the original Opportunity as they are no longer valid. Please add appropriate valid lines to the cloned opportunity');
+                                  }
+                                    sforce.one.editRecord(clonedOpptyID.join("")); 
+                                }
+                            }else {
+                             
+                            if(result[1]=='Y'){
+                                    alert('All the line items were not cloned from the original Opportunity as they are no longer valid. Please add appropriate valid lines to the cloned opportunity');      
+                              }                                    
+                                  
+                                urlRedirect = '/' + clonedOpptyID + '/e?retURL=/' + clonedOpptyID;        
+                            }
+                        } else {
+                            alert("Unexpected error happened!\n\n\n" + result[0]);
+                            
+                        }
+                }
+                
+                if( (typeof sforce.one != 'undefined') && (sforce.one != null) ) {
+                    function CloseTab() {
+                        sforce.console.getEnclosingTabId(closeSubtab)   
+                    }                 
+                    
+                    var closeSubtab = function closeSubtab(result) {
+                        
+                        var tabId = result.id;
+                        console.log("Closing tab: "+ tabId);
+                        console.log( result);
+                        sforce.console.closeTab(tabId);                        
+                        
+                    };
+                    
+                    function openSubtab(){                      
+                        sforce.console.getEnclosingPrimaryTabId(SubtabOpen);
+                    }
+                    
+                    var SubtabOpen = function SubtabOpen(result){
+                        
+                        var tabId = result.id;
+                        console.log('===>'+tabId);
+                        sforce.console.openSubtab(tabId, redirectToPath, true,'','',openEditRecord, 'Clone');
+                        
+                    };
+                    
+                    
+                    if (type == 'Theme4d' || type == 'Theme4u'){ //Komal - Lightning 08/10/2018 Release --Change to allow Lightning Desktop and Lightning Console themes
+                        
+                        var hostname = window.location.hostname; 
+                        var host = encodeURI(hostname);
+                        <!-- updated by Naresh to fix SCAVA issue -->
+                        redirectToPath = 'https://'+ host + "/lightning/r/Opportunity" + urlRedirect;                       
+                        //console.log("Final Path " + redirectToPath);
+                        
+                        // Tej - to open edit page for an oppty before saving and close tab
+                        var openEditRecord = function openEditRecord(result){
+                            if (result.success == true){
+                                //sforce.one.editRecord(clonedOpptyID);
+                                CloseTab();
+                            }
+                            else {
+                                alert("Unable to edit");
+                            }
+                        };
+                        
+                        //sforce.console.openPrimaryTab(null, redirectToPath, true,'',openEditRecord, 'Clone');
+                        openSubtab(redirectToPath);
+                        
+                    }
+                    else{
+                        
+                        sforce.one.navigateToSObject(clonedOpptyID);
+                    }
+                }else {
+                    
+                    parent.frames.location.replace(urlRedirect);
+                }
+            }// PSS else 
+        }//rec type else
+        
+    }
+    </script>
+    
+    <body>
+       
+        <B>Please wait ....</b>
+        <script>
+        init();
+        </script>
+        
+    </body>
+</apex:page>

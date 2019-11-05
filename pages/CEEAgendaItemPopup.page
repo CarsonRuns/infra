@@ -1,0 +1,148 @@
+<!-------------------------------------------------------------------------------
+   @Author :Jay Dash
+   @name :CEEAgendaItemPopup
+   @CreateDate : 07/23/2015
+   @Description :This page Populate Agenda items on CEE detail page.
+   @Version :1.0
+   Modifications:
+      Jan '2016' Sudi - Added new field virtual Demo Delivery Location field grid columns
+      Feb '2016' Sudi - Removed hard coded Column harder text
+                        Removed Apex:Outputtext directly using apex:column values to pupulated header text and data.
+  ------------------------------------------------------------------------------->
+  
+<apex:page standardController="CEE__c" extensions="CEEAgendaItemPopupController" showHeader="false" sidebar="false">
+<apex:includeScript value="{!$Resource.jquery22}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}"/>   
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/themes/ui-lightness/jquery.ui.all.css')}"/>  
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery-ui.custom.js')}"/>          
+    <script>
+   
+    var j$ = jQuery.noConflict(); 
+     var j$modalDialog; 
+    function showModal(sid){       
+        
+         var visualforcePage  = 'CEEAgendaItemModal?id='+sid+'&ceeid='+'{!CEE__c.id}';
+         var iframe_url = '{!URLFOR("/apex/' + visualforcePage + '")}';
+         var child_domain = iframe_url.substring(0, iframe_url.indexOf('/', 9));
+         var parent_domain = window.location.protocol + '//' + window.location.host;         
+            j$modalDialog = j$('<div></div>')
+            .html('<iframe id="iframeContentId" src="' + iframe_url + '?parent_domain=' + parent_domain + '" frameborder="0" height="100%" width="100%" marginheight="0" marginwidth="0" scrolling="yes" />')
+            .dialog({
+                autoOpen: false,
+                title: 'Agenda Item Edit',
+                resizable: false,
+                width: 600,
+                height: 400,
+                autoResize: true,
+                modal: true,
+                draggable: true,
+                id:"dialog"
+                
+            });
+     
+        j$modalDialog.dialog('open');        
+    }
+    
+    </script>
+    <style>
+   
+    .ui-dialog {
+        width: 85% !important;
+        left: 80px !important;
+        max-height: 330px;                 
+    }
+    .ui-dialog .ui-dialog-content{
+        height: 290px !important;
+    }
+     .actionLinkEdit{
+        text-decoration:underline;
+        color:#337ab7 !important;
+    }
+    label.selectRoomLabel {
+        font-weight: bold !important;
+        color: #4a4a56 !important;
+        font-size: 91% !important;
+        margin-left: -4% !important;
+    }
+    .ui-dialog-titlebar > .ui-button {
+       outline-width: 0px !important;
+     }
+</style>
+<apex:form styleClass="subFormClass" id="sub">
+<apex:pageBlock id="sub1">
+<strong><font color="#090909" size="2"><apex:outputPanel id="hiddenblock">Agenda Items</apex:outputPanel></font></strong>
+<div align="center">
+<apex:commandButton onClick="newAgendaItem()" value="New Agenda Item" id="theButton" />
+</div>
+<apex:outputPanel rendered="{!Agendaitems.size < 1}">
+<div class="bdr">
+<font  style="size: 1em; weight:Normal" >No records to display</font>
+</div> 
+</apex:outputPanel> 
+<apex:pageBlockSection rendered="{!Agendaitems.size > 0}" columns="1" >
+<apex:outputPanel >
+<div style="overflow-y:scroll;height: 270px;">
+<apex:pageBlockTable value="{!Agendaitems}" width="100%" var="sb" id="linTable" >
+<apex:messages />
+         <apex:column width="6%" headerValue="Action" rendered="{!perm}">     
+            <apex:outputPanel id="Edit"><a href ="" style="cursor:pointer" class="actionLinkEdit" onclick="showModal('{!sb.id}');" >Edit</a></apex:outputpanel>
+             <apex:outputPanel >&nbsp; | &nbsp;</apex:outputPanel>
+                         
+              <apex:commandLink action="{!deleteAgendaItem}" styleClass="actionLinkEdit" onclick="if(!confirm('Are you sure?')) return false;">Del
+                    <apex:param value="{!sb.Id}" name="idToDel" assignTo="{!agendaId}"/>
+              </apex:commandLink>
+         </apex:column>        
+         
+         
+         <apex:column width="10%" headerValue="Start Date/Time">
+           <apex:outputField value="{!sb.Start_Date_Time__c}"/>
+         </apex:column>
+         <apex:column width="10%" headerValue="End Date/Time">           
+           <apex:outputField value="{!sb.End_Date_Time__c}"/>
+         </apex:column>
+         
+         <apex:column width="10%" styleClass="AgendaItemClass" headerValue="Name">           
+           <apex:outputLink id="AgendaItemName" value="{!$Page.CEE_AgendaItem_Detail}?id={!sb.id}" target="_parent">{!sb.Name}</apex:outputLink>          
+         </apex:column>
+         <apex:column width="10%" styleClass="AgendaItemClass" headerValue="Topic" rendered="{!perm}">           
+        <apex:outputText style="width:50px" >
+            <a target="_top"  href="../{!sb.Topic__c}">{!sb.Topic_Name__c}</a></apex:outputText>
+        </apex:column>
+         <apex:column width="10%" headerValue="Presenters" rendered="{!perm}">           
+           <apex:outputText value="{!sb.Presenters__c}"/>
+         </apex:column>
+         <apex:column width="10%" headerValue="Outlook status" rendered="{!perm}">           
+           <apex:outputText value="{!sb.Outlook_Status__c}"/>
+         </apex:column>
+         <!-- Sudi : Removed hard code Column header text. removed apex:outputText-->
+          <apex:column width="10%" value="{!sb.Demo_Delivery_Location_s__c}" rendered="{!perm}">                      
+         </apex:column>
+         <apex:column width="15%" headerValue="Selected Room Display">           
+           <apex:outputText value="{!sb.Selected_Rooms_Display__c}"/>
+         </apex:column>                  
+    </apex:pageBlockTable>
+    </div>
+    </apex:outputPanel>
+    </apex:pageBlockSection>
+    </apex:pageBlock> 
+    </apex:form>    
+<script type="text/javascript"> 
+function newAgendaItem(){
+         window.open('/apex/CEE_AgendaItem_Edit?CF00N80000004zYJ5={!CEE__c.name}&CF00N80000004zYJ5_lkid={!CEE__c.Id}&scontrolCaching=1&retURL={!CEE__c.Id}&sfdc.override=1','_parent');
+}
+
+function resizeIframe() {
+        var me = window.name;
+        if (me) {
+          var iframes = parent.document.getElementsByName(me);
+          if (iframes && iframes.length == 1) {
+            height = document.body.offsetHeight;
+            //if (height <= 340) 
+                iframes[0].style.height = height + "px";
+          }
+        }
+      }
+     resizeIframe();
+</script>
+</apex:page>

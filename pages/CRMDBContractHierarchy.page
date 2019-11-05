@@ -1,0 +1,24 @@
+<apex:page standardController="CRMDB__c" title="CRMDB Hierarchy" recordSetVar="Contracts">
+    <apex:includeLightning />
+    <html>
+        <body>
+            <div id="myDivId"> 
+            </div>
+            
+            <script>
+            var myUserContext = "{!$User.UITheme}";
+            
+            $Lightning.use("c:CRMDBContractHierarchyApp", function() {
+                $Lightning.createComponent(
+                    "c:CRMDBContractHierarchy",
+                    { UserContext: myUserContext },
+                    "myDivId",
+                    function(cmp) {
+                        console.log('component created');
+                        console.log(cmp);
+                    });
+            });
+            </script>
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,133 @@
+<apex:page standardController="CEE__c" extensions="CEE_PMLoadBalanceController">
+    <style> 
+    .available {
+        background-color:#33CC33;
+    }
+    .partial {
+        background-color:#FFFF00;
+    }
+    .unavailable {
+        background-color:#FF3300;
+    }
+    .two_brief{
+        background-color:#5CADFF;
+    }
+    .three_brief{
+        background-color:#D685FF;
+    }
+    .four_brief{
+        background-color:#FFAD5C;
+    }            
+    .closed {
+        background-color:#CCCCCC;
+    }
+    .no_data {
+        background-color:#FFFFEF;
+    }
+    .empty-column-content {
+        display: none;
+    }
+    </style> 
+      
+    <apex:form >
+        <apex:pageBlock title="CEE - Program Manager Load">
+            
+            <!-- Criteria choices -->
+            <apex:pageBlockSection columns="2" showHeader="false">
+            	<apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Briefing" for="briefing"></apex:outputLabel>
+                    <apex:outputText id="briefing" value="{!currBriefing}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Briefing Date" for="date"></apex:outputLabel>
+                    <apex:outputText id="date" value="{!currBriefingDate}" />
+                </apex:pageBlockSectionItem>
+            	
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Month" for="monthList"></apex:outputLabel>
+                    <apex:selectList id="monthList" multiSelect="false" size="1" value="{!selMonth}" title="Month">
+                        <apex:selectOptions value="{!dynMonth}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange" action="{!getCurrAvailability}" rerender="calendarRender"/>                            
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Site" for="siteList"></apex:outputLabel>
+                    <apex:selectList id="siteList" multiSelect="false" size="1" value="{!selSite}" title="Site" disabled="{!selSiteDisabled}">
+                        <apex:selectOptions value="{!dynSite}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange" action="{!getCurrAvailability}" rerender="calendarRender"/>                            
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <!-- Calendar section -->
+            <apex:outputPanel id="calendarRender">
+                <apex:pageMessages id="pageMsg" />  
+                <apex:pageblock id="calendarList" title="Availability">
+                    <apex:pageBlockTable id="calendarTable" value="{!availability}" var="i" rendered="{!calendarVisible}">
+                        <apex:column headerValue="Program Manager">
+                            <apex:outputLink value="/{!i.pmUser.id}">
+                                <apex:outputText value="{!i.pmUser.FirstName + ' ' + i.pmUser.LastName}" />
+                            </apex:outputLink>
+                        </apex:column>            
+                        
+                        <apex:column headerValue="Briefings">
+                            <apex:outputText value="{!i.totalBriefings}"/>
+                        </apex:column>        
+                        <apex:column headerValue="Briefing Days">
+                            <apex:outputText value="{!i.totalBriefingDays}"/>
+                        </apex:column>  
+                        <apex:column headerValue="Other Requests">
+                            <apex:outputText value="{!i.totalOthers}"/>
+                        </apex:column>         
+                        
+                        <!-- Dynamic List of Days based on # days in a month -->  
+                        <apex:repeat var="day" value="{!i.days}">
+                            <apex:column headerValue="null Day">
+                                <apex:outputText value="{!day.value}" styleClass="{!day.display}"/>
+                            </apex:column>
+                        </apex:repeat>      
+                        
+                        <apex:repeat var="header" value="{!headers}">
+                        	<apex:column styleClass="empty-column-content">
+	                        	<apex:facet name="header">
+	                        		{!header.top} 
+	                        		<br/>
+	                        		{!header.bottom}
+	                        	</apex:facet>
+	                        	
+                        	</apex:column>
+                            <!--  <apex:column headerValue="{!header}" styleClass="empty-column-content" />-->
+                        </apex:repeat>               
+                    </apex:pageBlockTable>
+                    <apex:outputLabel value="No Program Managers for the chosen Site" rendered="{!!calendarVisible}" styleClass="noRowsHeader"></apex:outputLabel>
+                </apex:pageblock>
+            </apex:outputPanel>
+            
+            <table border="1px">
+                <tr>
+                    <th>Color</th>
+                    <th>Type</th>                
+                </tr>
+                <tr>                    
+                    <td class="available"></td>
+                    <td>Available</td>
+                </tr>
+                <tr>                    
+                    <td class="partial"></td>
+                    <td>Partial (&lt;4 hours)</td>
+                </tr>
+                <tr>                    
+                    <td class="unavailable"></td>
+                    <td>Unavailable (&gt;=4 hours)</td>
+                </tr>
+                <tr>                    
+                    <td class="closed"></td>
+                    <td>PTO/Unavailable</td>
+                </tr>
+            </table>
+            Note: Availability calculated based on your local timezone.
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

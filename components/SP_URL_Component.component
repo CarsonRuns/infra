@@ -1,0 +1,23 @@
+<apex:component controller="SPLink" access="Global">
+  <apex:attribute name="Cucvalue" description="Selected CUC value by the user" type="String" assignTo="{!cuc}"/>
+  <apex:repeat value="{!newobj}" var="obj" id="newobj">  
+	  <apex:outputLink value="{!SUBSTITUTE(obj.Text_2__c,LEFT(obj.Text_2__c,delim1+1),'')}">{!LEFT(obj.Text_2__c,delim1)}</apex:outputLink><br/><br/>
+	  
+	  <apex:outputPanel rendered="{!IF(obj.Text_3__c != null && obj.Text_3__c != '',true,false)}"> 
+	  	<apex:outputLink value="{!SUBSTITUTE(obj.Text_3__c,LEFT(obj.Text_3__c,delim2+1),'')}">{!LEFT(obj.Text_3__c,delim2)}</apex:outputLink><br/><br/>
+	  </apex:outputPanel>
+	  
+	  <apex:outputPanel rendered="{!IF(obj.Text_4__c != null && obj.Text_4__c != '',true,false)}"> 	
+	  	<apex:outputLink value="{!SUBSTITUTE(obj.Text_4__c,LEFT(obj.Text_4__c,delim3+1),'')}" >{!LEFT(obj.Text_4__c,delim3)}</apex:outputLink><br/><br/>
+	  </apex:outputPanel>
+	  
+	  <apex:outputPanel rendered="{!IF(obj.Text_5__c != null && obj.Text_5__c != '',true,false)}">	
+	  	<apex:outputLink value="{!SUBSTITUTE(obj.Text_5__c,LEFT(obj.Text_5__c,delim4+1),'')}" >{!LEFT(obj.Text_5__c,delim4)}</apex:outputLink><br/><br/>
+	  </apex:outputPanel>
+	  
+	  <apex:outputPanel rendered="{!IF(obj.Text_6__c != null && obj.Text_6__c != '',true,false)}"> 	
+	  	<apex:outputLink value="{!SUBSTITUTE(obj.Text_6__c,LEFT(obj.Text_6__c,delim5+1),'')}" >{!LEFT(obj.Text_6__c,delim5)}</apex:outputLink><br/><br/>
+	  </apex:outputPanel>	
+  </apex:repeat>
+  <br/>
+</apex:component>

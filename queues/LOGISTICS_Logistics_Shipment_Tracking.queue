@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>CX-LOGISTICS-Logistics Shipment Tracking</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>CX_LOGISTICS_Logistics_Shipment_Tracking</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

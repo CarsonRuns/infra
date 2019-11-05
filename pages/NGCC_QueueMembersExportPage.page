@@ -1,0 +1,19 @@
+<!--
+Name    : NGCC_QueueMembersExportPage
+Author  : Ghattamaneni Chaithanya
+Purpose : This Page is using in Queue members managemnt tool, this is resposible for render the Members in a queue to excel sheet.
+Created Date: 08 March 2019
+Modification History:  
+
+-->
+<apex:page controller="NGCC_QueueMembersManagementController" contentType="application/vnd.ms-excel#QueueMembersExport.xls" cache="true">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!groupUsers}" var="user">
+            <apex:column headerValue="Queue" value="{!selectedGroup.name}"/>
+            <apex:column value="{!user.firstName}"/>
+            <apex:column value="{!user.lastName}"/>
+            <apex:column value="{!user.email}"/>
+            <apex:column value="{!user.username}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

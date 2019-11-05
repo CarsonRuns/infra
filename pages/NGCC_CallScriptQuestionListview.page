@@ -1,0 +1,27 @@
+<apex:page standardController="CC_Master_Question_Answer_Bank__c" extensions="NGCC_CallScriptQuestionListview"  recordSetVar="CC_Master_Question_Answer_Bank">
+    <apex:form id="bulkassignform">
+    <!-- render only when messages are not displayed -->
+        
+        <apex:outputpanel >
+            <apex:sectionHeader title="Master Question Answer" subtitle="Call Script Assignment" />
+            <apex:outputpanel rendered="{!AND(hasSelected, NOT(hasMessages))}">
+               <!-- 
+                <apex:outputText>Please select a Channel Partner to assign to the selected leads. This is intended to be used with Partner Leads only.</apex:outputText>
+                <br/>
+                <apex:inputField id="selectedPartner" label="Channel Partner" value="{!lead.Channel_Partner__c}"/>
+                <br/><br/>
+                -->
+                <apex:pageblock >
+                    <apex:pageblocksection >
+                        <!-- <apex:outputText value="Call Script" -->
+                        <apex:inputfield value="{!lstCallScript.Call_Script__c}" label="Call Script"/>
+                        <br/><br/>
+                    </apex:pageblocksection>
+                </apex:pageblock>
+                <apex:commandButton style="align:center" action="{!SaveCallScript}" value="Save CallScript Q/A" rerender="bulkassignform"/>
+            </apex:outputpanel>
+        </apex:outputpanel>
+        <apex:pageMessages id="messages" escape="false"/>
+        <apex:commandButton style="align:center" action="{!cancel}" value="Back" /> 
+    </apex:form>
+</apex:page>

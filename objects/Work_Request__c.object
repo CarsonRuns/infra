@@ -1,0 +1,4013 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Additional_Information__c</fullName>
+        <description>Additional Information about the Work request</description>
+        <externalId>false</externalId>
+        <label>Additional Information</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Additional_PMO_Comments__c</fullName>
+        <description>Additional PMO Comments</description>
+        <externalId>false</externalId>
+        <label>Additional PMO Comments</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Additional_Stakeholder1_Email__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the Email address of users to be notified in addition to the requester.</inlineHelpText>
+        <label>Additional Stakeholder Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Additional_Stakeholder2_Email__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the Email address of users to be notified in addition to the requester.</inlineHelpText>
+        <label>Additional Stakeholder2 Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Additional_Stakeholder3_Email__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the Email address of users to be notified in addition to the requester.</inlineHelpText>
+        <label>Additional Stakeholder3 Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Application URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>BCE_Resource_Assigned__c</fullName>
+        <externalId>false</externalId>
+        <label>BCE Resource Assigned</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Biz_Resource_Skills_Set_Risk_Comments__c</fullName>
+        <description>Business Resource Skills Set Risk</description>
+        <externalId>false</externalId>
+        <label>Biz Resource Skills Set Risk Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Bookings_Pipeline_Impacted__c</fullName>
+        <description>Impact on incremental bookings or pipeline generated annually in millions</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Impact on incremental bookings or pipeline generated annually in millions</inlineHelpText>
+        <label>Bookings / Pipeline Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>NA-Does not apply</fullName>
+                    <default>false</default>
+                    <label>NA-Does not apply</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Analysis_Prioritization_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Analysis Prioritization Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Business_Analysis_Prioritization__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>High</controllingFieldValue>
+                <valueName>10</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Medium</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Low</controllingFieldValue>
+                <valueName>0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>N/A</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Analysis_Prioritization__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Analysis Prioritization</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Benefits__c</fullName>
+        <description>Describe the Business Benefits or Outcomes in terms of the following values levers: Revenue Growth, Cost Savings, Cost avoidance and Productivity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>(Provide impact for enabling the needed capabilities. Consider cost savings, cost avoidance, sales enablement, ops enablement, operational or productivity metrics, revenue impacting, etc.)</inlineHelpText>
+        <label>Business Justification Inputs</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Impacts__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe the impacts that this request will have on the business.</inlineHelpText>
+        <label>Business Impacts</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Need_Problem_Statement__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide Summary of current Business Problem</inlineHelpText>
+        <label>Business Problem Summary</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Change_Management_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Management Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Change_Management_Effort_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Management Effort Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Change_Management_Socialization_Effort__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>High</controllingFieldValue>
+                <valueName>10</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Medium</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Low</controllingFieldValue>
+                <valueName>0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>N/A</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Change_Management_Socialization_Effort__c</fullName>
+        <externalId>false</externalId>
+        <label>Change Management / Socialization Effort</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Change_Mgmt_Training_Comms_Required__c</fullName>
+        <description>Does the biz requires Change Mgmt Training/Comms ?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Some request can be enabled outside standard monthly release. Select Yes, if you need the team to hold off on updating production so that you can send Traning/Comms to end users.</inlineHelpText>
+        <label>Change Mgmt Training/Comms Required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Clear_Alignment_with_Geos_or_Functions__c</fullName>
+        <description>Promotes unification / alignment with Geos / Functions</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Promotes unification / alignment with Geos / Functions</inlineHelpText>
+        <label>Clear Alignment with Geos / Functions</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Complexity_Justification__c</fullName>
+        <externalId>false</externalId>
+        <label>Complexity Justification</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Complexity_Level_Others__c</fullName>
+        <description>if Complexity level is not in the list</description>
+        <externalId>false</externalId>
+        <label>Complexity Level Others</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Complexity_Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Complexity Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Enhancement</fullName>
+                    <default>false</default>
+                    <label>Enhancement</label>
+                </value>
+                <value>
+                    <fullName>SFDC Run the Business</fullName>
+                    <default>false</default>
+                    <label>SFDC Run the Business</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Compliance_Information__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please provide details for ‘’Compliance’’ related enhancements.</inlineHelpText>
+        <label>Compliance Information</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Direct_Impact_Increased_Sales_Comments__c</fullName>
+        <description>Additional Information on Direct impact on Increased Sales</description>
+        <externalId>false</externalId>
+        <label>Direct Impact Increased Sales Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Direct_Impact_on_Increased_Sales__c</fullName>
+        <externalId>false</externalId>
+        <label>Direct Impact on Increased Sales</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Direct_impact_on_Increased_Sales_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Direct impact on Increased Sales Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Direct_Impact_on_Increased_Sales__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>High</controllingFieldValue>
+                <valueName>10</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Medium</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Low</controllingFieldValue>
+                <valueName>0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>N/A</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Downstream_Impacts_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Downstream Impacts Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Downstream_Impacts_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Downstream Impacts Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Downstream_Impacts__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>N/A</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>High (&gt;3 System Impacts)</controllingFieldValue>
+                <valueName>10</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Medium (2-3 System Impacts)</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Low (0-1 System Impacts)</controllingFieldValue>
+                <valueName>0</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Downstream_Impacts__c</fullName>
+        <externalId>false</externalId>
+        <label>Downstream Impacts</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High (&gt;3 System Impacts)</fullName>
+                    <default>false</default>
+                    <label>High (&gt;3 System Impacts)</label>
+                </value>
+                <value>
+                    <fullName>Medium (2-3 System Impacts)</fullName>
+                    <default>false</default>
+                    <label>Medium (2-3 System Impacts)</label>
+                </value>
+                <value>
+                    <fullName>Low (0-1 System Impacts)</fullName>
+                    <default>false</default>
+                    <label>Low (0-1 System Impacts)</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>End_User_Communication_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are training and/or communications required to accompany this stage? If yes, beginning when you will require communication and training support?</inlineHelpText>
+        <label>End User Communication Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>End_User_Communication_Required__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are training and/or communications required to accompany this stage? If yes, beginning when you will require communication and training support?</inlineHelpText>
+        <label>End User Communication Required?</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>End_User_Training_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are training and/or communications required to accompany this stage? If yes, beginning when you will require communication and training support?</inlineHelpText>
+        <label>End User Training Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>End_User_Training_Required__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are training and/or communications required to accompany this stage? If yes, beginning when you will require communication and training support?</inlineHelpText>
+        <label>End User Training Required?</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Enterprise_XRM_Guidance_Needed__c</fullName>
+        <externalId>false</externalId>
+        <label>Enterprise XRM Guidance Needed</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Enterprise_XRM_Recommendation_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Enterprise XRM Recommendation Details</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Enterprise_XRM_Review_Next_Steps__c</fullName>
+        <externalId>false</externalId>
+        <label>Enterprise XRM Review Next Steps</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Estimated_Delivery_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Delivery Date</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Estimated_IT_Effort_Level__c</fullName>
+        <description>Estimated IT Effort Level</description>
+        <externalId>false</externalId>
+        <label>Estimated IT Effort Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Estimated_Release_Date_PMO__c</fullName>
+        <description>Approximate date when the work request will be implemented in production.</description>
+        <externalId>false</externalId>
+        <label>Estimated Release Date(PMO)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Estimated_Release_Date__c</fullName>
+        <description>Copy of estimated release date visible to requesters</description>
+        <externalId>false</externalId>
+        <formula>Estimated_Release_Date_PMO__c</formula>
+        <label>Estimated Release Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Manual_Hours_Savings_Quarter__c</fullName>
+        <description>How many manual hours will be saved per month/quarter?  Approximately for how many users?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How many manual hours will be saved per month/quarter?</inlineHelpText>
+        <label>Expected Manual Hours Savings/Quarter</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Savings_Quarter__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How much (dollar value or cost avoidance) will be saved per quarter, due to this enhancement?</inlineHelpText>
+        <label>Expected $ Savings/Quarter</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Functional_Area__c</fullName>
+        <description>Functional Area</description>
+        <externalId>false</externalId>
+        <label>Functional Area</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account Management</fullName>
+                    <color>#0B6FCE</color>
+                    <default>false</default>
+                    <label>Account Management</label>
+                </value>
+                <value>
+                    <fullName>Case Management</fullName>
+                    <color>#78C953</color>
+                    <default>false</default>
+                    <label>Case Management</label>
+                </value>
+                <value>
+                    <fullName>Contact Management</fullName>
+                    <color>#E27001</color>
+                    <default>false</default>
+                    <label>Contact Management</label>
+                </value>
+                <value>
+                    <fullName>Lead Management</fullName>
+                    <color>#A845DC</color>
+                    <default>false</default>
+                    <label>Lead Management</label>
+                </value>
+                <value>
+                    <fullName>Opportunity Management</fullName>
+                    <color>#F3D904</color>
+                    <default>false</default>
+                    <label>Opportunity Management</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <color>#A53711</color>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Partner Management</fullName>
+                    <color>#66E9BD</color>
+                    <default>false</default>
+                    <label>Partner Management</label>
+                </value>
+                <value>
+                    <fullName>User Management</fullName>
+                    <color>#8F6429</color>
+                    <default>false</default>
+                    <label>User Management</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Geo_Priority_Comments__c</fullName>
+        <externalId>false</externalId>
+        <formula>Geo_Priority_PMO_Comments__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Geo Priority Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Geo_Priority_PMO_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Geo Priority Comments(PMO)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Geo_Priority_PMO__c</fullName>
+        <externalId>false</externalId>
+        <label>Geo Priority(PMO)</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Geo_Priority__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Geo_Priority_PMO__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Geo Priority</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Global_Agreement_XRM_I_P_Required__c</fullName>
+        <description>Copy of work request status visible to requester</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Global_Agreement_XRM_PMO__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Global Agreement/XRM I/P Required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Global_Agreement_XRM_PMO__c</fullName>
+        <description>Is global consensus required for the work request.</description>
+        <externalId>false</externalId>
+        <label>Global Agreement/XRM(PMO)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Global Agreement Required</fullName>
+                    <default>false</default>
+                    <label>Global Agreement Required</label>
+                </value>
+                <value>
+                    <fullName>XRM Input Required</fullName>
+                    <default>false</default>
+                    <label>XRM Input Required</label>
+                </value>
+                <value>
+                    <fullName>Global and XRM Approval Required</fullName>
+                    <default>false</default>
+                    <label>Global and XRM Approval Required</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+                <value>
+                    <fullName>Global Agreement Obtained</fullName>
+                    <default>false</default>
+                    <label>Global Agreement Obtained</label>
+                </value>
+                <value>
+                    <fullName>Rejected by Global Review</fullName>
+                    <default>false</default>
+                    <label>Rejected by Global Review</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Global_Leads_Recommendation_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Global Leads Recommendation Details</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Global_Leads_Recommendation__c</fullName>
+        <description>Global Leads Recommendation</description>
+        <externalId>false</externalId>
+        <label>Global Leads Recommendation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Global_Leads_Review_Next_Steps__c</fullName>
+        <externalId>false</externalId>
+        <label>Global Leads Review Next Steps</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Global_Leads_Review_Recommendation__c</fullName>
+        <externalId>false</externalId>
+        <label>Global Leads Review Recommendation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BCE Commit</fullName>
+                    <default>false</default>
+                    <label>BCE Commit</label>
+                </value>
+                <value>
+                    <fullName>Commit to IT</fullName>
+                    <default>false</default>
+                    <label>Commit to IT</label>
+                </value>
+                <value>
+                    <fullName>Do Not Commit</fullName>
+                    <default>false</default>
+                    <label>Do Not Commit</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IT_Comments__c</fullName>
+        <description>IT Comments</description>
+        <externalId>false</externalId>
+        <label>IT Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>IT_Effort_Hours_Spent__c</fullName>
+        <externalId>false</externalId>
+        <label>IT Effort Hours Spent</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IT_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>IT Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Analysis-In Progress</fullName>
+                    <default>false</default>
+                    <label>Analysis-In Progress</label>
+                </value>
+                <value>
+                    <fullName>Development-In Progress</fullName>
+                    <default>false</default>
+                    <label>Development-In Progress</label>
+                </value>
+                <value>
+                    <fullName>QA-In Progress</fullName>
+                    <default>false</default>
+                    <label>QA-In Progress</label>
+                </value>
+                <value>
+                    <fullName>Complete</fullName>
+                    <default>false</default>
+                    <label>Complete</label>
+                </value>
+                <value>
+                    <fullName>Delivered</fullName>
+                    <default>false</default>
+                    <label>Delivered</label>
+                </value>
+                <value>
+                    <fullName>Not Config</fullName>
+                    <default>false</default>
+                    <label>Not Config</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Impact_Sales_Opertions_Productivty_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Impact SalesOpertions Productivty Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Impact_on_Sales_Operations_Productivty__c</fullName>
+        <description>-How many hours will this save a Cisco selling resource per year?
+-Direct Sales benefits (i.e. Increased Sales morale)
+-Increased Sales productivity; Prevents duplication of efforts
+-Expenses saved</description>
+        <externalId>false</externalId>
+        <inlineHelpText>-How many hours will this save a Cisco selling resource per year? 
+-Expenses saved
+-Direct Sales benefits (i.e. Increased Sales morale) 
+-Increased Sales productivity / Prevents duplication of efforts</inlineHelpText>
+        <label>Impact on Sales &amp; Operations Productivty</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>N/A-Does not apply</fullName>
+                    <default>false</default>
+                    <label>N/A-Does not apply</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Impacted_Theatres__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Theaters Impacted (Select all that apply)</inlineHelpText>
+        <label>Theatres Impacted</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Americas</fullName>
+                    <default>false</default>
+                    <label>Americas</label>
+                </value>
+                <value>
+                    <fullName>APJC</fullName>
+                    <default>false</default>
+                    <label>APJC</label>
+                </value>
+                <value>
+                    <fullName>EMEAR</fullName>
+                    <default>false</default>
+                    <label>EMEAR</label>
+                </value>
+                <value>
+                    <fullName>GC</fullName>
+                    <default>false</default>
+                    <label>GC</label>
+                </value>
+                <value>
+                    <fullName>GET</fullName>
+                    <default>false</default>
+                    <label>GET</label>
+                </value>
+                <value>
+                    <fullName>GSP</fullName>
+                    <default>false</default>
+                    <label>GSP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Impacts_Canadian_Users__c</fullName>
+        <description>To stay in compliance with Canada francisation law translation to French is Required.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>To stay in compliance with Canada francisation law translation to French is Required.</inlineHelpText>
+        <label>Impacts Canadian Users?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Integration_Needed_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Integration Needed Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Integration_Needed_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Integration Needed Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Integration_Needed__c</fullName>
+        <externalId>false</externalId>
+        <label>Integration Needed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High (New Tool Integration / Changes to Existing Integration)</fullName>
+                    <default>false</default>
+                    <label>High (New Tool Integration / Changes to Existing Integration)</label>
+                </value>
+                <value>
+                    <fullName>Low (No Integration)</fullName>
+                    <default>false</default>
+                    <label>Low (No Integration)</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Justification_For_Go_Live_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Justification For Go Live Date</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Legal_Requirement__c</fullName>
+        <description>Required by law in certain geography</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Required by law in certain geography</inlineHelpText>
+        <label>Legal Requirement</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>N/A-Does not apply</fullName>
+                    <default>false</default>
+                    <label>N/A-Does not apply</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Main_Metric_Impacted_Other__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Describe effect of this request of the Main Metric Impacted selected above (e.g. Client Experience, Business Process Simplification, Compliance). Please use quantitative estimates when possible.</inlineHelpText>
+        <label>Main Metric Impacted Details</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Main_Metric_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the main metric impacted by this request.</inlineHelpText>
+        <label>Main Metric Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Compliance (Support the Business)</fullName>
+                    <default>false</default>
+                    <label>Compliance (Support the Business)</label>
+                </value>
+                <value>
+                    <fullName>Cost Reduction</fullName>
+                    <default>false</default>
+                    <label>Cost Reduction</label>
+                </value>
+                <value>
+                    <fullName>N/A-Maintenance LOV Change</fullName>
+                    <default>false</default>
+                    <label>N/A-Maintenance LOV Change</label>
+                </value>
+                <value>
+                    <fullName>Operational Savings (Productivity Improvement)</fullName>
+                    <default>false</default>
+                    <label>Operational Savings (Productivity Improvement)</label>
+                </value>
+                <value>
+                    <fullName>Revenue Improvements (Grow the Business)</fullName>
+                    <default>false</default>
+                    <label>Revenue Improvements (Grow the Business)</label>
+                </value>
+                <value>
+                    <fullName>Time Savings (IT, Business Operations, Business)</fullName>
+                    <default>false</default>
+                    <label>Time Savings (IT, Business Operations, Business)</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Market_Segment_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Market Segment Impacted (Select all that apply)</inlineHelpText>
+        <label>Market Segment Impacted</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Cisco Led</fullName>
+                    <default>false</default>
+                    <label>Cisco Led</label>
+                </value>
+                <value>
+                    <fullName>Commercial</fullName>
+                    <default>false</default>
+                    <label>Commercial</label>
+                </value>
+                <value>
+                    <fullName>Enterprise</fullName>
+                    <default>false</default>
+                    <label>Enterprise</label>
+                </value>
+                <value>
+                    <fullName>Federal</fullName>
+                    <default>false</default>
+                    <label>Federal</label>
+                </value>
+                <value>
+                    <fullName>Global Enterprise</fullName>
+                    <default>false</default>
+                    <label>Global Enterprise</label>
+                </value>
+                <value>
+                    <fullName>Global Service Provider</fullName>
+                    <default>false</default>
+                    <label>Global Service Provider</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Partner Led</fullName>
+                    <default>false</default>
+                    <label>Partner Led</label>
+                </value>
+                <value>
+                    <fullName>Public Sector</fullName>
+                    <default>false</default>
+                    <label>Public Sector</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Next_Steps_Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Next Steps Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Next_Steps_Owner__c</fullName>
+        <externalId>false</externalId>
+        <label>Next Steps Owner</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>No_of_Days_to_Deliver__c</fullName>
+        <description>Number of days taken to deliver a work request</description>
+        <externalId>false</externalId>
+        <formula>Estimated_Release_Date_PMO__c  - Work_Request_Review_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>No of Days to Deliver</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Requirement_Risks_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Requirement Risks Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Requirement_Risks_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Requirement Risks Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Number_of_Requirement_Risks_Unknowns__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>High</controllingFieldValue>
+                <valueName>10</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Medium</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Low</controllingFieldValue>
+                <valueName>0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>N/A</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Number_of_Requirement_Risks_Unknowns__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Requirement Risks / Unknowns</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Number_of_Users_Benefited__c</fullName>
+        <description>Approximately how many users will be benefited?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approximately how many users will be benefited?</inlineHelpText>
+        <label>Number of Users Impacted</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Objectives__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>1. Describe the business idea (1-2 sentences).
+
+2. State the key objective, as well as secondary objectives (3-5 key goals/outcomes of the business plan).</inlineHelpText>
+        <label>Objectives</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_Impacts__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Impacts</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_Metric_Related_Information__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Any other metric related information?</inlineHelpText>
+        <label>Other Metric Related Information</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_Tools_Apps_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>List other tools impacted by this request</inlineHelpText>
+        <label>Other Tools/Apps Impacted</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Planned_IT_Solution_if_Applicable__c</fullName>
+        <externalId>false</externalId>
+        <label>Planned IT Solution(if Applicable)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Tool_App_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the primary tool that is impacted by the request. If more than one tool, select the tool that will require the most IT configuration. (If other, list in Other Tools/Apps Impacted)</inlineHelpText>
+        <label>Primary Tool/App Impacted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SFDC (Salesforce.com)</fullName>
+                    <default>false</default>
+                    <label>SFDC (Salesforce.com)</label>
+                </value>
+                <value>
+                    <fullName>BREES (Business Objects REporting for E-Sales)</fullName>
+                    <default>false</default>
+                    <label>BREES (Business Objects REporting for E-Sales)</label>
+                </value>
+                <value>
+                    <fullName>CCW (Cisco Commerce Workspace)</fullName>
+                    <default>false</default>
+                    <label>CCW (Cisco Commerce Workspace)</label>
+                </value>
+                <value>
+                    <fullName>CES (Customer Engagement Scheduler)</fullName>
+                    <default>false</default>
+                    <label>CES (Customer Engagement Scheduler)</label>
+                </value>
+                <value>
+                    <fullName>CR (Customer Registry)</fullName>
+                    <default>false</default>
+                    <label>CR (Customer Registry)</label>
+                </value>
+                <value>
+                    <fullName>Forecasting</fullName>
+                    <default>false</default>
+                    <label>Forecasting</label>
+                </value>
+                <value>
+                    <fullName>GCT (Global Claiming Tool)</fullName>
+                    <default>false</default>
+                    <label>GCT (Global Claiming Tool)</label>
+                </value>
+                <value>
+                    <fullName>LTLM (Long Term Lead Management)</fullName>
+                    <default>false</default>
+                    <label>LTLM (Long Term Lead Management)</label>
+                </value>
+                <value>
+                    <fullName>OTM (Oracle Territory Manager)</fullName>
+                    <default>false</default>
+                    <label>OTM (Oracle Territory Manager)</label>
+                </value>
+                <value>
+                    <fullName>RDAT</fullName>
+                    <default>false</default>
+                    <label>RDAT</label>
+                </value>
+                <value>
+                    <fullName>SMCC (Sales and Marketing Call Center)</fullName>
+                    <default>false</default>
+                    <label>SMCC (Sales and Marketing Call Center)</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Project_Description__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>To further clarify requirements ,  attach screenshots, power point slides or excel spreadsheet with descriptive requirements under the Notes and Attachment section</inlineHelpText>
+        <label>High Level Requirement</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Projects_Impacted__c</fullName>
+        <externalId>false</externalId>
+        <label>Projects Impacted</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>QW_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>QW Number</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ROI_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>ROI Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>ROI__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>High</controllingFieldValue>
+                <valueName>10</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Medium</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Low</controllingFieldValue>
+                <valueName>0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>N/A</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ROI__c</fullName>
+        <externalId>false</externalId>
+        <label>ROI</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Related_Work_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Related Work Request</label>
+        <referenceTo>Work_Request__c</referenceTo>
+        <relationshipLabel>Related Work Request</relationshipLabel>
+        <relationshipName>Work_Request</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Request_Submitted_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Request Submitted Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Requested_Go_Live_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Requested Go Live Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Requester_Email__c</fullName>
+        <defaultValue>$User.Email</defaultValue>
+        <externalId>false</externalId>
+        <label>Requester Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requester_Job_Title__c</fullName>
+        <defaultValue>$User.Title</defaultValue>
+        <description>Work requester job title</description>
+        <externalId>false</externalId>
+        <label>Requester Job Title</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requester_Manager__c</fullName>
+        <defaultValue>$User.Reporting_Manager_Name__c</defaultValue>
+        <description>Work requester Manager</description>
+        <externalId>false</externalId>
+        <label>Requester Manager</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requester_Org_Segment_Function_Other__c</fullName>
+        <description>Requester Market Segment Function</description>
+        <externalId>false</externalId>
+        <label>Requester Org/Segment/Function Other</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requester_Org_Segment_Function__c</fullName>
+        <externalId>false</externalId>
+        <label>Requester Org/Segment/Function</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BC COE</fullName>
+                    <color>#0B6FCE</color>
+                    <default>false</default>
+                    <label>BC COE</label>
+                </value>
+                <value>
+                    <fullName>Channels</fullName>
+                    <color>#F96FB7</color>
+                    <default>false</default>
+                    <label>Channels</label>
+                </value>
+                <value>
+                    <fullName>Global Enterprise</fullName>
+                    <color>#E27001</color>
+                    <default>false</default>
+                    <label>Global Enterprise</label>
+                </value>
+                <value>
+                    <fullName>Global SP</fullName>
+                    <color>#A845DC</color>
+                    <default>false</default>
+                    <label>Global SP</label>
+                </value>
+                <value>
+                    <fullName>Marketing</fullName>
+                    <color>#F3D904</color>
+                    <default>false</default>
+                    <label>Marketing</label>
+                </value>
+                <value>
+                    <fullName>Product Sales</fullName>
+                    <color>#A53711</color>
+                    <default>false</default>
+                    <label>Product Sales</label>
+                </value>
+                <value>
+                    <fullName>Services Sales</fullName>
+                    <color>#66E9BD</color>
+                    <default>false</default>
+                    <label>Services Sales</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <color>#0B24BE</color>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>GSESP/GVE/PDI</fullName>
+                    <color>#419249</color>
+                    <default>false</default>
+                    <label>GSESP/GVE/PDI</label>
+                </value>
+                <value>
+                    <fullName>IT</fullName>
+                    <color>#EFAE73</color>
+                    <default>false</default>
+                    <label>IT</label>
+                </value>
+                <value>
+                    <fullName>GSSO</fullName>
+                    <color>#66FFFF</color>
+                    <default>false</default>
+                    <label>GSSO</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Requester_Theater__c</fullName>
+        <description>Requester Theater</description>
+        <externalId>false</externalId>
+        <label>Requester Geo</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Americas</fullName>
+                    <color>#0B6FCE</color>
+                    <default>false</default>
+                    <label>Americas</label>
+                </value>
+                <value>
+                    <fullName>APJ</fullName>
+                    <color>#AFCADF</color>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>EMEAR</fullName>
+                    <color>#E27001</color>
+                    <default>false</default>
+                    <label>EMEAR</label>
+                </value>
+                <value>
+                    <fullName>GC</fullName>
+                    <color>#F96FB7</color>
+                    <default>false</default>
+                    <label>GC</label>
+                </value>
+                <value>
+                    <fullName>GET</fullName>
+                    <color>#A845DC</color>
+                    <default>false</default>
+                    <label>GET</label>
+                </value>
+                <value>
+                    <fullName>Global</fullName>
+                    <color>#419249</color>
+                    <default>false</default>
+                    <label>Global</label>
+                </value>
+                <value>
+                    <fullName>GSP</fullName>
+                    <color>#A53711</color>
+                    <default>false</default>
+                    <label>GSP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Requester__c</fullName>
+        <defaultValue>$User.FirstName &amp; " "  &amp; $User.LastName</defaultValue>
+        <externalId>false</externalId>
+        <label>Requester Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Resources_Available__c</fullName>
+        <externalId>false</externalId>
+        <label>Resources Available</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Roles_Impacted_List_SalesSegment_Group__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the job roles impacted by business problem</inlineHelpText>
+        <label>Roles Impacted(List SalesSegment/Group)</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Roles_Impacted__c</fullName>
+        <description>The roles impacted by the work request</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the job roles impacted by business problem</inlineHelpText>
+        <label>Roles Impacted(List Sales Segment/Group)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AM (Account Manager)</fullName>
+                    <default>false</default>
+                    <label>AM (Account Manager)</label>
+                </value>
+                <value>
+                    <fullName>PAM (Partner Account Manager)</fullName>
+                    <default>false</default>
+                    <label>PAM (Partner Account Manager)</label>
+                </value>
+                <value>
+                    <fullName>PSS (Product Sales Specialists)</fullName>
+                    <default>false</default>
+                    <label>PSS (Product Sales Specialists)</label>
+                </value>
+                <value>
+                    <fullName>RM (Regional Manager)</fullName>
+                    <default>false</default>
+                    <label>RM (Regional Manager)</label>
+                </value>
+                <value>
+                    <fullName>Sales Management</fullName>
+                    <default>false</default>
+                    <label>Sales Management</label>
+                </value>
+                <value>
+                    <fullName>SAM (Service Account Manager)</fullName>
+                    <default>false</default>
+                    <label>SAM (Service Account Manager)</label>
+                </value>
+                <value>
+                    <fullName>SE (Systems Engineer)</fullName>
+                    <default>false</default>
+                    <label>SE (Systems Engineer)</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Simplification_of_Sales_Process__c</fullName>
+        <description>Improves process efficiency / productivity(i.e. Combines old / retired tools, reduces # of integrations / environments to maintain)</description>
+        <externalId>false</externalId>
+        <label>Simplification of Sales Process</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>N/A-Does not apply</fullName>
+                    <default>false</default>
+                    <label>N/A-Does not apply</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Total_Level_of_Investment_Comments__c</fullName>
+        <description>Total Level of Investment(incl. Biz/IT)</description>
+        <externalId>false</externalId>
+        <label>Total Level of Investment Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Total_Level_of_Investment_Score__c</fullName>
+        <description>Level of investment required Score(Total Project Cost, incl. Biz / IT, licensing, etc.)</description>
+        <externalId>false</externalId>
+        <label>Total Level of Investment Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Total_Level_of_Investment_incl_Biz_IT__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>High ($500K - $1M)</controllingFieldValue>
+                <valueName>10</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Medium ($50K-500K)</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Low (&lt; $50K)</controllingFieldValue>
+                <valueName>0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>N/A</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Total_Level_of_Investment_incl_Biz_IT__c</fullName>
+        <description>Level of investment required (Total Project Cost, incl. Biz / IT, licensing, etc.)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Level of investment required (Total Project Cost, incl. Biz / IT, licensing, etc.)</inlineHelpText>
+        <label>Total Level of Investment(incl. Biz/IT)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High ($500K - $1M)</fullName>
+                    <default>false</default>
+                    <label>High ($500K - $1M)</label>
+                </value>
+                <value>
+                    <fullName>Medium ($50K-500K)</fullName>
+                    <default>false</default>
+                    <label>Medium ($50K-500K)</label>
+                </value>
+                <value>
+                    <fullName>Low (&lt; $50K)</fullName>
+                    <default>false</default>
+                    <label>Low (&lt; $50K)</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Total_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>(CASE(  Change_Management_Effort_Score__c  , "10", 10, "5", 5,"0", 0, "N/A", 0, 0)) + 
+(CASE( Downstream_Impacts_Score__c,  "10", 10, "5", 5,"0", 0, "N/A", 0, 0)) +
+(CASE( Integration_Needed_Score__c ,"10", 10, "0", 0, "N/A", 0, 0)) +
+(CASE( Total_Level_of_Investment_Score__c , "10", 10, "5", 5,"0", 0, "N/A", 0, 0)) +
+(CASE(  Number_of_Requirement_Risks_Score__c   , "10", 10, "5", 5,"0", 0, "N/A", 0, 0)) +
+(CASE( Change_Mgmt_Training_Comms_Required__c ,"10", 10, "5", 5,"0", 0, "N/A", 0, 0)) +
+(CASE( Translation_Francisation_Score__c  ,"10", 10, "5", 5,"0", 0, "N/A", 0, 0)) +
+(CASE(  User_Impacts_Score__c   ,"10", 10, "5", 5,"0", 0, "N/A", 0, 0))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Translation_Francisation_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Translation/ Francisation Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Translation_Francisation_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Translation / Francisation Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Translation_Francisation__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>N/A</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>High (&gt;5 Languages)</controllingFieldValue>
+                <valueName>10</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Medium (&gt;2 Languages)</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Low (0-2 Languages / Francisation)</controllingFieldValue>
+                <valueName>0</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Translation_Francisation__c</fullName>
+        <externalId>false</externalId>
+        <label>Translation / Francisation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High (&gt;5 Languages)</fullName>
+                    <default>false</default>
+                    <label>High (&gt;5 Languages)</label>
+                </value>
+                <value>
+                    <fullName>Medium (&gt;2 Languages)</fullName>
+                    <default>false</default>
+                    <label>Medium (&gt;2 Languages)</label>
+                </value>
+                <value>
+                    <fullName>Low (0-2 Languages / Francisation)</fullName>
+                    <default>false</default>
+                    <label>Low (0-2 Languages / Francisation)</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Translation_Francization_Required__c</fullName>
+        <description>Translation / Francization Required</description>
+        <externalId>false</externalId>
+        <label>Translation / Francization Required</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>User_Community_Impact__c</fullName>
+        <description>-Who is impacted?  Does this project impact All of Cisco, Multi-Segment or Local, regardless of origination?
+-How large is the impacted user group?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>-Who is impacted?  Does this project impact All of Cisco, Multi-Segment or Local, regardless of origination?
+-How large is the impacted user group?</inlineHelpText>
+        <label>User Community Impact</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>User_Experience_Improvements_Details__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Is this client experience improved?
+If so, please provide details.</inlineHelpText>
+        <label>User Experience Improvements Details</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>User_Impacts_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>User Impacts Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>User_Impacts_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>User Impacts Score</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>User_Impacts__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>High</controllingFieldValue>
+                <valueName>10</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Medium</controllingFieldValue>
+                <valueName>5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Low</controllingFieldValue>
+                <valueName>0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>N/A</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>User_Impacts__c</fullName>
+        <externalId>false</externalId>
+        <label>User Impacts</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                    <label>Medium</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Aging__c</fullName>
+        <description>Number of days since the wr was submitted</description>
+        <externalId>false</externalId>
+        <formula>TODAY () -  Work_Request_Submit_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Work Request Aging</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Complexity_Comments_PMO__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Request Complexity Comments(PMO)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Complexity_Comments__c</fullName>
+        <externalId>false</externalId>
+        <formula>Work_Request_Complexity_Comments_PMO__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Work Request Complexity Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Complexity_PMO__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Request Complexity(PMO)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Run the Business</fullName>
+                    <default>false</default>
+                    <label>Run the Business</label>
+                </value>
+                <value>
+                    <fullName>Enhancement</fullName>
+                    <default>false</default>
+                    <label>Enhancement</label>
+                </value>
+                <value>
+                    <fullName>Investment</fullName>
+                    <default>false</default>
+                    <label>Investment</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Complexity__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Work_Request_Complexity_PMO__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Work Request Complexity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Count__c</fullName>
+        <description>Work Request Count</description>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <label>Work Request Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Name__c</fullName>
+        <description>Name of the work request</description>
+        <externalId>false</externalId>
+        <label>Work Request Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Review_Date__c</fullName>
+        <description>Work Request month and year reviewed</description>
+        <externalId>false</externalId>
+        <label>Work Request Review Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Status_Comments_History__c</fullName>
+        <description>Used for Work Request Status History</description>
+        <externalId>false</externalId>
+        <label>Work Request Status Comments History</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Status_Comments_PMO__c</fullName>
+        <description>Comments related to work request status</description>
+        <externalId>false</externalId>
+        <label>Work Request Status Comments(PMO)</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Status_Comments__c</fullName>
+        <description>Copy of work request status comments visible to requester</description>
+        <externalId>false</externalId>
+        <formula>Work_Request_Status_Comments_PMO__c</formula>
+        <label>Work Request Status Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Status_History__c</fullName>
+        <description>Work request status history for requester</description>
+        <externalId>false</externalId>
+        <label>Work Request Status History</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Status_PMO__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Request Status(PMO)</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Analysis In Progress-Resource Assigned</fullName>
+                    <default>false</default>
+                    <label>Analysis In Progress-Resource Assigned</label>
+                </value>
+                <value>
+                    <fullName>Archived</fullName>
+                    <default>false</default>
+                    <label>Archived</label>
+                </value>
+                <value>
+                    <fullName>Cancelled by Requester</fullName>
+                    <default>false</default>
+                    <label>Cancelled by Requester</label>
+                </value>
+                <value>
+                    <fullName>Created</fullName>
+                    <default>true</default>
+                    <label>Created</label>
+                </value>
+                <value>
+                    <fullName>Delivered</fullName>
+                    <default>false</default>
+                    <label>Delivered</label>
+                </value>
+                <value>
+                    <fullName>Followup-Needed</fullName>
+                    <default>false</default>
+                    <label>Followup-Needed</label>
+                </value>
+                <value>
+                    <fullName>GBC Project</fullName>
+                    <default>false</default>
+                    <label>GBC Project</label>
+                </value>
+                <value>
+                    <fullName>Merged with another Request</fullName>
+                    <default>false</default>
+                    <label>Merged with another Request</label>
+                </value>
+                <value>
+                    <fullName>On Hold-By Requester</fullName>
+                    <default>false</default>
+                    <label>On Hold-By Requester</label>
+                </value>
+                <value>
+                    <fullName>Prioritized-Delivery Scheduled</fullName>
+                    <default>false</default>
+                    <label>Prioritized-Delivery Scheduled</label>
+                </value>
+                <value>
+                    <fullName>Prioritized-Delivery TBD</fullName>
+                    <default>false</default>
+                    <label>Prioritized-Delivery TBD</label>
+                </value>
+                <value>
+                    <fullName>Rejected-By Business Capabilities</fullName>
+                    <default>false</default>
+                    <label>Rejected-By Business Capabilities</label>
+                </value>
+                <value>
+                    <fullName>Rejected-No Global consensus</fullName>
+                    <default>false</default>
+                    <label>Rejected-No Global consensus</label>
+                </value>
+                <value>
+                    <fullName>RTB-Assigned</fullName>
+                    <default>false</default>
+                    <label>RTB-Assigned</label>
+                </value>
+                <value>
+                    <fullName>RTB-Assigned-On Hold</fullName>
+                    <default>false</default>
+                    <label>RTB-Assigned-On Hold</label>
+                </value>
+                <value>
+                    <fullName>RTB-Committed</fullName>
+                    <default>false</default>
+                    <label>RTB-Committed</label>
+                </value>
+                <value>
+                    <fullName>RTB-Delivered</fullName>
+                    <default>false</default>
+                    <label>RTB-Delivered</label>
+                </value>
+                <value>
+                    <fullName>RTB-Prioritized</fullName>
+                    <default>false</default>
+                    <label>RTB-Prioritized</label>
+                </value>
+                <value>
+                    <fullName>Transferred to another team</fullName>
+                    <default>false</default>
+                    <label>Transferred to another team</label>
+                </value>
+                <value>
+                    <fullName>Transferred to XRM-Active</fullName>
+                    <default>false</default>
+                    <label>Transferred to XRM-Active</label>
+                </value>
+                <value>
+                    <fullName>Under Complexity Assessment</fullName>
+                    <default>false</default>
+                    <label>Under Complexity Assessment</label>
+                </value>
+                <value>
+                    <fullName>Under Global Leads Review</fullName>
+                    <default>false</default>
+                    <label>Under Global Leads Review</label>
+                </value>
+                <value>
+                    <fullName>Under IT Review</fullName>
+                    <default>false</default>
+                    <label>Under IT Review</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Status__c</fullName>
+        <description>Copy of work request status visible to requester</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Work_Request_Status_PMO__c )</formula>
+        <label>Work Request Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Submit_Date__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <externalId>false</externalId>
+        <label>Work Request Submit Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Work_Request_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Request Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Run the Business</fullName>
+                    <default>false</default>
+                    <label>Run the Business</label>
+                </value>
+                <value>
+                    <fullName>Net New Capability</fullName>
+                    <default>false</default>
+                    <label>Net New Capability</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is to be used by the CRM Team to log and track requests from stakeholders for historical purposes.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>Work Request</label>
+    <nameField>
+        <displayFormat>WR-{00000}</displayFormat>
+        <label>Work Request ID</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Work Request</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Work_Request_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Work_Request_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Estimated_Release_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Requester__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Requester_Theater__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>Work_Request_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Work_Request_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Business_Need_Problem_Statement__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Project_Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Estimated_Release_Date_PMO__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>Archived</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Archived</value>
+        </filters>
+        <label>Archived</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CX_Work_Requests</fullName>
+        <booleanFilter>1 and 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Business_Benefits__c</columns>
+        <columns>Business_Need_Problem_Statement__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OWNER.ALIAS</field>
+            <operation>equals</operation>
+            <value>chsheth,asweatt</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Delivered,Cancelled by Requester</value>
+        </filters>
+        <label>CX Work Requests - CLOSED</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>CX_Unassigned</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>CX_Work_Requests_OPEN</fullName>
+        <booleanFilter>1 and 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Business_Benefits__c</columns>
+        <columns>Business_Need_Problem_Statement__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OWNER.ALIAS</field>
+            <operation>equals</operation>
+            <value>chsheth,asweatt</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Delivered,Cancelled by Requester</value>
+        </filters>
+        <label>CX Work Requests - OPEN</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>CX_Unassigned</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Cancelled_by_Requester</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Cancelled by Requester</value>
+        </filters>
+        <label>Cancelled by Requester</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Delivered</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>Work_Request_Status_Comments_PMO__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Delivered</value>
+        </filters>
+        <label>Delivered</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Delivered_CFY</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>Work_Request_Status_Comments_PMO__c</columns>
+        <columns>IT_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Estimated_Release_Date_PMO__c</field>
+            <operation>equals</operation>
+            <value>THIS_FISCAL_YEAR</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Delivered</value>
+        </filters>
+        <label>Delivered-CFY</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Delivered_Last_Quarter</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Work_Request_Review_Date__c</columns>
+        <columns>Estimated_Release_Date_PMO__c</columns>
+        <columns>No_of_Days_to_Deliver__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Delivered</value>
+        </filters>
+        <label>Delivered-Last Quarter</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Delivered_Last_Week</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Estimated_Release_Date_PMO__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>Work_Request_Status_Comments_PMO__c</columns>
+        <columns>IT_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Estimated_Release_Date_PMO__c</field>
+            <operation>equals</operation>
+            <value>LAST_WEEK</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Delivered</value>
+        </filters>
+        <label>Delivered-Last Week</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Delivered_This_Month</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Estimated_Release_Date_PMO__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>Work_Request_Status_Comments_PMO__c</columns>
+        <columns>IT_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Estimated_Release_Date_PMO__c</field>
+            <operation>equals</operation>
+            <value>THIS_MONTH</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Delivered</value>
+        </filters>
+        <label>Delivered-This Month</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Delivered_This_Quarter</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>Work_Request_Status_Comments_PMO__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Estimated_Release_Date_PMO__c</field>
+            <operation>equals</operation>
+            <value>THIS_FISCAL_QUARTER</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Delivered</value>
+        </filters>
+        <label>Delivered-This Quarter</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Delivered_This_Week</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>Work_Request_Status_Comments_PMO__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Delivered</value>
+        </filters>
+        <filters>
+            <field>Estimated_Release_Date_PMO__c</field>
+            <operation>equals</operation>
+            <value>THIS_WEEK</value>
+        </filters>
+        <label>Delivered This Week</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Merged_with_another_Request</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Merged with another Request</value>
+        </filters>
+        <label>Merged with another Request</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>On_Hold</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Requester_Org_Segment_Function__c</columns>
+        <columns>Requester_Org_Segment_Function_Other__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>contains</operation>
+            <value>On Hold</value>
+        </filters>
+        <label>09-On Hold</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Prioritized_Delivery_Scheduled</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Estimated_Release_Date_PMO__c</columns>
+        <columns>IT_Status__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Impacted_Theatres__c</columns>
+        <columns>Work_Request_Review_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>Estimated_Delivery_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Prioritized-Delivery Scheduled</value>
+        </filters>
+        <label>08-Prioritized-Scheduled (DONT CHANGE)</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Prioritized_Delivery_TBD</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Prioritized-Delivery TBD</value>
+        </filters>
+        <label>07-Prioritized-Delivery TBD</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>RTB</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Work_Request_Status_Comments__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>Requester__c</columns>
+        <columns>BCE_Resource_Assigned__c</columns>
+        <columns>Estimated_Delivery_Date__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Requester_Org_Segment_Function__c</columns>
+        <columns>Global_Leads_Recommendation__c</columns>
+        <columns>IT_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>contains</operation>
+            <value>RTB</value>
+        </filters>
+        <label>RTB</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>RTB_Assigned</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status_PMO__c</columns>
+        <columns>Work_Request_Status_Comments__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>Requester__c</columns>
+        <columns>BCE_Resource_Assigned__c</columns>
+        <columns>Estimated_Delivery_Date__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Requester_Org_Segment_Function__c</columns>
+        <columns>Global_Leads_Recommendation__c</columns>
+        <columns>IT_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>contains</operation>
+            <value>RTB-Assigned</value>
+        </filters>
+        <label>RTB-Assigned</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Re_Opened</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Re-Opened</value>
+        </filters>
+        <label>Re-Opened</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Rejected</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>contains</operation>
+            <value>Rejected</value>
+        </filters>
+        <label>Rejected</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Submitted_Last_30_Days</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Work_Request_Type__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>LAST_N_DAYS:30</value>
+        </filters>
+        <label>Submitted Last 30 Days</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Transferred</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>contains</operation>
+            <value>Transferred</value>
+        </filters>
+        <label>Transferred</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Under_IT_Review</fullName>
+        <columns>NAME</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OWNER.LAST_NAME</field>
+            <operation>equals</operation>
+            <value>ordonia</value>
+        </filters>
+        <label>06-Under IT Review</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X01_Created</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER.ALIAS</columns>
+        <columns>LAST_ACTIVITY</columns>
+        <columns>OWNER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <label>01-Created</label>
+    </listViews>
+    <listViews>
+        <fullName>X01_Created1</fullName>
+        <columns>NAME</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATEDBY_USER</field>
+            <operation>contains</operation>
+            <value>jyoti</value>
+        </filters>
+        <label>For Rachel</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>X02_Submitted_for_Monthly_Review</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Submitted for Monthly Review</value>
+        </filters>
+        <label>02-Submitted for Monthly Review</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X03_Under_Complexity_Assessment</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Under Complexity Assessment</value>
+        </filters>
+        <label>03-Under Complexity Assessment</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X04_Under_Run_the_Business_Review</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <columns>Global_Agreement_XRM_PMO__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Under Run the Business Review</value>
+        </filters>
+        <label>04-Under Run the Business Review</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X05_Under_Geo_Function_Leads_Review</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status_PMO__c</field>
+            <operation>equals</operation>
+            <value>Under Geo/Function Leads Review</value>
+        </filters>
+        <label>05-Under Geo/Function Leads Review</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>X11_Submitted_for_monthly_review</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Requester_Theater__c</columns>
+        <columns>Requester_Org_Segment_Function__c</columns>
+        <columns>Requester_Org_Segment_Function_Other__c</columns>
+        <columns>Primary_Tool_App_Impacted__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Work_Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted for monthly review</value>
+        </filters>
+        <label>11-Submitted for monthly review</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>zEMEAR</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Project_Description__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Requested_Go_Live_Date__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Requester_Theater__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Delivered</value>
+        </filters>
+        <label>zEMEAR Work Requests - In progress</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>zEMEAR_Work_Requests_DELIVERED</fullName>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Project_Description__c</columns>
+        <columns>Requester__c</columns>
+        <columns>Work_Request_Submit_Date__c</columns>
+        <columns>Requested_Go_Live_Date__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Requester_Theater__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Delivered</value>
+        </filters>
+        <label>zEMEAR Work Requests - Delivered</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>zPA_PDI_PH_TSN_Requests_Delivered</fullName>
+        <booleanFilter>(1 or 2) and 3</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>Estimated_Release_Date_PMO__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <columns>Requester__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Requester_Email__c</field>
+            <operation>contains</operation>
+            <value>mbrady,blindke,jalong,sordonio</value>
+        </filters>
+        <filters>
+            <field>Requester__c</field>
+            <operation>contains</operation>
+            <value>Matt Brady,Bill Lindke,James Long,Stephanie Ordonio</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status__c</field>
+            <operation>contains</operation>
+            <value>delivered,cancelled,archived</value>
+        </filters>
+        <label>z-PDI-TSN-PH Requests - Closed</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+            <group>TSNGroup</group>
+            <group>TSNManagers</group>
+            <group>TSNSEs</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>zPH_TSN_Quick_Wins</fullName>
+        <booleanFilter>(1 or 2) and 3</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Work_Request_Name__c</columns>
+        <columns>Work_Request_Status__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <columns>Requester__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Requester_Email__c</field>
+            <operation>contains</operation>
+            <value>mbrady,blindke,jalong,sordonio</value>
+        </filters>
+        <filters>
+            <field>Requester__c</field>
+            <operation>contains</operation>
+            <value>Matt Brady,Bill Lindke,James Long,Stephanie Ordonio</value>
+        </filters>
+        <filters>
+            <field>Work_Request_Status__c</field>
+            <operation>notContain</operation>
+            <value>delivered,cancelled,archived</value>
+        </filters>
+        <label>z-PDI-TSN-PH Requests - Open</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+            <group>TSNGroup</group>
+            <group>TSNManagers</group>
+            <group>TSNSEs</group>
+        </sharedTo>
+    </listViews>
+    <validationRules>
+        <fullName>Complexity_Level_Other_Mandatory_Check</fullName>
+        <active>true</active>
+        <description>If Complexity Status is set to Other, then this field needs to be filled in with details</description>
+        <errorConditionFormula>ISPICKVAL( Complexity_Level__c , 'Other') &amp;&amp;
+ISBLANK( Complexity_Level_Others__c )</errorConditionFormula>
+        <errorDisplayField>Complexity_Level_Others__c</errorDisplayField>
+        <errorMessage>Please enter the Level</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Compliance_Information</fullName>
+        <active>false</active>
+        <description>Compliance Information Required</description>
+        <errorConditionFormula>TEXT( Main_Metric_Impacted__c ) == 'Compliance (Support the Business)'  
+&amp;&amp;
+LEN( Compliance_Information__c) ==0</errorConditionFormula>
+        <errorDisplayField>Compliance_Information__c</errorDisplayField>
+        <errorMessage>Required when  Main Metric Impacted is "Compliance (Support the Business)"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Expected_Dollar_Savings_Quarter</fullName>
+        <active>false</active>
+        <description>Expected $ Savings/Quarter Required</description>
+        <errorConditionFormula>(TEXT( Main_Metric_Impacted__c ) == 'Cost Reduction'  || TEXT( Main_Metric_Impacted__c ) == 'Revenue Improvements (Grow the Business)')
+&amp;&amp;
+ISBLANK( Expected_Savings_Quarter__c )</errorConditionFormula>
+        <errorDisplayField>Expected_Savings_Quarter__c</errorDisplayField>
+        <errorMessage>Required when  Main Metric Impacted is 
+"Cost Reduction" OR
+"Revenue Improvements (Grow the Business)"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Expected_Manual_Hours_Savings_Quarter</fullName>
+        <active>false</active>
+        <description>Expected Manual Hours Savings/Quarter Required</description>
+        <errorConditionFormula>(TEXT( Main_Metric_Impacted__c ) == 'Operational Savings (Productivity Improvement)'  || TEXT( Main_Metric_Impacted__c ) == 'Time Savings (IT, Business Operations, Business)')
+&amp;&amp;
+ISBLANK(  Expected_Manual_Hours_Savings_Quarter__c )</errorConditionFormula>
+        <errorDisplayField>Expected_Manual_Hours_Savings_Quarter__c</errorDisplayField>
+        <errorMessage>Required when  Main Metric Impacted is 
+"Operational Savings (Productivity Improvement)" OR
+"Time Savings (IT, Business Operations, Business)"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Invalid_User</fullName>
+        <active>true</active>
+        <description>Restricts users from creating WR if they don't have access.</description>
+        <errorConditionFormula>ISNEW() &amp;&amp; ISBLANK( Work_Request_Name__c )</errorConditionFormula>
+        <errorMessage>You do not have access to create Work Request. Please email gbocrm_pmo@cisco.com to request access.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Lock_creating_new_wr</fullName>
+        <active>true</active>
+        <description>disable wr creation</description>
+        <errorConditionFormula>isnew()</errorConditionFormula>
+        <errorMessage>Work Request creation has been moved to the new system. Please follow the new workrequest intake process: https://cisco.jiveon.com/groups/work-intake-process</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Main_Metric_Impacted_Other</fullName>
+        <active>false</active>
+        <description>Main Metric Impacted_Other Required</description>
+        <errorConditionFormula>TEXT( Main_Metric_Impacted__c ) == 'Other' &amp;&amp;
+ISBLANK( Main_Metric_Impacted_Other__c)</errorConditionFormula>
+        <errorDisplayField>Main_Metric_Impacted_Other__c</errorDisplayField>
+        <errorMessage>Required when  Main Metric Impacted is "Other"</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Merged_with_another_Work_Request</fullName>
+        <active>true</active>
+        <description>Merging the current work request with already WR submitted. This is since the current work request (PMO) status is "Merged with another Request"</description>
+        <errorConditionFormula>ISPICKVAL( Work_Request_Status_PMO__c , 'Merged with another Request') &amp;&amp;
+ISBLANK( Related_Work_Request__c )</errorConditionFormula>
+        <errorDisplayField>Related_Work_Request__c</errorDisplayField>
+        <errorMessage>Required when work request status is "Merged with another Request".</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Request_Status_Comment_Mandatory_Check</fullName>
+        <active>true</active>
+        <description>To Ensure that the requester enters some comments to the Status other than Submitted.</description>
+        <errorConditionFormula>TEXT(  Work_Request_Status_PMO__c ) != 'Created' &amp;&amp;
+ISBLANK( Work_Request_Status_Comments_PMO__c ) &amp;&amp;
+
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS__c &amp;&amp;
+$Profile.Id != $Setup.ProfileID__c.Cisco_Data_Migration__c &amp;&amp;
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS_Analyst__c &amp;&amp;
+$Profile.Id != $Setup.ProfileID__c.Cisco_Integration_Echo_Suppression__c</errorConditionFormula>
+        <errorDisplayField>Work_Request_Status_Comments_PMO__c</errorDisplayField>
+        <errorMessage>Please Enter Some Comments on your Request Status.</errorMessage>
+    </validationRules>
+</CustomObject>

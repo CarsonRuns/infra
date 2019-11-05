@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?><Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>PEPE_PPL_Email_Notification_to_BLP_LPBC</fullName>
+        <description>PEPE_PPL_Email_Notification_to_BLP_LPBC</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PLP_Email_Field_01__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>donotreply-sfdc@cisco.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>PEPE_Email_Template_Notifications/PDP_PPL_Email_Notification_to_BLP_for_LPBC_RDR</template>
+    </alerts>
+    <alerts>
+        <fullName>PEPE_PPL_Email_Notification_to_LPS</fullName>
+        <description>PEPE_PPL_Email_Notification_to_LPS</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PLP_Email_Field_01__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>PEPE_Email_Template_Notifications/PEPE_PPL_Email_Notification_to_LPS_ON_EA_LC_Delivered</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>EA_with_No_Status1</fullName>
+        <field>Status__c</field>
+        <name>EA_with_No_Status1</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Event_Agenda_TE_Submitted_PPLAdmin</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Event_Agenda_TE_Submitted_PPLAdmin</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Event_Agenda_TE_Submitted_PPLAdmin</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PDP_PPL_RecType_to_QA_QR_RDR</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>PPL_Event_Agenda_QA_AR_RDR</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>PDP_PPL_RecType_to_QA_QR_RDR</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PPL_EA_RecordType_Change_to_EventApprove</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>PPL_EA_EventApproved_Or_Delivered_or_LogisticConfirm</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>PPL_EA_RecordType_Change_to_EventApprove</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PPL_Training_Agenda_LPBC</fullName>
+        <description>Update the RecordType</description>
+        <field>RecordTypeId</field>
+        <lookupValue>PPL_Event_Agenda_LPBC</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>PPL_Training_Agenda_LPBC</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>REC_Event_Agenda_Layout_Event_Published</fullName>
+        <description>Update the Record Type when Training Event is Published to REC_Event_Agenda_Layout_Event_Published</description>
+        <field>RecordTypeId</field>
+        <lookupValue>REC_Event_Agenda_Layout_Event_Published</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>REC_Event_Agenda_Layout_Event_Published</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>EA_with_No_Status</fullName>
+        <actions>
+            <name>EA_with_No_Status1</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>PEPE_Agenda_Topic__c.Agenda_Type__c</field>
+            <operation>equals</operation>
+            <value>BREAK</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PDP_PPL_Email_Notification_to_BLP_on_LPBC_and_Revised_details_requested</fullName>
+        <actions>
+            <name>PEPE_PPL_Email_Notification_to_BLP_LPBC</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND 2) OR 3</booleanFilter>
+        <criteriaItems>
+            <field>PEPE_Agenda_Topic__c.Delivery_Team__c</field>
+            <operation>equals</operation>
+            <value>Business Learning Partner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Event_Agenda__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Learning Partner being contacted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Event_Agenda__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Revised Details Requested</value>
+        </criteriaItems>
+        <description>Sends Email Notification to all RLs when EA is Awaiting Requestors Response</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PDP_PPL_Event_Agenda_LPBC</fullName>
+        <actions>
+            <name>PPL_Training_Agenda_LPBC</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>PEPE_Event_Agenda__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Learning Partner being contacted</value>
+        </criteriaItems>
+        <description>Learning Partner Details Can be editable in LPBC</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PDP_PPL_Event_Agenda_Layout_Event_Published</fullName>
+        <actions>
+            <name>REC_Event_Agenda_Layout_Event_Published</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 3 OR 4 OR 5) AND 2</booleanFilter>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Event_Agenda__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Created</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Withdrawn</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Deleted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted</value>
+        </criteriaItems>
+        <description>Change the Layout to non editable when Training Event is published. So, the start and end date and time cannot be saved.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PDP_PPL_Rec_Type_Change_When_Event_Approved_or_Delivered_or_Logistic_Confirm</fullName>
+        <actions>
+            <name>PPL_EA_RecordType_Change_to_EventApprove</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Event Agenda Rec Type Change When Status is Event Approved or Delivered or Logistic Confirm</description>
+        <formula>(ISPICKVAL( Status__c , 'Event Approved') || ISPICKVAL( Status__c , 'Delivered') || ISPICKVAL( Status__c , 'Logistics Confirmed'))&amp;&amp;  ISPICKVAL(Training_Offering_Id__r.Platform__c, 'Partner Plus Lounge')</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PDP_PPL_Rec_Type_Change_When_Status_QA_or_Qr_or_RDR</fullName>
+        <actions>
+            <name>PDP_PPL_RecType_to_QA_QR_RDR</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>PEPE_Event_Agenda__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Revised Details Requested</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Event_Agenda__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Quote Accepted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Event_Agenda__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Quote Rejected</value>
+        </criteriaItems>
+        <description>Record Type Change When Status Quote Accepted or Quote Rejected or Revised Details Request</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PEPE_PPL_Email_alert_at_Event_Approved</fullName>
+        <actions>
+            <name>PEPE_PPL_Email_Notification_to_LPS</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>PEPE_Event_Agenda__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Event Approved,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.Platform__c</field>
+            <operation>equals</operation>
+            <value>Partner Plus Lounge</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PEPE_Training_Event__c.Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <description>Notification on Event Agenda when the EA status changed to “Event approved”</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

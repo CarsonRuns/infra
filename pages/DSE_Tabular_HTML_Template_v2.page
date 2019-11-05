@@ -1,0 +1,509 @@
+<apex:page contentType="text/text">
+   <div class="dse-st">
+      <style>
+         .sttdnew {
+         width: 150px;
+         background-color: white;
+         padding: 2px !important;
+         padding-left: 10px !important;
+         border-bottom-color: #eee;
+         border-bottom-style: solid;
+         border-bottom-width: 1px;
+         }
+         .stwidth {
+         width: 100px;
+         }
+         .stAutoWidth {
+         min-width: 110px;
+         }
+         .dse-st .dsewrappedheader {
+         padding-top: 10px !important;
+         }
+         .dse-st .dsepadding-left {
+         padding-left: 5px !important;
+         }
+         .dse-st .dseheaderblock {
+         border-style: solid;
+         border-width: 1px;
+         height: 85px;
+         border-color: #eee;
+         position: relative;
+         background-color: white !important;
+         }
+         .dse-st .dselegend {
+         position: absolute;
+         bottom: 10px;
+         left: 0;
+         width: 100%;
+         }
+         .dse-st .row {
+         margin-left: 0px !important;
+         margin-right: 0px !important;
+         }
+         .dse-st .dseheader {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         }
+         .dse-st .sev-container {
+         width: 12px;
+         height: 12px;
+         text-align: center;
+         display: inline-block;
+         vertical-align: middle;
+         }
+         .dse-st .sev-1 {
+         color: white;
+         background-color: red;
+         font-weight: bold;
+         content: "1";
+         }
+         .dse-st .sev-1:before {
+         content: "1";
+         font-size: 10px;
+         padding-top: 5px;
+         }
+         .dse-st .sev-2 {
+         color: white;
+         background-color: orange;
+         font-weight: bold;
+         }
+         .dse-st .sev-2:before {
+         content: "2";
+         font-size: 10px;
+         padding-top: 5px;
+         }
+         .dse-st .tooltip-inner{
+         white-space:pre-wrap;
+         }
+         .dse-st .tooltip-inner {
+         background-color: #E0E0E0;
+         color:#000000;
+         }
+         .dse-st .tooltip.top .tooltip-arrow {         
+         border-top-color: #E0E0E0;
+         }   
+         .dse-st .tooltip-inner{
+         white-space:pre-wrap;
+         }
+         .dse-st .tooltip {
+         width: auto !important;
+         left: 8% !important;
+         top: 0% !important;
+         line-height: 1;
+         }
+         .dse-st .tooltip-inner {
+         background-color: #e2e6ee;
+         color: #000000;
+         max-width: 1000px;
+         opacity: 10 !important;
+         height: 195px !important;
+         width: 190px !important;
+         padding: 0px 10px;
+         text-align: left !important;
+         }
+         .dse-st .tooltip.in {
+         opacity: 1 !important;
+         }
+         .dse-st .tooltip.bottom .tooltip-arrow {
+         border-bottom-color: #e2e6ee;
+         line-height: 2;
+         }
+         .dse-st .tooltip.top .tooltip-arrow {
+         border-top-color: #e2e6ee;
+         line-height: 2;
+         }
+         .dse-st .tooltip-arrow{
+         display:none;
+         } 
+         .axis path, .axis line {
+         display:none;
+         }
+         .axis-transform{
+         text-transform: capitalize;
+         font-size:10px;
+         }
+         .dse-st a {
+         color: #0D6A9D !important;
+         }
+         .dse-st a:hover, .dse-st a:focus {
+         color: #0D6A9D !important;
+         }
+         #dseOrderDropdown{
+         border-bottom-left-radius: 0px;
+         border-bottom-right-radius: 0px;
+         box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.2);
+         height: auto;
+         text-align: center;                 
+         color: #4b586c;
+         right: 0 !important;        
+         font-size: 12px !important;
+         margin-top: 10px !important;
+         margin-left: -15% !important;
+         min-width: 0px !important;
+         max-width: 208px !important;
+         border: 0px;
+         background-color: #fff;     
+         }
+          #dseHelpDropdown{
+         border-bottom-left-radius: 0px;
+         border-bottom-right-radius: 0px;
+         box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.2);
+         height: auto;
+         text-align: center;
+         min-width:208px !important;         
+         color: #4b586c;
+         right: 0 !important;
+         font-size: 12px !important;
+         margin-top: -12px !important;
+         margin-left: -160px !important;
+         border: 0px;
+         background-color: #fff;        
+         }
+         .dse-st .dropdown-menu > li > a:hover{
+         color:black;
+         background-color:white;
+         } 
+         svg {
+         float: left;
+         }   
+         span.totalItems {
+         float: left;
+         margin-top: -17px;
+         margin-left: 29%;
+         }
+         span.headerLabel {
+         float: left;
+         }
+         .headerTooltip {
+         height: 10px;
+         font-weight:bold;
+         } 
+         
+        .dropdown-menu {
+            width: auto !important;         
+            margin:0px !important;
+        }                        
+      </style>
+      <script type="text/ng-template" id="myTooltipTemplate.html">             
+            <div style="margin-top:-10px;text-align:left !important;width:200px !important;">   
+                <span style="float:left;font-size:11px;margin-top:-10px;"><span style="font-size:12px;font-family:Arial;"><center>Order #{{record.ordernumber}}</center></span><br/>Line Items Status   Total Items</span><br/>
+                
+            <stBar-chart id="tooltipChart" data="record"></stBar-chart>   
+            </div>                      
+      </script>
+      <div class="dse-st">
+         <div ng-show="!searchToggle" style="height:32px;">
+            <div>
+               <div style="height:32px;font-size:80%;padding:1px;" ng-class="{'stmenucolor':!searchToggle}">
+                  <center>
+                     <span class="glyphicon glyphicon-search stcard-dropdown" ng-click="searchToggleBtn()" ng-show="searchToggle"></span>
+                     <span class="stcard-dropdown" ng-show="!searchToggle" ng-click="searchToggleBtn()">
+                     <img src="{!$Resource.DSE_Cross}" width="20px" height="20px" style="margin: 5px;"/>
+                     </span>
+                     <span class="input-group" style="background-color: white;border: #00C5CD;border-style: solid;border-width: 1px;border-radius: 5px;">
+                        <span ng-hide="searchToggle">
+                           <span class="glyphicon glyphicon-search" style="float:left;margin-top: -2px;padding-left:5px;"></span>
+                           <select class="stform-control dse-searchselect" ng-model="queryBy" ng-change="resetFilters(queryBy)" style="vertical-align: super;border:none;height: 20px;box-shadow: none;border-radius: 3px;width: 20px !important;padding-top: 1px;">
+                              <option data-ng-repeat="cell in mycolumns" ng-if="cell.searchable != false" value="{{cell.fieldname}}@{{cell.caption}}">{{cell.caption}}</option>
+                           </select>
+                           <input ng-hide="searchToggle" class="stform-control" ng-model="searchText" style="vertical-align: super;border: none;border-right:solid;border-color:#00C5CD;border-width:1px;border-radius:3px 0px 0px 3px;padding-top:2px;" type="text" placeholder="Search by {{queryByText}}" enter-Press="search(queryBy,searchText)" />
+                           <a class="btn btn-primary btn-xs" style="margin-left: 5px;margin-top: -15px;margin-right: 10px;" ng-hide="searchToggle" ng-click="search(queryBy,searchText)" ng-disabled="searchText == '' || queryBy == '$'">Search</a>
+                        </span>
+                     </span>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="dseheaderblock">
+            <div class="row">
+               <div class="col-md-8 col-xs-8" style="padding-top:15px">
+                  <h4>
+                     {{sectitle}} <small style="font-size:12px;color: #acacac;">&nbsp;&nbsp;{{lastUpdatedDate}}</small> <span style="font-size:60%;" ng-if="sectitle == 'TAC Cases' && pid != '' && oeid ==null && filtertype!='U'">  <a href="{{parentURL}}" target="_blank">[View Country-Wide Cases]</a></span>
+                     
+                  </h4>
+               </div>
+               <div class="col-md-4 col-xs-4">
+              
+                   <div class="stdropdown pull-right" ng-show="searchToggle">
+                     <div class="btn-group" uib-dropdown="true">
+                        <button style="background-color:white;border:none;box-shadow:none;" class="btn btn-primary" uib-dropdown-toggle="true" ng-disabled="disabled">
+                        
+                        <span class="glyphicon" style="margin-right: -10px;" ng-style="sectitle != 'Order Status' && {'margin-top':'5px'}">
+                         <img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/DSE_Share.svg')}" height="12px"></img>                         
+                         </span>
+                        </button>
+                        <ul uib-dropdown-menu="true" role="menu" id="dseHelpDropdown" aria-labelledby="">
+                           <li role="menuitem" style="padding:5px;cursor:pointer;text-align:left;margin-left:5px !important;">
+                              <span class="glyphicon" ><img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/dse_help.png')}" height="15px" style="vertical-align: bottom;"></img></span>
+                               <span style="margin-left:5px;" ng-click="openHelp(helplink)">Help&nbsp;                                
+                               </span>
+                           </li>
+                           <li role="menuitem" style="padding-top:5px;cursor:pointer;text-align:left;margin-left:10px !important;" ng-if="sectitle != 'Account Sites'">
+                              <span class="glyphicon" style="top: 0px;"><img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/dse_openin.png')}" height="15px"></img></span>
+                              <span ng-click="openHelp(baseuri)" style="margin-left:5px;" >{{basetool}} &nbsp;
+                              </span>
+                           </li>
+                           <li role="menuitem" style="padding-top:5px;cursor:pointer;text-align:left;margin-left:10px !important;" ng-if="sectitle != 'Account Sites'">
+                              <span class="glyphicon" style="top: 0px;padding-top: 5px;padding-bottom: 5px;"><img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/dse_InTouch.png')}" height="15px"></img></span>
+                              <span ng-click="openInTouch()" style="margin-left:5px;" ng-if="sectitle != 'Account Sites'">Feedback &nbsp;
+                              </span>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>             
+                  <span class="glyphicon glyphicon-search stcard-dropdown pull-right" ng-click="searchToggleBtn()" ng-show="searchToggle"></span>
+               </div>
+            </div>
+            <div class="row dselegend ">
+               <div class="col-md-8 col-xs-9" style="padding-top: 2px;">
+                  <span ng-repeat="i in legends" ng-init="f = i.color" ng-if="sectitle !== 'Order Status'">                     
+                  <span class="{{i.type}}" ng-style="{color:i.color}"></span>
+                  <span style="color:grey;font-size:10px; padding-right:10px">&nbsp;{{i.label}}</span>
+                  </span>
+               </div>
+               <div class="col-md-4 col-xs-3">
+                  <div style="color:grey" class="pull-right">
+                     <!-- <span><small><strong>{{filterby}}</strong></small></span>-->
+                     <span style="margin-right:10px;margin-left:10px;font-size:90%;color: #acacac;">{{totalrecords}} {{totalrecords == 1? 'item' : 'items'}}</span>
+                     <select name="filter" id="filter" ng-model="filterCond" style="width:120px;font-size:80%;height:20px;border:1px solid #eee;" ng-change="filterRecords()">
+                        <option data-ng-repeat="f in filterbyOption" value="{{f.value}}">&nbsp;&nbsp;{{f.label}}</option>
+                     </select>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div>
+            <section class="stsection" style="border:1px solid #eee">
+               <div class="stcontainer" style="border:1px solid #eee">
+                  <table class="sttable">
+                     <thead>
+                        <tr>
+                           <th class="stth" data-ng-repeat="cell in mycolumns" data-ng-init="cellvisible=getcolumnShow(cell);" ng-show="cellvisible && cell.icontype != 'date'" ng-class="cell.fieldname != 'ordernumber'? 'stAutoWidth' : 'stwidth'" scope="col">
+                              <span style="padding-left:40px">
+                                 <div ng-click="sort_column(cell.fieldname)" ng-if="cell.combinewith =='' " ng-style="cell.fieldname == 'lineitemstatus' && {'cursor':'default'}">
+                                    {{cell.caption}}&nbsp;
+                                    <span class="glyphicon glyphicon-chevron-down" ng-if="reverse && cell.fieldname == predicate && cell.fieldname != 'lineitemstatus'"></span>
+                                    <span class="glyphicon glyphicon-chevron-up" ng-if="!reverse && cell.fieldname == predicate && cell.fieldname != 'lineitemstatus'"></span>
+                                 </div>
+                                 <div ng-click="sort_column(cell.combinewith)" ng-if="cell.combinewith !='' " ng-class="sectitle === 'Order Status'? 'dsewrappedheader':'' ">
+                                    {{cell.caption}}&nbsp;
+                                    <span ng-if="apipath != 'oecaseorderapi/v1.0/cases/tech'" style="color:orange;font-weight:normal;padding-top:10px !important;"><br/>Order Status</span>
+                                    <span class="glyphicon glyphicon-chevron-down" ng-if="reverse && cell.combinewith == predicate"></span>
+                                    <span class="glyphicon glyphicon-chevron-up" ng-if="!reverse && cell.combinewith == predicate"></span>
+                                 </div>
+                              </span>
+                           </th>
+                           <th class="stth" ng-show="clientside == true && apiobject != 'account'">
+                              <div ng-click="sort_column('created_date')" ng-if="apiobject != 'orderstatus'" style="margin-left:-10px">Created
+                                 <span class="glyphicon glyphicon-chevron-down" ng-if="!reverse && ('customdate' == predicate || 'createddate' == predicate || 'created_date' == predicate)"></span>
+                                 <span class="glyphicon glyphicon-chevron-up" ng-if="reverse && ('customdate' == predicate || 'createddate' == predicate || 'created_date' == predicate)"></span>
+                              </div>
+                              <div ng-click="sort_column('createddate')" ng-if="apiobject != 'taccase'" style="margin-left:-10px">Created
+                                 <span class="glyphicon glyphicon-chevron-down" ng-if="!reverse && ('customdate' == predicate || 'createddate' == predicate || 'created_date' == predicate)"></span>
+                                 <span class="glyphicon glyphicon-chevron-up" ng-if="reverse && ('customdate' == predicate || 'createddate' == predicate || 'created_date' == predicate)"></span>
+                              </div>
+                           </th>
+                           <th class="stth" ng-show="clientside == false  && apiobject != 'account'">
+                              <div ng-click="sort_column('created_date')" ng-if="apiobject != 'orderstatus'" style="margin-left:-10px">Created
+                                 <span class="glyphicon glyphicon-chevron-down" ng-if="!reverse && ('customdate' == predicate || 'createddate' == predicate || 'created_date' == predicate)"></span>
+                                 <span class="glyphicon glyphicon-chevron-up" ng-if="reverse && ('customdate' == predicate || 'createddate' == predicate || 'created_date' == predicate)"></span>
+                              </div>
+                              <div ng-click="sort_column('createddate')" ng-if="apiobject != 'taccase'" style="margin-left:-10px">Created
+                                 <span class="glyphicon glyphicon-chevron-down" ng-if="!reverse && ('customdate' == predicate || 'createddate' == predicate || 'created_date' == predicate)"></span>
+                                 <span class="glyphicon glyphicon-chevron-up" ng-if="reverse && ('customdate' == predicate || 'createddate' == predicate || 'created_date' == predicate)"></span>
+                              </div>
+                           </th>
+                           <th class="stth"></th>
+                        </tr>
+                     </thead>
+                     <tbody ng-if="message==''">
+                        <tr data-ng-repeat="record in valData | limitTo: pageLimit" ng-click="fnRowClick(record,mycolumns)" ng-if="!clientside">
+                           <td data-ng-repeat="cell in mycolumns" ng-class="cell.charttype == stbar-chart? 'sttd' : 'sttdnew'" data-ng-init="cellvisible=getcolumnShow(cell);" ng-show="cellvisible && cell.icontype != 'date'" data-label="{{record[mycol]}}">
+                              <div data-ng-init="mycol=getcolumnname(cell);" data-ng-model="record[mycol]" ng-href="{{record[mycol]}}"></div>
+                              <div ng-if="cell.icontype == '' && cell.combinewith == '' && !cell.truncation && cell.charttype==''">{{record[mycol]}}
+                              </div>
+                              <div ng-if="cell.icontype == '' && cell.combinewith == '' && !cell.truncation && cell.charttype=='stbar-chart'">
+                                 <stbar-chart width="100" height="40" data="record[mycol]" style="padding:0px !important"></stbar-chart>
+                              </div>
+                              <div uib-tooltip-template="'myTooltipTemplate.html'" tooltip-placement="right" tooltip-popup-delay="200"  style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;" ng-if="sectitle=='Order Status'">
+                                 <div  ng-show="cell.combinewith !='' || cell.truncation " ng-class="{'sttrucText':cell.truncation}">
+                                    <span ng-repeat="i in legends">
+                                    <span ng-show="record[cell.combinewith] == {{i.value}}" class="{{i.type}}" style="color:{{i.color}}"></span>
+                                    </span>
+                                    <a href="#" ng-click="openin(punchout,record[primarykey])"><span ng-class="sectitle == 'Order Status'? '':'dsepadding-left'">
+                                    {{record[mycol]}}</span></a>
+                                    <br/><span style="color:orange;font-weight:normal;padding-top:10px !important;font-size:80%;">{{record['orderstatus']}}</span>
+                                 </div>
+                              </div>
+                              <div class="stdropdown" ng-if="mycol != 'ordernumber' && sectitle !='Order Status'">
+                                 <div  ng-show="cell.combinewith !='' || cell.truncation " ng-class="{'sttrucText':cell.truncation}">
+                                    <span ng-repeat="i in legends">
+                                    <span ng-show="record[cell.combinewith] == {{i.value}}" class="{{i.type}}" style="color:{{i.color}}"></span>
+                                    </span>
+                                    <a href="#" ng-click="openin(punchout,record[primarykey])" ng-if="!cell.truncation"><span ng-class="sectitle == 'Order Status'? '':'dsepadding-left'">
+                                    {{record[mycol]}}</span></a>
+                                    <a href="#" ng-if="cell.truncation" style="color:gray !important;text-decoration: none;cursor:default;"><span ng-class="sectitle == 'Order Status'? '':'dsepadding-left'">
+                                    {{record[mycol]}}</span></a>
+                                    <br/><span style="color:orange;font-weight:normal;padding-top:10px !important;font-size:80%;">{{record['orderstatus']}}</span>
+                                 </div>
+                                 <div class="stdropdown-contentlong" ng-if="cell.truncation">
+                                    {{record[mycol]}}
+                                 </div>
+                              </div>
+                           </td>
+                           <td valign="middle" style="color: grey;border-bottom: 1px solid #eee !important;vertical-align: middle !important;">{{(record['createddate'] || record['created_date'])}}</td>
+                           <td class="sttd">
+                              <div class="stdropdown">
+                                 <div class="btn-group" uib-dropdown="true" dropdown-append-to="appendToEl" style="top:-4px !important;left:5px!important">
+                                    <button id="btn-append-to" style="background-color:white;border:none;box-shadow:none;" class="btn btn-primary" uib-dropdown-toggle="true" ng-disabled="disabled">
+                                    <span class="glyphicon">
+                                    <img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/DSE_Share.svg')}" height="12px"></img>
+                                    </span>
+                                    </button>
+                                    <ul uib-dropdown-menu="true" role="menu" id="dseOrderDropdown" style="top:75px;margin-left:-15% !important;" aria-labelledby="btn-append-to">
+                                       <li role="menuitem" style="margin-left:0px !important;text-align:left;" ng-repeat="menu in openinsmenu">
+                                          <span style="margin-left:6px;float:left;margin-bottom:6px;">
+                                          <span class="glyphicon" style="top: 0px;"><img ng-src="{{menu.icon}}" height="15px"></img></span>
+                                          <a href="#" style="color:#4b586c !important;text-decoration:none;margin-left:3px;" ng-click="openin(menu.link,record[primarykey])">{{menu.label}} &nbsp;
+                                          </a>
+                                          </span>
+                                       </li>
+                                       <li role="menuitem" style="margin-left:0px !important;">
+                                          <span ng-if="apiobject != 'account'" style="margin-left:6px;float:left">
+                                          <span class="glyphicon"><img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/dse_email.png')}" height="13px" style="vertical-align:bottom"></img></span>
+                                          <a href="#" style="color:#4b586c !important;text-decoration:none;margin-left:4px;" ng-click="shareEmail(subject,body,punchout,record[primarykey])" >Share via Email&nbsp;
+                                          </a>
+                                          </span>
+                                       </li>
+                                       <!--
+                                          <li role="menuitem" style="margin-left:0px !important;text-align:left;">
+                                             <span style="margin-left:6px;float:left;margin-bottom:6px;">
+                                             <span class="glyphicon"><img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/dse_openin.png')}" height="15px"></img></span>
+                                             <a href="#" style="color:#4b586c !important;text-decoration:none;margin-left:5px;" ng-click="openin(punchout,record[primarykey])">{{primarykeytext}}  &nbsp;
+                                             </a>
+                                             </span>
+                                          </li>
+                                           <li role="menuitem" style="margin-left:0px !important;text-align:left;" ng-if="sectitle == 'TAC Cases'">
+                                             <span style="margin-left:6px;float:left;margin-bottom:6px;">
+                                             <span class="glyphicon"><img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/dse_openin.png')}" height="15px"></img></span>
+                                             <a href="#" style="color:#4b586c !important;text-decoration:none;margin-left:5px;" ng-click="openin(punchout,record[primarykey])">Open in Qwery&nbsp;
+                                             </a>
+                                             </span>
+                                          </li>
+                                          -->
+                                    </ul>
+                                 </div>
+                              </div>
+                           </td>
+                        </tr>
+                        <!--------------------------Client Side------------------------------------------------->
+                        <tr data-ng-repeat="record in valData|orderBy : predicate : reverse  |  limitTo: pageLimit" ng-click="fnRowClick(record,mycolumns)" ng-if="clientside">
+                           <td data-ng-repeat="cell in mycolumns" ng-class="cell.charttype == stbar-chart? 'sttd' : 'sttdnew'" data-ng-init="cellvisible=getcolumnShow(cell);" ng-show="cellvisible && cell.icontype != 'date'" data-label="{{record[mycol]}}">
+                              <div data-ng-init="mycol=getcolumnname(cell);" data-ng-model="record[mycol]" ng-href="{{record[mycol]}}"></div>
+                              <div ng-if="cell.icontype == '' && cell.combinewith == '' && !cell.truncation && cell.charttype==''">{{record[mycol]}}
+                              </div>
+                              <div ng-if="cell.icontype == '' && cell.combinewith == '' && !cell.truncation && cell.charttype=='stbar-chart'">
+                                 <stbar-chart width="100" height="40" data="record[mycol]" style="padding:0px !important"></stbar-chart>
+                              </div>
+                              <div uib-tooltip-template="'myTooltipTemplate.html'" tooltip-placement="right" tooltip-popup-delay="200"  style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;" ng-if="sectitle=='Order Status'">
+                                 <div  ng-show="cell.combinewith !='' || cell.truncation " ng-class="{'sttrucText':cell.truncation}">
+                                    <span ng-repeat="i in legends">
+                                    <span ng-show="record[cell.combinewith] == {{i.value}}" class="{{i.type}}" style="color:{{i.color}}"></span>
+                                    </span>
+                                    <a href="#" ng-click="openin(punchout,record[primarykey])"><span ng-class="sectitle == 'Order Status'? '':'dsepadding-left'">
+                                    {{record[mycol]}}</span></a>
+                                    <br/><span style="color:orange;font-weight:normal;padding-top:10px !important;font-size:80%;">{{record['orderstatus']}}</span>
+                                 </div>
+                              </div>
+                              <div class="stdropdown" ng-if="mycol != 'ordernumber' && sectitle !='Order Status'">
+                                 <div  ng-show="cell.combinewith !='' || cell.truncation " ng-class="{'sttrucText':cell.truncation}">
+                                    <span ng-repeat="i in legends">
+                                    <span ng-show="record[cell.combinewith] == {{i.value}}" class="{{i.type}}" style="color:{{i.color}}"></span>
+                                    </span>
+                                    <a href="#" ng-click="openin(punchout,record[primarykey])" ng-if="!cell.truncation"><span ng-class="sectitle == 'Order Status'? '':'dsepadding-left'">
+                                    {{record[mycol]}}</span></a>
+                                    <a href="#" ng-if="cell.truncation" style="color:gray !important;text-decoration: none;cursor:default;"><span ng-class="sectitle == 'Order Status'? '':'dsepadding-left'">
+                                    {{record[mycol]}}</span></a>
+                                    <br/><span style="color:orange;font-weight:normal;padding-top:10px !important;font-size:80%;">{{record['orderstatus']}}</span>
+                                 </div>
+                                 <div class="stdropdown-contentlong" ng-if="cell.truncation">
+                                    {{record[mycol]}}
+                                 </div>
+                              </div>
+                           </td>
+                           <td valign="middle" style="color: grey;border-bottom: 1px solid #eee !important;vertical-align: middle !important;">{{(record['createddate'] || record['created_date'])}}</td>
+                           <td class="sttd">
+                              <div class="stdropdown">
+                                 <div class="btn-group" uib-dropdown="true" dropdown-append-to="appendToEl" style="top:-4px !important;left:5px!important">
+                                    <button id="btn-append-to" style="background-color:white;border:none;box-shadow:none;" class="btn btn-primary" uib-dropdown-toggle="true" ng-disabled="disabled">
+                                    <span class="glyphicon">
+                                    <img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/DSE_Share.svg')}" height="12px"></img>
+                                    </span>
+                                    </button>
+                                    <ul uib-dropdown-menu="true" role="menu" id="dseOrderDropdown" style="top:75px;margin-left:-15% !important;" aria-labelledby="btn-append-to">
+                                       <li role="menuitem" style="margin-left:0px !important;text-align:left;" ng-repeat="menu in openinsmenu">
+                                          <span style="margin-left:6px;float:left;margin-bottom:6px;">
+                                          <span class="glyphicon" style="top: 0px;"><img ng-src="{{menu.icon}}" height="15px"></img></span>
+                                          <a href="#" style="color:#4b586c !important;text-decoration:none;margin-left:3px;" ng-click="openin(menu.link,record[primarykey])">{{menu.label}} &nbsp;
+                                          </a>
+                                          </span>
+                                       </li>
+                                       <li role="menuitem" style="margin-left:0px !important;">
+                                          <span ng-if="apiobject != 'account'" style="margin-left:6px;float:left">
+                                          <span class="glyphicon"><img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/dse_email.png')}" height="13px" style="vertical-align:bottom"></img></span>
+                                          <a href="#" style="color:#4b586c !important;text-decoration:none;margin-left:4px;" ng-click="shareEmail(subject,body,punchout,record[primarykey])" >Share via Email&nbsp;
+                                          </a>
+                                          </span>
+                                       </li>
+                                       <!--
+                                          <li role="menuitem" style="margin-left:0px !important;text-align:left;">
+                                             <span style="margin-left:6px;float:left;margin-bottom:6px;">
+                                             <span class="glyphicon"><img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/dse_openin.png')}" height="15px"></img></span>
+                                             <a href="#" style="color:#4b586c !important;text-decoration:none;margin-left:5px;" ng-click="openin(punchout,record[primarykey])">{{primarykeytext}}  &nbsp;
+                                             </a>
+                                             </span>
+                                          </li>
+                                           <li role="menuitem" style="margin-left:0px !important;text-align:left;" ng-if="sectitle == 'TAC Cases'">
+                                             <span style="margin-left:6px;float:left;margin-bottom:6px;">
+                                             <span class="glyphicon"><img src="{!URLFOR($Resource.dse_icon_tac_os,'DSE_Icons/dse_openin.png')}" height="15px"></img></span>
+                                             <a href="#" style="color:#4b586c !important;text-decoration:none;margin-left:5px;" ng-click="openin(punchout,record[primarykey])">Open in Qwery&nbsp;
+                                             </a>
+                                             </span>
+                                          </li>
+                                          -->
+                                    </ul>
+                                 </div>
+                              </div>
+                           </td>
+                        </tr>
+                        <!--------------------------Client Side------------------------------------------------->
+                     </tbody>
+                     <tbody ng-if="message!=''" style="background-color:white !important;">
+                        <tr>
+                           <td colspan="{{nofieldvisible}}" align="center">
+                              <div style="padding:20px">{{message}}</div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <center>
+                     <div class="loading-dots loading-dots-warning" ng-show="loading">
+                        <span>.</span>
+                        <span>.</span>
+                        <span>.</span>
+                     </div>
+                  </center>
+                  <div class="pull-right" style="margin-top: -30px;position:relative;">
+                     <a class="btn btn-default btn-xs" ng-click="show_more()" ng-if="!loading && showmoredisable">
+                     <span>{{paginationmessage}}</span></a>
+                     <a class="btn btn-default btn-xs" ng-disabled="!showmoredisable" ng-if="!loading && !showmoredisable && paginationmessage != 'Show More' && pageLimit >= 100">
+                     <span>{{paginationmessage}}</span></a>
+                  </div>
+               </div>
+            </section>
+         </div>
+      </div>
+   </div>
+</apex:page>

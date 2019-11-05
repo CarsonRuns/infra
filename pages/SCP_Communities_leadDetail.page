@@ -1,0 +1,133 @@
+<!-- ********** Change History **********
+ 01 - 03/13/2016 - WR-01521 - Added logic to check if user has accepted the TnC for LnP Access
+********** Change History ********** -->
+
+<apex:page standardController="Lead" showHeader="true" sidebar="false"
+    extensions="SCP_Communities_Lead_CT"  action="{!redirect}">
+    <apex:includeScript value="{!$Resource.jQuery1_9}" />
+    <apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery-ui.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.filter.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.filter.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/themes/ui-lightness/jquery.ui.all.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.extjs_css)}" />
+    <apex:includeScript value="{!URLFOR($Resource.jquery_datatable, 'jquery/js/jquery.dataTables.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.datatable)}" />
+    <!-- <apex:includeScript value="{!URLFOR($Resource.jquery_datatable, 'jquery/js/jquery.dataTables.js')}" /> -->
+    <apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/dataTables.tableTools.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/jquery.dataTables.css')}" />
+    <apex:includeScript value="{!$Resource.lnp_tnc_popup}"/>
+
+    <style>
+        .btnslist {
+                        display:block !important;
+                        margin: auto !important;
+                        width: 60% !important;
+                    }
+        .lnPButton {
+            text-align: center;
+            border-radius: 3px;
+            font: bold 12px/1em "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Nimbus Sans L", sans-serif;
+            align-items: flex-start;
+            background-attachment: scroll;
+            background-clip: border-box;
+            background-color: #dfdfdf;
+            background-origin: padding-box;
+            background-size: auto;
+            background-image: none;
+            border: 1px solid #b5b5b5;
+            border-bottom-color: #7f7f7f;
+            box-sizing: border-box;
+            color: #666;
+            cursor: pointer;
+            /* display: block; */
+            /* float: left; */
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: bold;
+            min-height: 20px;
+            letter-spacing: normal;
+            line-height: normal;
+            margin: 2px;
+            overflow: visible;
+            padding: 4px 6px;
+            text-indent: 0;
+            text-shadow: none;
+            text-transform: none;
+            visibility: visible;
+            white-space: pre;
+            width: auto;
+            word-spacing: 0;
+              -webkit-appearance: none;
+            -moz-appearance: none;
+            -webkit-background-clip: border-box;
+            -webkit-background-origin: padding-box;
+            -webkit-background-size: auto;
+            -webkit-rtl-ordering: logical;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-writing-mode: horizontal-tb;
+        }
+        .ui-widget {
+        font-size: 100%;
+        z-index: 1500;
+        }
+</style>
+    <apex:form styleclass="leadbtnsform">
+        <apex:inputHidden value="{!Lead.Estimated_Deal_Value_USD__c}" />
+        <apex:inputHidden value="{!Lead.Partner_Lead_Status__c}" />
+        <apex:pageMessages />
+        <apex:outputpanel id="btnslist" styleclass="btnslist" layout="block">
+            <apex:commandButton value="{!$Label.PRM_edit}" action="{!edit}" rendered="true" immediate="true" disabled="{!NOT isEditable}"/>
+            <apex:commandButton value="{!$Label.PRM_initiatedeal}" rendered="true" action="{!initiateDeal}" immediate="true" disabled="{!NOT isEditable}"/>
+            <apex:commandButton value="{!$Label.SCP_ADD_EDIT_PSR_ASSINGNMENT}" rendered="{!isPA}" action="{!addEditPSR}" immediate="true"  disabled="{!NOT isEditable}"/>
+        </apex:outputpanel>
+        <apex:outputLink value="http://www.cisco.com/go/cscc" rendered="false">To renew service contracts, use CSCC.</apex:outputLink>
+        <!-- <input type="button" id="initiatedeal_lead" value="Initiate Deal(CCW)"/> -->
+    </apex:form>
+    <apex:detail id="SCPDetailPage" subject="{!Lead.Id}" inlineEdit="{!isEditable}" showChatter="false" />
+    <script language="Javascript">
+    //WR-01521 - Fatching the Custom labels to be used for popup message 
+        var header = '{!JSENCODE($Label.LnP_TnC_Popup_Header)}';
+        var accesscheck = '{!JSENCODE($Label.LnP_TnC_Popup_Text1)}';
+        var accesscheck1 = '{!JSENCODE($Label.LnP_TnC_Popup_Text2)}';
+        var accesscheck2 = '{!JSENCODE($Label.LnP_TnC_Popup_Text3)}';
+        var accesscheck3 = '{!JSENCODE($Label.LnP_TnC_Popup_Text4)}';
+        var accept = '{!JSENCODE($Label.LnP_TnC_Popup_Accept)}';
+        var cancel = '{!JSENCODE($Label.LnP_TnC_Popup_Cancel)}';
+        
+        jqd$ = $;       
+    
+        //*********** LnP Dialog Start*************
+         var j$modalDialog;
+        jQuery(function ($) {
+        //WR-01521 - Call the popup message form the static resource JS by passing Custom Label texts.
+            if('{!isChekAccesLead}' != 'true'){
+            //Call the jQuery dialog popup only when the boolean is false from the controller class.
+                checkAccessLP_leadDetail(header, accesscheck, accesscheck1, accesscheck2, accesscheck3, accept, cancel);
+            }      
+            $('verfID').addClass('ui-widget');  
+        });        
+
+        //*********** LnP Dialog End*************
+        
+        if(!{!isEditable}){
+            //alert("Lead cannot be editted");
+            /*jqd$("div[id$='RelatedNoteList'] > div.noStandardTab > div > div.pbHeader > table > tbody > tr > td.pbButton > input:nth-child(1)").attr('disabled','disabled').attr('class','btnDisabled');
+            jqd$("div[id$='RelatedNoteList'] > div.noStandardTab > div > div.pbHeader > table > tbody > tr > td.pbButton > input:nth-child(2)").attr('disabled','disabled').attr('class','btnDisabled');
+            jqd$("div[id$='RelatedActivityList']  > div.listRelatedObject.taskBlock > div > div.pbHeader > table > tbody > tr > td.pbButton > input:nth-child(1)").attr('disabled','disabled').attr('class','btnDisabled');
+            jqd$("div[id$='RelatedActivityList']  > div.listRelatedObject.taskBlock > div > div.pbHeader > table > tbody > tr > td.pbButton > input:nth-child(2)").attr('disabled','disabled').attr('class','btnDisabled');*/
+            j$("input[name='newNote']").attr('disabled','disabled').attr('class','btnDisabled');
+            j$("input[name='attachFile']").attr('disabled','disabled').attr('class','btnDisabled');
+            j$("input[name='task']").attr('disabled','disabled').attr('class','btnDisabled');
+            j$("input[name='event']").attr('disabled','disabled').attr('class','btnDisabled');
+        }
+    </script>
+</apex:page>

@@ -1,0 +1,90 @@
+<apex:page showHeader="false" sidebar="false" StandardController="Super_Group__c" extensions="Super_Group_Direct_SAV_CTE">
+<apex:pageblock id="thePageBlock" title="Sales Accounts">
+        <apex:form > 
+         <apex:pageMessages />
+           <table cellspacing = "0" cellpadding = "0" width = "100%">
+                <tr>
+                    <td align = "right"> 
+                        <apex:commandLink target="_top" action="{!exportDirectSavLink}" value="[ Excel Export ]" oncomplete="CloseAndRefresh();" title="Export Data is limited to 15 MB"/>
+                    </td>
+                </tr>
+            </table>
+                   <apex:pageBlockTable value="{!AccountGroupRecords}" var="sav" id="table">
+                                <apex:column headerValue="Sales Account Name">
+                                 <apex:facet name="header">   
+                                   <apex:commandLink action="{!OrderData}" value="Sales Account Name {!IF(sortOrderNew == '','▼',
+                                                                           IF(sortColumnNameNew == 'Name',IF(sortOrderNew == 'DESC','▲','▼'),''))}">
+                                                                           
+                                       <apex:param assignTo="{!sortOrderNew}" value="DESC"/>
+                                       <apex:param assignTo="{!sortColumnNameNew}" value="Name"/>
+                                       
+                                   </apex:commandLink>
+                                 </apex:facet>
+                                 <apex:outputLink value="/{!sav.Id}" target="_top">{!sav.Name}</apex:outputLink>
+                                </apex:column>
+                                <apex:column value="{!sav.FDEV_Account_Group_Owner__c}" headerValue="Sales Account Owner">
+                                 <apex:facet name="header">   
+                                   <apex:commandLink action="{!OrderData}" value="Sales Account Owner {!IF(sortColumnNameNew == 'FDEV_Account_Group_Owner__c',
+                                                                           IF(sortOrderNew == 'DESC','▲','▼'),'')}">
+                                                                           
+                                       <apex:param assignTo="{!sortOrderNew}" value="ASC"/>
+                                       <apex:param assignTo="{!sortColumnNameNew}" value="FDEV_Account_Group_Owner__c"/>
+                                       
+                                   </apex:commandLink>
+                                 </apex:facet>
+                                </apex:column>   
+                                <apex:column value="{!sav.Account_Group_ID__c}" headerValue="SAV ID">
+                                 <apex:facet name="header">   
+                                   <apex:commandLink action="{!OrderData}" value="SAV ID {!IF(sortColumnNameNew == 'Account_Group_ID__c',
+                                                                           IF(sortOrderNew == 'DESC','▲','▼'),'')}">
+                                                                           
+                                       <apex:param assignTo="{!sortOrderNew}" value="ASC"/>
+                                       <apex:param assignTo="{!sortColumnNameNew}" value="Account_Group_ID__c"/>
+                                       
+                                   </apex:commandLink>
+                                 </apex:facet>
+                               </apex:column>            
+                               <apex:column value="{!sav.Territory_Name__c}" headerValue="Territory"/> 
+                               <apex:column value="{!sav.Parent_Territory__c}" headerValue="Parent Territory"/> 
+                               <apex:column value="{!sav.Primary_Address__c}" headerValue="Primary Address"/>
+                               <apex:column value="{!sav.Vertical_Primary_Top__c}" headerValue="Vertical"/>
+                               <apex:column value="{!sav.Vertical_Primary_Sub__c}" headerValue="Sub Vertical"/> 
+                               <apex:column value="{!sav.Segment__c}" headerValue="Sub Segment"/> 
+                               <apex:column value="{!sav.Vertical_Primary_Detail__c}" headerValue="Vertical Primary Detail"/>                
+                   </apex:pageBlockTable>
+
+            <apex:pageBlockSection >
+                    <apex:pageBlockSectionItem >
+                             <apex:outputPanel >
+                                    <apex:commandLink action="{!SAVCON.previous}" rendered="{!SAVCON.hasprevious}">Previous&nbsp;|&nbsp;</apex:commandlink>
+                                    <apex:commandLink action="{!SAVCON.next}" rendered="{!SAVCON.hasnext}" >Next</apex:commandlink>
+                              </apex:outputPanel>
+                     </apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >
+                             <apex:outputPanel style="float:right;" rendered="{!IF(SAVCON == null,false,true)}">
+                                       <apex:outputText value="{!SAVCON.pageNumber}/{!totalpages}" rendered="{!IF(totalpages == 0,false,true)}">Pages : </apex:outputText>
+                              </apex:outputPanel>
+                   </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+          </apex:form>
+</apex:pageblock>
+<script language = "javascript">
+function CloseAndRefresh(){
+        window.top.location='/{!Super_Group__c.Id}';
+   }
+   
+function resizeIframe() {
+    var me = window.name;
+    if (me) {
+      var iframes = parent.document.getElementsByName(me);
+      if (iframes && iframes.length == 1) {
+        height = document.body.offsetHeight;
+        //if (height <= 300) 
+            iframes[0].style.height = height + "px";
+        
+      }
+    }
+  }
+ resizeIframe(); 
+</script>
+</apex:page>

@@ -1,0 +1,134 @@
+<apex:page tabstyle="Assigned_Partner__c" sidebar="false"
+	showHeader="true" showChat="true"
+	controller="SCP_Communities_WorkProspect_CT" id="tppage"
+	language="{!$CurrentPage.parameters.lang}">
+		
+	<apex:stylesheet value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.filter.css')}" />
+	<apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jQuery_UI/themes/ui-lightness/jquery.ui.all.css')}" />
+	<apex:stylesheet value="{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.css')}" />
+	<apex:stylesheet value="{!URLFOR($Resource.extjs_css)}" />
+	<apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/dataTables.tableTools.css')}" />
+	<apex:stylesheet value="{!URLFOR($Resource.jquery_datatable, 'jquery/css/jquery.dataTables.css')}" />
+	<script type="text/javascript">
+		var jq$ = jQuery.noConflict();
+		jq$(document).ready(function() {
+			console.log('**before loadApp***');
+			var loadRes = loadApp();
+			console.log('After loadApp ***');
+		});
+		function loadApp() {
+			jq$.getScript("{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery-ui.min.js')}", function() {
+				jq$.getScript("{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.js')}", function() {
+					jq$.getScript("{!URLFOR($Resource.UIMultiSelect, '/jQueryMultiSelect/jquery.multiselect.filter.js')}", function() {
+						jq$.getScript("{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.core.js')}", function() {
+							jq$.getScript("{!URLFOR($Resource.jQueryUI, '/jQuery_UI/ui/jquery.ui.widget.js')}", function() {
+								console.log('### loding js done ###');
+								m1=jq$('.uiMultiSelectMain').multiselect({
+									selectedList: jq$('.uiMultiSelectMain').find('option').length,
+									//selectedList: 2,
+									header: true,
+									noneSelectedText:"{!$Label.PRM_Picklist_Value_Select_options}",
+									//height:175,
+									//minWidth:125,
+									multiple : false,
+									selectedList : 1,
+									classes : 'uiMultiSelectMainComp uiuiMultiSelectMainMenu'
+								});
+								m1.multiselect().multiselectfilter({
+									placeHolder: ' ',
+									autoReset:true
+				 
+								});
+							})
+						})
+					})
+				})
+			})
+		}
+	</script>
+	<apex:form id="createTargetProspect" styleclass="tppageclass">
+		<apex:pageBlock id="pg1">
+			<div id="dialog">
+				<apex:pageMessages />
+			</div>
+			<apex:inputhidden id="accId" value="{!accountId}" />
+			<apex:pageblocksection >
+				<!-- Target Architecture  -->
+				<apex:outputpanel >
+					<apex:outputlabel value="{!$ObjectType.Assigned_Partner__c.fields.Target_Architecture__c.label}"
+						styleclass="x-form-item-label labelCol" />
+
+					<apex:inputfield id="targetArchitecture"
+						styleclass="requiredInput uiMultiSelectMain ui-inputs"
+						value="{!tp1.Target_Architecture__c}" />
+				</apex:outputpanel>
+
+				<!-- Partner Sales Rep 1 -->
+				<apex:outputpanel >
+
+					<apex:outputlabel value="{!$ObjectType.Assigned_Partner__c.fields.Assigned_Partner_Sales_Rep__c.label} ::"
+						styleclass="x-form-item-label labelCol" />
+					<apex:selectList id="psr1"
+						styleClass="view_list_class dataCol uiMultiSelectMain ui-inputs"
+						value="{!psr1Id}" size="1" disabled="{!NOT(isPA)}">
+
+						<apex:selectOptions value="{!psr1}" />
+					</apex:selectList>
+
+				</apex:outputpanel>
+
+				<!-- Target_Description__c -->
+				<apex:outputpanel >
+					<apex:outputlabel value="{!$ObjectType.Assigned_Partner__c.fields.Target_Description__c.label} ::"
+						styleclass="x-form-item-label labelCol" />
+
+					<apex:inputfield id="targetdescription" value="{!tp1.Target_Description__c}"
+						styleclass="x-form-field x-form-text ui-inputs" />
+				</apex:outputpanel>
+
+
+				<!-- Partner Sales Rep 2 -->
+				<apex:outputpanel >
+
+					<apex:outputlabel value="{!$ObjectType.Assigned_Partner__c.fields.Assigned_Partner_Sales_Rep_2__c.label} ::"
+						styleclass="x-form-item-label labelCol" />
+					<apex:selectList id="psr2"
+						styleClass="view_list_class dataCol uiMultiSelectMain ui-inputs"
+						value="{!psr2Id}" size="1" disabled="{!NOT(isPA)}">
+
+						<apex:selectOptions value="{!psr2}" />
+					</apex:selectList>
+
+				</apex:outputpanel>
+
+				<apex:outputpanel >&nbsp;</apex:outputpanel>
+
+				<!-- Partner Sales Rep 3 -->
+				<apex:outputpanel >
+
+					<apex:outputlabel value="{!$ObjectType.Assigned_Partner__c.fields.Assigned_Partner_Sales_Rep_3__c.label} ::"
+						styleclass="x-form-item-label labelCol" />
+					<apex:selectList id="psr3"
+						styleClass="view_list_class dataCol uiMultiSelectMain ui-inputs"
+						value="{!psr3Id}" size="1" disabled="{!NOT(isPA)}">
+
+						<apex:selectOptions value="{!psr3}" />
+					</apex:selectList>
+
+				</apex:outputpanel>
+
+			</apex:pageblocksection>
+			<apex:pageBlockButtons >
+				<apex:commandButton id="saveBtn2" value="Save"
+					  action="{!doSave}"  status="saving" />
+				<apex:commandButton id="cancelBtn" value="Cancel" action="{!cancel}"/>
+			</apex:pageBlockButtons>
+			<div id="loading" style="display: none;">
+				<img src="{!$Resource.Processingicon}" alt="" />
+			</div>
+			<apex:actionStatus id="saving" onstart="_$('#loading').show()"
+				onstop="_$('#loading').hide();" />
+
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_Alea_Canada</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_Concentrix_Costa_Rica</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_Concentrix_EMEAR</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_Convergys_China</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_Convergys_India</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_Convergys_Manila_Asia</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_Convergys_Manila_Global</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_eCoast_New_Hampshire</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_Inhouse_Japan</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_Raya_Egypt</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_SellByTel_Australia</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_SellByTel_EMEAR</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_SellByTel_Korea</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>NGCC_CC_Site_Manager_SellByTel_Kuala_Lumpur</submitter>
+        <type>role</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Cisco_Contact_Center_Manager1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Cisco_Contact_Center_Manager2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>(1 AND 2 AND 3) OR ((4 OR 7 OR 8 OR 9) AND 5 AND 6)</booleanFilter>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager Convergys (China)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Theater__c</field>
+                <operation>equals</operation>
+                <value>Greater China</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Originating_Marketing_Pipeline__c</field>
+                <operation>greaterOrEqual</operation>
+                <value>200000.0</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager Convergys (Manila - Global)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Theater__c</field>
+                <operation>equals</operation>
+                <value>Americas</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Originating_Marketing_Pipeline__c</field>
+                <operation>greaterOrEqual</operation>
+                <value>1000000.0</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Manager Alea (Canada)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Mgr Concentrix(Costa Rica)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>NGCC-CC Site Mgr eCoast(New Hampshire)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>NGCC-CC Site Manager Alea (Canada)</label>
+        <name>Step_1</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>adhoc</type>
+            </approver>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>notEqual</operation>
+                <value>NGCC-CC Site Manager Alea (Canada)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>notEqual</operation>
+                <value>NGCC-CC Site Manager Convergys (Manila - Global)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>notEqual</operation>
+                <value>NGCC-CC Site Manager Convergys (China)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>notEqual</operation>
+                <value>NGCC-CC Site Manager Concentrix (EMEAR)</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>NGCC-CC Site Manager 3</label>
+        <name>NGCC_CC_Site_Manager_3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>This approval process is for Site Managers who can create leads and send leads to sales if CCM approval not needed.</description>
+    <emailTemplate>NGCC_Marketing_Contact_Center_Repository/NGCC_Approval_Email</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+        <criteriaItems>
+            <field>User.UserRole</field>
+            <operation>equals</operation>
+            <value>NGCC-CC Site Manager Convergys (China)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.UserRole</field>
+            <operation>equals</operation>
+            <value>NGCC-CC Site Manager Convergys (Manila - Global)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.UserRole</field>
+            <operation>equals</operation>
+            <value>NGCC-CC Site Manager Concentrix (EMEAR)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.UserRole</field>
+            <operation>equals</operation>
+            <value>NGCC-CC Site Manager Alea (Canada)</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>NGCC_Approval_Submission_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>NGCC_Approval_Submission_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>NGCC_Approval_Submission</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>NGCC No Apval Required Site Manag</label>
+    <recallActions>
+        <action>
+            <name>NGCC_Approval_Submission_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

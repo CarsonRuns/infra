@@ -1,0 +1,31 @@
+<apex:component controller="UserRecordTypeAvailable_CT">
+<apex:attribute name="object" type="String" description="API Name of object" assignTo="{!ObjectName}"/>
+<!-- {!UserDefaultOpportunityRecordType}<br/> -->
+<!-- {!ObjectEnt}<br/> -->
+<iframe frameborder="0" height="600px" id="theIframe" name="theIframe" src="/setup/ui/recordtypeselect.jsp?ent={!ObjectEnt}" title="Content" width="100%" style="display:none;"></iframe>
+<!--apex:iframe src="/setup/ui/recordtypeselect.jsp?ent={!object}" scrolling="true" id="theIframe" height="0px"/-->
+<script>
+    /***
+     * Contain the default record type of running users profile
+     ****/
+    var profileDefaultRecordType = "{!UserDefaultOpportunityRecordType}";
+    
+    
+    /***
+     * Contain the default record type of running users profile
+     ****/
+    var isBypassingRecordTypeSelection; 
+    function userByPassRecordTypeSelection(){
+        if(document.getElementById('theIframe').contentWindow.document.getElementById('p3') != null){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+//     window.onload = function(){
+//         console.log('onload from userRecordTypeAvailable.component');
+//         isBypassingRecordTypeSelection = userByPassRecordTypeSelection();
+//     }
+</script>
+</apex:component>

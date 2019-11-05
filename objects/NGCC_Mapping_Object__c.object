@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Alias_Country_Email_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Alias/Country Email Id</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cisco_Contact_Center_Manager1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Cisco Contact Center Manager1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>NGCC_Mapping_Objects1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cisco_Contact_Center_Manager2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Cisco Contact Center Manager2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>NGCC_Mapping_Objects2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Inactive_Queue_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Inactive Queue Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LDR_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>LDR User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>NGCC_Mapping_Objects</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Language__c</fullName>
+        <externalId>false</externalId>
+        <label>Language</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Chinese (Simplified): zh_CN</fullName>
+                    <default>false</default>
+                    <label>Chinese (Simplified): zh_CN</label>
+                </value>
+                <value>
+                    <fullName>Danish: da</fullName>
+                    <default>false</default>
+                    <label>Danish: da</label>
+                </value>
+                <value>
+                    <fullName>Dutch: nl_NL</fullName>
+                    <default>false</default>
+                    <label>Dutch: nl_NL</label>
+                </value>
+                <value>
+                    <fullName>English: en_US</fullName>
+                    <default>false</default>
+                    <label>English: en_US</label>
+                </value>
+                <value>
+                    <fullName>Finnish: fi</fullName>
+                    <default>false</default>
+                    <label>Finnish: fi</label>
+                </value>
+                <value>
+                    <fullName>French: fr</fullName>
+                    <default>false</default>
+                    <label>French: fr</label>
+                </value>
+                <value>
+                    <fullName>German: de</fullName>
+                    <default>false</default>
+                    <label>German: de</label>
+                </value>
+                <value>
+                    <fullName>Italian: it</fullName>
+                    <default>false</default>
+                    <label>Italian: it</label>
+                </value>
+                <value>
+                    <fullName>Japanese: ja</fullName>
+                    <default>false</default>
+                    <label>Japanese: ja</label>
+                </value>
+                <value>
+                    <fullName>Korean: ko</fullName>
+                    <default>false</default>
+                    <label>Korean: ko</label>
+                </value>
+                <value>
+                    <fullName>Portuguese (Brazil): pt_BR</fullName>
+                    <default>false</default>
+                    <label>Portuguese (Brazil): pt_BR</label>
+                </value>
+                <value>
+                    <fullName>Russian: ru</fullName>
+                    <default>false</default>
+                    <label>Russian: ru</label>
+                </value>
+                <value>
+                    <fullName>Spanish: es</fullName>
+                    <default>false</default>
+                    <label>Spanish: es</label>
+                </value>
+                <value>
+                    <fullName>Thai: th</fullName>
+                    <default>false</default>
+                    <label>Thai: th</label>
+                </value>
+                <value>
+                    <fullName>Polish: pl</fullName>
+                    <default>false</default>
+                    <label>Polish: pl</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Lead_Admin_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead Admin Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Admin__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Lead Admin</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>NGCC_Mapping_Objects3</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MCP_Enabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>MCP Phase1: To track countries enabled for MCP Eloqua Enabled</description>
+        <externalId>false</externalId>
+        <label>MCP Enabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Theater__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub Theater</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Theater__c</fullName>
+        <externalId>false</externalId>
+        <label>Theater</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Americas</fullName>
+                    <default>false</default>
+                    <label>Americas</label>
+                </value>
+                <value>
+                    <fullName>APJ</fullName>
+                    <default>false</default>
+                    <label>APJ</label>
+                </value>
+                <value>
+                    <fullName>EMEAR</fullName>
+                    <default>false</default>
+                    <label>EMEAR</label>
+                </value>
+                <value>
+                    <fullName>Greater China</fullName>
+                    <default>false</default>
+                    <label>Greater China</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Unassigned_Queue_Name__c</fullName>
+        <description>The name of the unassigned Queue that can be used for this country. For use with Prospect auto-assignment. When a Prospect cannot be matched to an assignment rule, it will be assigned to the unassigned queue for the corresponding country based on this field.</description>
+        <externalId>false</externalId>
+        <label>Unassigned Queue Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>CC Mapping Object</label>
+    <nameField>
+        <label>Country Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>NGCC Mapping Objects</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Theater__c</columns>
+        <columns>Unassigned_Queue_Name__c</columns>
+        <columns>Inactive_Queue_Name__c</columns>
+        <columns>Language__c</columns>
+        <columns>LDR_User__c</columns>
+        <columns>Alias_Country_Email_Id__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Call_Center_Mapping</fullName>
+        <columns>NAME</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Cisco_Contact_Center_Manager1__c</columns>
+        <columns>Cisco_Contact_Center_Manager2__c</columns>
+        <columns>Lead_Admin__c</columns>
+        <columns>Lead_Admin_Email__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>NGCC_Mapping_Object__c.Call_Center</value>
+        </filters>
+        <label>All Call Center Mapping</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Country_Mapping_APJ</fullName>
+        <columns>NAME</columns>
+        <columns>Theater__c</columns>
+        <columns>Sub_Theater__c</columns>
+        <columns>Language__c</columns>
+        <columns>LDR_User__c</columns>
+        <columns>Unassigned_Queue_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>NGCC_Mapping_Object__c.Country_Mapping</value>
+        </filters>
+        <filters>
+            <field>Theater__c</field>
+            <operation>equals</operation>
+            <value>APJ</value>
+        </filters>
+        <label>Country Mapping-APJ</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Country_Mapping_Americas</fullName>
+        <columns>NAME</columns>
+        <columns>Theater__c</columns>
+        <columns>Language__c</columns>
+        <columns>LDR_User__c</columns>
+        <columns>Lead_Admin_Email__c</columns>
+        <columns>Unassigned_Queue_Name__c</columns>
+        <columns>Inactive_Queue_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>NGCC_Mapping_Object__c.Country_Mapping</value>
+        </filters>
+        <filters>
+            <field>Theater__c</field>
+            <operation>equals</operation>
+            <value>Americas</value>
+        </filters>
+        <label>Country Mapping-Americas</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Country_Mapping_EMEAR</fullName>
+        <columns>NAME</columns>
+        <columns>Theater__c</columns>
+        <columns>Sub_Theater__c</columns>
+        <columns>Language__c</columns>
+        <columns>LDR_User__c</columns>
+        <columns>Unassigned_Queue_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>NGCC_Mapping_Object__c.Country_Mapping</value>
+        </filters>
+        <filters>
+            <field>Theater__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </filters>
+        <label>Country Mapping-EMEAR</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Country_Mapping_Greater_China</fullName>
+        <columns>NAME</columns>
+        <columns>Theater__c</columns>
+        <columns>Sub_Theater__c</columns>
+        <columns>Language__c</columns>
+        <columns>LDR_User__c</columns>
+        <columns>Unassigned_Queue_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>NGCC_Mapping_Object__c.Country_Mapping</value>
+        </filters>
+        <filters>
+            <field>Theater__c</field>
+            <operation>equals</operation>
+            <value>Greater China</value>
+        </filters>
+        <label>Country Mapping-Greater China</label>
+        <language>en_US</language>
+    </listViews>
+    <recordTypes>
+        <fullName>Call_Center</fullName>
+        <active>true</active>
+        <label>Call Center</label>
+        <picklistValues>
+            <picklist>Language__c</picklist>
+            <values>
+                <fullName>Chinese %28Simplified%29%3A%C2%A0zh_CN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Danish%3A%C2%A0da</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dutch%3A%C2%A0nl_NL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>English%3A en_US</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finnish%3A%C2%A0fi</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>French%3A%C2%A0fr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>German%3A%C2%A0de</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Italian%3A%C2%A0it</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Japanese%3A%C2%A0ja</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Korean%3A%C2%A0ko</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Polish%3A pl</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portuguese %28Brazil%29%3A%C2%A0pt_BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Russian%3A%C2%A0ru</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spanish%3A%C2%A0es</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thai%3A%C2%A0th</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Theater__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Greater China</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Country_Mapping</fullName>
+        <active>true</active>
+        <label>Country Mapping</label>
+        <picklistValues>
+            <picklist>Language__c</picklist>
+            <values>
+                <fullName>Chinese %28Simplified%29%3A%C2%A0zh_CN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Danish%3A%C2%A0da</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dutch%3A%C2%A0nl_NL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>English%3A en_US</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finnish%3A%C2%A0fi</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>French%3A%C2%A0fr</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>German%3A%C2%A0de</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Italian%3A%C2%A0it</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Japanese%3A%C2%A0ja</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Korean%3A%C2%A0ko</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Polish%3A pl</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portuguese %28Brazil%29%3A%C2%A0pt_BR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Russian%3A%C2%A0ru</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Spanish%3A%C2%A0es</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thai%3A%C2%A0th</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Theater__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Greater China</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+</CustomObject>

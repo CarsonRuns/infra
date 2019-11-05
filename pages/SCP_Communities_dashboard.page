@@ -1,0 +1,149 @@
+<apex:page standardController="SCP_Communities_DTO__c" 
+extensions="SCP_Communities_dashabord_CT" 
+sidebar="false"
+showHeader="true" showChat="true" 
+id="dbpage">
+
+    
+    <style type="text/css">
+        .chartTable tbody tr td{
+          vertical-align:baseline;
+        }
+                .pbWidth{
+        width:100px;
+        }
+        .vfHelpText a            {position:relative;}
+        .vfHelpText a span       {display: none;}
+        .vfHelpText a:hover span {display: block;
+        position:absolute;
+        top:1.25em;
+        padding:2px 5px;
+        left:0em; width:25em;
+        z-index:100;
+        border:1px solid orange;
+        background-color:#FEFDB9;
+        color:black;
+        }
+        #contentWrapper,#page{
+    position: relative;
+    margin: 0px auto 0px auto;
+    max-width:1024px;
+    width:100%;    
+    </style>
+ 
+    <script>
+        j$1= jQuery.noConflict();
+        j$1.support.cors = true;
+        j$1("div[id$='block3']").first().addClass('innerPgBlock');
+        j$1("div[id$='block4']").first().addClass('innerPgBlock');
+        
+        window.onload = function() {
+            doSearch();
+        }
+    </script>
+    <!-- on page load queries from getSummaryData are ran -->
+    <apex:form id="dbform" styleclass="dbpageclass">
+        <!-- Filter section block -->
+        <apex:pageBlock id="block0" title="{!$Label.PRM_summaryTabTitle}">
+            <!-- FILTER FIELDS -->
+            <apex:pageblocksection title="{!$Label.PRM_Filter}" columns="3" id="filterList" collapsible="true">
+                <apex:inputField id="viewByCurrentCalendar"
+                    value="{!SCP_Communities_DTO__c.View_by_Current_Calendar__c}" required="true"/>
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel value="{!$ObjectType.SCP_Communities_DTO__c.fields.PSR__c.Label}" rendered="{!isPA}" />
+                    <apex:selectList id="psr" value="{!psr}" multiselect="false" size="1" rendered="{!isPA}">
+                        <apex:selectOptions value="{!psrList}" />
+                    </apex:selectList>
+                   
+                </apex:pageblockSectionItem>
+                
+                
+                 <!-- TODO add partner drop down -->
+                
+                <apex:pageblockSectionItem rendered="{!AND(isPA, isDisti)}">
+                    <!-- render partner label field -->
+                    <apex:outputLabel value="{!$Label.PRM_Partner}:" /> 
+                    <!-- render partner dropdown field -->
+                    <apex:selectList id="partner" value="{!partner}" multiselect="false" size="1">
+                        <apex:selectOptions value="{!partnerList}" />
+                    </apex:selectList>
+                </apex:pageblockSectionItem>
+                 <!--  -->
+                
+                <apex:inputField id="country" value="{!SCP_Communities_DTO__c.Country__c}" rendered="{!isPA}"/>
+                <apex:inputField id="stateProvince"
+                    value="{!SCP_Communities_DTO__c.State_Province__c}" />
+                <apex:inputField id="city" value="{!SCP_Communities_DTO__c.City__c}" />
+            </apex:pageblocksection>
+            
+            <!-- FILTER SECTION BUTTONS -->
+            <apex:panelGrid columns="3">
+                <!-- Apply filter button will run queries from getDasboardDate-->
+                <apex:commandButton value="{!$Label.PRM_Apply_Filter}" action="{!doSearch}"  reRender="notificationSection,AlertMessagePanel,block3,block4" status="searching"/>
+                <apex:commandButton value="{!$Label.PRM_Clear_Filter}" action="{!resetSearch}" reRender="block0,notificationSection,AlertMessagePanel,block3,block4" oncomplete="doSearch();"/>
+                <div id="loading"  style="display: none; padding-left:5px; padding-bottom: 15px;"><img src="{!$Resource.Processingicon}" /></div>
+                <apex:actionStatus id="searching" 
+                              onstart="j$1('#loading').show();j$1('#loadingLead').show();j$1('#loadingTp').show();"
+                               onstop="j$1('#loading').hide();j$1('#loadingLead').hide();j$1('#loadingTp').hide();" />
+            </apex:panelGrid>
+            
+        
+        <!-- Notification Section -->
+        <!--apex:pageblock id="block1"-->
+            <apex:pageblocksection title="{!$Label.PRM_Notifications}" collapsible="false"  columns="1" id="notificationSection">
+            <apex:pageblocksectionItem >{!summaryLeadAgeingPSR}</apex:pageblocksectionItem>
+            <apex:pageblocksectionItem >{!leadAgePSRNotification}</apex:pageblocksectionItem>
+            </apex:pageblocksection>
+        <!-- /apex:pageblock-->
+      
+        <!-- Alert Messages section Section -->
+        <!--apex:pageblock id="block2"-->
+            <apex:pageblocksection id="AlertMessagePanel" title="{!$Label.PRM_summaryMessagesTitle}" collapsible="false">
+                <apex:dataList value="{!lstSCPAlert}" var="scp" style="background-color:#FFFFCC;">
+                <!--SCAVA FIX -->
+                    <apex:outputText value="{!HTMLENCODE(scp.Description__c)}" escape="false"/>
+                </apex:dataList>
+            </apex:pageblocksection>
+        <!--/apex:pageblock-->
+        
+        <!-- Chart Section -->
+            <apex:panelGrid columns="2" id="ChartTable" styleClass="chartTable">
+            <apex:pageBlock title="{!$ObjectType.Lead.Label}" id="block3">
+            {!summaryLeadLinks}
+            <apex:chart data="{!leadStatusSummaryData}" height="500" width="450">
+                <apex:legend position="top"/>
+                <apex:axis type="Category" fields="name" position="left"></apex:axis>
+                <!-- apex:axis type="Numeric" fields="data" position="bottom" title="# of Leads in that status" steps="1"></apex:axis -->
+                <apex:barSeries orientation="horizontal" xField="data" yField="name" axis="left" colorsProgressWithinSeries="true" title="{!$Label.PRM_summaryLeadTitle}">
+                    <apex:chartLabel field="data"/>
+                    <apex:chartTips width="408"/>
+                </apex:barSeries>
+            </apex:chart>
+            <apex:pageBlockSection title="{!$Label.PRM_summaryLeadNoData}" columns="1" collapsible="false" rendered="{!showLeadNoData}"/>
+            <apex:outputlabel value="{!$Label.PRM_summaryLeadNote}" rendered="{!isLeadChartDataAvailable}"></apex:outputlabel>
+            <apex:outputlabel value="{!leadChartQuery}" rendered="false"></apex:outputlabel>
+            <apex:outputPanel layout="block"><div id="loadingLead"  style="display: none; padding-left:5px; padding-bottom: 15px;"><img src="{!$Resource.Processingicon}" /></div></apex:outputPanel>
+            </apex:pageBlock>
+            <!--
+            <apex:pageBlock title="{!$ObjectType.Assigned_Partner__c.Label}" id="block4">
+            {!summaryTPLinks}
+            <apex:chart data="{!prospectStatusSummaryData}" height="500" width="450">
+                <apex:legend position="top"/>
+                <apex:axis type="Category" fields="name" position="left"></apex:axis>
+                <!-- apex:axis type="Numeric" fields="data" position="bottom" title="# of Prospects in that status"  steps="1"></apex:axis 
+                <apex:barSeries orientation="horizontal" xField="data" yField="name" axis="left" colorsProgressWithinSeries="true" title="{!$Label.PRM_summaryTPTitle}">
+                    <apex:chartLabel field="data"/>
+                    <apex:chartTips width="408"/>
+                </apex:barSeries>
+            </apex:chart>
+            <apex:pageBlockSection title="{!$Label.PRM_summaryTPNoData}" columns="1" collapsible="false" rendered="{!showTPNoData}"/>
+            <apex:outputlabel value="{!$Label.PRM_summaryTPNote}" rendered="{!isTPChartDataAvailable}"></apex:outputlabel>
+            <apex:outputlabel value="{!tpChartQuery}" rendered="false"></apex:outputlabel>
+            <apex:outputPanel layout="block"><div id="loadingTp"  style="display: none; padding-left:5px; padding-bottom: 15px;"><img src="{!$Resource.Processingicon}" /></div></apex:outputPanel>
+            </apex:pageBlock>
+            -->
+            </apex:panelGrid>
+        </apex:pageBlock>
+        <apex:actionFunction action="{!doSearch}" name="doSearch" reRender="notificationSection,AlertMessagePanel,block3,block4" status="searching"/>
+    </apex:form>
+</apex:page>

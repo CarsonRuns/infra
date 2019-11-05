@@ -1,0 +1,29 @@
+<apex:page standardController="Account" extensions="SCP_Communities_Chart_CT" title="Community Chart">
+    <apex:panelgrid columns="2">
+        <apex:pageblock >
+            <apex:outputLabel style="text-align: center; font-size: 20px;font-weight:bold;">{!$Label.PRM_technologyWallet}</apex:outputLabel>
+            <apex:chart height="350" width="450" data="{!LineDataWallet}" rendered="{!isLineDataWalletDataAvailable}">
+                <apex:axis type="Category" position="left" fields="Technology" />
+                <!-- <apex:axis type="Numeric" position="bottom" fields="Ammount" title="" grid="true" /> -->
+                <apex:barSeries orientation="horizontal" axis="left" xField="Amount" yField="Technology" colorsProgressWithinSeries="true"
+                                colorSet="#6699FF,#66FFFF,#CC99FF,#CCFFCC,#FF99FF,#66FF33,#FFFFCC,#FFFF00,#CCCC00,#00CC00">
+                    <apex:chartLabel field="Amount" display="outside"/>
+                    <apex:chartTips width="204"/>
+                </apex:barSeries>
+            </apex:chart>
+            <apex:pageBlockSection title="{!$Label.PRM_noData}" collapsible="false" rendered="{!NOT isLineDataWalletDataAvailable}"/>
+        </apex:pageblock>
+        <apex:pageblock >
+            <apex:outputLabel style="text-align: center; font-size: 20px;font-weight:bold;">{!$Label.PRM_potentialBookings}</apex:outputLabel>
+            <apex:chart height="350" width="450" data="{!LineDataBooking}" rendered="{!isLineDataBookingDataAvailable}">
+                <apex:axis type="Category" position="left" fields="Technology"/>
+                <apex:barSeries orientation="horizontal" axis="left" xField="Amount" yField="Technology" colorsProgressWithinSeries="true"
+                                colorSet="#6699FF,#66FFFF,#CC99FF,#CCFFCC,#FF99FF,#66FF33,#FFFFCC,#FFFF00,#CCCC00,#00CC00">
+                    <apex:chartLabel field="Amount" display="outside"/>
+                    <apex:chartTips width="204"/>
+                </apex:barSeries>
+            </apex:chart>
+            <apex:pageBlockSection title="{!$Label.PRM_noData}" collapsible="false" rendered="{!NOT isLineDataBookingDataAvailable}"/>
+        </apex:pageblock>
+    </apex:panelgrid>
+</apex:page>

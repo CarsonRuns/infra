@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- This will provide the Country from the linked Account (Partner). --></help>
+        <label><!-- Country (Account) --></label>
+        <name>Country_Account__c</name>
+    </fields>
+    <fields>
+        <help><!-- This will provide the Country Group from the linked Account (Partner). --></help>
+        <label><!-- Country Group (Account) --></label>
+        <name>Country_Group_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Group --></label>
+        <name>Country_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enrollment Effective Date --></label>
+        <name>Enrollment_Effective_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enrollment Expiry Date --></label>
+        <name>Enrollment_Expiry_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enrollment Id --></label>
+        <name>Enrollment_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enrollment Period --></label>
+        <name>Enrollment_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Country Group --></label>
+        <name>Partner_Country_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Enrollment Level --></label>
+        <name>Partner_Enrollment_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Enrollment Status --></label>
+        <name>Partner_Enrollment_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Id --></label>
+        <name>Partner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Name --></label>
+        <name>Partner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Theater --></label>
+        <name>Partner_Theater__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner --></label>
+        <name>Partner__c</name>
+        <relationshipLabel><!-- MBO Partner Enrollments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Program Id --></label>
+        <name>Program_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program Name --></label>
+        <name>Program_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- SubTrack Id --></label>
+        <name>SubTrack_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- SubTrack Name --></label>
+        <name>SubTrack_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Track Id --></label>
+        <name>Track_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Track Name --></label>
+        <name>Track_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Used Count --></label>
+        <name>Used_Count__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>MBO Partner Enrollment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MBO Partner Enrollments</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>MBO Partner Enrollment Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

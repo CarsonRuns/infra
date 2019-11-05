@@ -1,0 +1,50 @@
+<apex:page showHeader="false" sidebar="false" StandardController="Super_Group__c" extensions="Super_Group_Direct_Export_CTE" contentType="application/vnd.ms-excel">
+    <apex:pageblock id="thePageBlock">  
+        <apex:pageMessages />
+        <table>
+            <tr><td><b>Super Group Name</b></td><td>{!Super_Group__c.Name}</td></tr>
+            <tr><td><b>Program Type</b></td><td>{!Super_Group__c.Program_Type__c}</td></tr>
+            <tr><td><b>Sales Credit Type</b></td><td>{!Super_Group__c.Type__c}</td></tr>
+            <tr><td><b>Resource</b></td><td>{!Super_Group__c.Resource__c}</td></tr>
+        </table>
+        <br></br>
+        <apex:repeat value="{!SuperGrpInfoList}" var="sif">   
+            <apex:pageBlockTable value="{!sif}" var="data" id="table">
+                <!--<apex:column value="{!Super_Group__c.Name}" headerValue="Super Group Name"/>
+                <apex:column value="{!Super_Group__c.Program_Type__c}" headerValue="Program Type"/>
+                <apex:column value="{!Super_Group__c.Type__c}" headerValue="Sales Credit Type"/>
+                <apex:column value="{!Super_Group__c.Resource__c}" headerValue="Resource"/>-->
+                
+                <apex:column value="{!data.AcctGrp.Name}" headerValue="Account Group Name"/>
+                <apex:column value="{!data.AcctGrp.Account_Group_ID__c}" headerValue="FDEV Group ID"/>
+                <apex:column value="{!data.AcctGrp.FDEV_Account_Group_Owner__c}" headerValue="Sales Account Owner"/>
+                <apex:column value="{!data.AcctGrp.Territory_Name__c}" headerValue="Territory"/>
+                
+                <apex:column value="{!data.Acct.Name}" headerValue="Account Name"/>
+                <apex:column value="{!data.Acct.CRName__c}" headerValue="CR Name"/>
+                <!--<apex:column value="{!data.Acct.GU_ID__c}" headerValue="GU ID"/>-->
+                <apex:column value="{!data.Acct.HQ_Party_ID__c}" headerValue="HQ Party ID"/>
+                <apex:column value="{!data.Acct.CSCSiteID__c}" headerValue="Party ID"/>   
+                <apex:column value="{!data.Acct.Owner.Name}" headerValue="Account Owner"/> 
+                
+                <apex:column value="{!data.Oppty.DealID__c}" headerValue="Deal ID"/> 
+                <apex:column value="{!data.Oppty.Name}" headerValue="Opportunity Name"/> 
+                <apex:column value="{!data.Oppty.Owner.Name}" headerValue="Opportunity Owner"/>
+                <apex:column value="{!data.Oppty.Expected_Product__c}" headerValue="Expected Product ($'000)"/>  
+                <apex:column value="{!data.Oppty.Expected_Service__c}" headerValue="Expected Service ($'000)"/> 
+                <apex:column value="{!data.Oppty.CloseDate}" headerValue="Expected Book Date"/>  
+                <apex:column value="{!data.Oppty.Opportunity_Status__c}" headerValue="Opportunity Status"/>                             
+                <apex:column value="{!data.Oppty.StageName}" headerValue="Stage"/>  
+                <apex:column value="{!data.Oppty.Forecast_Status__c}" headerValue="Forecast Status"/>
+                <apex:column value="{!data.Oppty.Position__c}" headerValue="Forecasting Position"/>   
+                <!--<apex:column value="{!data.Oppty.Territory.Name}" headerValue="Territory"/>
+                <apex:column value="{!data.Oppty.Territory.Level_1_Territory__c}" headerValue="Level 01 Territory"/>-->
+                <apex:column value="{!data.Oppty.Territory2.Level_2_Territory__c}" headerValue="Level 02 Territory"/>
+                <apex:column value="{!data.Oppty.Territory2.Level_3_Territory__c}" headerValue="Level 03 Territory"/>
+                <apex:column value="{!data.Oppty.Fiscal_Week__c}" headerValue="Fiscal Week"/>
+                <apex:column value="{!data.Oppty.Fiscal_Month__c}" headerValue="Fiscal Month"/>
+                <apex:column value="{!data.Oppty.Fiscal_Quarter__c}" headerValue="Fiscal Quarter"/>
+            </apex:pageBlockTable>
+        </apex:repeat>
+    </apex:pageblock>
+</apex:page>

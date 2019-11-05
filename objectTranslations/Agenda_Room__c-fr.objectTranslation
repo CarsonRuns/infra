@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Nom du compte</label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label>Statut de briefing</label>
+        <name>Briefing_Status__c</name>
+    </fields>
+    <fields>
+        <label>Type de briefing</label>
+        <name>Briefing_Type__c</name>
+    </fields>
+    <fields>
+        <label>Engagements et événements du client</label>
+        <name>Customer_Engagements_Events__c</name>
+        <relationshipLabel>Salles</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Date/Heure de fin</label>
+        <name>End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Contact Email --></label>
+        <name>Engagement_Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Contact Name --></label>
+        <name>Engagement_Contact_Name__c</name>
+    </fields>
+    <fields>
+        <label>Nom d'événement</label>
+        <name>Event_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Room Name Dataloder --></label>
+        <name>Room_Name_Dataloder__c</name>
+    </fields>
+    <fields>
+        <label>Nom de salle</label>
+        <name>Room_Name__c</name>
+    </fields>
+    <fields>
+        <label>Salle</label>
+        <name>Room__c</name>
+        <relationshipLabel>Salles de l'agenda</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Date/Heure de début</label>
+        <name>Start_Date_Time__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Agenda Room --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Agenda Room --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Room Number --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Agenda Room Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage>La date/heure de début doit être antérieure à la date/heure de fin.</errorMessage>
+        <name>Start_Date_Greater_than_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Les heures de salle choisies ne correspondent pas avec l'heure de début ou de fin du briefing.</errorMessage>
+        <name>Start_or_End_within_Briefing_Window</name>
+    </validationRules>
+</CustomObjectTranslation>

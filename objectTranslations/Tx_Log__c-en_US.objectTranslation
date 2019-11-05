@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- duration(ms) --></label>
+        <name>duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- exception --></label>
+        <name>exception__c</name>
+    </fields>
+    <fields>
+        <label><!-- message --></label>
+        <name>message__c</name>
+    </fields>
+    <fields>
+        <label><!-- object ID --></label>
+        <name>object_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- opportunity --></label>
+        <name>opportunity__c</name>
+        <relationshipLabel><!-- Tx Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- originated --></label>
+        <name>originated__c</name>
+    </fields>
+    <fields>
+        <label><!-- type --></label>
+        <name>type__c</name>
+    </fields>
+    <fields>
+        <label><!-- user --></label>
+        <name>user__c</name>
+        <relationshipLabel><!-- Tx Logs --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Tx Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Tx Logs</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Tx Log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

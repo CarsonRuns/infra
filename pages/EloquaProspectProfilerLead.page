@@ -1,0 +1,26 @@
+<apex:page standardController="Lead" extensions="EloquaProspectProfiler_CTE" action="{!validateLicense}" >
+    <center>
+    <apex:outputText rendered="{!AND(!validLicense,Lead.Integrated_With_MCP__c)}">
+        You donot have permission to view Prospect Profiler.
+    </apex:outputText>
+    </center>
+    
+    <apex:iframe src="{!value}{!Lead.Email}" rendered="{!activeLead}"/> 
+    
+    
+    <script language="javascript"> 
+      function resizeIframe() {
+          var me = window.name;
+          if (me) {
+              var iframes = parent.document.getElementsByName(me);
+              if (iframes && iframes.length == 1) {
+                   height = document.body.offsetHeight;
+                   //if (height <= 300) 
+                   iframes[0].style.height = height + "px";              
+              }
+          }
+      }
+      resizeIframe(); 
+      
+    </script>
+</apex:page>

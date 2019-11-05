@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- CEE Location --></label>
+        <name>CEE_Location__c</name>
+        <relationshipLabel><!-- CEE Demos --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Delivery Type --></label>
+        <name>Delivery_Type__c</name>
+        <picklistValues>
+            <masterLabel>In-Person</masterLabel>
+            <translation><!-- In-Person --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telepresence</masterLabel>
+            <translation><!-- Telepresence --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Topic --></label>
+        <name>Topic__c</name>
+        <relationshipLabel><!-- CEE Demos --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>CEE Demo</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CEE Demos</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CEE Demo Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

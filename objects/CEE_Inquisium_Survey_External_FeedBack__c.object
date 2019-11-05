@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Accelerate_Sales_Cycle_Virtual_Remote__c</fullName>
+        <externalId>false</externalId>
+        <label>% Accelerate Sales Cycle-Virtual/Remote</label>
+        <length>5</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Additional_Feedback__c</fullName>
+        <externalId>false</externalId>
+        <label>Additional Feedback</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Additional_Opportunity_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Additional Opportunity Details</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Attributed_to_Bid_Mgmt_in_Closing__c</fullName>
+        <externalId>false</externalId>
+        <label>Attributed to Bid Mgmt in Closing</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Attributed_to_CPOC_in_Closing_Deal__c</fullName>
+        <externalId>false</externalId>
+        <label>Attributed to CPOC in Closing Deal (%)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Attributed_to_CXC_in_Closing_Deal__c</fullName>
+        <externalId>false</externalId>
+        <label>Attributed to CXC in Closing Deal(%)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Average_Hours_Saved_Using_CPOC__c</fullName>
+        <description>Hours saved by Using CPOC Services</description>
+        <externalId>false</externalId>
+        <label>Average Hours Saved Using CPOC</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Average_hours_saved_using_Bid_Mgmt__c</fullName>
+        <externalId>false</externalId>
+        <label>Average hours saved using Bid Mgmt</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CEC_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>CEC ID</label>
+        <length>150</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CEE__c</fullName>
+        <description>This field is used to the survey response ID value for OBX and CPOC and it is mapping to the same value in CEE Customer feedback object using trigger.</description>
+        <externalId>false</externalId>
+        <label>CEE</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPOC_Created_Additional_Opportunities__c</fullName>
+        <externalId>false</externalId>
+        <label>CPOC Created Additional Opportunities</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cisco_Improvement_Opportunity__c</fullName>
+        <description>This field is used to the survey response value for OBX and CPOC and it is mapping to the same value in CEE Customer feedback object using trigger.</description>
+        <externalId>false</externalId>
+        <label>Cisco Improvement Opportunity</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Confidence_Level__c</fullName>
+        <description>This field is used to the survey response value for OBX and CPOC and it is mapping to the same value in CEE Customer feedback object using trigger.s.</description>
+        <externalId>false</externalId>
+        <label>Confidence Level</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Content_Score__c</fullName>
+        <description>This field is used to the survey response value for OBX and CPOC and it is mapping to the same value in CEE Customer feedback object using trigger.</description>
+        <externalId>false</externalId>
+        <label>Content Score</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Experience__c</fullName>
+        <description>This field is used to the survey response value for OBX and it is mapping to the same value in CEE Customer feedback object using trigger.</description>
+        <externalId>false</externalId>
+        <label>Customer Experience</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>DLP_Order_Managment_Time_Saved_in_Days__c</fullName>
+        <externalId>false</externalId>
+        <label>DLP Order Managment Time Saved(in Days)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email_Address__c</fullName>
+        <description>This field is used to the survey response value for OBX and CPOC and it is mapping to the same value in CEE Customer feedback object using trigger.</description>
+        <externalId>false</externalId>
+        <label>Email Address</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Estimated_Spend_on_DLP_k_USD__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Spend on DLP($k USD)</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_and_Last_Name__c</fullName>
+        <description>This field is used to the survey response value for OBX and CPOC and it is mapping to the same value in CEE Customer feedback object using trigger.</description>
+        <externalId>false</externalId>
+        <label>First and Last Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Hours_Saved_using_CXC_vs_First_time_Demo__c</fullName>
+        <externalId>false</externalId>
+        <label>Hours Saved using CXC vs First time Demo</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Improvement_Opportunity__c</fullName>
+        <description>This field is used to the survey response value for OBX and CPOC and it is mapping to the same value in CEE Customer feedback object using trigger..</description>
+        <externalId>false</externalId>
+        <label>Improvement Opportunity</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Presenter_Feedback__c</fullName>
+        <description>This field is used to the survey response value for CPOC and it is mapping to the same value in CEE Customer feedback object using trigger.C.</description>
+        <externalId>false</externalId>
+        <label>Presenter Feedback</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Recommendation_Feedback__c</fullName>
+        <description>This field is used to the survey response value for OBX and CPOC and it is mapping to the same value in CEE Customer feedback object using trigger.</description>
+        <externalId>false</externalId>
+        <label>Recommendation Feedback</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Recommendation_Score__c</fullName>
+        <description>This field is used to the survey response value for OBX and CPOC and it is mapping to the same value in CEE Customer feedback object using trigger.</description>
+        <externalId>false</externalId>
+        <label>Recommendation Score</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reduction_in_Sales_Cycle_using_Bid_Mgmt__c</fullName>
+        <externalId>false</externalId>
+        <label>Reduction in Sales Cycle using Bid Mgmt</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reduction_in_Sales_Cycle_using_CPOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Reduction in Sales Cycle using CPOC</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reduction_in_sales_cycle__c</fullName>
+        <externalId>false</externalId>
+        <label>Reduction in Sales Cycle</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Satisfaction_level__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Satisfaction Level</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Speaker_Feedback__c</fullName>
+        <description>This field is used to the survey response value for OBX and it is mapping to the same value in CEE Customer feedback object using trigger.</description>
+        <externalId>false</externalId>
+        <label>Speaker Feedback</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Your_Role__c</fullName>
+        <externalId>false</externalId>
+        <label>Your Role</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is intermediate Inquisium Survey flows first this object, then after insert trigger will push data to customer Feedback object. Using this Approach no need to give view all access to Accounts, CEE objects.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>CEE Inquisium Survey External FeedBack</label>
+    <nameField>
+        <displayFormat>CF-{0000}</displayFormat>
+        <label>CEE Inquisium Survey External FeedBack N</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>CEE Inquisium Survey External FeedBacks</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

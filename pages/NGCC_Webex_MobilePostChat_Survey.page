@@ -1,0 +1,148 @@
+<!--
+   Name    : NGCC_MobilePostChat_Survey
+   Author  : zakeahme
+   Purpose : Webex.com Post chat survey
+   Created Date: June-14-2019
+
+-->
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" id="page" docType="html-5.0" controller="NGCC_Webex_MobilePostChat_Survey_Cls">
+    <script src="{!$Resource.NGCC_ajax_googleapis}"></script>
+    <script type="text/javascript">
+        var leadIdFromJS;
+        var uid;
+        var formarray = {};
+        var leadIDVF2ApX;
+        var userIDVF2ApX;
+        $(document).ready(function() {
+            cmdLeadDetails();
+            cmdAgentDetails();                     
+            cmdVFRemoting();
+
+        });
+        
+        //@Function: Getting lead details using VF remoting onload
+        function cmdLeadDetails() {
+            // SCAVA
+            var leadDetails = '{!JSENCODE($CurrentPage.parameters.attachedRecords)}';      
+            // SCAVA
+            leadIdFromJS = JSON.parse(leadDetails).LeadId;
+            console.log(leadIdFromJS);
+            if (leadIdFromJS !== null && leadIdFromJS !== '' && leadIdFromJS !== undefined) {
+                formarray.Lead_ID = leadIdFromJS;
+                leadIDVF2ApX = leadIdFromJS;
+            } else {
+                formarray.Lead_ID = null;
+                leadIDVF2ApX = null;
+            }
+
+        }
+        //@Function : Getting Agent details using VF remoting onload
+        function cmdAgentDetails() {
+            // SCAVA            
+            var jsonString = '{!JSENCODE($CurrentPage.parameters.chatDetails)}';
+            // console.log(jsonString);
+            obj = JSON.parse(jsonString);
+            uid = obj.agent['userId'];
+            console.log(uid);
+            if (uid !== null && uid !== '' && uid !== undefined) {
+                formarray.User_ID = uid;
+                userIDVF2ApX = uid;
+            } else {
+                formarray.User_ID = null;
+                userIDVF2ApX = null;
+            }
+        }
+        //@Function : Calling remote method 
+        function cmdVFRemoting() {
+            console.log("i am in vf remoting");
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.NGCC_Webex_MobilePostChat_Survey_Cls.getAgentDetails}',leadIDVF2ApX,userIDVF2ApX,
+                function(result, event) {
+                    if (event.status) {
+                        var ValString = JSON.stringify(result);
+                        //console.log(ValString);
+                        
+                        //Apex Result parsing
+                        ValString = jQuery.parseJSON(ValString);
+
+                        formarray.Response_ID = ValString.Id != null ? ValString.Id : null;
+                        formarray.Agent_Name = ValString.UserName != null ? ValString.UserName : null;
+
+                        if ((ValString.CreatedDate !== null && ValString.CreatedDate !== '' && ValString.CreatedDate !== undefined) ||
+                            (ValString.CreatedDate !== null && ValString.CreatedDate !== '' && ValString.CreatedDate !== undefined)
+                        ) {
+                            formarray.Created_Date = ValString.CreatedDate;
+                            formarray.Created_Time = ValString.CreatedTime;
+                        } else {                            
+                            cmdFormatDateTime(new Date(new Date()));
+                        }
+                        cmdSFDCForm();
+
+                    } else if (event.type === 'exception') {
+                        console.log("Exception : " + event.message);
+                    } else {
+                        console.log("Exception : " + event.message);
+                    }
+                }, {
+                    escape: true
+                }
+            );
+        }
+        //@Function : If in case Created Date & Time is blank from apex class then the below logic would get fired and pass Time & Date in the url
+        function cmdFormatDateTime(formatDateTimeTemp) {
+            var d = new Date(formatDateTimeTemp);
+            var month = d.getUTCMonth() + 1;
+            var day = d.getUTCDate();
+            var year = d.getUTCFullYear();
+            
+            //converting DateTime to Date format for form =binding
+            newdate = year + "/" + month + "/" + day;
+            console.log(newdate);
+            var hh = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+            var dd = "AM";
+            var h = hh;
+            if (h >= 12) {
+                h = hh - 12;
+                dd = "PM";
+            }
+            if (h == 0) {
+                h = 12;
+            }
+            m = m < 10 ? "0" + m : m;
+            s = s < 10 ? "0" + s : s;
+            var pattern = new RegExp("0?" + hh + ":" + m + ":" + s);
+            var replacement = h + ":" + m;
+            //Converting DateTime to Time in AM/PM format 
+            replacement += " " + dd;
+            console.log(replacement);
+            formarray.Created_Date = newdate;            
+            formarray.Created_Time = replacement;
+        }
+        //@Function : Form Submission based on results
+        function cmdSFDCForm() {
+            console.log("formarray :: " + JSON.stringify(formarray));
+            //Form binding fileds based on criteria
+            $('input[name=User_ID]').val(formarray.User_ID);
+            $('input[name=Agent_Name]').val(formarray.Agent_Name);
+            $('input[name=Lead_ID]').val(formarray.Lead_ID);
+            $('input[name=Created_Date]').val(formarray.Created_Date);
+            $('input[name=Created_Time]').val(formarray.Created_Time);
+            $('input[name=Response_ID]').val(formarray.Response_ID);
+            
+            var f = document.getElementById('TheForm');
+            window.open('', '_top');
+            f.submit();
+        }
+    </script>
+    <!--Hidden Form Fields we are passing through Eloqua URL-->
+    <form id="TheForm" method="GET" action="{!eloquaURL}" target="_top">
+        <input type="hidden" name="Lead_ID" value="" />
+        <input type="hidden" name="User_ID" value="" />
+        <input type="hidden" name="Response_ID" value="" />
+        <input type="hidden" name="Agent_Name" value="" />
+        <input type="hidden" name="Created_Date" value="" />
+        <input type="hidden" name="Created_Time" value="" />
+    </form>
+</apex:page>

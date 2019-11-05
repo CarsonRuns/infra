@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Point principal à l'ordre du jour</label>
+        <name>Agenda_Item__c</name>
+        <relationshipLabel>Invites CEE</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Participant CEE</label>
+        <name>CEE_Attendee__c</name>
+        <relationshipLabel>Invites CEE</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Date/heure de fin</label>
+        <name>End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label>Emplacement</label>
+        <name>Location__c</name>
+    </fields>
+    <fields>
+        <label>ID d'invite Outlook</label>
+        <name>Outlook_Invite_ID__c</name>
+    </fields>
+    <fields>
+        <label>Statut Outlook</label>
+        <name>Outlook_Status__c</name>
+        <picklistValues>
+            <masterLabel>Accepted</masterLabel>
+            <translation>Accepté</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined</masterLabel>
+            <translation>Refusé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invited</masterLabel>
+            <translation>Invité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Invited</masterLabel>
+            <translation>Non invité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation>En attente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tentative</masterLabel>
+            <translation>Provisoire</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Salle</label>
+        <name>Room__c</name>
+        <relationshipLabel>Invites CEE</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Date/Heure de début</label>
+        <name>Start_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label>TelePresence activé</label>
+        <name>Telepresence_Enabled__c</name>
+    </fields>
+    <fields>
+        <label>Mise à jour sélectionnée</label>
+        <name>Update_Selected__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- CEE Invite --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- CEE Invite --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- CEE Invite ID --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>CEE Invite Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage>Un destinataire au moins est nécessaire pour une invitation donnée.</errorMessage>
+        <name>CEE_Invite_Need_Recipient</name>
+    </validationRules>
+</CustomObjectTranslation>

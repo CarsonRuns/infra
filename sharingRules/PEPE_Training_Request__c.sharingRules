@@ -1,0 +1,1210 @@
+<?xml version="1.0" encoding="utf-8"?><SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Admins_getting_read_only_on_TR</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Admins getting read only on TR</label>
+        <sharedTo>
+            <group>PDP_PLED_Admin_EMEAR_Read</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Awaiting Requestor's confirmation,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_AFRICA_OP</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for AFRICA_OP</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_AFRICA_OP_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>AFRICA_OP</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_BELUX_OPS</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for BELUX_OPS</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_BELUX_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>BELUX_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_DENMARK_OPS</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for DENMARK_OPS</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_DENMARK_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>DENMARK_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_EMEA_CEE</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for EMEA-CEE</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_CEE_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-CEE</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_EMEA_FRANCE</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for EMEA-FRANCE</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_FRANCE_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-FRANCE</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_EMEA_GERMANY</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for EMEA-GERMANY</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_GERMANY_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-GERMANY</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_EMEA_ITALY</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for EMEA-ITALY</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_ITALY_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-ITALY</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_EMEA_KSA</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This will give visibility to Regional Lead for EMEA-KSA and MIDDLE_EAST_KSA country cluster.</description>
+        <label>PDP Regional Lead Access for EMEA-KSA</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_KSA_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>MIDDLE_EAST_KSA,EMEA-KSA</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_EMEA_POLAND</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This will give Read only  access to Regional Lead for EMEA-POLAND and EMEA-CEE-POLAND Group.</description>
+        <label>PDP Regional Lead Access for EMEA-POLAND</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_POLAND_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-POLAND,EMEA-CEE-POLAND</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_EMEA_SEE</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for EMEA-SEE</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_SEE_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-SEE</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_EMEA_SWITZERLAND</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for EMEA-SWITZERLAND</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_SWITZERLAND_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-SWITZERLAND</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_EMEA_UKI</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for EMEA-UKI</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEAR_UKI_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-UKI</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_FINLAND_OPS</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for FINLAND_OPS</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_FINLAND_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>FINLAND_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_Greece</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for Greece</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Greece_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>Greece</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_Israel</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for Israel</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Israel_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>Israel</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_MIDDLE_EAST</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for MIDDLE_EAST</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_MIDDLE_EAST_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>MIDDLE_EAST</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_NETHERLANDS_OPS</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for NETHERLANDS_OPS</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_NETHERLANDS_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>NETHERLANDS_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_NORWAY_OPS</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for NORWAY_OPS</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_NORWAY_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>NORWAY_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_Portugal</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for Portugal</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Portugal_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>Portugal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_RUSSIA_CIS</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for RUSSIA_CIS</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_RUSSIA_CIS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>RUSSIA_CIS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_South_Africa</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This will give read only access to Regional Lead for South Africa and AFRICA_OP_SOUTHAFRICA.</description>
+        <label>PDP Regional Lead Access for South Africa</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_South_Africa_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>South Africa,AFRICA_OP_SOUTHAFRICA</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_Spain</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PDP Regional Lead Access for Spain</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Spain_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>Spain</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PDP_Regional_Lead_Access_for_Turkey</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This will give visibility to Regional Lead for Turkey and MIDDLE_EAST_TURKEY country cluster.</description>
+        <label>PDP Regional Lead Access for Turkey</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Turkey_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Event Cancelled but Paid,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>MIDDLE_EAST_TURKEY,Turkey</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Arch_Admin_access_R_W_to_TR_EMEAR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Arch Admins get edit access for EMEAR when status is Requested,
+Event Approved,
+Expired,
+Instructor being contacted,
+More info Needed,
+Awaiting Requestor's confirmation,
+Closed,
+Logistics Confirmed,
+Delivered.</description>
+        <label>PEPE: Arch Admin access R/W to TR EMEAR</label>
+        <sharedTo>
+            <group>PEPE_ARCH_EMEAR_ADMIN</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,More info Needed,Awaiting Requestor's confirmation,Closed,Instructor being contacted,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Arch_Admin_access_Read_to_TR_EMEAR</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Arch Admins get read access for EMEAR when status is Event Cancelled,Request Rejected</description>
+        <label>PEPE: Arch Admin access Read to TR EMEAR</label>
+        <sharedTo>
+            <group>PEPE_ARCH_EMEAR_ADMIN</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Event Cancelled,Request Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Arch_Host_access_R_W_to_TR_EMEAR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Arch hosts get edit access for EMEAR when status is ARC.</description>
+        <label>PEPE: Arch Host access R/W to TR EMEAR</label>
+        <sharedTo>
+            <group>PEPE_ARCH_EMEAR_Country_Hosts</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Arch_Host_access_Read_to_TR_EMEAR</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Arch hosts get read access for EMEAR when status is other than ARC.</description>
+        <label>PEPE: Arch Host access Read to TR EMEAR</label>
+        <sharedTo>
+            <group>PEPE_ARCH_EMEAR_Country_Hosts</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Closed,Instructor being contacted,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_CCW_Arch_Hosts</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>For Oct 2016 Release ( CCW )</description>
+        <label>PEPE: CCW Arch Hosts</label>
+        <sharedTo>
+            <group>PEPE_CCW_ARCH_Country_Hosts</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Hosts_access_to_TRs_EMEAR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This is to calculate the sharing based on the platform, status and geo.</description>
+        <label>PEPE: Hosts access to TRs EMEAR</label>
+        <sharedTo>
+            <group>PEPE_CAL_PVT_EMEAR_Country_Hosts</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requestor Cancellation,Requested,Event Approved,Closed,Request Rejected,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Calendar_Based_Host_Requested,Calendar_Based_Host_CancellationRejectedDieliveredClosed,PVT</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_PLED_Admin_access_R_W_only_to_TR_APJC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Admin get edit access for APJC when status is Requested,Event Approved,Expired,Learning Partner being contacted,More info Needed,Awaiting Requestor's confirmation,Closed,Logistics Confirmed,Delivered</description>
+        <label>PEPE: PLED Admin access R/W only to TR APJC</label>
+        <sharedTo>
+            <group>PEPE_PLED_Admin_APJC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>APJC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Logistics Confirmed,Delivered,Requested,Closed,Instructor being contacted,Learning Partner being contacted,Expired,Awaiting Requestor's confirmation,More info Needed,Event Approved</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_PLED_Admin_access_read_only_to_TR_APJC</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Admin get read access for APJC when status is Event Cancelled or Request Rejected.</description>
+        <label>PEPE: PLED Admin access read only to TR APJC</label>
+        <sharedTo>
+            <group>PEPE_PLED_Admin_APJC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Request Rejected,Event Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>APJC</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Regional_Lead_access_R_W_to_TR_APJC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Regional leads get edit access for APJC when status is ARC.</description>
+        <label>PEPE: Regional Lead access R/W to TR APJC</label>
+        <sharedTo>
+            <group>PEPE_Leads_Hosts_SMEs_APJC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>APJC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PEPE_Regional_Lead_access_to_TR_APJC</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Leads/Hosts/SMEs get Read access for APJC when status is Requested,Event Approved,Expired,Learning Partner being contacted,Event Cancelled,Request Rejected,More info Needed,Closed,Logistics Confirmed,Delivered</description>
+        <label>PEPE: Regional Lead access to TR APJC</label>
+        <sharedTo>
+            <group>PEPE_Leads_Hosts_SMEs_APJC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>APJC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Logistics Confirmed,Delivered,Requested,Closed,Request Rejected,Event Cancelled but Paid,Event Cancelled,Learning Partner being contacted,Expired,More info Needed,Event Approved</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PPL_Admins_getting_read_only_on_TR</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>PPL Admins getting read only on TR</label>
+        <sharedTo>
+            <group>PDP_PPL_PLED_Admin_EMEAR_Read</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Logistics Confirmed,Delivered,Requested,Closed,Request Rejected,Event Cancelled,Learning Partner being contacted,Expired,Awaiting Requestor's confirmation,More info Needed,Event Approved</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>PPL_Share_with_Admin_Group_EMEAR_team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PPL Share with Admin Group EMEAR team</label>
+        <sharedTo>
+            <group>PDP_PPL_PLED_Admin_EMEAR</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Logistics Confirmed,Delivered,Requested,Closed,Learning Partner being contacted,Expired,Awaiting Requestor's confirmation,More info Needed,Event Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Read_only_share_with_LogOps_team</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Read only share with LogOps team</label>
+        <sharedTo>
+            <group>PDP_Logistics_and_Ops_EMEAR_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Expired,Event Cancelled,Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Admin_CCW_PP</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>For Oct 2016 Release ( CCW)</description>
+        <label>Share Admin CCW PP</label>
+        <sharedTo>
+            <group>PEPE_CCW_PP_Admin</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Logistics Confirmed,Delivered,Closed,Learning Partner being contacted,Awaiting Requestor's confirmation,More info Needed,Event Approved</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Hosts_CCW_PVT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>For Oct 2016 Release ( CCW )</description>
+        <label>Share Hosts CCW PVT</label>
+        <sharedTo>
+            <group>PEPE_CCW_PVT_Country_Hosts</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Delivered,Requested,Closed,Requestor Cancellation,Request Rejected,Event Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Calendar_Based_Host_Requested,Calendar_Based_Host_CancellationRejectedDieliveredClosed,PVT</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_RL_CCW_PP</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>For Oct 2016 Release( CCW)</description>
+        <label>Share RL CCW PP</label>
+        <sharedTo>
+            <group>PEPE_CCW_PP_Regional_Lead</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Logistics Confirmed,Delivered,Requested,Closed,Request Rejected,Event Cancelled but Paid,Event Cancelled,Learning Partner being contacted,Expired,More info Needed,Event Approved</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Read_only_with_Admin</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share Read only with Admin</label>
+        <sharedTo>
+            <group>PDP_PLED_Admin_EMEAR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Event Cancelled,Event Cancelled but Paid,Request Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_Admin_Group_EMEAR_team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with Admin Group EMEAR team</label>
+        <sharedTo>
+            <group>PDP_PLED_Admin_EMEAR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Requested,Event Approved,Expired,Learning Partner being contacted,More info Needed,Awaiting Requestor's confirmation,Closed,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_Logs_Ops_team_EMEAR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with Logs Ops team EMEAR</label>
+        <sharedTo>
+            <group>PDP_Logistics_and_Ops_EMEAR_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>More info Needed,Event Approved,Closed,Learning Partner being contacted,Logistics Confirmed,Delivered</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Geography__c</field>
+            <operation>equals</operation>
+            <value>EMEAR</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_AFRICA_OP</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "AFRICA_OP"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_AFRICA_OP_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>AFRICA_OP</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_BELUX_OPS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "BELUX_OPS"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_BELUX_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>BELUX_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_DENMARK_OPS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "DENMARK_OPS"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_DENMARK_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>DENMARK_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_EMEA_CEE</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "EMEA-CEE"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_CEE_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-CEE</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_EMEA_FRANCE</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "EMEA-FRANCE"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_FRANCE_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-FRANCE</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_EMEA_GERMANY</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "EMEA-GERMANY"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_GERMANY_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-GERMANY</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_EMEA_ITALY</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "EMEA-ITALY"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_ITALY_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-ITALY</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_EMEA_KSA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This will give visibility to Regional Lead for EMEA-KSA and  MIDDLE_EAST_KSA country cluster.</description>
+        <label>Share with RL "EMEA-KSA"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_KSA_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-KSA,MIDDLE_EAST_KSA</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_EMEA_POLAND</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This will give visibility to Regional Lead for EMEA-POLAND and EMEA-CEE-POLAND Group.</description>
+        <label>Share with RL "EMEA-POLAND"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_POLAND_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-POLAND,EMEA-CEE-POLAND</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_EMEA_SEE</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "EMEA-SEE"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_SEE_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-SEE</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_EMEA_SWITZERLAND</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "EMEA-SWITZERLAND"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEA_SWITZERLAND_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-SWITZERLAND</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_EMEA_UKI</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "EMEA-UKI"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_EMEAR_UKI_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>EMEA-UKI</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_FINLAND_OPS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "FINLAND_OPS"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_FINLAND_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>FINLAND_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_Greece</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "Greece"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Greece_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>Greece</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_Israel</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "Israel"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Israel_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>Israel</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_MIDDLE_EAST</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "MIDDLE_EAST"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_MIDDLE_EAST_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>MIDDLE_EAST</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_NETHERLANDS_OPS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "NETHERLANDS_OPS"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_NETHERLANDS_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>NETHERLANDS_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_NORWAY_OPS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "NORWAY_OPS"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_NORWAY_OPS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>NORWAY_OPS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_Portugal</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "Portugal"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Portugal_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>Portugal</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_RUSSIA_CIS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "RUSSIA_CIS"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_RUSSIA_CIS_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>RUSSIA_CIS</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_South_Africa</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "South Africa"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Spain_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>South Africa,AFRICA_OP_SOUTHAFRICA</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_Spain</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with RL "Spain"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Spain_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>Spain</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_RL_Turkey</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>This will give visibility to Regional Lead for Turkey and MIDDLE_EAST_TURKEY country cluster.</description>
+        <label>Share with RL "Turkey"</label>
+        <sharedTo>
+            <group>PDP_Regional_Lead_Turkey_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Awaiting Requestor's confirmation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country_Cluster__c</field>
+            <operation>equals</operation>
+            <value>MIDDLE_EAST_TURKEY,Turkey</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>

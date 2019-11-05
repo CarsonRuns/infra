@@ -1,0 +1,141 @@
+<!--
+    Author        : Suresh
+    Date Created  : 9/11/2014
+    Description   : This visualForce page displays in the ordersection of pov detail page
+    
+    *********** Change History ***********
+    9/11 - Remvoed the DLP URL hardcoding and using the custom setting value via domainUrl variable.
+-->
+
+<apex:page standardController="Proof_of_Value__c" docType="html-5.0" extensions="POVlineitem" sidebar="false" showHeader="false" >
+<style>
+    body .bRelatedList .pbBody table.list, body .apexp .pbBody table.list {
+        border: 1px solid #e0e3e5;
+    }
+    body .pbBody table.list tr.headerRow td, body .pbBody table.list tr.headerRow th {
+        background: white;
+        border-width: 0 0 0 0;
+        border-color: #e0e3e5;
+        color: #000;
+        font-size: .9em;
+        font-weight: bold;
+        padding: 1px 1px 1px 1px;
+    }
+    table {
+        display: table;
+        border-collapse: separate;
+        border-spacing: 1px;
+        border-color: WHITE;
+        border-top-color: WHITE;
+        border-right-color: WHITE;
+        border-bottom-color: WHITE;
+        border-left-color: WHITE;
+    }
+    .pbBody table.list tr.headerRow th {
+        background: none repeat scroll 0% 0% WHITE;
+        border-width: 0px 0px 1px 1px;
+        border-color: WHITE;
+        color: #000;
+        font-size: 0.9em;
+        font-weight: bold;
+        padding: 1x 1px 1px 1px;
+    }
+    body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
+        background-color: white;
+        border-bottom: 1px solid white;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+        border-radius: 2px;
+    }
+    .bPageBlock {
+        background-color:white;
+    }
+    .pbBody {
+        background-color:white;
+    } 
+    row-over, body .pbBody table.list tr.dataRow.highlight td, body .pbBody table.list tr.dataRow.highlight th {
+        background-color: white;
+    } 
+</style>
+<apex:form id="theForm">
+<apex:pageBlock >
+<div style="float: left;margin: 0;margin-left: 450px;padding: 0;border: 1px; width: 1000px;height: 30px;vertical-align: middle;">
+    <input type="button" id="myBtn" onClick="openDlp(); tWin();"  value="Add/Modify BOM" />
+</div>
+<apex:outputPanel rendered="{!isDisable}">
+<script>
+    document.getElementById("myBtn").disabled = true;
+</script>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!valuesfromdlp.size > 0}">
+<table width="100%" style="float:left;">
+    <tr style="background-color:#dfe8f6;">    
+        <th width="10%">Line # </th>
+        <th width="15%">Product Number</th>        
+        <th width="20%">Product Description</th>
+        <th width="10%">Ship Set# </th> 
+        <th width="10%">Ordered Qty</th>
+        <th width="15%">List Price($)  </th>
+        <th width="15%">Ext Price($)</th>        
+    </tr>
+</table>
+<apex:outputPanel layout="block"  style="overflow:auto;height:198px; width
+:100%; float:left;">
+ <apex:pageBlockTable value="{!valuesfromdlp}" columns="900"  width="100%" var="DLP" id="linTable" >
+         <apex:column width="10%">           
+           <apex:outputText value="{!DLP.Line_Number__c}"/>            
+         </apex:column>
+         <apex:column width="15%">           
+           <apex:outputText value="{!DLP.Name}"/>
+         </apex:column>
+         <apex:column width="20%">           
+           <apex:outputText value="{!DLP.Item_Path__c}"/>
+         </apex:column>
+         <apex:column width="11%">           
+           <apex:outputText value="{!DLP.Ship_Set_Number__c}"/>
+         </apex:column>           
+         <apex:column width="9%" >           
+           <apex:outputText value="{!DLP.Ordrered_Quantity__c}"/>
+         </apex:column>         
+         <apex:column width="15%">          
+           <apex:outputText value="{!DLP.Unit_List_Price__c }"/>
+         </apex:column>
+         <apex:column width="13%">           
+           <apex:outputText value="{!DLP.Ext_Price__c }"/>
+         </apex:column>         
+    </apex:pageBlockTable>
+    </apex:outputPanel>
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!valuesfromdlp.size < 1}">        
+       <div style="float: left;margin: 0;margin-left: 450px;margin-top: 50px;padding: 0;border: 1px; width: 1000px;height: 200px;vertical-align: middle;display: table-cell;"><b>No BOM added to this PoV</b></div>       
+    </apex:outputPanel>
+    </apex:pageBlock>
+  </apex:form>
+<script>
+var hide= true;
+window.onload = function hideRows(){  
+    var  tableId ='j_id0:theForm:j_id1:linTable';
+    var t = document.getElementById(tableId);
+    var len = t.rows.length;
+    var rowStyle = (hide)? "none":"";
+    for(i=1 ; i< len; i++){
+        t.rows[0].style.display = rowStyle;
+    }
+    
+}
+var vWin
+function openDlp(){
+    //var wnd= window.open("http://tools.cisco.com/GPSS/dlp/jsp/dlphome.jsp?povid={!Proof_of_Value__c.Name}",height="600px",width="100%"); 
+    // SCAVA FIX
+    vWin = window.open('{!domainUrl}?povid={!Proof_of_Value__c.id}&country={!JSENCODE(Proof_of_Value__c.CRCountry__c)}&povOcat={!JSENCODE(Proof_of_Value__c.PoV_Order_Category__c)}&sfsessionId={!$Api.Session_ID}&email={!$User.Email}','_blank',"width=1100, height=650,toolbar=0,status=1,scrollbars=1,resizable=yes",!1);
+}
+function tWin() {
+    if (vWin.closed) {
+        window.top.location = window.top.location;
+    }
+    else {
+        setTimeout("tWin()", 500);
+    }
+}
+</script>
+</apex:page>

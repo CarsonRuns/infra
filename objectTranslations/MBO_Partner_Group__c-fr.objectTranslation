@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Actif</label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Child Modified --></label>
+        <name>Child_Modified__c</name>
+        <picklistValues>
+            <masterLabel>NO</masterLabel>
+            <translation>Non</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YES</masterLabel>
+            <translation>Oui</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Country/Country Group --></label>
+        <name>Country_Country_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enrollment Period --></label>
+        <name>Enrollment_Period__c</name>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation><!-- 12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Zone géographique</label>
+        <name>Geography__c</name>
+        <relationshipLabel><!-- MBO Partner Group --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Group Level --></label>
+        <name>Group_Level__c</name>
+        <picklistValues>
+            <masterLabel>PARTNER</masterLabel>
+            <translation>Partenaire</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRACK</masterLabel>
+            <translation><!-- TRACK --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MBO Program --></label>
+        <name>MBO_Program__c</name>
+        <relationshipLabel><!-- MBO Partner Group --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Group Type --></label>
+        <name>Partner_Group_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Track --></label>
+        <name>Track__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Custom</masterLabel>
+            <translation>Personnalisé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Default</masterLabel>
+            <translation>Par défaut</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- UsedBy --></label>
+        <name>UsedBy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Used Count --></label>
+        <name>Used_Count__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- MBO Partner Group --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- MBO Partner Group --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Partner Group Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>MBO Partner Group Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

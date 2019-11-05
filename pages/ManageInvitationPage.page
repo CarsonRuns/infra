@@ -1,0 +1,163 @@
+<!--
+    Release : Q3FY16
+    Author  : Narasimharao
+    Functionality: Manage Invite button from Opportunity related object (Quote Invitations object)
+   
+    Modification History :
+        iTrack#           Date          Author         Change
+                        *******        ********        *******
+                       
+-->
+<apex:page showheader="true" sidebar="true" tabStyle="Quote__c" standardController="Invitation__c" recordSetVar="Invitaion" extensions="ManageDealController" action="{!manageDealinfo}">
+<apex:includeScript value="{!$Resource.jquery22}"/>
+<apex:includeScript value="{!$Resource.Bootstrapmodelwindow}"/>
+<apex:includeScript value="{!$Resource.BootStrapDialogMinJs}"/>
+<script src="/soap/ajax/28.0/connection.js" type="text/javascript"></script>
+<script src="/soap/ajax/28.0/apex.js" type="text/javascript"></script>
+<apex:stylesheet value="/resource/BootstrapUpdateCssModelPosition"/>
+<apex:stylesheet value="/resource/BootstrapDialogMin"/>
+<apex:pageblock >
+    <apex:outputLabel style="background-color: transparent;font-family: Arial;color: #000">Opportunity<br/><font size="3">{!oppty.Name}</font></apex:outputLabel>
+    <br/><b>Deal Id</b> <br/> <font size="2">{!oppty.DealID__c}</font><br/>
+    <apex:detail subject="{!oppty.id}" relatedList="false" title="false" inlineEdit="false" />
+</apex:pageblock>
+    <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+    <script type="text/javascript">
+        var opptyInviteType ='manageInvite';
+        var opportunityId = "{!oppty.Id}";
+        // SCAVA FIX
+        var OpportunityName = "{!JSENCODE(oppty.Name)}";
+        var pdrDown = "{!pdrdown}"; // getting PDR Down value from controller
+        var baseUrl = "{!baseURL}"; // getting CCW base URL from controller
+        var hostname = "https://" + window.location.hostname.toLowerCase(); // taking SFDC hostname
+        var profileName = "{!profilecheck}"; // taking current user profile name
+        var profileNameCheck = Boolean(profileName); // converting it to boolean 
+        // SCAVA FIX
+        var sfdcmode = "{!JSENCODE($CurrentPage.parameters.mode)}";         //Added mode to send to CCW for navigation back and forth
+        
+        
+        if (sfdcmode == null || sfdcmode == '')
+        {
+            if ('{!$User.UIThemeDisplayed}' == 'Theme3') {
+                sfdcmode = 'cls'; 
+            }
+            else 
+            {
+                sfdcmode = 'lgt';
+            }
+        }
+        
+        // SCAVA FIX
+        var dealid = "{!JSENCODE(oppty.DealID__c)}";
+        // SCAVA FIX 
+        var status = "{!JSENCODE(oppty.Opportunity_Status__c)}";
+        var isopen = true;
+        // SCAVA FIX  
+        var parentOpptyRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Parent_RecordTypeId__c)}"; //taking Parent Opportunity recordtype from custom setting to variable
+        // SCAVA FIX  
+        var PhaseOpptyRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Phase_RecordTypeId__c)}"; //taking Phase opportunity recordtype from custom setting to variable
+        // SCAVA FIX 
+        var PartnerPhaseRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Partner_Phase_RecordTypeId__c)}"; //taking Partner Phase opportunity recordtype from custom setting to variable
+        // SCAVA FIX 
+        var PartnerParentOpptyRT = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Opportunity_Partner_Parent_RecordTypeId__c)}"; //taking Partner Parent Opportunity recordtype from custom setting to variable
+        var opptyRecordTypeId = "{!oppty.RecordTypeId}";
+        var parentrecordtypeTrim = opptyRecordTypeId.substring(0,15); //Trimmed 18 digit of opportunity recordtypeId to 15 digit as existing production recordtypes having 15 digit Id placed in custom setting
+        // SCAVA FIX 
+        var strQuoteCount = "{!JSENCODE(TEXT(oppty.Quote_Count__c))}"; //taking Quote count into a variable
+        var quoteCount = + strQuoteCount; //converting quote count from string to number
+        // SCAVA FIX 
+        var pdrStatus = "{!JSENCODE(oppty.Partner_Deal_Status__c)}";
+        // SCAVA FIX 
+        var globalopty = "{!JSENCODE(oppty.Global_Opportunity__c)}"; //getting global opty info on a record GDM Q3FY17
+   
+              /*Lightning infinite loop override - Start (Angela, 30/05/2018)*/
+              var type = '{!$User.UIThemeDisplayed}';
+   
+              function CloseTab() {
+            sforce.console.getEnclosingPrimaryTabId(closeSubtab);
+        }
+       
+        var closeSubtab = function closeSubtab(result) {
+            var tabId = result.id;
+            sforce.console.closeTab(tabId);
+        };
+        /*Lightning infinite loop override - Start (Angela, 30/05/2018)*/
+   
+        if(parentrecordtypeTrim == parentOpptyRT || parentrecordtypeTrim == PhaseOpptyRT) { //Check if Opportunity is equal to Parent and Phase recordtype
+            oppType='fieldQuote';
+        }
+        else{
+            oppType='partnerQuote';
+        }        
+        var name= encodeURIComponent(OpportunityName);  //encoding opportunity name as it contains special Characters
+        //Constructing URL to show Partner information on CCW UI where AM is allowed to send invitations to partners.
+        // SCAVA FIX
+        var invitePartner =baseUrl+"/SFDCRequestHandler?at="+opptyInviteType+"&optyNumber={!JSENCODE(oppty.DealID__c)}&dealtype={!JSENCODE(TEXT(oppty.Deal_Type__c))}&oppName="+name+"&userid={!$User.Id}&email={!$User.Email}&sessionid={!$Api.Session_ID}&url={!$Api.Enterprise_Server_URL_110}&hostname="+hostname+"&cancel="+opportunityId+"&mode="+sfdcmode; //CCW Quote page URL
+      
+        //Creation of Model box starts here
+        var dialogInstance = new BootstrapDialog({
+            size: BootstrapDialog.SIZE_Large,
+            closable: false,
+            message: '<div><img src="/resource/loading"/>{!$Label.QuoteDilogLoading}</div>', //loading Image
+            onshown: function(dilogref){
+                dilogref.setTitle("{!$Label.QuoteDialogTitleError}");
+                dilogref.setType(BootstrapDialog.TYPE_WARNING);
+               
+                if(pdrDown == 'Yes' && profileName == 'true'){ //checking PDR DOWN custom setting value is Yes and Profile is not starting with 'QA'
+                    dilogref.setMessage("{!$Label.Quoting_unavailable} {!$Label.Quoting_capabilities}"); //Quoting capabilities are un available
+                }
+                else if(dealid == ''){ //Checking dealId is null
+                    dilogref.setMessage("{!$Label.Quote_need_dealId}"); // Deal Id is required
+                }
+                else if(status != 'Active' && status != 'Booked'){ //checking if opportunity status not active and Booked
+                    dilogref.setMessage("{!$Label.QuoteInvitationActiveBooked}"); //Opportunity status shoulb be active or Booked for sending Quote invitations
+                }
+                else if(parentrecordtypeTrim != parentOpptyRT && parentrecordtypeTrim != PartnerParentOpptyRT){ //checking if opportunity not equal to Parent Oppty recordtype and PartnerParent Opty recordtype
+                    dilogref.setMessage("{!$Label.QuotePartnerInvitation}"); //Partners can be invited to create a quote only on Parent opportunities
+                }
+                else if(quoteCount == 0 && oppType == 'partnerQuote' && pdrStatus != 'Qualified'){ //checking If Opportunity does not have a quote(QuoteCount=0) and opportunity type is “PartnerQuote” and CCW Deal Status is not Qualified
+                    dilogref.setMessage("{!$Label.QuotePartnerNotQualified}"); //Partners can be invited to create a quote only on Parent opportunities with a Partner Deal Status of 'Qualified'.
+                }
+                else if(quoteCount != null && quoteCount > 0 && oppType == 'partnerQuote'){ //Checking If Opportunity is having atleast one Quote (QuoteCount >0 ) and opportunity type is “PartnerQuote”
+                    dilogref.setMessage("{!$Label.Quote_Multiple_cannot_for_Oppty}"); //Multiple quotes cannot be created for Partner and Direct Customer Initiated Deals
+                }
+                else if(parentrecordtypeTrim == PartnerParentOpptyRT || parentrecordtypeTrim == PartnerPhaseRT){ //Checking If record type is Partner Parent and Partner Phase
+                    dilogref.setMessage("{!$Label.QuoteManageInviteCannot}");   //Invitations cannot be sent for Partner or Direct Customer initiated deals
+                }
+                else if(quoteCount > 0 && globalopty != '' && parentrecordtypeTrim == parentOpptyRT){ //GDM Enhancement March_2017 checking Local opportunity is associated with global Opty and Quotecount is one
+                    dilogref.setMessage("{!$Label.Quote_ParterOpty_NA_LocalOptys}"); //Partner opportunities are not allowed on Local Opportunities linked to a Global Opportunity
+                }
+                else{
+                    dilogref.setTitle("{!$Label.Quote_InvitePartner}");
+                    dilogref.setType(BootstrapDialog.TYPE_PRIMARY);
+                   
+                    /*Lightning infinite loop override - Start (Angela, 30/05/2018)*/
+                    if (type == 'Theme4d' || type == 'Theme4u' )
+                            {  
+                                          console.log("Theme 4d - manage invitation");
+                        window.top.location = invitePartner;
+                                          CloseTab();
+                            }
+                    else
+                    {
+                            window.top.location = invitePartner; //navigating to CCW Invite Partner Page
+                    }
+                    /*Lightning infinite loop override - Start (Angela, 30/05/2018)*/
+                }
+            },
+            buttons: [{ //Button to redirect to Opportunity
+            label: "{!$Label.QuoteCloseDialog}",
+            action: function(dialogRef) {
+                redirectOppty();
+            }
+            }]
+        });
+        if(isopen){
+           isopen=false;
+           dialogInstance.open(); //Opening Model box
+        }
+        function redirectOppty(){ // Function to return back to Opportunity on Model box close button
+         window.top.location =hostname+'/'+opportunityId;
+        }
+    </script>
+</apex:page>

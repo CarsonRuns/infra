@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>This template will be used to update an AM when the opp is booked</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>US_IRP_Renewals_Opp_Update_Template</name>
+    <style>none</style>
+    <subject>Your IronPort Deal {!Opportunity.Name} has been updated</subject>
+    <textOnly>Hello {!Opportunity.OwnerFirstName},
+
+In an effort to keep the Content Security renewals data in SFDC up to date I have updated the opportunity status. I have listed the updated information below. Please come back to me if you have any questions about this update.
+
+Many thanks
+
+
+Opportunity Status: {!Opportunity.Opportunity_Status__c}
+Deal ID: {!Opportunity.DealID__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Create New Opportunity for LX</description>
+    <fieldOverrides>
+        <field>Created_Via_Salesforce1__c</field>
+        <formula>TRUE</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Forecast_Status__c</field>
+        <formula>&quot;Not Forecastable&quot;</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Opportunity_Owner_AM__c</field>
+        <formula>IF( 
+OR( 
+INCLUDES($User.Additional_User_Permissions__c,&apos;Enable_ePSS&apos;), 
+INCLUDES($User.Additional_User_Permissions__c, &apos;Enable_VSS&apos;), 
+$Permission.NGCC_DRR = True 
+), null, $User.Id )</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Opportunity_Status__c</field>
+        <formula>&quot;Active&quot;</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>OwnerId</field>
+        <formula>IF(INCLUDES($User.Additional_User_Permissions__c, &apos;Enable_ePSS&apos;), null, $User.Id )</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>StageName</field>
+        <literalValue>1 - Prospect</literalValue>
+    </fieldOverrides>
+    <label>Quick Create Opportunity</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Name</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>AccountId</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Installed_Base__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Expected_Product__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>DRT_Lead__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>true</emptySpace>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Opportunity_Owner_AM__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>CloseDate</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Expected_Service__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+    </quickActionLayout>
+    <targetObject>Opportunity</targetObject>
+    <targetRecordType>Opportunity.ParentOpportunity</targetRecordType>
+    <type>Create</type>
+</QuickAction>

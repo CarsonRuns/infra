@@ -1,0 +1,61 @@
+<apex:page >
+<font size = "2" face ="Arial"> 
+<h1>Sales Account View Online Help</h1> 
+
+<b><u>Overview: </u></b><br/> 
+The Sales Account View Detail View in Salesforce.com provides a robust view of the Sales Account View that includes all the Sales ACCOUNT View level attributes such as Sub-Segment, Vertical information, and Primary Address. This is all defined in FDEV. This Detail View also provides related lists for all the Salesforce accounts and opportunities rolling up to the Sales Account View. All of this information is reportable from the Reports tab in Salesforce.<br/><br/> 
+
+<b><u>Navigating to SFDC Accounts:</u></b><br/> 
+Click on the hyperlinked SFDC account name located in the Account related list.<br/><br/> 
+
+<b><u>Navigating to SFDC Opportunities:</u></b><br/> 
+Click on the hyperlinked SFDC opportunity name located in the Opportunity related list.<br/><br/> 
+
+
+<h2>Glossary</h2> 
+
+<b><u>Account Group ID</u></b><br/> 
+This is the ID for the Sales Account View.<br/><br/> 
+
+<b><u>Owner</u></b><br/> 
+This is the name of the Sales Account View owner and is published from FDEV. In the event that a team owns the Sales Account View, the team name is listed.<br/><br/> 
+
+<b><u>Parent Territory</u></b><br/> 
+This is the Level 6 Territory that the Sales Account View belongs to and is published from FDEV.<br/><br/> 
+
+<b><u>Primary Address</u></b><br/> 
+This is identified in FDEV for a Sales Account View. It is an account named in FDEV that has been selected as the primary account for the grouping of multiple accounts in a single Sales Account View.<br/><br/> 
+
+<b><u>Sales Account View Owner</u></b><br/> 
+This is identified in FDEV and identifies the individual AM or Team that owns the Sales Account View in FDEV. If a Team owns the Sales Account View, the Team Flag will be checked in the Details View.<br/><br/> 
+
+<b><u>Sales Account View Team Flag</u></b><br/> 
+When this field is checked, the Sales Account View is owned by a team in FDEV.<br/><br/> 
+
+<b><u>Sales Account View</u></b><br/> 
+A collection of accounts named for sales crediting for a region and defines the Team or AM’s go-to-market strategy for that account. This is maintained in FDEV.<br/><br/> 
+
+<b><u>Sales Account View Name</u></b><br/> 
+This is the name of the Sales Account View and is published from FDEV.<br/><br/> 
+
+<b><u>SFDC Owner</u></b><br/> 
+This is the name of the SFDC Account Owner. This can be different from the Sales Account View Owner since SFDC accounts can roll up to multiple Sales Account Views.<br/><br/> 
+
+<b><u>Sub-Segment</u></b><br/> 
+This is identified for the Sales Account View. For example Sub-Segments include Select, Key, Segment-One, etc….<br/><br/> 
+
+<b><u>Vertical</u></b><br/> 
+This is identified in FDEV for the Sales Account View. For example, Vertical includes Education, Manufacturing, Energy, Etc...<br/><br/> 
+
+<b><u>Sub-Vertical</u></b><br/> 
+This is identified in FDEV for the Sales Account View. For example, Sub-Vertical includes Primary, Consumer, Utilities, Etc...<br/><br/> 
+
+<b><u>Details Vertical</u></b><br/> 
+This is identified in FDEV for the Sales Account View.<br/><br/> 
+
+<b><u>Territory</u></b><br/> 
+This identified the region for that each Sales Account View rolls up to. This is also the territory in SFDC that both the Sales Account View and the SFDC accounts belong to.<br/><br/> 
+
+<b><u>View Sites</u></b><br/> 
+Click on this button to get the full Sales Account View as defined in FDEV. This includes all the accounts named for a Sales Account View, the branches for those named accounts, as well as all the Group level and account level attributes such as Vertical, Sub-Vertical, Coverage, Split %, etc…<br/><br/> </font> 
+</apex:page>

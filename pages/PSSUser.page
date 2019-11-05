@@ -1,0 +1,817 @@
+<apex:page standardController="AT_Workspace__c" extensions="PSSUser_CT" tabStyle="AT_Workspace__c" title="Opportunity Workspace Edit : {!IF($CurrentPage.parameters.id == NULL,'New Opportunity Workspace',(PSS.Name))}">
+
+
+<script type="text/javascript">
+    var UElem = "{!$Component.MainForm.MainPB.Product.products.Productd}";
+    var SElem = "{!$Component.MainForm.MainPB.Product.products.Productd1}";
+    var Hidden = "{!$Component.MainForm.MainPB.Product.Producttest}";
+    var UseCaseUElem = "{!$Component.MainForm.MainPB.UseCaseInformation.USeCaseSect.UseCaseL}";
+    var UseCaseSElem = "{!$Component.MainForm.MainPB.UseCaseInformation.USeCaseSect.UseCaseL1}";
+    var UseCaseHidden = "{!$Component.MainForm.MainPB.UseCaseInformation.Usecasetest}";
+    var Subtech = "{!$Component.MainForm.MainPB.Product.Subtech.subtechnology}";
+    var techSubtech = "{!TechSubtech}"; //var to get list of dependant Subtech & technology in string
+    var subtechProd = "{!SubtechProd}"; //var to get list of dependant Subtech & Product in string
+    var techUseCase = "{!TechUseCase}"; //var to get list of dependant Technology & Customer Use Case in string
+    var techSubtechArr = new Array();
+    var subtechProdArr = new Array();
+    var techUseCaseArr = new Array();
+    var loadValComplete = 0;
+    var existSubtech; 
+    var existProd; 
+    var existTech;
+    var existTeam;
+    var existUseCase;
+    
+    disableSyncOppty = function()
+    {
+         if({!showSyncChkbox})
+         {
+           
+         }
+         else
+         { 
+           document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.syncOptyMsg}').innerHTML = '{!$Label.Workspace_sync_with_opp}';
+         }
+    }
+    
+    loadPssOwnerTeam = function()
+    {
+        var Team = document.getElementById('{!$Component.MainForm.MainPB.Product.teamblock.Forecast}');
+        if(Team)
+        {
+            Team.options.length = 0;
+        }
+        
+        LoadTeam(existTeam);  
+    }
+    
+    //Create array of dependant Technology & Subtechnology from comma separated string
+    CreateSubtechArr = function()
+    {
+        var tempSubtech = techSubtech.split(';');
+        for (i=0;i< tempSubtech.length;i++)
+        {
+            techSubtechArr[i] = new Array(tempSubtech[i].split('~~').length);
+            for (var j = 0; j < tempSubtech[i].split('~~').length; j++){
+                techSubtechArr[i][j] = tempSubtech[i].split('~~')[j];
+            }    
+        }
+    }
+   //Create array of dependant Product & Subtechnology from comma separated string
+    CreateProdArr = function()
+    {
+        var tempProd = subtechProd.split(';');
+        for (i=0;i< tempProd.length;i++)
+        {
+            subtechProdArr[i] = new Array(tempProd[i].split('~~').length);
+            for (var j = 0; j < tempProd[i].split('~~').length; j++){
+                subtechProdArr[i][j] = tempProd[i].split('~~')[j];
+            }
+        }
+    }
+
+    //Create array of dependant Technology & Use Case from comma separated string
+    CreateUseCaseArr = function()
+    {
+        var tempUseCase = techUseCase.split(';');
+        for (i=0;i< tempUseCase.length;i++)
+        {
+            techUseCaseArr[i] = new Array(tempUseCase[i].split('~~').length);
+            for (var j = 0; j < tempUseCase[i].split('~~').length; j++){
+                techUseCaseArr[i][j] = tempUseCase[i].split('~~')[j];
+            }    
+        }
+    }
+    //Load subtechnology on page & make it mandatory
+    LoadSubtech = function(tech)
+    {
+        var SubtechElem = getElementByIdCS(Subtech);
+        var ReqdEnable = document.getElementById("{!$Component.MainForm.MainPB.Product.Subtech.reqdpanel}").style;
+        SubtechElem.length = 0;
+        var ProdElem = getElementByIdCS(Hidden);
+        ProdElem.length = 0;
+        var matchd = new Boolean();
+        if (tech == '' || tech == undefined){
+            SubtechElem.options[0]=new Option('-None-','');
+            SubtechElem.disabled = true;
+            ReqdEnable.display = "none";
+            insert(tech,'Productd');
+         }
+         else
+         {
+             SubtechElem.disabled = false;
+             ReqdEnable.display = "block";
+         }    
+        for (i=0;i< techSubtechArr.length;i++)
+        {
+            if(techSubtechArr[i][0].toUpperCase() == tech.toUpperCase())
+            {
+                var sI =1;
+                matchd = true;
+                if(techSubtechArr[i].length > 2)
+                {
+                    SubtechElem.options[0]=new Option('-None-','');
+                    for (j=1; j < techSubtechArr[i].length;j++)
+                    {
+                    
+                        SubtechElem.options[sI]=new Option(techSubtechArr[i][j],techSubtechArr[i][j]);
+                        if(existSubtech.length > 0 && existSubtech.toUpperCase() == techSubtechArr[i][j].toUpperCase() && loadValComplete == 0)
+                            SubtechElem.options[sI].selected = true;
+                        sI++;
+                    }
+                    insert(SubtechElem.options[0].value,'Productd');
+                }    
+                else
+                {
+                    SubtechElem.options[0]=new Option(techSubtechArr[i][1],techSubtechArr[i][1]);
+                    SubtechElem.options[0].selected = true;
+                    LoadProd(techSubtechArr[i][1],'subtech');
+                }
+                
+            if (matchd)
+                break;
+            }
+      }
+      handleMSPSelectinit('subtech', 'Productd');
+   }
+   //Load product values corresponding to subtech on page
+   LoadProd = function(value, parent)
+    {
+        var ProdElem;
+        var temparr = new Array();
+        var MSPID;
+        var existval;
+        if(parent == 'subtech')
+        {
+            ProdElem = getElementByIdCS(Hidden);
+            temparr = subtechProdArr;
+            MSPID = 'Productd';
+            existval = existProd;
+        }
+        else if(parent == 'tech')
+        {
+            ProdElem = getElementByIdCS(UseCaseHidden);
+            temparr = techUseCaseArr;
+            MSPID = 'UseCaseL';
+            existval = existUseCase;
+        }
+        ProdElem.length = 0;
+        var matchd = new Boolean();
+
+        if(value != '' || value != undefined)
+        {
+        for (i=0;i< temparr.length;i++)
+        {
+            if(temparr[i][0].toUpperCase() == value.toUpperCase())
+            {
+                var sI =0;
+                matchd = true;
+                for (j=1; j < temparr[i].length;j++)
+                {
+                    ProdElem.options[sI]=new Option(temparr[i][j],temparr[i][j]);
+
+                    if(existval.length > 0 && existval.toUpperCase().indexOf(temparr[i][j].toUpperCase()) != -1 && loadValComplete == 0)
+                        ProdElem.options[sI].selected = true;
+                    sI++;
+                }
+                
+            if (matchd)
+                break;
+           }     
+        }
+        insert(ProdElem.length, MSPID);
+        handleMSPSelectinit(parent, MSPID);
+     } 
+   }
+   //Load PSS team on page
+   LoadTeam = function(team)
+    {        
+        var Team = document.getElementById('{!$Component.MainForm.MainPB.Product.teamblock.Forecast}');
+        for(var i=0;i< Team.options.length;i++)
+        {
+            if(Team.options[i].value == team)
+                Team.options[i].selected = true;
+        }
+    }
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Functions to handle multi picklist select functionality        
+    handleMSPSelectinit=function(parent, MSPID)
+    {
+        var mainElem;
+        if(parent == 'subtech')
+            mainElem=getElementByIdCS(Hidden);
+        else if(parent =='tech')
+            mainElem=getElementByIdCS(UseCaseHidden);
+        handleMSPChange(mainElem, MSPID);
+    }
+
+    handleMSPChange=function(sel, MSPID)
+    {
+    var sElem=getElementByIdCS(MSPID + "_selected");
+    var uElem=getElementByIdCS( MSPID + "_unselected");
+    if(isSafari)
+    {
+        var sDepth;
+        var uDepth;
+        for(i=0;i< sElem.childNodes.length;i++)
+        {
+            var ch=sElem.childNodes[i];
+            if(ch.nodeName=="OPTGROUP")
+            {
+                sDepth=i;
+                var chlen=ch.childNodes.length;
+                for(j=0;j< chlen;j++)
+                {
+                    ch.removeChild(ch.childNodes[0]);
+                }
+                ch.appendChild(document.createElement("p"));
+            }
+        }
+        for(i=0;i< uElem.childNodes.length;i++)
+        {
+            var ch=uElem.childNodes[i];
+            if(ch.nodeName=="OPTGROUP")
+            {
+                uDepth=i;
+                var chlen=ch.childNodes.length;
+                for(j=0;j<chlen;j++)
+                {
+                    ch.removeChild(ch.childNodes[0]);
+                }
+                ch.appendChild(document.createElement("p"));
+            }
+        }
+        for(i=0;i< sel.options.length;i++)
+        {
+            if(sel.options[i].value!=picklistNAMarker)
+            {
+                var o=document.createElement("option");
+                o.text=sel.options[i].text;
+                o.value=i;
+                if(sel.options[i].selected)
+                {
+                    sElem.childNodes[sDepth].appendChild(o);
+                }
+                else
+                {
+                    uElem.childNodes[uDepth].appendChild(o);
+                }
+            }
+        }
+    }
+    else
+    {
+        var sI=0;
+        var uI=0;
+     // Remove all the elements in the unselected and selected multi select area
+        //DE4842
+        var ver = getInternetExplorerVersion();       
+        if(ver >= 9){
+            var sElemOptions=getElementByIdCS(MSPID + "_opt_select");
+            sElemOptions.innerHTML = "";
+            var uElemOptions=getElementByIdCS(MSPID + "_opt_unselect");
+            uElemOptions.innerHTML = "";
+        }else{
+            uElem.length=0; 
+            sElem.length=0; 
+        }
+        for(var i=0;i< sel.options.length;i++)
+        {
+            if(sel.options[i].value!=picklistNAMarker)
+            {
+                if(sel.options[i].selected)
+                {
+                    sElem.options[sI]=new Option(sel.options[i].text,i);
+                    sI++;
+                }
+                else
+                {
+                    uElem.options[uI]=new Option(sel.options[i].text,i);
+                    uI++;
+                }
+            }
+        }
+    }
+    resizeMSP(sElem,uElem);
+    if(sel.onchange)
+    {
+        sel.onchange();
+    }
+}
+
+resizeMSP=function(sElem,uElem)
+{
+    if(!sElem||!uElem)
+    {
+        return;
+    }
+    uElem.style.width = null;
+    sElem.style.width = null;
+    if(!sElem.style.width)
+    {
+        var selW=(sElem.scrollWidth>uElem.scrollWidth)?sElem.scrollWidth:uElem.scrollWidth;
+        selW=selW+70;
+        sElem.style.width=selW+"px";
+        uElem.style.width=selW+"px";
+    }
+}
+//Get dependant pickval for tech/subtech & subtech/product,Load selected values on page
+var oldonload = window.onload;
+function setFocusOnLoad() {}
+window.onload = function()
+{
+    // check if an onload already exists
+    if(oldonload)
+      oldonload();           
+    existTech = document.getElementById('{!$Component.MainForm.MainPB.Product.techblock.technology}').value;
+    existSubtech = document.getElementById('{!$Component.MainForm.MainPB.Product.temsubtech}').value;
+    existProd = document.getElementById('{!$Component.MainForm.MainPB.Product.temprod}').value;
+    existTeam = document.getElementById('{!$Component.MainForm.MainPB.Product.tempteam}').value;
+    existUseCase = document.getElementById('{!$Component.MainForm.MainPB.UseCaseInformation.tempUseCase}').value;
+    disableSyncOppty();
+    CreateSubtechArr();
+    CreateProdArr();
+    CreateUseCaseArr();
+    LoadSubtech(existTech);
+    LoadProd(existSubtech, 'subtech');
+    LoadProd(existTech, 'tech');
+    LoadTeam(existTeam);
+    loadValComplete = 1;
+}
+
+insert=function(value, MSPID)
+{
+    var sElem=getElementByIdCS(MSPID + "_selected");
+    var uElem=getElementByIdCS(MSPID + "_unselected");
+    if(value != '' && value != undefined)
+    {
+        document.getElementById(MSPID + "_opt_unselect").label = "Available";
+        document.getElementById(MSPID + "_opt_select").label = "Chosen";
+    }
+    else
+    {
+        document.getElementById(MSPID + "_opt_unselect").label = "**Not Applicable**";
+        document.getElementById(MSPID + "_opt_select").label = "**Not Applicable**";
+    }
+    resizeMSP(sElem,uElem);
+}
+
+handleMSPSelect=function(MSPID)
+{
+    var mainElem;
+    if(MSPID == 'Productd')
+        mainElem=getElementByIdCS(Hidden);
+    else if(MSPID == 'UseCaseL')
+        mainElem =getElementByIdCS(UseCaseHidden);
+        
+    var uElem=getElementByIdCS(MSPID + "_unselected");
+    for(var i=0;i< uElem.options.length;i++)
+    {
+        if(uElem.options[i].selected)
+        {
+            mainElem.options[parseInt(uElem.options[i].value)].selected=true;
+        }
+    }
+    handleMSPChange(mainElem, MSPID);
+}
+
+handleMSPUnSelect=function(MSPID)
+{
+    var mainElem;
+    if(MSPID == 'Productd')
+        mainElem=getElementByIdCS(Hidden);
+    else if(MSPID == 'UseCaseL')
+        mainElem =getElementByIdCS(UseCaseHidden);
+    var sElem=getElementByIdCS(MSPID + "_selected");
+    for(var i=0;i< sElem.options.length;i++)
+    {
+        if(sElem.options[i].selected)
+        {
+            mainElem.options[parseInt(sElem.options[i].value)].selected=false;
+        }
+    }
+    handleMSPChange(mainElem,MSPID);
+}
+
+//Function to set values of selected technology, subtech, Use Case & Product in hidden field before saving
+SaveVal = function()
+{
+    var pageMsgEl = document.getElementById("PAGE_MSG");
+    var ErrorMsg = validate();
+    if (ErrorMsg == "" || ErrorMsg == undefined)
+    {
+        var Product = LoadProduct(getElementByIdCS(Hidden),'Productd');
+        var UseCase = LoadProduct(getElementByIdCS(UseCaseHidden),'UseCaseL');
+        document.getElementById('{!$Component.MainForm.MainPB.Product.temprod}').value = Product;
+        document.getElementById('{!$Component.MainForm.MainPB.UseCaseInformation.tempUseCase}').value = UseCase;
+        document.getElementById('{!$Component.MainForm.MainPB.Product.temsubtech}').value = document.getElementById(Subtech).value;
+        document.getElementById('{!$Component.MainForm.MainPB.Product.tempteam}').value = document.getElementById('{!$Component.MainForm.MainPB.Product.teamblock.Forecast}').value;
+        document.getElementById(Subtech).options[1]=new Option('-None-',''); 
+        document.getElementById('{!$Component.MainForm.MainPB.Product.Subtech.subtechnology}').value = '';
+        document.getElementById('{!$Component.MainForm.MainPB.Product.teamblock.Forecast}').value = '';
+        return true;
+    }
+    else
+    {    document.getElementById('PAGE_MSG').innerHTML = ErrorMsg;
+        return false;
+    }
+}
+    
+//Function to populate selected Products in hidden field on page after validation check
+LoadProduct=function(elem, MSPID)
+{
+    var mainElem= elem;
+    var sElem=getElementByIdCS(MSPID + "_selected");
+
+    var finalprod;   
+    if(sElem.options.length > 0)
+    {
+        for(var i=0;i< sElem.options.length;i++)
+        {
+            if(finalprod == undefined)
+                finalprod = sElem.options[i].text;
+            else    
+                finalprod += sElem.options[i].text;
+            if(i<(sElem.options.length)-1)
+                finalprod += '; ';
+        }
+        for(var i=0;i< mainElem.options.length;i++)
+        {
+                mainElem.options[i].selected=false;
+        }
+     }else{
+         finalprod = '';
+     }
+     return finalprod;              
+}
+
+//Check the IE Broser version
+function getInternetExplorerVersion()
+{
+      var rv = -1; // Return value assumes failure.
+      if (navigator.appName == 'Microsoft Internet Explorer')
+      {
+        var ua = navigator.userAgent;
+        var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        if (re.exec(ua) != null)
+          rv = parseFloat( RegExp.$1 );
+      }
+      return rv;
+}
+
+//Function to validate mandatory fields & display error
+validate = function()
+{
+    var submitMsg;
+    var forecast = document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.foresect.forecast_status}').value;
+    var prodVal = document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.prodsect.expprod}').value;
+    var bookDate = new Date(document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.expbooksect.bookdate}').value);
+    var TeamVal = document.getElementById('{!$Component.MainForm.MainPB.Product.teamblock.Forecast}').value;
+    var technology = document.getElementById('{!$Component.MainForm.MainPB.Product.techblock.technology}').value;
+    var subtech = document.getElementById('{!$Component.MainForm.MainPB.Product.Subtech.subtechnology}').value;
+    
+    //sournaga- changes made for WR-01110
+    var servVal = document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.expected_service}').value;
+    var workSpRange =document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.workSpaceRange}').value;
+    var workSpaceSkipValidation= '{!$Setup.workspaceValidation__c.Workspace_SkipValidation__c}';
+    
+    if (forecast == ""){
+        submitMsg = 'Error: Invalid Data.<BR>Review all error messages below to correct your data.';
+        var fcastStyle = document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.foresect.forecast_status}').style;
+        fcastStyle.border = '2px solid #C00000';
+        document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.foresect.foreerrmsg}').innerHTML = '{!$Label.Workspace_Error_Msg}';
+    }
+    else
+    {
+         var fcastStyle = document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.foresect.forecast_status}').style;
+         fcastStyle.border = '';
+         document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.foresect.foreerrmsg}').innerHTML = '';
+    }
+    
+   if(!isDate(bookDate)){
+        submitMsg = 'Error: Invalid Data.<BR>Review all error messages below to correct your data.';
+        var bookdateStyle = document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.expbooksect.bookdate}').style;
+        bookdateStyle.border = '2px solid #C00000';
+        document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.expbooksect.bookerrmsg}').innerHTML = '{!$Label.Workspace_Error_Msg}';
+    }
+    else
+    {
+        var bookdateStyle = document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.expbooksect.bookdate}').style;
+        bookdateStyle.border = '';
+        document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.expbooksect.bookerrmsg}').innerHTML = '';   
+    }   
+    
+    if(prodVal =="" || isNaN(prodVal.replace(/,/g,''))){
+        submitMsg = 'Error: Invalid Data.<BR>Review all error messages below to correct your data.';
+        var prodValStyle = document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.prodsect.expprod}').style;
+        prodValStyle.border = '2px solid #C00000';
+        document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.prodsect.proderrmsg}').innerHTML = '{!$Label.Workspace_Error_Msg}';
+    }
+    else
+    {
+       var prodValStyle = document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.prodsect.expprod}').style;
+        prodValStyle.border = '';
+       document.getElementById('{!$Component.MainForm.MainPB.wrkspce_info.prodsect.proderrmsg}').innerHTML = '';
+    }
+    
+    if (TeamVal == ""){
+        submitMsg = 'Error: Invalid Data.<BR>Review all error messages below to correct your data.';
+        var teamStyle = document.getElementById('{!$Component.MainForm.MainPB.Product.teamblock.Forecast}').style;
+        teamStyle.border = '2px solid #C00000';
+        document.getElementById('{!$Component.MainForm.MainPB.Product.teamblock.teamerrmsg}').innerHTML = '{!$Label.Workspace_Error_Msg}';
+    }
+    else
+    {
+        var teamStyle = document.getElementById('{!$Component.MainForm.MainPB.Product.teamblock.Forecast}').style;
+        teamStyle.border = '';
+        document.getElementById('{!$Component.MainForm.MainPB.Product.teamblock.teamerrmsg}').innerHTML = '';
+    }
+    
+    if (technology == ""){
+        submitMsg = 'Error: Invalid Data.<BR>Review all error messages below to correct your data.';
+        var techStyle = document.getElementById('{!$Component.MainForm.MainPB.Product.techblock.technology}').style;
+        techStyle.border = '2px solid #C00000';
+        document.getElementById('{!$Component.MainForm.MainPB.Product.techblock.techerrmsg}').innerHTML = '{!$Label.Workspace_Error_Msg}';
+        var fcastStyle = document.getElementById('{!$Component.MainForm.MainPB.Product.Subtech.subtechnology}').style;
+        fcastStyle.border = '';
+        document.getElementById('{!$Component.MainForm.MainPB.Product.Subtech.subtecherrmsg}').innerHTML = '';
+        return submitMsg;
+    }
+    else
+    {
+        var techStyle = document.getElementById('{!$Component.MainForm.MainPB.Product.techblock.technology}').style;
+        techStyle.border = '';
+        document.getElementById('{!$Component.MainForm.MainPB.Product.techblock.techerrmsg}').innerHTML = '';
+    }
+    
+    if (subtech == ""){
+        submitMsg = 'Error: Invalid Data.<BR>Review all error messages below to correct your data.';
+        var fcastStyle = document.getElementById('{!$Component.MainForm.MainPB.Product.Subtech.subtechnology}').style;
+        fcastStyle.border = '2px solid #C00000';
+        document.getElementById('{!$Component.MainForm.MainPB.Product.Subtech.subtecherrmsg}').innerHTML = '{!$Label.Workspace_Error_Msg}';
+    }
+    else
+    {
+        var fcastStyle = document.getElementById('{!$Component.MainForm.MainPB.Product.Subtech.subtechnology}').style;
+        fcastStyle.border = '';
+        document.getElementById('{!$Component.MainForm.MainPB.Product.Subtech.subtecherrmsg}').innerHTML = '';
+    }
+    
+    //sournaga - changes added for WR-01110
+     if (workSpaceSkipValidation=='false' && workSpRange!="" ){
+        if(prodVal!=""){
+            prodVal=prodVal.replace(',','');    //replace , in formatted currency values
+            var amt= 0;
+                if(servVal!=""){
+                servVal=servVal.replace(',','');    
+                    amt=(+prodVal + +servVal)*1000;
+                }
+                else{
+                    amt=prodVal*1000;
+                }
+            if((workSpRange =='Less than 5 Million' && amt>=5000000) || (workSpRange=='05 Million-10 Million' &&( amt<5000000 || amt>=10000000)) || (workSpRange=='10 Million-50 Million' && (amt<10000000 || amt >=50000000)) || (workSpRange=='50 Million-100 Million' &&( amt <50000000 || amt >=100000000)) || (workSpRange=='100 Million-500 Million' && (amt <100000000 || amt>=500000000)) || (workSpRange=='Above 500 Million' && amt<500000000 )){
+                submitMsg = '{!$Label.Worskspace_Value_Range_Error}';
+            }
+        }
+    }    
+    return submitMsg;   
+}
+//Function to validate date
+isDate = function (x)
+{
+    return true;
+}
+
+</script>
+<!--Display when New button clicked from Opportunity Workspace-->
+<apex:form rendered="{!isMultiTech}">
+       <script>
+            //SCAVA FIX
+            window.top.location='/apex/PSSUserMultiTech?scontrolCaching=1&retURL=%2F006S0000007htEd&CF00N30000002BozE_lkid={!JSENCODE(opptyId)}&CF00N30000002BozE={!opptyName}&id={!$CurrentPage.parameters.id}' ; 
+       </script>
+</apex:form>
+
+<apex:form id="ErrorForm" rendered="{!NonPSS}">
+    <apex:sectionHeader title="Opportunity Workspace"/>
+        <apex:outputPanel >
+            <apex:outputText >
+                <font face = "Calibri" size = "4"><b>Insufficient Privileges:- {!ErrorContent}</b><br></br><br></br>
+                Click<apex:commandLink value="here" action="{!Cancel}"/>&nbsp;to return to the previous page.</font>
+            </apex:outputText>
+        </apex:outputPanel>
+</apex:form>
+<apex:form id="ErrorForm1" rendered="{!closeDtLessCreateDate}">
+    <apex:sectionHeader title="Opportunity Workspace"/>
+        <apex:outputPanel >
+            <apex:outputText >
+                <font face = "Calibri" size = "4"><b>Please update the Opportunity Expected Book Date. Workspace can not be created if Opportunity Expected Booked Date is prior to Opportunity Created date</b><br></br><br></br>
+                Click<apex:commandLink value="here" action="{!Cancel}"/>&nbsp;to return to the Opportunity page.</font>
+            </apex:outputText>
+        </apex:outputPanel>
+</apex:form>
+<apex:form rendered="{!AND($CurrentPage.parameters.id == NULL,$CurrentPage.parameters.CF00N30000002BozE_lkid == NULL, !NonPSS)}">
+<apex:outputText style="font-size:18px" value="Opportunity Workspaces can only be created from Opportunity Tab."></apex:outputText>
+</apex:form>
+<!--Main Form-->
+<apex:form id="MainForm" rendered="{!AND(OR($CurrentPage.parameters.id != NULL,$CurrentPage.parameters.CF00N30000002BozE_lkid != NULL),NOT(NonPSS),NOT(closeDtLessCreateDate))}">
+    
+<apex:sectionHeader title="{!IF($CurrentPage.parameters.id == NULL,'Opportunity Workspace Edit','Opportunity Workspace')}" subtitle="{!IF($CurrentPage.parameters.id == NULL,'New Opportunity Workspace',(PSS.Name))}" help="/help/doc/user_ed.jsp?loc=help&target=co_edit.htm&section=CustomObjects&showSplash=true"/>
+<apex:pageMessages rendered="{!getError}" ></apex:pageMessages>
+
+<apex:pageBlock id="MainPB" title="Opportunity Workspace Detail" mode="edit">
+        <center>
+            <div id="PAGE_MSG" style="color:#CC0000;font-weight:bold"></div>
+        </center> 
+        <apex:pageblockButtons >
+            <apex:commandButton title="Save" action="{!Save}" onclick="return SaveVal();" value="Save"/>
+            <apex:commandButton title="Cancel" action="{!Cancel}" value="Cancel" immediate="true"/>
+       </apex:pageblockButtons>
+        
+       <apex:pageBlockSection id="wrkspce_info" columns="2" title="Opportunity Workspace Information" collapsible="false">
+         <apex:pageblockSectionItem id="pss">
+            <apex:outputLabel for="forecast_status" value="{!$ObjectType.AT_Workspace__c.fields.PSS__c.label}"></apex:outputLabel>    
+            <apex:outputPanel >            
+                 <apex:actionRegion >
+                     <apex:inputField value="{!PSS.PSS__c}" rendered="{!editwin}" onchange="loadPssOwnerTeam();" taborderhint="1">
+                        <apex:actionFunction name="LoadTeam" rerender="forecastPosition"> 
+                        </apex:actionFunction> 
+                     </apex:inputField> 
+                     </apex:actionRegion>                 
+                     <apex:outputfield value="{!PSS.PSS__c}"  rendered="{!NOT(editwin)}" />                          
+            </apex:outputPanel>  
+        </apex:pageblockSectionItem>
+        
+        <apex:outputfield value="{!PSS.Opportunity__c}"/>
+        
+        <apex:pageblockSectionItem id="workspace_stage">
+            <apex:outputLabel for="workspace_stage" value="{!$ObjectType.AT_Workspace__c.fields.Workspace_Stage__c.label}"></apex:outputLabel>
+            <apex:outputPanel id="workspacestagepanel">
+                    <apex:inputfield id="workspace_stage" value="{!PSS.Workspace_Stage__c}" required="true" taborderhint="2"/>
+                    <apex:outputText id="workspacestageerrmsg" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+            </apex:outputPanel>
+        </apex:pageblockSectionItem>        
+        
+        <apex:pageblockSectionItem id="pss_workspace_status">
+            <apex:outputLabel for="pss_workspace_status" value="{!$ObjectType.AT_Workspace__c.fields.PSS_Workspace_Status__c.label}"></apex:outputLabel>
+            <apex:outputPanel id="workspacestatuspanel">
+                    <apex:outputfield id="pss_workspace_status" value="{!PSS.PSS_Workspace_Status__c}" />
+                    <apex:outputText id="workspacestatuserrmsg" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+            </apex:outputPanel>
+        </apex:pageblockSectionItem>
+      
+        <apex:pageblockSectionItem id="foresect">
+            <apex:outputLabel for="forecast_status" value="{!$ObjectType.AT_Workspace__c.fields.AT_Forecast_Status__c.label}"></apex:outputLabel>
+            <apex:outputPanel id="forepanel">
+                    <apex:outputfield id="forecast_status" value="{!PSS.AT_Forecast_Status__c}"/>
+                    <apex:outputText id="foreerrmsg" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+            </apex:outputPanel>
+        </apex:pageblockSectionItem>
+       
+        <apex:pageblockSectionItem id="expbooksect">
+            <apex:outputLabel for="bookdate" value="{!$ObjectType.AT_Workspace__c.fields.AT_Expected_Book_Date__c.label}"></apex:outputLabel>
+            <apex:outputPanel id="bookpanel">
+                <apex:inputfield id="bookdate" value="{!PSS.AT_Expected_Book_Date__c}" required="true" taborderhint="8"/>
+                <apex:outputText id="bookerrmsg" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+            </apex:outputPanel>
+        </apex:pageblockSectionItem> 
+        
+        <apex:inputfield value="{!PSS.Workspace_Value_Range__c}" required="true" id="workSpaceRange" taborderhint="4"/>
+        <apex:inputField id="workspace_lost_reason_code" value="{!PSS.Workspace_Lost_Cancelled_Reason__c}" taborderhint="9"/>
+        
+        <apex:pageblockSectionItem id="prodsect">
+            <apex:outputLabel for="expprod" value="{!$ObjectType.AT_Workspace__c.fields.AT_Expected_Product__c.label}"></apex:outputLabel>
+            <apex:outputPanel id="prodpanel">
+                <apex:inputfield id="expprod" value="{!PSS.AT_Expected_Product__c}" required="true" taborderhint="5"/>
+                <apex:outputText id="proderrmsg" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>               
+            </apex:outputPanel>         
+        </apex:pageblockSectionItem> 
+        <apex:inputField id="workspace_lost_reason_comment" value="{!PSS.Workspace_Win_Loss_Comments__c}" taborderhint="10"/> 
+        <apex:inputfield id="expected_service" value="{!PSS.AT_Expected_Service__c}" taborderhint="6"/>
+        <apex:inputfield id="syncOpty" value="{!PSS.Sync_With_Opportunity__c}" rendered="{!showSyncChkbox}" taborderhint="11"/>
+        <apex:Outputfield id="syncOptyDisabled" value="{!PSS.Sync_With_Opportunity__c}" rendered="{!(!showSyncChkbox)}"/>     
+        <br></br>
+        <apex:outputPanel id="syncpanel">
+            <apex:outputText id="syncOptyMsg" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>          
+        </apex:outputPanel>
+        <apex:outputText ></apex:outputText>
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection id="Product" columns="1" title="Workspace Details" collapsible="false">
+        <apex:pageblockSectionItem id="teamblock">
+            <apex:outputLabel for="Forecast" value="{!$ObjectType.AT_Workspace__c.fields.AT_Team__c.label}"></apex:outputLabel>
+            <apex:outputPanel >
+                <div class="requiredInput">
+                <div class="requiredBlock"></div>
+                <apex:outputPanel id="forecastPosition" >
+                    <apex:selectList id="Forecast" value="{!PSS.AT_Team__c}" size="1" multiselect="false">
+                        <apex:selectOptions value="{!forecastLOV}"></apex:selectOptions>
+                    </apex:selectList><br/>
+                    <apex:outputText id="teamerrmsg" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+                </apex:outputPanel>
+                </div>
+            </apex:outputPanel>
+        </apex:pageblockSectionItem>
+        
+        <!--temp values to store selected PSS team,Subtech & product values onclick of Save--->
+        <apex:inputHidden id="tempteam" value="{!tempteam}"/>
+        <apex:inputHidden id="temsubtech" value="{!tempsubtech}"/>
+        <apex:inputHidden id="temprod" value="{!tempproduct}"/>       
+        
+        <apex:pageblockSectionItem id="techblock">
+            <apex:outputLabel for="forecast_status" value="{!$ObjectType.AT_Workspace__c.fields.AT_Technology__c.label}"></apex:outputLabel>
+            <apex:outputPanel id="techpanel">
+                <apex:inputfield value="{!PSS.AT_Technology__c}" id="technology" onchange="LoadSubtech(this.value);LoadProd(this.value,'tech');" required="true"/>
+                <apex:outputText id="techerrmsg" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>               
+            </apex:outputPanel>        
+        </apex:pageblockSectionItem>
+        
+        <apex:pageblockSectionItem id="Subtech">
+            <apex:outputLabel for="subtechnology" value="{!$ObjectType.AT_Workspace__c.fields.AT_Sub_Technology__c.label}"></apex:outputLabel>    
+            <apex:outputPanel >            
+                <div class="requiredInput">
+                <apex:outputPanel id="reqdpanel" style="display:none;">
+                <div class="requiredBlock"></div>
+                </apex:outputPanel>
+                <apex:outputPanel id="subtechpanel">
+                    <apex:selectList id="subtechnology" size="1" multiselect="false" onchange="LoadProd(this.value,'subtech');"></apex:selectList><br/>
+                    <apex:outputText id="subtecherrmsg" style="font-weight:bold;font-size:12px;color:#D00000" value=""></apex:outputText>
+                </apex:outputPanel>
+                </div>
+            </apex:outputPanel>
+        </apex:pageblockSectionItem>
+               
+        <!--Hidden Product picklist. Values populated by JS-->        
+       <apex:selectList id="Producttest" size="5" style="display: none;" multiselect="true"></apex:selectList>
+       <apex:pageblockSectionItem id="products">
+            <apex:outputLabel for="Productd" value="{!$ObjectType.AT_Workspace__c.fields.AT_Product__c.label}"></apex:outputLabel>
+            <apex:outputPanel id="panelpro">
+                <apex:panelGrid id="multipick" columns="3" cellpadding="0" cellspacing="0">
+                     <select id="Productd_unselected" title="AT Product - Unselected" ondblclick="handleMSPSelect('Productd');" multiple="multiple" size="5"><optgroup id="Productd_opt_unselect" style="font-size:9px;text-decoration:none;" label="**Not Applicable**"></optgroup></select>
+                     <apex:panelgrid columns="1" bgcolor="#AAAAAA" cellpadding="0" cellspacing="0   ">
+                         <br/>
+                         <a href="javascript:handleMSPSelect('Productd');"><img src="/s.gif" alt="Add" class="picklistArrowRight" id="Productd_right_arrow" style="cursor:pointer;" title="Add"/></a><br/><br/>
+                        <a href="javascript:handleMSPUnSelect('Productd');"><img src="/s.gif" alt="Remove" class="picklistArrowLeft" id="Productd_left_arrow" style="cursor:pointer;" title="Remove"/></a><br/><br/>
+                    </apex:Panelgrid>
+                    <select id="Productd_selected" title="AT Product - Selected" ondblclick="handleMSPUnSelect('Productd');" multiple="multiple" size="5"><optgroup style="font-size:9px;text-decoration:none;" id="Productd_opt_select" label="**Not Applicable**"></optgroup></select>
+              </apex:panelGrid>
+            </apex:outputPanel>        
+        </apex:pageblockSectionItem>
+    </apex:pageBlockSection>
+
+    <apex:pageBlockSection id="UseCaseInformation" columns="1" title="Use Case Information" collapsible="false">
+        <apex:inputField value="{!PSS.Business_Driver__c}" />
+        <apex:inputField value="{!PSS.Solution_Offer__c}" />
+        <apex:inputField value="{!PSS.Application__c}" />
+        <apex:inputhidden id="tempUseCase" value="{!tempUseCase}"/>
+         <!--Hidden Use Case picklist. Values populated by JS-->
+       <apex:selectList id="Usecasetest" size="5" style="display: none;" multiselect="true"></apex:selectList>
+       <apex:pageblockSectionItem id="USeCaseSect">
+            <apex:outputLabel for="UseCaseL" value="{!$ObjectType.AT_Workspace__c.fields.Additional_Use_Case_Info__c.label}"></apex:outputLabel>
+            <apex:outputPanel id="UseCasepanel">
+                <apex:panelGrid id="multipick" columns="3" cellpadding="0" cellspacing="0">
+                     <select id="UseCaseL_unselected" title="Customer Use Case - Unselected" ondblclick="handleMSPSelect('UseCaseL');" multiple="multiple" size="5"><optgroup id="UseCaseL_opt_unselect" style="font-size:9px;text-decoration:none;" label="**Not Applicable**"></optgroup></select>
+                     <apex:panelgrid columns="1" bgcolor="#AAAAAA" cellpadding="0" cellspacing="0">
+                         <br/>
+                         <a href="javascript:handleMSPSelect('UseCaseL');"><img src="/s.gif" alt="Add" class="picklistArrowRight" id="UseCaseL_right_arrow" style="cursor:pointer;" title="Add"/></a><br/><br/>
+                        <a href="javascript:handleMSPUnSelect('UseCaseL');"><img src="/s.gif" alt="Remove" class="picklistArrowLeft" id="UseCaseL_left_arrow" style="cursor:pointer;" title="Remove"/></a><br/><br/>
+                    </apex:Panelgrid>
+                    <select id="UseCaseL_selected" title="Customer Use Case - Selected" ondblclick="handleMSPUnSelect('UseCaseL');" multiple="multiple" size="5"><optgroup style="font-size:9px;text-decoration:none;" id="UseCaseL_opt_select" label="**Not Applicable**"></optgroup></select>
+              </apex:panelGrid>
+            </apex:outputPanel>        
+        </apex:pageblockSectionItem>
+        <!--<apex:inputField value="{!PSS.Customer_Use_Case__c}" /> -->
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection id="adinfo" columns="2" title="Additional  Information" collapsible="false"> 
+        <apex:inputfield taborderhint="12" value="{!PSS.Software_Buying_Model__c}" style="width:300px" />
+        <apex:inputfield taborderhint="17" value="{!PSS.Workspace_Partner__c}" style="width:300px" />
+        <apex:inputfield taborderhint="13" value="{!PSS.Opportunity_Source__c}" style="width:300px"  />
+        <apex:inputfield taborderhint="18" value="{!PSS.AT_Competitor__c}" style="width:300px" />      
+        <apex:inputfield taborderhint="15" value="{!PSS.Workspace_Contract_Start_Date__c}" />
+        <apex:inputfield taborderhint="19" value="{!PSS.Workspace_Service_Source__c}" />
+        <apex:inputfield taborderhint="16" value="{!PSS.Workspace_Contract_Expiration_Date__c}" />
+        <apex:inputfield taborderhint="20" value="{!PSS.Probability__c}" /> 
+    </apex:pageBlockSection> 
+       
+    <apex:pageBlockSection columns="1" title="Workspace Comments and Flags" collapsible="false">
+         <apex:inputfield value="{!PSS.AT_Optional_1__c}" style="width:350px"/>
+         <apex:inputfield value="{!PSS.AT_Optional_2__c}" style="width:350px"/>
+         <apex:inputField value="{!PSS.AT_Flags__c}" />
+        <apex:inputField value="{!PSS.AT_Comments__c}" style="width:300px" />
+        <apex:inputField value="{!PSS.PSS_Additional_Comments__c}" style="width:300px" />
+    </apex:pageBlockSection>
+    <!---Section added as per the requirements of WR-2487 "Opportunity Workspace enhancement for Software"--->
+    <apex:pageBlockSection columns="2" title="Cisco Enterprise Agreement Details" collapsible="false">
+          <apex:inputfield value="{!PSS.Enterprise_Agreement_Status__c}" style="width:300px"/>
+          <apex:inputfield value="{!PSS.Letter_of_Agreement__c}" style="width:300px"/>
+          <apex:inputfield value="{!PSS.Adoption_Strategy__c}" style="width:300px"/>
+          <apex:inputfield value="{!PSS.Total_Cost_of_Ownerhip_TCO_Status__c}" style="width:300px"/>
+          <apex:inputfield value="{!PSS.Customer_Budget_Confirmed__c}" style="width:300px"/>
+          <apex:inputfield value="{!PSS.Final_Customer_Approver__c}" style="width:300px"/>
+          <apex:inputfield value="{!PSS.End_User_Info_From_EUIF_Signed__c}" style="width:300px"/>
+          <apex:inputfield value="{!PSS.Combined_Services_Customer__c}" style="width:300px"/>
+    </apex:pageBlockSection>      
+</apex:pageBlock>       
+</apex:form>
+</apex:page>

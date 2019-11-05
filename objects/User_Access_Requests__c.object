@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Access_Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Access Level</label>
+        <length>60</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Access_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Access Sub Type</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Access_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Access Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Read Only</fullName>
+                    <default>false</default>
+                    <label>Read Only</label>
+                </value>
+                <value>
+                    <fullName>Read/Write</fullName>
+                    <default>false</default>
+                    <label>Read/Write</label>
+                </value>
+                <value>
+                    <fullName>Proxy</fullName>
+                    <default>false</default>
+                    <label>Proxy</label>
+                </value>
+                <value>
+                    <fullName>SAC (Sales Accelerated Center)</fullName>
+                    <default>false</default>
+                    <label>SAC (Sales Accelerated Center)</label>
+                </value>
+                <value>
+                    <fullName>Call Center Agent (NGCC)</fullName>
+                    <default>false</default>
+                    <label>Call Center Agent (NGCC)</label>
+                </value>
+                <value>
+                    <fullName>IT Organization</fullName>
+                    <default>false</default>
+                    <label>IT Organization</label>
+                </value>
+                <value>
+                    <fullName>Transaction Support Agents</fullName>
+                    <default>false</default>
+                    <label>Transaction Support Agents</label>
+                </value>
+                <value>
+                    <fullName>Customer Engagement Presenter</fullName>
+                    <default>false</default>
+                    <label>Customer Engagement Presenter</label>
+                </value>
+                <value>
+                    <fullName>Global Lead Admin</fullName>
+                    <default>false</default>
+                    <label>Global Lead Admin</label>
+                </value>
+                <value>
+                    <fullName>Star Agents</fullName>
+                    <default>false</default>
+                    <label>Star Agents</label>
+                </value>
+                <value>
+                    <fullName>TSN Case Agent</fullName>
+                    <default>false</default>
+                    <label>TSN Case Agent</label>
+                </value>
+                <value>
+                    <fullName>Customer Engagement &amp; Events</fullName>
+                    <default>false</default>
+                    <label>Customer Engagement &amp; Events</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Access_for_Report_Only__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Access for Report Only</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Agreement_Read__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Agreement Read?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Any_Alternative_Source__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What alternative source exists for the data that you are seeking through SFDC?  In other words, how are you performing your role today?</inlineHelpText>
+        <label>Any Alternative Source?</label>
+        <length>2000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Impact__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the business impact if you are not granted access to the SFDC data?</inlineHelpText>
+        <label>Business Impact</label>
+        <length>2000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Department__c</fullName>
+        <description>Department of the User</description>
+        <externalId>false</externalId>
+        <label>Recipient Department</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description_of_your_Role__c</fullName>
+        <externalId>false</externalId>
+        <label>Description of your Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Director_CEC_ID__c</fullName>
+        <description>Directors CEC ID auto populated from HR</description>
+        <externalId>false</externalId>
+        <label>Director CEC ID</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Director_Name__c</fullName>
+        <description>Name of the Director populated from HR</description>
+        <externalId>false</externalId>
+        <label>Director Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Directors_Email_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Directors Email Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <description>Email Address</description>
+        <externalId>false</externalId>
+        <label>Recipient Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Name__c</fullName>
+        <description>First Name of the user who needs access</description>
+        <externalId>false</externalId>
+        <label>Recipient First Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GSTS_Comments__c</fullName>
+        <description>Comments/Notes for GSTS</description>
+        <externalId>false</externalId>
+        <inlineHelpText>e.g. Enter Case #</inlineHelpText>
+        <label>GSTS Comments</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_often_will_you_access_the_SFDC_data__c</fullName>
+        <externalId>false</externalId>
+        <label>How often will you access the SFDC data?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Ad Hoc (once, or infrequent)</fullName>
+                    <default>false</default>
+                    <label>Ad Hoc (once, or infrequent)</label>
+                </value>
+                <value>
+                    <fullName>Daily</fullName>
+                    <default>false</default>
+                    <label>Daily</label>
+                </value>
+                <value>
+                    <fullName>Weekly</fullName>
+                    <default>false</default>
+                    <label>Weekly</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Intention_and_Use_of_Data__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What SFDC data do you intend to access, and how will you use it?</inlineHelpText>
+        <label>Intention and Use of Data?</label>
+        <length>2000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Last_Name__c</fullName>
+        <description>Last Name of the user who needs access</description>
+        <externalId>false</externalId>
+        <label>Recipient Last Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Level_1_Approval_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Level 1 Approval Required</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Level_1_Approver_Decision__c</fullName>
+        <externalId>false</externalId>
+        <label>Level 1 Approver Decision</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>true</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Level_1_Approver__c</fullName>
+        <externalId>false</externalId>
+        <label>Level 1 Approver</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Level_2_Approval_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Level 2 Approval Required</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Level_2_Approver_Decision__c</fullName>
+        <externalId>false</externalId>
+        <label>Level 2 Approver Decision</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>true</default>
+                    <label>N/A</label>
+                </value>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Level_2_Approver__c</fullName>
+        <externalId>false</externalId>
+        <label>Level 2 Approver</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>System Notes (Do Not Change)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Territories__c</fullName>
+        <externalId>false</externalId>
+        <label>Parent Territories</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Reason_for_Write_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason for Write Access</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Creating Opportunity</fullName>
+                    <default>false</default>
+                    <label>Creating Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Creating Accounts</fullName>
+                    <default>false</default>
+                    <label>Creating Accounts</label>
+                </value>
+                <value>
+                    <fullName>Creating Leads</fullName>
+                    <default>false</default>
+                    <label>Creating Leads</label>
+                </value>
+                <value>
+                    <fullName>Creating Contacts</fullName>
+                    <default>false</default>
+                    <label>Creating Contacts</label>
+                </value>
+                <value>
+                    <fullName>Editing Opportunity</fullName>
+                    <default>false</default>
+                    <label>Editing Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Editing Accounts</fullName>
+                    <default>false</default>
+                    <label>Editing Accounts</label>
+                </value>
+                <value>
+                    <fullName>Editing Leads</fullName>
+                    <default>false</default>
+                    <label>Editing Leads</label>
+                </value>
+                <value>
+                    <fullName>Editing Contacts</fullName>
+                    <default>false</default>
+                    <label>Editing Contacts</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Recipient_ID__c</fullName>
+        <description>This field captures the CEC of the user request is submitted for.</description>
+        <externalId>false</externalId>
+        <label>Recipient ID</label>
+        <length>15</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recipient_IsDirector__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Recipient IsDirector</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Recipient_Title__c</fullName>
+        <description>Tile of the user needing access</description>
+        <externalId>false</externalId>
+        <label>Recipient Title</label>
+        <length>60</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Request_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Request Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Level 1 Approval Pending</fullName>
+                    <default>false</default>
+                    <label>Level 1 Approval Pending</label>
+                </value>
+                <value>
+                    <fullName>Level 2 Approval Pending</fullName>
+                    <default>false</default>
+                    <label>Level 2 Approval Pending</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Provisioning in Progress</fullName>
+                    <default>false</default>
+                    <label>Provisioning in Progress</label>
+                </value>
+                <value>
+                    <fullName>Access Granted</fullName>
+                    <default>false</default>
+                    <label>Access Granted</label>
+                </value>
+                <value>
+                    <fullName>Duplicate Request</fullName>
+                    <default>false</default>
+                    <label>Duplicate Request</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Request Failed</fullName>
+                    <default>false</default>
+                    <label>Request Failed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Request_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Request Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Update</fullName>
+                    <default>false</default>
+                    <label>Update</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Requested_Territory_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Requested Territory ID</label>
+        <length>20</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requester_ID__c</fullName>
+        <description>This field captures CEC of the user</description>
+        <externalId>false</externalId>
+        <label>Requester ID</label>
+        <length>15</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User_Created__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>this flag is set to True once the user is created in Salesforce.com</description>
+        <externalId>false</externalId>
+        <label>User Created?</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Your_Manager_has_Access_to_SFDC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Your Manager has Access to SFDC?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object will store all the user access requests submitted by external users to use Salesforce.com Sales Instance</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>User Access Request</label>
+    <nameField>
+        <displayFormat>UAR-{00000}</displayFormat>
+        <label>Request ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>User Access Requests</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Access_Level__c</columns>
+        <columns>Access_Type__c</columns>
+        <columns>Recipient_ID__c</columns>
+        <columns>Request_Status__c</columns>
+        <columns>Level_1_Approver__c</columns>
+        <columns>Level_2_Approver__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>NGCC</fullName>
+        <columns>NAME</columns>
+        <columns>Access_Level__c</columns>
+        <columns>Access_Sub_Type__c</columns>
+        <columns>Access_Type__c</columns>
+        <columns>Level_1_Approver__c</columns>
+        <columns>Level_2_Approver__c</columns>
+        <columns>Email__c</columns>
+        <columns>Recipient_ID__c</columns>
+        <columns>Requester_ID__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Access_Type__c</field>
+            <operation>equals</operation>
+            <value>NGCC Call Center Agent</value>
+        </filters>
+        <label>NGCC</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>SFDC_User_Access_2nd_Level_approvers_User_Access_Requests</fullName>
+        <filterScope>Queue</filterScope>
+        <label>SFDC User Access 2nd Level approvers</label>
+        <queue>SFDC_User_Access_2nd_Level_approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>User_Access_Test_User_Access_Requests</fullName>
+        <filterScope>Queue</filterScope>
+        <label>User Access Test</label>
+        <queue>User_Access_Test</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>praschan</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Level_1_Approver__c</field>
+            <operation>equals</operation>
+            <value>renriver</value>
+        </filters>
+        <filters>
+            <field>Level_1_Approver_Decision__c</field>
+            <operation>equals</operation>
+            <value>Pending</value>
+        </filters>
+        <label>praschan</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>rrochade</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Level_1_Approver__c</field>
+            <operation>equals</operation>
+            <value>rrochade</value>
+        </filters>
+        <filters>
+            <field>Level_1_Approver_Decision__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>rrochade</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+</CustomObject>

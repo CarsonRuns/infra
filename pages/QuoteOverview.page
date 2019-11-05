@@ -1,0 +1,66 @@
+<apex:page standardController="Quote__c" extensions="QuoteOverview" recordSetVar="Quote">
+<apex:includeScript value="/support/console/42.0/integration.js"/>
+    <script>
+
+      <!-- updated by Naresh to fix SCAVA issue for  08/10/08 Lightning Release -->        
+        var hostname = window.location.hostname; 
+        var host = encodeURI(hostname);
+        var quoteStatus ='{!QuoteStatus}';
+        var isArchived ='{!IsArchived}';
+        var profileName = "{!profilecheck}";
+        var pdrDown = "{!pdrdown}"; 
+        //SCAVA FIX
+        var opptyId = '{!JSENCODE(OpptyID)}';
+        function isLightningDesktop() {
+          return ['Theme4d', 'Theme4u'].indexOf('{!$User.UIThemeDisplayed}') > -1; 
+        }
+        
+        /** Function to close tab to avoid infinite loop in lightning - Start (Angela, 03/13/2018)**/
+        function CloseTab() {
+                setTimeout(function() {
+					sforce.console.getFocusedSubtabId(closeSubtab);
+				}, 1000);
+            
+        }
+        
+        var closeSubtab = function closeSubtab(result) {
+            if(result.id)
+            {
+                var tabId = result.id;
+                sforce.console.closeTab(tabId);
+            }
+        };
+        /** Function to close tab to avoid infinite loop in lightning - End (Angela, 03/13/2018)**/
+        
+        console.log('isArchived='+isArchived);
+        
+        if(pdrDown == 'Yes' &&  profileName == 'true'){
+          
+         }else{
+            if (isArchived == 'true') {
+                // top.location.href = 'https://'+ host + "/apex/Quote_Archived?opptyId="+opptyId;
+                var url = 'https://'+ host + "/apex/Quote_Archived?opptyId="+opptyId;
+                window.open(url);
+            }else{
+                if(quoteStatus == "true"){
+                    alert('Quote on this opportunity has been deleted');
+                }
+                console.log('else'); 
+                if(isLightningDesktop()){
+                   <!-- console.log('==1==>'+'{!redir}'); -->  
+                       // top.location.href = '{!redir}';
+                        var url = '{!redir}';
+                      window.open(url);
+                    
+                    //function call to close tab to avoid infinite loop - (Angela, 03/13/2018) 
+                    CloseTab();
+                }else{
+                   <!-- console.log('==2==>'+'{!redir}');-->
+                    window.location.assign('{!redir}');
+                }
+            }
+        }
+    </script>
+    <apex:pageMessages rendered="{!profilecheck}" />
+    <apex:outputLink value="javascript:history.back()">Back</apex:outputLink>
+</apex:page>

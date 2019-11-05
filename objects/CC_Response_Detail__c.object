@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Answer_Options_Id__c</fullName>
+        <description>NGCC Phase1:Stores the Answers SFDCID and cloned from Call Script Q and A.</description>
+        <externalId>false</externalId>
+        <label>Answer Options Id</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Answer_Options_Text__c</fullName>
+        <description>NGCC Phase1:Stores the Answer Text and cloned from Call Script Q and A.</description>
+        <externalId>false</externalId>
+        <label>Answer Options Text</label>
+        <length>3000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CC_Master_Question_Answer_Bank__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:Reference to the master question and answer bank associated to call script Q and A</description>
+        <externalId>false</externalId>
+        <label>CC Master Question/Answer Bank</label>
+        <referenceTo>CC_Master_Question_Answer_Bank__c</referenceTo>
+        <relationshipLabel>CC Response Detail (CC Master Question/Answer Bank)</relationshipLabel>
+        <relationshipName>CC_Response_Detail1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Call_Script__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:Call Script Reference for the associated Call Script Q and A</description>
+        <externalId>false</externalId>
+        <label>CC Call Script</label>
+        <referenceTo>CC_Call_Script__c</referenceTo>
+        <relationshipLabel>CC Response Detail</relationshipLabel>
+        <relationshipName>CC_Response_Detail</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1:Status when the call script is completed and responses were captured</description>
+        <externalId>false</externalId>
+        <label>Completed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Conditionally_Required_Criteria__c</fullName>
+        <description>NGCC Phase1:Provide Valid Critieria for Conditional Validation: 1) NULL: Dependent Question Answer is NULL 2) NOT NULL: Dependent Question Answer is Populated 3) Others: Dependent Question Answer is Specific to the Text.</description>
+        <externalId>false</externalId>
+        <label>Conditionally Required Criteria</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>NULL</fullName>
+                    <default>false</default>
+                    <label>NULL</label>
+                </value>
+                <value>
+                    <fullName>NOT NULL</fullName>
+                    <default>false</default>
+                    <label>NOT NULL</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Conditionaly_Required_If__c</fullName>
+        <description>NGCC Phase1:Provide exact value expected from Dependent question on which this question is required. Multiple Options cacn be provided using Comma</description>
+        <externalId>false</externalId>
+        <label>Conditionally Required Value</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Response_Detail_Local__c</fullName>
+        <description>NGCC Phase1:Customer Response in Local Language if the call script was launched in a particular language</description>
+        <externalId>false</externalId>
+        <label>Customer Response Detail (Local)</label>
+        <length>3000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Response_Detail__c</fullName>
+        <description>NGCC Phase1:Customer Response in English stored in master question and answer bank</description>
+        <externalId>false</externalId>
+        <label>Customer Response Detail (English)</label>
+        <length>3000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Response__c</fullName>
+        <description>NGCC Phase1:Customer Response in SFDC ID associated to master question and answer bank for Picklist,Multiselect and Radio type of question. Else free form value captured during call script</description>
+        <externalId>false</externalId>
+        <label>Customer Response</label>
+        <length>3000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Dependent_Question__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:Provide the Dependent Question on which the Question is required</description>
+        <externalId>false</externalId>
+        <label>CC Call Script Q/A</label>
+        <referenceTo>CC_Call_Script_Q_A__c</referenceTo>
+        <relationshipLabel>CC Response Detail</relationshipLabel>
+        <relationshipName>CC_Response_Detail</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Help_Text__c</fullName>
+        <description>NGCC Phase1:Provide Help Text to help agent to get reference on dependent questions</description>
+        <externalId>false</externalId>
+        <label>Help Text</label>
+        <length>500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Language_Used__c</fullName>
+        <description>NGCC Phase1:Language used to create the response</description>
+        <externalId>false</externalId>
+        <label>Language Used</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Local_to_SFDC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1:Define if the Question need to be integrated with MODS</description>
+        <externalId>false</externalId>
+        <label>Local to SFDC</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_If_Number_Validation__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>NGCC Phase1:Provide Maximum Number which can not be exceeded</description>
+        <externalId>false</externalId>
+        <label>Maximum(If Number Validation)</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minimum_If_Number_Validation__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>NGCC Phase1:Provide Minimum Number which can not be exceeded</description>
+        <externalId>false</externalId>
+        <label>Minimum(If Number Validation)</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preferred_Partner_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1: To hold Preferred Partner Account Through Call Script</description>
+        <externalId>false</externalId>
+        <label>Preferred Partner Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>The selected Partner is not a registered active partner</errorMessage>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Channel</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Partner_Account_Status__c</field>
+                <operation>equals</operation>
+                <value>Active (Registered)</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>CC Response Detail (Preferred Partner Account)</relationshipLabel>
+        <relationshipName>CC_Response_Detail1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Question_Categories__c</fullName>
+        <description>NGCC Phase1:Tab name associated to the questions</description>
+        <externalId>false</externalId>
+        <formula>Call_Script__r.Question_Categories__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Question Categories</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Question_Category__c</fullName>
+        <description>NGCC Phase1:Provide the Tab name for the Call Script</description>
+        <externalId>false</externalId>
+        <label>Question Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>1:Contact Information</fullName>
+                    <default>false</default>
+                    <label>1:Contact Information</label>
+                </value>
+                <value>
+                    <fullName>2:Account Information</fullName>
+                    <default>false</default>
+                    <label>2:Account Information</label>
+                </value>
+                <value>
+                    <fullName>3:Lead Information</fullName>
+                    <default>false</default>
+                    <label>3:Lead Information</label>
+                </value>
+                <value>
+                    <fullName>4:Additional Information</fullName>
+                    <default>false</default>
+                    <label>4:Additional Information</label>
+                </value>
+                <value>
+                    <fullName>5:Campaign Information</fullName>
+                    <default>false</default>
+                    <label>5:Campaign Information</label>
+                </value>
+                <value>
+                    <fullName>6:Partner Information</fullName>
+                    <default>false</default>
+                    <label>6:Partner Information</label>
+                </value>
+                <value>
+                    <fullName>7:Call Information</fullName>
+                    <default>false</default>
+                    <label>7:Call Information</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Question_Required__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:Conditionally required question for which the question will be required</description>
+        <externalId>false</externalId>
+        <label>Conditionally Required on Question</label>
+        <referenceTo>CC_Master_Question_Answer_Bank__c</referenceTo>
+        <relationshipLabel>CC Response Detail (Depended Question)</relationshipLabel>
+        <relationshipName>CC_Response_Detail</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Question_Text__c</fullName>
+        <description>NGCC Phase1:English Question Text for the Call Script</description>
+        <externalId>false</externalId>
+        <label>Question Text</label>
+        <length>3000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Question_Type__c</fullName>
+        <description>NGCC Phase1:Question Type how the Question will be presented in Call Script</description>
+        <externalId>false</externalId>
+        <label>Question Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Text</fullName>
+                    <default>false</default>
+                    <label>Text</label>
+                </value>
+                <value>
+                    <fullName>Long Text</fullName>
+                    <default>false</default>
+                    <label>Long Text</label>
+                </value>
+                <value>
+                    <fullName>Radio</fullName>
+                    <default>false</default>
+                    <label>Radio</label>
+                </value>
+                <value>
+                    <fullName>Picklist</fullName>
+                    <default>false</default>
+                    <label>Picklist</label>
+                </value>
+                <value>
+                    <fullName>MultiSelect</fullName>
+                    <default>false</default>
+                    <label>MultiSelect</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>DateTime</fullName>
+                    <default>false</default>
+                    <label>DateTime</label>
+                </value>
+                <value>
+                    <fullName>Number</fullName>
+                    <default>false</default>
+                    <label>Number</label>
+                </value>
+                <value>
+                    <fullName>Country</fullName>
+                    <default>false</default>
+                    <label>Country</label>
+                </value>
+                <value>
+                    <fullName>Route To Partner</fullName>
+                    <default>false</default>
+                    <label>Route To Partner</label>
+                </value>
+                <value>
+                    <fullName>Route To AM</fullName>
+                    <default>false</default>
+                    <label>Route To AM</label>
+                </value>
+                <value>
+                    <fullName>Route To PSR</fullName>
+                    <default>false</default>
+                    <label>Route To PSR</label>
+                </value>
+                <value>
+                    <fullName>Preferred Partner</fullName>
+                    <default>false</default>
+                    <label>Preferred Partner</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1:Define the Question as Mandatory Required</description>
+        <externalId>false</externalId>
+        <label>Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Required_on_Lead_Description__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1:Define the Questions which need to appended to Lead Description after Call Script Completion</description>
+        <externalId>false</externalId>
+        <label>Required on Lead Description</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Response_Detail_Date_Time__c</fullName>
+        <description>NGCC Phase1:Date and time when the response was created</description>
+        <externalId>false</externalId>
+        <label>Response Detail Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Response_Id__c</fullName>
+        <description>NGCC Phase1:Reference the Response for the response detail is associated to</description>
+        <externalId>false</externalId>
+        <label>CC Response</label>
+        <referenceTo>CC_Response__c</referenceTo>
+        <relationshipLabel>CC Response Detail</relationshipLabel>
+        <relationshipName>CC_Response_Detail</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Route_To_AM__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:SFDC Id of preferred AM agent has captured during call Script</description>
+        <externalId>false</externalId>
+        <label>Route To AM</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CC_Response_Detail1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Route_To_PSR__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:SFDC Id of preferred PSR  agent has captured during call Script</description>
+        <externalId>false</externalId>
+        <label>Route To PSR</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>CC_Response_Detail</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Route_To_Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>NGCC Phase1:SFDC Id of preferred Partner agent has captured during call Script</description>
+        <externalId>false</externalId>
+        <label>Route To Partner</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>The selected Partner is not a SCP registered active partner or is flagged on the Denied Partner List, please select a valid SCP registered partner.</errorMessage>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Channel</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Partner_Assignment_Eligible__c</field>
+                <operation>greaterOrEqual</operation>
+                <value>1</value>
+            </filterItems>
+            <infoMessage>This search will return only those partners enrolled in the Sales Collaboration Platform program. However, if you would like to reference accounts eligible for lead assignment, refer to the P360 Partners Enrolled link on the left hand side of the screen.</infoMessage>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>CC Response Detail</relationshipLabel>
+        <relationshipName>CC_Response_Detail</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sequence__c</fullName>
+        <description>NGCC Phase1:Define the Sequence of the Question with Call Script Specific Tab</description>
+        <externalId>false</externalId>
+        <label>Sequence</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Event_Number__c</fullName>
+        <description>NGCC Phase1:Source Event Number assocaite to the response default is SFDC ID</description>
+        <externalId>false</externalId>
+        <label>Source Event Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_System_Name__c</fullName>
+        <defaultValue>"NGCC"</defaultValue>
+        <description>NGCC Phase1:Source system Name assocaite to the response default is NGCC</description>
+        <externalId>false</externalId>
+        <label>Source System Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Transaction_Date__c</fullName>
+        <description>NGCC Phase1:Source system transaction date</description>
+        <externalId>false</externalId>
+        <label>Source Transaction Date</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Translation_Required__c</fullName>
+        <description>NGCC Phase1:Flag show if the translation is needed. Used for processing the reponse and it true for picklist,multiselect or radio as they stored as ID</description>
+        <externalId>false</externalId>
+        <formula>IF(OR(ISPICKVAL(Question_Type__c,'Radio'),ISPICKVAL(Question_Type__c,'Picklist')),TRUE,FALSE)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Translation Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Validation_Both_Conditional_or_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>NGCC Phase1:Define if any of the Validation is needed</description>
+        <externalId>false</externalId>
+        <label>Validation(Both Conditional or Required)</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>NGCC Phase-1: Customer response which captured during the call script will be stored in Response Detail Object.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>CC Response Detail</label>
+    <nameField>
+        <label>CC Response Detail Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>CC Response Detail</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <fieldSets>
+        <fullName>NGCCCallScriptQuery</fullName>
+        <description>Used for Call Script</description>
+        <displayedFields>
+            <field>Answer_Options_Id__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Answer_Options_Text__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Call_Script__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Dependent_Question__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CC_Master_Question_Answer_Bank__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Response_Id__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Help_Text__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Minimum_If_Number_Validation__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Completed__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Conditionally_Required_Criteria__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Question_Required__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Conditionaly_Required_If__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Question_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Customer_Response_Detail_Local__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Customer_Response_Detail__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Language_Used__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Customer_Response__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Translation_Required__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Validation_Both_Conditional_or_Required__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Source_Transaction_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Source_System_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Source_Event_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Sequence__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Response_Detail_Date_Time__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Route_To_AM__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Route_To_Partner__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Preferred_Partner_Account__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Route_To_PSR__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Required__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Required_on_Lead_Description__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Question_Categories__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Question_Category__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Question_Text__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Maximum_If_Number_Validation__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Local_to_SFDC__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>NGCCCallScriptQuery</label>
+    </fieldSets>
+</CustomObject>

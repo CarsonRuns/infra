@@ -1,0 +1,45 @@
+<apex:page controller="psrSearch_CT">
+<apex:form >
+        <apex:pageblock rendered="{!isPartnerAdmin}" title="Partner Sales Representative Selection" >
+            <br/>
+            Don't see the contact you are looking for?
+            <br/>
+            <br/> 
+            Register contacts in the <a href="http://apps.cisco.com/WWChannels/GETLOG/login.do"> Partner Self Service (PSS) tool. </a>
+            <br/>
+            <br/>
+        
+        </apex:pageblock>
+          
+        <apex:pageblock id="thePageBlock">
+            <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Save" />
+            <apex:commandButton action="{!cancel}" value="Cancel" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!UserSet}" var="u" id="UserTable">
+                 <apex:column headerValue="Select">
+                <input type="radio" name="group1" value="{!u.userObj.Id}" id="selectedID"  />
+                </apex:column>
+                                    <apex:column value="{!u.userObj.Name}" >                
+                                     <apex:facet name="header">
+                                    
+                                    </apex:facet>          
+                                    </apex:column>
+                                    
+                                     <apex:column headerValue="Role" value="{!u.userRoleName}" >                
+                                     <apex:facet name="header">
+                                    
+                                    </apex:facet>          
+                                    </apex:column>
+                                    
+                                    
+                                    <apex:column headerValue="Address" value="{!u.userObj.Street}, {!u.userObj.City}, {!u.userObj.Country}, {!u.userObj.PostalCode} " >                
+                                    <apex:facet name="header">
+                                    
+                                    </apex:facet>          
+                                    </apex:column>
+            </apex:pageBlockTable>
+        
+        </apex:pageblock>
+</apex:form>
+</apex:page>

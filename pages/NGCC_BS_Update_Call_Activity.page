@@ -1,0 +1,75 @@
+<!--
+  Author:  ktagdiwa 
+  Created: 11/15/2018
+  Purpose: Persist UCCE Call Peripheral Variables + selective ECC Variable data on the Activity record in Salesforce.com
+ -->
+
+    <apex:page id="vf_BS_Update_Call_Activity" sidebar="false" showHeader="false" docType="html-5.0">
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"/>
+        <apex:includeScript value="/support/console/39.0/integration.js"/>
+        <apex:includeScript value="/soap/ajax/39.0/connection.js"/>
+        <apex:includeScript value="{!URLFOR($Resource.cnx__CnxSfdcResources,'js/ConnectsIntegrationAPI.min.js')}"/>
+
+            <script>
+                var callGuid = "";
+                var cpv1= "", cpv2= "", cpv3= "",cpv4= "",cpv5= "",cpv6= "",cpv7= "",cpv8= "",cpv9= "",cpv10= "";
+                /* onWorkItemCreate Handler: Read the CPV, ECC variables, etc. and set script level variables to store the values */
+                ConnectsIntegrationAPI.onWorkItemCreate = function (event) {
+                    ConnectsIntegrationAPI.writeLogDebug("*** Inside onWorkItemCreate...");
+                    ConnectsIntegrationAPI.writeLogDebug("*** event.item.CallType: " + event.item.CallType);
+                    ConnectsIntegrationAPI.writeLogDebug("*** event.item.Channel: " + event.item.Channel);
+                    ConnectsIntegrationAPI.writeLogDebug("*** event.item.NamedVariables[0]: " + event.item.NamedVariables[0]);
+
+                    //Read individual Call Peripheral Variables (CPV)
+                    cpv1 = event.item.PerVar1;
+                    cpv2 = event.item.PerVar2;
+                    cpv3 = event.item.PerVar3;
+                    cpv4 = event.item.PerVar4;
+                    cpv5 = event.item.PerVar5;
+                    cpv6 = event.item.PerVar6;
+                    cpv7 = event.item.PerVar7;
+                    cpv8 = event.item.PerVar8;
+                    cpv9 = event.item.PerVar9;
+                    cpv10 = event.item.PerVar10
+                    ConnectsIntegrationAPI.writeLogDebug("*** Printing ECC Variables and their values:\n");
+                    //search named variables one at a time
+                    for (var k = 0; k < event.item.NamedVariables.length; k++) {
+                        ConnectsIntegrationAPI.writeLogDebug("*** " + event.item.NamedVariables[k].Key + " = " + event.item.NamedVariables[k].Value);
+
+                        if(event.item.NamedVariables[k].Key=="user.media.id")
+                        {
+                            callGuid = event.item.NamedVariables[k].Value;
+                            ConnectsIntegrationAPI.writeLogDebug("*** The ECC Variable <user.media.id>, aka Call GUID = "+callGuid);
+                        }
+                    }
+                };
+
+                /* onActivitySave Handler: Update the custom fields on the Task record with values passed in CPVs and ECC Variabels*/
+                $(function (){
+                    ConnectsIntegrationAPI.onActivitySave = function (event) {
+                        try {
+                            if (event.created) {
+                                sforce.connection.sessionId = '{!$Api.Session_ID}';
+                                var task = sforce.connection.retrieve("Description,UCCE_Call_GUID__c,UCCE_CPV1__c,UCCE_CPV2__c,UCCE_CPV3__c,UCCE_CPV4__c,UCCE_CPV5__c,UCCE_CPV6__c,UCCE_CPV7__c,UCCE_CPV8__c,UCCE_CPV9__c,UCCE_CPV10__c", "Task", [event.recordId])[0];
+                                task.Description="";
+                                task.UCCE_Call_GUID__c = callGuid;
+                                task.UCCE_CPV1__c = cpv1;
+                                task.UCCE_CPV2__c = cpv2;
+                                task.UCCE_CPV3__c = cpv3;
+                                task.UCCE_CPV4__c = cpv4;
+                                task.UCCE_CPV5__c = cpv5;
+                                task.UCCE_CPV6__c = cpv6;
+                                task.UCCE_CPV7__c = cpv7;
+                                task.UCCE_CPV8__c = cpv8;
+                                task.UCCE_CPV9__c = cpv9;
+                                task.UCCE_CPV10__c = cpv10;
+                                sforce.connection.update([task]);
+                            }
+                        } catch (ex) {
+                            ConnectsIntegrationAPI.showError("USER","Update problem",
+                                "Could not update activity record, exception: " + ex);
+                        }
+                    };
+                });
+            </script>
+    </apex:page>

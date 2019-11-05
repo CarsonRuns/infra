@@ -1,0 +1,858 @@
+/********** Change History **********
+ * @Release: Q4FY15 Point Release
+ * @Modification History: 
+ 01 - 05/21/2015 majanard :  Adding the Desc filter to the Lead search query.
+***************************************/
+
+public with sharing class SCP_Communities_leadFilter_CT extends SCP_Communities_PageControllerBase {
+    
+    // SCAVA Helper Method to validate Update Access at field level
+     public static Boolean flsUpdate(SObjectField field)
+    {
+        return field.getDescribe().isUpdateable() ? true : false;
+    }
+        
+        public SCP_Communities_leadFilter_CT() {
+          try {
+        String view = ApexPages.currentpage().getParameters().get('view');
+        if(view != null) {
+          SCP_Communities_listviews__c mprec = [Select Id from SCP_Communities_listviews__c Where View_Alias__c = :view];
+          this.selectedview = mprec.Id;
+        }
+        else {      
+          checkForExistingCookie();
+        }
+        initlize();
+        String gadgetLanguageCode = prmFilterUtility.loggedInUserGadgetLanguage;
+        if( gadgetLanguageCode == null || 'fr_CA'.equals(gadgetLanguageCode)){
+          gadgetLanguageCode = 'en_US';
+        }
+        String documentName = Label.PRM_Lead_Download_template_document_Name_prefix+gadgetLanguageCode;
+        System.debug(System.LoggingLevel.INFO,'>>>> documentname '+documentName);
+        Document document = [SELECT Id, Name, Body,Type FROM Document where name=:documentName LIMIT 1];
+        DocId = document.Id;        
+      }
+      catch(Exception ex) {
+        String expMsg = ex.getMessage();
+        if(expMsg.contains('List has no rows for assignment to SObject')) {
+          ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.INFO,'No Lead Upload template found for the current language');
+          ApexPages.addMessage(myMsg);
+        }
+        else {
+          Apexpages.addMessages(ex);
+        }
+        
+      
+      }
+      }
+        
+        // Get page base url
+        public String getSearchPageUrl() {
+            String baseUrl = Site.getBaseUrl();
+            
+            if(baseUrl == null || baseUrl == '') {
+                    baseUrl =  '/';
+            }
+            else {
+                    List<String> listBase = baseUrl.split('/');
+                    if(listBase.size() > 1) {
+                            baseUrl = '/'+ listBase[(listBase.size()-1)] + '/';
+                    }
+            }                                
+            String pageUrl = baseUrl + 'apex/SCP_Communities_psrSearch';                
+            return pageUrl;                
+        }
+        /*
+        * code copied from SCP_Communities_viewfiltercomponent_CT
+        */
+
+  // Sobject type filed from visualforce page
+  public string sObjectName { get; set; }
+
+  public string q_select {
+    get {
+      q_select =  ' Id, Name, Company,End_Customer_Account__c, Account_Name_English__c, Lead_From_Distributor_BE_GEO_ID_PDB__c,';
+      q_select += ' toLabel(Partner_Lead_Status__c), toLabel(SCP_Partner_Lead_Status__c),Cisco_Rec_PSR__c, PSR_1__c, Partner_Assigned_Date__c,';
+      q_select += ' Main_Technology__c, QABudget__c, ProgramEvent__c,ProductAmount__c ,ServicesAmount__c, Distributor_Name__c, ';
+      q_select += ' Address_Line_1__c, CustomCity__c, CustomState__c, CustomZip__c, Country, toLabel(CustomCountry__c), Lead_Distributor_Name__c ,';
+      q_select += ' Address_Line_1_English__c, City_English__c, State_Province_English__c, Partner_Lead_Id__c, Channel_Partner_Name__c, Zip_Postal_Code_English__c, toLabel(Country_English__c) , ';
+      q_select += ' Program_Event_Name__c, toLabel(Lead_Category__c), toLabel(LeadSource), toLabel(Industry), Date_Added__c, Lead_Qualified_Date__c, Deal_ID__c ';
+      return q_select;
+    }
+    set;
+    
+  }
+  public string q_from {
+    get {
+      return ('Lead');
+    }
+  }
+  public string q_where {
+    get {
+      if(q_where == null) {
+        q_where = 'Id != null ';
+      }
+      return q_where;
+    }
+    set;
+  }
+
+  // 5/21: Set the query return set order by DESC
+  public string q_queryStr {
+    get {
+      return ('SELECT '+q_select+' FROM '+q_from+' WHERE '+q_where + '  ORDER BY Partner_Assigned_Date__c DESC LIMIT 400 OFFSET 0 ');
+    }
+  }
+  // Modified By: Sudi 10 Oct 2014 
+  // Release : November Sprint 2
+  // User Story : US7048
+  // Below method is added for Export lead functionality, passing list view and get the Partner lead status
+  @RemoteAction
+    public static String getListViewStatus(string lstViewId){
+        string str = prmFilterUtility.whereClauseforView('lead', lstViewId);
+        return str.trim();
+    } 
+  public prmPagenationUtility myPg {
+    get {
+      if(myPg == null) {        
+        myPg = new prmPagenationUtility(q_queryStr,500);
+        myPg.pg_PageSize = 500;
+
+      }
+      return myPg;
+    }
+    set;
+  }
+
+  public Boolean isNewlyAssignedLeads { 
+    get {
+      string str = SCP_Communities_listviews__c.getValues('My Newly Assigned Leads').Id;
+      
+      System.debug(System.LoggingLevel.INFO,'### str : '+str);
+      if(selectedView == str) {
+        isNewlyAssignedLeads = true;  
+      }
+      else {
+        isNewlyAssignedLeads = false;
+      }
+      System.debug(System.LoggingLevel.INFO,'### isNewlyAssignedLeads : '+isNewlyAssignedLeads);
+      return (isNewlyAssignedLeads);
+    }
+    set; 
+  }
+  
+  public Boolean isSelectedChekBox { 
+    get {
+      Set<Id> viewIds = new Set<Id>();
+      viewIds.add(SCP_Communities_listviews__c.getValues('My Newly Assigned Leads').Id);
+      viewIds.add(SCP_Communities_listviews__c.getValues('All Active Leads').Id);
+      viewIds.add(SCP_Communities_listviews__c.getValues('My Accepted Leads').Id);
+      if(viewIds.contains(selectedView)) {
+        isSelectedChekBox = true;
+      }
+      else {
+        isSelectedChekBox = false;
+      }
+      return isSelectedChekBox;
+    } 
+    set; 
+  }
+  public Boolean isMassEdit { get; set; }
+  public List<prmPagenationUtility.WrapperList> editPageRecords { get; set; }
+
+  public List<prmPagenationUtility.WrapperList> pageRecords { get; set; }
+
+  /*
+ * Getter and Setter for the search variables
+ */
+  public string customerName { get; set; }
+  public List<string> selectedLeadCategory { get; set; }
+  public List<string> selectedLeadSource { get; set; }
+  public List<string> selectedIndustries { get; set; }
+  public List<string> selectedMainTechnology { get; set; }
+  public string programEventName { get; set; }
+  public List<String> selectedCountries { get; set; }
+  public string country { get; set; }
+  public string stateProvince { get; set; }
+  public string city { get; set; }
+
+  public List<SelectOption> leadCategoryList { get; set; }
+  public List<SelectOption> leadSourceList { get; set; }
+  public List<SelectOption> leadIndustryList { get; set; }
+  public List<SelectOption> leadMainTechnologyList { get; set; }
+  public List<SelectOption> countryList { get; set; }
+  // End of Variable declaration for lead search
+
+
+  public string getMultiPickSelectedValue(List<String> value) {
+    string returnVal = '(';
+    if(value != null ) {
+      for(string val : value) {
+        if(val.equalsIgnoreCase('All')) {
+          return ('All');
+        }
+        val = String.escapeSingleQuotes(val);
+        returnVal = returnVal +'\''+val+'\',';
+      }
+      System.debug(System.LoggingLevel.INFO,'>>>>>> value : '+value +' returnVal : '+ returnVal);
+      if(returnVal != '(') {
+        returnVal = returnVal.substring(0,(returnVal.length()-1));
+        returnVal = returnVal + ')';
+        return (returnVal);
+      }        
+    }
+    return 'All';
+  }
+
+
+  public Boolean isPA {
+    get {
+      return (prmFilterUtility.isPA);
+    }
+  }
+
+  public Boolean isPSR {
+    get {
+      return (prmFilterUtility.isPSR);
+    }
+  }
+  
+  public Boolean isDisti {
+    get{      
+        return (prmFilterUtility.loggedInUserIsDisti =='Distributor')?true:false;
+      }
+  }
+  public List<string> selectedPartnerName{get;set;}
+  public List<SelectOption> partnerNameList { get; set; }
+  public Boolean isEnglish {
+    get {
+      return (prmFilterUtility.isEnglish);
+    }
+  }
+
+
+  public string selectedView { 
+    get {
+      if(selectedView == null) {
+        selectedViewList = new List<string>();
+        selectedViewList.addAll(prmFilterUtility.getviewList());
+        selectedView = selectedViewList[0];
+      }
+      return selectedView;
+    }
+    set; }
+
+  public List<String> selectedViewList { get; set; }
+
+  transient Component.Apex.SelectList viewList;
+
+  public void setViewList(Component.Apex.SelectList value) {
+    if(value != null) {
+      viewList = value;
+    }
+  }
+
+  public Component.Apex.SelectList getViewListComponent() {
+    if(viewList == null ) {
+
+      try {  
+        viewList = new Component.Apex.SelectList();
+        viewList = prmFilterUtility.getViewListComponent('Lead');
+      }
+      catch(Exception ex) {
+        ApexPages.addMessages(ex);
+      }      
+    }
+    return viewList;
+  }
+
+  public Id DocId { get; set; }
+  public string queryStr { get; set; }
+
+  public string psr1_name { get; set; }
+  public string psr1_Id { get; set; }
+  public string psr2_name { get; set; }
+  public string psr2_Id {get; set;}
+  public string psr3_name { get; set; }
+  public string psr3_Id { get; set; }
+
+
+  public void initlize() {
+    
+    System.debug(System.LoggingLevel.INFO,'### INSIDE INITLIZE ###');
+    pageRecords = new List<prmPagenationUtility.WrapperList>();
+    leadCategoryList = new List<SelectOption>();    
+
+    Map<String, Schema.SobjectField> allfieldsmap = Schema.SObjectType.Lead.fields.getMap();
+    Schema.DescribeFieldResult describedField = allfieldsmap.get('Lead_Category__c').getDescribe();
+
+    Schema.DescribeFieldResult leadCategory  = Lead.Lead_Category__c.getDescribe();
+    for(Schema.Picklistentry sp : leadCategory.getPicklistValues()) {
+      leadCategoryList.add(new SelectOption(sp.value,sp.label));
+    }
+
+    leadSourceList = new List<SelectOption>();    
+    Schema.DescribeFieldResult leadSource  = Lead.LeadSource.getDescribe();
+    for(Schema.Picklistentry sp : leadSource.getPicklistValues()) {
+      leadSourceList.add(new SelectOption(sp.value,sp.label));
+    }
+
+    leadIndustryList = new List<SelectOption>();    
+    Schema.DescribeFieldResult leadIndustry  = SCP_Communities_DTO__c.Industry__c.getDescribe();
+    for(Schema.Picklistentry sp : leadIndustry.getPicklistValues()) {
+      leadIndustryList.add(new SelectOption(sp.value,sp.label));
+    }
+
+    leadMainTechnologyList = new List<SelectOption>();    
+    Schema.DescribeFieldResult mainTechnology  = Lead.Main_Technology_filter__c.getDescribe();
+    for(Schema.Picklistentry sp : mainTechnology.getPicklistValues()) {
+      leadMainTechnologyList.add(new SelectOption(sp.value,sp.label));
+    }
+
+    countryList = new List<SelectOption>();    
+    Schema.DescribeFieldResult country  = Lead.CustomCountry__c.getDescribe();
+    for(Schema.Picklistentry sp : country.getPicklistValues()) {
+      countryList.add(new SelectOption(sp.value,sp.label));
+    }
+    // Modified By: Sudi 02 Nov 2014 
+      // Release : November Sprint 3
+      // User Story : US7054
+      // Below code is added to populate the Partner name drop down values in Partnar mass update
+    partnerNameList = new list<SelectOption>();    
+    String currentPartnerAccountId = prmFilterUtility.loggedInUserPartnerAccount;
+        String currentPartnerAccountName = prmFilterUtility.loggedInUserPartnerAccountName;    
+        partnerNameList.add(new SelectOption(currentPartnerAccountId,currentPartnerAccountName));  
+        set<SelectOption> newList = new set<SelectOption>();
+    for(Disti_to_Partner_Mapping__c DP : [Select Partner__c, Channel_Partner__c from Disti_to_Partner_Mapping__c where Distributor__c=:channelAccount]){
+      if(DP.Partner__c != null){            
+        newList.add(new SelectOPtion(DP.Partner__c,DP.Channel_Partner__c));
+      }        
+    } 
+    partnerNameList.addAll(newList);
+    q_where = null;
+    isNewlyAssignedLeads = false;
+    if(myPg != null) {
+      myPg.clearPageRecords();
+      myPg = null;
+    }    
+    doSearch();
+    System.debug(System.LoggingLevel.INFO,'### END OF INITLIZE ###');
+  }
+
+  /*
+ * Function Name  : doSearch
+ * Description    : Function to form the dynamic soql using the search parameters
+ * Input Param    : -
+ * Output Param   : -
+ */
+  public Pagereference doSearch() {
+    try {
+      string cookieValue = '';
+      isNewlyAssignedLeads = false;
+      myPg = null;
+      q_where = null;
+      viewList = null;
+      string whereClause = q_where;      
+      // Filter by view
+      string str = prmFilterUtility.whereClauseforView('lead', selectedView);
+      cookieValue  += 'view : '+selectedView;
+      if(str != 'All') {
+        whereClause = whereClause + ' AND Partner_Lead_Status__c IN '+str;  
+      }      
+      //escape each search value with single quotes
+      customerName = null != customerName ?String.escapeSingleQuotes(customerName) :'';
+
+      programEventName = null != programEventName ?String.escapeSingleQuotes(programEventName) :'';
+
+      stateProvince = null != stateProvince ?String.escapeSingleQuotes(stateProvince) :'';
+      city = null != city ?String.escapeSingleQuotes(city) :'';
+
+      System.debug(System.LoggingLevel.INFO,'>>>>>> selectedLeadSource : '+selectedLeadSource);
+      
+      string lc = getMultiPickSelectedValue(selectedLeadCategory);
+      string ls = getMultiPickSelectedValue(selectedLeadSource);      
+      string ind = prmFilterUtility.getMappedIndustries(selectedIndustries);
+      string mt = getMultiPickSelectedValue(selectedMainTechnology);
+      string cu = getMultiPickSelectedValue(selectedCountries);
+      // Modified By: Sudi 17 Oct 2014 
+      // Release : November Sprint 3
+      // User Story : US7054
+      // Below Code is added for get partner name picklist values
+      string pn = getMultiPickSelectedValue(selectedpartnerName);
+
+      if('' != customerName ) {
+        whereClause = whereClause + ' AND ( Company LIKE \'%' + customerName  +'%\'  OR Account_Name_English__c LIKE \'%' + customerName  +'%\')';  
+        cookieValue += ' :: customerName : '+customerName;
+      }
+
+      if('' != lc && lc != 'All') {
+        whereClause = whereClause + ' AND Lead_Category__c IN '+lc;
+        cookieValue += ' :: leadCatagory : '+lc;
+      }
+      if( '' != ls && ls != 'All') {
+        whereClause = whereClause + ' AND LeadSource IN '+ls;
+        cookieValue += ' :: leadSource : '+ls;
+      }
+      if('' != ind && ind != 'All') {
+        whereclause = whereClause + ' AND Industry IN '+ind;
+        cookieValue += ' :: industry : '+ind;
+      }
+      if('' != mt && mt != 'All') {
+        whereClause = whereClause +  ' AND  Main_Technology__c IN '+mt;
+        cookieValue += ' ::  maintechnology : '+mt;
+      }
+      if('' != programEventName && programEventName != 'All' ) {
+        whereClause = whereClause + ' AND Program_Event_Name__c LIKE \'%'+programEventName+ '%\'';
+        cookieValue += ' ::  programevent : '+programEventName;
+      }
+
+      if('' != cu && cu != 'All') {
+        whereClause = whereClause +  ' AND CustomCountry__c  IN '+cu;
+        cookieValue += ' ::  country : '+cu;
+      }
+
+      if('' != stateProvince) {
+        whereClause = whereClause +  ' AND ( CustomState__c LIKE \'%'+stateProvince+'%\' OR State_Province_English__c LIKE \'%'+stateProvince+'%\' ) ';
+        cookieValue += ' ::  state : '+stateProvince;
+      }
+      if('' != city) {
+        whereClause = whereClause +  ' AND ( CustomCity__c LIKE \'%'+city+'%\' OR City_English__c LIKE \'%'+city+'%\' ) ';
+        cookieValue += ' ::  city : '+city;
+      }
+      // Modified By: Sudi 17 Oct 2014 
+      // Release : November Sprint 3
+      // User Story : US7054
+      // Below condition is added for only disti user we are going to partner name filter to dynamic soql 
+      if(isDisti && '' != pn && pn != 'All' ){
+        whereClause = whereClause + ' AND Channel_Partner__c IN ' + pn;
+        cookieValue  += ' ::  partnername : '+pn;
+      }
+      if(whereClause != q_where) {
+        q_where = whereClause;
+      }
+      prmFilterUtility.createFilterCookie('lead',cookieValue);      
+      if(myPg != null) {
+        myPg = null;        
+        myPg.clearPageRecords();
+      }
+      pageRecords = myPg.getLeadPageRecords();
+      isMassEdit = false;            
+    }
+
+    catch(System.QueryException qEx) {
+      ApexPages.addMessages(qEx);
+    }
+    catch(Exception ex) {
+      ApexPages.addMessages(ex);
+    }
+    
+    return null;
+  }
+  // Modified By: Sudi 02 Nov 2014 
+  // Release : November Sprint 3
+  // User Story : US7093
+  // Below code is method is added to assign the partner name to the selected leads in lead filter page
+  public override Pagereference AssignPartnerName(string PartnerAccId){
+      try{
+        User usr = prmFilterUtility.logUser;        
+        if(PartnerAccId == null || PartnerAccId == ''){
+          ApexPages.addMessage(new ApexPages.Message(Apexpages.Severity.ERROR,'Partner Name cannot be blank!'));
+        return null;  
+        }
+        List<Lead> updateList = new List<Lead>();
+      if(this.pageRecords != null && !this.pageRecords.isEmpty()) {
+        for(prmPagenationUtility.WrapperList rec : pageRecords) {
+          if(rec.isSelected && rec.leadRec.Partner_Lead_Status__c =='Partner Assigned') {            
+            if(rec.leadRec.Lead_From_Distributor_BE_GEO_ID_PDB__c == null){              
+              rec.leadRec.Lead_From_Distributor_BE_GEO_ID_PDB__c = usr.Contact.Account.PDB_BE_GEO_ID__c;  
+            }
+            rec.leadRec.Channel_Partner__c= PartnerAccId;                        
+            rec.leadRec.PSR_1__c = null;
+            rec.leadRec.PSR_2__c = null;  
+            rec.leadRec.PSR_3__c = null;
+            rec.leadRec.Partner_Lead_Status__c ='Partner Assigned';                  
+            updateList.add(rec.leadRec);                      
+          }
+        }
+      }
+      if(!updateList.isEmpty()) {        
+        update (UpdateList);
+        clearAsignPSRFields();
+        cancelMassUpdate();
+        myPg.clearPageRecords();
+        pageRecords = new List<prmPagenationUtility.WrapperList>();
+        doSearch();
+      }
+      else{
+        cancelMassUpdate();
+      }
+      }
+      catch (Exception ex){
+        ApexPages.addMessages(ex);
+      }
+      return null;
+    }
+  public override Pagereference assignPSRs() {
+    try {
+      psr= getPsr();      
+      psr1_Id = psr.psr1_Id;
+      psr2_Id = psr.psr2_Id;
+      psr3_Id = psr.psr3_Id;
+      
+      if(psr1_Id == null && psr2_Id == null && psr3_Id == null) {
+        ApexPages.addMessage(new ApexPages.Message(Apexpages.Severity.ERROR,'PSR\'s cannot be blank!'));
+        return null;
+      }
+      List<Lead> updateList = new List<Lead>();
+      if(this.pageRecords != null && !this.pageRecords.isEmpty()) {
+
+        for(prmPagenationUtility.WrapperList rec : pageRecords) {
+          if(rec.isSelected) {  
+            lead ldUpdate = new lead(Id=rec.leadRec.id);          
+            if(psr1_Id != null && psr1_Id != '') {
+                //SCAVA FIX
+                if(flsUpdate(Lead.PSR_1__c))
+                {
+                    ldUpdate.PSR_1__c = (Id)psr1_Id;
+                }
+            }
+            if(psr2_Id != null && psr2_Id != '') {
+              if(flsUpdate(Lead.PSR_2__c))
+                {
+                    ldUpdate.PSR_2__c = (Id)psr2_Id;
+                }
+            }
+            if(psr3_Id != null && psr3_Id != '') {
+                if(flsUpdate(Lead.PSR_3__c))
+                {
+                    ldUpdate.PSR_3__c = (Id)psr3_Id;
+                }
+            }
+            updateList.add(ldUpdate);            
+          }
+        }
+      }
+      if(!updateList.isEmpty()) {        
+        update (UpdateList);
+        clearAsignPSRFields();
+        myPg.clearPageRecords();
+        pageRecords = new List<prmPagenationUtility.WrapperList>();
+        doSearch();
+      }      
+    }
+    catch(Exception ex) {
+      ApexPages.addMessages(ex);
+    }
+    return null;
+  }
+  // PSR Bulk Assignment Component
+
+  public void clearAsignPSRFields() {
+    psr1_name = null;
+    psr1_Id = null;
+    psr2_name = null;
+    psr2_Id = null;
+    psr3_name = null;
+    psr3_Id = null;
+
+  }
+
+  public String psrKey { 
+    get{
+      psrKey = 'psr';
+      return psrKey;
+    }
+    set;
+  }
+  public SCP_Communities_PSRBulk_CT psr { get; set; }
+
+
+  public SCP_Communities_PSRBulk_CT getPsr() {
+    if(getComponentControllerMap() != null && getComponentControllerMap().get(psrKey) != null) {
+      psr = (SCP_Communities_PSRBulk_CT) getComponentControllerMap().get(psrKey);
+      return psr;
+    }
+    return (new SCP_Communities_PSRBulk_CT());
+  }
+
+
+  // Lead upload methods start
+
+  public String Userlang { 
+    get{
+      return  prmFilterUtility.loggedInUserGadgetLanguage;
+    }
+    set;}
+
+  public String CCOId { 
+    get{
+      return  prmFilterUtility.getCCOID();
+    }
+    set;}
+
+
+
+  public String Currentuseraccount { 
+    get{
+      return String.valueof(new prmFilterUtility().getCurrentUserParentAccountId());
+    }
+    set; }
+
+
+  public String channelAccount{
+    get{
+      return String.valueof(prmFilterUtility.loggedInUserPartnerAccount);
+    }
+  }
+
+  // Lead upload methods End
+  
+  public void checkForExistingCookie() {
+    
+    selectedleadCategory = new List<string>();
+    selectedleadSource = new List<string>();
+    selectedIndustries = new List<string>();
+    selectedmainTechnology = new List<string>();
+    selectedCountries= new List<string>();
+    selectedPartnerName = new List<string>();
+    
+    String cvalue = prmFilterUtility.retriveFilterCookie('lead');    
+
+    if(cvalue != null  && cvalue != '' ) {
+      List<String> fieldValueList = cvalue.split('::');
+      String fname,fvalue;
+
+      for(String str : fieldValueList ) {
+        fname = str.split(':')[0] != null ? str.split(':')[0].trim() : '';
+        fvalue = str.split(':')[1] != null ? str.split(':')[1].trim() : '';
+
+        if(fname != null && fname.equalsIgnoreCase('view')) {
+          selectedView = fvalue;
+        }
+        else if(fname != null && fname.equalsIgnoreCase('customerName')) {
+          customername = fvalue;
+        }
+        else if(fname != null && fname.equalsIgnoreCase('leadcategory')) {
+          selectedLeadCategory = prmFilterUtility.convertToMultiselectPickList(fvalue);
+        }
+        else if(fname != null && fname.equalsIgnoreCase('leadSource')) {
+          selectedLeadSource = prmFilterUtility.convertToMultiselectPickList(fvalue);
+        }
+        else if(fname != null && fname.equalsIgnoreCase('Industry')) {
+          selectedIndustries = prmFilterUtility.convertToMultiselectPickList(fvalue);
+        }
+        else if(fname != null && fname.equalsIgnoreCase('maintechnology')) {
+          selectedMainTechnology = prmFilterUtility.convertToMultiselectPickList(fvalue);
+        }
+        else if(fname != null && fname.equalsIgnoreCase('programevent')) {
+          programEventName = fvalue;
+        }
+        else if(fname != null && fname.equalsIgnoreCase('country')) {
+          selectedCountries = prmFilterUtility.convertToMultiselectPickList(fvalue);
+        }
+        else if(fname != null && fname.equalsIgnoreCase('state')) {
+          stateProvince = fvalue;
+        }
+        else if(fname != null && fname.equalsIgnoreCase('city')) {
+          city = fvalue;
+        }
+        // Modified By: Sudi 17 Oct 2014 
+        // Release : November Sprint 3
+        // User Story : US7054
+        // Below else if is added for new lead filter partner name for disti user 
+        else if(fname != null && fname.equalsIgnoreCase('partnername')){
+          selectedPartnerName = prmFilterUtility.convertToMultiselectPickList(fvalue);
+        }
+      }
+      //return;
+    }
+    else {
+      System.debug('### Cookie is null');
+    }
+    
+  }
+  
+  public void clearFields() {
+    prmFilterUtility.removeFilterCookie('lead');
+    customerName = '';
+    selectedleadCategory = new List<string>();
+    selectedleadSource = new List<string>();
+    selectedIndustries = new List<string>();
+    selectedmainTechnology = new List<string>();
+    programEventName = '';
+    selectedCountries= new List<string>();
+    // Modified By: Sudi 17 Oct 2014 
+    // Release : November Sprint 3
+    // User Story : US7054
+    // Below code added for clear partner name filter for disti user 
+    selectedPartnerName = new List<string>();
+    stateProvince = '';
+    city = '';
+    isSelectedChekBox = false;
+    selectedView = null;
+    isMassEdit = false;
+    psr = getPsr();
+    psr.leadStatus ='';
+    psr.selectedPartner ='';
+    editPageRecords = new List<prmPagenationUtility.WrapperList>();
+    // Get view options    
+    initlize();
+    
+  }
+  
+  public override Pagereference updateStatus(Lead leadRec) {
+    try {
+      List<Lead> updateList = new List<Lead>();
+      String leadStatus = leadRec.Partner_Lead_Status__c;      
+      if(this.pageRecords != null && !this.pageRecords.isEmpty()) {
+  
+          for(prmPagenationUtility.WrapperList rec : pageRecords) {
+            if(rec.isSelected) {              
+              if(isPA && rec.leadRec.Partner_Lead_Status__c == 'Partner Assigned' && (leadStatus == 'Assigned to PSR' || leadStatus == 'Actively Working')) {                
+                if(rec.leadRec.PSR_1__c == null || rec.leadRec.PSR_1__c == '') {
+                  rec.leadRec.PSR_1__c = prmFilterUtility.logUser.Id;
+                  System.debug(System.LoggingLevel.INFO,'&&&& Lead Rec PSR1 : '+rec.leadRec.PSR_1__c+' &&&& prmFilterUtility.logUser.Id : '+prmFilterUtility.logUser.Id);
+                }
+              }
+              rec.leadRec.Partner_Lead_Status__c = leadStatus;
+              updateList.add(rec.leadRec);              
+            }
+          }
+        }
+        if(!updateList.isEmpty()) {          
+          update (UpdateList);
+          clearAsignPSRFields();
+          myPg.clearPageRecords();
+          psr = getPsr();
+          psr.leadStatus ='';
+          pageRecords = new List<prmPagenationUtility.WrapperList>();
+          doSearch();  
+        }        
+    }
+    catch(Exception ex) {
+      System.debug(System.LoggingLevel.ERROR, '################## Exception ###################');
+      System.debug(System.LoggingLevel.ERROR,ex.getMessage());
+      ApexPages.addMessages(ex);
+    }
+    return null;
+  }
+  
+  public override void enableMassEdit(String status) {
+    if(status == 'Actively Working' || status.startsWith('Closed-Order')) {
+      isMassEdit = true;
+      editPageRecords = new List<prmPagenationUtility.WrapperList>();
+    
+      for(prmPagenationUtility.WrapperList rec : pageRecords) {
+        if(rec.isSelected) {
+          rec.selectedStatus = status;
+          editPageRecords.add(rec);
+        }
+      }
+      renderPSR = false;
+    }
+    else {
+      renderPSR = true;
+      isMassEdit = false;
+    }    
+  }
+  /*
+  * Modified by : Saduvvur 
+  * Modified on : 10/22/2014
+  * Method to update selected lead records modified using mass update
+  */
+  public Pagereference massUpdate() {
+    try {      
+      List<Lead> updateList = new List<Lead>();      
+      if(this.pageRecords != null && !this.pageRecords.isEmpty()) {
+  
+          for(prmPagenationUtility.WrapperList rec : pageRecords) {
+            if(rec.isSelected) {
+              String leadStatus = rec.selectedStatus;              
+              if(isPA && rec.leadRec.Partner_Lead_Status__c == 'Partner Assigned' && (leadStatus == 'Assigned to PSR' || leadStatus == 'Actively Working')) {                
+                if(rec.leadRec.PSR_1__c == null || rec.leadRec.PSR_1__c == '') {
+                    // SCAVA Fix
+                    if(flsUpdate(Lead.PSR_3__c))
+                    {
+                        rec.leadRec.PSR_1__c = prmFilterUtility.logUser.Id;                  
+                    }
+                }
+              }
+              // SCAVA Fix
+                    if(flsUpdate(Lead.PSR_3__c))
+                    {
+                        rec.leadRec.Partner_Lead_Status__c = leadStatus;
+                    }
+              updateList.add(rec.leadRec);              
+            }
+          }
+        }
+        if(!updateList.isEmpty()) {          
+          update (UpdateList);
+          isMassEdit = false;
+          selectAll = false;
+          renderPSR = false;
+          clearAsignPSRFields();
+          psr = getPsr();
+          psr.leadStatus ='';
+          myPg.clearPageRecords();
+          pageRecords = new List<prmPagenationUtility.WrapperList>();
+          doSearch();
+  
+        }        
+    }
+    catch(Exception ex) {
+      System.debug(System.LoggingLevel.ERROR, '################## Exception ###################');
+      System.debug(System.LoggingLevel.ERROR,ex.getMessage());      
+      ApexPages.addMessages(ex);      
+    }
+    return null;
+  }
+  /*
+  * Modified by : Saduvvur 
+  * Modified on : 10/22/2014
+  * Method to cancelMassUpdate and reset the drop down selections
+  */
+  public override Pagereference cancelMassUpdate() {
+    psr = getPsr();
+    psr.leadStatus ='';
+    psr.selectedPartner ='';
+    psr.disableUpdate = false;
+    isMassEdit = false;
+    selectAll = false;
+    renderPSR = false;
+    for(prmPagenationUtility.WrapperList rec : pageRecords) {
+      if(rec.isSelected) {
+        rec.isSelected = false;
+      }
+    }
+    pageRecords = new List<prmPagenationUtility.WrapperList>();
+    doSearch();
+    return null;
+  }
+  
+  public Boolean renderPSR { get; set; }
+  
+  public Boolean istoggelSelectAll { get; set; }  
+  public Boolean selectAll { get; set; }
+  public void toggelPSR() {
+    istoggelSelectAll = false;
+    System.debug(System.LoggingLevel.INFO,'########## INSIDE TOGGEL PSR ##########');
+    renderPSR = false;
+    for(prmPagenationUtility.WrapperList rec : pageRecords) {
+      if(rec.isSelected == true){
+        renderPSR = true;
+        break;
+      }
+    }
+    System.debug(System.LoggingLevel.INFO,'####### renderPSR : '+renderPSR+' #########');
+    System.debug(System.LoggingLevel.INFO,'########## END TOGGEL PSR ##########');
+  }
+  public void toggelSelectAll() {
+    System.debug(System.LoggingLevel.INFO,'########## INSIDE TOGGEL SELECT ALL ##########');
+    System.debug(System.LoggingLevel.INFO,'####### selectAll : '+selectAll+' #########');
+    istoggelSelectAll = true;
+    renderPSR = selectAll;
+    System.debug(System.LoggingLevel.INFO,'####### renderPSR : '+renderPSR+' #########');
+    System.debug(System.LoggingLevel.INFO,'########## END TOGGEL SELECT ALL ##########');
+  }
+}

@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Acquisition_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Name of the user who owned the same contact in the acquisition organization</description>
+        <externalId>false</externalId>
+        <label>Acquisition User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Contact_Affiliates</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Contacts Affiliate</relationshipLabel>
+        <relationshipName>Contacts_Affiliate</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>End_User_Marketing_Info__c</fullName>
+        <externalId>false</externalId>
+        <label>End User Marketing Info</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No Information to be sent</fullName>
+                    <default>false</default>
+                    <label>No Information to be sent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>End_User_or_Partner_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>End User or Partner Contact?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>End User Contact</fullName>
+                    <default>false</default>
+                    <label>End User Contact</label>
+                </value>
+                <value>
+                    <fullName>Partner Contact</fullName>
+                    <default>false</default>
+                    <label>Partner Contact</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Partner_Event_Invitation__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Event Invitation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No Information to be sent</fullName>
+                    <default>false</default>
+                    <label>No Information to be sent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Partner_Marketing_Info__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Marketing Info</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No Information to be sent</fullName>
+                    <default>false</default>
+                    <label>No Information to be sent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Partner_Satisfaction_Survey__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Satisfaction Survey</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No Information to be sent</fullName>
+                    <default>false</default>
+                    <label>No Information to be sent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Protocol_Contact_ID__c</fullName>
+        <description>Third Party Marketing Vendor uploading into SFDC</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Third Party Marketing Vendor uploading into SFDC</inlineHelpText>
+        <label>Protocol Contact ID</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Security_Partner_Ranking__c</fullName>
+        <externalId>false</externalId>
+        <label>Security Partner Ranking</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Stage 1–Registered</fullName>
+                    <default>false</default>
+                    <label>Stage 1–Registered</label>
+                </value>
+                <value>
+                    <fullName>Stage 2–Certified</fullName>
+                    <default>false</default>
+                    <label>Stage 2–Certified</label>
+                </value>
+                <value>
+                    <fullName>Stage 3–Proficient</fullName>
+                    <default>false</default>
+                    <label>Stage 3–Proficient</label>
+                </value>
+                <value>
+                    <fullName>Stage 4–Promoter</fullName>
+                    <default>false</default>
+                    <label>Stage 4–Promoter</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Security_Sales_Consultant_Ranking__c</fullName>
+        <description>Allows Security Sales team to evaluate and rank the Security proficiency of Partner Sales Reps</description>
+        <externalId>false</externalId>
+        <label>Security Sales Consultant Ranking</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Stage 1-SFCP Certified</fullName>
+                    <default>false</default>
+                    <label>Stage 1-SFCP Certified</label>
+                </value>
+                <value>
+                    <fullName>Stage 2-Taken SFCSC Course</fullName>
+                    <default>false</default>
+                    <label>Stage 2-Taken SFCSC Course</label>
+                </value>
+                <value>
+                    <fullName>Stage 3-Passed SFCSC Exam</fullName>
+                    <default>false</default>
+                    <label>Stage 3-Passed SFCSC Exam</label>
+                </value>
+                <value>
+                    <fullName>Stage 4-Completed 30 day mentor program</fullName>
+                    <default>false</default>
+                    <label>Stage 4-Completed 30 day mentor program</label>
+                </value>
+                <value>
+                    <fullName>Stage 5-Completed Shadow or provided customer info</fullName>
+                    <default>false</default>
+                    <label>Stage 5-Completed Shadow or provided customer info</label>
+                </value>
+                <value>
+                    <fullName>Stage 6-Approved/Logo Provided</fullName>
+                    <default>false</default>
+                    <label>Stage 6-Approved/Logo Provided</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sub_Type__c</fullName>
+        <description>Sub-Type of contact segmentation</description>
+        <externalId>false</externalId>
+        <label>Sub-Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Architect</fullName>
+                    <default>false</default>
+                    <label>Architect</label>
+                </value>
+                <value>
+                    <fullName>Management</fullName>
+                    <default>false</default>
+                    <label>Management</label>
+                </value>
+                <value>
+                    <fullName>Marketing</fullName>
+                    <default>false</default>
+                    <label>Marketing</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Procurement</fullName>
+                    <default>false</default>
+                    <label>Procurement</label>
+                </value>
+                <value>
+                    <fullName>Sales</fullName>
+                    <default>false</default>
+                    <label>Sales</label>
+                </value>
+                <value>
+                    <fullName>Sales Executive</fullName>
+                    <default>false</default>
+                    <label>Sales Executive</label>
+                </value>
+                <value>
+                    <fullName>SE</fullName>
+                    <default>false</default>
+                    <label>SE</label>
+                </value>
+                <value>
+                    <fullName>SE &amp; Services</fullName>
+                    <default>false</default>
+                    <label>SE &amp; Services</label>
+                </value>
+                <value>
+                    <fullName>SE Manager</fullName>
+                    <default>false</default>
+                    <label>SE Manager</label>
+                </value>
+                <value>
+                    <fullName>Services</fullName>
+                    <default>false</default>
+                    <label>Services</label>
+                </value>
+                <value>
+                    <fullName>SPARK</fullName>
+                    <default>false</default>
+                    <label>SPARK</label>
+                </value>
+                <value>
+                    <fullName>Support</fullName>
+                    <default>false</default>
+                    <label>Support</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>Type of contact segmentation</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Accounts Payable</fullName>
+                    <default>false</default>
+                    <label>Accounts Payable</label>
+                </value>
+                <value>
+                    <fullName>BD Partner</fullName>
+                    <default>false</default>
+                    <label>BD Partner</label>
+                </value>
+                <value>
+                    <fullName>BD Partner Prospect</fullName>
+                    <default>false</default>
+                    <label>BD Partner Prospect</label>
+                </value>
+                <value>
+                    <fullName>Channel End User Prospect</fullName>
+                    <default>false</default>
+                    <label>Channel End User Prospect</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner</fullName>
+                    <default>false</default>
+                    <label>Channel Partner</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner Prospect</fullName>
+                    <default>false</default>
+                    <label>Channel Partner Prospect</label>
+                </value>
+                <value>
+                    <fullName>Competitor</fullName>
+                    <default>false</default>
+                    <label>Competitor</label>
+                </value>
+                <value>
+                    <fullName>Consultant</fullName>
+                    <default>false</default>
+                    <label>Consultant</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>Distributor Prospect</fullName>
+                    <default>false</default>
+                    <label>Distributor Prospect</label>
+                </value>
+                <value>
+                    <fullName>End User</fullName>
+                    <default>false</default>
+                    <label>End User</label>
+                </value>
+                <value>
+                    <fullName>End User Prospect</fullName>
+                    <default>false</default>
+                    <label>End User Prospect</label>
+                </value>
+                <value>
+                    <fullName>Influencer</fullName>
+                    <default>false</default>
+                    <label>Influencer</label>
+                </value>
+                <value>
+                    <fullName>Maintenance Contact</fullName>
+                    <default>false</default>
+                    <label>Maintenance Contact</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Personal</fullName>
+                    <default>false</default>
+                    <label>Personal</label>
+                </value>
+                <value>
+                    <fullName>Snort Integrator</fullName>
+                    <default>false</default>
+                    <label>Snort Integrator</label>
+                </value>
+                <value>
+                    <fullName>Sourcefire Internal</fullName>
+                    <default>false</default>
+                    <label>Sourcefire Internal</label>
+                </value>
+                <value>
+                    <fullName>Supplier</fullName>
+                    <default>false</default>
+                    <label>Supplier</label>
+                </value>
+                <value>
+                    <fullName>System Integrator</fullName>
+                    <default>false</default>
+                    <label>System Integrator</label>
+                </value>
+                <value>
+                    <fullName>System Integrator Prospect</fullName>
+                    <default>false</default>
+                    <label>System Integrator Prospect</label>
+                </value>
+                <value>
+                    <fullName>Technical Contact</fullName>
+                    <default>false</default>
+                    <label>Technical Contact</label>
+                </value>
+                <value>
+                    <fullName>Vendor</fullName>
+                    <default>false</default>
+                    <label>Vendor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This Object is created to store additional information from Acquisition instances of Salesforce.com</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Contact Affiliate</label>
+    <nameField>
+        <displayFormat>C-{000000000}</displayFormat>
+        <label>Contact Affiliate Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Contact Affiliates</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+    <validationRules>
+        <fullName>Enter_Mandatory_Affiliate_Record_Info</fullName>
+        <active>true</active>
+        <description>Validates whether all the mandatory information is filled by user</description>
+        <errorConditionFormula>$User.Deployment_No__c = 'TAN' &amp;&amp; ISPICKVAL( End_User_or_Partner_Contact__c , 'End User Contact') &amp;&amp; ISPICKVAL(End_User_Marketing_Info__c, '') &amp;&amp; $User.Id !='00530000000fW0AAAU'</errorConditionFormula>
+        <errorDisplayField>End_User_Marketing_Info__c</errorDisplayField>
+        <errorMessage>Enter the value in this field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Enter_Mandatory_Affiliate_Record_Info_1</fullName>
+        <active>true</active>
+        <description>Validates whether all the mandatory information is filled by user</description>
+        <errorConditionFormula>$User.Deployment_No__c = 'TAN' &amp;&amp;   ISPICKVAL(End_User_or_Partner_Contact__c, 'Partner Contact') &amp;&amp; ISPICkVAL(Partner_Event_Invitation__c,'')&amp;&amp; $User.Id !='00530000000fW0AAAU'</errorConditionFormula>
+        <errorDisplayField>Partner_Event_Invitation__c</errorDisplayField>
+        <errorMessage>Enter the value in this field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Enter_Mandatory_Affiliate_Record_Info_2</fullName>
+        <active>true</active>
+        <description>Validates whether all the mandatory information is filled by user</description>
+        <errorConditionFormula>$User.Deployment_No__c = 'TAN' &amp;&amp;   ISPICKVAL(End_User_or_Partner_Contact__c, 'Partner Contact') &amp;&amp; ISPICkVAL(Partner_Marketing_Info__c ,'')&amp;&amp; $User.Id !='00530000000fW0AAAU'</errorConditionFormula>
+        <errorDisplayField>Partner_Marketing_Info__c</errorDisplayField>
+        <errorMessage>Enter the value in this field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Enter_Mandatory_Affiliate_Record_Info_3</fullName>
+        <active>true</active>
+        <description>Validates whether all the mandatory information is filled by user</description>
+        <errorConditionFormula>$User.Deployment_No__c = 'TAN' &amp;&amp;   ISPICKVAL(End_User_or_Partner_Contact__c, 'Partner Contact') &amp;&amp; ISPICkVAL(Partner_Satisfaction_Survey__c ,'')&amp;&amp; $User.Id !='00530000000fW0AAAU'</errorConditionFormula>
+        <errorDisplayField>Partner_Satisfaction_Survey__c</errorDisplayField>
+        <errorMessage>Enter the value in this field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Enter_Mandatory_Affiliate_Record_Info_4</fullName>
+        <active>true</active>
+        <description>Validates whether all the mandatory information is filled by user</description>
+        <errorConditionFormula>$User.Deployment_No__c = 'TAN' &amp;&amp;   ISPICKVAL(End_User_or_Partner_Contact__c, '')&amp;&amp; $User.Id !='00530000000fW0AAAU'</errorConditionFormula>
+        <errorDisplayField>End_User_or_Partner_Contact__c</errorDisplayField>
+        <errorMessage>Enter the value in this field</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>New_Contact_Affiliate</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New Contact Affiliate</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!requireScript("/soap/ajax/20.0/connection.js")}
+var hostname = window.location.hostname.toLowerCase(); 
+
+var r = sforce.connection.query("Select Id,name from Contact_Affiliate__c  where Contact_Affiliate__c.Contact__c='{!Contact.Id}' ");
+var q=r.getArray("records");
+
+if(q.length &gt;= 1)
+{
+alert('Contact Affiliate already exists for this Contact.You can not create second record');
+
+}
+else
+{
+
+//var ContactName = '{!Contact.Name}';
+var ContactName = "{!URLENCODE(Contact.Name)}"; 
+
+var regExp = /&amp;/ ;
+
+while(ContactName .search(regExp) &gt; -1){
+ContactName=ContactName.replace(regExp,"%26");
+} 
+
+window.top.location.href ="https://"+hostname+"/a1L/e?CF00N80000004Ry8u="+ContactName+"&amp;CF00N80000004Ry8u_lkid={!Contact.Id}&amp;retURL={!Contact.Id}" ;
+}</url>
+    </webLinks>
+</CustomObject>

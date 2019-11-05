@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>DealTypeThree__c</fullName>
+        <externalId>false</externalId>
+        <label>DealTypeThree</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DealType__c</fullName>
+        <description>Copies deal type 9 value</description>
+        <externalId>false</externalId>
+        <label>DealType</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Non_std_Deal__c</fullName>
+        <description>copies dealtype 10 value</description>
+        <externalId>false</externalId>
+        <label>Non_std_Deal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>setting up deal type 9,10 values and using this setting values in apex and validation rules</description>
+    <enableFeeds>false</enableFeeds>
+    <label>DRTM Deal Type</label>
+    <visibility>Public</visibility>
+</CustomObject>

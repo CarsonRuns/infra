@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Account Executive Sponsor --></label>
+        <name>Account_Executive_Sponsor__c</name>
+        <relationshipLabel><!-- Account Executive Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Account Lead</masterLabel>
+            <translation><!-- Account Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Sponsor</masterLabel>
+            <translation><!-- Lead Sponsor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supporting Sponsor</masterLabel>
+            <translation><!-- Supporting Sponsor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VP</masterLabel>
+            <translation><!-- VP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- Account Executive Users --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Executive User</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Executive Users</value>
+    </caseValues>
+    <startsWith>Vowel</startsWith>
+    <layouts>
+        <layout>Account Executive User Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

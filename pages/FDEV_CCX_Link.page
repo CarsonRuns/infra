@@ -1,0 +1,26 @@
+<apex:page standardController="Account_Group__c" extensions="FDEV_CCX_Link_CT" showHeader="true" sidebar="true">
+<script> 
+
+
+var hostname = window.location.hostname.toLowerCase(); 
+
+var cancelUrl = "https://" + hostname + "/{!Account_Group__c.Id}"; 
+
+
+baseUrl = '{!baseUrl}'; 
+
+var app = baseUrl + "SALESIT/ACME/accountdetails.do?accSetId={!JSENCODE(Account_Group__c.Account_Group_ID__c)}&sessionId={!$Api.Session_ID}&cancelURL="+ 
+cancelUrl + "&apiServerUrl={!$Api.Enterprise_Server_URL_70}"+ 
+"&userId={!$User.Id}&userName={!$User.Username}&alias={!$User.Alias}&firstName={!$User.FirstName}&lastName={!$User.LastName}&email={!$User.Email}&name={!userName}";
+
+/*location.href = baseUrl + "SALESIT/ACME/accountdetails.do?accSetId={!JSENCODE(Account_Group__c.Account_Group_ID__c)}&sessionId={!$Api.Session_ID}&cancelURL="+ 
+cancelUrl + "&apiServerUrl={!$Api.Enterprise_Server_URL_70}"+ 
+"&userId={!$User.Id}&userName={!$User.Username}&alias={!$User.Alias}&firstName={!$User.FirstName}&lastName={!$User.LastName}&email={!$User.Email}&name={!userName}"; 
+*/
+function init() {
+    document.getElementById("frameId").src = app;
+}
+</script> 
+<iframe name="appFrame" id="frameId" frameborder="0" width="100%" height="600px" src="" />
+<script>init()</script>
+</apex:page>

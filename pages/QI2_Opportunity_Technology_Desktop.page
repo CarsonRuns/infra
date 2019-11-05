@@ -1,0 +1,271 @@
+<apex:page docType="html-5.0" standardController="opportunity">
+    <style>
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none; 
+          margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance:textfield;
+        }
+         .pagination>li>a,.pagination>li>a:focus, .pagination>li>a:hover{
+            background-color:transparent;
+            border:0px;
+            border-color:transparent;
+        }
+        .pagination>.disabled>a, .pagination>.disabled>a:focus,.pagination>.disabled>a:hover{
+            background-color:transparent;
+            border-color:transparent;
+        }
+        .helpIconWrapper + .tooltip > .tooltip-inner {
+            background-color: #FEFDBA;
+            color: #000000;
+            border: 1px solid #F3A205;
+        }
+        .helpIconWrapper .tooltiptext{
+            visibility: hidden;
+            background-color: #FEFDBA;
+            color: #000000;
+            border-radius: 4px;
+            text-align: center;
+            padding: 5px 0;
+            border: 1px solid #F3A205;
+            position: absolute;
+            width: 190px;
+            left: 40%;
+            margin-top: -55px;
+            }
+        .helpIconWrapper:hover .tooltiptext {
+            visibility: visible;
+        }
+        .cartlink + .tooltip > .tooltip-inner {
+            background-color: #FEFDBA;
+            color: #000000;
+            border: 1px solid #F3A205;
+        }
+        .cartlink .tooltiptext{
+            visibility: hidden;
+            background-color: #FEFDBA;
+            color: #000000;
+            border-radius: 4px;
+            text-align: center;
+            padding: 5px 0;
+            border: 1px solid #F3A205;
+            position: absolute;
+            width: 190px;
+            left: 45%;
+            margin-top: -55px;
+            }
+        .cartlink:hover .tooltiptext {
+            visibility: visible;
+        }
+    </style>
+    <script id="pagination.html" type="text/ng-template">
+            <ul class="pagination" style="margin:10px 0 10px 0px !important">              
+                <li ng-if="directionLinks" ng-class="{disabled: noPrevious()}">
+                    <a href ng-click="selectPage(page - 1)" title="Previous Page">
+                        <span class="glyphicon glyphicon-triangle-left" style="top:2.5px;"></span>Previous
+                    </a>
+                </li>               
+                <li ng-if="directionLinks" ng-class="{disabled: noNext()}"><a href ng-click="selectPage(page + 1)" title="Next Page">Next<span class="glyphicon glyphicon-triangle-right" style="top:2.5px;"></span></a></li>                
+            </ul>
+    </script>
+    <div id="technologyApplication">
+        <apex:remoteObjects jsNamespace="RemoteObjectModel">        
+             <apex:remoteObjectModel name="OpportunityLineItem" fields="Id,Mix__c,Product_Family_US__c,PricebookEntryId,OpportunityId">                        
+             </apex:remoteObjectModel>        
+        </apex:remoteObjects>   
+            <!-- QI2_Edit_utr: Disable edit UI on QI -->   
+                <div style="margin : 20px 0px;" class="pbSubsection" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">                  
+               <span style="font-weight:bold;">Technologies were integrated with a CCW BOM on &nbsp;<apex:outputField value="{!Opportunity.CCW_BOM_Integrated_Date__c}"/>.  Please click on quote link above to make changes to your technologies.</span>
+                </div>
+                <div style="margin : 20px 0px;" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'" >
+                    <!--<input type="Text" size="50" class="smallInput" placeholder="Search & Add BE/Product Family" />  &nbsp; -->
+                    <input type="text" class="productsmallInput" ng-model="tempProduct" placeholder="Search & Add BE/Product Family" uib-typeahead="product as product.name for product in getProducts($viewValue)" typeahead-on-select="setSearch($item,$event,tempProduct)" style="width:35%;"/>                    
+                    <div class="helpIconWrapper" data-toggle="tooltip" data-placement="top"><span class="tooltiptext">Type the Product information you are looking for</span></div> &nbsp;
+                    <span class="cartlink" style="marign: 20px 0px " data-toggle="tooltip" data-placement="top" ><span class="tooltiptext">Select from the complete list of Products</span><button type="button" data-toggle="modal" data-target="#myModal2">Show All</button></span>
+                    <span style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px;" ng-cloak="true" >
+                        <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px; width: 100%;" ng-cloak="true">{{saveErrorMessage}}<br/></div> <!-- QI2_Edit_utr: Product error display in the product section --> 
+                        <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px; width: 100%;" ng-cloak="true" ng-if="mixPercentFlag">{{mixPercentValid}}<br/></div>
+                        <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px; width: 100%;" ng-cloak="true" ng-if="recurringTechPercentageFlag">{{recurringTechPercentageValid}}<br/></div>
+                        <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block; margin-left: 8px; width: 100%;" ng-cloak="true" ng-if="recurringTechTermFlag">{{recurringTechTermValid}}</div>
+                    </span>
+                </div>
+                
+                <div>                    
+                    <table class="table table-condensed list" border="1" width="100%" style="margin-bottom:0px !important; table-layout: fixed !important;" id="technologyTable">
+                        <colgroup span="4"></colgroup>
+                        <thead>
+                            <tr class="headerRow"> <!-- QI2_Edit_utr: Disable edit UI on QI --> 
+                                <th width="50px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Action</th>
+                                <th width="210px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Business Entity/Sub Entity</th>
+                                <th width="350px" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'" >Business Entity/Sub Entity</th>
+                                <th width="250px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Product Family</th>
+                                <th width="335px" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'" >Product Family</th>
+                                <th width="50px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Mix%</th>
+                                <th width="100px" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'" >Mix%</th>
+                                <th width="80px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'"><div style="width:100px; text-align:justify; word-break:normal; font-size:1em">Expected Line<br/>Value ($000s)</div></th>
+                                <th width="100px" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'"><div style="width:100px; text-align:justify; word-break:normal; font-size:1em">Expected Line<br/>Value ($000s)</div></th>
+                                <th width="90px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Recurring Product<br/>Family?</th>
+                                <th width="110px" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Recurring Product<br/>Family?</th>
+                                <th width="60px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Recurring %</th>
+                                <th width="80px" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Recurring %</th>
+                                <th width="120px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'" ><div style="width:100px; text-align:justify; word-break:normal; font-size:1em">Recurring Product<br/>Value ($000s)</div></th>
+                                <th width="140px" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'" ><div style="width:100px; text-align:justify; word-break:normal; font-size:1em">Recurring Product<br/>Value ($000s)</div></th>
+                                <th width="70px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Term (Months)</th>
+                                <th width="100px" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">Term (Months)</th>
+                            </tr>
+                        </thead>                    
+                        <tbody class="mainTbody">
+                            <tr class="dataRow even first last" ng-repeat="techObj in scopeobj | limitTo:itemsPerPage:itemsPerPage*(currentPage-1) track by $index" style="height: 31px;">                                                            
+                                                <td width="50px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'"><a href="javascript:void(0);" class="del s1utility" ng-click="deleteLineItem((currentPage - 1)*itemsPerPage+$index,$event);">Del</a></td>
+                                                
+                                                <td width="210px" ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:200px;" ><span class="red" ng-if="techObj.isActive==false" ng-cloak="true" title="{{techObj.tech}}">{{techObj.tech}}</span><span class="red" ng-if="techObj.isActive==false" style="padding-left:10px;" ng-cloak="true">Inactive</span><div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width:250px; vertical-align: top;" title="{{techObj.tech}}">{{techObj.tech}}</div></td>
+                                                <td width="210px" ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'" title="{{techObj.title}}">{{techObj.tech}}</td>
+                                                <td width="250px" >
+                                                    <div class="productFamily hideLink" style="line-height:2;vertical-align:middle; width: 250px;">
+                                                        <!--<div style="display:inline-block;" class="showLink"><a href="javascript:void(0);" class="delProd s1utility" ng-click="deleteProdFamily(outerIndex,$index,$event);">Del</a></div>-->
+                                                        <div style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 300px;" class="dummyPad" ng-cloak="true" title="{{techObj.prod}}">{{techObj.prod}}</div>                                                       
+                                                    </div>                                                   
+                                                </td> 
+
+                                                <td width="110px" style="border:0px;vertical-align: top;clear:left; width: 110px;" class="dataCell">
+                                                    <div ng-show="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                    <div style="float:right; display:inline-block;">
+                                                        <div class="requiredBlock pull-left" style="position: relative;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px; margin-left:-3px;"></div>
+                                                        <input onfocus="checkZeroValueOnFocus(this.id)" onblur="setZeroValueOnBlurPerc(this.id)" class="mixClass inputSelect" id="mixPercentageId_{{$index}}" max="100" min="0" ng-class="indvidualCost = expectedProductCost*techObj.mixPercentage/100; recurringTechCost = indvidualCost * (techObj.recurringPercentage/100);"  ng-init="checkTotal($index);" ng-change="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100; recurringTechCost = indvidualCost * (techObj.recurringPercentage/100);" ng-keydown="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100; recurringTechCost = indvidualCost * (techObj.recurringPercentage/100);" ng-keyup="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100; recurringTechCost = indvidualCost * (techObj.recurringPercentage/100);" ng-model="techObj.mixPercentage" ng-size="5" onkeypress="return checkDecimal(this,this.id,event)" step="0.01" type="number" value="techObj.mixPercentage" style="width:45px; text-align:right; float: right; padding: 0px; margin-right:-2px;"/>
+                                                    </div> 
+                                                    </div>
+
+                                                    <div ng-show="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                        <div class="mixClass inputSelect" id="mixPercentageId_{{$index}}"  ng-class="indvidualCost = expectedProductCost*techObj.mixPercentage/100; recurringTechCost = indvidualCost * (techObj.recurringPercentage/100);"  ng-init="checkTotal($index);" ng-change="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100; recurringTechCost = indvidualCost * (techObj.recurringPercentage/100);" ng-keydown="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100; recurringTechCost = indvidualCost * (techObj.recurringPercentage/100);" ng-keyup="checkTotal($index);indvidualCost = expectedProductCost*techObj.mixPercentage/100; recurringTechCost = indvidualCost * (techObj.recurringPercentage/100);" ng-model="techObj.mixPercentage" ng-size="5" onkeypress="return checkDecimal(this,this.id,event)"  type="number" value="techObj.mixPercentage" style="width:45px; text-align:right; float: right; padding: 0px; margin-right:-2px;">{{techObj.mixPercentage| number:2}}</div>
+                                                    </div> 
+                                                </td>
+                                               
+                                                <td width="150px" ng-class="setTotal();" ng-cloak="true" align="right" style="padding-right: 20px !important">{{(indvidualCost)| number:2}}</td>
+                                                
+                                                <td width="150px" style="text-align: left;">{{techObj.AcvFlag}}</td>
+                                                
+                                                
+                                                <td ng-if="techObj.AcvFlag === 'Mixed'" width="90px" style="vertical-align: top;" >
+                                                    <div ng-show="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                    <div style="float:right; display:inline-block;">
+                                                        <div class="requiredBlock pull-left" style="position: relative;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div>
+                                                        <input onfocus="checkZeroValueOnFocus(this.id)" onblur="setZeroValueOnBlurPerc(this.id)" style="width:45px; float: right; text-align: right;" id="recurringPercentIdValue_{{$index}}" class="inputSelect" ng-class="setTotal();" ng-init="checkRecurringTotal(2)" ng-blur = "checkRecurringTotal($index)" ng-model="techObj.recurringPercentage" onkeypress="return checkRecDecimal(this,this.id,event)"  ng-change="recurringTechCost = indvidualCost * (techObj.recurringPercentage/100); checkRecurringTotal($index);" value="techObj.recurringPercentage" step="0.01" min="0" max="100" type="number"></input>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-show="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                    <div style="width:45px; float: right; text-align: right;" id="recurringPercentIdValue_{{$index}}" class="inputSelect" ng-class="setTotal();" ng-init="checkRecurringTotal(2)" ng-blur = "checkRecurringTotal($index)" ng-model="techObj.recurringPercentage" onkeypress="return checkRecDecimal(this,this.id,event)"  ng-change="recurringTechCost = indvidualCost * (techObj.recurringPercentage/100); checkRecurringTotal($index);" value="techObj.recurringPercentage"  type="number">{{ techObj.recurringPercentage | number:2}}</div>
+                                                </div>
+                                                </td>
+                                                <td ng-if="techObj.AcvFlag === 'Yes'" width="90px" style="vertical-align: top; text-align:right;"  ng-init="techObj.recurringPercentage = 100; checkRecurringTotal($index);">
+                                                    {{ techObj.recurringPercentage | number:2}}
+                                                </td>
+                                                <td ng-if="techObj.AcvFlag === 'No'" width="90px" style="vertical-align: top; text-align:right;"  ng-init="techObj.recurringPercentage = 0; checkRecurringTotal($index);">
+                                                    {{ techObj.recurringPercentage | number: 2}}
+                                                </td>
+
+                                                
+                                                <td ng-if="techObj.AcvFlag === 'Mixed' && (techObj.recurringPercentage > 0 && techObj.recurringPercentage <=100)" width="140px" style="vertical-align: top; text-align: right;" ng-class="setTotal();" >{{ recurringTechCost | number:2 }}</td>
+                                                <td ng-if="techObj.AcvFlag === 'Mixed' && (techObj.recurringPercentage === 0 || techObj.recurringPercentage === null || techObj.recurringPercentage === undefined)" width="140px" style="vertical-align: top; text-align: right;"  ng-class="setTotal();"><input id="recurringTechCost_{{$index}}" style="width:130px" min="0" max="100" type="number" class="w3-input w3-border w3-round" onkeypress="return isNumberKey(event)" width="85px" disabled="disabled"></input></td>
+                                                <td ng-if="techObj.AcvFlag === 'Yes'" width="140px" style="vertical-align: top; text-align: right;" ng-class="setTotal();" >{{ recurringTechCost | number:2}}</td>
+                                                <td ng-if="techObj.AcvFlag === 'No'" width="140px" style="vertical-align: top; text-align: right;"  ng-class="setTotal();"><input id="recurringTechCost_{{$index}}" style="width:130px; float:right;" type="number" class="w3-input w3-border w3-round" onkeypress="return isNumberKey(event)" width="85px" disabled="disabled"></input></td>
+                                                
+                                                <td ng-if="techObj.AcvFlag === 'Mixed' && (techObj.recurringPercentage > 0 && techObj.recurringPercentage <=100)" width="90px" style="vertical-align: top; text-align: right;" >
+                                                    <div ng-show="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                    <div style="float:right; display:inline-block;">
+                                                        <div class="requiredBlock pull-left" style="position: relative;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div>
+                                                        <input id="termMonths_{{$index}}" style="width:70px; text-align: right;" class="inputSelect" ng-class="setTotal();" ng-init="checkTerm($index);" ng-model="techObj.term" onkeypress="return isNumberKey(event)"  ng-change="checkTerm($index);" value="techObj.term" step="1" min="1" max="60" type="number"></input>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-show="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                    <div id="termMonths_{{$index}}" style="width:70px; text-align: right;" class="inputSelect" ng-class="setTotal();" ng-init="checkTerm($index);" ng-model="techObj.term" onkeypress="return isNumberKey(event)"  ng-change="checkTerm($index);" value="techObj.term"  type="number">{{ techObj.term }}</div>
+                                                </div>
+                                                </td>
+                                                <td ng-if="techObj.AcvFlag === 'Mixed' && (techObj.recurringPercentage === 0 || techObj.recurringPercentage === null || techObj.recurringPercentage === undefined)" width="90px" style="vertical-align: top;"  ng-class="setTotal();"><input id="termMonths_{{$index}}" style="width:70px; float: right;" type="number" class="w3-input w3-border w3-round" onkeypress="return isNumberKey(event)" disabled="disabled" ng-init="disabledFlag=true;"></input></td>
+                                                <td ng-if="techObj.AcvFlag === 'Yes'" width="90px" style="vertical-align: top; text-align: right;" >
+                                                    <div ng-show="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                    <div style="float:right; display:inline-block;">
+                                                        <div class="requiredBlock pull-left" style="position: relative;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px; text-align:right"></div>
+                                                        <input id="termMonths_{{$index}}" style="width:70px; text-align: right; float: right;" class="inputSelect" ng-class="setTotal();" ng-init="checkTerm($index);" ng-model="techObj.term" onkeypress="return isNumberKey(event)"  ng-change="checkTerm($index);" value="techObj.term" step="1" min="1" max="60" type="number"></input>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-show="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                    <div id="termMonths_{{$index}}" style="width:70px; text-align: right;" class="inputSelect" ng-class="setTotal();" ng-init="checkTerm($index);" ng-model="techObj.term" onkeypress="return isNumberKey(event)"  ng-change="checkTerm($index);" value="techObj.term"  type="number">{{ techObj.term }}</div>
+                                                </div>
+                                                </td>
+
+                                                <td ng-if="techObj.AcvFlag === 'No'" width="90px" style="vertical-align: top;" ><input id="termMonths_{{$index}}" style="width:70px; float: right;" type="number" class="w3-input w3-border w3-round" onkeypress="return isNumberKey(event)" ng-init="disabledFlag=true;" disabled="disabled"></input></td>                                                                                     
+                                            </tr>
+                                            
+                                            <tr ng-if="!'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                <td width="50px" style="border:0px;"  >&nbsp;</td>
+                                                <td width="210px" style="border:0px;" >&nbsp;</td>                                   
+                                                <td width="250px" style="border:0px;text-align:right;" ><span><b>Total:</b></span></td>                                                
+                                                <td width="110px" style="border:0px;padding-left:12px!important; text-align: right;" >
+                                                     <label id="totalTech" ng-cloak="true" align= "right" style="width:100%;">{{total|number:2}}</label>                                                                                                      
+                                                </td>
+                                                <td width="150px"  style="border:0px;text-align:right; padding-right: 20px !important;" ><label id="totalTech" ng-class="totalProductCost = expectedProductCost*total/100;" ng-cloak="true">{{(totalProductCost)| number:2}}</label></td> 
+                                                <td width="150px" style="border:0px;">&nbsp;</td>
+                                                <td width="90px" style="border:0px;">&nbsp;</td>
+                                                <td width="140px" style="border:0px; text-align: right;" ng-class="checkRecurringTotal(0);" >{{ recurringTechTotalCost| number:2}}</td>
+                                                <td width="90px" style="border:0px;" >&nbsp;</td>
+                                            </tr>
+
+                                            <tr ng-if="'{!Opportunity.CCW_BOM_Integrated_Date__c}'">
+                                                <td width="350px" style="border:0px;"  >&nbsp;</td>
+                                                <td width="325px" style="border:0px;text-align:right;" ><span><b>Total:</b></span></td>
+                                                <td width="70px" style="border:0px;padding-left:12px!important; text-align: right;" >
+                                                     <label id="totalTech" ng-cloak="true" align= "right" style="width:100%;">{{total|number:2}}</label>                                                                                                      
+                                                </td>
+                                                <td width="100px"  style="border:0px;text-align:right; padding-right: 20px !important;" ><label id="totalTech" ng-class="totalProductCost = expectedProductCost*total/100;" ng-cloak="true">{{(totalProductCost)| number:2}}</label></td> 
+                                                <td width="110px" style="border:0px;">&nbsp;</td>
+                                                <td width="80px" style="border:0px;">&nbsp;</td>
+                                                <td width="140px" style="border:0px; text-align: right;" ng-class="checkRecurringTotal(0);" >{{ recurringTechTotalCost| number:2}}</td>
+                                                <td width="100px" style="border:0px;" >&nbsp;</td>
+                                            </tr>
+                           
+                        </tbody>
+                    </table>
+                  <ul uib-pagination="true" total-items="scopeobj.length" template-url="pagination.html" ng-model="currentPage" items-per-page="itemsPerPage" class="pagination-sm pull-right" style="margin:0px;"></ul>
+                </div>
+                <div id="myModal2" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width:600px">
+                        <div class="spinner" style="display:none"></div>
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">All Technologies and Product Family List</h4>
+                            </div>
+                            <div class="modal-body">                                                        
+                                <div class="well" style="width:100%; padding: 8px 0;">
+                                    <div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">                                     
+                                      <ul class="nav nav-list">
+                                        
+                                           <li ng-repeat="prodFamily in productFamilies track by $index" class="mainCategory"><label class="tree-toggler nav-header"><i class="glyphicon glyphicon-triangle-right" ng-class="accordionOpenIndex === $index?'glyphicon glyphicon-triangle-bottom':'glyphicon glyphicon-triangle-right'" ng-click="doToggle($event,prodFamily.name,$index);" style="cursor:pointer;font-size: 12px;padding-right: 5px;"></i>
+                                                <a href="" id="techNameToExpand" ng-class="(checkisActiveProductName(prodFamily.name) == false)?'blue':''" ng-click="doToggle($event,prodFamily.name,$index);" style="padding: 2px 15px 2px 15px;" >{{prodFamily.name}}</a></label>                                                
+                                               <ul class="nav nav-list tree" ng-if="accordionOpenIndex === $index">
+                                                    <li ng-repeat="listProductFamily in productFamiliesToggle">
+                                                        <a href="javascript:void(0);" style="padding: 2px 15px 2px 15px;" ng-click="addLineItem(listProductFamily.id,listProductFamily.name,listProductFamily.product,listProductFamily.productId);">{{listProductFamily.product}}</a>
+                                                        </li>
+                                                </ul>
+                                            </li>
+                                        </ul>                                   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+    </div>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+    <script>  
+    </script>
+    
+</apex:page>

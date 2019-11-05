@@ -1,0 +1,132 @@
+<apex:page standardController="Case" extensions="TSN_SelectReq_CTE" tabStyle="Case" showheader="true" action="{!redirect}">
+    <apex:form >
+        <script type="text/javascript" src="/support/console/42.0/integration.js"></script>
+        
+        <script type="text/javascript">
+  
+        window.onkeypress = handleKeyPress;
+        function handleKeyPress(e){
+            var eventInstance = window.event ? event : e;
+            var keyCode = eventInstance.charCode ? eventInstance.charCode : eventInstance.keyCode;    
+            if (keyCode == 13){
+                actionSearchScript();
+                return false;
+            }
+        }
+        
+        </script>
+        <apex:includeScript value="/support/console/22.0/integration.js"/>
+         
+        <apex:actionFunction action="{!getCecval}" name="actionSearchScript"/>
+        
+        <apex:pageBlock title="Requestor Details" id="page">
+            <apex:actionSupport event="onchange" reRender="next">
+                <apex:pageMessages id="msg"/>
+            </apex:actionSupport>
+            <apex:outputPanel id="pgmsg">
+                <!--<apex:pageMessage detail="Please choose the Contact Name" severity="warning" strength="3" rendered="{!AND(contype == 'PARTNER',OR(conname == ''||conname == null))}"></apex:pageMessage>-->
+            </apex:outputPanel>
+            <apex:pageBlockButtons id="button" location="bottom">
+                <apex:outputPanel id="demo1">
+                    
+                    <apex:outputPanel id="th1" >
+                    <apex:actionFunction name="setUITheme" action="{!setThemeFromSession}" reRender="th1">
+                        <apex:param name="userTheme" value=""/>
+                    </apex:actionFunction> 
+                        </apex:outputPanel>
+                           
+                    <apex:commandButton value="Next" action="{!Save}" id="next" rendered="{!OR(count,caseval.Cisco_Contact_Name__c != null)}" >
+                        <apex:param assignTo="{!conname}" value="{!Case.ContactId}" name="contactname"/>
+                    </apex:commandButton>
+                </apex:outputPanel>
+                <apex:commandButton value="Cancel" action="{!cancel}" onclick="testIsInConsole();return false"/>
+            </apex:pageBlockButtons>
+            
+            
+            <apex:outputText rendered="{!OR($Profile.Name == 'Cisco_Sales_Cases',$Profile.Name == 'Cisco_ADMIN',$Profile.Name == 'Cisco_Data_Migration',$Profile.Name == 'Cisco_Deployment_Support',$Profile.Name == 'Cisco_GSTS',$Profile.Name == 'Cisco_GSTS_Analyst',$Profile.Name == 'Cisco_Integration_Echo_Suppression')}"><b>Cisco Contact </b>is optional if the <b>Contact Type</b> value selected is <b>Partner</b></apex:outputText><br/><br/>
+            <b><apex:outputLabel rendered="{!OR($Profile.Name == 'Cisco_Sales_Cases',$Profile.Name == 'Cisco_ADMIN',$Profile.Name == 'Cisco_Data_Migration',$Profile.Name == 'Cisco_Deployment_Support',$Profile.Name == 'Cisco_GSTS',$Profile.Name == 'Cisco_GSTS_Analyst',$Profile.Name == 'Cisco_Integration_Echo_Suppression')}" >Contact Type :</apex:outputLabel></b>&nbsp;&nbsp;
+            
+            
+            <apex:selectList id="contactname" size="1" value="{!contype}" rendered="{!OR($Profile.Name == 'Cisco_Sales_Cases',$Profile.Name == 'Cisco_ADMIN',$Profile.Name == 'Cisco_Data_Migration',$Profile.Name == 'Cisco_Deployment_Support',$Profile.Name == 'Cisco_GSTS',$Profile.Name == 'Cisco_GSTS_Analyst',$Profile.Name == 'Cisco_Integration_Echo_Suppression')}">
+                <apex:actionSupport event="onchange" reRender="demo1,next,th1"/>
+                <apex:selectOptions value="{!items}"/>
+            </apex:selectList>
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <br/><br/>
+            
+            <b><apex:outputLabel >Cisco Contact:</apex:outputLabel></b>&nbsp;&nbsp;
+            <apex:inputText value="{!Cecid}" onkeypress="return handleKeyPress(event)"/> &nbsp;&nbsp;&nbsp;
+            <apex:commandButton value="Validate Cisco Contact" action="{!getCecval}" status="statusId" reRender="button,demo,demo1,next,msg,page,th1"/><br/><br/>
+            
+            <apex:outputPanel id="demo">
+                <apex:actionStatus id="statusId">
+                    <apex:facet name="start"><b>Cisco Contact is getting validated.....</b></apex:facet>
+                </apex:actionStatus><br/>
+                
+            </apex:outputPanel><br/>
+            
+            <apex:pageBlockSection title="Validated Cisco Contact Details" columns="1">
+                <apex:outputPanel >
+                    <apex:outputLabel ><b>Cisco Contact Name:</b></apex:outputLabel>&nbsp;&nbsp;
+                    <apex:outputField value="{!caseval.Cisco_Contact_Name__c}" /><br/>
+                    <apex:outputLabel ><b> Cisco Contact Title:</b></apex:outputLabel>&nbsp;&nbsp;
+                    <apex:outputField value="{!caseval.Cisco_Contact_Title__c}" /><br/>
+                    <apex:outputLabel ><b> Cisco Contact Organization:</b></apex:outputLabel>&nbsp;&nbsp;
+                    <apex:outputField value="{!caseval.Cisco_Contact_Organization__c}"/><br/>
+                    <apex:outputLabel ><b> Cisco Contact Work Phone Number:</b></apex:outputLabel>&nbsp;&nbsp;
+                    <apex:outputField value="{!caseval.Cisco_Contact_Work_Phone_Number__c}" /><br/>
+                    <apex:outputLabel ><b> Cisco Contact Internal Phone Number:</b></apex:outputLabel>&nbsp;&nbsp;
+                    <apex:outputField value="{!caseval.Cisco_Contact_Internal_Phone_Number__c}" /><br/>
+                    <apex:outputLabel ><b> Cisco Contact Mobile Number:</b></apex:outputLabel>&nbsp;&nbsp;
+                    <apex:outputField value="{!caseval.Cisco_Contact_Mobile_Number__c}"/><br/>
+                    <apex:outputLabel ><b> Cisco Contact Country:</b></apex:outputLabel>&nbsp;&nbsp;
+                    <apex:outputField value="{!caseval.Cisco_Country__c}"/>
+                </apex:outputPanel>
+            </apex:pageBlockSection>  
+            
+        </apex:pageBlock>
+    </apex:form>
+    
+     <script type="text/javascript">
+        
+
+        function setTheme(){ //Komal - 08/10/18 Lightning Release - Get/Set Theme from LocalStorage to fix navigation back and forth
+            //alert(window.location.search);
+            var userTheme = localStorage.getItem('userTheme');
+            // alert (userTheme);
+            //console.log("User Theme" + userTheme);
+            //if(userTheme == null || userTheme == '')
+            // {
+            //  userTheme = '{!$User.UIThemeDisplayed}';
+            //  }
+            //setUITheme(userTheme);
+            
+             }
+        function testIsInConsole() {
+            var id = '{!id}';
+            //alert(id);
+            if (sforce.console.isInConsole() && (id == null || id == '')) {
+                sforce.console.getEnclosingTabId(closeSubtab);
+            } 
+            else
+            {
+                cancel();
+            }
+            
+        }
+        
+        var closeSubtab = function closeSubtab(result) {
+            
+            var tabId = result.id;
+            sforce.console.closeTab(tabId);
+        };
+     setTheme();
+        </script>
+      
+</apex:page>

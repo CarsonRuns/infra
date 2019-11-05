@@ -1,0 +1,123 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0" standardController="OpportunityLineItem" extensions="AddTechnology">
+<apex:includeScript value="/support/console/42.0/integration.js"/>
+<script>
+    var url = "/apex/QI_ProductUI_New?id={!OpportunityLineItem.OpportunityId}";
+    var qiurl = "/apex/QI2_ProductUI_New?id={!OpportunityLineItem.OpportunityId}";
+    <!-- var mobileurl = "/apex/ProductPopup?id={!OpportunityLineItem.OpportunityId}";  commented by Komal for 08/10/2018 Lght release to fix redirection on Mobile devices-->
+    var mobileurl = "/apex/QI2_ProductUI_New?id={!OpportunityLineItem.OpportunityId}";
+    var delID = "{!JSENCODE($Request.delID)}"; //Encoding for SCAVA scan     
+    var profiles = "{!JSENCODE(Profiles)}"; //Encoding for SCAVA scan
+    var pieces= profiles.split(",");
+    var qiprofiles = "{!JSENCODE(QIProfiles)}"; //Encoding for SCAVA scan
+    var qi2profilelist = qiprofiles.split(";");
+    console.log('====>'+qi2profilelist );
+    var n = "0";
+    var type = '{!$User.UIThemeDisplayed}';
+    
+    // Added by Surya : To get the Renewal recordtype id from the custom setting
+    var renewalRecordTypeId = "{!JSENCODE($Setup.ObjectRecordTypeIds__c.Oppty_Renewal_RecordTypeId_18__c)}";
+    var opptyRecordTypeId = '{!opptyRecordTypeId}';
+    console.log('opptyRecordTypeId -->'+opptyRecordTypeId);
+    console.log('renewalRecordTypeId -->'+renewalRecordTypeId);
+    
+    if(opptyRecordTypeId  == renewalRecordTypeId){
+      var url = "/apex/QI_ProductUI_Renew?id={!OpportunityLineItem.OpportunityId}";
+      var qiurl = "/apex/QI_ProductUI_Renew?id={!OpportunityLineItem.OpportunityId}";
+      var mobileurl = "/apex/QI_ProductUI_Renew?id={!OpportunityLineItem.OpportunityId}";        
+    }
+    
+    function isLightningDesktop() {
+      return( "{!$User.UIThemeDisplayed}" == 'Theme4d' || "{!$User.UIThemeDisplayed}" == 'Theme4u'); <!--Komal 08/10/18 Lightning Release to enable redirection on console -->
+    }
+    function isLightningMobile() {
+      return( "{!$User.UIThemeDisplayed}" == "Theme4t");
+    }
+    /** Added to close the console tab on Lightning experience - Start Angela June/10/2018 || Edited by Mr. Adrien Sept/20/2018**/ 
+    
+    function OpenSubtab() {
+        sforce.console.getEnclosingPrimaryTabId(openSubtab);
+    }                
+    var openSuccess = function openSuccess(result) {
+        //Report whether we succeeded in opening the subtab
+        if (result.success == true) {
+            console.log('subtab successfully opened');
+        } else {
+            console.log('subtab cannot be opened');
+        }
+    };
+    
+    var openSubtab = function openSubtab(result) {
+        var tabId = result.id;
+        console.log('tabId: '+tabId);
+        if (isCheck=='true'){ //adrfeudj 9/20/18 To use the appropriate url ie qiurl for isCheck = True
+            sforce.console.openPrimaryTab(null , qiurl, true,'Edit Technology and Service',openSuccess,'Edit Technology and Service');
+            sforce.console.closeTab(tabId);
+        }
+        else {   // adrfeudj 9/20/18 To use the appropriate url ie url for isCheck = false
+            sforce.console.openPrimaryTab(null , url, true,'Edit Technology and Service',openSuccess,'Edit Technology and Service');
+            sforce.console.closeTab(tabId);
+        }
+    };
+    
+    /** Added to close the console tab on Lightning experience - End Angela June/10/2018 || Edited by Mr. Adrien Sept/20/2018**/
+    for(var i=0; i < pieces.length; i++) {
+        if(pieces[i] == '{!$Profile.Name}' && n != "1" ){ n = "1"; }
+    }
+    
+    if( n == "0") {       
+        if (delID){
+            url+= "&delID=" + delID;
+            mobileurl += "&delID=" + delID;
+        }
+        else if(isLightningMobile()){            
+            sforce.one.navigateToURL(mobileurl);
+        }
+        else{
+            var isCheck = 'false';
+            var pfileId = "{!$Profile.Id}".substring(0,15);
+             for(var i=0; i<qi2profilelist.length; i++){
+                 console.log('isCheck==>'+qi2profilelist[i] +'::: '+pfileId);
+                if(pfileId == qi2profilelist[i])
+                {                    
+                    isCheck  = 'true';
+                }
+            }
+            console.log('isCheck==>'+isCheck);
+             
+            if(isCheck=='true'){
+               /*Lightning Experience - Close Tab (Angela - June 10, 2018) - Start*/
+                if( type == 'Theme4d' || type == 'Theme4u') //Mr Adrien 09/11/18 Replaced (isLightningDesktop) because it did work
+                { 
+                      //top.location.href = qiurl;   
+                     OpenSubtab(); //Mr Adrien 09/20/18 Added here to open iframe in tab and suppress unwanted "OpportunityLineItem" tab in Lightning experience
+                }
+                //Else classic
+                else
+                {
+                    top.location.href = qiurl;
+                }
+            }
+            else{
+                
+                if( type == 'Theme4d' || type == 'Theme4u') //Mr Adrien 09/11/18 Replaced (isLightningDesktop) because it did work
+                {
+                    //top.location.href = url;
+                    OpenSubtab(); //Mr Adrien 09/20/18 Added here to open iframe in tab and suppress unwanted "OpportunityLineItem" tab in Lightning experience
+                }
+                //Else classic
+                else
+                {
+                    top.location.href = url;
+                }
+                /*Lightning Experience - Close Tab (Angela - June 10, 2018) - End*/
+            }
+        }
+    }
+    else{
+        alert("A PSS cannot make changes to the Technology and Services section");
+        top.location.href = "/{!OpportunityLineItem.OpportunityId}";
+    }
+    
+    
+</script>
+</apex:page>

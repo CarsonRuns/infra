@@ -1,0 +1,17 @@
+<!--
+    Story - US6281
+    Release - November 2014
+    Author - Bramha, Accenture
+    Functionality -  Presenter -- Profile.
+-->
+<apex:page standardController="Presenter__c" showHeader="false" sidebar="false">
+<style>       
+    .bEditBlock .pbHeader>table>tbody>tr>td, .bPageBlock .pbHeader>table>tbody>tr>td, .bLayoutBlock .pbHeader>table>tbody>tr>td, .bEditBlock .pbBottomButtons>table>tbody>tr>td, .bPageBlock .pbBottomButtons>table>tbody>tr>td, .bLayoutBlock .pbBottomButtons>table>tbody>tr>td {
+       padding: 0;
+     }
+     body .bPageBlock .pbTitle {
+       padding: 0;
+     }     
+</style>
+    <apex:detail subject="{!Presenter__c.Id}" inlineEdit="true" relatedList="false" />
+</apex:page>

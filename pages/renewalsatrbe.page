@@ -1,0 +1,285 @@
+<apex:page controller="RenewalsATEBEData" sidebar="false" showHeader="false">
+    <apex:slds />
+    <apex:includeScript value="{!URLFOR($Resource.externalchartlibraries, '/externalchartlibraries/chartjs/Chart.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.externalchartlibraries, '/externalchartlibraries/chartjs/chartjs-plugin-labels.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.externalchartlibraries, '/externalchartlibraries/d3/d3.v4.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.externalchartlibraries, '/externalchartlibraries/d3/d3-funnel.min.js')}"/>
+    <apex:includeScript value="{!$Resource.renewalsATRGraphUtility}"/>
+    
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!-- VF Page Container -->
+        <div id = "vfBody">
+            
+            <div class="slds-grid slds-wrap slds-m-bottom_small">
+                
+                <div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_12-of-12">
+                    
+                    <!-- Renewals ATR By Stage Graph -->
+                    <article class="slds-card slds-m-right_x-small" style="height:400px;">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <span>Renewals Expected ATR by Stage ($000s)</span>
+                                    </h2>
+                                </div>
+                                <span class="slds-icon_container slds-icon-utility-info slds-float_right" title="This chart shows my Expected ATR split by stage of the renewals lifecycle">
+                                    <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
+                                        <use xlink:href="{!URLFOR($Asset.SLDS,  '/assets/icons/utility-sprite/svg/symbols.svg#info')}"></use> </svg>
+                                    <span class="slds-assistive-text">This chart shows my Expected ATR split by stage of the renewals lifecycle</span></span>   
+                            </header>
+                        </div>
+                        <div id="funnelSpinner" class="slds-spinner_container">
+                            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                        <!-- No Results found  is loaded in this div  -->
+                        <div id ='noResultFunnelDiv' class = "slds-align_absolute-center slds-text-align_center slds-text-heading_medium">No Results Found</div>
+                        
+                        <div class="slds-card__body slds-card__body_inner" id="funnelCard">
+                            <div class="slds-grid slds-wrap slds-m-bottom_small">
+                                <div class="slds-col slds-size_8-of-12 slds-p-vertical_large">
+                                    <div id="atrStageFunnelChart" style="height:250px;"></div>
+                                </div>
+                                <div class="slds-col slds-size_4-of-12 slds-p-top_large slds-p-left_medium">
+                                    <div id="funnelLabels">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+                
+                <div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_12-of-12">
+                    
+                    <!-- Renewals Split By Offer Type Graph -->
+                    <article class="slds-card slds-m-left_x-small" style="height:400px;">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <span>Renewals Expected ATR by Offer Type ($000s)</span>
+                                    </h2>
+                                </div>
+                                
+                                <span class="slds-icon_container slds-icon-utility-info slds-float_right" title="This chart shows my Expected ATR split by Products and Services">
+                                    <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
+                                        <use xlink:href="{!URLFOR($Asset.SLDS,  '/assets/icons/utility-sprite/svg/symbols.svg#info')}"></use> </svg>
+                                    <span class="slds-assistive-text ">This chart shows my Expected ATR split by Products and Services</span>               
+                                </span>
+                                
+                            </header>
+                        </div>
+                        <div id="donutSpinner" class="slds-spinner_container">
+                            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                        <!-- No Results found  is loaded in this div  -->
+                        <div id ='noResultDiv' class = "slds-text-align_center slds-text-heading_medium">No Results Found</div>
+                        
+                        <div class="slds-card__body slds-card__body_inner slds-p-vertical_large" id="donutCard">
+                            <!-- The donut chart is loaded in this Div -->
+                            <div id='donutChartDiv'>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+            </div>
+            
+            <!-- Renewals ATR By BE Graph -->
+            <article class="slds-card" style="height:550px;">
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <span>Renewals Expected ATR by BE ($000s)</span>
+                            </h2>
+                        </div>
+                        <span class="slds-icon_container slds-icon-utility-info slds-float_right" title="This chart shows my Expected ATR by BE">
+                            <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
+                                <use xlink:href="{!URLFOR($Asset.SLDS,  '/assets/icons/utility-sprite/svg/symbols.svg#info')}"></use> </svg>
+                            <span class="slds-assistive-text">This chart shows my Expected ATR by BE</span></span>
+                    </header>
+                </div>
+                <div id="barSpinner" class="slds-spinner_container">
+                    <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+                <!-- No Results found  is loaded in this div  -->
+                <div id ='noResultBarDiv' class = "slds-text-align_center slds-text-heading_medium">No Results Found</div>
+                
+                <div class="slds-card__body slds-card__body_inner" id="barCard">
+                    <div>
+                        <div style="height: 5rem;">
+                            
+                            <!-- Total value is loaded in this div from javascript -->
+                            <div id ='totalValue' class = "slds-text-align_center slds-text-heading_medium"></div>
+                            <div id='totalSubscription' class = "slds-text-align_center slds-text-heading_small slds-text-color_weak"></div>
+                        </div>
+                    </div>
+                    <!-- The bar chart is loaded in this Div -->
+                    <div id='barChartDiv'>
+                    </div>
+                    
+                </div>
+            </article>
+        </div>
+        <script>
+        
+        //Load the Graph for the First time
+        var initial = true;
+        var funnelJson = {};
+        var totalValue =0;
+        // June Release change to get owner flag for inital load
+            if(initial){
+                fetchData([],'This Fiscal Quarter',[],[], false);
+                fetchFunnelData([],'This Fiscal Quarter',[],[] , false);
+                fetchDonutData([],'This Fiscal Quarter',[],[], false);
+                initial = false;
+            }
+            
+            //Listen to Parent Lightning component window event
+            
+            
+            var lexOrigin = 'https://'+'{!JSENCODE($Label.HostURLLightning)}';
+            window.addEventListener("message", function(event) {
+                if (event.origin !== lexOrigin) {
+                    // Not the expected origin: reject message!
+                    return;
+                }            
+                // Load the Graph with new data received from event
+                var eventData = JSON.parse(event.data);            
+                fetchFunnelData(eventData.selectedAccounts,eventData.selectedTimeLine,eventData.selectedProducts,eventData.selectedServices,eventData.OwnerFlag);
+                fetchDonutData(eventData.selectedAccounts,eventData.selectedTimeLine,eventData.selectedProducts,eventData.selectedServices,eventData.OwnerFlag);
+                fetchData(eventData.selectedAccounts,eventData.selectedTimeLine,eventData.selectedProducts,eventData.selectedServices,eventData.OwnerFlag);
+            }, false);
+            
+            
+            //function to fetch the data for "Renewals ATR By BE" bar graph from Apex Controller
+            function fetchData(accIds,dateFilter,selectedProducts,selectedServices ,OwnerFlag) {
+                var barSpinner = document.getElementById('barSpinner');
+                var barCard = document.getElementById('barCard');
+                
+                barSpinner.style.visibility = 'visible';
+                barCard.style.visibility = 'hidden';
+                
+                //Invoke getAtrByBeGroupings method of the controller to get resultset from Salesforce
+                Visualforce.remoting.Manager.invokeAction(
+                    
+                    '{!$RemoteAction.RenewalsATEBEData.getAtrByBeGroupings}',
+                    accIds,
+                    dateFilter,
+                    OwnerFlag,
+                    function(result, event){
+                        
+                        if (event.status) {
+                            var atrBeData = result;
+                            var graphJson = prepareData(atrBeData,selectedProducts,selectedServices);//method in static resource renewalsATRGraphUtility.js
+                            
+                            barSpinner.style.visibility = 'hidden';
+                            barCard.style.visibility = 'visible';
+                            
+                            this.loadGraph(graphJson);
+                        }
+                        else{
+                            console.log(event);
+                            console.log(result);
+                        }
+                    }
+                )
+                
+            }
+            
+            //function to fetch the data for "Renewals ATR By BE" bar graph from Apex Controller
+            function fetchDonutData(accIds,dateFilter,selectedProducts,selectedServices,OwnerFlag) {
+                var donutSpinner = document.getElementById('donutSpinner');
+                var donutCard = document.getElementById('donutCard');
+                
+                donutSpinner.style.visibility = 'visible';
+                donutCard.style.visibility = 'hidden';
+                
+                var businessEntityList = selectedProducts.concat(selectedServices);
+                
+                //Invoke getAtrByBeGroupings method of the controller to get resultset from Salesforce
+                Visualforce.remoting.Manager.invokeAction(
+                    
+                    '{!$RemoteAction.RenewalsATEBEData.getAtrDonutChartData}',
+                    accIds,
+                    dateFilter,
+                    businessEntityList,
+                    OwnerFlag,
+                    function(result, event){
+                        
+                        if (event.status) {
+                            var offerTypeData = result;
+                            var graphJson = prepareDonutData(offerTypeData);//method in static resource renewalsATRGraphUtility.js
+                            
+                            donutSpinner.style.visibility = 'hidden';
+                            donutCard.style.visibility = 'visible';
+                            
+                            this.loadDonutGraph(graphJson);
+                        }
+                        else{
+                            console.log(event);
+                            console.log(result);
+                        }
+                    }
+                )
+                
+            }
+            
+            //function to fetch the data for "Renewals ATR By Stage" funnel graph from Apex Controller
+            function fetchFunnelData(accIds,dateFilter,selectedProducts,selectedServices,OwnerFlag) {
+                var funnelSpinner = document.getElementById('funnelSpinner');
+                var funnelCard = document.getElementById('funnelCard');
+                
+                funnelSpinner.style.visibility = 'visible';
+                funnelCard.style.visibility = 'hidden';
+                
+                Visualforce.remoting.Manager.invokeAction(
+                    
+                    '{!$RemoteAction.RenewalsATEBEData.getAtrFunnelChartData}',
+                    accIds,
+                    dateFilter,
+                    selectedProducts.concat(selectedServices),
+                    OwnerFlag,
+                    function(result, event){
+                        
+                        if (event.status) {
+                            console.log(result);
+                            var atrStageData = result.data;
+                            var stageList = result.stages;
+                            var graphJson =prepareFunnelChartData(atrStageData,stageList);//method in static resource renewalsATRGraphUtility.js
+                            
+                            funnelSpinner.style.visibility = 'hidden';
+                            funnelCard.style.visibility = 'visible';
+                            
+                            this.addFunnelLabels(stageList);
+                            
+                            funnelJson = graphJson;
+                            this.loadFunnelChart(graphJson);
+                        }
+                        else{
+                            console.log(event);
+                            console.log(result);
+                        }
+                    }
+                )
+                
+            }
+            
+            </script>
+    </html>
+</apex:page>

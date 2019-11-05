@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Actif</label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label>Ligne d'adresse 1</label>
+        <name>Address_Line_1__c</name>
+    </fields>
+    <fields>
+        <label>Ligne d'adresse 2</label>
+        <name>Address_Line_2__c</name>
+    </fields>
+    <fields>
+        <label>Bâtiment</label>
+        <name>Building__c</name>
+    </fields>
+    <fields>
+        <label>Emplacement CEE</label>
+        <name>CEE_Location__c</name>
+        <relationshipLabel>Salles CEE</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Ville</label>
+        <name>City__c</name>
+    </fields>
+    <fields>
+        <label>Pays</label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label>En contact client</label>
+        <name>Customer_Facing__c</name>
+    </fields>
+    <fields>
+        <label>Nom complet</label>
+        <name>Display_Name__c</name>
+    </fields>
+    <fields>
+        <label>Emplacement EBC/CBC</label>
+        <name>EBC_CBC_Location__c</name>
+    </fields>
+    <fields>
+        <label>Code d'e-mail</label>
+        <name>Email_Code__c</name>
+    </fields>
+    <fields>
+        <label>Pseudonyme e-mail Exchange</label>
+        <name>Exchange_Email_Nickname__c</name>
+    </fields>
+    <fields>
+        <label>Est Téléprésence</label>
+        <name>Is_Telepresence__c</name>
+    </fields>
+    <fields>
+        <label>Code postal</label>
+        <name>Postal_Code__c</name>
+    </fields>
+    <fields>
+        <help>Priorité de la salle, notée de 1 (maximale) à 3 (la plus faible)</help>
+        <label>Priorité</label>
+        <name>Priority__c</name>
+    </fields>
+    <fields>
+        <label>Statut de proxy</label>
+        <name>Proxy_Status__c</name>
+    </fields>
+    <fields>
+        <label>Détails de la salle</label>
+        <name>Room_Details__c</name>
+    </fields>
+    <fields>
+        <help>Nombre de personnes que la salle peut accueillir</help>
+        <label>Taille</label>
+        <name>Size__c</name>
+    </fields>
+    <fields>
+        <label>Département/Région</label>
+        <name>State_Province__c</name>
+    </fields>
+    <fields>
+        <help>Dispose de fonctionnalités de téléprésence</help>
+        <label>Téléprésence</label>
+        <name>Telepresence__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- CEE Room --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- CEE Room --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Room Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>CEE Room Layout</layout>
+        <sections>
+            <label>Adresse</label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Détails</label>
+            <section>Details</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

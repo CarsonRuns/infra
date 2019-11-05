@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Number --></label>
+        <name>Account_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- CX Customer Name --></label>
+        <name>CX_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer_hi --></label>
+        <name>Customer_hi__c</name>
+    </fields>
+    <fields>
+        <label><!-- Finance Score --></label>
+        <name>Finance_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Index --></label>
+        <name>Index__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quality Score --></label>
+        <name>Quality_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sentiment Score --></label>
+        <name>Sentiment_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Utilization --></label>
+        <name>Utilization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wow Status --></label>
+        <name>Wow_Status__c</name>
+        <picklistValues>
+            <masterLabel>Down</masterLabel>
+            <translation><!-- Down --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Change</masterLabel>
+            <translation><!-- No Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Null</masterLabel>
+            <translation><!-- Null --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Up</masterLabel>
+            <translation><!-- Up --></translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>C360HealthScore</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>C360HealthScores</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>C360HealthScore Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

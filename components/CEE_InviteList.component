@@ -1,0 +1,125 @@
+<apex:component controller="CEE_InviteList_Controller" allowDML="true">
+    <style type="text/css">
+        .badText { font-style: italic; font-weight: bold; }
+        .vfHelpText a            {position:relative;}
+        .vfHelpText a span       {display: none;}
+        .vfHelpText a:hover span {display: block;
+                                  position:absolute;
+                                  top:1.25em;
+                                  padding:2px 5px;
+                                  left:-15em; width:15em;
+                                  z-index:100;
+                                  border:1px solid orange;
+                                  background-color:#FEFDB9;
+                                  color:black;
+                                 }
+    </style> 
+    
+    <apex:attribute name="agendaItemValue" type="Agenda_Item__c" description="Controller Agenda Item" assignTo="{!agendaItem}" />
+    <apex:attribute name="briefingValue" type="CEE__c" description="Controller Briefing" assignTo="{!briefing}" />
+    <apex:attribute name="objectType" type="String" description="SObject Type" assignTo="{!objectName}" />
+    <apex:attribute name="rootURL" type="String" description="Return URL for save redirect" assignTo="{!redirectUrl}" />
+    
+    <apex:form >
+        <apex:pageMessages />
+        <apex:actionFunction name="sendModify" action="{!URLFOR('/apex/CEE_Invite', recordId, ['butCommand'='Modify', 'recordType'=objectName, 'id'=recordId])}" />
+        <apex:actionFunction name="sendCancel" action="{!URLFOR('/apex/CEE_Invite', recordId, ['butCommand'='Cancel', 'recordType'=objectName, 'id'=recordId])}" />
+        <apex:actionFunction name="checkRender" action="{!validateCheckbox}" status="sandInvites" rerender="redirectPanel" />
+        <apex:actionFunction name="initialize" action="{!initInvites}" rerender="redirectPanel"/>
+        
+        <apex:outputPanel id="redirectPanel" >
+    
+                <apex:pageblock id="InviteList" title="CEE Invites">
+                   <apex:pageBlockButtons id="inviteButtons">                      
+                       <apex:commandButton value="Send Invites"  action="{!saveInvites}" disabled="{!!(inviteVisible && buttonsEnabled && sendEnabled && showbutton)}" oncomplete="sendModify();"/>  
+                       <apex:commandButton value="Send TP Invites" action="{!saveTPInvites}" disabled="{!!(inviteVisible && buttonsEnabled && sendTPEnabled)}" oncomplete="sendModify();"/>    
+                       <apex:commandButton value="Save Invites" action="{!doSave}" disabled="{!!(inviteVisible)}" rerender="redirectPanel"/>
+                       <apex:commandButton value="Cancel Invites" action="{!saveInvites}" disabled="{!!(inviteVisible && buttonsEnabled && cancelEnabled && showbutton)}" oncomplete="sendCancel();"/>              
+                   </apex:pageBlockButtons>
+                    <apex:actionStatus id="sandInvites" startText="Wait...."/>
+                    <apex:pageBlockTable id="inviteTable" value="{!invites}" var="i" rendered="{!inviteVisible}">
+                        <apex:column >
+                                <apex:facet name="header">
+                                        <apex:outputPanel >
+                                                <apex:selectList size="1" value="{!selectCriteria}">
+                                                        <apex:image width="14" height="14" style="padding:1px 1px;" URL="{!URLFOR($Resource.cee, 'img/checkbox.png')}"/>
+                                                        <apex:selectOption itemValue="None" itemLabel="None" />
+                                                        <apex:selectOption itemValue="All" itemLabel="All" />
+                                                        <apex:selectOption itemValue="Rooms" itemLabel="Rooms" />
+                                                        <apex:selectOption itemValue="People" itemLabel="People" />
+                                                        <apex:actionSupport event="onchange" action="{!toggleIsUpdate}" rerender="redirectPanel" />
+                                                </apex:selectList>
+                                                <span class="vfHelpText">
+                                                    <apex:outputLink value="javascript: return false;">
+                                                        <img src="/s.gif" alt="" class="helpOrb" />
+                                                        <span>Select/De-select All</span>
+                                                    </apex:outputLink>
+                                                </span>
+                                        </apex:outputPanel>
+                                </apex:facet>
+                                <apex:inputCheckbox value="{!i.isUpdate}" onchange="checkRender();" disabled="{!!i.isSalesforceAttendee}"/>
+                        </apex:column>
+                        
+                        <apex:column headerValue="CEE Invite ID">
+                            <apex:outputLink value="/{!i.invite.id}">
+                                <apex:outputText value="{!i.invite.Name}" />
+                            </apex:outputLink>
+                        </apex:column>
+                        <apex:column headerValue="Agenda Item">
+                            <apex:outputLink value="/{!i.agendaItem}">
+                                <apex:outputText value="{!i.agendaItemName}" />
+                            </apex:outputLink>
+                        </apex:column>            
+                        
+                        <apex:column headerValue="Outlook Status" styleClass="{!IF(CONTAINS(i.styleCol,'1'), i.style, null)}">
+                            <apex:inputField value="{!i.invite.Outlook_Status__c}" rendered="{!i.editVisible}" />
+                            <apex:outputText styleClass="{!IF(CONTAINS(i.styleCol,'1'), i.style, null)}" value="{!i.invite.Outlook_Status__c}" rendered="{!!i.editVisible}" />
+                        </apex:column>               
+                        
+                        <apex:column styleClass="{!IF(CONTAINS(i.styleCol,'2'), i.style, null)}" value="{!i.invite.Room__r.Room__c}"/>
+                        <apex:column styleClass="{!IF(CONTAINS(i.styleCol,'3'), i.style, null)}" value="{!i.invite.CEE_Attendee__c}"/>
+                        <apex:column styleClass="{!IF(CONTAINS(i.styleCol,'4'), i.style, null)}" value="{!i.invite.Location__c}"/>                
+                        <apex:column styleClass="{!IF(CONTAINS(i.styleCol,'5'), i.style, null)}" value="{!i.invite.Start_Date_Time__c}"/>
+                        <apex:column styleClass="{!IF(CONTAINS(i.styleCol,'6'), i.style, null)}" value="{!i.invite.End_Date_Time__c}"/>
+                        <apex:column headerValue="TP Enabled">
+                                <apex:inputCheckbox value="{!i.invite.Telepresence_Enabled__c}" disabled="true"/>
+                        </apex:column>
+                        
+                        <!--<apex:column headerValue="Out-of-Date?">
+                                <apex:inputCheckbox value="{!i.updateStatus}" disabled="true"/>
+                        </apex:column>-->               
+                    </apex:pageBlockTable>
+                    <apex:outputLabel value="No records to display" rendered="{!!inviteVisible}" styleClass="noRowsHeader"></apex:outputLabel>
+                    <apex:pageMessage severity="Info" strength="1" summary="Loading..." rendered="{!loadVisible}"/>
+                </apex:pageblock>
+                
+                <apex:outputText rendered="{!isRedirect}">
+                        <script type="text/javascript">
+                        window.top.location.href = '{!redirectUrl}';
+                    </script>
+                </apex:outputText>
+        </apex:outputPanel>
+        
+
+    </apex:form>
+    
+    <script>
+        function addLoadEvent(func){
+            var curronload = window.onload;
+            if(typeof window.onload != 'function'){
+                window.onload = func;
+            } else {
+                window.onload = function(){
+                    if(curronload) {
+                        curronload();
+                    }
+                    func();
+                }
+            }
+        }
+        
+        addLoadEvent(function(){
+            initialize();
+        });
+    </script>
+</apex:component>

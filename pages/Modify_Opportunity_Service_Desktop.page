@@ -1,0 +1,108 @@
+<apex:page docType="html-5.0" standardController="opportunity">
+    <style>
+        b, strong { font-weight: bold; }
+        ul, ol {margin-top: 0;margin-bottom: 10px; }
+        ul li, ol li {margin-left: 1.5em;padding-left: 0;}
+        .typeahead {z-index: 1051;}
+        .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,.table>tbody>tr>td, .table>tfoot>tr>td {padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #cfd0d2;}
+        .table-condensed>thead>tr>th, .table-condensed>tbody>tr>th,.table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td,.table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td {padding: 5px;}
+        .dropdown-menu {position: absolute;top: 100%;left: 0;z-index: 1000;display: none;float: left;min-width: 160px;padding: 5px 0;margin: 2px 0 0;list-style: none;font-size: 14px;background-color: #ffffff;border: 1px solid #cccccc;border: 1px solid rgba(0, 0, 0, 0.15);border-radius: 4px;-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);background-clip: padding-box;}
+        .typeahead li {margin-left: 0px !important;}
+        .dropdown-menu>li>a {display: block;padding: 3px 20px;clear: both;font-weight: normal;line-height: 1.42857143;color: #525354;white-space: nowrap;text-decoration: none;}
+        .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{color: #ffffff;text-decoration: none;outline: 0;background-color: #2a94d6;}
+        .typeahead {z-index: 1051;}
+        .typeahead li {margin-left: 0px !important;}
+        .s1utility {color: #557FFF !important;padding-right: 10px;}
+        .list tr th,.list tr td{padding: 4px 2px 0px 5px!important;color: #333!important;border-bottom: 1px solid #e3deb8!important;}
+        .list tr th div,.list tr td span{font-family: Arial,Helvetica,sans-serif;font-size: 0.9em;}
+        #totalTech{ font-weight:normal; }
+        /* Styles for Show All technologies window */
+        span.showall { padding: 2px 2px; margin: 5px 5px;}        
+        .dataCell {font-size: 12px;}
+        .blueLink{color:blue!important;}
+        .red{color:#c00!important;font-weight:bold;}        
+        .well {
+            background-color: rgb(132, 109, 209) !important;
+            border: 1px solid rgb(19, 61, 141) !important;
+        }
+    </style>
+    <div id="serviceApp" ng-init="initServices();" style="position:relative;">
+        <apex:remoteObjects jsNamespace="RemoteObjectModel">        
+             <apex:remoteObjectModel name="OpportunityLineItem" fields="Id,Mix__c,Product_Family_US__c,PricebookEntryId,OpportunityId">                        
+             </apex:remoteObjectModel>        
+        </apex:remoteObjects>
+        <div style="margin : 20px 0px;">
+            <input type="Text" size="50" class="smallInputService" placeholder="Search & Add Service Program" />  &nbsp;
+            <div class="helpIconWrapper" data-toggle="tooltip" data-placement="top" title="Type the Service information you are looking for"></div> &nbsp;
+            <span class="cartlink" style="marign: 20px 0px " data-toggle="tooltip" data-placement="top" title="Select from the complete list of Services"><button type="button" data-toggle="modal" data-target="#myModal3">Show All</button></span>
+            <div style="color: rgb(204, 0, 0); font-weight: bold;display: inline-block;" ng-cloak="true">{{mixServicePercentValid}}</div>
+        </div>
+        <div>
+            <table class="table table-condensed list" border="1" width="100%" id="technologyTable">
+                <colgroup span="4"></colgroup>
+                <thead>
+                    <tr class="headerRow">
+                        <th width="5%" class="headerRow">Action</th>
+                        <th width="25%" class="headerRow">Service Program</th>
+                        <th width="25%" class="headerRow">Service Level</th>
+                        <th width="25%" class="headerRow">Service Category</th>                           
+                        <th width="10%" class="headerRow">Mix%</th>                                                        
+                        <th width="10%" class="headerRow">{!$ObjectType.Opportunity.Fields.Expected_Service__c.Label}</th>
+                    </tr>
+                </thead>
+                <tbody class="mainTbody">
+                    <tr class="dataRow even first last" data-ng-repeat="techObj in scopeserviceobj track by $index" style="height: 31px;">
+                        <td width="5%" style="border:0px;vertical-align: top;" class="dataCell"><a href="javascript:void(0);" class="del s1utility" ng-click="deleteServiceLineItem($index,$event);">Del</a></td>
+                        <td style="border:0px;vertical-align: top;" class="dataCell" width="25%"><span ng-class="(techObj.isActive==false)?'red':''" style="font-size:12px;" ng-cloak="true">{{techObj.tech}}</span><span class="red" ng-if="techObj.isActive==false" style="padding-left:10px;" ng-cloak="true">Inactive</span></td>
+                        <td width="25%" style="vertical-align: top;" class="dataCell">
+                            <div class="requiredBlock pull-left" style="position: relative;display: block;width: 3px;height: 22px;margin-right: 2px;background-color:#c00;"></div>
+                            <select class="servLevel inputSelect" ng-options="servLel.id as servLel.name for servLel in techObj.ServiceLevelValue" ng-model="techObj.serviceLevel" ng-change="setServiceTotal();" style="height:22px;">
+                                <option value="">--Please Select--</option>
+                            </select>
+                        </td>
+                        <td width="25%" style="vertical-align: top;" class="dataCell">
+                            <div class="requiredBlock pull-left" style="position: relative;display: block;width: 3px;height: 22px;margin-right: 2px;background-color:#c00;"></div>
+                            <select class="servCategory inputSelect" ng-options="servCat.id as servCat.name for servCat in serviceCategory" ng-model="techObj.serviceCategory" ng-change="setServiceTotal();" style="height:22px;">
+                                <option value="">--Please Select--</option>
+                            </select>
+                        </td>
+                        <td width="10%" style="border:0px;vertical-align: top;clear:left;" class="dataCell"><div class="requiredBlock pull-left" style="position: relative;display: block;background-color:#c00;width: 3px;height: 22px;margin-right: 2px;"></div><input style="width:43px;" id="mixPercentageServiceId_{{$index}}" class="mixClass inputSelect" ng-cloak="true" ng-model="techObj.mixPercentage" onkeypress="return isNumberKey(event)" ng-init="checkServiceTotal($index);" ng-class="indvidualServiceCost = expectedServiceCost*techObj.mixPercentage/100;" ng-keyup="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*techObj.mixPercentage/100;" ng-keydown="checkServiceTotal($index);indvidualServiceCost = expectedServiceCost*techObj.mixPercentage/100;" min="1" max="100" type="number" value="techObj.mixPercentage" /></td>
+                        <td width="10%" style="border:0px;vertical-align: top;" align="center" class="dataCell showTotal" ng-class="setServiceTotal();" ng-cloak="true">{{(indvidualServiceCost)| number:0}}</td>
+                    </tr>
+                    <tr>
+                        <td width="5%" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="25%" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="25%" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="25%" style="border:0px;" class="dataCell">&nbsp;</td>
+                        <td width="10%" style="border:0px;padding-left:2px!important;" class="dataCell"><span>Total : <label id="totalTech" ng-cloak="true">{{totalService}}</label></span></td>
+                        <td width="10%" style="border:0px;" class="dataCell">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="myModal3" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">All Service Programs</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="well" style="width:100%; padding: 8px 0;">
+                            <div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">
+                                <ul class="nav nav-list">
+                                    <li ng-repeat="servFamily in serviceFamilies" class="mainCategory">
+                                        <a href="javascript:void(0);" style="padding: 2px 2px 2px 2px;" ng-click="addServiceLineItem(servFamily.id,servFamily.name,servFamily.ServiceLevel)">{{servFamily.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:page>

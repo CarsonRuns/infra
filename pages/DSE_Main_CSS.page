@@ -1,0 +1,302 @@
+<apex:page contentType="text/css">
+.stbody {
+         background-color: white;
+         }
+         .stcard {
+         border: 1px solid #d5d9da;
+         //max-width: 750px !important;
+         margin: 10px;
+         height: 290px;
+         }
+         .stcard-body {
+         width: 760px;
+         height: 120px;
+         }
+         .stcard-span {
+         font-size: 60%;
+         line-height:10;
+         margin-left: 1px;
+         }
+         .stMain-span {
+         font-size: 50%;
+         margin-left: 25px;
+         }
+         .stsection {
+         position: relative;
+         border-top: 1px solid #eee;
+         padding-top: 35px;
+         background: #f6f6f6 ;
+         //max-width: 750px !important;
+         //margin: 10px;
+         }
+         .stsection-detail {
+         padding-top: 10px;
+         padding-left: 10px;
+         }
+         .stcontainer {
+         overflow-y: scroll;
+         overflow-x: hidden;
+         z-index: 4;
+         //height: 135px;
+         height: 125px;
+         background-color: white !important;
+         //max-width: 770px !important;
+         }
+         .stcontainer-detail {
+         height: 200px;
+         }
+         .stheader {
+         margin-top: 2px !important;
+         }
+         .stheader-detail {
+         height: 130px !important;
+         }
+         .stheaderTitle {
+         display: inline-block;
+         margin-top: -20px;
+         margin-left: 10px;
+         }
+         .stheaderLegend {
+         display: inline-block;
+         margin-left: -10px;
+         margin-top:7px;
+         }
+         .stform-control {
+         width: 180px !important;
+         font-size: 100%;
+         height: 24px;
+         padding-top:5px;
+         margin-top:3px !important;
+         margin-left:-10px;
+         }
+         .sttable {
+         border-spacing: 0;
+         width: 100%;
+         font-size: 100% !important;
+         color: black;
+         background-color: white !important;
+         }
+         .sttable-thead {
+         color: grey;
+         //font-weight: normal;
+         }
+         .stth {
+         
+         background: white;
+         color: #c4c7cc;
+         //font-weight: normal;
+         padding: 10px 20px;
+         }
+         .sttd {
+         border-bottom: 1px solid #eee;
+         background: white;
+         color: grey;
+         padding-top: 10px !important;
+         padding-left: 10px !important;
+         padding-bottom: 10px !important;
+         padding-right: 5px !important;
+         //padding-bottom: 10px !important;
+         //font-size: 90% !important;
+         }
+         .stth {
+         height: 0;
+         line-height: 0;
+         padding-left: 10px;
+         padding-bottom: 0;
+         color: transparent;
+         border: none;
+         white-space: nowrap;
+         min-width:50px;
+         //border-bottom: 1px solid #eee;
+         }
+         select:focus {outline:none;border:1px solid blue;}
+         .dse-searchselect {
+    -moz-appearance: menulist-button;
+    text-indent: 0.01px;
+    text-overflow: '';
+}
+          input:focus {outline:none;}
+         .stth div {
+         position: absolute;
+         background: transparent;
+         color: rgb(92,108,127);
+         font-size: 80%;
+         padding: 15px 10px 15px 10px;
+         cursor: pointer;
+         top: 0;
+         
+         line-height: normal;
+         }
+         .sttable-detail {
+         width: 96%;
+         margin-left: 4%;
+         background-color: white;
+         }
+         .sttable-block {
+         padding-top: 1px;
+         }
+         .glyphicon-home {
+         color: grey;
+         }
+         .glyphicon-option-horizontal,
+         .glyphicon-open,
+         .glyphicon-remove,
+         .glyphicon-search {
+         color: #8c8c91;
+         float: right;
+         font-size: 14px;
+         top: 10px !important;
+         cursor: pointer;
+         }
+         .glyphicon-open {
+         top: 0px !important;
+         }
+         .glyphicon-chevron-down,
+         .glyphicon-chevron-up {
+         font-size: 8px;
+         }
+         .stdata-span {
+         color: orange;
+         }
+         .stmenucolor {
+         background-color: #eee;
+         }
+         .stlegendcircle{
+             color: #0096d6 !important;
+             font-size: 90% !important;
+             }
+         .stlegendstop{
+             color: #E82C0C !important;
+             font-size: 90% !important;
+         }
+         .sttrucText {
+         width: 120px;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         margin-left: -8px;
+         }
+         .stdropbtn {
+         color: grey;
+         background:white !important;
+         background-color: transparent;
+         border: none;
+         cursor: pointer;
+         }
+         .stdropdown {
+         position: relative;
+         display: inline-block;
+         
+         }
+         .stcard-dropdown {
+         float: right;
+         //margin-right: 10px;
+         }
+         .stdropdown-content {
+         display: none;
+            position: absolute;
+            right: 0;
+            background-color: #fff;
+            width: auto;
+            color: #4b586c !important;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 5px;
+            box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.2);
+         }
+         .stdropdown-contentlong {
+         display: none;
+         position: absolute;
+         //right: 100px;
+         left: -50px;
+         background-color: #0096d6;
+         color: white;
+         min-width: 200px;
+         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+         padding: 5px;
+         
+         overflow: auto;
+         }
+         .stdropdown-content a {
+         color: black;
+         padding: 5px 5px;
+         text-decoration: none;
+         display: block;
+         }
+         .stdropdown-content a:hover {
+         background-color: grey;
+         color: white;
+         //display: block;
+         height:auto;
+         z-index:10;
+         
+         }
+         .stdropdown-contentlong a {
+         color: black;
+         padding: 5px 5px;
+         text-decoration: none;
+         display: block;
+         height:auto;
+         z-index: 4;
+         }
+         .stdropdown-contentlong a:hover {
+         background-color: #f1f1f1
+         height:auto;
+         z-index: 4;
+         }
+         .stdropdown:hover .stdropdown-content {
+         display: block;
+         height:auto;
+         z-index: 1;
+         }
+         .stdropdown:hover .stdropdown-contentlong {
+         display: block;
+         height:auto;
+         z-index: 4;
+         }
+         .stmargin {
+         margin-top: 10px;
+         }
+         /* Start Scrollbar 
+         ::-webkit-scrollbar {
+         width: 10px;
+         }*/
+         /* Track 
+         ::-webkit-scrollbar-track {
+         -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+         -webkit-border-radius: 10px;
+         border-radius: 10px;
+         }*/
+         /* Handle 
+         ::-webkit-scrollbar-thumb {
+         -webkit-border-radius: 10px;
+         border-radius: 10px;
+         -webkit-box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.5);
+         }
+         ::-webkit-scrollbar-thumb:window-inactive {
+         background: rgba(255, 0, 0, 0.4);
+         }*/
+         .stblock {
+         //border-color: #eee;
+         //border-style: solid;
+         //height: 175px;
+         height: 100px;
+         //width: 750px;
+         }
+         .sthm {
+         border-color: blue;
+         border-style: solid;
+         }
+         .sttit {
+         border-color: green;
+         border-style: solid;
+         }
+         /* End Scrollbar */
+          tr:last-child {
+            border-bottom: 40px solid white;
+        }
+        tr:first-child {
+            border: 0px;
+        }
+        
+</apex:page>

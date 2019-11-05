@@ -1,0 +1,23 @@
+<!-- 
+   Name    : NGCC_Clone_Controller 
+   Author  : Fazurulla Ganganapalli & Awnish Kumar
+   Purpose : This page will show the Error Message when unauthenticated user clicks on clone button      
+   Created Date: 05/12/2014
+   Modification History:                    
+    -->
+<apex:page standardController="CC_Call_Script__c" extensions="NGCC_Clone_Controller"> 
+<apex:form >
+    <apex:actionFunction action="{!cloneCallScript}" name="hold" rendered="{!error}"/>
+<!--SCAVA-->
+    <script type = "text/javascript">
+    window.onload=function()       
+    {        
+        hold();
+    };
+    </script> 
+<!--SCAVA -->
+    <apex:pageblock title="ERROR PAGE" >    
+        <apex:pageMessages />
+    </apex:pageblock> 
+</apex:form>
+</apex:page>

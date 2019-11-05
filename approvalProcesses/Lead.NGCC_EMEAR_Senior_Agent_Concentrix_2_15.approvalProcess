@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Address_Line_1__c</field>
+        <field>Address_Line_2__c</field>
+        <field>AnnualRevenue</field>
+        <field>Call_Center_Vendor__c</field>
+        <field>Lead_Type__c</field>
+        <field>Status</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>NGCC_First_Approval_Received</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>NGCC_Lead_Approver_Role_EMEAR</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Concentrix_EMEAR</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.Marketing_Call_Center__c</field>
+                <operation>equals</operation>
+                <value>Concentrix Belfast Northern Ireland</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>EMEAR Lead Approval for Concentrix Belfast Northern Ireland</label>
+        <name>EMEAR_Lead_Approval_for_Concentrix_Belfast_Northern_Ireland</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Raya_Warsaw_Poland</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.Marketing_Call_Center__c</field>
+                <operation>equals</operation>
+                <value>Raya Warsaw Poland</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>EMEAR Raya Warsaw Poland</label>
+        <name>EMEAR_Raya_Warsaw_Poland</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>NGCC_CC_Site_Mgr_Concentrix_Bulgaria</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.Marketing_Call_Center__c</field>
+                <operation>equals</operation>
+                <value>Concentrix Sofia Bulgaria</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>EMEAR Concentrix Sofia Bulgaria</label>
+        <name>EMEAR_Concentrix_Sofia_Bulgaria</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Cisco_Contact_Center_Manager2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Cisco_Contact_Center_Manager1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Lead.Originating_Marketing_Pipeline__c</field>
+                <operation>greaterThan</operation>
+                <value>500000.0</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>EMEAR Mktg Cisco CCM Concentrix Belfast Northern Ireland</label>
+        <name>EMEAR_Mktg_Cisco_CCM_Concentrix_Belfast_Northern_Ireland1</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>This process is to route the leads to there specific Approvers based on theater and other detail</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(
+	RecordType.Name  = &apos;Prospect&apos;,
+	Theater__c = &apos;EMEAR&apos;,
+	CONTAINS( $UserRole.Name ,&apos;Senior Agent&apos;), 
+	OR(
+		TEXT(Status) = &apos;Rejected&apos;,
+		TEXT(Status) = &apos;Marketing Qualified&apos;
+	)  
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>NGCC_Approval_Submission_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Approval_Submission_Mktg_Qualified</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>NGCC_Approval_Submission_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>NGCC_Notify_Lead_Owner_with_Rejection_Reason</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>NGCC_Requalification_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>NGCC_Approval_Submission</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>NGCC EMEAR Senior Agent Concentrix 2/15</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <recallActions>
+        <action>
+            <name>NGCC_Approval_Submission_Recalled</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

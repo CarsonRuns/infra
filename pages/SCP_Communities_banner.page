@@ -1,0 +1,109 @@
+<apex:page controller="SCP_Communities_Banner_CT" sidebar="false" showheader="false" setup="false" >
+ <!-- <apex:includeScript value="{!$Resource.jquery}" />  -->
+ <apex:includeScript value="{!$Resource.jQuery1_9}" />
+        
+<style type="text/css">
+         .label_banner {
+                -moz-user-select: none;
+            color: #2f6681 !important;
+            z-index: 2;
+            font-family: Arial Bold !important;
+            font:bold 12px Arial !important;
+        }
+        
+         .simpleTooltip {
+
+            position:relative;
+            opacity: 0.80;
+            font-size:14px;
+            width: auto;
+            padding:10px;
+            -webkit-border-radius:2px;
+            -moz-border-radius:2px;
+            border-radius:2px;
+            font-weight:bold;
+        }
+        
+         .recfound {
+           
+            color:#e31b23 !important;
+            
+        }
+        
+         .norecfound {
+          
+             color:#007fc5 !important;
+          
+        }
+
+        #res {
+            color: #666;
+            background-color: #F5F5F5;
+            overflow: hidden;
+            padding-left: 3px;
+            height: 30px;
+            font-weight: bold;
+            line-height: 16px;
+            width: 1022px;
+            
+        }
+        
+        #res a , #links a{
+        text-decoration: none;
+        }
+        
+        #res a:hover, #links a:hover {
+        text-decoration: underline;
+        }
+        #links a{
+            color:#007fc5 !important;
+        }
+        #links {
+            font-weight: bold;
+            margin-right: 10px;
+            float : right;
+            color:#666;
+            padding-top: 1px;
+        }
+        .alertbanner {
+                        background-color: #F5F5F5;
+                        overflow: hidden;
+                        border: 1px solid #999;
+                        height: 18px;
+                        padding-top: 3px;            
+        }
+          </style>
+        
+        <script type="text/javascript">
+        console.log('>>> session Id : '+"{!$Api.Session_ID}");
+            js$ = jQuery.noConflict();
+             js$(document).ready(function() {
+             	console.log("Start of call");
+             	 Visualforce.remoting.Manager.invokeAction(
+             	 '{!$RemoteAction.SCP_Communities_Banner_CT.messageString}',
+             	 function(result, event) {
+             	 	if(event.status) {
+             	 		js$("#res").html(result);
+             	 	}
+             	 },
+             	 {escape: false}
+             	 );
+             	 console.log("End of call");
+             });
+        </script>
+        
+        <apex:form >
+         <div class="alertbanner">
+         <span id="res"></span>
+         <span id="links">    
+            <apex:outputlink value="{!$Setup.SCP_Communities_headerlinks__c.QRG__c}" target="_blank">{!$ObjectType.SCP_Communities_headerlinks__c.fields.QRG__c.label}</apex:outputlink>&nbsp;|&nbsp;              
+            <apex:outputlink value="{!$Setup.SCP_Communities_headerlinks__c.Training__c}" target="_blank">{!$ObjectType.SCP_Communities_headerlinks__c.fields.Training__c.label}</apex:outputlink>&nbsp;|&nbsp;
+            <apex:outputlink value="{!$Setup.SCP_Communities_headerlinks__c.Support__c}" target="_blank">{!$ObjectType.SCP_Communities_headerlinks__c.fields.Support__c.label}</apex:outputlink>
+        </span>
+         </div>
+<!--         <apex:outputLabel id="abc" value="{!message}" style="display:none"/>
+ -->        
+        </apex:form>
+
+     
+</apex:page>

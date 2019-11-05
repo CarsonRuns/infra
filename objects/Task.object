@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Close</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Close</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Close</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>DeleteSeries</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>DeleteSeries</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>DeleteSeries</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewTask</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewTask</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewTask</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayouts>
+        <fullName>DRT_Tasks</fullName>
+        <fields>Subject</fields>
+        <fields>DRT_Main_Stage__c</fields>
+        <fields>DRT_Sub_Stage__c</fields>
+        <fields>WhoId</fields>
+        <fields>WhatId</fields>
+        <label>DRT Tasks</label>
+    </compactLayouts>
+    <fields>
+        <fullName>ActivityDate</fullName>
+    </fields>
+    <fields>
+        <fullName>CallDisposition</fullName>
+    </fields>
+    <fields>
+        <fullName>CallDurationInSeconds</fullName>
+        <inlineHelpText>For B+S Connects agents: Call Duration is the sum of actual Talk Time + Wrap Up Time, as measured in seconds.</inlineHelpText>
+    </fields>
+    <fields>
+        <fullName>CallObject</fullName>
+    </fields>
+    <fields>
+        <fullName>CallType</fullName>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <inlineHelpText>Use this field to capture long &amp; descriptive comments.</inlineHelpText>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+    </fields>
+    <fields>
+        <fullName>IsRecurrence</fullName>
+    </fields>
+    <fields>
+        <fullName>IsReminderSet</fullName>
+    </fields>
+    <fields>
+        <fullName>IsVisibleInSelfService</fullName>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+    </fields>
+    <fields>
+        <fullName>Priority</fullName>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>RecurrenceInterval</fullName>
+    </fields>
+    <fields>
+        <fullName>RecurrenceRegeneratedType</fullName>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Subject</fullName>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TaskSubtype</fullName>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>WhatId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>WhoId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <compactLayoutAssignment>DRT_Tasks</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <listViews>
+        <fullName>CompletedTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>LAST_UPDATE</field>
+            <operation>equals</operation>
+            <value>TODAY,LAST_N_DAYS:30</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_CompletedTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>DelegatedTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Tasks</label>
+    </listViews>
+    <listViews>
+        <fullName>OpenTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>DUE_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_DAYS:30</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_OpenTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>OverdueTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>DUE_DATE</field>
+            <operation>lessThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_OverdueTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>RecurringTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_RecurringTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>TodaysTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>DUE_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY,LAST_N_DAYS:30</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.z_TodaysTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>UnscheduledTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>DUE_DATE</field>
+            <operation>equals</operation>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_UnscheduledTasks}</label>
+    </listViews>
+    <validationRules>
+        <fullName>PLOC_Restrict_Owner_Change</fullName>
+        <active>true</active>
+        <description>Does not allow Partners to change the owner of a task.</description>
+        <errorConditionFormula>AND( $User.Is_Partner__c , ISCHANGED( OwnerId ) )</errorConditionFormula>
+        <errorDisplayField>OwnerId</errorDisplayField>
+        <errorMessage>Owner cannot be changed</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Case_New_Task</fullName>
+        <availability>online</availability>
+        <description>Button to copy the CCW Deal ID to New Task for PDI Case. (WR-00850)</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New Task</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT("/soap/ajax/20.0/connection.js")}
+var baseUrl = getConstant('New Activity TheaterId','URL');
+var Theater = getUserTheater() || '--None--';
+var org_id = '{!$Organization.Id}'; 
+var url = "/00T/e?&amp;who_id={!Case.Id}&amp;what_id={!Case.Id}&amp;&amp;retURL=/{!Case.Id}";
+url = url + "&amp;" + baseUrl + "=" + Theater + "&amp;00N30000001FZej={!Case.Web_CCW_Deal_ID__c}"+ "&amp;nooverride=1";
+parent.location.href = url;
+function getUserTheater(){ 
+var qrStr = "Select Theatre__c From User where "+"Id = '{!$User.Id}' "; 
+var queryResult=sforce.connection.query(qrStr); 
+var records = queryResult.getArray('records'); 
+return records[0].Theatre__c; 
+} 
+function getConstant(i_key, i_oType) 
+{ 
+var qrStr = "SELECT prod_value__c, non_prod_value__c " + 
+	"FROM Org_Constants__c " + 
+	"WHERE Key__c = '" + i_key + "'"; 
+
+try { 
+	var queryResult=sforce.connection.query(qrStr); 	
+	var records = queryResult.getArray('records'); 
+	var q_value; 	
+	if (records.length &gt; 0) 
+	{ 
+		var hostname = window.location.hostname.toLowerCase(); 
+		//org_id = '00D300000000QUu'; 
+		if (org_id == '00D300000000QUu' &amp;&amp; ((hostname.indexOf('ww') &amp;&amp; hostname.indexOf('na')) != -1)) 
+		{ 
+		q_value = records[0].prod_value__c; 
+		} 
+		else 
+		{ 
+		q_value = records[0].non_prod_value__c; 
+		} 
+	} 
+		else if (records.length == 0) 
+		alert('No value defined for ' + i_key +', ' + i_oType); 
+
+		if (q_value == null) alert(i_key +', ' + i_oType + ' has a null value'); 
+		return q_value; 
+	} 
+catch(ex) { 
+alert(ex); 
+} 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Custom_New_Task</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New Task</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT("/soap/ajax/20.0/connection.js")}
+var baseUrl = getConstant('New Activity TheaterId','URL');
+var Theater = getUserTheater() || '--None--';
+var org_id = '{!$Organization.Id}'; 
+var opptyMultiNational = '{!Opportunity.Emerging_Multinational_Opportunity__c}';
+var opptyName = escape('{!Opportunity.Name}');
+var url = "/00T/e?&amp;who_id={!Opportunity.Id}&amp;what_id={!Opportunity.Id}&amp;&amp;retURL=/{!Opportunity.Id}";
+if(opptyMultiNational  !=  '--None--' &amp;&amp; opptyMultiNational  != '' &amp;&amp; opptyMultiNational != null) 
+{
+url = url + "&amp;" + baseUrl + "=" + Theater + "&amp;00N30000001VfgP=Multinational Accounts" + "&amp;tsk4={!TODAY()}" +"&amp;00N30000001FZej={!Opportunity.DealID__c}"+"&amp;nooverride=1"+"&amp;email=1";
+}
+else
+{
+url = url + "&amp;" + baseUrl + "=" + Theater + "&amp;nooverride=1";
+}
+parent.location.href = url;
+function getUserTheater(){ 
+var qrStr = "Select Theatre__c From User where "+"Id = '{!$User.Id}' "; 
+var queryResult=sforce.connection.query(qrStr); 
+var records = queryResult.getArray('records'); 
+return records[0].Theatre__c; 
+} 
+function getConstant(i_key, i_oType) 
+{ 
+var qrStr = "SELECT prod_value__c, non_prod_value__c " + 
+	"FROM Org_Constants__c " + 
+	"WHERE Key__c = '" + i_key + "'"; 
+
+try { 
+	var queryResult=sforce.connection.query(qrStr); 	
+	var records = queryResult.getArray('records'); 
+	var q_value; 	
+	if (records.length &gt; 0) 
+	{ 
+		var hostname = window.location.hostname.toLowerCase(); 
+		//org_id = '00D300000000QUu'; 
+		if (org_id == '00D300000000QUu' &amp;&amp; ((hostname.indexOf('ww') &amp;&amp; hostname.indexOf('na')) != -1)) 
+		{ 
+		q_value = records[0].prod_value__c; 
+		} 
+		else 
+		{ 
+		q_value = records[0].non_prod_value__c; 
+		} 
+	} 
+		else if (records.length == 0) 
+		alert('No value defined for ' + i_key +', ' + i_oType); 
+
+		if (q_value == null) alert(i_key +', ' + i_oType + ' has a null value'); 
+		return q_value; 
+	} 
+catch(ex) { 
+alert(ex); 
+} 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Link_for_the_Meeting_to_be_Reconciled_Confirmed</fullName>
+        <availability>online</availability>
+        <description>This custom link is to navigate to reconciliation page of the CEE meeting from task</description>
+        <displayType>link</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Link for the Meeting to be Reconciled/Confirmed</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>if('{!Task.What}'.indexOf("a0l") != -1) { 
+location.href="/apex/CEEReconciliationPage_new?id={!Task.What}"; 
+} 
+else { 
+alert("This Link is available only for CEEReconciliation"); 
+}</url>
+    </webLinks>
+</CustomObject>

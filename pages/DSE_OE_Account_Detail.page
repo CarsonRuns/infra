@@ -1,0 +1,32 @@
+<apex:page showheader="true" standardStylesheets="false" title="Sales Transformation - Install Base" standardController="account" extensions="DSE_Main_CTE">
+<!-- 
+Change History:
+    06092017 - Updated to include DSE iframe
+    10042018 - Updated to fix Lighnting Issues  by Naresh
+-->
+    <div>
+        <iframe src="" id="ib_iframe" width="100%" height="400px" frameborder="0"></iframe>
+    </div>
+    <script type="text/javascript">
+        var SFDCBaseURL = 'https://' + window.location.host;
+        var iframeURLString = '&baseURL='+SFDCBaseURL;
+        var userName = '{!$user.userName}'.split("@")[0];
+        var dseApp = 'https://dse.cloudapps.cisco.com';
+        var param = window.location.search;          
+        function dseEnv(){
+
+          if(window.location.host !== 'ciscosales.my.salesforce.com' || window.location.host !== 'ciscosales.lightning.force.com'){      <!-- updated by Naresh  -->
+                dseApp = 'https://dse-stg.cloudapps.cisco.com';
+            }
+        }
+        dseEnv();
+        if(param === ''){
+          // SCAVA FIX
+        document.getElementById("ib_iframe").src = dseApp+'/dse/tac/detail?un='+userName+'&view=tac&sourceName=Account&pid={!account.ParentId_OE__c}&childAcctID={!account.Id}&partyId={!JSENCODE(account.CSCSiteID__c)}'+iframeURLString;
+        } else {
+          // SCAVA FIX
+        document.getElementById("ib_iframe").src = dseApp+'/dse/tac/detail?un='+userName+'&view=tac&sourceName=Account&pid={!account.ParentId_OE__c}&childAcctID={!account.Id}&partyId={!JSENCODE(account.CSCSiteID__c)}'+iframeURLString+'&'+param.substring(1, param.length);
+        }
+        
+    </script>
+</apex:page>

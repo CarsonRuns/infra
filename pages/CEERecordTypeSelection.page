@@ -1,0 +1,238 @@
+<apex:page standardController="CEE__c" 
+           extensions="CEERecordTypeSelection_CTE"
+           docType="html-5.0"
+           standardStylesheets="false" cache="true" >
+    <html>
+        <head>
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge"></meta>
+        <meta charset="UTF-8"></meta>
+    <apex:stylesheet value="{!URLFOR($Resource.cee_resource, 'cee_res/custom_bootstrap.css')}"/>
+    <!-- <apex:stylesheet value="{!URLFOR($Resource.cee_resource, 'cee_res/bootstrap.min.css')}"/> -->
+    <!-- <apex:stylesheet value="{!URLFOR($Resource.cee_resource, 'cee_res/bootstrap-theme.min.css')}"/> -->
+    <apex:includeScript value="{!URLFOR($Resource.cee_resource, 'cee_res/angular.min.js')}"/>
+    <style>
+        .list-group-item {
+        z-index:800;
+        }
+        .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+        z-index:900;
+        background-color:darkgray;
+        }
+    </style>
+</head>
+<body id="bodyId" ng-app="sf1App" ng-controller="sf1Ctrl">
+
+<!-- Component to check if user is bypassing record type selection for an standard/custom objects -->
+<!-- reference the isBypassingRecordTypeSelection javascript variable -->
+<!--<c:userRecordTypeAvailable object="CEE__c"/>-->
+    <!--
+@@ COMMENTS ONLY
+This panel is required only on desktop
+-->
+    <apex:outputpanel id="desktopPanel" rendered="{!($User.UIThemeDisplayed == 'Theme3') || ($User.UIThemeDisplayed == 'Theme4d') || ($User.UIThemeDisplayed == 'Theme4u')}" style="display:none;">
+        <apex:sectionHeader title="{!$Label.CEERecType_Title}" 
+                            subtitle="{!$Label.CEERecType_SubTitle}" />
+        <p>{!$Label.CEERecType_Header}</p>
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:form >
+            <apex:actionFunction name="setRecordType" action="{!setRecordType}" />
+            <apex:pageBlock title="Select {!$ObjectType.CEE__c.Label} Record Type">
+                <apex:pageBlockSection >
+                    <apex:inputField value="{!CEE__c.RecordTypeId}" required="true"></apex:inputField>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton value="Continue" action="{!setRecordType}" />
+                    <apex:commandButton value="Cancel" action="{!cancel}"/>
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+        </apex:form>
+        <apex:pageBlock title="Available {!$ObjectType.CEE__c.Label} Record Types">
+            <apex:pageBlockTable value="{!recTypeInfoList}" var="rec">
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    {!rec.recordTypeName}
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Description</apex:facet>
+                    {!rec.recordTypeDescription}
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:outputpanel>
+    <!--
+@@ COMMENTS ONLY
+Render this block if its salesforce1
+-->
+    <apex:outputpanel styleclass="panel panel-info" id="sf1Panel" layout="block" rendered="{!$User.UIThemeDisplayed == 'Theme4t'}" style="display:block;">
+        <!-- @@ COMMENTS ONLY
+ERROR MESSAGE DIV
+-->
+        <div class="panel-heading">
+            <h3 class="panel-title" id="panel-title">{!$Label.CEERecType_SubTitle}</h3>
+        </div><!-- End of panel heading -->
+        <div class="panel-body">
+            <div class="alert alert-danger" role="alert" ng-show="hasError">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                {{errorMsg}}
+            </div>
+            <div class="list-group">
+                <a href="#" ng-model="selectedValue.recordTypeId" 
+                   class="list-group-item" 
+                   ng-repeat="option in recTypeList track by $index" 
+                   ng-class="{active: option.isDefault}"
+                   ng-click="valueChanged(option.recordTypeId)">
+                    <strong>{{option.recordTypeName}}</strong>
+                </a>
+            </div><!-- End of list-group -->
+        </div><!-- End of panel-body -->
+        <div class="panel-footer">
+<!--             TODO: Add logic to display MobileFooter. Hide if running users profile default record type is jiffle-->
+            <h5 class="info">{!$Label.CEERecType_MobileFooter}</h5>
+            <h6 class="info">{{backInfo}}</h6>
+        </div><!-- End of panel footer -->
+    </apex:outputpanel>
+    <script>
+    var profileDefaultRecordType = "{!UserDefaultOpportunityRecordType}";
+    var isBypassingRecordTypeSelection; 
+    function userByPassRecordTypeSelection(){
+        if(("{!$User.UIThemeDisplayed}" != 'Theme4t')){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    var sf1App = angular.module('sf1App', []);
+    var isSF1;
+    
+    //FACTORY
+    sf1App.factory('fetchRecType', ['$q', '$rootScope', function ($q, $rootScope) {
+        return function () {
+            var deferred = $q.defer();
+            // DO VF REMOTING
+            Visualforce.remoting.Manager.invokeAction(
+                "{!$RemoteAction.CEERecordTypeSelection_CTE.fetchRecordTypeList}",
+                function (result, event) {
+                    console.log("### result");
+                    console.log(result);
+                    console.log("### event");
+                    console.log(event);
+                    $rootScope.$apply(function () {
+                        if (event.status) {
+                            deferred.resolve(result);
+                        } else {
+                            deferred.reject(event);
+                        }
+                    })
+                }, {
+                    buffer: true,
+                    escape: false,
+                    timeout: 30000
+                }
+            );
+            //END OF VF REMOTING
+            return deferred.promise;
+        }
+    }]);
+    
+    //CONTROLLER
+    sf1App.controller('sf1Ctrl', ['$scope', '$location', '$timeout', 'fetchRecType', function ($scope, $location, $timeout, fetchRecType) {
+        'use strict';
+        $scope.recTypeList;
+        $scope.errorMsg;
+        $scope.hasError = false;
+        $scope.backUrl;
+        $scope.backInfo = '';
+        $scope.selectedValue = {
+            "recordTypeId": ""
+        };
+        $scope.isSF1 = ((typeof sforce != 'undefined') && (sforce != null)) ? true : false;
+        isSF1 = $scope.isSF1;        
+        $scope.loadRecTypeList = function () {
+            fetchRecType().then(
+                function (result) {
+                    $scope.recTypeList = JSON.parse(result);                   
+                    $scope.hasError = false;
+                        },
+                  function (error) {
+                      console.error("### error : "+error);
+                      $scope.errorMsg = 'ERROR: ' + error.message;
+                      $scope.hasError = true;
+                  }
+              )
+          };
+          if ($scope.isSF1) {
+              $scope.loadRecTypeList();            
+          }
+          
+          $scope.valueChanged = function (value) {
+              console.log("value changed! " + value);
+              $scope.selectedValue.recordTypeId = value;
+              //SCAVA FIX
+              var obxRecordType = '{!JSENCODE($Setup.ObjectRecordTypeIds__c.CEE_OBX_Record_Type_ID__c)}';
+              console.log("OBX changed! " + obxRecordType);
+              if ($scope.isSF1) {                                
+                  if(value == obxRecordType){
+                    sforce.one.navigateToURL('/apex/CEEIntermediateMobilePage?recordType='+value);
+                  }
+                  else{
+                     sforce.one.back(true);
+                    sforce.one.createRecord('CEE__c', value);
+                  }
+                  $timeout(function() {
+                    $scope.backInfo = 'Please click back arrow to navigate back!';
+                  }, 3000);
+                  //sforce.one.back();
+              }
+          };
+                
+          $scope.back = function() {
+              console.log("## back url : "+$scope.backUrl);
+              // sforce.one.navigateToURL(backUrl,false);
+          }
+    }]);
+    
+    window.onload = function(){
+        console.log('onload from CEERecordTypeSelection.pages');
+        var bypassRecordTypeSelection = true;
+         
+         //SCAVA FIX
+        var retUrl = "{!JSENCODE($CurrentPage.parameters.retUrl)}";
+        var jiffleRecordTypeId = "{!$Label.Jiffle_RecordType}";
+        isBypassingRecordTypeSelection = userByPassRecordTypeSelection();        
+        console.log('isBypassingRecordTypeSelection==>'+isBypassingRecordTypeSelection);
+        console.log('=====>'+"{!$User.UITheme}");
+        //do not bypass record type selection if trying to create CEE Jiffle Record type from CEE tab
+        if(isBypassingRecordTypeSelection &&
+           jiffleRecordTypeId.substring(0,14) == profileDefaultRecordType.substring(0,14) && 
+           (("{!$User.UIThemeDisplayed}" == 'Theme4t') || retUrl.indexOf("{!$Label.CEE_Prefix}")!=-1)){
+           console.log('==6==>');
+            bypassRecordTypeSelection = false;
+        }else if(!isBypassingRecordTypeSelection){
+            console.log('==7==>');
+            bypassRecordTypeSelection = isBypassingRecordTypeSelection;
+        }
+        if(bypassRecordTypeSelection){
+            if(("{!$User.UIThemeDisplayed}" == 'Theme4t')){
+                //Skip record type selection in SF1
+                console.log('==8==>');
+                angular.element(document.getElementById('bodyId')).scope().valueChanged(profileDefaultRecordType);
+            }else{
+                //Skip record type selection in Fullsite
+                console.log('==9==>');
+                console.log('bypassRecordTypeSelection===2'+bypassRecordTypeSelection);
+                setRecordType();
+            }
+        }else{
+            console.log('==10==>');
+            if(("{!$User.UIThemeDisplayed}" != 'Theme4t')){
+                //display record type selection in fullsite
+                console.log('==11==>');
+                document.getElementById("{!$Component.desktopPanel}").style.display="block";
+            }
+        }
+    }
+    </script>
+</body>
+</html>
+</apex:page>

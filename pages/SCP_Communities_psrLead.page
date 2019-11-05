@@ -1,0 +1,41 @@
+<apex:page StandardController="Lead">
+  <script>
+    
+        init = function(){
+            var inline = 0;
+            var a = parent.document.getElementsByTagName("input");
+            for(var i = 0; i < a.length; i++){
+                if(a[i].title=='Save'){
+                    if(a[i].style.getPropertyValue){
+                        if(a[i].style.getPropertyValue("display") == 'inline'){
+                            inline = 1;
+                            alert('Please Save or Cancel your changes');
+                            break;
+                        } 
+                        else if(a[i].title=='Save' && a[i].style.getPropertyValue("display") != 'inline'){
+                           top.location.href='../apex/SCP_Communities_psrFilterLookup?Id={!Lead}';
+                        }
+                    }
+                    else{
+                        if(a[i].style.getAttribute("display") == 'inline'){
+                            inline = 1;
+                            alert('Please Save or Cancel your changes');
+                            break;
+                        }
+                    }
+                }
+            }
+            if(inline == 0){
+                 top.location.href='../apex/SCP_Communities_psrFilterLookup?Id={!Lead}';
+            } 
+        }    
+
+    </script>
+     <apex:form >
+          <apex:outputPanel Id="thePanel">
+             <u>
+                <a href='#Save' onclick='javascript:init();' title='Click to Edit Partner assignments'>Edit Partner Assignments</a>
+            </u> 
+          </apex:outputPanel>
+     </apex:form>
+</apex:page>

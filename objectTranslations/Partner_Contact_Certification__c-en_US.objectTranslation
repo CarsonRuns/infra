@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- CERT_ID --></label>
+        <name>CERT_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Code --></label>
+        <name>Certification_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Effective End Date --></label>
+        <name>Certification_Effective_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Effective Start Date --></label>
+        <name>Certification_Effective_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Status --></label>
+        <name>Certification_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Certification Type --></label>
+        <name>Certification_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Career Certification --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Contact Certification</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Contact Certifications</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Partner Contact Certification Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

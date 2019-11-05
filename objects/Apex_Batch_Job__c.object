@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Date_TimeStamp__c</fullName>
+        <description>Used for Opty Share</description>
+        <externalId>false</externalId>
+        <label>Date_TimeStamp</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Minutes__c</fullName>
+        <externalId>false</externalId>
+        <label>Minutes</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NotificationEmailId__c</fullName>
+        <externalId>false</externalId>
+        <label>NotificationEmailId</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TimeStamp__c</fullName>
+        <description>Used for OptyShare class</description>
+        <externalId>false</externalId>
+        <label>TimeStamp</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>query1__c</fullName>
+        <externalId>false</externalId>
+        <label>query1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>query__c</fullName>
+        <externalId>false</externalId>
+        <label>query</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>Used to store the query and notification email id for batch process.</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <label>Apex Batch Job</label>
+    <visibility>Public</visibility>
+</CustomObject>

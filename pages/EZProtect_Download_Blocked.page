@@ -1,0 +1,34 @@
+<apex:page tabStyle="EZProtect__tab" sidebar="true" showHeader="true" controller="EZProtectDownloadBlockedCrtl">
+    
+    <!--
+<apex:sectionHeader title="{!title}"/>
+
+
+<apex:PageBlock >
+<div style="margin-left: 60px">
+{!body} <p/>
+
+Please contact your Salesforce Administrator to discuss next steps.
+</div>
+</apex:PageBlock>
+
+-->
+    
+    <apex:includeLightning />
+    
+    <div id="ezprotect" />
+    
+    <script>
+    $Lightning.use("c:EZProtectDownloadBlockApp", function() {
+        $Lightning.createComponent("c:EZProtectDownloadBlockCmp", {
+            "type" : "{!JSENCODE(blockType)}",
+        },
+		"ezprotect",
+        function(component) {
+              
+        });
+    });
+    </script>
+    
+    
+</apex:page>

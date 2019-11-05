@@ -1,0 +1,425 @@
+<!--
+   Name    : NGCC_LeadUtitlities
+   Author  : 
+   Purpose : 
+   Created Date: 
+   Modification History: 
+        User    : Ghattamaneni Chaithanya
+        Purpose : Added Dispostion Sub Type field to page
+                    added markup to display Disposition Sub Type field in the page Line No#345-350
+        date    : July 11,2018
+
+		User    : Ghattamaneni Chaithanya
+        Purpose : Adding Contact Reason and Persona fields to page US291144
+                   added markup to display Contact Reason and Persona fields in the page Line No#367-374
+        date    : June 12,2019
+-->
+
+<apex:page standardController="lead"
+    extensions="NGCC_LeadUtitlities_CTE" action="{!approvalNeeded}"
+    docType="html-5.0" cache="true" Id="vfApproval">
+    <style>
+#datePicker {
+    top: 2px !important;
+    padding: 2px !important;
+    font-size: 10px !important;
+    left: 870px !important;
+}
+
+#calMonthPicker, #calYearPicker {
+    font-size: 10px !important;
+}
+
+#calRight, #calleft {
+    width: 1px !important;
+    height: 1px !important;
+}
+.center {
+    margin: auto;
+    position: absolute;
+    left: 22%;
+    top: 70px;
+}
+</style>
+    <apex:includeScript value="/soap/ajax/30.0/connection.js" />
+    <apex:includeScript value="/support/console/30.0/integration.js" />
+    <apex:includeScript value="{!$Resource.jquery}"/>
+   
+    <script>
+        $j = jQuery.noConflict();
+        
+        window.onload = function() {
+             console.log(sforce.console.isInConsole());
+             if (sforce.console.isInConsole()){
+                 setIsInConsoleMode();
+                 sforce.console.getFocusedPrimaryTabId(refreshTabName);
+             }
+        };
+       
+        var refreshTabName = function refreshTabName(result){
+                sforce.console.setTabTitle('{!JSENCODE(Lead.ProgramEvent__c)}' + ' ' + '{!JSENCODE(Lead.FirstName)}' + ' ' + '{!JSENCODE(Lead.LastName)}', result.id);
+        };
+       
+       
+        function refreshPage(){
+          if ('{!JSENCODE(isInConsoleMode1)}' == 'true') {
+                sforce.console.getEnclosingTabId(refreshSubTab);
+          } else {
+              window.top.location='/{!Lead.id}';
+          }
+        };
+                     
+        var refreshSubTab = function refreshSubTab(result) {
+            var subTabId = result.id;
+            sforce.console.refreshSubtabById(subTabId, true);
+        };      
+        
+        
+        function changeSubtab() {
+              //First find the ID of the primary tab to put the new subtab in
+              sforce.console.getEnclosingPrimaryTabId(getPrimaryTabId);
+        };
+            
+        var primaryTabId;
+        var secondaryTabId;
+        
+        var closeTab = function closeTab(result){
+            if (result.success){
+               sforce.console.closeTab(secondaryTabId);
+            }
+        };
+        
+        // add an extra async call and move closetab to it
+        var isSuccess = function isSuccess(result){
+          if (result.success == true) {
+              secondaryTabId = result.id;
+              sforce.console.chat.getDetailsByPrimaryTabId(primaryTabId,
+                                    reloadSubtab);
+          }
+        };
+        
+        var reloadSubtab = function reloadSubtab(result) {
+            //Now that we have the primary tab ID, we can open a new subtab in it
+            if (result.success == true){
+                //alert(secondaryTabId);
+                
+                sforce.console.openSubtab( primaryTabId, '{!JSENCODE(redirectConsoleURL)}', true, 
+                    '{!JSENCODE(Lead.Name)}', secondaryTabId, null   );
+            } else {
+                sforce.console.openPrimaryTab(primaryTabId, '{!JSENCODE(redirectConsoleURL)}', true, '{!JSENCODE(Lead.Name)}')
+            }
+            
+        };
+        
+        var getPrimaryTabId = function getPrimaryTabId(result) {
+            primaryTabId = result.id;
+            sforce.console.getEnclosingTabId(isSuccess);
+        };
+        
+        function callUserlookup()
+        {
+            if ('{!JSENCODE(Lead.Theater__c)}' == 'EMEAR')
+            {
+                 var leadid =  '{!JSENCODE($CurrentPage.parameters.Id)}';
+                 parent.window.location.href = '/apex/NGCC_User_LookUpfor_NextApprover?Id='+leadid;
+            }else 
+            {
+                callAPJApprovalProcess();
+            }
+       };
+       
+       function callingThePage()
+       {
+           var leadid =  '{!JSENCODE($CurrentPage.parameters.Id)}';
+           parent.window.location.href = '/apex/NGCC_User_LookUpfor_NextApprover?Id='+leadid;
+       };
+       
+        
+   </script>
+    <apex:form id="frmMain">
+    
+        <apex:actionFunction name="callAPJApprovalProcess" action="{!cmdSubmitForApproval}" reRender="frmMain" />
+    <!--    <apex:pageMessages id="messages" escape="false" />  -->
+       <apex:outputpanel rendered="{!refreshPage}" style="margin-left:-30%;"> 
+         <script>
+            refreshPage();
+        </script> 
+        </apex:outputpanel> 
+        
+        <apex:outputpanel rendered="{!openInSameWindow}" style="margin-left:-30%;">
+            <script>
+            callingThePage();
+        </script>
+        </apex:outputpanel>
+        
+       
+        <apex:pageBlock mode="mainDetail" Id="theBlock">
+
+            <center>
+                
+                <apex:actionFunction name="setIsInConsoleMode"
+                    action="{!setIsInConsoleMode}" />
+                <apex:actionFunction name="cmdCallScript" action="{!cmdCallScript}" />
+                <apex:outputpanel rendered="{!showGeneric}"
+                    style="margin-left:-30%;">
+                    <apex:commandButton action="{!cmdCallScript}"
+                        value="Create Response"
+                        rendered="{!NOT(OR(Lead.Status='Send to Sales',Lead.Status='Picked for Routing',Lead.Status='Cancel')) && lead.Ownerid == $User.Id}" />
+                    <apex:commandButton action="{!cmdValidateAddress}"
+                        value="Validate Address" rendered="{!Lead.Status='New Prospect'}" />
+                    <apex:commandButton action="{!cmdSubmitForApproval}"  
+                        value="Submit for Approval"
+                        rendered="{!If(lead.Status == 'Marketing Qualified',true,false)}" />
+                    <apex:commandButton action="{!cmdSendToSales}"
+                        value="Send to Sales"
+                        rendered="{!If(OR(AND(NOT(ISNULL(lead.Originating_Marketing_Pipeline__c)),lead.Originating_Marketing_Pipeline__c < 200000,lead.Theater__c='Greater China'), lead.Status = 'Approved'),
+               if(OR(lead.Status='Send to Sales',lead.Status='Rejected'),
+               false,
+               true
+               ),
+               false
+               )}" />
+               <!--@Fazurulla : Added Send to sales button for Senior agents as part of enhancement -->
+               <apex:commandButton action="{!cmdSendToSales}"
+                                            value="Send to Sales" rendered="{!if(
+                                            AND(
+                                                NOT(ISNULL(lead.Originating_Marketing_Pipeline__c)),
+                                                lead.Originating_Marketing_Pipeline__c < 500000,
+                                                contains($UserRole.Name,'Senior Agent'),
+                                                lead.Status = 'Marketing Qualified',
+                                                lead.theater__c = 'EMEAR'
+                                            ),true,false)}"/>
+                    <apex:commandButton action="{!cmdRequalify}" value="Requalify"
+                        rendered="{!Contains(lead.Status,'Rejected')}" />
+                    <apex:commandButton action="{!cmdCancelLead}" value="Cancel Lead"
+                        rendered="{!AND(lead.Status != 'Cancel',lead.Status!='Send to Sales',lead.Status !='Picked for Routing')}" />
+                    <br />
+                    <br />
+                    <apex:outputtext value="{!if(AND(contains(lead.Lead_Qualification_Error__c,'duplicate value'),lead.Status!= 'Cancel'),
+                '<img src=/img/msg_icons/info24.png>Lead could not qualify. There is an lead existing with same contact/keycode combination. Please cancel lead.<br/>'+                
+                '<a href=/'+MID(lead.Lead_Qualification_Error__c,FIND('id:',lead.Lead_Qualification_Error__c)+4,15)+
+                ' target=_parent style=margin-left:-30%;>Click Here to view existing Lead</a>'
+                ,
+                '')}"
+                        escape="false" style="margin-left:-30%;" />
+                    <br />
+                    <apex:outputText value="<img src=/img/msg_icons/error16.png> {!HTMLENCODE(showAlert)}"
+                        style="color: Red;font-weight: bold;margin-left:-450px;"
+                        escape="false" rendered="{!IF(showAlert=='',false,true)}"/>
+                </apex:outputpanel>
+
+            </center>
+            <!--------------------------------------------Start Lead Cancel ------------------------------------------------->
+            <apex:panelgrid rendered="{!bCancelLead}" style="width:800px">
+                <apex:pageBlockSection columns="2">
+                    <center>
+                        <apex:inputfield value="{!Lead.Lead_Cancel_Reason__c}"
+                            required="true" />
+                    </center>
+                    <apex:outputpanel >
+                        <center>
+                            <apex:commandButton action="{!cmdProcessCancelLead}"
+                                value="Cancel Lead" />
+                            <apex:commandButton value="Cancel"
+                                onclick="refreshPage(); return false;" />
+                                
+                                
+                        </center>
+                    </apex:outputpanel>
+                </apex:pageBlockSection>
+            </apex:panelgrid>
+            <!--------------------------------------------End Lead Cancel------------------------------------------------->
+            <center>
+                <!--------------------------------------------Start Approval------------------------------------------------->
+                <apex:outputpanel rendered="{!AND(bAppReq,!bCancelLead)}"
+                    id="cmdButton" style="margin-left:-30%;">
+                    <apex:commandButton action="{!cmdApprove}" value="Approve"
+                        rendered="{!IF(Lead.Theater__c != 'EMEAR',true,false)}"
+                        oncomplete="refreshPage();" />
+                    <apex:commandButton action="{!cmdApprove}" value="Approve"
+                        rendered="{!IF(Lead.Theater__c == 'EMEAR',true,false)}" />
+                    <apex:commandButton action="{!cmdReject}" value="Reject" />
+                    <apex:commandButton action="{!cmdCancelLead}" value="Cancel Lead" />
+                </apex:outputpanel>
+                <!--------------------------------------------End Approval------------------------------------------------->
+
+                <!--------------------------------------------Start EMEAR Approval------------------------------------------------->
+                <apex:outputpanel id="nextOP" rendered="{!bAppEMEAR}"
+                    style="margin-left:-30%;">
+                    <apex:outputText value="Please Select Lead Admin for Further Approval" />
+               &nbsp;&nbsp;&nbsp;&nbsp;
+               <input type="hidden" name="newOwn_lkid" id="newOwn_lkid"
+                        value="000000000000000" />
+                    <input type="hidden" name="newOwn_lkold" id="newOwn_lkold"
+                        value="null" />
+                    <input type="hidden" name="newOwn_lktp" id="newOwn_lktp"
+                        value="StandardUserLookup" />
+                    <input type="hidden" name="newOwn_lspf" id="newOwn_lspf" value="0" />
+                    <input type="hidden" name="newOwn_lspfsub" id="newOwn_lspfsub"
+                        value="0" />
+                    <input type="hidden" name="newOwn_mod" id="newOwn_mod" value="0" />
+                    <span class="lookupInput"> <input id="newOwn"
+                        maxlength="255" name="newOwn"
+                        onchange="getElementByIdCS('newOwn_lkid').value='';getElementByIdCS('newOwn_mod').value='1';getElementByIdCS('newOwn_mod').value='1';"
+                        size="20" tabindex="13" type="text" /> <a
+                        href="javascript:%20openLookup%28%27%2F_ui%2Fcommon%2Fdata%2FLookupPage%3Flkfm%3DeditPage%26lknm%3DnewOwn%26lktp%3D%27%20%2B%20getElementByIdCS%28%27newOwn_lktp%27%29.value%2C670%2C%271%27%2C%27%26lksrch%3D%27%20%2B%20escapeUTF%28getElementByIdCS%28%27newOwn%27%29.value.substring%280%2C%2080%29%29%29"
+                        id="newOwn_lkwgt" onclick="setLastMousePosition(event)"
+                        title="Owner name"> <img src="/s.gif"
+                            alt="Owner Lookup (New Window)" class="lookupIcon"
+                            onblur="this.className = 'lookupIcon';"
+                            onfocus="this.className = 'lookupIconOn';"
+                            onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';"
+                            onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';"
+                            title="Owner Lookup (New Window)" /></a>
+                    </span>
+                    <apex:inputhidden value="{!nextApproval}" id="nextApproval" />
+                    <apex:commandButton action="{!processApprovalEMEAR}" value="Submit"
+                        onclick="assignOwner();" oncomplete="refreshPage();" />
+               &nbsp;&nbsp;
+            </apex:outputpanel>
+                <!--------------------------------------------End EMEAR Approval------------------------------------------------->
+
+                <!--------------------------------------------Start Approval Rejection------------------------------------------------->
+                <apex:outputpanel rendered="{!AND(bAppReject,!bCancelLead)}"
+                    style="margin-left:-30%;">
+                    <apex:outputText value="Please Provide Rejection Reason" />
+               &nbsp;&nbsp;&nbsp;&nbsp;
+               <apex:inputText value="{!rejectReason}"
+                        style="width:300px;height:25px" />
+               &nbsp;&nbsp;&nbsp;&nbsp;
+               <apex:commandButton action="{!processApprovalRejected}"
+                        value="Submit" oncomplete="refreshPage();" />
+               &nbsp;&nbsp;
+               <apex:commandButton action="{!cmdCancel}" value="Cancel"
+                        oncomplete="refreshPage();" />
+                </apex:outputpanel>
+                <br />
+                <!-- Scava Changes made by dchamola -->
+                <!--<apex:outputText value="Please Wait... {!outputText}" escape="false"
+                    rendered="{!IF(outputText=='',false,true)}" style="color:red;" />-->
+                    
+                <apex:outputText value="Please Wait... {!textToBeDisplayedAtStart}{!jsStart}{!windowHrefUrl}{!JSENCODE(outputText)}{!textToBeDisplayedAtEnd}{!jsEnd}" escape="false"
+                    rendered="{!IF(outputText=='',false,true)}" style="color:red;" />
+
+                <!--------------------------------------------End Approval Rejection------------------------------------------------->
+
+
+                <!--------------------------------------------Start Create Response------------------------------------------------->
+                <apex:outputpanel rendered="{!!showCallScript}"
+                                  style="margin-left:-30%;">
+                    <apex:commandButton action="{!saveResponse}" value="Save Response"
+                                        disabled="{!if(lead.Campaign_Name__c!=null,false,true)}" />
+                    <apex:commandButton action="{!launchCallScript}"
+                                        value="Launch Call Script"
+                                        disabled="{!if(lead.Campaign_Name__c!=null,false,true)}" />
+                    <apex:commandButton value="Cancel" onclick="refreshPage();" />
+                    <apex:outputText value="[Program Event not associated to prospect]"
+                                     style="color: Red;font-weight: bold;font-size:10px;"
+                                     escape="false"
+                                     rendered="{!if(AND(!showCallScript,lead.Campaign_Name__c==null),true,false)}" />
+                    
+                    <br />
+                    <apex:outputText value="<img src=/img/msg_icons/error16.png> {!HTMLENCODE(showAlert)}"
+                                     style="color: Red;font-weight: bold;margin-left:-450px;"
+                                     escape="false" rendered="{!IF(showAlert=='',false,true)}"  /><br/>
+                    
+                    <apex:dataTable id="ResponseTable" value="{!response}" var="r"
+                                    cellpadding="1" style="margin-left:-5%;"
+                                    rendered="{!if(lead.Campaign_Name__c==null,false,true)}">
+                        <apex:column headerValue="Call Script">
+                            <apex:inputfield value="{!r.Call_Script__c}" />
+                        </apex:column>
+                        <apex:column headerValue="Language">
+                            <apex:inputfield value="{!r.Language__c}" />
+                        </apex:column>
+                        <apex:column id="ResponseDisposition" headerValue="Response Type">
+                            <apex:inputfield id="ResponseType" value="{!r.Response_Type__c}"
+                                             required="true" />
+                        </apex:column>                                           
+                        <apex:column headerValue="Notes" id="c3">
+                            <apex:inputfield value="{!r.Notes__c}" styleclass="name" style="height: 20px;" />
+                        </apex:column>                        
+                    </apex:dataTable>
+                    <apex:dataTable id="ResponseTable2" value="{!response}" var="r"
+                                    cellpadding="1" cellspacing="5" style="margin-left:-5%;"
+                                    rendered="{!if(lead.Campaign_Name__c==null,false,true)}">
+                        <apex:column headerValue="Outcome" >
+                            <apex:actionRegion >
+                                <apex:outputPanel >
+                                    <apex:selectList title="PickList1" size="1" value="{!Disposition}" >        
+                                        <apex:selectOptions value="{!PickLstValue}"/> 
+                                        <apex:actionSupport event="onchange" status="hello" action="{!statusUpdate}" rerender="theBlock,c1,c2,dp,CR,PR" />
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            </apex:actionRegion>
+                        </apex:column>  
+                        <apex:column headerValue="Call Back Time" rendered="{!showComment}" id="c1" >
+                            <apex:inputfield value="{!r.Call_Back_Time__c}" showDatePicker="true" />
+                        </apex:column>
+                        <!-- Added by gchaitha to display Disposition Sub Type field Dynamically -->
+                        <apex:column headerValue="Sub-Outcome" rendered="{!showDispSubtype}" id="dp" >
+                            <apex:actionRegion >
+                            <apex:inputfield value="{!r.Disposition_Sub_Type__c}" required="true" >
+                                <apex:actionSupport event="onchange" status="hello" action="{!DispositionChange}" rerender="theBlock,CR,PR" />
+                            </apex:inputfield>
+                            </apex:actionRegion>
+                        </apex:column>
+                        <!-- Added by gchaitha to display Contact Reason and Persona fields  US291144-->
+                        <apex:column headerValue="Contact Reason" id="CR" rendered="{!showContactReason}">
+                            <apex:inputfield value="{!r.Contact_Reason__c}" required="true" />
+                        </apex:column>
+                        <apex:column headerValue="Persona" id="PR"  rendered="{!showPersona}">
+                            <apex:inputfield value="{!r.Persona__c}" required="true" />
+                        </apex:column>
+                        <!-- end -->
+                        <apex:column style="display:none;">
+                            <apex:actionRegion >
+                                <apex:outputPanel >
+                                    <apex:inputfield value="{!r.Status__c}" style="display:none;"/>
+                                 <!--   <apex:inputfield value="{!r.Disposition_Sub_Type__c}" style="display:none;"/>  -->
+                                </apex:outputPanel>
+                            </apex:actionRegion>
+                        </apex:column>
+                     
+                    </apex:dataTable>
+                </apex:outputpanel>
+            </center>
+            <!--------------------------------------------End Create Response------------------------------------------------->
+
+        </apex:pageBlock>
+        <script>    
+      
+      function resizeIframe() {
+          var me = window.name;
+          if (me) {
+              var iframes = parent.document.getElementsByName(me);
+              if (iframes && iframes.length == 1) {
+                   height = document.body.offsetHeight+40;
+                   //if (height <= 300) 
+                   iframes[0].style.height = height + "px";
+              
+              }
+          }
+      }
+      resizeIframe();
+      
+      function assignOwner()
+      {
+          document.getElementById('{!$Component.vfApproval:frmMain:theBlock:nextApproval}').value = document.getElementById('newOwn_lkid').value;
+      };  
+          
+   </script>
+   
+   
+    <apex:outputPanel style="font-weight:bold; color:red;" rendered="{!if( AND(winLead == true, leadStatus == 'Approval Pending') , true, false)}">
+        <div class="center">
+            <img src="/img/func_icons/util/alert16.gif"/> New notes has been added to the description field from the supressed lead
+        </div>
+        
+        
+    </apex:outputPanel>
+   
+    </apex:form>
+
+
+</apex:page>

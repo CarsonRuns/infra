@@ -1,0 +1,46 @@
+<apex:page showHeader="false" sidebar="false" StandardController="Account" extensions="Super_Group_Acct_CTE">
+<apex:form > 
+
+    <apex:pageMessages /> 
+    
+    <apex:pageblock id="thePageBlock" >
+        <apex:pageBlockTable value="{!SuperGroupRecords}" var="sgp" id="table">
+                               <apex:column headerValue="Super Group Name">
+                                     <apex:outputLink value="/{!sgp.Id}" target="_top">{!sgp.Name}</apex:outputLink>
+                               </apex:column>   
+                               <apex:column value="{!sgp.FDEV_Super_Group_ID__c}" headerValue="Super Group ID"/> 
+                               <apex:column value="{!sgp.Program_Type__c}" headerValue="Program Type"/> 
+                               <apex:column value="{!sgp.Type__c}" headerValue="Sales Credit Type"/>  
+         </apex:pageBlockTable>
+
+            <apex:pageBlockSection >
+                    <apex:pageBlockSectionItem >
+                             <apex:outputPanel >
+                                    <apex:commandLink action="{!con.previous}" rendered="{!con.hasprevious}">Previous&nbsp;|</apex:commandlink>
+                                    <apex:commandLink action="{!con.next}" rendered="{!con.hasnext}" >&nbsp;Next</apex:commandlink>
+                              </apex:outputPanel>
+                     </apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem >
+                             <apex:outputPanel style="float:right;" rendered="{!IF(con == null,false,true)}">
+                                       <apex:outputText value="{!con.pageNumber}/{!totalpages}" rendered="{!IF(totalpages == 0,false,true)}">Pages : </apex:outputText>
+                              </apex:outputPanel>
+                   </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+           </apex:pageblock>
+          </apex:form>
+<script language = "javascript">
+function resizeIframe() {
+    var me = window.name;
+    if (me) {
+      var iframes = parent.document.getElementsByName(me);
+      if (iframes && iframes.length == 1) {
+        height = document.body.offsetHeight;
+        if (height == 0) 
+        height = height + 100;
+        iframes[0].style.height = height + "px";       
+      }
+    }
+  }
+ resizeIframe(); 
+</script>
+</apex:page>

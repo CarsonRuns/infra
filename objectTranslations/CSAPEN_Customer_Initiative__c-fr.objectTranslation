@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Contact client</label>
+        <name>Customer_Contact__c</name>
+        <relationshipLabel><!-- Customer Initiatives/Business Priorities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Objectif client</label>
+        <name>Customer_Goal__c</name>
+        <relationshipLabel><!-- Customer Initiatives --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Nom de source de données</label>
+        <name>Data_Source_Name__c</name>
+    </fields>
+    <fields>
+        <label>N° déploiement</label>
+        <name>Deployment_No__c</name>
+    </fields>
+    <fields>
+        <label>Description de l'initiative</label>
+        <name>Initiative_Description__c</name>
+    </fields>
+    <fields>
+        <label>Autres informations</label>
+        <name>Other_Information__c</name>
+    </fields>
+    <fields>
+        <label>Autre URL</label>
+        <name>Other_URL__c</name>
+    </fields>
+    <fields>
+        <label>Mesure des performances</label>
+        <name>Performance_Measurement__c</name>
+    </fields>
+    <fields>
+        <label>SiteMapIdentifier</label>
+        <name>SiteMapIdentifier__c</name>
+    </fields>
+    <fields>
+        <label>ID du plan comptable source</label>
+        <name>Source_Account_Plan_Id__c</name>
+    </fields>
+    <fields>
+        <label>ID objectif client source</label>
+        <name>Source_Cust_Goal_Id__c</name>
+    </fields>
+    <fields>
+        <label>ID source initial du client</label>
+        <name>Source_Cust_Init_Id__c</name>
+    </fields>
+    <fields>
+        <label>État</label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation>fermé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation>Ouvert</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Calendrier</label>
+        <name>Timeframe__c</name>
+        <picklistValues>
+            <masterLabel>0-12 months</masterLabel>
+            <translation><!-- 0-12 months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12-18 months</masterLabel>
+            <translation><!-- 12-18 months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18-36 Months</masterLabel>
+            <translation><!-- 18-36 Months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3-5 years</masterLabel>
+            <translation><!-- 3-5 years --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Type d'initiative/Actions client</label>
+        <name>Type_of_Initiative__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Initiative client</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Initiative client</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Customer Initiative</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>CSAPEN Customer Initiative Layout - REL_7.0</layout>
+        <sections>
+            <label>Informations supplémentaires</label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Initiative Details --></label>
+            <section>Initiative Details</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

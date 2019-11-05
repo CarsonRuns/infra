@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Nom du compte</label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label>Statut de briefing</label>
+        <name>Briefing_Status__c</name>
+    </fields>
+    <fields>
+        <label>Type de briefing</label>
+        <name>Briefing_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- CEE Attendee --></label>
+        <name>CEE_Attendee__c</name>
+        <relationshipLabel><!-- Agenda Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Participants</label>
+        <name>Catering_Attendees__c</name>
+    </fields>
+    <fields>
+        <label>Coût par personne</label>
+        <name>Catering_Cost_Per_Person__c</name>
+    </fields>
+    <fields>
+        <label>Code du service</label>
+        <name>Catering_Department_Code__c</name>
+    </fields>
+    <fields>
+        <label>Financement</label>
+        <name>Catering_Funding__c</name>
+        <picklistValues>
+            <masterLabel>Account Team Funded</masterLabel>
+            <translation>Équipe de compte financée</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EBC Funded</masterLabel>
+            <translation>Financé par EBC</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Coût total</label>
+        <name>Catering_Total_Cost__c</name>
+    </fields>
+    <fields>
+        <label>Type de restauration</label>
+        <name>Catering_Type__c</name>
+        <picklistValues>
+            <masterLabel>Afternoon Snacks</masterLabel>
+            <translation>Goûter</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Breakfast - Cold Food and Drinks</masterLabel>
+            <translation>Petit-déjeuner - Repas froid et boissons</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Breakfast - Hot Food and Drinks</masterLabel>
+            <translation>Petit-déjeuner - Repas chaud et boissons</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drinks Only</masterLabel>
+            <translation>Boissons uniquement</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lunch - Cold Food and Drinks</masterLabel>
+            <translation>Déjeuner - Repas froid et boissons</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lunch - Hot Food and Drinks</masterLabel>
+            <translation>Déjeuner - Repas chaud et boissons</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morning Snacks</masterLabel>
+            <translation>Petit-déjeuner</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Engagements et événements du client</label>
+        <name>Customer_Engagements_Events__c</name>
+        <relationshipLabel>Éléments d'agenda</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Mode de livraison</label>
+        <name>Delivery_Method__c</name>
+        <picklistValues>
+            <masterLabel>In-Person</masterLabel>
+            <translation>En personne</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telepresence</masterLabel>
+            <translation>Téléprésence</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Mandatory for demo topics only --></help>
+        <label><!-- Demo Delivery Location(s) --></label>
+        <name>Demo_Delivery_Location_s__c</name>
+        <picklistValues>
+            <masterLabel>Bangalore</masterLabel>
+            <translation><!-- Bangalore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beijing</masterLabel>
+            <translation><!-- Beijing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chicago</masterLabel>
+            <translation><!-- Chicago --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cleveland</masterLabel>
+            <translation><!-- Cleveland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Galway</masterLabel>
+            <translation><!-- Galway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Herndon</masterLabel>
+            <translation><!-- Herndon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Howe</masterLabel>
+            <translation><!-- Howe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>London</masterLabel>
+            <translation><!-- London --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mumbai</masterLabel>
+            <translation><!-- Mumbai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New York</masterLabel>
+            <translation><!-- New York --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Remote Location</masterLabel>
+            <translation><!-- No Remote Location --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oklahoma</masterLabel>
+            <translation><!-- Oklahoma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oslo</masterLabel>
+            <translation><!-- Oslo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RTP</masterLabel>
+            <translation><!-- RTP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Richardson</masterLabel>
+            <translation><!-- Richardson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SJ</masterLabel>
+            <translation><!-- SJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shanghai</masterLabel>
+            <translation><!-- Shanghai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Singapore</masterLabel>
+            <translation><!-- Singapore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Songdo</masterLabel>
+            <translation><!-- Songdo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sydney</masterLabel>
+            <translation><!-- Sydney --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tokyo</masterLabel>
+            <translation><!-- Tokyo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Toronto</masterLabel>
+            <translation><!-- Toronto --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Durée</label>
+        <name>Duration__c</name>
+    </fields>
+    <fields>
+        <label>Date/heure de fin</label>
+        <name>End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label>Heure de fin (site)</label>
+        <name>End_Time_Site__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Contact Email --></label>
+        <name>Engagement_Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Contact Name --></label>
+        <name>Engagement_Contact_Name__c</name>
+    </fields>
+    <fields>
+        <label>Nom d'événement</label>
+        <name>Event_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outlook Status --></label>
+        <name>Outlook_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Presenters --></label>
+        <name>Presenters__c</name>
+    </fields>
+    <fields>
+        <label>Objectifs de vente</label>
+        <name>Sales_Objectives__c</name>
+    </fields>
+    <fields>
+        <label>Affichage de certaines salles</label>
+        <name>Selected_Rooms_Display__c</name>
+    </fields>
+    <fields>
+        <label>Salles sélectionnées</label>
+        <name>Selected_Rooms__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation>Aucun</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Affichage de certains sites</label>
+        <name>Selected_Sites_Display__c</name>
+    </fields>
+    <fields>
+        <label>Sites sélectionnés</label>
+        <name>Selected_Sites__c</name>
+        <picklistValues>
+            <masterLabel>Default</masterLabel>
+            <translation>Par défaut</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value 1</masterLabel>
+            <translation>Valeur 1</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value 2</masterLabel>
+            <translation>Valeur 2</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value 3</masterLabel>
+            <translation>Valeur 3</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value 4</masterLabel>
+            <translation>Valeur 4</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Date/Heure de début</label>
+        <name>Start_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label>Heure de début (site)</label>
+        <name>Start_Time_Site__c</name>
+    </fields>
+    <fields>
+        <label><!-- TEMP_AGENDA_ITEM_ID --></label>
+        <name>TEMP_AGENDA_ITEM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Temp_CEE --></label>
+        <name>Temp_CEE__c</name>
+    </fields>
+    <fields>
+        <label>Nom de rubrique</label>
+        <name>Topic_Name__c</name>
+    </fields>
+    <fields>
+        <label>Rubrique</label>
+        <name>Topic__c</name>
+        <relationshipLabel>Éléments d'agenda</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Durée totale du programme</label>
+        <name>Total_Agenda_Duration__c</name>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Agenda Item --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Agenda Item --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Agenda Item Layout</layout>
+        <sections>
+            <label>Restauration</label>
+            <section>Catering</section>
+        </sections>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Détails</label>
+            <section>Details</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage>Nom de la présentation/l'élément requis</errorMessage>
+        <name>Agenda_Item_Name_Not_Empty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Agenda item Date/time needs to be within Briefing&apos;s Start or End Time --></errorMessage>
+        <name>Agenda_item_Start_or_End_within_Briefing</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Les heures choisies dépassent la durée du briefing. Sélectionnez des heures dans la fenêtre Briefing.</errorMessage>
+        <name>Dates_Within_Briefing_Timeframe</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Demo Delivery Location is Mandatory for Demo Solutions --></errorMessage>
+        <name>Demo_Delivery_location_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Sélectionnez une date de début antérieure à la date de fin.</errorMessage>
+        <name>Start_Date_Earlier_End_Date</name>
+    </validationRules>
+    <webLinks>
+        <label>Envoyer des invites</label>
+        <name>Send_Invites</name>
+    </webLinks>
+    <webLinks>
+        <label>Afficher la disponibilité des ressources</label>
+        <name>View_Resource_Availability</name>
+    </webLinks>
+</CustomObjectTranslation>

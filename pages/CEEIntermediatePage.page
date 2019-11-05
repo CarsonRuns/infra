@@ -1,0 +1,176 @@
+<!-------------------------------------------------------------------------------
+       @Author :Laxman Thadaka
+       @name :CEEIntermediatePage
+       @CreateDate : 08/05/2015
+       @Description :This page Populate values on CEE detail page.
+       @Version :1.2
+       //************************* Change History ****************************
+       // Added code changes for PBI000000055964
+       // Sudi : 5/10/2016 - US10714: Added Banner link for eXperience Services
+       // Prashanth: OCT/28/2016 - Added Help link and removed Theater field
+      ------------------------------------------------------------------------------->
+<apex:page standardController="CEE__c"
+    extensions="CEEIntermediatePageController" id="page1">
+    <apex:includeScript value="{!$Resource.jquery22}" />
+    <script>
+      var chk =false;
+      function isLightningDesktop() {
+          //Komal - Lightning 08/10/2018 Release --Change to allow Lightning Desktop and Lightning Console themes
+          return( ("{!$User.UIThemeDisplayed }" == "Theme4d") || ("{!$User.UIThemeDisplayed }" == "Theme4u") );
+      }
+      function redirect(){ 
+        if(isLightningDesktop()){
+           // SCAVA FIX
+            var retnUrl = "{!JSENCODE($CurrentPage.parameters.vfRetURLInSFX)}";
+            console.log('retnUrl===>'+retnUrl);
+            var firstIndex = retnUrl.indexOf("sObject/");
+            var aUrl1 = retnUrl.substring(firstIndex+8, firstIndex+26);
+            console.log('sve_new====>'+"{!JSENCODE($CurrentPage.parameters.save_new)}");
+            console.log('/apex/CEERecordTypeSelection?vfRetURLInSFX='+retnUrl+'&sfdc.override=1');
+            window.location.href = retnUrl;
+        }else{  
+       // SCAVA FIX 
+        window.location.href = '/apex/CEERecordTypeSelection?retURL={!JSENCODE($CurrentPage.parameters.retURL)}&save_new={!JSENCODE($CurrentPage.parameters.save_new)}&sfdc.override=1';
+        }
+      }
+      
+      function RedirectNext(){  
+        var ddlValue = $("[id$='serVal']").val();
+        if(ddlValue == "Disagree & Cancel Request"){        
+            DisagreeCancelRequest(); 
+            alert('{!$Label.CEE_Service_Charge_Disagree}');   
+            window.location.href = document.URL;                  
+        }    
+      }
+      
+      function disableService(){
+        var ddlEventValue = $("[id$='eventType']").val();         
+        var ddlFSOLocation = $("[id$='FSOLocation']").val();
+        if(ddlFSOLocation == '{!$Label.CEE_SanJoseExperienceCenter}' && (ddlEventValue == "Good Will Visit" || ddlEventValue == "EPN Recording" || ddlEventValue == "POV Event") ){        
+            $("[id$='serVal'] option:first-child").attr("selected", "selected");
+            $("[id$='serVal']").attr("disabled",true);          
+        }
+        else{   
+            if(ddlFSOLocation == '{!$Label.CEE_SanJoseExperienceCenter}'){ 
+                $("[id$='serVal'] option:first-child").attr("selected", "selected");
+                $("[id$='serVal']").attr("disabled",false);  
+            }       
+        }
+        
+      }
+      function setEventTypeFirst(){
+        $("[id$='eventType'] option:first-child").attr("selected", "selected"); 
+        
+      }
+      function fsoLocationrequired(){ 
+          // Sudi (12/03/2015 - PBI000000055964 ): Added below error message when user Select other FSO and primary site is SJ CXC 
+          // user always select SJ CXC from "Experience Center or Other/FSO Location" drop down and proceed with service charge selection. 
+          if($('body').find('select[id$=":FSOLocation"] option:selected').val() == "Other/FSO" && $("[id$='otherfso']").val() == 'San Jose Customer Experience Center'){      
+                alert('Please change the Experience Center to San Jose when Primary Site is selected as San Jose Customer Experience Center to submit the request');            
+                return false;
+                           
+          }else{
+              if($('body').find('select[id$=":FSOLocation"] option:selected').val() != "Other/FSO" || $("[id$='otherfso']").val() != ""){
+                   $("[id$='otherfso']").css("border","0px"); 
+              }else if($('#errorPM').text() == ""){                        
+                  $("[id$='otherfso']").wrap('<div class="requiredInput errorMsg" style="float:left;"/>').before('<div class="requiredBlock"></div>');
+                  $("[id$='otherfso']").after('<div id="errorPM" class="errorMsg"><strong>Error:</strong> You must enter a value</div>');         
+                  return false;
+              }else{
+                  return false;
+              } 
+          }
+          
+      }
+    </script>
+    <style>
+.CancelButton {
+    color: #333;
+    margin: 1px;
+    padding: 2px 3px;
+    border: 1px solid #b5b5b5;
+    border-bottom-color: #7f7f7f;
+    background: #e8e8e9 url('/img/alohaSkin/btn_sprite.png') repeat-x right
+        top;
+    font-weight: bold;
+    font-size: .9em;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 4px 3px;
+    cursor: pointer;
+}
+
+:required {
+    border: 2px solid #c00;
+}
+
+.cs1Text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+.cs1RedBold {
+    color: red;
+    font-weight: bold;
+}
+
+.cs1BlueBold {
+    color: blue;
+    font-weight: bold;
+}
+
+.cs1FloatLeft {
+    float: left;
+}
+
+.cs1RedBold {
+    color: red;
+    font-weight: bold;
+}
+</style>
+    <apex:form id="fm">
+        <apex:actionFunction action="{!DisagreeCancelRequest}"
+            name="DisagreeCancelRequest" reRender="dummpy">
+        </apex:actionFunction>
+        <span class="cs1RedBold"> As of September 1st, Chicago,
+            Richardson and Oslo Customer Experience Centers (CXCs) will be no
+            longer be supported as CXCs but will be like other Field Sales
+            Offices. For this location room resources can be booked directly via
+            MS Exchange as of September 1st. Virtual demonstrations provided by
+            the CXC Team are booked by requesting an OBX in SFDC. The EC/FSO
+            Location will be Other/FSO and the primary site will be the FSO
+            listing where you will be located </span>
+        <br />
+        <br />
+        <span class="cs1BlueBold">Please click <a
+            class="cs1Text cs1BlueBold" href="#"
+            onClick='window.open("http://xs.cisco.com")'>here </a>{!$Label.CEE_IntermediatePage_Banner}
+        </span>
+        <apex:pageBlock title="Customer Engagements & Events Edit" id="pbl1">
+
+            <apex:pageBlockSection columns="1" id="pbSec">
+                <apex:inputField value="{!CEE.EBC_CBC_Location__c}" id="FSOLocation"
+                    onchange="setEventTypeFirst();" required="true"></apex:inputField>
+                <apex:inputField value="{!CEE.Primary_FSO__c}" id="otherfso" />
+                <apex:inputField value="{!CEE.Event_Type__c}" required="true"
+                    onchange="disableService();" id="eventType" />
+                <apex:inputField value="{!CEE.Meeting_Delivery_Type__c}"
+                    required="true" />
+                <!--<apex:inputField value="{!CEE.Briefing_Theatre__c}" required="true" />-->
+                <apex:inputField value="{!CEE.Service_Charge_1K_USD_to_Engagement__c}"
+                    onchange="RedirectNext();" required="true" id="serVal">
+                    <a href="javascript:void(0)"
+                        onClick="javascript:window.open('{!serviceChargInfolink}','_blank')">More
+                        Details on Service Charge</a>
+                </apex:inputField>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:CommandButton value="Continue" id="BtnNext"
+                    action="{!continueNext}" onclick="return fsoLocationrequired()"></apex:CommandButton>
+                <input type="button" value="Cancel" onclick="redirect();"
+                    class="CancelButton" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

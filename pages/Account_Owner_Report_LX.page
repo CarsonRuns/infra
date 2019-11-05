@@ -1,0 +1,38 @@
+<apex:page docType="html-5.0" title="Account Owner Report" standardController="Account">
+      <style>
+         .reportLink {
+            text-decoration: none;
+            color: rgb(0, 112, 210);
+            font-family: 'Salesforce Sans',Arial,sans-serif;
+            font-size: .8125rem;
+            font-weight: 400;"
+          }
+        </style>
+        <apex:form >
+        <apex:slds />
+        <div class="slds">
+        <table class="slds-table slds-table--bordered">
+            <thead>
+               <tr class="slds-text-title_caps">
+               <th>Enter the Account Name and Click Run Report</th>               
+               </tr>
+            </thead>
+            <tr>
+                <td class="slds-truncate" width="1%">
+                    <input id="name" maxlength="15" name="name" size="20" type="text" value=""/>
+                </td>
+            </tr>
+ 
+        </table>
+        <input value="Run Report" class="btn" name="run" title="Run Report"  onclick="openReport();"/>
+        </div>
+        <script>
+            function openReport(){  
+                var hostname = window.location.hostname.toLowerCase();              
+                var parm1 = document.getElementById('name').value;
+                console.log('parm1==>'+parm1);
+                top.location.href ="https://"+hostname+"/lightning/r/Report/00O34000006UQyo/view?t=1479844235107&fv0="+parm1;
+            }
+        </script>          
+        </apex:form>
+    </apex:page>

@@ -1,0 +1,217 @@
+<!-- 
+Change History:
+    
+    10042018 - Updated to fix Lighnting Issues  by Naresh
+-->
+
+<apex:page showHeader="false" standardStylesheets="false" docType="html-5.0" applyHtmlTag="true" cache="false">
+
+   <apex:stylesheet value="{!URLFOR($Resource.ciscobootstrap, '/css/bootstrap.css')}" />
+   <div class="dse-st" style="padding:20px;display:none;height:400px" id="dse-Maintenance">
+      <div class="row">
+         <div class="col-md-3 col-lg-3">
+         </div>
+         <div class="col-md-6 col-lg-6" style="text-align:left;border:1px solid #eee;padding:10px;font-family:CiscoSans;font-size:small;">
+            <apex:outputText escape="false" value="{!$Label.CiscoReadyInMaintenanceMessage}" />
+         </div>
+         <div class="col-md-3 col-lg-3">
+         </div>
+      </div>
+   </div>
+   <div id="ib_banner" style="padding:10px;font-family:CiscoSans;font-size:14px;color:#4b586c;display:none;">
+      <!--<b>Now available!</b> Cisco Ready (CR) in SFDC - Installed Base (IB) Prospect data for your territory directly on your SFDC Home Page - providing customer insights that will enable you to sell faster and smarter.  For more information, visit the <a href="https://salesconnect.cisco.com/open.html?g=135320" target="_blank">Digital Sales Kit</a> on SalesConnect. 
+       <b>Now available!</b> Cisco Ready (CR) in SFDC - Installed Base (IB) Prospect data for your territory directly on your SFDC Home Page - providing customer insights that will enable you to sell faster and smarter. For more information, visit the <a href="https://salesconnect.cisco.com/open.html?g=135320" target="_blank">Digital Seller Experience Sales Kit</a> in SalesConnect. Register now for <a href="https://cisco.jiveon.com/docs/DOC-1450035" target="_blank">training</a>.
+       <b>Now available - Software Support Service (SWSS) Prospects!</b> Access the new SWSS Prospects tile on your SFDC Homepage to start capitalizing on valuable SWSS opportunities and help your customers protect their software investments. For training and support materials, visit the <a href="https://salesconnect.cisco.com/open.html?h=PAGE-5747" target="_blank">Digital Selling Experience Hub</a> in SalesConnect. 
+       <b>Now available - Customer Cisco.com Activity Insights!</b> Access the new Customer Cisco.com Activity tile in combination with Eloqua Profiler, to stay on top of your customers’ interests, identify new opportunities, better prepare for customer conversations and build stronger relationships. For training and support materials, visit the  <a href="https://salesconnect.cisco.com/open.html?h=PAGE-5569" target="_blank">Digital Selling Experience Hub</a> in SalesConnect.      
+       <b>New! Check out the new Customer Heat Map on your Salesforce Homepage</b>  for valuable customer booking, funnel and opportunity insights.  Quickly find new cross-sell and ‘white space’ opportunities with your customers to help you target specific areas for Cisco penetration. To learn more, visit the <a href="https://salesconnect.cisco.com/open.html?h=PAGE-6443" target="_blank">Digital Selling Experience Hub</a> in SalesConnect.--> 
+   </div>
+   <apex:remoteObjects >
+      <apex:remoteObjectModel name="User" fields="Id,Additional_User_Permissions__c" />
+   </apex:remoteObjects>
+   <div style="padding-top:5px">
+      <iframe src="" id="ib_iframe" width="100%" height="0px" frameborder="0"></iframe>
+   </div>
+   <script type="text/javascript">
+      var SFDCBaseURL = 'https://' + window.location.host;                         
+      var iframeURLString = '&baseURL='+SFDCBaseURL+'&view=';
+      var dseApp = 'https://dse.cloudapps.cisco.com';
+      
+      function onDseLoad(){
+      console.log('execute');
+          localStorage.setItem("firstTimeLoad", "YES");
+          
+      }
+      function dseEnv(){
+          if(window.location.host !== 'ciscosales.my.salesforce.com' && window.location.host !== 'ciscosales.lightning.force.com' )      <!-- updated by Naresh  -->
+          {   
+              var SFDCBaseURL = 'https://' + window.location.host;                         
+              dseApp = 'https://dse-stg.cloudapps.cisco.com';
+          }
+      }
+      function inMaintenance(){
+          var flag= '{!$Label.CiscoReadyInMaintenanceFlag}';
+          if(flag === 'true'){
+           
+           document.getElementById("ib_iframe").src = '';
+           document.getElementById("ib_iframe").style.display = 'none';
+           document.getElementById("ib_banner").style.display = 'none';
+           document.getElementById("dse-Maintenance").style.display = 'block';
+          }else{
+              var userName = '{!$user.userName}';
+              var param = window.location.search;
+              //console.log('PARAM======',param);
+              
+              if(param === ''){              
+              document.getElementById("ib_iframe").src = dseApp +'/dse/home?un='+ userName.substring(0,userName.indexOf('@'))+iframeURLString;
+              }else{
+              param = param + '&un='+userName.substring(0,userName.indexOf('@'))+iframeURLString;
+              document.getElementById("ib_iframe").src = dseApp + '/dse/home' + param;
+              }
+              document.getElementById("ib_iframe").style.display = 'block';
+              document.getElementById("ib_banner").style.display = 'block';
+              document.getElementById("dse-Maintenance").style.display = 'none';   
+              //console.log('Setting iframe');           
+          }
+      
+      }
+      
+      
+      
+      function validateUserPermission() {
+          //console.log('Validating User');
+          var crUser = new SObjectModel.User();
+          crUser.retrieve({
+              where: {
+                  Id: {
+                      eq: '{!$User.Id}'
+                  }
+              }
+          }, function (err, records, event) {
+              if (err) {
+                  alert(err);
+              } else {
+                  
+                  
+                 var addPerm = records[0].get('Additional_User_Permissions__c');
+                 
+                 if(typeof addPerm === "undefined"){
+                 document.getElementById("ib_iframe").src = '';
+                      document.getElementById("ib_iframe").style.height= '0px';
+                      resizeIframenew(true);
+                      //console.log('Without You  dont have access to CR');
+                  
+                  }else{
+                      addPerm = addPerm.replace(/\s/g, '');
+                      var arrayOfaddPerm = addPerm.split(';');
+
+                      for(i=0;i<=arrayOfaddPerm.length;i++){
+                          switch (arrayOfaddPerm[i]) {
+                                  /** case "ViewCiscoReadyinSFDC": //Commenting out display of all other tiles except Customer Heatmap per Lightning Business decision for Nov 2018.
+                                iframeURLString = iframeURLString +'swss,';
+                                iframeURLString = iframeURLString +'cr,';                                
+                                break;
+                            case "DSECRinSFDC":
+                                iframeURLString = iframeURLString +'cr,';
+                                break;
+                            case "DSEContactIntelligence":
+                                iframeURLString = iframeURLString +'ci,';
+                                break;
+                            case "DSESWSS":
+                                iframeURLString = iframeURLString +'swss,';
+                                break;
+                            //Bookings release changes     **/                         
+                            case "DSEC360":
+                                iframeURLString = iframeURLString +'c360,';
+                                break;
+                         	 /**   case "DSEGA":
+                                iframeURLString = iframeURLString +'ga,';
+                                break;
+                            case "DSEFA":
+                                iframeURLString = iframeURLString +'fa,';
+                                break;
+                            case "DSETAC":
+                                iframeURLString = iframeURLString +'tac,';
+                                break;
+                            case "DSENotification":
+                                iframeURLString = iframeURLString +'AI,';
+                                break;   **/
+                                }
+                                
+                      }
+                      //console.log(iframeURLString);
+                      iframeURLString = iframeURLString.substring(0,iframeURLString.lastIndexOf(','));
+                      if (iframeURLString.length > 0) {
+                      //console.log('You  have access to CR');
+                      inMaintenance();
+                      document.getElementById("ib_iframe").style.height= '400px';
+                      resizeIframenew(false);
+                  } else {
+                      document.getElementById("ib_iframe").src = '';
+                      document.getElementById("ib_iframe").style.display = 'none'; 
+                      document.getElementById("ib_iframe").style.height= '0px';
+                      resizeIframenew(true);
+                      //console.log('You  dont have access to CR');
+                  }
+                  }
+              }
+          });
+          resizeIframenew(false)
+      
+      }
+      
+      function resizeIframenew(h) {
+          var me = window.name;
+          var iframes = document.getElementsByName(me);
+          if (h != true) {
+      
+              if (me) {
+                  if (iframes && iframes.length == 1) {
+                      height = document.body.offsetHeight;
+                     // console.log('My height' + height);
+                      //console.log('My height Inner' + window.innerHeight);
+                      if (height <= 50) {
+                          iframes[0].style.height = 100 + "px";
+                      } else {
+                          iframes[0].style.height = height + "px";
+                      }
+      
+                  }
+              }
+          } else {
+              iframes[0].style.height = 0 + "px";
+          }
+      }
+      
+      var ib_resize = function (event) {
+        //  console.log(event.origin);
+        //  console.log('event = ',event);
+          if (event.origin !== dseApp) {
+              return;
+          }
+          var ib_iframe = document.getElementById('ib_iframe');
+          if (ib_iframe) {
+              //console.log('height = ',event.data.height);
+              ib_iframe.style.height = event.data.height + 90 + "px";
+              resizeIframenew(false);
+              var me = window.name;
+              var iframes = document.getElementsByName(me);
+              console.log('offset - ',iframes[0].offsetHeight);
+              //console.log('iframes',iframes);
+              var topHeight = iframes[0].offsetTop + 50;
+              //To be changed after LAE deployment
+              console.log('view =',event.data.view);
+              if(event.data.view == 'detail' && iframes[0].offsetHeight < 800){
+                  window.parent.scrollTo(0, topHeight);
+              }
+          }
+      };
+      if (window.addEventListener) {
+          window.addEventListener("message", ib_resize, false);
+      } else if (window.attachEvent) {
+          window.attachEvent("onmessage", ib_resize);
+      }
+      //On Load Function
+       dseEnv();
+       validateUserPermission();
+   </script>
+</apex:page>

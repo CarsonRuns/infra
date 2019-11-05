@@ -1,0 +1,65 @@
+<apex:page standardController="Lead" extensions="NGCC_LeadList" recordSetVar="Leads" tabStyle="Lead" id="pg">
+    
+    <apex:form >
+    <apex:pageMessages />
+        <apex:pageBlock title="Lead Status Change" rendered="{!show}">
+            
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Save" action="{!save1}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            <apex:actionFunction name="show1" reRender="pgBTable,col,colpp"/>
+            <apex:pageBlockTable value="{!listwrap}" var="le" id="pgBTable">
+                <apex:column headerValue="Name">
+                    <apex:outputLink value="/{!le.objlead.Id}" target="_blank">{!le.objlead.name}</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!le.objlead.Company}" headerValue="Company"/>
+                <apex:column value="{!le.objlead.CustomCountry__c}" headerValue="Country"/> 
+                <apex:column value="{!le.objlead.MQL_Created_Date__c}" headerValue="Created Date" />
+                <apex:column value="{!le.objlead.QATimeFrame__c}" headerValue="Time Frame" />
+                <apex:column value="{!le.objlead.QABudget__c}" headerValue="Budget" />
+                <apex:column value="{!le.objlead.Main_Technology__c}" headerValue="Technology"/>
+                <apex:column value="{!le.objlead.ServicesAmount__c}" headerValue="EST Service Amount"  />
+                <apex:column value="{!le.objlead.ProductAmount__c}" headerValue="EST Product Amount"  />
+                <apex:column value="{!le.objlead.Description}" headerValue="Description"/>
+                
+                
+                <apex:column headerValue="Status">
+                    <apex:actionRegion >
+                    
+                        <apex:selectList id="chooseColor" value="{!le.Status}" size="1" onchange="show1()" >
+                        
+                            <apex:selectOption itemValue="Approved" itemLabel="Approved"/>
+                            <apex:selectOption itemValue="Rejected" itemLabel="Rejected"/>
+                            <apex:selectOption itemValue="Send to Sales" itemLabel="Send to Sales"/>
+                            <apex:selectOption itemValue="Cancel" itemLabel="Cancel"/>
+                            
+                           <!-- <apex:actionSupport event="onchange" reRender="pgBTable,col,colpp"/>  pgBTable reRender="col,colpp" -->
+                        </apex:selectList> 
+                      </apex:actionRegion> 
+                      
+                    </apex:column>
+                    
+                   <apex:column headerValue="Rejected Reason">
+                       <apex:outputPanel id="col">
+                                      <!--<apex:inputTextArea value="{!le.rejReasonDetails}" rendered="{!le.Status == 'Rejected'}" required="true"  />-->
+                         <apex:inputField value="{!le.objlead.Rejected_Reason_Details__c}"  rendered="{!if(le.Status == 'Rejected',true,false)}"/>           
+                        </apex:outputPanel>
+                 </apex:column>
+                
+                <apex:column headerValue="Cancel Reason">
+                    <apex:outputPanel id="colpp">
+                    <!-- <apex:inputText value="{!le.ldCancelReason}" rendered="{!le.Status == 'Cancel'}" required="true"  />  -->
+                    <apex:inputField value="{!le.objlead.Lead_Cancel_Reason__c}" rendered="{!if(le.Status == 'Cancel',true,false)}"  />                 
+                    </apex:outputPanel>
+                </apex:column>
+                </apex:pageBlockTable> 
+                 </apex:pageBlock> 
+       
+       <apex:pageblock title="Error page" rendered="{!NOT(show)}" >
+        <apex:pageMessage summary="You have to be NGCC-CC Site Manager to use this button" severity="error"></apex:pageMessage> 
+        </apex:pageblock> 
+       
+    </apex:form>
+   
+    </apex:page>

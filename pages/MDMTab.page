@@ -1,0 +1,73 @@
+<apex:page showHeader="true" sidebar="true" controller="MDMTab_CT">
+
+    <script language='JavaScript'>
+
+
+    var hostname = window.location.hostname.toLowerCase();
+
+    var urlToOpen = '{!urlToOpen}&sessionId={!$API.Session_ID}';
+    console.log("URLTOOPEN : "+urlToOpen);
+
+    var appErrMsg = 'Error Rendering page please open a case with GSTS.';
+
+
+    /*
+    //This variable is required to render mdm inside iframe
+    
+     var app = '<html><head><style>div {visibility:hidden;}</style></head><body>' +
+         '<div id="apperrmsg">'+appErrMsg+'</div>' +
+         '<image id="appChk" src="{!mdmImgUrl}" width=0 height=0 onload="parent.appAvail()" onerror="parent.appError()" />' +
+         '</body></html>';
+ 	*/
+ 	// This variable is to render mdm in a complete window
+    var app2 = '<image id="appChk" src="{!mdmImgUrl}" width="0" height="0" onload="appAvail()" onerror="appError()" />';
+
+   	function appAvail(){
+        //appFrame.location.href=urlToOpen;
+		// to open mdm in same window
+        //top.location.href=urlToOpen;
+		// to open mdm inside iframe
+        //document.getElementById('showImage').style.visibility = "hidden";
+        //document.getElementById('appFrame').src = urlToOpen;
+		// to open mdm in new window
+		document.getElementById("loadingImg").innerHTML="<h1>MDM Loaded in another window</h1>";
+		var win = window.open(urlToOpen, '_blank');
+		win.focus();
+    }
+    
+    function appError(){
+        document.getElementById("showImage").style.visibility="hidden";
+        //document.getElementById("appFrame").style.visibility="hidden";
+        document.getElementById("errorId").innerText = appErrMsg;
+        document.getElementById("errorId").style.visibility="visible";
+    }
+
+
+	// This function will get called on pageload to check if mdm is up
+	// If mdm is avialable then it will call appAvail else appError will be called
+    function getMDM() {
+        var imgDiv = document.getElementById("loadImg");
+        imgDiv.innerHTML = app2;
+    }
+
+    </script>
+    
+    <body>    
+     <div id="showImage" style="position: absolute; top: 0px; z-index: 1000; display: block; margin: 0px auto; width: 84%;">
+        <div id="loadingImg" style="width: 100%; margin: 0px auto;">
+            <center >Redirecting to My Deal Manager Application.........</center> 
+            <center><img src="/img/waiting_dots.gif"/></center>
+        </div>
+        <div id="loadImg"></div>
+    </div>
+    
+    <!--
+    This div is to display mdm inside iframe 
+    <div style="width:100%;height:100%;position:relative;">
+        <iframe id="appFrame" frameborder="0" height="1110" style="width:100%;"></iframe>
+    </div> 
+    -->
+    <script type="text/javascript">getMDM()</script>
+    <div id="errorId"> </div> 
+    </body>
+</apex:page>

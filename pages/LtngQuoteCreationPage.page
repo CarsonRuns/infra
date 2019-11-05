@@ -1,0 +1,28 @@
+<apex:page showHeader="true" sidebar="true" standardController="Quote__c" tabstyle="Opportunity">
+   <script>
+      function envTypeCheck(){
+          var type = '{!$User.UIThemeDisplayed}'
+          if(type === 'Theme4d'){        
+          }else{
+                  //Added mode=cls to send to CCW for navigation back and forth
+              window.location.href = '/apex/NewQuoteCreatePage'+window.location.search + "&mode=cls";
+          }
+      }
+      function switchToClassic(){         
+         window.top.location.href = '/lightning/switcher?destination=classic';
+         location.reload();
+      }
+      envTypeCheck();
+   </script>
+   <apex:outputPanel rendered="{!$User.UIThemeDisplayed == 'Theme4d'}">
+      <apex:slds />
+      <div class="slds-scope">
+         <div class="slds-box slds-align_absolute-center" style="height:400px">
+            <div data-reactroot="" class="slds-text-heading_medium">
+               Quote Creation is not currently supported in Lightning.
+               <p class="slds-text-heading_small">Please switch back to <a href="" onclick="switchToClassic()">Classic</a></p>
+            </div>
+         </div>
+      </div>
+   </apex:outputPanel>
+</apex:page>

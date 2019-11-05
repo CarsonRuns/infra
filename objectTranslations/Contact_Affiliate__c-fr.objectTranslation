@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Acquisition utilisateur</label>
+        <name>Acquisition_User__c</name>
+        <relationshipLabel>Contact affiliés</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel>Contacts affiliés</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Infos marketing utilisateur final</label>
+        <name>End_User_Marketing_Info__c</name>
+        <picklistValues>
+            <masterLabel>No Information to be sent</masterLabel>
+            <translation>Aucune information à envoyer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>Oui</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Contact utilisateur ou partenaire ?</label>
+        <name>End_User_or_Partner_Contact__c</name>
+        <picklistValues>
+            <masterLabel>End User Contact</masterLabel>
+            <translation>Contact utilisateur final</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Contact</masterLabel>
+            <translation>Contact du partenaire</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Invitation à un événement partenaire</label>
+        <name>Partner_Event_Invitation__c</name>
+        <picklistValues>
+            <masterLabel>No Information to be sent</masterLabel>
+            <translation>Aucune information à envoyer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>Oui</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Infos marketing partenaire</label>
+        <name>Partner_Marketing_Info__c</name>
+        <picklistValues>
+            <masterLabel>No Information to be sent</masterLabel>
+            <translation>Aucune information à envoyer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>Oui</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Enquête de satisfaction partenaire</label>
+        <name>Partner_Satisfaction_Survey__c</name>
+        <picklistValues>
+            <masterLabel>No Information to be sent</masterLabel>
+            <translation>Aucune information à envoyer</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>Oui</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Chargement de fournisseur marketing tiers dans SFDC</help>
+        <label>ID de contact protocole</label>
+        <name>Protocol_Contact_ID__c</name>
+    </fields>
+    <fields>
+        <label>Classement partenaire de sécurité</label>
+        <name>Security_Partner_Ranking__c</name>
+        <picklistValues>
+            <masterLabel>Stage 1–Registered</masterLabel>
+            <translation>Étape 1 : inscrit</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 2–Certified</masterLabel>
+            <translation>Étape 2–Certifié</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 3–Proficient</masterLabel>
+            <translation>Étape 3 : performant</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 4–Promoter</masterLabel>
+            <translation>Étape 4–Promoteur</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Score consultant ventes prod. sécurité</label>
+        <name>Security_Sales_Consultant_Ranking__c</name>
+        <picklistValues>
+            <masterLabel>Stage 1-SFCP Certified</masterLabel>
+            <translation>Étape 1-Certifié SFCP</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 2-Taken SFCSC Course</masterLabel>
+            <translation>Étape 2-Cours SFCSC suivi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 3-Passed SFCSC Exam</masterLabel>
+            <translation>Étape 3-Diplômé Sourcefire SFCSC</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 4-Completed 30 day mentor program</masterLabel>
+            <translation>Étape 4-Prog. mentorat 30 jours terminé</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 5-Completed Shadow or provided customer info</masterLabel>
+            <translation>Étape 5-Shadow terminé/infos fournies par client</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stage 6-Approved/Logo Provided</masterLabel>
+            <translation>Étape 6-Approuvé/Logo fourni</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Sous-type</label>
+        <name>Sub_Type__c</name>
+        <picklistValues>
+            <masterLabel>Architect</masterLabel>
+            <translation>Architecte</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Management</masterLabel>
+            <translation>Gestion</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Autre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Procurement</masterLabel>
+            <translation>Approvisionnement</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SE</masterLabel>
+            <translation><!-- SE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SE &amp; Services</masterLabel>
+            <translation><!-- SE &amp; Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SE Manager</masterLabel>
+            <translation>Responsable SE</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SPARK</masterLabel>
+            <translation><!-- SPARK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation>Vente</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Executive</masterLabel>
+            <translation>Cadre commercial</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Services</masterLabel>
+            <translation><!-- Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support</masterLabel>
+            <translation>Assistance</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Accounts Payable</masterLabel>
+            <translation>Comptes créditeurs</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BD Partner</masterLabel>
+            <translation>Partenaire BD</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BD Partner Prospect</masterLabel>
+            <translation>Prospect partenaire BD</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel End User Prospect</masterLabel>
+            <translation>Prospect utilisateur final partenaire</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Partner</masterLabel>
+            <translation>Partenaire de distribution</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Partner Prospect</masterLabel>
+            <translation>Prospect partenaire de distribution</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation>Concurrent</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consultant</masterLabel>
+            <translation><!-- Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation>Distributeur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor Prospect</masterLabel>
+            <translation>Prospect distributeur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End User</masterLabel>
+            <translation>Utilisateur final</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End User Prospect</masterLabel>
+            <translation>Prospect utilisateur final</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Influencer</masterLabel>
+            <translation>Influenceur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maintenance Contact</masterLabel>
+            <translation>Contact maintenance</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation>Autre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Personal</masterLabel>
+            <translation>Personnel</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Snort Integrator</masterLabel>
+            <translation>Intégrateur Snort</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sourcefire Internal</masterLabel>
+            <translation>Sourcefire interne</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplier</masterLabel>
+            <translation>Fournisseur</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Integrator</masterLabel>
+            <translation>Intégrateur de système</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Integrator Prospect</masterLabel>
+            <translation>Prospect intégrateur de système</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Contact</masterLabel>
+            <translation>Contact technique</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vendor</masterLabel>
+            <translation>Fournisseur</translation>
+        </picklistValues>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Contact Affiliate --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Contact Affiliate --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Contact Affiliate Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Contact Affiliate Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informations de sécurité</label>
+            <section>Security Information</section>
+        </sections>
+        <sections>
+            <label><!-- Tandberg Information. &lt;SCRIPT src=&quot;/servlet/servlet.FileDownload?file=01580000000va7k&quot; type=text/javascript&gt;&lt;/SCRIPT&gt;&lt;SCRIPT&gt;init();&lt;/SCRIPT&gt; --></label>
+            <section>Tandberg Information. &lt;SCRIPT src="/servlet/servlet.FileDownload?file=01580000000va7k" type=text/javascript&gt;&lt;/SCRIPT&gt;&lt;SCRIPT&gt;init();&lt;/SCRIPT&gt;</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage>Entrez la valeur dans ce champ.</errorMessage>
+        <name>Enter_Mandatory_Affiliate_Record_Info</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Entrez la valeur dans ce champ.</errorMessage>
+        <name>Enter_Mandatory_Affiliate_Record_Info_1</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Entrez la valeur dans ce champ.</errorMessage>
+        <name>Enter_Mandatory_Affiliate_Record_Info_2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Entrez la valeur dans ce champ.</errorMessage>
+        <name>Enter_Mandatory_Affiliate_Record_Info_3</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Entrez la valeur dans ce champ.</errorMessage>
+        <name>Enter_Mandatory_Affiliate_Record_Info_4</name>
+    </validationRules>
+    <webLinks>
+        <label>Nouveau contact associé</label>
+        <name>New_Contact_Affiliate</name>
+    </webLinks>
+</CustomObjectTranslation>

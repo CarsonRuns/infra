@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Additional_Information__c</fullName>
+        <description>Workspace Additional Information</description>
+        <externalId>false</externalId>
+        <label>Additional Information</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Setting the Digital Agenda</fullName>
+                    <default>false</default>
+                    <label>Setting the Digital Agenda</label>
+                </value>
+                <value>
+                    <fullName>Discover</fullName>
+                    <default>false</default>
+                    <label>Discover</label>
+                </value>
+                <value>
+                    <fullName>Identify &amp; Design</fullName>
+                    <default>false</default>
+                    <label>Identify &amp; Design</label>
+                </value>
+                <value>
+                    <fullName>Prove Value</fullName>
+                    <default>false</default>
+                    <label>Prove Value</label>
+                </value>
+                <value>
+                    <fullName>Deployed &amp; Scale</fullName>
+                    <default>false</default>
+                    <label>Deployed &amp; Scale</label>
+                </value>
+                <value>
+                    <fullName>Realized Value</fullName>
+                    <default>false</default>
+                    <label>Realized Value</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Application__c</fullName>
+        <description>Workspace Applciation</description>
+        <externalId>false</externalId>
+        <label>Application</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ASR SP</fullName>
+                    <default>false</default>
+                    <label>ASR SP</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>EAF / Data Virtualization</fullName>
+                    <default>false</default>
+                    <label>EAF / Data Virtualization</label>
+                </value>
+                <value>
+                    <fullName>EMSP</fullName>
+                    <default>false</default>
+                    <label>EMSP</label>
+                </value>
+                <value>
+                    <fullName>ENT Routing</fullName>
+                    <default>false</default>
+                    <label>ENT Routing</label>
+                </value>
+                <value>
+                    <fullName>ENT Switching</fullName>
+                    <default>false</default>
+                    <label>ENT Switching</label>
+                </value>
+                <value>
+                    <fullName>IoT DDP</fullName>
+                    <default>false</default>
+                    <label>IoT DDP</label>
+                </value>
+                <value>
+                    <fullName>IoT Routing</fullName>
+                    <default>false</default>
+                    <label>IoT Routing</label>
+                </value>
+                <value>
+                    <fullName>IoT Solution Plus</fullName>
+                    <default>false</default>
+                    <label>IoT Solution Plus</label>
+                </value>
+                <value>
+                    <fullName>IoT Switching</fullName>
+                    <default>false</default>
+                    <label>IoT Switching</label>
+                </value>
+                <value>
+                    <fullName>Meraki</fullName>
+                    <default>false</default>
+                    <label>Meraki</label>
+                </value>
+                <value>
+                    <fullName>Metapod</fullName>
+                    <default>false</default>
+                    <label>Metapod</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Self Optimized Network</fullName>
+                    <default>false</default>
+                    <label>Self Optimized Network</label>
+                </value>
+                <value>
+                    <fullName>Servers</fullName>
+                    <default>false</default>
+                    <label>Servers</label>
+                </value>
+                <value>
+                    <fullName>Small Cell / Packet Core</fullName>
+                    <default>false</default>
+                    <label>Small Cell / Packet Core</label>
+                </value>
+                <value>
+                    <fullName>SP Routing</fullName>
+                    <default>false</default>
+                    <label>SP Routing</label>
+                </value>
+                <value>
+                    <fullName>SP Video Software and Solutions</fullName>
+                    <default>false</default>
+                    <label>SP Video Software and Solutions</label>
+                </value>
+                <value>
+                    <fullName>SW Analytics &amp; Automation (SPG)</fullName>
+                    <default>false</default>
+                    <label>SW Analytics &amp; Automation (SPG)</label>
+                </value>
+                <value>
+                    <fullName>SXP</fullName>
+                    <default>false</default>
+                    <label>SXP</label>
+                </value>
+                <value>
+                    <fullName>UCS / Data Center</fullName>
+                    <default>false</default>
+                    <label>UCS / Data Center</label>
+                </value>
+                <value>
+                    <fullName>Video Surveillance / IoT CSS</fullName>
+                    <default>false</default>
+                    <label>Video Surveillance / IoT CSS</label>
+                </value>
+                <value>
+                    <fullName>Wireless</fullName>
+                    <default>false</default>
+                    <label>Wireless</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Business_Driver__c</fullName>
+        <description>Workspace Business Driver</description>
+        <externalId>false</externalId>
+        <label>Business Driver</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Compliance/Regulatory</fullName>
+                    <default>false</default>
+                    <label>Compliance/Regulatory</label>
+                </value>
+                <value>
+                    <fullName>Enabler of Digital Capability &amp; Services</fullName>
+                    <default>false</default>
+                    <label>Enabler of Digital Capability &amp; Services</label>
+                </value>
+                <value>
+                    <fullName>Improve Delivery</fullName>
+                    <default>false</default>
+                    <label>Improve Delivery</label>
+                </value>
+                <value>
+                    <fullName>Improve Efficiency</fullName>
+                    <default>false</default>
+                    <label>Improve Efficiency</label>
+                </value>
+                <value>
+                    <fullName>Improve Employee Safety</fullName>
+                    <default>false</default>
+                    <label>Improve Employee Safety</label>
+                </value>
+                <value>
+                    <fullName>Increase Revenue Streams</fullName>
+                    <default>false</default>
+                    <label>Increase Revenue Streams</label>
+                </value>
+                <value>
+                    <fullName>Protect Assets</fullName>
+                    <default>false</default>
+                    <label>Protect Assets</label>
+                </value>
+                <value>
+                    <fullName>Public Safety</fullName>
+                    <default>false</default>
+                    <label>Public Safety</label>
+                </value>
+                <value>
+                    <fullName>Reduce Costs</fullName>
+                    <default>false</default>
+                    <label>Reduce Costs</label>
+                </value>
+                <value>
+                    <fullName>Strategic Position</fullName>
+                    <default>false</default>
+                    <label>Strategic Position</label>
+                </value>
+                <value>
+                    <fullName>Workforce Multiplier</fullName>
+                    <default>false</default>
+                    <label>Workforce Multiplier</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Workspace__c</fullName>
+        <description>Related Opportunity Workspace</description>
+        <externalId>false</externalId>
+        <label>Opportunity Workspace</label>
+        <referenceTo>AT_Workspace__c</referenceTo>
+        <relationshipLabel>Workspace Business Drivers</relationshipLabel>
+        <relationshipName>Workspace_Business_Drivers</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Solution_Offer__c</fullName>
+        <description>Workspace Solution Offer</description>
+        <externalId>false</externalId>
+        <label>Solution Offer</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CDP Lighting</fullName>
+                    <default>false</default>
+                    <label>CDP Lighting</label>
+                </value>
+                <value>
+                    <fullName>Collaborative Knowledge</fullName>
+                    <default>false</default>
+                    <label>Collaborative Knowledge</label>
+                </value>
+                <value>
+                    <fullName>Connected Assets</fullName>
+                    <default>false</default>
+                    <label>Connected Assets</label>
+                </value>
+                <value>
+                    <fullName>Connected Factory for Location</fullName>
+                    <default>false</default>
+                    <label>Connected Factory for Location</label>
+                </value>
+                <value>
+                    <fullName>Connected Factory Networks</fullName>
+                    <default>false</default>
+                    <label>Connected Factory Networks</label>
+                </value>
+                <value>
+                    <fullName>Connected Factory Security</fullName>
+                    <default>false</default>
+                    <label>Connected Factory Security</label>
+                </value>
+                <value>
+                    <fullName>Connected Factory Wireless</fullName>
+                    <default>false</default>
+                    <label>Connected Factory Wireless</label>
+                </value>
+                <value>
+                    <fullName>Data Optimization</fullName>
+                    <default>false</default>
+                    <label>Data Optimization</label>
+                </value>
+                <value>
+                    <fullName>Digital Building</fullName>
+                    <default>false</default>
+                    <label>Digital Building</label>
+                </value>
+                <value>
+                    <fullName>FAN</fullName>
+                    <default>false</default>
+                    <label>FAN</label>
+                </value>
+                <value>
+                    <fullName>Intelligent Branch</fullName>
+                    <default>false</default>
+                    <label>Intelligent Branch</label>
+                </value>
+                <value>
+                    <fullName>Mass Transit</fullName>
+                    <default>false</default>
+                    <label>Mass Transit</label>
+                </value>
+                <value>
+                    <fullName>Mobile Experience</fullName>
+                    <default>false</default>
+                    <label>Mobile Experience</label>
+                </value>
+                <value>
+                    <fullName>Rail</fullName>
+                    <default>false</default>
+                    <label>Rail</label>
+                </value>
+                <value>
+                    <fullName>Ransomware Defense</fullName>
+                    <default>false</default>
+                    <label>Ransomware Defense</label>
+                </value>
+                <value>
+                    <fullName>Roadway</fullName>
+                    <default>false</default>
+                    <label>Roadway</label>
+                </value>
+                <value>
+                    <fullName>Cisco Vision</fullName>
+                    <default>false</default>
+                    <label>Cisco Vision</label>
+                </value>
+                <value>
+                    <fullName>Substation Automation</fullName>
+                    <default>false</default>
+                    <label>Substation Automation</label>
+                </value>
+                <value>
+                    <fullName>Substation Security</fullName>
+                    <default>false</default>
+                    <label>Substation Security</label>
+                </value>
+                <value>
+                    <fullName>Virtual Expertise</fullName>
+                    <default>false</default>
+                    <label>Virtual Expertise</label>
+                </value>
+                <value>
+                    <fullName>Workforce Productivity</fullName>
+                    <default>false</default>
+                    <label>Workforce Productivity</label>
+                </value>
+                <value>
+                    <fullName>Workplace Design</fullName>
+                    <default>false</default>
+                    <label>Workplace Design</label>
+                </value>
+                <value>
+                    <fullName>Workplace Management</fullName>
+                    <default>false</default>
+                    <label>Workplace Management</label>
+                </value>
+                <value>
+                    <fullName>Workplace Productivity</fullName>
+                    <default>false</default>
+                    <label>Workplace Productivity</label>
+                </value>
+                <value>
+                    <fullName>Workplace Analytics</fullName>
+                    <default>false</default>
+                    <label>Workplace Analytics</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Workspace Business Driver</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>Workspace Business Driver</label>
+    <nameField>
+        <displayFormat>BD-{0}</displayFormat>
+        <label>Workspace Business Driver Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Workspace Business Drivers</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

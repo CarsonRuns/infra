@@ -1,0 +1,129 @@
+<!--
+    Author        : Nishi Jain
+    Date Created  : 18/11/2016
+    Description   : Redesigned the existing Account SBC Redirection page to implement the logics in controller.
+-->
+
+<apex:page standardController="Account" extensions="Account_SBC_Redirection_Controller" >
+    <title>Cisco SBC Web Tab Redirect</title> 
+    <apex:includeScript value="/support/console/22.0/integration.js"/>
+    <script type="text/javascript" src="/js/functions.js"></script> 
+    <script src="/soap/ajax/10.0/connection.js"></script> 
+    <script src="/soap/ajax/10.0/apex.js"></script> 
+    <script language="javascript" type="text/javascript"></script> 
+
+    <script id="clientEventHandlersJS" language="javascript"> 
+        sforce.connection.sessionId = "{!$Api.Session_ID}";
+        var userCountry = ""; 
+        var org_id = '{!$Organization.Id}'; 
+        
+        function parseCancelURL(){ 
+            var fullURL = parent.parent.location.href 
+            // alert(fullURL); 
+            var startCancelURLIndex = fullURL.toString().indexOf("cancelURL=")+10; 
+            //alert(startCancelURLIndex); 
+            var startCancelURL = fullURL.substring(startCancelURLIndex); 
+            //alert(startCancelURL);
+            var endCancelURLIndex = startCancelURL.indexOf("&"); 
+            var cancelURLString = fullURL.substring(startCancelURLIndex,endCancelURLIndex+startCancelURLIndex); 
+            var returnVal = unescape(cancelURLString); 
+            return returnVal; 
+        } 
+        function getQuerystring(key, default_){ 
+            if (default_==null) default_=""; 
+            key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]"); 
+            var regex = new RegExp("[\\?&]"+key+"=([^&#]*)"); 
+            var qs = regex.exec(parent.window.location.href); 
+            if(qs == null) 
+                return default_; 
+            else 
+                return qs[1]; 
+        }
+        function getpermission() {
+            // alert('In the accnt creation premission function'); 
+            // alert("Please note as of 9:30 AM PST (10/7/2011) Channel/Partner Account creation has been disabled as a part of the 
+            // Partner 360 release. \n\nAs of Monday (10/10/2011) all Cisco Registered Partners will be in SFDC represented at a Country 
+            // level. \n\nEnd User/Customer Account creation will remain as-is");
+            // SCAVA FIX
+            
+            var permission_flag = '{!JSENCODE(if(permissionFlag,"true","false"))}';
+            alert(permission_flag);
+            if(permission_flag == 'true'){   
+                document.getElementById('showImage').innerHTML = '<center>Redirecting to Search Before Create Application.........</center> <center><img src=\"/img/waiting_dots.gif\"></center>'; 
+                redirectToCreate(); 
+            } 
+            else {
+                var browserName=navigator.appName; 
+                var hostname = window.location.hostname.toLowerCase();
+                 // SCAVA FIX
+                var host = encodeURI(hostname); 
+                if (browserName=="Netscape") {                 
+                    document.getElementById('errorId').innerHTML = '<font face = Arial><h3> Insufficient Privileges </h3> </font> <font face = Arial size = 2>You do not have the level of access necessary to perform Account Creation.</font> <font face = Arial size = 2> </> <a href="https://' + host + '/servlet/servlet.FileDownload?file=01580000000gQOk" target="_blank"><b><font color="blue">More Information on the Account creation process </font></b></a> <br> <br> <u><b><a href="javascript:history.back();" onclick="history.back();"></b><font color="blue"><u> Go Back to Previous Page. </u></font> </b></a> </font>';
+                } 
+                else if (browserName=="Microsoft Internet Explorer") { 
+                    alert('IE');                
+                    document.getElementById('errorId').innerHTML = '<font face = Arial><h3> Insufficient Privileges </h3> </font> <font face = Arial size = 2>You do not have the level of access necessary to perform Account Creation.</font> <font face = Arial size = 2> </> <a href="https://' + host + '/servlet/servlet.FileDownload?file=01580000000gQOk" target="_blank"><b><font color="blue">More Information on the Account creation process </font></b></a> <br> <br> <u><b><a href="javascript:history.back();" onclick="history.back();"></b><font color="blue"><u> Go Back to Previous Page. </u></font> </b></a> </font>'; 
+                } 
+                else if (browserName=="Google Chrome") { 
+                    alert('Chrome');
+                    document.getElementById('errorId').innerHTML = '<font face = Arial><h3> Insufficient Privileges </h3> </font> <font face = Arial size = 2>You do not have the level of access necessary to perform Account Creation.</font> <font face = Arial size = 2> </> <a href="https://' + host + '/servlet/servlet.FileDownload?file=01580000000gQOk" target="_blank"><b><font color="blue">More Information on the Account creation process </font></b></a> <br> <br> <u><b><a href="" onclick="history.go(-1); return false;"></b><font color="blue"><u> Go Back to Previous Page. </u></font> </b></a> </font>'; 
+                }
+            } 
+        } 
+    </script>
+
+    <apex:outputPanel id="redirectId">
+        <script>
+            redirect();
+            function redirect() {
+                // var that holds the value coming in from lead detail page 
+                var leadId_detail = getQuerystring('leadId_detail'); 
+                // var that holds the value from the lead conversion page 
+                var leadId = getQuerystring('leadId');
+               
+                // Encoding for SCAVA SCAN
+                var accRecTypeName = '{!JSENCODE(accRecordTypeName)}';
+                var accRecTypeId = '{!accRecordTypeId}';
+                // Encoding for SCAVA SCAN 
+                var ccxApp_redirectURL ='{!JSENCODE(get_ccxApp_redirectURL)}';
+                // Encoding for SCAVA SCAN
+                var usrLang = '{!JSENCODE(usersLanguage)}';
+               //Encoding for SCAVA SCAN
+                var usersCountry = '{!JSENCODE(userCountry)}';
+                if(accRecTypeName == "Competitor"){ 
+                    parent.parent.location.href="/001/e?RecordType="+accRecTypeId+"&rt=Account&nooverride=1"; 
+                    return; 
+                }
+                //Get Cancel URL out of URL string 
+                var cancelURL = parseCancelURL(); 
+
+                //Get Profile Name 
+                var profileId = '{!$User.ProfileId}'; 
+                ccxApp_redirectURL += "?recordType="+accRecTypeName + "&recordTypeId="+ accRecTypeId +"&userId={!$User.Id}&userLang="+usrLang + "&userCountry="+'{!JSENCODE('+userCountry+')}'+"&profile="+profileId+"&userState=" +'{!JSENCODE($User.State)}' + "&sessionId={!$Api.Session_ID}&apiServerUrl={!$Api.Enterprise_Server_URL_80}&cancelURL=" +cancelURL;
+                if(accRecTypeName == "End-User") { 
+                    ccxApp_redirectURL += "&userAlias={!$User.Alias}"+"&userEmail={!$User.Email}"; 
+                    if (leadId_detail != '' || leadId_detail != null){ 
+                        ccxApp_redirectURL += "&leadId_detail=" + leadId_detail+"&fromLead=yes"; 
+                    } 
+                    if (leadId != '' || leadId != null){ 
+                        ccxApp_redirectURL += "&leadId=" + leadId +"&fromLead=yes"; 
+                    }
+                } 
+                console.log("#### ccxApp_redirectURL : "+ccxApp_redirectURL);    
+                document.getElementById('showImage').style.visibility = "hidden"; 
+                document.getElementById('iFramLoad').src = ccxApp_redirectURL;
+            } 
+        </script>
+    </apex:outputPanel>
+    <script>
+        window.onload = function() {
+            getpermission();
+        };
+    </script>
+    <apex:form id="createNote"> 
+        <apex:actionFunction name="redirectToCreate" action="{!redirectToCreate}" rerender="redirectId" ></apex:actionFunction> 
+            <div id="showImage"> </div>
+            <div id="errorId"> </div>
+            <div style="width:100%;height:100%;position:relative;"><iframe id="iFramLoad" frameborder="0" height="1110" style="width:100%;"></iframe></div>  
+        </apex:form>
+    </apex:page>

@@ -1,0 +1,35 @@
+Dear {!Contact.FirstName} {!Contact.LastName}
+
+We have identified a new Opportunity for your company.
+
+The details of the opportunity are as follows:
+
+Opportunity ID: {!Opportunity.Id}
+Description: {!Opportunity.Description}
+Company: {!Opportunity.Account}
+Industry: {!Account.Industry}
+Expected Product Value of the Opportunity ('000): {!Opportunity_Expected_Product_($'000)}
+Expected Service Value of the Opportunity ('000): {!Opportunity_Expected_Service_($'000)}
+Total Value ('000): {!Opportunity_Total_Value_($'000)} 
+Product Name: {!Opportunity_LineItem_ProductName}
+Product Family: {!OpportunityLineItem.Product_Family__c}
+Lead Products of Interest: {!Opportunity.Products_of_Interest__c} 
+Locality: {!Account.City__c}
+Date of Creation: {!Opportunity.CreatedDate}
+
+Contact Information:
+Name:  {!Contact.FirstName} {!Contact.LastName}
+Phone: {!Contact.Phone}
+Job Function: {!Contact.JobFunction__c}
+Job Level: {!Contact.JobLevel__c}
+
+Please reply to this email and answer the following questions:
+1. Are you interested in pursuing this lead?
+2. Have you already contacted the customer?
+3. Any comments or notes about this lead?
+
+Please contact me directly via email at: {!Opportunity.OwnerEmail} or {!Opportunity.OwnerPhone}
+Thank you!
+
+{!Lead.OwnerFullName}
+Cisco Systems, Inc.

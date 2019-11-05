@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Essais</label>
+        <name>Attempts__c</name>
+    </fields>
+    <fields>
+        <label>Erreur</label>
+        <name>Error__c</name>
+    </fields>
+    <fields>
+        <label>Opportunité</label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Opptys Requiring DealIDs --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Opptys Requiring DealIDs --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Opptys Requiring DealIDs --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Opptys Requiring DealIDs Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+    <layouts>
+        <layout>Opptys Requiring DealIDs Layout</layout>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informations</label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label>Informations système</label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

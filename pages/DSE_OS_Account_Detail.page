@@ -1,0 +1,39 @@
+<apex:page showheader="true" standardStylesheets="false" title="Sales Transformation - Install Base" standardController="account" extensions="DSE_Main_CTE" docType="html-5.0">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="max-age=0" />
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache" />
+    <META http-equiv="expires" content="0" />
+    <link rel="stylesheet" href="/apex/DSE_Main_CSS" />
+   
+    <!--<apex:stylesheet value="{!URLFOR($Resource.newbootstrap, '/boot/css/bootstrap.css')}" />-->
+    <!--<apex:stylesheet value="{!URLFOR($Resource.ciscobootstrap, '/css/bootstrap-theme.css')}" />-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.min.js"></script>
+    
+    <script type="text/javascript"> 
+    SVGElement.prototype.getElementsByClassName = function(search) { 
+    return this.querySelectorAll("." + search) 
+    } 
+    </script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+   
+    
+    
+    <apex:stylesheet value="{!URLFOR($Resource.ciscobootstrap, '/css/bootstrap.css')}" />   
+    
+ 
+   
+    <script src="/apex/DSE_Tabular_Directives_v2"></script>
+    <script src="/apex/DSE_D3_Directives"></script>
+
+    <script>
+        angular.module('myApp', ['ui.bootstrap', 'directives.DSE_table','directives.DSE_D3']);
+        
+    </script>
+    <div class="dse-st" ng-app="myApp">
+        <stss-Table apipath="oecaseorderapi/v2.0/orders/summary" view-name="accountview" mtoken="{!mtoken}" apitype="external" apiobject="orderstatus" timezone="{!tzCode}" localeformat="{!localeformat}" sectitle="Order Status" locale="{!locale}" oeid="" partyid="[{!account.CSCSiteID__c}]" pid='"{!account.parentId}"' childid='"{!account.Id}"'>
+        </stss-Table>
+    </div>
+    </html>
+</apex:page>

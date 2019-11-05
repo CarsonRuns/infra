@@ -1,0 +1,1493 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Standard</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account_Manager__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>The AM with the highest $ amount SO associated to this offer. (if available)</inlineHelpText>
+        <label>Account Manager</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Offers</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Adopt_Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <label>Adopt Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Adoption_Barrier_Comment__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please provide additional details for the adoption barrier(s) you have selected</inlineHelpText>
+        <label>Adoption Barrier Comment</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Adoption_Barrier__c</fullName>
+        <externalId>false</externalId>
+        <label>Adoption Barrier</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Engaged - All going well</fullName>
+                    <default>false</default>
+                    <label>Engaged - All going well</label>
+                </value>
+                <value>
+                    <fullName>Engaged - Experiencing licensing issues</fullName>
+                    <default>false</default>
+                    <label>Engaged - Experiencing licensing issues</label>
+                </value>
+                <value>
+                    <fullName>Engaged - Experiencing configuration issues</fullName>
+                    <default>false</default>
+                    <label>Engaged - Experiencing configuration issues</label>
+                </value>
+                <value>
+                    <fullName>Engaged - Experiencing installation/migration issues</fullName>
+                    <default>false</default>
+                    <label>Engaged - Experiencing installation/migration issues</label>
+                </value>
+                <value>
+                    <fullName>Engaged - Experiencing architecture/design issues</fullName>
+                    <default>false</default>
+                    <label>Engaged - Experiencing architecture/design issues</label>
+                </value>
+                <value>
+                    <fullName>Engaged - Experiencing equipment compatibility issues</fullName>
+                    <default>false</default>
+                    <label>Engaged - Experiencing equipment compatibility issues</label>
+                </value>
+                <value>
+                    <fullName>Engaged - Experiencing adoption issues</fullName>
+                    <default>false</default>
+                    <label>Engaged - Experiencing adoption issues</label>
+                </value>
+                <value>
+                    <fullName>Engaged - Experiencing quality issues</fullName>
+                    <default>false</default>
+                    <label>Engaged - Experiencing quality issues</label>
+                </value>
+                <value>
+                    <fullName>Engaged - Experiencing reliability issues</fullName>
+                    <default>false</default>
+                    <label>Engaged - Experiencing reliability issues</label>
+                </value>
+                <value>
+                    <fullName>Engaged - Experiencing training issues</fullName>
+                    <default>false</default>
+                    <label>Engaged - Experiencing training issues</label>
+                </value>
+                <value>
+                    <fullName>Not Engaged - Unresponsive</fullName>
+                    <default>false</default>
+                    <label>Not Engaged - Unresponsive</label>
+                </value>
+                <value>
+                    <fullName>Not Engaged - Contact not known</fullName>
+                    <default>false</default>
+                    <label>Not Engaged - Contact not known</label>
+                </value>
+                <value>
+                    <fullName>Not Engaged - Contact changed </fullName>
+                    <default>false</default>
+                    <label>Not Engaged - Contact changed </label>
+                </value>
+                <value>
+                    <fullName>Not Engaged - Org restructure / M&amp;A</fullName>
+                    <default>false</default>
+                    <label>Not Engaged - Org restructure / M&amp;A</label>
+                </value>
+                <value>
+                    <fullName>Not Engaged - Not a priority/resources not funded</fullName>
+                    <default>false</default>
+                    <label>Not Engaged - Not a priority/resources not funded</label>
+                </value>
+                <value>
+                    <fullName>Not Engaged - Resources not hired or trained</fullName>
+                    <default>false</default>
+                    <label>Not Engaged - Resources not hired or trained</label>
+                </value>
+                <value>
+                    <fullName>Not Engaged - Account team blocking</fullName>
+                    <default>false</default>
+                    <label>Not Engaged - Account team blocking</label>
+                </value>
+                <value>
+                    <fullName>Waiting For - HW</fullName>
+                    <default>false</default>
+                    <label>Waiting For - HW</label>
+                </value>
+                <value>
+                    <fullName>Waiting For - SW/Licensing</fullName>
+                    <default>false</default>
+                    <label>Waiting For - SW/Licensing</label>
+                </value>
+                <value>
+                    <fullName>Waiting For - Help from Cisco</fullName>
+                    <default>false</default>
+                    <label>Waiting For - Help from Cisco</label>
+                </value>
+                <value>
+                    <fullName>Waiting For - Help from partner</fullName>
+                    <default>false</default>
+                    <label>Waiting For - Help from partner</label>
+                </value>
+                <value>
+                    <fullName>Waiting For - Feature/enhancement</fullName>
+                    <default>false</default>
+                    <label>Waiting For - Feature/enhancement</label>
+                </value>
+                <value>
+                    <fullName>Waiting For - Product fix</fullName>
+                    <default>false</default>
+                    <label>Waiting For - Product fix</label>
+                </value>
+                <value>
+                    <fullName>No Value / Fit - Mis-sold</fullName>
+                    <default>false</default>
+                    <label>No Value / Fit - Mis-sold</label>
+                </value>
+                <value>
+                    <fullName>No Value / Fit - Product does not fit customer needs</fullName>
+                    <default>false</default>
+                    <label>No Value / Fit - Product does not fit customer needs</label>
+                </value>
+                <value>
+                    <fullName>No Value / Fit - Does not see value and plan to abandon </fullName>
+                    <default>false</default>
+                    <label>No Value / Fit - Does not see value and plan to abandon </label>
+                </value>
+                <value>
+                    <fullName>No Value / Fit - Does not see value and looking at competitor</fullName>
+                    <default>false</default>
+                    <label>No Value / Fit - Does not see value and looking at competitor</label>
+                </value>
+                <value>
+                    <fullName>ENGAGEMENT - Account team will not engage</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>ENGAGEMENT - Account team will not engage</label>
+                </value>
+                <value>
+                    <fullName>ENGAGEMENT - Awaiting CSE assignment</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>ENGAGEMENT - Awaiting CSE assignment</label>
+                </value>
+                <value>
+                    <fullName>ENGAGEMENT - Bad data customer did not purchase</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>ENGAGEMENT - Bad data customer did not purchase</label>
+                </value>
+                <value>
+                    <fullName>ENGAGEMENT - Hand off between account team and CX not complete</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>ENGAGEMENT - Hand off between account team and CX not complete</label>
+                </value>
+                <value>
+                    <fullName>INFRASTRUCTURE - Customer does not have lab environment</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>INFRASTRUCTURE - Customer does not have lab environment</label>
+                </value>
+                <value>
+                    <fullName>INFRASTRUCTURE - Waiting for ISE deployment or ISE upgrade</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>INFRASTRUCTURE - Waiting for ISE deployment or ISE upgrade</label>
+                </value>
+                <value>
+                    <fullName>INFRASTRUCTURE - Waiting for additional equipment or build out</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>INFRASTRUCTURE - Waiting for additional equipment or build out</label>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>OTHER</label>
+                </value>
+                <value>
+                    <fullName>PROCESS - Customer needs template Day 2 operating procedures before putting into production</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PROCESS - Customer needs template Day 2 operating procedures before putting into production</label>
+                </value>
+                <value>
+                    <fullName>PROCESS - Documentation not sufficient</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>PROCESS - Documentation not sufficient</label>
+                </value>
+                <value>
+                    <fullName>Product Scalability</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Product Scalability</label>
+                </value>
+                <value>
+                    <fullName>TECHNICAL - CAP or pre-CAP</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TECHNICAL - CAP or pre-CAP</label>
+                </value>
+                <value>
+                    <fullName>TECHNICAL - Customer equipment to be managed not supported</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TECHNICAL - Customer equipment to be managed not supported</label>
+                </value>
+                <value>
+                    <fullName>TECHNICAL - Customer needs L-2 on the boarder handoff feature to move forward</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TECHNICAL - Customer needs L-2 on the boarder handoff feature to move forward</label>
+                </value>
+                <value>
+                    <fullName>TECHNICAL - Customer needs high availability option to move forward</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TECHNICAL - Customer needs high availability option to move forward</label>
+                </value>
+                <value>
+                    <fullName>TECHNICAL - Outstanding TAC case</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TECHNICAL - Outstanding TAC case</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Advocate_Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <label>Advocate Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Annual_Recurring_Revenue_ARR__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>ARR represents software subscription and services</inlineHelpText>
+        <label>Annual Recurring Revenue (ARR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BU_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_BU_Name__r.AccountNumber</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BU ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BU_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>'&lt;a href="/'+ Customer_BU_Name__c + '" title="'+Customer_BU_Name__r.Name+'"&gt;' + Customer_BU_Name__r.Name + '&lt;/a&gt;'</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BU Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>C360Offer_Ref__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>C360Offer Ref</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_BU_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Customer BU Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Offers</relationshipLabel>
+        <relationshipName>Offers</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Customer_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Name__r.AccountNumber</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Customer Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Offers (Customer Name)</relationshipLabel>
+        <relationshipName>Offers1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Customer_has_deployment_plans__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer has deployment plans?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>DNA_Center_Controller_Version__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates DNAC version or software on device.</inlineHelpText>
+        <label>DNA Center Controller Version</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_of_Last_Upgrade__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Date of last upgrade</inlineHelpText>
+        <label>Date of Last Upgrade</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Days_in_Stage__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Offer_Stages__c,"Purchase"),TEXT(Today() - DATEVALUE(CreatedDate)),
+IF(ISPICKVAL(Offer_Stages__c,"Onboard")&amp;&amp; NOT(ISNULL(Purchase_Timestamp__c)),TEXT(Today() - Purchase_Timestamp__c),
+IF(ISPICKVAL(Offer_Stages__c,"Implement")&amp;&amp; NOT(ISNULL(Onboard_Timestamp__c)),TEXT(Today() - Onboard_Timestamp__c),
+IF(ISPICKVAL(Offer_Stages__c,"Use") &amp;&amp; NOT(ISNULL(Implement_Timestamp__c)),TEXT(Today() - Implement_Timestamp__c),
+IF(ISPICKVAL(Offer_Stages__c,"Engage") &amp;&amp; NOT(ISNULL(Use_Timestamp__c)),TEXT(Today() - Use_Timestamp__c),
+IF(ISPICKVAL(Offer_Stages__c,"Adopt") &amp;&amp; NOT(ISNULL(Engage_Timestamp__c)),TEXT(Today() - Engage_Timestamp__c),
+IF(ISPICKVAL(Offer_Stages__c,"Optimize") &amp;&amp; NOT(ISNULL(Adopt_Timestamp__c)),TEXT(Today() - Adopt_Timestamp__c),
+IF(ISPICKVAL(Offer_Stages__c,"Advocate") &amp;&amp; NOT(ISNULL(Optimize_Timestamp__c)),TEXT(Today() - Optimize_Timestamp__c),null
+))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Days in Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Engage_Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <label>Engage Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Has_correct_licenses_based_on_use_case__c</fullName>
+        <externalId>false</externalId>
+        <label>Has correct licenses based on use case?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Has_the_Offer_been_Seeded_or_Sold__c</fullName>
+        <externalId>false</externalId>
+        <label>Has the Offer been Seeded or Sold?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Seeded</fullName>
+                    <default>false</default>
+                    <label>Seeded</label>
+                </value>
+                <value>
+                    <fullName>Purchased</fullName>
+                    <default>false</default>
+                    <label>Purchased</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ISE_Version__c</fullName>
+        <externalId>false</externalId>
+        <label>ISE Version</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1.0.4</fullName>
+                    <default>false</default>
+                    <label>1.0.4</label>
+                </value>
+                <value>
+                    <fullName>1.1</fullName>
+                    <default>false</default>
+                    <label>1.1</label>
+                </value>
+                <value>
+                    <fullName>1.2</fullName>
+                    <default>false</default>
+                    <label>1.2</label>
+                </value>
+                <value>
+                    <fullName>1.3</fullName>
+                    <default>false</default>
+                    <label>1.3</label>
+                </value>
+                <value>
+                    <fullName>1.4</fullName>
+                    <default>false</default>
+                    <label>1.4</label>
+                </value>
+                <value>
+                    <fullName>2.0</fullName>
+                    <default>false</default>
+                    <label>2.0</label>
+                </value>
+                <value>
+                    <fullName>2.1</fullName>
+                    <default>false</default>
+                    <label>2.1</label>
+                </value>
+                <value>
+                    <fullName>2.2</fullName>
+                    <default>false</default>
+                    <label>2.2</label>
+                </value>
+                <value>
+                    <fullName>2.3</fullName>
+                    <default>false</default>
+                    <label>2.3</label>
+                </value>
+                <value>
+                    <fullName>2.4</fullName>
+                    <default>false</default>
+                    <label>2.4</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Implement_Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <label>Implement Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Install_Country__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Will show info from the contract with the next upcoming end date that is in this offer</inlineHelpText>
+        <label>Install Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Install_Customer_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Will show info from the contract with the next upcoming end date that is in this offer</inlineHelpText>
+        <label>Install Customer Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Cisco_DNAC_Integrated_with_ISE_2_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Is Cisco DNAC Integrated with ISE 2.3?</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Max_Latest_Telemetry_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Most recent date when data was received</inlineHelpText>
+        <label>Max Latest Telemetry Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Next_Contract_Renewal_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Next Contract Renewal Date will default to contract with the next upcoming end date that is in this offer</inlineHelpText>
+        <label>Next Contract Renewal Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Number_Of_Connected_Clients_Hosts__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Total number of wired and wireless client devices (laptops, printers etc) connected to the network</inlineHelpText>
+        <label>Number Of Connected Clients/Hosts</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_Of_Connected_Devices__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Total number of routers, switches, WLC and access points connected to the network</inlineHelpText>
+        <label>Number Of Connected Devices</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Offer_Level_1_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Offer Level 1 Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Offer_Stages__c</fullName>
+        <externalId>false</externalId>
+        <label>Offer Stages</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Purchase</fullName>
+                    <default>false</default>
+                    <label>Purchase</label>
+                </value>
+                <value>
+                    <fullName>Onboard</fullName>
+                    <default>false</default>
+                    <label>Onboard</label>
+                </value>
+                <value>
+                    <fullName>Implement</fullName>
+                    <default>false</default>
+                    <label>Implement</label>
+                </value>
+                <value>
+                    <fullName>Use</fullName>
+                    <default>false</default>
+                    <label>Use</label>
+                </value>
+                <value>
+                    <fullName>Engage</fullName>
+                    <default>false</default>
+                    <label>Engage</label>
+                </value>
+                <value>
+                    <fullName>Adopt</fullName>
+                    <default>false</default>
+                    <label>Adopt</label>
+                </value>
+                <value>
+                    <fullName>Optimize</fullName>
+                    <default>false</default>
+                    <label>Optimize</label>
+                </value>
+                <value>
+                    <fullName>Advocate</fullName>
+                    <default>false</default>
+                    <label>Advocate</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Onboard_Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <label>Onboard Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Onboarded_activities_completed__c</fullName>
+        <externalId>false</externalId>
+        <label>Onboarded activities completed?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Optimize_Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <label>Optimize Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Initiative__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Initiative</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Pyramid__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Pyramid</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Use_Case__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary Use Case</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Wireless assurance (Cisco DNA Assurance)</fullName>
+                    <default>false</default>
+                    <label>Wireless assurance (Cisco DNA Assurance)</label>
+                </value>
+                <value>
+                    <fullName>Wired assurance (Cisco DNA Assurance)</fullName>
+                    <default>false</default>
+                    <label>Wired assurance (Cisco DNA Assurance)</label>
+                </value>
+                <value>
+                    <fullName>Network segmentation (Cisco DNA SDA)</fullName>
+                    <default>false</default>
+                    <label>Network segmentation (Cisco DNA SDA)</label>
+                </value>
+                <value>
+                    <fullName>Converged Wired &amp; Wireless Policy and Management (Cisco DNA SDA)</fullName>
+                    <default>false</default>
+                    <label>Converged Wired &amp; Wireless Policy and Management (Cisco DNA SDA)</label>
+                </value>
+                <value>
+                    <fullName>Secure Convergence of IoT onto Enterprise Network (Cisco DNA SDA)</fullName>
+                    <default>false</default>
+                    <label>Secure Convergence of IoT onto Enterprise Network (Cisco DNA SDA)</label>
+                </value>
+                <value>
+                    <fullName>Secure Policy Creation &amp; Monitoring (Cisco ISE)</fullName>
+                    <default>false</default>
+                    <label>Secure Policy Creation &amp; Monitoring (Cisco ISE)</label>
+                </value>
+                <value>
+                    <fullName>Device onboarding (Cisco DNA Automation)</fullName>
+                    <default>false</default>
+                    <label>Device onboarding (Cisco DNA Automation)</label>
+                </value>
+                <value>
+                    <fullName>SWIM and Network Provisioning (Cisco DNA Automation)</fullName>
+                    <default>false</default>
+                    <label>SWIM and Network Provisioning (Cisco DNA Automation)</label>
+                </value>
+                <value>
+                    <fullName>Transport Independence (Cisco SD-WAN)</fullName>
+                    <default>false</default>
+                    <label>Transport Independence (Cisco SD-WAN)</label>
+                </value>
+                <value>
+                    <fullName>Secure Cloud Edge (Cisco SD-WAN)</fullName>
+                    <default>false</default>
+                    <label>Secure Cloud Edge (Cisco SD-WAN)</label>
+                </value>
+                <value>
+                    <fullName>Critical Applications SLA (Cisco SD-WAN)</fullName>
+                    <default>false</default>
+                    <label>Critical Applications SLA (Cisco SD-WAN)</label>
+                </value>
+                <value>
+                    <fullName>Secure Direct Internet Access (Cisco SD-WAN)</fullName>
+                    <default>false</default>
+                    <label>Secure Direct Internet Access (Cisco SD-WAN)</label>
+                </value>
+                <value>
+                    <fullName>Location Analytics (Cisco DNA Spaces)</fullName>
+                    <default>false</default>
+                    <label>Location Analytics (Cisco DNA Spaces)</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Purchase_Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <label>Purchase Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Reason_For_Purchase__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason For Purchase</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Greenfield - Assurance with Segmentation</fullName>
+                    <default>false</default>
+                    <label>Greenfield - Assurance with Segmentation</label>
+                </value>
+                <value>
+                    <fullName>Greenfield - Automation</fullName>
+                    <default>false</default>
+                    <label>Greenfield - Automation</label>
+                </value>
+                <value>
+                    <fullName>Brownfield - Assurance with Segmentation</fullName>
+                    <default>false</default>
+                    <label>Brownfield - Assurance with Segmentation</label>
+                </value>
+                <value>
+                    <fullName>Brownfield - Automation</fullName>
+                    <default>false</default>
+                    <label>Brownfield - Automation</label>
+                </value>
+                <value>
+                    <fullName>Brownfield - Intent Based Networking</fullName>
+                    <default>false</default>
+                    <label>Brownfield - Intent Based Networking</label>
+                </value>
+                <value>
+                    <fullName>Seeded in a Deal for Future Use</fullName>
+                    <default>false</default>
+                    <label>Seeded in a Deal for Future Use</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                    <label>Unknown</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Stalled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Stalled</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Subscription_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Subscription Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sum_Of_Cisco_Booking_Quantity__c</fullName>
+        <externalId>false</externalId>
+        <label>Sum Of Cisco Bookings Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sum_Of_Cisco_Bookings_Net__c</fullName>
+        <externalId>false</externalId>
+        <label>Sum Of Cisco Bookings Net</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>TECH_Last_Modified_Stage_Date__c</fullName>
+        <description>Technical field use by marketing cloud, value is populated when the user change stage</description>
+        <externalId>false</externalId>
+        <label>TECH_Last_Modified_Stage_Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>TECH_isOfferCanBeUpdated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>TECH_isOfferCanBeUpdated</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Task_Created__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Task Created</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Telemetry_on__c</fullName>
+        <externalId>false</externalId>
+        <label>Telemetry on?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Term_Length__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Term Length is the average of all contract renewal dates for this offer</inlineHelpText>
+        <label>Term Length</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_Support__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Tier Support will default to the highest level of support where more than one record is found</inlineHelpText>
+        <label>Tier Support</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Devices_Purchased__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Devices Purchased</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_License_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Total License Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_License_In_Use__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Licenses In Use</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Use_Case__c</fullName>
+        <externalId>false</externalId>
+        <label>Use Case</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Wireless assurance (Cisco DNA Assurance)</fullName>
+                    <default>false</default>
+                    <label>Wireless assurance (Cisco DNA Assurance)</label>
+                </value>
+                <value>
+                    <fullName>Wired assurance (Cisco DNA Assurance)</fullName>
+                    <default>false</default>
+                    <label>Wired assurance (Cisco DNA Assurance)</label>
+                </value>
+                <value>
+                    <fullName>Network segmentation (Cisco DNA SDA)</fullName>
+                    <default>false</default>
+                    <label>Network segmentation (Cisco DNA SDA)</label>
+                </value>
+                <value>
+                    <fullName>Converged Wired &amp; Wireless Policy and Management (Cisco DNA SDA)</fullName>
+                    <default>false</default>
+                    <label>Converged Wired &amp; Wireless Policy and Management (Cisco DNA SDA)</label>
+                </value>
+                <value>
+                    <fullName>Secure Convergence of IoT onto Enterprise Network (Cisco DNA SDA)</fullName>
+                    <default>false</default>
+                    <label>Secure Convergence of IoT onto Enterprise Network (Cisco DNA SDA)</label>
+                </value>
+                <value>
+                    <fullName>Secure Policy Creation &amp; Monitoring (Cisco ISE)</fullName>
+                    <default>false</default>
+                    <label>Secure Policy Creation &amp; Monitoring (Cisco ISE)</label>
+                </value>
+                <value>
+                    <fullName>Device onboarding (Cisco DNA Automation)</fullName>
+                    <default>false</default>
+                    <label>Device onboarding (Cisco DNA Automation)</label>
+                </value>
+                <value>
+                    <fullName>SWIM and Network Provisioning (Cisco DNA Automation)</fullName>
+                    <default>false</default>
+                    <label>SWIM and Network Provisioning (Cisco DNA Automation)</label>
+                </value>
+                <value>
+                    <fullName>Transport Independence (Cisco SD-WAN)</fullName>
+                    <default>false</default>
+                    <label>Transport Independence (Cisco SD-WAN)</label>
+                </value>
+                <value>
+                    <fullName>Secure Cloud Edge (Cisco SD-WAN)</fullName>
+                    <default>false</default>
+                    <label>Secure Cloud Edge (Cisco SD-WAN)</label>
+                </value>
+                <value>
+                    <fullName>Critical Applications SLA (Cisco SD-WAN)</fullName>
+                    <default>false</default>
+                    <label>Critical Applications SLA (Cisco SD-WAN)</label>
+                </value>
+                <value>
+                    <fullName>Secure Direct Internet Access (Cisco SD-WAN)</fullName>
+                    <default>false</default>
+                    <label>Secure Direct Internet Access (Cisco SD-WAN)</label>
+                </value>
+                <value>
+                    <fullName>Location Analytics (Cisco DNA Spaces)</fullName>
+                    <default>false</default>
+                    <label>Location Analytics (Cisco DNA Spaces)</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Use_Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <label>Use Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Where_is_the_equipment_located__c</fullName>
+        <externalId>false</externalId>
+        <label>Where is the equipment located?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Lab</fullName>
+                    <default>false</default>
+                    <label>Lab</label>
+                </value>
+                <value>
+                    <fullName>Production</fullName>
+                    <default>false</default>
+                    <label>Production</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Contains Cisco's Product details for Customer Success Program</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <label>Offer</label>
+    <nameField>
+        <label>Offer Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Offers</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>test_for_my_DNA_Center_only</fullName>
+        <columns>Customer_BU_Name__c</columns>
+        <columns>NAME</columns>
+        <columns>Offer_Stages__c</columns>
+        <columns>Primary_Use_Case__c</columns>
+        <columns>Adoption_Barrier__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>NAME</field>
+            <operation>equals</operation>
+            <value>DNA Center</value>
+        </filters>
+        <label>My DNA Center Offers</label>
+    </listViews>
+    <validationRules>
+        <fullName>AccountNameEditPrevention</fullName>
+        <active>true</active>
+        <errorConditionFormula>(ISCHANGED(Customer_BU_Name__c )|| ISCHANGED (Name ) || ISCHANGED( Customer_Name__c )) &amp;&amp;
+$Profile.Id != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Data_Migration__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Deployment_Support__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_GSTS_Analyst__c &amp;&amp; 
+$Profile.Id != $Setup.ProfileID__c.Cisco_Integration_Echo_Suppression__c</errorConditionFormula>
+        <errorMessage>Customer Name and Offer Name cannot be edited</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Adoption_Barrier_Comment_Mandatory</fullName>
+        <active>true</active>
+        <errorConditionFormula>$Profile.Id != $Setup.ProfileID__c.Cisco_ADMIN__c &amp;&amp;
+$Profile.Id != $Setup.ProfileID__c.Cisco_Data_Migration__c &amp;&amp;
+$Profile.Id != $Setup.ProfileID__c.Cisco_Integration_Echo_Suppression__c &amp;&amp; 
+AND(ISBLANK(Adoption_Barrier_Comment__c ) &amp;&amp;
+NOT(ISBLANK( Adoption_Barrier__c )))</errorConditionFormula>
+        <errorMessage>Please enter Adoption Barrier comments</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PreventStageModification</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISCHANGED(Offer_Stages__c) &amp;&amp;  !TECH_isOfferCanBeUpdated__c</errorConditionFormula>
+        <errorMessage>Cannot update stage directly from Customer Kanban</errorMessage>
+    </validationRules>
+</CustomObject>

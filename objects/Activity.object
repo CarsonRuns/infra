@@ -1,0 +1,3868 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ComposeGmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ComposeGmail</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ComposeGmail</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LogCall</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LogCall</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LogCall</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MailMerge</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MailMerge</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MailMerge</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SendEmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SendEmail</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SendEmail</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewAll</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewAll</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewAll</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Activity__c</fullName>
+        <description>This field is created for SE Use only for Resource Assignment Engine Project</description>
+        <externalId>false</externalId>
+        <label>Activity</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Acct Support: Acct/Oppty Planning</fullName>
+                    <default>false</default>
+                    <label>Acct Support: Acct/Oppty Planning</label>
+                </value>
+                <value>
+                    <fullName>Acct Support: Arch Delivery</fullName>
+                    <default>false</default>
+                    <label>Acct Support: Arch Delivery</label>
+                </value>
+                <value>
+                    <fullName>Acct Support: Arch Discovery</fullName>
+                    <default>false</default>
+                    <label>Acct Support: Arch Discovery</label>
+                </value>
+                <value>
+                    <fullName>Acct Support: Awareness</fullName>
+                    <default>false</default>
+                    <label>Acct Support: Awareness</label>
+                </value>
+                <value>
+                    <fullName>Acct Support: Product/Tech Updates</fullName>
+                    <default>false</default>
+                    <label>Acct Support: Product/Tech Updates</label>
+                </value>
+                <value>
+                    <fullName>Internal: General</fullName>
+                    <default>false</default>
+                    <label>Internal: General</label>
+                </value>
+                <value>
+                    <fullName>Internal: Lab</fullName>
+                    <default>false</default>
+                    <label>Internal: Lab</label>
+                </value>
+                <value>
+                    <fullName>Internal: Training</fullName>
+                    <default>false</default>
+                    <label>Internal: Training</label>
+                </value>
+                <value>
+                    <fullName>Oppty Support: BoM</fullName>
+                    <default>false</default>
+                    <label>Oppty Support: BoM</label>
+                </value>
+                <value>
+                    <fullName>Oppty Support: Demo</fullName>
+                    <default>false</default>
+                    <label>Oppty Support: Demo</label>
+                </value>
+                <value>
+                    <fullName>Oppty Support: General</fullName>
+                    <default>false</default>
+                    <label>Oppty Support: General</label>
+                </value>
+                <value>
+                    <fullName>Oppty Support: POC</fullName>
+                    <default>false</default>
+                    <label>Oppty Support: POC</label>
+                </value>
+                <value>
+                    <fullName>Partner: Training</fullName>
+                    <default>false</default>
+                    <label>Partner: Training</label>
+                </value>
+                <value>
+                    <fullName>Post Sales: General</fullName>
+                    <default>false</default>
+                    <label>Post Sales: General</label>
+                </value>
+                <value>
+                    <fullName>Relationship building: General</fullName>
+                    <default>false</default>
+                    <label>Relationship building: General</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Attendance__c</fullName>
+        <description>This field is created for Resource Assignment Engine project and Aids in the recognition of who has been involved. Provides reporting capabilities</description>
+        <externalId>false</externalId>
+        <label>Attendance</label>
+        <required>false</required>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>AM</fullName>
+                    <default>false</default>
+                    <label>AM</label>
+                </value>
+                <value>
+                    <fullName>CSE/xSA</fullName>
+                    <default>false</default>
+                    <label>CSE/xSA</label>
+                </value>
+                <value>
+                    <fullName>Partner AM</fullName>
+                    <default>false</default>
+                    <label>Partner AM</label>
+                </value>
+                <value>
+                    <fullName>Partner SE</fullName>
+                    <default>false</default>
+                    <label>Partner SE</label>
+                </value>
+                <value>
+                    <fullName>Partner TSS</fullName>
+                    <default>false</default>
+                    <label>Partner TSS</label>
+                </value>
+                <value>
+                    <fullName>PSS</fullName>
+                    <default>false</default>
+                    <label>PSS</label>
+                </value>
+                <value>
+                    <fullName>Sales Mngmt</fullName>
+                    <default>false</default>
+                    <label>Sales Mngmt</label>
+                </value>
+                <value>
+                    <fullName>VSS</fullName>
+                    <default>false</default>
+                    <label>VSS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CX_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>CX Category</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Case Close Loop</fullName>
+                    <default>false</default>
+                    <label>Case Close Loop</label>
+                </value>
+                <value>
+                    <fullName>Case Follow-up</fullName>
+                    <default>false</default>
+                    <label>Case Follow-up</label>
+                </value>
+                <value>
+                    <fullName>Customer Champion Meeting</fullName>
+                    <default>false</default>
+                    <label>Customer Champion Meeting</label>
+                </value>
+                <value>
+                    <fullName>Customer Escalation</fullName>
+                    <default>false</default>
+                    <label>Customer Escalation</label>
+                </value>
+                <value>
+                    <fullName>Initial Survey</fullName>
+                    <default>false</default>
+                    <label>Initial Survey</label>
+                </value>
+                <value>
+                    <fullName>Journey Map Follow-up</fullName>
+                    <default>false</default>
+                    <label>Journey Map Follow-up</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>QBR</fullName>
+                    <default>false</default>
+                    <label>QBR</label>
+                </value>
+                <value>
+                    <fullName>Survey Follow-up</fullName>
+                    <default>false</default>
+                    <label>Survey Follow-up</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Call_Results__c</fullName>
+        <description>This field used in Jabber Integration with SFDC application.Stores status of event associated with a call.</description>
+        <externalId>false</externalId>
+        <label>Call Results</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Unsaved</fullName>
+                    <default>false</default>
+                    <label>Unsaved</label>
+                </value>
+                <value>
+                    <fullName>Saved</fullName>
+                    <default>false</default>
+                    <label>Saved</label>
+                </value>
+                <value>
+                    <fullName>Discarded</fullName>
+                    <default>false</default>
+                    <label>Discarded</label>
+                </value>
+                <value>
+                    <fullName>Not Linked</fullName>
+                    <default>false</default>
+                    <label>Not Linked</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Call_Start_Time_Hidden__c</fullName>
+        <description>This field used in Jabber Integration with SFDC application.Stores call start time in milliseconds.</description>
+        <externalId>false</externalId>
+        <label>Call Start Time(Hidden)</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Call_Type__c</fullName>
+        <description>This field used in Jabber Integration with SFDC application.Stores whether the event created for an incoming or outgoing call.</description>
+        <externalId>false</externalId>
+        <label>Jabber Call Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Outbound</fullName>
+                    <default>false</default>
+                    <label>Outbound</label>
+                </value>
+                <value>
+                    <fullName>Inbound</fullName>
+                    <default>false</default>
+                    <label>Inbound</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Caller_Id__c</fullName>
+        <description>This field used in Jabber Integration with SFDC application.Stores phone number of user who initiated the call</description>
+        <externalId>false</externalId>
+        <label>Caller Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Caller__c</fullName>
+        <description>This field used in Jabber Integration with SFDC application.Stores name of user who initiated the call.</description>
+        <externalId>false</externalId>
+        <label>Caller</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cancel__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field used in Jabber Integration with SFDC application.Represent whether the call event is the cancelled one or not.</description>
+        <externalId>false</externalId>
+        <label>Cancel</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Category_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Category/Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Appointment Set</fullName>
+                    <default>false</default>
+                    <label>Appointment Set</label>
+                </value>
+                <value>
+                    <fullName>Booked Appointment</fullName>
+                    <default>false</default>
+                    <label>Booked Appointment</label>
+                </value>
+                <value>
+                    <fullName>CPOC Labs</fullName>
+                    <default>false</default>
+                    <label>CPOC Labs</label>
+                </value>
+                <value>
+                    <fullName>Created New Opportunity/Pipeline</fullName>
+                    <default>false</default>
+                    <label>Created New Opportunity/Pipeline</label>
+                </value>
+                <value>
+                    <fullName>CSA_LA Customer Meeting</fullName>
+                    <default>false</default>
+                    <label>CSA_LA Customer Meeting</label>
+                </value>
+                <value>
+                    <fullName>CSA_LA Demand Generation</fullName>
+                    <default>false</default>
+                    <label>CSA_LA Demand Generation</label>
+                </value>
+                <value>
+                    <fullName>CSA_LA Event</fullName>
+                    <default>false</default>
+                    <label>CSA_LA Event</label>
+                </value>
+                <value>
+                    <fullName>CSA_LA Floor Day</fullName>
+                    <default>false</default>
+                    <label>CSA_LA Floor Day</label>
+                </value>
+                <value>
+                    <fullName>CSA_LA Other</fullName>
+                    <default>false</default>
+                    <label>CSA_LA Other</label>
+                </value>
+                <value>
+                    <fullName>CSA_LA Outbound Call Campaign</fullName>
+                    <default>false</default>
+                    <label>CSA_LA Outbound Call Campaign</label>
+                </value>
+                <value>
+                    <fullName>CSA_LA Partner Training</fullName>
+                    <default>false</default>
+                    <label>CSA_LA Partner Training</label>
+                </value>
+                <value>
+                    <fullName>CSA_LA Web seminar</fullName>
+                    <default>false</default>
+                    <label>CSA_LA Web seminar</label>
+                </value>
+                <value>
+                    <fullName>CSAT Follow-Up</fullName>
+                    <default>false</default>
+                    <label>CSAT Follow-Up</label>
+                </value>
+                <value>
+                    <fullName>Customer Briefing Center (CBC)</fullName>
+                    <default>false</default>
+                    <label>Customer Briefing Center (CBC)</label>
+                </value>
+                <value>
+                    <fullName>Customer Business Review (CBR)</fullName>
+                    <default>false</default>
+                    <label>Customer Business Review (CBR)</label>
+                </value>
+                <value>
+                    <fullName>Customer Reference Architecture (CRA)</fullName>
+                    <default>false</default>
+                    <label>Customer Reference Architecture (CRA)</label>
+                </value>
+                <value>
+                    <fullName>Customer Visit</fullName>
+                    <default>false</default>
+                    <label>Customer Visit</label>
+                </value>
+                <value>
+                    <fullName>CXRen-Customer Meeting</fullName>
+                    <default>false</default>
+                    <label>CXRen-Customer Meeting</label>
+                </value>
+                <value>
+                    <fullName>CXRen-Email</fullName>
+                    <default>false</default>
+                    <label>CXRen-Email</label>
+                </value>
+                <value>
+                    <fullName>CXRen-Inbound Call</fullName>
+                    <default>false</default>
+                    <label>CXRen-Inbound Call</label>
+                </value>
+                <value>
+                    <fullName>CXRen-Outbound Call</fullName>
+                    <default>false</default>
+                    <label>CXRen-Outbound Call</label>
+                </value>
+                <value>
+                    <fullName>Delivered a Demo on the Spot</fullName>
+                    <default>false</default>
+                    <label>Delivered a Demo on the Spot</label>
+                </value>
+                <value>
+                    <fullName>Digital - Commerce Automation</fullName>
+                    <default>false</default>
+                    <label>Digital - Commerce Automation</label>
+                </value>
+                <value>
+                    <fullName>Digital - IB Validation</fullName>
+                    <default>false</default>
+                    <label>Digital - IB Validation</label>
+                </value>
+                <value>
+                    <fullName>Digital - Other</fullName>
+                    <default>false</default>
+                    <label>Digital - Other</label>
+                </value>
+                <value>
+                    <fullName>Digital - Request for Quote</fullName>
+                    <default>false</default>
+                    <label>Digital - Request for Quote</label>
+                </value>
+                <value>
+                    <fullName>Discussed New Technology</fullName>
+                    <default>false</default>
+                    <label>Discussed New Technology</label>
+                </value>
+                <value>
+                    <fullName>Discussed Promotion or Special Offer</fullName>
+                    <default>false</default>
+                    <label>Discussed Promotion or Special Offer</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Follow Up Engagement</fullName>
+                    <default>false</default>
+                    <label>Follow Up Engagement</label>
+                </value>
+                <value>
+                    <fullName>GSSO-CPOC Lab</fullName>
+                    <default>false</default>
+                    <label>GSSO-CPOC Lab</label>
+                </value>
+                <value>
+                    <fullName>GSSO-First Engagement</fullName>
+                    <default>false</default>
+                    <label>GSSO-First Engagement</label>
+                </value>
+                <value>
+                    <fullName>GSSO-Guided Test Drive</fullName>
+                    <default>false</default>
+                    <label>GSSO-Guided Test Drive</label>
+                </value>
+                <value>
+                    <fullName>GSSO-Instant Demo</fullName>
+                    <default>false</default>
+                    <label>GSSO-Instant Demo</label>
+                </value>
+                <value>
+                    <fullName>GSSO-On Prem POV</fullName>
+                    <default>false</default>
+                    <label>GSSO-On Prem POV</label>
+                </value>
+                <value>
+                    <fullName>GSSO-POV Assurance Lab</fullName>
+                    <default>false</default>
+                    <label>GSSO-POV Assurance Lab</label>
+                </value>
+                <value>
+                    <fullName>GSSO-Scheduled Demo</fullName>
+                    <default>false</default>
+                    <label>GSSO-Scheduled Demo</label>
+                </value>
+                <value>
+                    <fullName>Inbound Calls</fullName>
+                    <default>false</default>
+                    <label>Inbound Calls</label>
+                </value>
+                <value>
+                    <fullName>Initial Engagement</fullName>
+                    <default>false</default>
+                    <label>Initial Engagement</label>
+                </value>
+                <value>
+                    <fullName>Invited to a Cisco Event</fullName>
+                    <default>false</default>
+                    <label>Invited to a Cisco Event</label>
+                </value>
+                <value>
+                    <fullName>Invited to a Customer Event</fullName>
+                    <default>false</default>
+                    <label>Invited to a Customer Event</label>
+                </value>
+                <value>
+                    <fullName>Joint Sales Call</fullName>
+                    <default>false</default>
+                    <label>Joint Sales Call</label>
+                </value>
+                <value>
+                    <fullName>Lead Created</fullName>
+                    <default>false</default>
+                    <label>Lead Created</label>
+                </value>
+                <value>
+                    <fullName>Left a Voicemail</fullName>
+                    <default>false</default>
+                    <label>Left a Voicemail</label>
+                </value>
+                <value>
+                    <fullName>Made a Sale/Pull Forward</fullName>
+                    <default>false</default>
+                    <label>Made a Sale/Pull Forward</label>
+                </value>
+                <value>
+                    <fullName>Non-CXC Executive Briefing</fullName>
+                    <default>false</default>
+                    <label>Non-CXC Executive Briefing</label>
+                </value>
+                <value>
+                    <fullName>Outbound Customer Call</fullName>
+                    <default>false</default>
+                    <label>Outbound Customer Call</label>
+                </value>
+                <value>
+                    <fullName>Outbound Partner Call</fullName>
+                    <default>false</default>
+                    <label>Outbound Partner Call</label>
+                </value>
+                <value>
+                    <fullName>POV Design</fullName>
+                    <default>false</default>
+                    <label>POV Design</label>
+                </value>
+                <value>
+                    <fullName>POV Follow-up</fullName>
+                    <default>false</default>
+                    <label>POV Follow-up</label>
+                </value>
+                <value>
+                    <fullName>POV Testing</fullName>
+                    <default>false</default>
+                    <label>POV Testing</label>
+                </value>
+                <value>
+                    <fullName>Pursuit-Cloud Security</fullName>
+                    <default>false</default>
+                    <label>Pursuit-Cloud Security</label>
+                </value>
+                <value>
+                    <fullName>Pursuit-Email Security</fullName>
+                    <default>false</default>
+                    <label>Pursuit-Email Security</label>
+                </value>
+                <value>
+                    <fullName>Pursuit-Endpoint / Advanced Threat</fullName>
+                    <default>false</default>
+                    <label>Pursuit-Endpoint / Advanced Threat</label>
+                </value>
+                <value>
+                    <fullName>Pursuit-NGFW</fullName>
+                    <default>false</default>
+                    <label>Pursuit-NGFW</label>
+                </value>
+                <value>
+                    <fullName>Pursuit-NVE</fullName>
+                    <default>false</default>
+                    <label>Pursuit-NVE</label>
+                </value>
+                <value>
+                    <fullName>Pursuit-Web Security</fullName>
+                    <default>false</default>
+                    <label>Pursuit-Web Security</label>
+                </value>
+                <value>
+                    <fullName>Sales Enablement</fullName>
+                    <default>false</default>
+                    <label>Sales Enablement</label>
+                </value>
+                <value>
+                    <fullName>Scheduled a Customer Demo</fullName>
+                    <default>false</default>
+                    <label>Scheduled a Customer Demo</label>
+                </value>
+                <value>
+                    <fullName>Scheduled a Customer Visit</fullName>
+                    <default>false</default>
+                    <label>Scheduled a Customer Visit</label>
+                </value>
+                <value>
+                    <fullName>Scheduled an Executive Briefing</fullName>
+                    <default>false</default>
+                    <label>Scheduled an Executive Briefing</label>
+                </value>
+                <value>
+                    <fullName>Scheduled Customer Reference Architecture</fullName>
+                    <default>false</default>
+                    <label>Scheduled Customer Reference Architecture</label>
+                </value>
+                <value>
+                    <fullName>Sent a Proposal</fullName>
+                    <default>false</default>
+                    <label>Sent a Proposal</label>
+                </value>
+                <value>
+                    <fullName>Social Media Engagement</fullName>
+                    <default>false</default>
+                    <label>Social Media Engagement</label>
+                </value>
+                <value>
+                    <fullName>Testbed</fullName>
+                    <default>false</default>
+                    <label>Testbed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Check_Task_Creation__c</fullName>
+        <externalId>false</externalId>
+        <label>Check Task Creation</label>
+        <required>false</required>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cisco_Purpose__c</fullName>
+        <description>Describes Cisco’s purpose or objective for the event or task.</description>
+        <externalId>false</externalId>
+        <label>Cisco Purpose</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <description>Use this brief comments field to capture short comments. Brief comments will also show up in the activity history section as a quick reference.</description>
+        <externalId>false</externalId>
+        <label>Brief Comments</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Highest_Title__c</fullName>
+        <description>Provides the highest title of customer presence (this field is created for SE Use only for Resource Assignment Engine Project)</description>
+        <externalId>false</externalId>
+        <label>Customer Highest Title</label>
+        <required>false</required>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>CBO</fullName>
+                    <default>false</default>
+                    <label>CBO</label>
+                </value>
+                <value>
+                    <fullName>CEO</fullName>
+                    <default>false</default>
+                    <label>CEO</label>
+                </value>
+                <value>
+                    <fullName>CIO</fullName>
+                    <default>false</default>
+                    <label>CIO</label>
+                </value>
+                <value>
+                    <fullName>CTO</fullName>
+                    <default>false</default>
+                    <label>CTO</label>
+                </value>
+                <value>
+                    <fullName>CxO</fullName>
+                    <default>false</default>
+                    <label>CxO</label>
+                </value>
+                <value>
+                    <fullName>Director</fullName>
+                    <default>false</default>
+                    <label>Director</label>
+                </value>
+                <value>
+                    <fullName>Engineer</fullName>
+                    <default>false</default>
+                    <label>Engineer</label>
+                </value>
+                <value>
+                    <fullName>LOB Exec</fullName>
+                    <default>false</default>
+                    <label>LOB Exec</label>
+                </value>
+                <value>
+                    <fullName>Manager</fullName>
+                    <default>false</default>
+                    <label>Manager</label>
+                </value>
+                <value>
+                    <fullName>VP</fullName>
+                    <default>false</default>
+                    <label>VP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>DRT_Main_Stage__c</fullName>
+        <description>Capture DRT Main Stage</description>
+        <externalId>false</externalId>
+        <label>DRT Main Stage</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Stage 1  DRT Opportunity Identified / DRT Engaged</fullName>
+                    <default>false</default>
+                    <label>Stage 1  DRT Opportunity Identified / DRT Engaged</label>
+                </value>
+                <value>
+                    <fullName>Stage 2  Partner / DOM Engaged with Customer</fullName>
+                    <default>false</default>
+                    <label>Stage 2  Partner / DOM Engaged with Customer</label>
+                </value>
+                <value>
+                    <fullName>Stage 3  Proposal / Quote</fullName>
+                    <default>false</default>
+                    <label>Stage 3  Proposal / Quote</label>
+                </value>
+                <value>
+                    <fullName>Stage 4  Pricing / Agreement</fullName>
+                    <default>false</default>
+                    <label>Stage 4  Pricing / Agreement</label>
+                </value>
+                <value>
+                    <fullName>Stage 5  Won	/ Lost / Cancelled</fullName>
+                    <default>false</default>
+                    <label>Stage 5  Won	/ Lost / Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>DRT_Sub_Stage__c</fullName>
+        <description>Capture the DRT Sub Stage</description>
+        <externalId>false</externalId>
+        <label>DRT Sub Stage</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>DRT_Main_Stage__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1A - Sent to Partner</fullName>
+                    <default>false</default>
+                    <label>1A - Sent to Partner</label>
+                </value>
+                <value>
+                    <fullName>1B - Sent to DOM</fullName>
+                    <default>false</default>
+                    <label>1B - Sent to DOM</label>
+                </value>
+                <value>
+                    <fullName>1C - Partner Admin assigned to PSR</fullName>
+                    <default>false</default>
+                    <label>1C - Partner Admin assigned to PSR</label>
+                </value>
+                <value>
+                    <fullName>2A - PSR engaged with Customer</fullName>
+                    <default>false</default>
+                    <label>2A - PSR engaged with Customer</label>
+                </value>
+                <value>
+                    <fullName>2B - DOM engaged with Customer</fullName>
+                    <default>false</default>
+                    <label>2B - DOM engaged with Customer</label>
+                </value>
+                <value>
+                    <fullName>2C - Warm transfer to AM</fullName>
+                    <default>false</default>
+                    <label>2C - Warm transfer to AM</label>
+                </value>
+                <value>
+                    <fullName>2D - Nurture by DOM/DRR</fullName>
+                    <default>false</default>
+                    <label>2D - Nurture by DOM/DRR</label>
+                </value>
+                <value>
+                    <fullName>5A - Won</fullName>
+                    <default>false</default>
+                    <label>5A - Won</label>
+                </value>
+                <value>
+                    <fullName>5B - Lost</fullName>
+                    <default>false</default>
+                    <label>5B - Lost</label>
+                </value>
+                <value>
+                    <fullName>5C - Cancelled</fullName>
+                    <default>false</default>
+                    <label>5C - Cancelled</label>
+                </value>
+                <value>
+                    <fullName>5D - Long Sales Cycle</fullName>
+                    <default>false</default>
+                    <label>5D - Long Sales Cycle</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Stage 1  DRT Opportunity Identified / DRT Engaged</controllingFieldValue>
+                <valueName>1A - Sent to Partner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 1  DRT Opportunity Identified / DRT Engaged</controllingFieldValue>
+                <valueName>1B - Sent to DOM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 1  DRT Opportunity Identified / DRT Engaged</controllingFieldValue>
+                <valueName>1C - Partner Admin assigned to PSR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 2  Partner / DOM Engaged with Customer</controllingFieldValue>
+                <valueName>2A - PSR engaged with Customer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 2  Partner / DOM Engaged with Customer</controllingFieldValue>
+                <valueName>2B - DOM engaged with Customer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 2  Partner / DOM Engaged with Customer</controllingFieldValue>
+                <valueName>2C - Warm transfer to AM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 2  Partner / DOM Engaged with Customer</controllingFieldValue>
+                <valueName>2D - Nurture by DOM/DRR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 5  Won	/ Lost / Cancelled</controllingFieldValue>
+                <valueName>5A - Won</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 5  Won	/ Lost / Cancelled</controllingFieldValue>
+                <valueName>5B - Lost</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 5  Won	/ Lost / Cancelled</controllingFieldValue>
+                <valueName>5C - Cancelled</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Stage 5  Won	/ Lost / Cancelled</controllingFieldValue>
+                <valueName>5D - Long Sales Cycle</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Data_Source_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Data Source Name</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DateCompleted__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Completed</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Deal_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Deal ID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Demo_System__c</fullName>
+        <description>To track SE Customer demonstrations. WR-00407</description>
+        <externalId>false</externalId>
+        <label>Demo System</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACE</fullName>
+                    <default>false</default>
+                    <label>ACE</label>
+                </value>
+                <value>
+                    <fullName>Cloud Networking Group</fullName>
+                    <default>false</default>
+                    <label>Cloud Networking Group</label>
+                </value>
+                <value>
+                    <fullName>CPOC</fullName>
+                    <default>false</default>
+                    <label>CPOC</label>
+                </value>
+                <value>
+                    <fullName>dCloud</fullName>
+                    <default>false</default>
+                    <label>dCloud</label>
+                </value>
+                <value>
+                    <fullName>Demo Loan Program (DLP)</fullName>
+                    <default>false</default>
+                    <label>Demo Loan Program (DLP)</label>
+                </value>
+                <value>
+                    <fullName>GOLD Lab</fullName>
+                    <default>false</default>
+                    <label>GOLD Lab</label>
+                </value>
+                <value>
+                    <fullName>Meraki</fullName>
+                    <default>false</default>
+                    <label>Meraki</label>
+                </value>
+                <value>
+                    <fullName>Personal/Local Lab</fullName>
+                    <default>false</default>
+                    <label>Personal/Local Lab</label>
+                </value>
+                <value>
+                    <fullName>Regional Lab</fullName>
+                    <default>false</default>
+                    <label>Regional Lab</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Deployment_No__c</fullName>
+        <externalId>false</externalId>
+        <label>Deployment No</label>
+        <length>5</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Duration__c</fullName>
+        <description>This field used in Jabber Integration with SFDC application.Stores duration of the call.</description>
+        <externalId>false</externalId>
+        <label>Jabber Duration</label>
+        <length>30</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_Outcome__c</fullName>
+        <description>Describes the outcome of the event with the customer.</description>
+        <externalId>false</externalId>
+        <label>Event Outcome</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Event__c</fullName>
+        <description>FY15Q1 SCP Parter Transformation V1.0.
+Added checkbox to keep parity with the Activities related list</description>
+        <externalId>false</externalId>
+        <formula>NOT(IsTask )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Event</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Jabber_Call_Duration_in_Minutes__c</fullName>
+        <description>Jabber call duration in minutes</description>
+        <externalId>false</externalId>
+        <formula>CallDurationInSeconds / 60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Jabber call duration in minutes</inlineHelpText>
+        <label>Jabber Call Duration in Minutes</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Jabber_Call_Duration_ms__c</fullName>
+        <description>Jabber Call Duration in milliseconds</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Jabber Call Duration in milliseconds</inlineHelpText>
+        <label>Jabber Call Duration(ms)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Jabber_Call_End_Date_Time__c</fullName>
+        <description>Capture the end time of the jabber call</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Capture the end time of the jabber call</inlineHelpText>
+        <label>Jabber Call End Date Time</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Jabber_Call_Start_Date_Time__c</fullName>
+        <defaultValue>NOW()</defaultValue>
+        <description>Capture start time of the jabber call</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Capture start time of the jabber call</inlineHelpText>
+        <label>Jabber Call Start Date Time</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Marketing_Campaign__c</fullName>
+        <externalId>false</externalId>
+        <label>Marketing Campaign</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>(P)WorkplaceTransformation (GMP)</fullName>
+                    <default>false</default>
+                    <label>(P)WorkplaceTransformation (GMP)</label>
+                </value>
+                <value>
+                    <fullName>AA 2nd Chance Attach</fullName>
+                    <default>false</default>
+                    <label>AA 2nd Chance Attach</label>
+                </value>
+                <value>
+                    <fullName>AA Expired</fullName>
+                    <default>false</default>
+                    <label>AA Expired</label>
+                </value>
+                <value>
+                    <fullName>AA Icebreaker</fullName>
+                    <default>false</default>
+                    <label>AA Icebreaker</label>
+                </value>
+                <value>
+                    <fullName>AA Refresh</fullName>
+                    <default>false</default>
+                    <label>AA Refresh</label>
+                </value>
+                <value>
+                    <fullName>AA Security</fullName>
+                    <default>false</default>
+                    <label>AA Security</label>
+                </value>
+                <value>
+                    <fullName>AppD</fullName>
+                    <default>false</default>
+                    <label>AppD</label>
+                </value>
+                <value>
+                    <fullName>ASR Security POV</fullName>
+                    <default>false</default>
+                    <label>ASR Security POV</label>
+                </value>
+                <value>
+                    <fullName>AWS Marketplace</fullName>
+                    <default>false</default>
+                    <label>AWS Marketplace</label>
+                </value>
+                <value>
+                    <fullName>Business Cloud Advisor</fullName>
+                    <default>false</default>
+                    <label>Business Cloud Advisor</label>
+                </value>
+                <value>
+                    <fullName>Business Video</fullName>
+                    <default>false</default>
+                    <label>Business Video</label>
+                </value>
+                <value>
+                    <fullName>Call Day</fullName>
+                    <default>false</default>
+                    <label>Call Day</label>
+                </value>
+                <value>
+                    <fullName>Case Study</fullName>
+                    <default>false</default>
+                    <label>Case Study</label>
+                </value>
+                <value>
+                    <fullName>CBC Demo</fullName>
+                    <default>false</default>
+                    <label>CBC Demo</label>
+                </value>
+                <value>
+                    <fullName>Cisco Capital/Financing</fullName>
+                    <default>false</default>
+                    <label>Cisco Capital/Financing</label>
+                </value>
+                <value>
+                    <fullName>Cisco Capital New MLFA SPIFF Campaign</fullName>
+                    <default>false</default>
+                    <label>Cisco Capital New MLFA SPIFF Campaign</label>
+                </value>
+                <value>
+                    <fullName>Cisco Connect US</fullName>
+                    <default>false</default>
+                    <label>Cisco Connect US</label>
+                </value>
+                <value>
+                    <fullName>Cisco Customer Program</fullName>
+                    <default>false</default>
+                    <label>Cisco Customer Program</label>
+                </value>
+                <value>
+                    <fullName>Cisco Cyber Threat Response (CTR) Clinic</fullName>
+                    <default>false</default>
+                    <label>Cisco Cyber Threat Response (CTR) Clinic</label>
+                </value>
+                <value>
+                    <fullName>Cisco Days</fullName>
+                    <default>false</default>
+                    <label>Cisco Days</label>
+                </value>
+                <value>
+                    <fullName>Cisco Executive Events</fullName>
+                    <default>false</default>
+                    <label>Cisco Executive Events</label>
+                </value>
+                <value>
+                    <fullName>Cisco Expo / Interop</fullName>
+                    <default>false</default>
+                    <label>Cisco Expo / Interop</label>
+                </value>
+                <value>
+                    <fullName>Cisco Interactive Technology Workshop</fullName>
+                    <default>false</default>
+                    <label>Cisco Interactive Technology Workshop</label>
+                </value>
+                <value>
+                    <fullName>Cisco Led Events</fullName>
+                    <default>false</default>
+                    <label>Cisco Led Events</label>
+                </value>
+                <value>
+                    <fullName>Cisco Live</fullName>
+                    <default>false</default>
+                    <label>Cisco Live</label>
+                </value>
+                <value>
+                    <fullName>Cisco On the Road</fullName>
+                    <default>false</default>
+                    <label>Cisco On the Road</label>
+                </value>
+                <value>
+                    <fullName>Cisco Plus/Connect/Live/Innovate</fullName>
+                    <default>false</default>
+                    <label>Cisco Plus/Connect/Live/Innovate</label>
+                </value>
+                <value>
+                    <fullName>Cisco Ready - LDoS Opp</fullName>
+                    <default>false</default>
+                    <label>Cisco Ready - LDoS Opp</label>
+                </value>
+                <value>
+                    <fullName>Cisco Solutions Summit</fullName>
+                    <default>false</default>
+                    <label>Cisco Solutions Summit</label>
+                </value>
+                <value>
+                    <fullName>Cisco Thought Leadership</fullName>
+                    <default>false</default>
+                    <label>Cisco Thought Leadership</label>
+                </value>
+                <value>
+                    <fullName>Cloud Campaign</fullName>
+                    <default>false</default>
+                    <label>Cloud Campaign</label>
+                </value>
+                <value>
+                    <fullName>Cloud Demo</fullName>
+                    <default>false</default>
+                    <label>Cloud Demo</label>
+                </value>
+                <value>
+                    <fullName>CN CoE Program</fullName>
+                    <default>false</default>
+                    <label>CN CoE Program</label>
+                </value>
+                <value>
+                    <fullName>Collab-BE6000</fullName>
+                    <default>false</default>
+                    <label>Collab-BE6000</label>
+                </value>
+                <value>
+                    <fullName>Collab-Contact Center (Customer Collab)</fullName>
+                    <default>false</default>
+                    <label>Collab-Contact Center (Customer Collab)</label>
+                </value>
+                <value>
+                    <fullName>Collab-Jabber</fullName>
+                    <default>false</default>
+                    <label>Collab-Jabber</label>
+                </value>
+                <value>
+                    <fullName>Collaboration</fullName>
+                    <default>false</default>
+                    <label>Collaboration</label>
+                </value>
+                <value>
+                    <fullName>Collaboration Breakaway</fullName>
+                    <default>false</default>
+                    <label>Collaboration Breakaway</label>
+                </value>
+                <value>
+                    <fullName>Collab-TelePresence</fullName>
+                    <default>false</default>
+                    <label>Collab-TelePresence</label>
+                </value>
+                <value>
+                    <fullName>Collab-Unified Communications</fullName>
+                    <default>false</default>
+                    <label>Collab-Unified Communications</label>
+                </value>
+                <value>
+                    <fullName>Collab-WebEx (CMR)</fullName>
+                    <default>false</default>
+                    <label>Collab-WebEx (CMR)</label>
+                </value>
+                <value>
+                    <fullName>Collab-Workspace Experience</fullName>
+                    <default>false</default>
+                    <label>Collab-Workspace Experience</label>
+                </value>
+                <value>
+                    <fullName>Com-Event-Local/Regional</fullName>
+                    <default>false</default>
+                    <label>Com-Event-Local/Regional</label>
+                </value>
+                <value>
+                    <fullName>Connected intelligence</fullName>
+                    <default>false</default>
+                    <label>Connected intelligence</label>
+                </value>
+                <value>
+                    <fullName>Connect Now</fullName>
+                    <default>false</default>
+                    <label>Connect Now</label>
+                </value>
+                <value>
+                    <fullName>CTR Clinics</fullName>
+                    <default>false</default>
+                    <label>CTR Clinics</label>
+                </value>
+                <value>
+                    <fullName>Customer Centricity Program</fullName>
+                    <default>false</default>
+                    <label>Customer Centricity Program</label>
+                </value>
+                <value>
+                    <fullName>Customer User Groups</fullName>
+                    <default>false</default>
+                    <label>Customer User Groups</label>
+                </value>
+                <value>
+                    <fullName>CXO Forum Day/Event</fullName>
+                    <default>false</default>
+                    <label>CXO Forum Day/Event</label>
+                </value>
+                <value>
+                    <fullName>CXO Relevancy</fullName>
+                    <default>false</default>
+                    <label>CXO Relevancy</label>
+                </value>
+                <value>
+                    <fullName>Cyber Security</fullName>
+                    <default>false</default>
+                    <label>Cyber Security</label>
+                </value>
+                <value>
+                    <fullName>Data Center</fullName>
+                    <default>false</default>
+                    <label>Data Center</label>
+                </value>
+                <value>
+                    <fullName>DC-06: Compute Modernisation</fullName>
+                    <default>false</default>
+                    <label>DC-06: Compute Modernisation</label>
+                </value>
+                <value>
+                    <fullName>DC-06: Compute Mordernisation</fullName>
+                    <default>false</default>
+                    <label>DC-06: Compute Mordernisation</label>
+                </value>
+                <value>
+                    <fullName>DC-11: Hyperflex</fullName>
+                    <default>false</default>
+                    <label>DC-11: Hyperflex</label>
+                </value>
+                <value>
+                    <fullName>DC-12: Data Centre Network Modernisation</fullName>
+                    <default>false</default>
+                    <label>DC-12: Data Centre Network Modernisation</label>
+                </value>
+                <value>
+                    <fullName>DC-Other Alliance</fullName>
+                    <default>false</default>
+                    <label>DC-Other Alliance</label>
+                </value>
+                <value>
+                    <fullName>DC-Server + Switch</fullName>
+                    <default>false</default>
+                    <label>DC-Server + Switch</label>
+                </value>
+                <value>
+                    <fullName>DC-Switch / SAN</fullName>
+                    <default>false</default>
+                    <label>DC-Switch / SAN</label>
+                </value>
+                <value>
+                    <fullName>DC-Virtual Desktop</fullName>
+                    <default>false</default>
+                    <label>DC-Virtual Desktop</label>
+                </value>
+                <value>
+                    <fullName>Deman Gen Activity GVS&amp;CS EMEAR</fullName>
+                    <default>false</default>
+                    <label>Deman Gen Activity GVS&amp;CS EMEAR</label>
+                </value>
+                <value>
+                    <fullName>Disaster Recovery</fullName>
+                    <default>false</default>
+                    <label>Disaster Recovery</label>
+                </value>
+                <value>
+                    <fullName>Early in University Internship</fullName>
+                    <default>false</default>
+                    <label>Early in University Internship</label>
+                </value>
+                <value>
+                    <fullName>East Collaboration Day</fullName>
+                    <default>false</default>
+                    <label>East Collaboration Day</label>
+                </value>
+                <value>
+                    <fullName>Ecosystem Partner Event</fullName>
+                    <default>false</default>
+                    <label>Ecosystem Partner Event</label>
+                </value>
+                <value>
+                    <fullName>EN-Cisco BYOD Soln/UA/Wireless</fullName>
+                    <default>false</default>
+                    <label>EN-Cisco BYOD Soln/UA/Wireless</label>
+                </value>
+                <value>
+                    <fullName>EN-Connect to the Cloud/Routing</fullName>
+                    <default>false</default>
+                    <label>EN-Connect to the Cloud/Routing</label>
+                </value>
+                <value>
+                    <fullName>EN-Core Acceleration-Just Switch It</fullName>
+                    <default>false</default>
+                    <label>EN-Core Acceleration-Just Switch It</label>
+                </value>
+                <value>
+                    <fullName>Enterprise Networks</fullName>
+                    <default>false</default>
+                    <label>Enterprise Networks</label>
+                </value>
+                <value>
+                    <fullName>Enterprise Value Play</fullName>
+                    <default>false</default>
+                    <label>Enterprise Value Play</label>
+                </value>
+                <value>
+                    <fullName>Event</fullName>
+                    <default>false</default>
+                    <label>Event</label>
+                </value>
+                <value>
+                    <fullName>EVENT-CIAB</fullName>
+                    <default>false</default>
+                    <label>EVENT-CIAB</label>
+                </value>
+                <value>
+                    <fullName>EVENT-CIO Gov</fullName>
+                    <default>false</default>
+                    <label>EVENT-CIO Gov</label>
+                </value>
+                <value>
+                    <fullName>EVENT-CIO Summit</fullName>
+                    <default>false</default>
+                    <label>EVENT-CIO Summit</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Cisco Connect</fullName>
+                    <default>false</default>
+                    <label>EVENT-Cisco Connect</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Cisco Corporate</fullName>
+                    <default>false</default>
+                    <label>EVENT-Cisco Corporate</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Cisco IT Data Center Day 2016</fullName>
+                    <default>false</default>
+                    <label>EVENT-Cisco IT Data Center Day 2016</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Cisco IT Data Center Day 2018</fullName>
+                    <default>false</default>
+                    <label>EVENT-Cisco IT Data Center Day 2018</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Cisco Plus</fullName>
+                    <default>false</default>
+                    <label>EVENT-Cisco Plus</label>
+                </value>
+                <value>
+                    <fullName>EVENT-DC-Design and Deployment Seminar</fullName>
+                    <default>false</default>
+                    <label>EVENT-DC-Design and Deployment Seminar</label>
+                </value>
+                <value>
+                    <fullName>EVENT-DC FIREFLY</fullName>
+                    <default>false</default>
+                    <label>EVENT-DC FIREFLY</label>
+                </value>
+                <value>
+                    <fullName>Event DOD</fullName>
+                    <default>false</default>
+                    <label>Event DOD</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Ecosystem Partner Event</fullName>
+                    <default>false</default>
+                    <label>EVENT-Ecosystem Partner Event</label>
+                </value>
+                <value>
+                    <fullName>Event - Federal</fullName>
+                    <default>false</default>
+                    <label>Event - Federal</label>
+                </value>
+                <value>
+                    <fullName>Event - Hannover Messe 2017</fullName>
+                    <default>false</default>
+                    <label>Event - Hannover Messe 2017</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Innovation Day</fullName>
+                    <default>false</default>
+                    <label>EVENT-Innovation Day</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Marketing Event</fullName>
+                    <default>false</default>
+                    <label>EVENT-Marketing Event</label>
+                </value>
+                <value>
+                    <fullName>Event Partner</fullName>
+                    <default>false</default>
+                    <label>Event Partner</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Regional Tradeshow</fullName>
+                    <default>false</default>
+                    <label>EVENT-Regional Tradeshow</label>
+                </value>
+                <value>
+                    <fullName>EVENT-SLED</fullName>
+                    <default>false</default>
+                    <label>EVENT-SLED</label>
+                </value>
+                <value>
+                    <fullName>Event Sponsorship</fullName>
+                    <default>false</default>
+                    <label>Event Sponsorship</label>
+                </value>
+                <value>
+                    <fullName>EVENT-Telstra Vantage</fullName>
+                    <default>false</default>
+                    <label>EVENT-Telstra Vantage</label>
+                </value>
+                <value>
+                    <fullName>EVENT-V-Forums/EMC Forums</fullName>
+                    <default>false</default>
+                    <label>EVENT-V-Forums/EMC Forums</label>
+                </value>
+                <value>
+                    <fullName>EV Programs</fullName>
+                    <default>false</default>
+                    <label>EV Programs</label>
+                </value>
+                <value>
+                    <fullName>Executive Forum</fullName>
+                    <default>false</default>
+                    <label>Executive Forum</label>
+                </value>
+                <value>
+                    <fullName>Executive Roundtable</fullName>
+                    <default>false</default>
+                    <label>Executive Roundtable</label>
+                </value>
+                <value>
+                    <fullName>FedRAMP - Government Cloud</fullName>
+                    <default>false</default>
+                    <label>FedRAMP - Government Cloud</label>
+                </value>
+                <value>
+                    <fullName>FSI/BFS-Financial Services Industry</fullName>
+                    <default>false</default>
+                    <label>FSI/BFS-Financial Services Industry</label>
+                </value>
+                <value>
+                    <fullName>FY19 GVS GSP Marketing</fullName>
+                    <default>false</default>
+                    <label>FY19 GVS GSP Marketing</label>
+                </value>
+                <value>
+                    <fullName>Gartner Security &amp; Risk</fullName>
+                    <default>false</default>
+                    <label>Gartner Security &amp; Risk</label>
+                </value>
+                <value>
+                    <fullName>GLT Test Drive</fullName>
+                    <default>false</default>
+                    <label>GLT Test Drive</label>
+                </value>
+                <value>
+                    <fullName>GO! Campaign</fullName>
+                    <default>false</default>
+                    <label>GO! Campaign</label>
+                </value>
+                <value>
+                    <fullName>GV Program</fullName>
+                    <default>false</default>
+                    <label>GV Program</label>
+                </value>
+                <value>
+                    <fullName>Healthcare Extended Care</fullName>
+                    <default>false</default>
+                    <label>Healthcare Extended Care</label>
+                </value>
+                <value>
+                    <fullName>HIMSS</fullName>
+                    <default>false</default>
+                    <label>HIMSS</label>
+                </value>
+                <value>
+                    <fullName>iForce</fullName>
+                    <default>false</default>
+                    <label>iForce</label>
+                </value>
+                <value>
+                    <fullName>Ignite/ASR Mid Market</fullName>
+                    <default>false</default>
+                    <label>Ignite/ASR Mid Market</label>
+                </value>
+                <value>
+                    <fullName>Inbound-French</fullName>
+                    <default>false</default>
+                    <label>Inbound-French</label>
+                </value>
+                <value>
+                    <fullName>INBOUND MERAKI</fullName>
+                    <default>false</default>
+                    <label>INBOUND MERAKI</label>
+                </value>
+                <value>
+                    <fullName>Industry Events</fullName>
+                    <default>false</default>
+                    <label>Industry Events</label>
+                </value>
+                <value>
+                    <fullName>Interact webinar</fullName>
+                    <default>false</default>
+                    <label>Interact webinar</label>
+                </value>
+                <value>
+                    <fullName>IOE Solutions</fullName>
+                    <default>false</default>
+                    <label>IOE Solutions</label>
+                </value>
+                <value>
+                    <fullName>IOT</fullName>
+                    <default>false</default>
+                    <label>IOT</label>
+                </value>
+                <value>
+                    <fullName>ISTE</fullName>
+                    <default>false</default>
+                    <label>ISTE</label>
+                </value>
+                <value>
+                    <fullName>ISV DG</fullName>
+                    <default>false</default>
+                    <label>ISV DG</label>
+                </value>
+                <value>
+                    <fullName>ITS-IT &amp; ITES Business</fullName>
+                    <default>false</default>
+                    <label>ITS-IT &amp; ITES Business</label>
+                </value>
+                <value>
+                    <fullName>JMF</fullName>
+                    <default>false</default>
+                    <label>JMF</label>
+                </value>
+                <value>
+                    <fullName>Joint DG D-Led Play</fullName>
+                    <default>false</default>
+                    <label>Joint DG D-Led Play</label>
+                </value>
+                <value>
+                    <fullName>Joint DG Vertical</fullName>
+                    <default>false</default>
+                    <label>Joint DG Vertical</label>
+                </value>
+                <value>
+                    <fullName>KTN-Know the Network</fullName>
+                    <default>false</default>
+                    <label>KTN-Know the Network</label>
+                </value>
+                <value>
+                    <fullName>Local Call Day</fullName>
+                    <default>false</default>
+                    <label>Local Call Day</label>
+                </value>
+                <value>
+                    <fullName>Loyalty Program MX</fullName>
+                    <default>false</default>
+                    <label>Loyalty Program MX</label>
+                </value>
+                <value>
+                    <fullName>Marketing Data Intelligence</fullName>
+                    <default>false</default>
+                    <label>Marketing Data Intelligence</label>
+                </value>
+                <value>
+                    <fullName>Marketing Influenced</fullName>
+                    <default>false</default>
+                    <label>Marketing Influenced</label>
+                </value>
+                <value>
+                    <fullName>MIT-Thought Leadership</fullName>
+                    <default>false</default>
+                    <label>MIT-Thought Leadership</label>
+                </value>
+                <value>
+                    <fullName>Mobile World Congress</fullName>
+                    <default>false</default>
+                    <label>Mobile World Congress</label>
+                </value>
+                <value>
+                    <fullName>Move the Risk</fullName>
+                    <default>false</default>
+                    <label>Move the Risk</label>
+                </value>
+                <value>
+                    <fullName>MP-Rekindle</fullName>
+                    <default>false</default>
+                    <label>MP-Rekindle</label>
+                </value>
+                <value>
+                    <fullName>Multicloud Advisor Tool</fullName>
+                    <default>false</default>
+                    <label>Multicloud Advisor Tool</label>
+                </value>
+                <value>
+                    <fullName>Multi Customer EBC</fullName>
+                    <default>false</default>
+                    <label>Multi Customer EBC</label>
+                </value>
+                <value>
+                    <fullName>National Call Day</fullName>
+                    <default>false</default>
+                    <label>National Call Day</label>
+                </value>
+                <value>
+                    <fullName>National or industry Conferences</fullName>
+                    <default>false</default>
+                    <label>National or industry Conferences</label>
+                </value>
+                <value>
+                    <fullName>NB-09:  Next Era of Networking</fullName>
+                    <default>false</default>
+                    <label>NB-09:  Next Era of Networking</label>
+                </value>
+                <value>
+                    <fullName>NB-10: Competitive</fullName>
+                    <default>false</default>
+                    <label>NB-10: Competitive</label>
+                </value>
+                <value>
+                    <fullName>NDI-Whitespace</fullName>
+                    <default>false</default>
+                    <label>NDI-Whitespace</label>
+                </value>
+                <value>
+                    <fullName>NRF</fullName>
+                    <default>false</default>
+                    <label>NRF</label>
+                </value>
+                <value>
+                    <fullName>Operational Assurance Services</fullName>
+                    <default>false</default>
+                    <label>Operational Assurance Services</label>
+                </value>
+                <value>
+                    <fullName>Opex Budget Arquitectures</fullName>
+                    <default>false</default>
+                    <label>Opex Budget Arquitectures</label>
+                </value>
+                <value>
+                    <fullName>Opex Budget Commercial</fullName>
+                    <default>false</default>
+                    <label>Opex Budget Commercial</label>
+                </value>
+                <value>
+                    <fullName>Partner Demand Center</fullName>
+                    <default>false</default>
+                    <label>Partner Demand Center</label>
+                </value>
+                <value>
+                    <fullName>Partner Gen Opportunity</fullName>
+                    <default>false</default>
+                    <label>Partner Gen Opportunity</label>
+                </value>
+                <value>
+                    <fullName>Partner Led Event</fullName>
+                    <default>false</default>
+                    <label>Partner Led Event</label>
+                </value>
+                <value>
+                    <fullName>Partner Marketing</fullName>
+                    <default>false</default>
+                    <label>Partner Marketing</label>
+                </value>
+                <value>
+                    <fullName>Presidio Day</fullName>
+                    <default>false</default>
+                    <label>Presidio Day</label>
+                </value>
+                <value>
+                    <fullName>Product Launch</fullName>
+                    <default>false</default>
+                    <label>Product Launch</label>
+                </value>
+                <value>
+                    <fullName>Program_ConnectedIntelligence</fullName>
+                    <default>false</default>
+                    <label>Program_ConnectedIntelligence</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-AA Service Renewal</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-AA Service Renewal</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Accelerated Success</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Accelerated Success</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-All Hands Call Blitz</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-All Hands Call Blitz</label>
+                </value>
+                <value>
+                    <fullName>Program-Commercial Named Mkt Sourced</fullName>
+                    <default>false</default>
+                    <label>Program-Commercial Named Mkt Sourced</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-COSTAR</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-COSTAR</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Enterprise Value Play Collab</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Enterprise Value Play Collab</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Enterprise Value Play Data Center</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Enterprise Value Play Data Center</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Enterprise Value Play Ent Net</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Enterprise Value Play Ent Net</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Enterprise Value Play Security</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Enterprise Value Play Security</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-FAST START</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-FAST START</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-GVS Ignite</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-GVS Ignite</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-GVS UBIQ Canada </fullName>
+                    <default>false</default>
+                    <label>PROGRAM-GVS UBIQ Canada </label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-GVS UBIQ LATAM</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-GVS UBIQ LATAM</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-GVS UBIQ Public Sector</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-GVS UBIQ Public Sector</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-GVS UBIQ Service Provider</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-GVS UBIQ Service Provider</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-GVS UBIQ US Commercial</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-GVS UBIQ US Commercial</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Live Nation Sponsorship</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Live Nation Sponsorship</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Meeting Incentive</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Meeting Incentive</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-NBA Sponsorship</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-NBA Sponsorship</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Network Buyer</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Network Buyer</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-PM Partner Event</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-PM Partner Event</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Pro Bowl</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Pro Bowl</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Quintas Quinze</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Quintas Quinze</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Recharge</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Recharge</label>
+                </value>
+                <value>
+                    <fullName>Program-Refresh</fullName>
+                    <default>false</default>
+                    <label>Program-Refresh</label>
+                </value>
+                <value>
+                    <fullName>Program-Refresh/Taking Care Of Business</fullName>
+                    <default>false</default>
+                    <label>Program-Refresh/Taking Care Of Business</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Services AS Call Blitz</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Services AS Call Blitz</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Services TS Call Blitz</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Services TS Call Blitz</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Smart Services Roadshow</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Smart Services Roadshow</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-Thought Leadership</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-Thought Leadership</label>
+                </value>
+                <value>
+                    <fullName>PROGRAM-TwoPlusTwo</fullName>
+                    <default>false</default>
+                    <label>PROGRAM-TwoPlusTwo</label>
+                </value>
+                <value>
+                    <fullName>Project Liberator</fullName>
+                    <default>false</default>
+                    <label>Project Liberator</label>
+                </value>
+                <value>
+                    <fullName>PS-Defense</fullName>
+                    <default>false</default>
+                    <label>PS-Defense</label>
+                </value>
+                <value>
+                    <fullName>PS-Education</fullName>
+                    <default>false</default>
+                    <label>PS-Education</label>
+                </value>
+                <value>
+                    <fullName>PS-Government</fullName>
+                    <default>false</default>
+                    <label>PS-Government</label>
+                </value>
+                <value>
+                    <fullName>PS-Healthcare</fullName>
+                    <default>false</default>
+                    <label>PS-Healthcare</label>
+                </value>
+                <value>
+                    <fullName>PS Scale-Airports</fullName>
+                    <default>false</default>
+                    <label>PS Scale-Airports</label>
+                </value>
+                <value>
+                    <fullName>PS Scale-Connected Intersection</fullName>
+                    <default>false</default>
+                    <label>PS Scale-Connected Intersection</label>
+                </value>
+                <value>
+                    <fullName>PS Scale-Core/Wireless</fullName>
+                    <default>false</default>
+                    <label>PS Scale-Core/Wireless</label>
+                </value>
+                <value>
+                    <fullName>PS Scale-Cyber in Local/Muni</fullName>
+                    <default>false</default>
+                    <label>PS Scale-Cyber in Local/Muni</label>
+                </value>
+                <value>
+                    <fullName>PS Scale-DOT Sales</fullName>
+                    <default>false</default>
+                    <label>PS Scale-DOT Sales</label>
+                </value>
+                <value>
+                    <fullName>PS Scale-FedRamp WebEx</fullName>
+                    <default>false</default>
+                    <label>PS Scale-FedRamp WebEx</label>
+                </value>
+                <value>
+                    <fullName>PS Scale-State Cloud</fullName>
+                    <default>false</default>
+                    <label>PS Scale-State Cloud</label>
+                </value>
+                <value>
+                    <fullName>PS Scale-Video in EDU</fullName>
+                    <default>false</default>
+                    <label>PS Scale-Video in EDU</label>
+                </value>
+                <value>
+                    <fullName>PS Scale-WebEx Spark in EDU</fullName>
+                    <default>false</default>
+                    <label>PS Scale-WebEx Spark in EDU</label>
+                </value>
+                <value>
+                    <fullName>PS-Smart+Connected Communities</fullName>
+                    <default>false</default>
+                    <label>PS-Smart+Connected Communities</label>
+                </value>
+                <value>
+                    <fullName>PS-Transport</fullName>
+                    <default>false</default>
+                    <label>PS-Transport</label>
+                </value>
+                <value>
+                    <fullName>Retail Workshops</fullName>
+                    <default>false</default>
+                    <label>Retail Workshops</label>
+                </value>
+                <value>
+                    <fullName>Rio 2016-Marketing Impacted</fullName>
+                    <default>false</default>
+                    <label>Rio 2016-Marketing Impacted</label>
+                </value>
+                <value>
+                    <fullName>Rio 2016-Sourced</fullName>
+                    <default>false</default>
+                    <label>Rio 2016-Sourced</label>
+                </value>
+                <value>
+                    <fullName>RISE-REACH</fullName>
+                    <default>false</default>
+                    <label>RISE-REACH</label>
+                </value>
+                <value>
+                    <fullName>RTC-Charge</fullName>
+                    <default>false</default>
+                    <label>RTC-Charge</label>
+                </value>
+                <value>
+                    <fullName>RTC-Ignite</fullName>
+                    <default>false</default>
+                    <label>RTC-Ignite</label>
+                </value>
+                <value>
+                    <fullName>RTC-Other</fullName>
+                    <default>false</default>
+                    <label>RTC-Other</label>
+                </value>
+                <value>
+                    <fullName>RTC-Power Hour</fullName>
+                    <default>false</default>
+                    <label>RTC-Power Hour</label>
+                </value>
+                <value>
+                    <fullName>RTC-Service Attached</fullName>
+                    <default>false</default>
+                    <label>RTC-Service Attached</label>
+                </value>
+                <value>
+                    <fullName>RTC-Service Renewal</fullName>
+                    <default>false</default>
+                    <label>RTC-Service Renewal</label>
+                </value>
+                <value>
+                    <fullName>RTC-Start</fullName>
+                    <default>false</default>
+                    <label>RTC-Start</label>
+                </value>
+                <value>
+                    <fullName>SCP Leads</fullName>
+                    <default>false</default>
+                    <label>SCP Leads</label>
+                </value>
+                <value>
+                    <fullName>Security-AMP Everywhere</fullName>
+                    <default>false</default>
+                    <label>Security-AMP Everywhere</label>
+                </value>
+                <value>
+                    <fullName>Security-Content Renewals</fullName>
+                    <default>false</default>
+                    <label>Security-Content Renewals</label>
+                </value>
+                <value>
+                    <fullName>Security-Content Security</fullName>
+                    <default>false</default>
+                    <label>Security-Content Security</label>
+                </value>
+                <value>
+                    <fullName>Security-Email and Web Security</fullName>
+                    <default>false</default>
+                    <label>Security-Email and Web Security</label>
+                </value>
+                <value>
+                    <fullName>Security-Network Security</fullName>
+                    <default>false</default>
+                    <label>Security-Network Security</label>
+                </value>
+                <value>
+                    <fullName>Security-Secure DC</fullName>
+                    <default>false</default>
+                    <label>Security-Secure DC</label>
+                </value>
+                <value>
+                    <fullName>Security-What a Next-Gen Firewall Shd Be</fullName>
+                    <default>false</default>
+                    <label>Security-What a Next-Gen Firewall Shd Be</label>
+                </value>
+                <value>
+                    <fullName>Services- AS</fullName>
+                    <default>false</default>
+                    <label>Services- AS</label>
+                </value>
+                <value>
+                    <fullName>Services Call Day</fullName>
+                    <default>false</default>
+                    <label>Services Call Day</label>
+                </value>
+                <value>
+                    <fullName>Services Daytona Program</fullName>
+                    <default>false</default>
+                    <label>Services Daytona Program</label>
+                </value>
+                <value>
+                    <fullName>Services Enabled Software</fullName>
+                    <default>false</default>
+                    <label>Services Enabled Software</label>
+                </value>
+                <value>
+                    <fullName>Services Program</fullName>
+                    <default>false</default>
+                    <label>Services Program</label>
+                </value>
+                <value>
+                    <fullName>Services-TS</fullName>
+                    <default>false</default>
+                    <label>Services-TS</label>
+                </value>
+                <value>
+                    <fullName>Shavings Make a Pile</fullName>
+                    <default>false</default>
+                    <label>Shavings Make a Pile</label>
+                </value>
+                <value>
+                    <fullName>Simple IT</fullName>
+                    <default>false</default>
+                    <label>Simple IT</label>
+                </value>
+                <value>
+                    <fullName>Smart Solution Day</fullName>
+                    <default>false</default>
+                    <label>Smart Solution Day</label>
+                </value>
+                <value>
+                    <fullName>Social Selling Program</fullName>
+                    <default>false</default>
+                    <label>Social Selling Program</label>
+                </value>
+                <value>
+                    <fullName>Spiceworld</fullName>
+                    <default>false</default>
+                    <label>Spiceworld</label>
+                </value>
+                <value>
+                    <fullName>SP-Industry Events</fullName>
+                    <default>false</default>
+                    <label>SP-Industry Events</label>
+                </value>
+                <value>
+                    <fullName>SP-Influencer</fullName>
+                    <default>false</default>
+                    <label>SP-Influencer</label>
+                </value>
+                <value>
+                    <fullName>SP-Managed</fullName>
+                    <default>false</default>
+                    <label>SP-Managed</label>
+                </value>
+                <value>
+                    <fullName>SPOT Marketing Campaign</fullName>
+                    <default>false</default>
+                    <label>SPOT Marketing Campaign</label>
+                </value>
+                <value>
+                    <fullName>SP-Premier Marketing Engagement</fullName>
+                    <default>false</default>
+                    <label>SP-Premier Marketing Engagement</label>
+                </value>
+                <value>
+                    <fullName>SP Program-Lead Generation</fullName>
+                    <default>false</default>
+                    <label>SP Program-Lead Generation</label>
+                </value>
+                <value>
+                    <fullName>Step In Customer Event</fullName>
+                    <default>false</default>
+                    <label>Step In Customer Event</label>
+                </value>
+                <value>
+                    <fullName>Strategic Account Marketing</fullName>
+                    <default>false</default>
+                    <label>Strategic Account Marketing</label>
+                </value>
+                <value>
+                    <fullName>SVC-Account Based Marketing</fullName>
+                    <default>false</default>
+                    <label>SVC-Account Based Marketing</label>
+                </value>
+                <value>
+                    <fullName>SVC-Loyalty Program</fullName>
+                    <default>false</default>
+                    <label>SVC-Loyalty Program</label>
+                </value>
+                <value>
+                    <fullName>Tier 1 Events</fullName>
+                    <default>false</default>
+                    <label>Tier 1 Events</label>
+                </value>
+                <value>
+                    <fullName>Tokyo Olympics 2020</fullName>
+                    <default>false</default>
+                    <label>Tokyo Olympics 2020</label>
+                </value>
+                <value>
+                    <fullName>Videoscape Technology Showcase</fullName>
+                    <default>false</default>
+                    <label>Videoscape Technology Showcase</label>
+                </value>
+                <value>
+                    <fullName>Walkabout</fullName>
+                    <default>false</default>
+                    <label>Walkabout</label>
+                </value>
+                <value>
+                    <fullName>Wireless</fullName>
+                    <default>false</default>
+                    <label>Wireless</label>
+                </value>
+                <value>
+                    <fullName>Wolverine</fullName>
+                    <default>false</default>
+                    <label>Wolverine</label>
+                </value>
+                <value>
+                    <fullName>Year End Spend</fullName>
+                    <default>false</default>
+                    <label>Year End Spend</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Method__c</fullName>
+        <description>Shows what format was used for interaction (This field is for SE Use only for Resource Assignment Engine project)</description>
+        <externalId>false</externalId>
+        <label>Method</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cisco Office: Assigned</fullName>
+                    <default>false</default>
+                    <label>Cisco Office: Assigned</label>
+                </value>
+                <value>
+                    <fullName>Cisco Office: Other</fullName>
+                    <default>false</default>
+                    <label>Cisco Office: Other</label>
+                </value>
+                <value>
+                    <fullName>Collab Tools: Telepresence</fullName>
+                    <default>false</default>
+                    <label>Collab Tools: Telepresence</label>
+                </value>
+                <value>
+                    <fullName>Collab Tools: WebEx</fullName>
+                    <default>false</default>
+                    <label>Collab Tools: WebEx</label>
+                </value>
+                <value>
+                    <fullName>Collab Tools: Other</fullName>
+                    <default>false</default>
+                    <label>Collab Tools: Other</label>
+                </value>
+                <value>
+                    <fullName>Offsite: Customer</fullName>
+                    <default>false</default>
+                    <label>Offsite: Customer</label>
+                </value>
+                <value>
+                    <fullName>Offsite: Other</fullName>
+                    <default>false</default>
+                    <label>Offsite: Other</label>
+                </value>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Object__c</fullName>
+        <description>Used to determine what object the task is assigned to.  Account or Oppty.  Custom objects can be added into the formula</description>
+        <externalId>false</externalId>
+        <formula>If(BEGINS(WhatId, '006'),'Opportunity',if(BEGINS(WhatId, '001'),'Account','custom'))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Object</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Email__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Partner Email</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Phone_Number__c</fullName>
+        <description>This field used in Jabber Integration with SFDC application.Stores phone number to which call made.</description>
+        <externalId>false</externalId>
+        <label>Phone #</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Call_Date__c</fullName>
+        <description>Stores date &amp; time of the call</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date &amp; time of the call</inlineHelpText>
+        <label>Playbooks Call Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Call_Hour__c</fullName>
+        <description>Stores the hour the call was placed in the prospect's time</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Stores the hour the call was placed in the prospect's time</inlineHelpText>
+        <label>Playbooks Call Hour</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Call_Identifier__c</fullName>
+        <description>Stores a unique identifier for data syncing purposes</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How InsideSales.com identifies a call was made</inlineHelpText>
+        <label>Playbooks Call Identifier</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Call_Recording__c</fullName>
+        <description>A link to the call recording of that specific call</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A link to the call recording of that specific call</inlineHelpText>
+        <label>Playbooks Call Recording</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Email_Link_Click_Count__c</fullName>
+        <description>Playbooks Email Link Click Count</description>
+        <externalId>false</externalId>
+        <label>Playbooks Email Link Click Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Play_Name__c</fullName>
+        <description>Stores the name of the play a record is currently enrolled in</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the play a record is currently enrolled in</inlineHelpText>
+        <label>Playbooks Play Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Play_Success__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Check this box if a rep marks a play as successful</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check this box if a rep marks a play as successful</inlineHelpText>
+        <label>Playbooks Play Success</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Ring_Time__c</fullName>
+        <description>Stores how long the phone rang before the prospect picked up</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How long the phone rang before the prospect answered</inlineHelpText>
+        <label>Playbooks Ring Time</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Email_Link_Clicked_Data__c</fullName>
+        <description>Playbooks Step Email Link Clicked Data</description>
+        <externalId>false</externalId>
+        <label>Playbooks Step Email Link Clicked Data</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Email_Open_Count__c</fullName>
+        <description>Playbooks Step Email Open Count</description>
+        <externalId>false</externalId>
+        <label>Playbooks Step Email Open Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Email_Opened__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Playbooks Step Email Opened</description>
+        <externalId>false</externalId>
+        <label>Playbooks Step Email Opened</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Email_RepliedPlaybooks_St__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Playbooks Step Email Link</description>
+        <externalId>false</externalId>
+        <label>Playbooks Step Email RepliedPlaybooks St</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Email_Replied__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Playbooks Step Email Replied</description>
+        <externalId>false</externalId>
+        <label>Playbooks Step Email Replied</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Email_Reply_Count__c</fullName>
+        <description>Playbooks Step Email Reply Count</description>
+        <externalId>false</externalId>
+        <label>Playbooks Step Email Reply Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Email_Template_Name_c__c</fullName>
+        <description>Playbooks_Step_Email_Template_Name__c</description>
+        <externalId>false</externalId>
+        <label>Playbooks_Step_Email_Template_Name__c</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Playbooks Step ID</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Number__c</fullName>
+        <description>Stores the step number a play was on when the activity was completed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The step number the activity was completed on</inlineHelpText>
+        <label>Playbooks Step Number</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Success__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Playbooks Step Success</description>
+        <externalId>false</externalId>
+        <label>Playbooks Step Success</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Playbooks_Step_Type__c</fullName>
+        <description>Stores the type of step for the task (phone, email, other)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of step for the task (phone, email, other)</inlineHelpText>
+        <label>Playbooks Step Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Services__c</fullName>
+        <description>Tracking GVS&amp;CS Services reps activity and quality customer engagements to understand impact on bookings and revenue.</description>
+        <externalId>false</externalId>
+        <label>Primary Services</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Smartnet</fullName>
+                    <default>false</default>
+                    <label>Smartnet</label>
+                </value>
+                <value>
+                    <fullName>Solution Support</fullName>
+                    <default>false</default>
+                    <label>Solution Support</label>
+                </value>
+                <value>
+                    <fullName>Cisco Capital</fullName>
+                    <default>false</default>
+                    <label>Cisco Capital</label>
+                </value>
+                <value>
+                    <fullName>Premium services</fullName>
+                    <default>false</default>
+                    <label>Premium services</label>
+                </value>
+                <value>
+                    <fullName>Asset Manager</fullName>
+                    <default>false</default>
+                    <label>Asset Manager</label>
+                </value>
+                <value>
+                    <fullName>TSA</fullName>
+                    <default>false</default>
+                    <label>TSA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Primary_Technology_Discussed__c</fullName>
+        <description>Describes primary technology for SE engagement (This field is created for SE use only for Resource Assignment Engine Project)</description>
+        <externalId>false</externalId>
+        <label>Primary Technology Discussed</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CiscoOne</fullName>
+                    <default>false</default>
+                    <label>CiscoOne</label>
+                </value>
+                <value>
+                    <fullName>CLOUD PLATFORM &amp; SERVICES</fullName>
+                    <default>false</default>
+                    <label>CLOUD PLATFORM &amp; SERVICES</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-Conferencing</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-Conferencing</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-Contact Center</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-Contact Center</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-TP Endpoints</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-TP Endpoints</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-TP Multiparty Conferencing</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-TP Multiparty Conferencing</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-UC Endpoints</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-UC Endpoints</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-UC Infra Applications</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-UC Infra Applications</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-HyperFlex</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-HyperFlex</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-UCS B-Series Blade Servers</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-UCS B-Series Blade Servers</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-UCS C3X60 Servers</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-UCS C3X60 Servers</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-UCS CiscoOne and Other SW</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-UCS CiscoOne and Other SW</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-UCS C-Series Rack Servers</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-UCS C-Series Rack Servers</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX2/4/5/6K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX2/4/5/6K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX3K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX3K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX7K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX7K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX8K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX8K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX9K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX9K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-Optics-DC Allocation</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-Optics-DC Allocation</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-SAN</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-SAN</label>
+                </value>
+                <value>
+                    <fullName>DIGITAL MEDIA</fullName>
+                    <default>false</default>
+                    <label>DIGITAL MEDIA</label>
+                </value>
+                <value>
+                    <fullName>ENTERPRISE ROUTING-Ent.Access Routing</fullName>
+                    <default>false</default>
+                    <label>ENTERPRISE ROUTING-Ent.Access Routing</label>
+                </value>
+                <value>
+                    <fullName>ENTERPRISE ROUTING-Ent.Edge Routing</fullName>
+                    <default>false</default>
+                    <label>ENTERPRISE ROUTING-Ent.Edge Routing</label>
+                </value>
+                <value>
+                    <fullName>ENT SWITCHING-Access</fullName>
+                    <default>false</default>
+                    <label>ENT SWITCHING-Access</label>
+                </value>
+                <value>
+                    <fullName>ENT SWITCHING-ConnetdPlatforms</fullName>
+                    <default>false</default>
+                    <label>ENT SWITCHING-ConnetdPlatforms</label>
+                </value>
+                <value>
+                    <fullName>ENT SWITCHING-Core</fullName>
+                    <default>false</default>
+                    <label>ENT SWITCHING-Core</label>
+                </value>
+                <value>
+                    <fullName>ENT SWITCHING-Ent.Small Biz Switching</fullName>
+                    <default>false</default>
+                    <label>ENT SWITCHING-Ent.Small Biz Switching</label>
+                </value>
+                <value>
+                    <fullName>IOT-Vertical Solutions</fullName>
+                    <default>false</default>
+                    <label>IOT-Vertical Solutions</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Communications</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Communications</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Security &amp; Routing</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Security &amp; Routing</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Switching</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Switching</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki System Manager</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki System Manager</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Vision</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Vision</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Wireless</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Wireless</label>
+                </value>
+                <value>
+                    <fullName>MOBILITY-Packet Core</fullName>
+                    <default>false</default>
+                    <label>MOBILITY-Packet Core</label>
+                </value>
+                <value>
+                    <fullName>MOBILITY-Policy</fullName>
+                    <default>false</default>
+                    <label>MOBILITY-Policy</label>
+                </value>
+                <value>
+                    <fullName>MOBILITY-Self Optimized Network</fullName>
+                    <default>false</default>
+                    <label>MOBILITY-Self Optimized Network</label>
+                </value>
+                <value>
+                    <fullName>MOBILITY-Small Cell</fullName>
+                    <default>false</default>
+                    <label>MOBILITY-Small Cell</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Advanced Threat Security</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Advanced Threat Security</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Email Security</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Email Security</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Network Security</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Network Security</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Policy &amp; Access</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Policy &amp; Access</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Web Security</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Web Security</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-CableAccessInfraCMSTS,QAM,HFC</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-CableAccessInfraCMSTS,QAM,HFC</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-Optical</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-Optical</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-SP Access &amp; Aggregation</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-SP Access &amp; Aggregation</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-SP Core Routing(CRS w/SPA)</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-SP Core Routing(CRS w/SPA)</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-SP Edge Routing(HERO w/SPA)</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-SP Edge Routing(HERO w/SPA)</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-SP Segment Mobility Solutions</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-SP Segment Mobility Solutions</label>
+                </value>
+                <value>
+                    <fullName>SP VIDEO SW &amp; SOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>SP VIDEO SW &amp; SOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>SP VIDEO SW &amp; SOLUTIONS-SP Cloud</fullName>
+                    <default>false</default>
+                    <label>SP VIDEO SW &amp; SOLUTIONS-SP Cloud</label>
+                </value>
+                <value>
+                    <fullName>WIRELESS-Ent.Wireless</fullName>
+                    <default>false</default>
+                    <label>WIRELESS-Ent.Wireless</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Report_Type__c</fullName>
+        <description>This field used in Jabber Integration with SFDC application.Used to group records on report.</description>
+        <externalId>false</externalId>
+        <formula>"Total Calls per Object"</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Report Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ReportingCallObject__c</fullName>
+        <description>Reporting Field  for better performance</description>
+        <externalId>true</externalId>
+        <label>ReportingCallObject</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reporting_Manager_Name_Level_1__c</fullName>
+        <description>Reporting Level Manager Name Level 1</description>
+        <externalId>false</externalId>
+        <formula>Owner:User.Reporting_Up_Level_1_Manager__c</formula>
+        <label>Reporting Manager Name Level 1</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reporting_Manager_Name_Level_2__c</fullName>
+        <description>Reporting Level Manager Name Level 2</description>
+        <externalId>false</externalId>
+        <formula>Owner:User.Reporting_Up_Level_2_Manager__c</formula>
+        <label>Reporting Manager Name Level 2</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reporting_Up_Manager_Chain__c</fullName>
+        <description>Reporting Up Manager Chain</description>
+        <externalId>false</externalId>
+        <formula>Owner:User.Reporting_Up_Manager_Chain__c</formula>
+        <label>Reporting Up Manager Chain</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SE_Role__c</fullName>
+        <description>Shows what type of role did the SE have in the interaction (This field is for SE Use only for Resource Assignment Engine project)</description>
+        <externalId>false</externalId>
+        <label>SE Role</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Primary</fullName>
+                    <default>false</default>
+                    <label>Primary</label>
+                </value>
+                <value>
+                    <fullName>CSE/xSA</fullName>
+                    <default>false</default>
+                    <label>CSE/xSA</label>
+                </value>
+                <value>
+                    <fullName>VT</fullName>
+                    <default>false</default>
+                    <label>VT</label>
+                </value>
+                <value>
+                    <fullName>Competitive</fullName>
+                    <default>false</default>
+                    <label>Competitive</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Secondary_Technology_Discussed__c</fullName>
+        <description>Tracking GVS&amp;CS Services reps activity and quality customer engagements to understand impact on bookings and revenue.</description>
+        <externalId>false</externalId>
+        <label>Secondary Technology Discussed</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CiscoOne</fullName>
+                    <default>false</default>
+                    <label>CiscoOne</label>
+                </value>
+                <value>
+                    <fullName>CLOUD PLATFORM &amp; SERVICES</fullName>
+                    <default>false</default>
+                    <label>CLOUD PLATFORM &amp; SERVICES</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-Conferencing</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-Conferencing</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-Contact Center</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-Contact Center</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-TP Endpoints</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-TP Endpoints</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-TP Multiparty Conferencing</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-TP Multiparty Conferencing</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-UC Endpoints</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-UC Endpoints</label>
+                </value>
+                <value>
+                    <fullName>COLLABORATION-UC Infra Applications</fullName>
+                    <default>false</default>
+                    <label>COLLABORATION-UC Infra Applications</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-HyperFlex</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-HyperFlex</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-UCS B-Series Blade Servers</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-UCS B-Series Blade Servers</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-UCS C3X60 Servers</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-UCS C3X60 Servers</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-UCS CiscoOne and Other SW</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-UCS CiscoOne and Other SW</label>
+                </value>
+                <value>
+                    <fullName>COMPUTING SYS-UCS C-Series Rack Servers</fullName>
+                    <default>false</default>
+                    <label>COMPUTING SYS-UCS C-Series Rack Servers</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX2/4/5/6K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX2/4/5/6K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX3K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX3K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX7K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX7K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX8K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX8K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-NX9K</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-NX9K</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-Optics-DC Allocation</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-Optics-DC Allocation</label>
+                </value>
+                <value>
+                    <fullName>DC SWITCHING-SAN</fullName>
+                    <default>false</default>
+                    <label>DC SWITCHING-SAN</label>
+                </value>
+                <value>
+                    <fullName>DIGITAL MEDIA</fullName>
+                    <default>false</default>
+                    <label>DIGITAL MEDIA</label>
+                </value>
+                <value>
+                    <fullName>ENTERPRISE ROUTING-Ent.Access Routing</fullName>
+                    <default>false</default>
+                    <label>ENTERPRISE ROUTING-Ent.Access Routing</label>
+                </value>
+                <value>
+                    <fullName>ENTERPRISE ROUTING-Ent.Edge Routing</fullName>
+                    <default>false</default>
+                    <label>ENTERPRISE ROUTING-Ent.Edge Routing</label>
+                </value>
+                <value>
+                    <fullName>ENT SWITCHING-Access</fullName>
+                    <default>false</default>
+                    <label>ENT SWITCHING-Access</label>
+                </value>
+                <value>
+                    <fullName>ENT SWITCHING-ConnetdPlatforms</fullName>
+                    <default>false</default>
+                    <label>ENT SWITCHING-ConnetdPlatforms</label>
+                </value>
+                <value>
+                    <fullName>ENT SWITCHING-Core</fullName>
+                    <default>false</default>
+                    <label>ENT SWITCHING-Core</label>
+                </value>
+                <value>
+                    <fullName>ENT SWITCHING-Ent.Small Biz Switching</fullName>
+                    <default>false</default>
+                    <label>ENT SWITCHING-Ent.Small Biz Switching</label>
+                </value>
+                <value>
+                    <fullName>IOT-Vertical Solutions</fullName>
+                    <default>false</default>
+                    <label>IOT-Vertical Solutions</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Communications</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Communications</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Security &amp; Routing</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Security &amp; Routing</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Switching</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Switching</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki System Manager</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki System Manager</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Vision</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Vision</label>
+                </value>
+                <value>
+                    <fullName>MERAKI-Meraki Wireless</fullName>
+                    <default>false</default>
+                    <label>MERAKI-Meraki Wireless</label>
+                </value>
+                <value>
+                    <fullName>MOBILITY-Packet Core</fullName>
+                    <default>false</default>
+                    <label>MOBILITY-Packet Core</label>
+                </value>
+                <value>
+                    <fullName>MOBILITY-Policy</fullName>
+                    <default>false</default>
+                    <label>MOBILITY-Policy</label>
+                </value>
+                <value>
+                    <fullName>MOBILITY-Self Optimized Network</fullName>
+                    <default>false</default>
+                    <label>MOBILITY-Self Optimized Network</label>
+                </value>
+                <value>
+                    <fullName>MOBILITY-Small Cell</fullName>
+                    <default>false</default>
+                    <label>MOBILITY-Small Cell</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Advanced Threat Security</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Advanced Threat Security</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Email Security</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Email Security</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Network Security</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Network Security</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Policy &amp; Access</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Policy &amp; Access</label>
+                </value>
+                <value>
+                    <fullName>SECURITY-Web Security</fullName>
+                    <default>false</default>
+                    <label>SECURITY-Web Security</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-CableAccessInfraCMSTS,QAM,HFC</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-CableAccessInfraCMSTS,QAM,HFC</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-Optical</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-Optical</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-SP Access &amp; Aggregation</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-SP Access &amp; Aggregation</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-SP Core Routing(CRS w/SPA)</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-SP Core Routing(CRS w/SPA)</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-SP Edge Routing(HERO w/SPA)</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-SP Edge Routing(HERO w/SPA)</label>
+                </value>
+                <value>
+                    <fullName>SP ROUTING-SP Segment Mobility Solutions</fullName>
+                    <default>false</default>
+                    <label>SP ROUTING-SP Segment Mobility Solutions</label>
+                </value>
+                <value>
+                    <fullName>SP VIDEO SW &amp; SOLUTIONS</fullName>
+                    <default>false</default>
+                    <label>SP VIDEO SW &amp; SOLUTIONS</label>
+                </value>
+                <value>
+                    <fullName>SP VIDEO SW &amp; SOLUTIONS-SP Cloud</fullName>
+                    <default>false</default>
+                    <label>SP VIDEO SW &amp; SOLUTIONS-SP Cloud</label>
+                </value>
+                <value>
+                    <fullName>WIRELESS-Ent.Wireless</fullName>
+                    <default>false</default>
+                    <label>WIRELESS-Ent.Wireless</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Source_Task_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Task Id</label>
+        <length>60</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Task_What_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Task What Id</label>
+        <length>60</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Task_Who_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Task Who Id</label>
+        <length>60</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stated_Purpose__c</fullName>
+        <description>Describes the purpose or objectives for the event or task as explained to the customer.</description>
+        <externalId>false</externalId>
+        <label>Stated Purpose</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>This field used in Jabber Integration with SFDC application.Stores status of the call.</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In progress</fullName>
+                    <default>false</default>
+                    <label>In progress</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Task_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Task_Outcome__c</fullName>
+        <description>Describes the outcome of the task conducted with the customer.</description>
+        <externalId>false</externalId>
+        <label>Task Outcome</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Task_Stage__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Stage</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Purchase</fullName>
+                    <default>false</default>
+                    <label>Purchase</label>
+                </value>
+                <value>
+                    <fullName>Onboard</fullName>
+                    <default>false</default>
+                    <label>Onboard</label>
+                </value>
+                <value>
+                    <fullName>Implement</fullName>
+                    <default>false</default>
+                    <label>Implement</label>
+                </value>
+                <value>
+                    <fullName>Use</fullName>
+                    <default>false</default>
+                    <label>Use</label>
+                </value>
+                <value>
+                    <fullName>Engage</fullName>
+                    <default>false</default>
+                    <label>Engage</label>
+                </value>
+                <value>
+                    <fullName>Adopt</fullName>
+                    <default>false</default>
+                    <label>Adopt</label>
+                </value>
+                <value>
+                    <fullName>Optimize</fullName>
+                    <default>false</default>
+                    <label>Optimize</label>
+                </value>
+                <value>
+                    <fullName>Advocate</fullName>
+                    <default>false</default>
+                    <label>Advocate</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Task_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Task Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ACTIVITIES</fullName>
+                    <default>false</default>
+                    <label>ACTIVITIES</label>
+                </value>
+                <value>
+                    <fullName>EXIT CRITERIA</fullName>
+                    <default>false</default>
+                    <label>EXIT CRITERIA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Theater__c</fullName>
+        <description>Describes which Cisco geographical region the activities managed by”.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Theater must be selected in order to use the Marketing Campaign field</inlineHelpText>
+        <label>Theater</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Americas-Canada</fullName>
+                    <default>false</default>
+                    <label>Americas-Canada</label>
+                </value>
+                <value>
+                    <fullName>Americas-Global Enterprise Segment</fullName>
+                    <default>false</default>
+                    <label>Americas-Global Enterprise Segment</label>
+                </value>
+                <value>
+                    <fullName>Americas-LATAM</fullName>
+                    <default>false</default>
+                    <label>Americas-LATAM</label>
+                </value>
+                <value>
+                    <fullName>Americas-US Commercial</fullName>
+                    <default>false</default>
+                    <label>Americas-US Commercial</label>
+                </value>
+                <value>
+                    <fullName>Americas-US Public Sector</fullName>
+                    <default>false</default>
+                    <label>Americas-US Public Sector</label>
+                </value>
+                <value>
+                    <fullName>APJC-APAC</fullName>
+                    <default>false</default>
+                    <label>APJC-APAC</label>
+                </value>
+                <value>
+                    <fullName>APJC-Greater China</fullName>
+                    <default>false</default>
+                    <label>APJC-Greater China</label>
+                </value>
+                <value>
+                    <fullName>APJC-Japan</fullName>
+                    <default>false</default>
+                    <label>APJC-Japan</label>
+                </value>
+                <value>
+                    <fullName>EMEAR</fullName>
+                    <default>false</default>
+                    <label>EMEAR</label>
+                </value>
+                <value>
+                    <fullName>Global Enterprise</fullName>
+                    <default>false</default>
+                    <label>Global Enterprise</label>
+                </value>
+                <value>
+                    <fullName>Global Service Provider</fullName>
+                    <default>false</default>
+                    <label>Global Service Provider</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Travel_Time__c</fullName>
+        <description>Shows Travel time for Interaction (This field is for SE Use only for Resource Assignment Engine project)</description>
+        <externalId>false</externalId>
+        <label>Travel Time (in HRS)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type_Of_Interaction__c</fullName>
+        <description>This field is created for Resource Assignment Engine project for SE use only. It defines the reason for this activity and type of interaction.</description>
+        <externalId>false</externalId>
+        <label>Type Of Interaction</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>Internal</fullName>
+                    <default>false</default>
+                    <label>Internal</label>
+                </value>
+                <value>
+                    <fullName>Partner</fullName>
+                    <default>false</default>
+                    <label>Partner</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV10__c</fullName>
+        <description>Core UCCE</description>
+        <externalId>false</externalId>
+        <label>GUID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV1__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone (+E.164)</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV2__c</fullName>
+        <description>Core UCCE</description>
+        <externalId>false</externalId>
+        <label>Group</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV3__c</fullName>
+        <description>Core UCCE</description>
+        <externalId>false</externalId>
+        <label>Language</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV4__c</fullName>
+        <description>Core UCCE</description>
+        <externalId>false</externalId>
+        <label>RONA</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV5__c</fullName>
+        <description>Twilio</description>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV6__c</fullName>
+        <description>Twilio</description>
+        <externalId>false</externalId>
+        <label>Caller Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV7__c</fullName>
+        <description>Twilio</description>
+        <externalId>false</externalId>
+        <label>Caller Type</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV8__c</fullName>
+        <description>Core UCCE</description>
+        <externalId>false</externalId>
+        <label>MicroApp</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCCE_CPV9__c</fullName>
+        <description>Twilio</description>
+        <externalId>false</externalId>
+        <label>Carrier</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCCE_Call_GUID__c</fullName>
+        <description>Core UCCE (ECC variable "user.media.id")</description>
+        <externalId>false</externalId>
+        <label>Call GUID</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User_Category__c</fullName>
+        <description>User Category used for reporting</description>
+        <externalId>false</externalId>
+        <formula>Owner:User.User_Category__c</formula>
+        <label>User Category</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>WEBXMeetingDetails__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK("https://integration.webex.com/SaCSFService/director.do?act=link&amp;eventid=" &amp; Id &amp; "&amp;sid=" &amp; GETSESSIONID() &amp; "&amp;svr=" &amp; $Api.Partner_Server_URL_60, "WebEx Meeting Details")</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>WebEx Meeting</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>What_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>What ID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>What__c</fullName>
+        <externalId>false</externalId>
+        <label>What</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Who_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Who ID</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Who__c</fullName>
+        <externalId>false</externalId>
+        <label>Who</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <enableFeeds>false</enableFeeds>
+    <searchLayouts>
+        <searchResultsAdditionalFields>TASK.SUBJECT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHO_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHAT_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.DUE_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <listViews>
+        <fullName>MyDelegatedActivities_d_11</fullName>
+        <columns>TASK.SUBJECT</columns>
+        <columns>TASK.WHO_NAME</columns>
+        <columns>TASK.WHAT_NAME</columns>
+        <columns>TASK.DUE_DATE</columns>
+        <columns>TASK.STATUS</columns>
+        <columns>TASK.PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>TASK.LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Delegated</filterScope>
+        <label>My Delegated Activities</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>MyTeamsActivities</fullName>
+        <filterScope>Team</filterScope>
+        <label>My Team's Activities</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>My_Activities</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Activities</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Open_Tasks</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>TASK.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>My Open Tasks</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>TodaysTasks</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>TASK.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>lessThan</operation>
+            <value>TOMORROW</value>
+        </filters>
+        <label>Today's Tasks</label>
+    </listViews>
+    <listViews>
+        <fullName>UpcomingEvents</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>greaterThan</operation>
+            <value>YESTERDAY</value>
+        </filters>
+        <label>Upcoming Events</label>
+    </listViews>
+</CustomObject>

@@ -1,0 +1,14 @@
+<apex:page standardController="Opportunity" extensions="OpportunityAssetViewController">
+    <apex:slds />
+
+    
+    
+    <apex:outputpanel rendered="{!NOT(ISBLANK(viewAssetURL))}">
+         <apex:iframe src="{!viewAssetURL}"/>
+    </apex:outputpanel>
+
+    <apex:outputpanel rendered="{!ISBLANK(viewAssetURL)}">
+         Asset View is supported for auto loaded opportunities only.
+    </apex:outputpanel>
+
+</apex:page>

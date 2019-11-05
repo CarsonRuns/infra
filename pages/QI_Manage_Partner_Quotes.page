@@ -1,0 +1,21 @@
+<apex:page title="Manage Partner Quotes" showHeader="true" controller="OpportunityTabOverride_CT" action="{!init}">
+<apex:form >
+    <apex:outputPanel id="test">
+        <apex:iframe rendered="{!link!=null}" scrolling="false" src="{!link}{!IF(addSessionId, '&sessionid='+$Api.Session_ID, '')}"  height="800" width="1000" id="fs1"/>
+    </apex:outputPanel>
+</apex:form>
+<script>
+    function isLightningDesktop() {
+        return( "{! $User.UIThemeDisplayed }" == "Theme4d");
+    }
+    var pgPr = '{!JSENCODE($CurrentPage.parameters.displaypartnerfunnel)}';
+    var manageDeal= '{!JSENCODE($CurrentPage.parameters.manageDeal)}';
+    var biddingDeal= '{!JSENCODE($CurrentPage.parameters.biddingDeal)}';
+    if(pgPr != null && pgPr != ''){
+        window.scrollTo(0,500);
+    }
+    if(manageDeal != ''|| biddingDeal!= ''){
+        window.scrollTo(0,500);
+    }
+</script>
+</apex:page>

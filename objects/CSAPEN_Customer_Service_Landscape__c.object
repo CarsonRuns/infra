@@ -1,0 +1,3128 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Account_Plan_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Plan</label>
+        <referenceTo>Account_Plan__c</referenceTo>
+        <relationshipLabel>Customer Service Landscape</relationshipLabel>
+        <relationshipName>Customer_Service_Landscape</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Cisco_to_Customer_Alignment__c</fullName>
+        <description>Picklist to identify how well Cisco and the customer align for the specific Technology.</description>
+        <externalId>false</externalId>
+        <label>Cisco to Customer Alignment</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Low</fullName>
+                    <default>false</default>
+                    <label>1 - Low</label>
+                </value>
+                <value>
+                    <fullName>2 - Medium Low</fullName>
+                    <default>false</default>
+                    <label>2 - Medium Low</label>
+                </value>
+                <value>
+                    <fullName>3 - Medium</fullName>
+                    <default>false</default>
+                    <label>3 - Medium</label>
+                </value>
+                <value>
+                    <fullName>4 - Medium High</fullName>
+                    <default>false</default>
+                    <label>4 - Medium High</label>
+                </value>
+                <value>
+                    <fullName>5 - High</fullName>
+                    <default>false</default>
+                    <label>5 - High</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Client_to_Supplier_Alignment__c</fullName>
+        <description>Picklist to identify how well the customer/client and the Customer Supplier align for the Service Program.</description>
+        <externalId>false</externalId>
+        <label>Client to Supplier Alignment</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Low</fullName>
+                    <default>false</default>
+                    <label>1 - Low</label>
+                </value>
+                <value>
+                    <fullName>2 - Medium Low</fullName>
+                    <default>false</default>
+                    <label>2 - Medium Low</label>
+                </value>
+                <value>
+                    <fullName>3 - Medium</fullName>
+                    <default>false</default>
+                    <label>3 - Medium</label>
+                </value>
+                <value>
+                    <fullName>4 - Medium High</fullName>
+                    <default>false</default>
+                    <label>4 - Medium High</label>
+                </value>
+                <value>
+                    <fullName>5 - High</fullName>
+                    <default>false</default>
+                    <label>5 - High</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Contract_Expiry_Date__c</fullName>
+        <description>The date the current Cisco contract expires.</description>
+        <externalId>false</externalId>
+        <label>Contract Expiry Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Number__c</fullName>
+        <description>The contract number for the current Cisco contract.</description>
+        <externalId>false</externalId>
+        <label>Contract Number</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Type__c</fullName>
+        <description>The type of current Cisco contract: Direct or Indirect.</description>
+        <externalId>false</externalId>
+        <label>Contract Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Direct</fullName>
+                    <default>false</default>
+                    <label>Direct</label>
+                </value>
+                <value>
+                    <fullName>Indirect</fullName>
+                    <default>false</default>
+                    <label>Indirect</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Customer_Supplier__c</fullName>
+        <description>The current contract supplier’s company name.</description>
+        <externalId>false</externalId>
+        <label>Customer Supplier</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Source_Name__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Data Source Name</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deployment_No__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Deployment No</label>
+        <length>15</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Existing_Contracts__c</fullName>
+        <description>Picklist to classify the ownership of the existing contract.</description>
+        <externalId>false</externalId>
+        <label>Existing Contracts</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cisco Incumbent</fullName>
+                    <default>false</default>
+                    <label>Cisco Incumbent</label>
+                </value>
+                <value>
+                    <fullName>Competitive</fullName>
+                    <default>false</default>
+                    <label>Competitive</label>
+                </value>
+                <value>
+                    <fullName>None Installed</fullName>
+                    <default>false</default>
+                    <label>None Installed</label>
+                </value>
+                <value>
+                    <fullName>Don't Know</fullName>
+                    <default>false</default>
+                    <label>Don't Know</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Fiscal_Year_Addressable_Mkt_000_s__c</fullName>
+        <description>Currency field to capture total addressable market in thousands of $s this fiscal year for the specific Service Program and Service Level.</description>
+        <externalId>false</externalId>
+        <label>Fiscal Year Addressable Mkt  ($'000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Fiscal_Year_Cisco_Booking_000_s__c</fullName>
+        <description>Currency field to capture current Cisco bookings in thousands of $s this fiscal year to-date for the Service Program and Service Level.</description>
+        <externalId>false</externalId>
+        <label>Fiscal Year Cisco Booking  ($'000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Install_Base_Covered_by_Service__c</fullName>
+        <description>Currency field to capture the value of the Cisco Install Base covered by the Service Program and Service Level.</description>
+        <externalId>false</externalId>
+        <label>Install Base Covered by Service</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Market_Share__c</fullName>
+        <description>Non-editable, formula field that calculates the % of Cisco’s market for the Service Program and Service level by dividing the Fiscal Year Addressable Mkt ($’000) by the Fiscal Year Cisco Booking ($’000).</description>
+        <externalId>false</externalId>
+        <formula>if( Fiscal_Year_Addressable_Mkt_000_s__c =0, 0, Fiscal_Year_Cisco_Booking_000_s__c / Fiscal_Year_Addressable_Mkt_000_s__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Market Share</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Message_Alignment_Cisco_to_Supplier__c</fullName>
+        <description>Picklist to identify how well Cisco’s messaging and the Customer Supplier’s messaging align.</description>
+        <externalId>false</externalId>
+        <label>Message Alignment - Cisco to Supplier</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Low</fullName>
+                    <default>false</default>
+                    <label>1 - Low</label>
+                </value>
+                <value>
+                    <fullName>2 - Medium Low</fullName>
+                    <default>false</default>
+                    <label>2 - Medium Low</label>
+                </value>
+                <value>
+                    <fullName>3 - Medium</fullName>
+                    <default>false</default>
+                    <label>3 - Medium</label>
+                </value>
+                <value>
+                    <fullName>4 - Medium High</fullName>
+                    <default>false</default>
+                    <label>4 - Medium High</label>
+                </value>
+                <value>
+                    <fullName>5 - High</fullName>
+                    <default>false</default>
+                    <label>5 - High</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Mission_Critical_to_Cisco__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to identify if this landscape is Mission Critical to Cisco.</description>
+        <externalId>false</externalId>
+        <label>Mission Critical to Cisco</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Next_Yr_Addressable_Mkt_000_s__c</fullName>
+        <description>Currency field to capture total addressable market in thousands of $s next fiscal year for the Service Program and Service Level.</description>
+        <externalId>false</externalId>
+        <label>Next Fiscal Yr Addressable Mkt  ($'000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Devices_Covered__c</fullName>
+        <description>The number of devices covered by the Service Program and Service Level.</description>
+        <externalId>false</externalId>
+        <label>Number of Devices Covered</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Information__c</fullName>
+        <description>Text field used to capture any other relevant information that will help better understand the Customer Service Landscape.</description>
+        <externalId>false</externalId>
+        <label>Other Information</label>
+        <length>32000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Other_URL__c</fullName>
+        <description>URL field to link to other relevant information.</description>
+        <externalId>false</externalId>
+        <label>Other URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Partner__c</fullName>
+        <description>Cisco’s current Partner for providing the Service Program and Service Level to the customer.</description>
+        <externalId>false</externalId>
+        <label>Partner</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_of_Choice__c</fullName>
+        <description>Cisco’s Partner of Choice for the Service Program and Service Level.</description>
+        <externalId>false</externalId>
+        <label>Partner of Choice</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Level__c</fullName>
+        <description>Dependent picklist field, editable after a Service Program is selected.  Available values are dependent on the Service Program selected.  This picklist is used to identify the Service Level associated with the Service Program.</description>
+        <externalId>false</externalId>
+        <label>Service Level</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Service_Program__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AONS-</fullName>
+                    <default>false</default>
+                    <label>AONS-</label>
+                </value>
+                <value>
+                    <fullName>BBC--</fullName>
+                    <default>false</default>
+                    <label>BBC--</label>
+                </value>
+                <value>
+                    <fullName>CDN--</fullName>
+                    <default>false</default>
+                    <label>CDN--</label>
+                </value>
+                <value>
+                    <fullName>Custom--</fullName>
+                    <default>false</default>
+                    <label>Custom--</label>
+                </value>
+                <value>
+                    <fullName>Dial--</fullName>
+                    <default>false</default>
+                    <label>Dial--</label>
+                </value>
+                <value>
+                    <fullName>INFRA-</fullName>
+                    <default>false</default>
+                    <label>INFRA-</label>
+                </value>
+                <value>
+                    <fullName>IPCC---</fullName>
+                    <default>false</default>
+                    <label>IPCC---</label>
+                </value>
+                <value>
+                    <fullName>IPICS-</fullName>
+                    <default>false</default>
+                    <label>IPICS-</label>
+                </value>
+                <value>
+                    <fullName>IPT---</fullName>
+                    <default>false</default>
+                    <label>IPT---</label>
+                </value>
+                <value>
+                    <fullName>Meeting Place--</fullName>
+                    <default>false</default>
+                    <label>Meeting Place--</label>
+                </value>
+                <value>
+                    <fullName>Metro--</fullName>
+                    <default>false</default>
+                    <label>Metro--</label>
+                </value>
+                <value>
+                    <fullName>MobWi--</fullName>
+                    <default>false</default>
+                    <label>MobWi--</label>
+                </value>
+                <value>
+                    <fullName>Net Mgmt--</fullName>
+                    <default>false</default>
+                    <label>Net Mgmt--</label>
+                </value>
+                <value>
+                    <fullName>NRN--</fullName>
+                    <default>false</default>
+                    <label>NRN--</label>
+                </value>
+                <value>
+                    <fullName>Optical-</fullName>
+                    <default>false</default>
+                    <label>Optical-</label>
+                </value>
+                <value>
+                    <fullName>OSS-</fullName>
+                    <default>false</default>
+                    <label>OSS-</label>
+                </value>
+                <value>
+                    <fullName>Security--</fullName>
+                    <default>false</default>
+                    <label>Security--</label>
+                </value>
+                <value>
+                    <fullName>SP Voice-</fullName>
+                    <default>false</default>
+                    <label>SP Voice-</label>
+                </value>
+                <value>
+                    <fullName>SPPT--</fullName>
+                    <default>false</default>
+                    <label>SPPT--</label>
+                </value>
+                <value>
+                    <fullName>Storage--</fullName>
+                    <default>false</default>
+                    <label>Storage--</label>
+                </value>
+                <value>
+                    <fullName>WLAN--</fullName>
+                    <default>false</default>
+                    <label>WLAN--</label>
+                </value>
+                <value>
+                    <fullName>FTS</fullName>
+                    <default>false</default>
+                    <label>FTS</label>
+                </value>
+                <value>
+                    <fullName>TIS</fullName>
+                    <default>false</default>
+                    <label>TIS</label>
+                </value>
+                <value>
+                    <fullName>NAIS</fullName>
+                    <default>false</default>
+                    <label>NAIS</label>
+                </value>
+                <value>
+                    <fullName>NOS</fullName>
+                    <default>false</default>
+                    <label>NOS</label>
+                </value>
+                <value>
+                    <fullName>NOSC</fullName>
+                    <default>false</default>
+                    <label>NOSC</label>
+                </value>
+                <value>
+                    <fullName>NOS-T</fullName>
+                    <default>false</default>
+                    <label>NOS-T</label>
+                </value>
+                <value>
+                    <fullName>NSAS</fullName>
+                    <default>false</default>
+                    <label>NSAS</label>
+                </value>
+                <value>
+                    <fullName>NSAU</fullName>
+                    <default>false</default>
+                    <label>NSAU</label>
+                </value>
+                <value>
+                    <fullName>NSO2</fullName>
+                    <default>false</default>
+                    <label>NSO2</label>
+                </value>
+                <value>
+                    <fullName>NSOE</fullName>
+                    <default>false</default>
+                    <label>NSOE</label>
+                </value>
+                <value>
+                    <fullName>NSOP</fullName>
+                    <default>false</default>
+                    <label>NSOP</label>
+                </value>
+                <value>
+                    <fullName>NSOS</fullName>
+                    <default>false</default>
+                    <label>NSOS</label>
+                </value>
+                <value>
+                    <fullName>NSS2</fullName>
+                    <default>false</default>
+                    <label>NSS2</label>
+                </value>
+                <value>
+                    <fullName>NSSE</fullName>
+                    <default>false</default>
+                    <label>NSSE</label>
+                </value>
+                <value>
+                    <fullName>NSSP</fullName>
+                    <default>false</default>
+                    <label>NSSP</label>
+                </value>
+                <value>
+                    <fullName>NSST</fullName>
+                    <default>false</default>
+                    <label>NSST</label>
+                </value>
+                <value>
+                    <fullName>NSSW</fullName>
+                    <default>false</default>
+                    <label>NSSW</label>
+                </value>
+                <value>
+                    <fullName>Next Generation Network</fullName>
+                    <default>false</default>
+                    <label>Next Generation Network</label>
+                </value>
+                <value>
+                    <fullName>Service Creation</fullName>
+                    <default>false</default>
+                    <label>Service Creation</label>
+                </value>
+                <value>
+                    <fullName>NEC4</fullName>
+                    <default>false</default>
+                    <label>NEC4</label>
+                </value>
+                <value>
+                    <fullName>NECD</fullName>
+                    <default>false</default>
+                    <label>NECD</label>
+                </value>
+                <value>
+                    <fullName>NECE</fullName>
+                    <default>false</default>
+                    <label>NECE</label>
+                </value>
+                <value>
+                    <fullName>NECP</fullName>
+                    <default>false</default>
+                    <label>NECP</label>
+                </value>
+                <value>
+                    <fullName>NESW</fullName>
+                    <default>false</default>
+                    <label>NESW</label>
+                </value>
+                <value>
+                    <fullName>NSC4</fullName>
+                    <default>false</default>
+                    <label>NSC4</label>
+                </value>
+                <value>
+                    <fullName>NSCD</fullName>
+                    <default>false</default>
+                    <label>NSCD</label>
+                </value>
+                <value>
+                    <fullName>NSCE</fullName>
+                    <default>false</default>
+                    <label>NSCE</label>
+                </value>
+                <value>
+                    <fullName>NSCP</fullName>
+                    <default>false</default>
+                    <label>NSCP</label>
+                </value>
+                <value>
+                    <fullName>DCN</fullName>
+                    <default>false</default>
+                    <label>DCN</label>
+                </value>
+                <value>
+                    <fullName>IPCC----</fullName>
+                    <default>false</default>
+                    <label>IPCC----</label>
+                </value>
+                <value>
+                    <fullName>IPT----</fullName>
+                    <default>false</default>
+                    <label>IPT----</label>
+                </value>
+                <value>
+                    <fullName>OPT</fullName>
+                    <default>false</default>
+                    <label>OPT</label>
+                </value>
+                <value>
+                    <fullName>Routing &amp; Switching</fullName>
+                    <default>false</default>
+                    <label>Routing &amp; Switching</label>
+                </value>
+                <value>
+                    <fullName>SAN</fullName>
+                    <default>false</default>
+                    <label>SAN</label>
+                </value>
+                <value>
+                    <fullName>WLAN---</fullName>
+                    <default>false</default>
+                    <label>WLAN---</label>
+                </value>
+                <value>
+                    <fullName>Custom-</fullName>
+                    <default>false</default>
+                    <label>Custom-</label>
+                </value>
+                <value>
+                    <fullName>IPCC-</fullName>
+                    <default>false</default>
+                    <label>IPCC-</label>
+                </value>
+                <value>
+                    <fullName>IPT-</fullName>
+                    <default>false</default>
+                    <label>IPT-</label>
+                </value>
+                <value>
+                    <fullName>MPLS/VPN</fullName>
+                    <default>false</default>
+                    <label>MPLS/VPN</label>
+                </value>
+                <value>
+                    <fullName>Net Infra</fullName>
+                    <default>false</default>
+                    <label>Net Infra</label>
+                </value>
+                <value>
+                    <fullName>IPT-----</fullName>
+                    <default>false</default>
+                    <label>IPT-----</label>
+                </value>
+                <value>
+                    <fullName>Security---</fullName>
+                    <default>false</default>
+                    <label>Security---</label>
+                </value>
+                <value>
+                    <fullName>Storage---</fullName>
+                    <default>false</default>
+                    <label>Storage---</label>
+                </value>
+                <value>
+                    <fullName>WLAN----</fullName>
+                    <default>false</default>
+                    <label>WLAN----</label>
+                </value>
+                <value>
+                    <fullName>AONS--</fullName>
+                    <default>false</default>
+                    <label>AONS--</label>
+                </value>
+                <value>
+                    <fullName>BBC---</fullName>
+                    <default>false</default>
+                    <label>BBC---</label>
+                </value>
+                <value>
+                    <fullName>Cable</fullName>
+                    <default>false</default>
+                    <label>Cable</label>
+                </value>
+                <value>
+                    <fullName>CDN---</fullName>
+                    <default>false</default>
+                    <label>CDN---</label>
+                </value>
+                <value>
+                    <fullName>Content</fullName>
+                    <default>false</default>
+                    <label>Content</label>
+                </value>
+                <value>
+                    <fullName>Custom---</fullName>
+                    <default>false</default>
+                    <label>Custom---</label>
+                </value>
+                <value>
+                    <fullName>DCN-</fullName>
+                    <default>false</default>
+                    <label>DCN-</label>
+                </value>
+                <value>
+                    <fullName>Dial---</fullName>
+                    <default>false</default>
+                    <label>Dial---</label>
+                </value>
+                <value>
+                    <fullName>DSL</fullName>
+                    <default>false</default>
+                    <label>DSL</label>
+                </value>
+                <value>
+                    <fullName>EIP</fullName>
+                    <default>false</default>
+                    <label>EIP</label>
+                </value>
+                <value>
+                    <fullName>INFRA--</fullName>
+                    <default>false</default>
+                    <label>INFRA--</label>
+                </value>
+                <value>
+                    <fullName>IPCC-----</fullName>
+                    <default>false</default>
+                    <label>IPCC-----</label>
+                </value>
+                <value>
+                    <fullName>IPICS--</fullName>
+                    <default>false</default>
+                    <label>IPICS--</label>
+                </value>
+                <value>
+                    <fullName>IPT------</fullName>
+                    <default>false</default>
+                    <label>IPT------</label>
+                </value>
+                <value>
+                    <fullName>Meeting Place---</fullName>
+                    <default>false</default>
+                    <label>Meeting Place---</label>
+                </value>
+                <value>
+                    <fullName>Metro---</fullName>
+                    <default>false</default>
+                    <label>Metro---</label>
+                </value>
+                <value>
+                    <fullName>MobWi---</fullName>
+                    <default>false</default>
+                    <label>MobWi---</label>
+                </value>
+                <value>
+                    <fullName>MPLS</fullName>
+                    <default>false</default>
+                    <label>MPLS</label>
+                </value>
+                <value>
+                    <fullName>Net Mgmt---</fullName>
+                    <default>false</default>
+                    <label>Net Mgmt---</label>
+                </value>
+                <value>
+                    <fullName>NRN---</fullName>
+                    <default>false</default>
+                    <label>NRN---</label>
+                </value>
+                <value>
+                    <fullName>Optical--</fullName>
+                    <default>false</default>
+                    <label>Optical--</label>
+                </value>
+                <value>
+                    <fullName>OSS--</fullName>
+                    <default>false</default>
+                    <label>OSS--</label>
+                </value>
+                <value>
+                    <fullName>Routing &amp; Switching-</fullName>
+                    <default>false</default>
+                    <label>Routing &amp; Switching-</label>
+                </value>
+                <value>
+                    <fullName>Security----</fullName>
+                    <default>false</default>
+                    <label>Security----</label>
+                </value>
+                <value>
+                    <fullName>SP Voice--</fullName>
+                    <default>false</default>
+                    <label>SP Voice--</label>
+                </value>
+                <value>
+                    <fullName>SPPT---</fullName>
+                    <default>false</default>
+                    <label>SPPT---</label>
+                </value>
+                <value>
+                    <fullName>Storage----</fullName>
+                    <default>false</default>
+                    <label>Storage----</label>
+                </value>
+                <value>
+                    <fullName>WLAN-----</fullName>
+                    <default>false</default>
+                    <label>WLAN-----</label>
+                </value>
+                <value>
+                    <fullName>BBC</fullName>
+                    <default>false</default>
+                    <label>BBC</label>
+                </value>
+                <value>
+                    <fullName>CDN</fullName>
+                    <default>false</default>
+                    <label>CDN</label>
+                </value>
+                <value>
+                    <fullName>Dial</fullName>
+                    <default>false</default>
+                    <label>Dial</label>
+                </value>
+                <value>
+                    <fullName>IPCC</fullName>
+                    <default>false</default>
+                    <label>IPCC</label>
+                </value>
+                <value>
+                    <fullName>IPT</fullName>
+                    <default>false</default>
+                    <label>IPT</label>
+                </value>
+                <value>
+                    <fullName>Meeting Place-</fullName>
+                    <default>false</default>
+                    <label>Meeting Place-</label>
+                </value>
+                <value>
+                    <fullName>Metro</fullName>
+                    <default>false</default>
+                    <label>Metro</label>
+                </value>
+                <value>
+                    <fullName>MobWi</fullName>
+                    <default>false</default>
+                    <label>MobWi</label>
+                </value>
+                <value>
+                    <fullName>Net Mgmt</fullName>
+                    <default>false</default>
+                    <label>Net Mgmt</label>
+                </value>
+                <value>
+                    <fullName>NRN</fullName>
+                    <default>false</default>
+                    <label>NRN</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>SPPT</fullName>
+                    <default>false</default>
+                    <label>SPPT</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>TAS</fullName>
+                    <default>false</default>
+                    <label>TAS</label>
+                </value>
+                <value>
+                    <fullName>TAS-S</fullName>
+                    <default>false</default>
+                    <label>TAS-S</label>
+                </value>
+                <value>
+                    <fullName>WLAN</fullName>
+                    <default>false</default>
+                    <label>WLAN</label>
+                </value>
+                <value>
+                    <fullName>AR</fullName>
+                    <default>false</default>
+                    <label>AR</label>
+                </value>
+                <value>
+                    <fullName>DSAP</fullName>
+                    <default>false</default>
+                    <label>DSAP</label>
+                </value>
+                <value>
+                    <fullName>ESP</fullName>
+                    <default>false</default>
+                    <label>ESP</label>
+                </value>
+                <value>
+                    <fullName>RSA</fullName>
+                    <default>false</default>
+                    <label>RSA</label>
+                </value>
+                <value>
+                    <fullName>RSA98</fullName>
+                    <default>false</default>
+                    <label>RSA98</label>
+                </value>
+                <value>
+                    <fullName>RSARR</fullName>
+                    <default>false</default>
+                    <label>RSARR</label>
+                </value>
+                <value>
+                    <fullName>VAD98</fullName>
+                    <default>false</default>
+                    <label>VAD98</label>
+                </value>
+                <value>
+                    <fullName>VADLT</fullName>
+                    <default>false</default>
+                    <label>VADLT</label>
+                </value>
+                <value>
+                    <fullName>EC4P</fullName>
+                    <default>false</default>
+                    <label>EC4P</label>
+                </value>
+                <value>
+                    <fullName>ECD</fullName>
+                    <default>false</default>
+                    <label>ECD</label>
+                </value>
+                <value>
+                    <fullName>ECE</fullName>
+                    <default>false</default>
+                    <label>ECE</label>
+                </value>
+                <value>
+                    <fullName>ECPM</fullName>
+                    <default>false</default>
+                    <label>ECPM</label>
+                </value>
+                <value>
+                    <fullName>ESW</fullName>
+                    <default>false</default>
+                    <label>ESW</label>
+                </value>
+                <value>
+                    <fullName>SC4P</fullName>
+                    <default>false</default>
+                    <label>SC4P</label>
+                </value>
+                <value>
+                    <fullName>SCD</fullName>
+                    <default>false</default>
+                    <label>SCD</label>
+                </value>
+                <value>
+                    <fullName>SCE</fullName>
+                    <default>false</default>
+                    <label>SCE</label>
+                </value>
+                <value>
+                    <fullName>SCPM</fullName>
+                    <default>false</default>
+                    <label>SCPM</label>
+                </value>
+                <value>
+                    <fullName>SECD</fullName>
+                    <default>false</default>
+                    <label>SECD</label>
+                </value>
+                <value>
+                    <fullName>SECE</fullName>
+                    <default>false</default>
+                    <label>SECE</label>
+                </value>
+                <value>
+                    <fullName>SECP</fullName>
+                    <default>false</default>
+                    <label>SECP</label>
+                </value>
+                <value>
+                    <fullName>SESW</fullName>
+                    <default>false</default>
+                    <label>SESW</label>
+                </value>
+                <value>
+                    <fullName>PECD</fullName>
+                    <default>false</default>
+                    <label>PECD</label>
+                </value>
+                <value>
+                    <fullName>PECE</fullName>
+                    <default>false</default>
+                    <label>PECE</label>
+                </value>
+                <value>
+                    <fullName>PECP</fullName>
+                    <default>false</default>
+                    <label>PECP</label>
+                </value>
+                <value>
+                    <fullName>PESW</fullName>
+                    <default>false</default>
+                    <label>PESW</label>
+                </value>
+                <value>
+                    <fullName>PSCD</fullName>
+                    <default>false</default>
+                    <label>PSCD</label>
+                </value>
+                <value>
+                    <fullName>PSCE</fullName>
+                    <default>false</default>
+                    <label>PSCE</label>
+                </value>
+                <value>
+                    <fullName>PSCP</fullName>
+                    <default>false</default>
+                    <label>PSCP</label>
+                </value>
+                <value>
+                    <fullName>SU1</fullName>
+                    <default>false</default>
+                    <label>SU1</label>
+                </value>
+                <value>
+                    <fullName>SU2</fullName>
+                    <default>false</default>
+                    <label>SU2</label>
+                </value>
+                <value>
+                    <fullName>SU3</fullName>
+                    <default>false</default>
+                    <label>SU3</label>
+                </value>
+                <value>
+                    <fullName>SU4</fullName>
+                    <default>false</default>
+                    <label>SU4</label>
+                </value>
+                <value>
+                    <fullName>SUO1</fullName>
+                    <default>false</default>
+                    <label>SUO1</label>
+                </value>
+                <value>
+                    <fullName>SUO2</fullName>
+                    <default>false</default>
+                    <label>SUO2</label>
+                </value>
+                <value>
+                    <fullName>SUO3</fullName>
+                    <default>false</default>
+                    <label>SUO3</label>
+                </value>
+                <value>
+                    <fullName>SUO4</fullName>
+                    <default>false</default>
+                    <label>SUO4</label>
+                </value>
+                <value>
+                    <fullName>SUSW</fullName>
+                    <default>false</default>
+                    <label>SUSW</label>
+                </value>
+                <value>
+                    <fullName>SFA1</fullName>
+                    <default>false</default>
+                    <label>SFA1</label>
+                </value>
+                <value>
+                    <fullName>SFA2</fullName>
+                    <default>false</default>
+                    <label>SFA2</label>
+                </value>
+                <value>
+                    <fullName>SFA3</fullName>
+                    <default>false</default>
+                    <label>SFA3</label>
+                </value>
+                <value>
+                    <fullName>SFA4</fullName>
+                    <default>false</default>
+                    <label>SFA4</label>
+                </value>
+                <value>
+                    <fullName>SFC1</fullName>
+                    <default>false</default>
+                    <label>SFC1</label>
+                </value>
+                <value>
+                    <fullName>SFC2</fullName>
+                    <default>false</default>
+                    <label>SFC2</label>
+                </value>
+                <value>
+                    <fullName>SFC3</fullName>
+                    <default>false</default>
+                    <label>SFC3</label>
+                </value>
+                <value>
+                    <fullName>SFC4</fullName>
+                    <default>false</default>
+                    <label>SFC4</label>
+                </value>
+                <value>
+                    <fullName>SFRF</fullName>
+                    <default>false</default>
+                    <label>SFRF</label>
+                </value>
+                <value>
+                    <fullName>SFSW</fullName>
+                    <default>false</default>
+                    <label>SFSW</label>
+                </value>
+                <value>
+                    <fullName>SUSA</fullName>
+                    <default>false</default>
+                    <label>SUSA</label>
+                </value>
+                <value>
+                    <fullName>IC4P</fullName>
+                    <default>false</default>
+                    <label>IC4P</label>
+                </value>
+                <value>
+                    <fullName>IC4S</fullName>
+                    <default>false</default>
+                    <label>IC4S</label>
+                </value>
+                <value>
+                    <fullName>ICS</fullName>
+                    <default>false</default>
+                    <label>ICS</label>
+                </value>
+                <value>
+                    <fullName>ISNT</fullName>
+                    <default>false</default>
+                    <label>ISNT</label>
+                </value>
+                <value>
+                    <fullName>ISNTE</fullName>
+                    <default>false</default>
+                    <label>ISNTE</label>
+                </value>
+                <value>
+                    <fullName>ISNTP</fullName>
+                    <default>false</default>
+                    <label>ISNTP</label>
+                </value>
+                <value>
+                    <fullName>ISW</fullName>
+                    <default>false</default>
+                    <label>ISW</label>
+                </value>
+                <value>
+                    <fullName>SOS</fullName>
+                    <default>false</default>
+                    <label>SOS</label>
+                </value>
+                <value>
+                    <fullName>PSAU</fullName>
+                    <default>false</default>
+                    <label>PSAU</label>
+                </value>
+                <value>
+                    <fullName>PSE</fullName>
+                    <default>false</default>
+                    <label>PSE</label>
+                </value>
+                <value>
+                    <fullName>PSP</fullName>
+                    <default>false</default>
+                    <label>PSP</label>
+                </value>
+                <value>
+                    <fullName>PSS</fullName>
+                    <default>false</default>
+                    <label>PSS</label>
+                </value>
+                <value>
+                    <fullName>PST</fullName>
+                    <default>false</default>
+                    <label>PST</label>
+                </value>
+                <value>
+                    <fullName>PSU</fullName>
+                    <default>false</default>
+                    <label>PSU</label>
+                </value>
+                <value>
+                    <fullName>MYSNT</fullName>
+                    <default>false</default>
+                    <label>MYSNT</label>
+                </value>
+                <value>
+                    <fullName>IAM</fullName>
+                    <default>false</default>
+                    <label>IAM</label>
+                </value>
+                <value>
+                    <fullName>CSSP2</fullName>
+                    <default>false</default>
+                    <label>CSSP2</label>
+                </value>
+                <value>
+                    <fullName>CSSPD</fullName>
+                    <default>false</default>
+                    <label>CSSPD</label>
+                </value>
+                <value>
+                    <fullName>CSSPE</fullName>
+                    <default>false</default>
+                    <label>CSSPE</label>
+                </value>
+                <value>
+                    <fullName>CSSPP</fullName>
+                    <default>false</default>
+                    <label>CSSPP</label>
+                </value>
+                <value>
+                    <fullName>CSSPS</fullName>
+                    <default>false</default>
+                    <label>CSSPS</label>
+                </value>
+                <value>
+                    <fullName>CSSPU</fullName>
+                    <default>false</default>
+                    <label>CSSPU</label>
+                </value>
+                <value>
+                    <fullName>PO</fullName>
+                    <default>false</default>
+                    <label>PO</label>
+                </value>
+                <value>
+                    <fullName>REF</fullName>
+                    <default>false</default>
+                    <label>REF</label>
+                </value>
+                <value>
+                    <fullName>PM1OE</fullName>
+                    <default>false</default>
+                    <label>PM1OE</label>
+                </value>
+                <value>
+                    <fullName>PM1OP</fullName>
+                    <default>false</default>
+                    <label>PM1OP</label>
+                </value>
+                <value>
+                    <fullName>PM1OS</fullName>
+                    <default>false</default>
+                    <label>PM1OS</label>
+                </value>
+                <value>
+                    <fullName>PM1S</fullName>
+                    <default>false</default>
+                    <label>PM1S</label>
+                </value>
+                <value>
+                    <fullName>PM1SE</fullName>
+                    <default>false</default>
+                    <label>PM1SE</label>
+                </value>
+                <value>
+                    <fullName>PM1SP</fullName>
+                    <default>false</default>
+                    <label>PM1SP</label>
+                </value>
+                <value>
+                    <fullName>PM1ST</fullName>
+                    <default>false</default>
+                    <label>PM1ST</label>
+                </value>
+                <value>
+                    <fullName>PM1U</fullName>
+                    <default>false</default>
+                    <label>PM1U</label>
+                </value>
+                <value>
+                    <fullName>PM2OE</fullName>
+                    <default>false</default>
+                    <label>PM2OE</label>
+                </value>
+                <value>
+                    <fullName>PM2OP</fullName>
+                    <default>false</default>
+                    <label>PM2OP</label>
+                </value>
+                <value>
+                    <fullName>PM2OS</fullName>
+                    <default>false</default>
+                    <label>PM2OS</label>
+                </value>
+                <value>
+                    <fullName>PM2S</fullName>
+                    <default>false</default>
+                    <label>PM2S</label>
+                </value>
+                <value>
+                    <fullName>PM2S2</fullName>
+                    <default>false</default>
+                    <label>PM2S2</label>
+                </value>
+                <value>
+                    <fullName>PM2SE</fullName>
+                    <default>false</default>
+                    <label>PM2SE</label>
+                </value>
+                <value>
+                    <fullName>PM2SP</fullName>
+                    <default>false</default>
+                    <label>PM2SP</label>
+                </value>
+                <value>
+                    <fullName>PM2ST</fullName>
+                    <default>false</default>
+                    <label>PM2ST</label>
+                </value>
+                <value>
+                    <fullName>PM2U</fullName>
+                    <default>false</default>
+                    <label>PM2U</label>
+                </value>
+                <value>
+                    <fullName>SS</fullName>
+                    <default>false</default>
+                    <label>SS</label>
+                </value>
+                <value>
+                    <fullName>SSP0</fullName>
+                    <default>false</default>
+                    <label>SSP0</label>
+                </value>
+                <value>
+                    <fullName>SSP2</fullName>
+                    <default>false</default>
+                    <label>SSP2</label>
+                </value>
+                <value>
+                    <fullName>SSP8</fullName>
+                    <default>false</default>
+                    <label>SSP8</label>
+                </value>
+                <value>
+                    <fullName>SSPN</fullName>
+                    <default>false</default>
+                    <label>SSPN</label>
+                </value>
+                <value>
+                    <fullName>C2P</fullName>
+                    <default>false</default>
+                    <label>C2P</label>
+                </value>
+                <value>
+                    <fullName>C4P</fullName>
+                    <default>false</default>
+                    <label>C4P</label>
+                </value>
+                <value>
+                    <fullName>C4S</fullName>
+                    <default>false</default>
+                    <label>C4S</label>
+                </value>
+                <value>
+                    <fullName>CP</fullName>
+                    <default>false</default>
+                    <label>CP</label>
+                </value>
+                <value>
+                    <fullName>CS</fullName>
+                    <default>false</default>
+                    <label>CS</label>
+                </value>
+                <value>
+                    <fullName>S2P</fullName>
+                    <default>false</default>
+                    <label>S2P</label>
+                </value>
+                <value>
+                    <fullName>SNT</fullName>
+                    <default>false</default>
+                    <label>SNT</label>
+                </value>
+                <value>
+                    <fullName>SNTE</fullName>
+                    <default>false</default>
+                    <label>SNTE</label>
+                </value>
+                <value>
+                    <fullName>SNTP</fullName>
+                    <default>false</default>
+                    <label>SNTP</label>
+                </value>
+                <value>
+                    <fullName>SW</fullName>
+                    <default>false</default>
+                    <label>SW</label>
+                </value>
+                <value>
+                    <fullName>SMB3</fullName>
+                    <default>false</default>
+                    <label>SMB3</label>
+                </value>
+                <value>
+                    <fullName>SMB5</fullName>
+                    <default>false</default>
+                    <label>SMB5</label>
+                </value>
+                <value>
+                    <fullName>SMBS</fullName>
+                    <default>false</default>
+                    <label>SMBS</label>
+                </value>
+                <value>
+                    <fullName>STRN</fullName>
+                    <default>false</default>
+                    <label>STRN</label>
+                </value>
+                <value>
+                    <fullName>SAS</fullName>
+                    <default>false</default>
+                    <label>SAS</label>
+                </value>
+                <value>
+                    <fullName>SAU</fullName>
+                    <default>false</default>
+                    <label>SAU</label>
+                </value>
+                <value>
+                    <fullName>SPAR1</fullName>
+                    <default>false</default>
+                    <label>SPAR1</label>
+                </value>
+                <value>
+                    <fullName>SPAR2</fullName>
+                    <default>false</default>
+                    <label>SPAR2</label>
+                </value>
+                <value>
+                    <fullName>SPAR3</fullName>
+                    <default>false</default>
+                    <label>SPAR3</label>
+                </value>
+                <value>
+                    <fullName>SPAR4</fullName>
+                    <default>false</default>
+                    <label>SPAR4</label>
+                </value>
+                <value>
+                    <fullName>SPB</fullName>
+                    <default>false</default>
+                    <label>SPB</label>
+                </value>
+                <value>
+                    <fullName>SPC2P</fullName>
+                    <default>false</default>
+                    <label>SPC2P</label>
+                </value>
+                <value>
+                    <fullName>SPC4P</fullName>
+                    <default>false</default>
+                    <label>SPC4P</label>
+                </value>
+                <value>
+                    <fullName>SPC4S</fullName>
+                    <default>false</default>
+                    <label>SPC4S</label>
+                </value>
+                <value>
+                    <fullName>SPCPE</fullName>
+                    <default>false</default>
+                    <label>SPCPE</label>
+                </value>
+                <value>
+                    <fullName>SPCS</fullName>
+                    <default>false</default>
+                    <label>SPCS</label>
+                </value>
+                <value>
+                    <fullName>SPRTF</fullName>
+                    <default>false</default>
+                    <label>SPRTF</label>
+                </value>
+                <value>
+                    <fullName>SPSAS</fullName>
+                    <default>false</default>
+                    <label>SPSAS</label>
+                </value>
+                <value>
+                    <fullName>SPSAU</fullName>
+                    <default>false</default>
+                    <label>SPSAU</label>
+                </value>
+                <value>
+                    <fullName>CRAR1</fullName>
+                    <default>false</default>
+                    <label>CRAR1</label>
+                </value>
+                <value>
+                    <fullName>CRAR2</fullName>
+                    <default>false</default>
+                    <label>CRAR2</label>
+                </value>
+                <value>
+                    <fullName>CRAR3</fullName>
+                    <default>false</default>
+                    <label>CRAR3</label>
+                </value>
+                <value>
+                    <fullName>CRAR4</fullName>
+                    <default>false</default>
+                    <label>CRAR4</label>
+                </value>
+                <value>
+                    <fullName>CRC4P</fullName>
+                    <default>false</default>
+                    <label>CRC4P</label>
+                </value>
+                <value>
+                    <fullName>CRC4S</fullName>
+                    <default>false</default>
+                    <label>CRC4S</label>
+                </value>
+                <value>
+                    <fullName>CRCS</fullName>
+                    <default>false</default>
+                    <label>CRCS</label>
+                </value>
+                <value>
+                    <fullName>CRRTF</fullName>
+                    <default>false</default>
+                    <label>CRRTF</label>
+                </value>
+                <value>
+                    <fullName>CRSAS</fullName>
+                    <default>false</default>
+                    <label>CRSAS</label>
+                </value>
+                <value>
+                    <fullName>CRSAU</fullName>
+                    <default>false</default>
+                    <label>CRSAU</label>
+                </value>
+                <value>
+                    <fullName>CRSPB</fullName>
+                    <default>false</default>
+                    <label>CRSPB</label>
+                </value>
+                <value>
+                    <fullName>L3AR1</fullName>
+                    <default>false</default>
+                    <label>L3AR1</label>
+                </value>
+                <value>
+                    <fullName>L3TAC</fullName>
+                    <default>false</default>
+                    <label>L3TAC</label>
+                </value>
+                <value>
+                    <fullName>L3TRR</fullName>
+                    <default>false</default>
+                    <label>L3TRR</label>
+                </value>
+                <value>
+                    <fullName>NAE15</fullName>
+                    <default>false</default>
+                    <label>NAE15</label>
+                </value>
+                <value>
+                    <fullName>SIS</fullName>
+                    <default>false</default>
+                    <label>SIS</label>
+                </value>
+                <value>
+                    <fullName>SIS2T</fullName>
+                    <default>false</default>
+                    <label>SIS2T</label>
+                </value>
+                <value>
+                    <fullName>SIS98</fullName>
+                    <default>false</default>
+                    <label>SIS98</label>
+                </value>
+                <value>
+                    <fullName>SISND</fullName>
+                    <default>false</default>
+                    <label>SISND</label>
+                </value>
+                <value>
+                    <fullName>SISRR</fullName>
+                    <default>false</default>
+                    <label>SISRR</label>
+                </value>
+                <value>
+                    <fullName>SISSD</fullName>
+                    <default>false</default>
+                    <label>SISSD</label>
+                </value>
+                <value>
+                    <fullName>SISST</fullName>
+                    <default>false</default>
+                    <label>SISST</label>
+                </value>
+                <value>
+                    <fullName>SUB</fullName>
+                    <default>false</default>
+                    <label>SUB</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFA1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFA2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFA3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFA4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFC1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFC2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFC3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFC4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFRF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, SP</controllingFieldValue>
+                <valueName>SFSW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS, Stand Alone</controllingFieldValue>
+                <valueName>SUSA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Misc Core Services</controllingFieldValue>
+                <valueName>IC4P</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Misc Core Services</controllingFieldValue>
+                <valueName>IC4S</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Misc Core Services</controllingFieldValue>
+                <valueName>ICS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Misc Core Services</controllingFieldValue>
+                <valueName>ISNT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Misc Core Services</controllingFieldValue>
+                <valueName>ISNTE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Misc Core Services</controllingFieldValue>
+                <valueName>ISNTP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Misc Core Services</controllingFieldValue>
+                <valueName>ISW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Misc Core Services</controllingFieldValue>
+                <valueName>SOS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Core Services</controllingFieldValue>
+                <valueName>PSAU</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Voice Support Offering</controllingFieldValue>
+                <valueName>PSE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Voice Support Offering</controllingFieldValue>
+                <valueName>PSP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Voice Support Offering</controllingFieldValue>
+                <valueName>PSS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Voice Support Offering</controllingFieldValue>
+                <valueName>PST</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Voice Support Offering</controllingFieldValue>
+                <valueName>PSU</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pkg Core Services</controllingFieldValue>
+                <valueName>MYSNT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Security Alert Manager</controllingFieldValue>
+                <valueName>IAM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support</controllingFieldValue>
+                <valueName>CSSP2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support</controllingFieldValue>
+                <valueName>CSSPD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support</controllingFieldValue>
+                <valueName>CSSPE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support</controllingFieldValue>
+                <valueName>CSSPP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support</controllingFieldValue>
+                <valueName>CSSPS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support</controllingFieldValue>
+                <valueName>CSSPU</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support</controllingFieldValue>
+                <valueName>PO</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support</controllingFieldValue>
+                <valueName>REF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Enhanced</controllingFieldValue>
+                <valueName>PM1OE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Enhanced</controllingFieldValue>
+                <valueName>PM1OP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Enhanced</controllingFieldValue>
+                <valueName>PM1OS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Enhanced</controllingFieldValue>
+                <valueName>PM1S</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Enhanced</controllingFieldValue>
+                <valueName>PM1SE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Enhanced</controllingFieldValue>
+                <valueName>PM1SP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Enhanced</controllingFieldValue>
+                <valueName>PM1ST</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Enhanced</controllingFieldValue>
+                <valueName>PM1U</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Standard</controllingFieldValue>
+                <valueName>PM2OE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Standard</controllingFieldValue>
+                <valueName>PM2OP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Standard</controllingFieldValue>
+                <valueName>PM2OS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Standard</controllingFieldValue>
+                <valueName>PM2S</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Standard</controllingFieldValue>
+                <valueName>PM2S2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Standard</controllingFieldValue>
+                <valueName>PM2SE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Standard</controllingFieldValue>
+                <valueName>PM2SP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Standard</controllingFieldValue>
+                <valueName>PM2ST</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Shared Support Standard</controllingFieldValue>
+                <valueName>PM2U</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Transformation Services</controllingFieldValue>
+                <valueName>Next Generation Network</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Transformation Services</controllingFieldValue>
+                <valueName>Service Creation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SIS SMARTspares</controllingFieldValue>
+                <valueName>SS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SIS SMARTspares</controllingFieldValue>
+                <valueName>SSP0</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SIS SMARTspares</controllingFieldValue>
+                <valueName>SSP2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SIS SMARTspares</controllingFieldValue>
+                <valueName>SSP8</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SIS SMARTspares</controllingFieldValue>
+                <valueName>SSPN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Operate &amp; Optimize Services</controllingFieldValue>
+                <valueName>NEC4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Operate &amp; Optimize Services</controllingFieldValue>
+                <valueName>NECD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Operate &amp; Optimize Services</controllingFieldValue>
+                <valueName>NECE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Operate &amp; Optimize Services</controllingFieldValue>
+                <valueName>NECP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Operate &amp; Optimize Services</controllingFieldValue>
+                <valueName>NESW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Operate &amp; Optimize Services</controllingFieldValue>
+                <valueName>NSC4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Operate &amp; Optimize Services</controllingFieldValue>
+                <valueName>NSCD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Operate &amp; Optimize Services</controllingFieldValue>
+                <valueName>NSCE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Operate &amp; Optimize Services</controllingFieldValue>
+                <valueName>NSCP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>C2P</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>C4P</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>C4S</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>CP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>CS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>S2P</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>SNT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>SNTE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>SNTP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMARTnet Services</controllingFieldValue>
+                <valueName>SW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Optimize Services</controllingFieldValue>
+                <valueName>DCN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Optimize Services</controllingFieldValue>
+                <valueName>IPCC----</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Optimize Services</controllingFieldValue>
+                <valueName>IPT----</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Optimize Services</controllingFieldValue>
+                <valueName>OPT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Optimize Services</controllingFieldValue>
+                <valueName>Routing &amp; Switching</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Optimize Services</controllingFieldValue>
+                <valueName>SAN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Optimize Services</controllingFieldValue>
+                <valueName>WLAN---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMB SA</controllingFieldValue>
+                <valueName>SMB3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMB SA</controllingFieldValue>
+                <valueName>SMB5</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMB SA</controllingFieldValue>
+                <valueName>SMBS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SMB SA</controllingFieldValue>
+                <valueName>STRN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Consultative Svces</controllingFieldValue>
+                <valueName>Custom-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Consultative Svces</controllingFieldValue>
+                <valueName>IPCC-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Consultative Svces</controllingFieldValue>
+                <valueName>IPT-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Consultative Svces</controllingFieldValue>
+                <valueName>MPLS/VPN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Consultative Svces</controllingFieldValue>
+                <valueName>Net Infra</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Software Application Services</controllingFieldValue>
+                <valueName>SAS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Software Application Services</controllingFieldValue>
+                <valueName>SAU</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Plan and Design Services</controllingFieldValue>
+                <valueName>IPT-----</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Plan and Design Services</controllingFieldValue>
+                <valueName>Security---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Plan and Design Services</controllingFieldValue>
+                <valueName>Storage---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Plan and Design Services</controllingFieldValue>
+                <valueName>WLAN----</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPAR1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPAR2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPAR3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPAR4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPB</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPC2P</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPC4P</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPC4S</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPCPE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPCS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPRTF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPSAS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Base Services</controllingFieldValue>
+                <valueName>SPSAU</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>AONS--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>BBC---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Cable</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>CDN---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Content</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Custom---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>DCN-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Dial---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>DSL</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>EIP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>INFRA--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>IPCC-----</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>IPICS--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>IPT------</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Meeting Place---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Metro---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>MobWi---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>MPLS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Net Mgmt---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>NRN---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Optical--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>OSS--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Routing &amp; Switching-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Security----</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>SP Voice--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>SPPT---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>Storage----</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Scoped Services</controllingFieldValue>
+                <valueName>WLAN-----</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Systems Integrator Services</controllingFieldValue>
+                <valueName>SIS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Systems Integrator Services</controllingFieldValue>
+                <valueName>SIS2T</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Systems Integrator Services</controllingFieldValue>
+                <valueName>SIS98</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Systems Integrator Services</controllingFieldValue>
+                <valueName>SISND</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Systems Integrator Services</controllingFieldValue>
+                <valueName>SISRR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Systems Integrator Services</controllingFieldValue>
+                <valueName>SISSD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Systems Integrator Services</controllingFieldValue>
+                <valueName>SISST</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Systems Integrator Services</controllingFieldValue>
+                <valueName>SUB</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>BBC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>CDN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>Dial</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>IPCC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>IPT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>Meeting Place-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>Metro</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>MobWi</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>Net Mgmt</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>NRN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>Security</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>SPPT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>Storage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>TAS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>TAS-S</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Technology Application Services</controllingFieldValue>
+                <valueName>WLAN</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRAR1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRAR2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRAR3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRAR4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRC4P</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRC4S</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRCS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRRTF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRSAS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRSAU</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>CRSPB</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>L3AR1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>L3TAC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>L3TRR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>SP Core Services</controllingFieldValue>
+                <valueName>NAE15</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>2-Tier Core Services</controllingFieldValue>
+                <valueName>AR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>2-Tier Core Services</controllingFieldValue>
+                <valueName>DSAP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>2-Tier Core Services</controllingFieldValue>
+                <valueName>ESP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>2-Tier Core Services</controllingFieldValue>
+                <valueName>RSA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>2-Tier Core Services</controllingFieldValue>
+                <valueName>RSA98</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>2-Tier Core Services</controllingFieldValue>
+                <valueName>RSARR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>2-Tier Core Services</controllingFieldValue>
+                <valueName>VAD98</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>2-Tier Core Services</controllingFieldValue>
+                <valueName>VADLT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services</controllingFieldValue>
+                <valueName>EC4P</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services</controllingFieldValue>
+                <valueName>ECD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services</controllingFieldValue>
+                <valueName>ECE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services</controllingFieldValue>
+                <valueName>ECPM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services</controllingFieldValue>
+                <valueName>ESW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services</controllingFieldValue>
+                <valueName>SC4P</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services</controllingFieldValue>
+                <valueName>SCD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services</controllingFieldValue>
+                <valueName>SCE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services</controllingFieldValue>
+                <valueName>SCPM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services CSSP</controllingFieldValue>
+                <valueName>SECD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services CSSP</controllingFieldValue>
+                <valueName>SECE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services CSSP</controllingFieldValue>
+                <valueName>SECP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services CSSP</controllingFieldValue>
+                <valueName>SESW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>AONS-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>BBC--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>CDN--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>Custom--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>Dial--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>INFRA-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>IPCC---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>IPICS-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>IPT---</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>Meeting Place--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>Metro--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>MobWi--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>Net Mgmt--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>NRN--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>Optical-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>OSS-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>Security--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>SP Voice-</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>SPPT--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>Storage--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Advisory Services</controllingFieldValue>
+                <valueName>WLAN--</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Focused Technical Support</controllingFieldValue>
+                <valueName>FTS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Implementation Services</controllingFieldValue>
+                <valueName>TIS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Availability Improvement Support</controllingFieldValue>
+                <valueName>NAIS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NOS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NOSC</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NOS-T</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSAS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSAU</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSO2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSOE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSOP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSOS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSS2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSSE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSSP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSST</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Network Optimization Services</controllingFieldValue>
+                <valueName>NSSW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services PSAT</controllingFieldValue>
+                <valueName>PECD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services PSAT</controllingFieldValue>
+                <valueName>PECE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services PSAT</controllingFieldValue>
+                <valueName>PECP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services PSAT</controllingFieldValue>
+                <valueName>PESW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services PSAT</controllingFieldValue>
+                <valueName>PSCD</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services PSAT</controllingFieldValue>
+                <valueName>PSCE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Operate Services PSAT</controllingFieldValue>
+                <valueName>PSCP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS</controllingFieldValue>
+                <valueName>SU1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS</controllingFieldValue>
+                <valueName>SU2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS</controllingFieldValue>
+                <valueName>SU3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS</controllingFieldValue>
+                <valueName>SU4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS</controllingFieldValue>
+                <valueName>SUO1</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS</controllingFieldValue>
+                <valueName>SUO2</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS</controllingFieldValue>
+                <valueName>SUO3</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS</controllingFieldValue>
+                <valueName>SUO4</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cisco Services for IPS</controllingFieldValue>
+                <valueName>SUSW</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Program__c</fullName>
+        <description>Picklist to identify the Service Program that the Customer Service Landscape represents.</description>
+        <externalId>false</externalId>
+        <label>Service Program</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>2-Tier Core Services</fullName>
+                    <default>false</default>
+                    <label>2-Tier Core Services</label>
+                </value>
+                <value>
+                    <fullName>Advisory Services</fullName>
+                    <default>false</default>
+                    <label>Advisory Services</label>
+                </value>
+                <value>
+                    <fullName>Cisco Operate Services</fullName>
+                    <default>false</default>
+                    <label>Cisco Operate Services</label>
+                </value>
+                <value>
+                    <fullName>Cisco Operate Services CSSP</fullName>
+                    <default>false</default>
+                    <label>Cisco Operate Services CSSP</label>
+                </value>
+                <value>
+                    <fullName>Cisco Operate Services PSAT</fullName>
+                    <default>false</default>
+                    <label>Cisco Operate Services PSAT</label>
+                </value>
+                <value>
+                    <fullName>Cisco Services for IPS</fullName>
+                    <default>false</default>
+                    <label>Cisco Services for IPS</label>
+                </value>
+                <value>
+                    <fullName>Cisco Services for IPS, SP</fullName>
+                    <default>false</default>
+                    <label>Cisco Services for IPS, SP</label>
+                </value>
+                <value>
+                    <fullName>Cisco Services for IPS, Stand Alone</fullName>
+                    <default>false</default>
+                    <label>Cisco Services for IPS, Stand Alone</label>
+                </value>
+                <value>
+                    <fullName>Focused Technical Support</fullName>
+                    <default>false</default>
+                    <label>Focused Technical Support</label>
+                </value>
+                <value>
+                    <fullName>Implementation Services</fullName>
+                    <default>false</default>
+                    <label>Implementation Services</label>
+                </value>
+                <value>
+                    <fullName>Misc Core Services</fullName>
+                    <default>false</default>
+                    <label>Misc Core Services</label>
+                </value>
+                <value>
+                    <fullName>Network Availability Improvement Support</fullName>
+                    <default>false</default>
+                    <label>Network Availability Improvement Support</label>
+                </value>
+                <value>
+                    <fullName>Network Optimization Services</fullName>
+                    <default>false</default>
+                    <label>Network Optimization Services</label>
+                </value>
+                <value>
+                    <fullName>Network Transformation Services</fullName>
+                    <default>false</default>
+                    <label>Network Transformation Services</label>
+                </value>
+                <value>
+                    <fullName>Operate &amp; Optimize Services</fullName>
+                    <default>false</default>
+                    <label>Operate &amp; Optimize Services</label>
+                </value>
+                <value>
+                    <fullName>Optimize Services</fullName>
+                    <default>false</default>
+                    <label>Optimize Services</label>
+                </value>
+                <value>
+                    <fullName>Partner Consultative Svces</fullName>
+                    <default>false</default>
+                    <label>Partner Consultative Svces</label>
+                </value>
+                <value>
+                    <fullName>Partner Core Services</fullName>
+                    <default>false</default>
+                    <label>Partner Core Services</label>
+                </value>
+                <value>
+                    <fullName>Partner Voice Support Offering</fullName>
+                    <default>false</default>
+                    <label>Partner Voice Support Offering</label>
+                </value>
+                <value>
+                    <fullName>Pkg Core Services</fullName>
+                    <default>false</default>
+                    <label>Pkg Core Services</label>
+                </value>
+                <value>
+                    <fullName>Plan and Design Services</fullName>
+                    <default>false</default>
+                    <label>Plan and Design Services</label>
+                </value>
+                <value>
+                    <fullName>Scoped Services</fullName>
+                    <default>false</default>
+                    <label>Scoped Services</label>
+                </value>
+                <value>
+                    <fullName>Security Alert Manager</fullName>
+                    <default>false</default>
+                    <label>Security Alert Manager</label>
+                </value>
+                <value>
+                    <fullName>Shared Support</fullName>
+                    <default>false</default>
+                    <label>Shared Support</label>
+                </value>
+                <value>
+                    <fullName>Shared Support Enhanced</fullName>
+                    <default>false</default>
+                    <label>Shared Support Enhanced</label>
+                </value>
+                <value>
+                    <fullName>Shared Support Standard</fullName>
+                    <default>false</default>
+                    <label>Shared Support Standard</label>
+                </value>
+                <value>
+                    <fullName>SIS SMARTspares</fullName>
+                    <default>false</default>
+                    <label>SIS SMARTspares</label>
+                </value>
+                <value>
+                    <fullName>SMARTnet Services</fullName>
+                    <default>false</default>
+                    <label>SMARTnet Services</label>
+                </value>
+                <value>
+                    <fullName>SMB SA</fullName>
+                    <default>false</default>
+                    <label>SMB SA</label>
+                </value>
+                <value>
+                    <fullName>Software Application Services</fullName>
+                    <default>false</default>
+                    <label>Software Application Services</label>
+                </value>
+                <value>
+                    <fullName>SP Base Services</fullName>
+                    <default>false</default>
+                    <label>SP Base Services</label>
+                </value>
+                <value>
+                    <fullName>SP Core Services</fullName>
+                    <default>false</default>
+                    <label>SP Core Services</label>
+                </value>
+                <value>
+                    <fullName>Systems Integrator Services</fullName>
+                    <default>false</default>
+                    <label>Systems Integrator Services</label>
+                </value>
+                <value>
+                    <fullName>Technology Application Services</fullName>
+                    <default>false</default>
+                    <label>Technology Application Services</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SiteMapIdentifier__c</fullName>
+        <description>Determines how the record displays on the site map</description>
+        <externalId>false</externalId>
+        <formula>CASE(Service_Program__c,"Subscriptional", "Subscriptional","Transactional","Transactional","PCS", "PCS","TSS","TSS","","--None--","NOT DEFINED") &amp; " - " &amp; CASE(Service_Level__c,"NOS","NOS","TAS","TAS","FTS","FTS","Security Readiness Foundation Review","Security Readiness Foundation Review","Availability Readiness Foundation Review","Availability Readiness Foundation Review","NAIS","NAIS","Other","Other","PCS","PCS","Smartnet","Smartnet","Shared Support","Shared Support","","--None--","NOT DEFINED")</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SiteMapIdentifier</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Account_Plan_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Account Plan Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Cust_Service_Land_Id__c</fullName>
+        <description>Data Migration Field: Used to generate reports, rollback data changes, mass data changes in SFDC etc</description>
+        <externalId>false</externalId>
+        <label>Source Cust Service Land Id</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Supplier_Status__c</fullName>
+        <description>Status of the Customer Supplier: Active, Target, No Status</description>
+        <externalId>false</externalId>
+        <label>Supplier Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Target</fullName>
+                    <default>false</default>
+                    <label>Target</label>
+                </value>
+                <value>
+                    <fullName>No Status</fullName>
+                    <default>false</default>
+                    <label>No Status</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Supplier_to_Cisco_Alignment__c</fullName>
+        <description>Picklist to identify how well the Customer Supplier and Cisco align for the Service Program and Service Level.</description>
+        <externalId>false</externalId>
+        <label>Supplier to Cisco Alignment</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 - Low</fullName>
+                    <default>false</default>
+                    <label>1 - Low</label>
+                </value>
+                <value>
+                    <fullName>2 - Medium Low</fullName>
+                    <default>false</default>
+                    <label>2 - Medium Low</label>
+                </value>
+                <value>
+                    <fullName>3 - Medium</fullName>
+                    <default>false</default>
+                    <label>3 - Medium</label>
+                </value>
+                <value>
+                    <fullName>4 - Medium High</fullName>
+                    <default>false</default>
+                    <label>4 - Medium High</label>
+                </value>
+                <value>
+                    <fullName>5 - High</fullName>
+                    <default>false</default>
+                    <label>5 - High</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>InDevelopment</deploymentStatus>
+    <description>Customer Service Landscape</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <label>zzCustomer Service Landscape</label>
+    <nameField>
+        <displayFormat>{0}</displayFormat>
+        <label>Landscape Component</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Customer Service Landscape</pluralLabel>
+    <searchLayouts />
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

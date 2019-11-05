@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- SV Architecture Specialist --></label>
+        <name>Architecture_Specialist__c</name>
+        <relationshipLabel><!-- Specialist Views (SV Architecture Specialist) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SV Business Entity --></label>
+        <name>Business_Entity__c</name>
+    </fields>
+    <fields>
+        <label><!-- SV Expected $(000) Value --></label>
+        <name>Expected_000_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- SV Expected Book Date --></label>
+        <name>Expected_Book_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- SV Expected $ Value --></label>
+        <name>Expected_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- SV Incubation Specialist --></label>
+        <name>Incubation_Specialist__c</name>
+        <relationshipLabel><!-- Specialist Views (SV Incubation Specialist) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Line Item Reference --></label>
+        <name>Opportunity_Line_Item_Reference__c</name>
+    </fields>
+    <fields>
+        <label><!-- SV Expected Stage --></label>
+        <name>Opportunity_Stage__c</name>
+        <picklistValues>
+            <masterLabel>1 - Prospect</masterLabel>
+            <translation><!-- 1 - Prospect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 - Qualification</masterLabel>
+            <translation><!-- 2 - Qualification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 - Proposal</masterLabel>
+            <translation><!-- 3 - Proposal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 - Agreement</masterLabel>
+            <translation><!-- 4 - Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 - Closed Booked</masterLabel>
+            <translation><!-- 5 - Closed Booked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 - Closed Cancelled</masterLabel>
+            <translation><!-- 5 - Closed Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 - Closed Lost</masterLabel>
+            <translation><!-- 5 - Closed Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 - Closed Won</masterLabel>
+            <translation><!-- 5 - Closed Won --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Specialist Views --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SV Product Code --></label>
+        <name>Product_Code__c</name>
+        <picklistValues>
+            <masterLabel>Service</masterLabel>
+            <translation><!-- Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology</masterLabel>
+            <translation><!-- Technology --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Family ID --></label>
+        <name>Product_Family_Ref__c</name>
+        <relationshipLabel><!-- Specialist Views --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SV Product Family --></label>
+        <name>Product_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- SV Service Category --></label>
+        <name>Service_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- SV Service Level Description --></label>
+        <name>Service_Level_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- SV Service Level Tech --></label>
+        <name>Service_Level_Tech__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Level --></label>
+        <name>Service_Level__c</name>
+        <relationshipLabel><!-- Specialist Views --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SV Service Program --></label>
+        <name>Service_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- SV Software Specialist --></label>
+        <name>Software_Specialist__c</name>
+        <relationshipLabel><!-- Specialist Views (SV Software Specialist) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SV Sub Business Entity --></label>
+        <name>Sub_Business_Entity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technology &amp; Service --></label>
+        <name>Technology_Service__c</name>
+        <relationshipLabel><!-- Specialist Views --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Specialist View</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Specialist Views</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Opportunity Lines Specialist View Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Technology &amp; Service --></label>
+            <section>Technology &amp; Service</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Software Specialist Lines Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Technology &amp; Service --></label>
+            <section>Technology &amp; Service</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Architecture and Incubation Specialist Lines --></label>
+        <name>Architecture_and_Incubation_Specialist_Lines</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Software Specialist Lines --></label>
+        <name>Software_Specialist_Lines</name>
+    </recordTypes>
+</CustomObjectTranslation>

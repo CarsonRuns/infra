@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CCMQueueId__c</fullName>
+        <externalId>false</externalId>
+        <label>CCMQueueId</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NGCC_CampaignAssignmentRuleset__c</fullName>
+        <externalId>false</externalId>
+        <label>NGCC_CampaignAssignmentRuleset</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Owner__c</fullName>
+        <externalId>false</externalId>
+        <label>Owner</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <customSettingsType>List</customSettingsType>
+    <description>NGCC: This custom settings will be responsible for route rejected lead from post sales user to CCM queue based on theater.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>NGCC_CCM_Requalification</label>
+    <visibility>Public</visibility>
+    <listViews>
+        <fullName>NGCC</fullName>
+        <columns>NAME</columns>
+        <columns>CCMQueueId__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>NGCC</label>
+        <language>en_US</language>
+    </listViews>
+</CustomObject>

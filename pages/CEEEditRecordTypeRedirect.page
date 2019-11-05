@@ -1,0 +1,65 @@
+<apex:page standardController="CEE__c" sidebar="false">
+    <script>
+        function isLightningDesktop() {
+            return( "{!$User.UIThemeDisplayed }" == "Theme4d" || "{!$User.UIThemeDisplayed }" == "Theme4u");
+        }
+
+        //Getting the Whole Query String
+        var strQuery = window.location.search.slice(1);
+        
+        //Getting returnURL
+        <!--<var returnURL = '{!$CurrentPage.parameters.retURL}';-->
+        <!--<var vfreturnURL = '{!$CurrentPage.parameters.vfRetURLInSFX}';-->
+        <!-- SCAVA FIX -->
+        var returnURL = '{!JSENCODE($CurrentPage.parameters.retURL)}';
+        var vfreturnURL = '{!JSENCODE($CurrentPage.parameters.vfRetURLInSFX)}';
+        <!--var eventClosed = '{!CEE__c.Jiffle_Event__r.Schedule_Meeting__c}';-->
+        <!-- SCAVA FIX -->
+        var eventClosed = '{!JSENCODE(CEE__c.Jiffle_Event__r.Schedule_Meeting__c)}';
+        <!--var evtActivityStatus = '{!CEE__c.Jiffle_Event__r.Event_Status__c}';-->
+        <!-- SCAVA FIX -->
+        var evtActivityStatus = '{!JSENCODE(CEE__c.Jiffle_Event__r.Event_Status__c)}';
+        console.log('returnURL===>'+returnURL);
+        console.log('vfreturnURL===>'+vfreturnURL);
+        // Validating if RecordType is same as JiffleNow if yes send it to schedular page else standatd 
+        if(!isLightningDesktop()){
+            if ('{!CEE__c.RecordType.Name}' === 'Jifflenow (Event, Tradeshow, Conference)') {
+                if(evtActivityStatus  === 'Inactive'){
+                    alert("{!$Label.JiffleEditInactiveMessage}");
+                    window.location.href = '/{!CEE__c.Id}';
+                }
+                else if (eventClosed === 'Event Completed'){
+                    alert("{!$Label.JiffleEditPastMessage}");
+                    window.location.href = '/{!CEE__c.Id}';
+                }else{
+                    window.location.href = '/apex/JiffleNowMeetingSchedular?Id={!CEE__c.Id}&retURL='+ returnURL;
+                }
+            } else {
+                window.location.href = '/{!CEE__c.Id}/e?&nooverride=1&retURL='+ returnURL;
+            }
+        }else{
+            if ('{!CEE__c.RecordType.Name}' === 'Jifflenow (Event, Tradeshow, Conference)') {
+                if(evtActivityStatus  === 'Inactive'){
+                    alert("{!$Label.JiffleEditInactiveMessage}");
+                    var recordId = '{!CEE__c.Id}';
+                    sforce.one.navigateToSObject(recordId); 
+                }
+                else if (eventClosed === 'Event Completed'){
+                    alert("{!$Label.JiffleEditPastMessage}");
+                    var recordId = '{!CEE__c.Id}';
+                    sforce.one.navigateToSObject(recordId); 
+                }else{
+                    window.location.href = '/apex/JiffleNowMeetingSchedular?Id={!CEE__c.Id}&vfRetURLInSFX='+ vfreturnURL;
+                }
+            } else {
+                var recordId = '{!CEE__c.Id}';
+                console.log("{!CEE__c.Id}");
+                sforce.one.navigateToSObject(recordId); 
+                sforce.one.navigateToURL("{!URLFOR($Action.CEE__c.Edit, CEE__c.Id, [retURL=URLFOR('/' + CEE__c.Id)], true)}");
+            }    
+        }
+    </script>
+    <center><img src="/img/loading32.gif" />
+    </center>
+    <apex:pageMessages ></apex:pageMessages>
+</apex:page>

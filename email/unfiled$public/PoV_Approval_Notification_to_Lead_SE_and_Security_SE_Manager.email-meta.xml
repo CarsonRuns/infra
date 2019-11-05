@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PoV Approval Notification to Lead SE and Security SE Manager</name>
+    <style>none</style>
+    <subject>POV {!Proof_of_Value__c.Name} Approved</subject>
+    <textOnly>The following POV Request for {!Proof_of_Value__c.Name} has been Approved by SE MGR : {!Proof_of_Value__c.Security_SE_MGR__c} Or Lead SE{!Proof_of_Value__c.Lead_SE__c}
+
+POV Link : {!Proof_of_Value__c.Link}
+
+Contact Name :  {!Proof_of_Value__c.POV_Contact__c}
+Contact Email :   {!Proof_of_Value__c.POV_Contact_Email__c}
+Account Name :  {!Proof_of_Value__c.Account__c}
+Opportunity Owner :  {!Opportunity.OwnerFullName}
+Lead SE Name :  {!Proof_of_Value__c.Lead_SE__c}
+SE Manager Name :  {!Proof_of_Value__c.Security_SE_MGR__c}
+Reseller Partner :   {!Proof_of_Value__c.Reseller_Partner__c}
+Decision Date :   {!Proof_of_Value__c.Decision_Date__c}
+Description :  {!Proof_of_Value__c.POV_Description__c}
+
+
+
+Thanks</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

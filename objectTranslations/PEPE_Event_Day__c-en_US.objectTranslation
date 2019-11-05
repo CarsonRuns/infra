@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Details of the day sessions --></help>
+        <label><!-- Event Day Agenda --></label>
+        <name>Event_Day_Agenda__c</name>
+    </fields>
+    <fields>
+        <label><!-- PEPE Record Type --></label>
+        <name>PEPE_Record_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the days from the available list --></help>
+        <label><!-- Select Day --></label>
+        <name>Select_Day__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Event Id --></label>
+        <name>Training_Event_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Event --></label>
+        <name>Training_Event__c</name>
+        <relationshipLabel><!-- Event Days --></relationshipLabel>
+    </fields>
+    <caseValues>
+        <plural>false</plural>
+        <value>Event Day</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Event Days</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <layouts>
+        <layout>Event Day Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

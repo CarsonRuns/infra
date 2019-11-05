@@ -1,0 +1,1730 @@
+<?xml version="1.0" encoding="utf-8"?><CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>P360_NewTargetProspectPagev1</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>SCP_Communities_tpdetail</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <fields>
+        <fullName>Additional_Customer_Information__c</fullName>
+        <externalId>false</externalId>
+        <label>Additional Customer Information</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Assign_Recommended_PSR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>"Assign Recommended PSR?" checkbox can be used to assign Cisco Recommended PSR.</description>
+        <externalId>false</externalId>
+        <label>Assign Directly to Recommended PSR?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_PSR_SYS1__c</fullName>
+        <description>Created as part of P360 Sep '12 release. 
+Partner users can't access data for other users, so Gadget can not update the lookup field directly or read user's full name of PSR1 from lookup. 
+Gadget will update this field while updating and read name from this field while reading.</description>
+        <externalId>false</externalId>
+        <label>Assigned Partner Sales Rep 1 Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_PSR_SYS2__c</fullName>
+        <description>Created as part of P360 Sep '12 release. 
+Partner users can't access data for other users, so Gadget can not update the lookup field directly or read user's full name of PSR2 from lookup. 
+Gadget will update this field while updating and read name from this field while reading.</description>
+        <externalId>false</externalId>
+        <label>Assigned Partner Sales Rep 2 Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_PSR_SYS3__c</fullName>
+        <description>Created as part of P360 Sep '12 release. 
+Partner users can't access data for other users, so Gadget can not update the lookup field directly or read user's full name of PSR3 from lookup. 
+Gadget will update this field while updating and read name from this field while reading.</description>
+        <externalId>false</externalId>
+        <label>Assigned Partner Sales Rep 3 Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Partner_ID__c</fullName>
+        <description>Assigned Partner ID</description>
+        <externalId>false</externalId>
+        <formula>Assigned_Partner__r.Id</formula>
+        <label>Assigned Partner ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Partner_Sales_Rep_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Assigned Partner Sales Rep 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Assigned_Partners4</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Partner_Sales_Rep_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Assigned Partner Sales Rep 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Assigned_Partners3</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Partner_Sales_Rep__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Sales Rep from the partner assigned to this target account.</description>
+        <externalId>false</externalId>
+        <label>Assigned Partner Sales Rep</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Assigned_Partners_Sales_Rep</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Partner Account assigned to this target account.</description>
+        <externalId>false</externalId>
+        <label>Assigned Partner</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Assigned_Partners</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assignment_Activated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Is the assignment activated by TAM/TBM</description>
+        <externalId>false</externalId>
+        <label>Assignment Activated</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Associated_Partners_On_Account__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Account__r.Allocated_Partner_1__c+ ';' +
+Customer_Account__r.Allocated_Partner_2__c+ ';' +
+Customer_Account__r.Allocated_Partner_3__c+ ';' +
+Customer_Account__r.Allocated_Partner_4__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Associated Partners On Account</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cisco_Rec_PSR_Name__c</fullName>
+        <description>Created as part of P360 Sep '12 Release. 
+Hold the Full Name of the Look Up Field "Cisco Recommended PSR" for Gadget.</description>
+        <externalId>false</externalId>
+        <formula>Cisco_Recomended_Partner_Sales_Rep__r.FirstName &amp; " " &amp; Cisco_Recomended_Partner_Sales_Rep__r.LastName</formula>
+        <label>Cisco Recommended Partner Sales Rep Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cisco_Recomended_Partner_Sales_Rep__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Cisco Recommended PSR</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Assigned_Partners</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CreatedByName__c</fullName>
+        <description>Created as part of P360 Sep '12 Release. 
+Hold the Full Name of the Standard System field "Created By" for Gadget.</description>
+        <externalId>false</externalId>
+        <formula>CreatedBy.FirstName &amp; " " &amp;  CreatedBy.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Created By Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_FY_Wallet_Total_000__c</fullName>
+        <description>Nov 13 Release: To show Current FY Wallet Total associated to Customer Account</description>
+        <externalId>false</externalId>
+        <formula>Customer_Account__r.Current_FY_Wallet_Total_000__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Current_FY_Wallet_Total_000</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Account_Country__c</fullName>
+        <description>End Customer Country</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Customer_Account__r.Country__c)</formula>
+        <label>Customer Account Country</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Account_ID__c</fullName>
+        <description>End Customer Account ID</description>
+        <externalId>false</externalId>
+        <formula>Customer_Account__r.Id</formula>
+        <label>Customer Account ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Account_Name__c</fullName>
+        <description>Created as part of P360 Sep '12 Release. 
+Hold the Full Name of the Lookup Field "Customer Account"  for Gadget.</description>
+        <externalId>false</externalId>
+        <formula>Customer_Account__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Target Account to whom partners are being assigned</description>
+        <externalId>false</externalId>
+        <label>Customer Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Assigned_Partner_Customer_Account</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Intelligence__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( NOT ISNULL(Customer_Account_ID__c) &amp;&amp; NOT ISNULL(Customer_Account__r.CI_Last_Updated_Date__c), 
+    HYPERLINK("../"&amp;Customer_Account_ID__c,   $Label.Prm_customIntelligence  , "_parent" ), 
+      $Label.Prm_noCiData  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer Intelligence</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_Added__c</fullName>
+        <description>Field used to convert data time to date for partner added date time used in SCP communities</description>
+        <externalId>false</externalId>
+        <formula>DATEVALUE(Partner_Added_Date_Time__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Date Added</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Days_Taken_by_PSR_to_Accept__c</fullName>
+        <description>Number of days taken by PSR to accept the target prospect assignment</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( PSR_Accepted_Date_Time__c ),
+NULL,
+(PSR_Accepted_Date_Time__c - PSR_Assigned_Date_Time__c)
+)</formula>
+        <label>Days Taken by PSR to Accept</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_Taken_to_Activate_Prospect_Partner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+ISBLANK(Partner_Assigned_Date__c),
+NULL,
+(Partner_Assigned_Date__c - Partner_Added_Date_Time__c )
+)</formula>
+        <label>Days Taken to Activate Prospect/Partner</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_Taken_to_Add_Partner__c</fullName>
+        <description>Number of days taken to add partner to target prospect</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ISBLANK(Partner_Added_Date_Time__c),
+NULL,
+(Partner_Added_Date_Time__c - CreatedDate)
+)</formula>
+        <label>Days Taken to Add Partner</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_Taken_to_Assign_PSR__c</fullName>
+        <description>Days taken to assign the target prospect to PSR after the target prospect was activated</description>
+        <externalId>false</externalId>
+        <formula>IF(isPSRAssigned__c,
+( PSR_Assigned_Date_Time__c - Partner_Assigned_Date__c ),
+NULL
+)</formula>
+        <label>Days Taken to Assign PSR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_Without_Patner__c</fullName>
+        <description>Running count of days the target prospect without partner</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ISBLANK(Assigned_Partner__c),
+(NOW() - CreatedDate),
+NULL
+)</formula>
+        <label>Days Without Patner</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deal_Create_Date__c</fullName>
+        <description>Nov 13 Release: To Store Deal Created Date when a new deal is recorded in Multi Quote Object</description>
+        <externalId>false</externalId>
+        <label>Deal Create Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Duplicate_Prevention__c</fullName>
+        <description>This field display Assign partner id,customer id, technology list of  value.
+Nov 13 Release: Changed the Data Type</description>
+        <externalId>false</externalId>
+        <label>Duplicate Prevention</label>
+        <length>500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Expiration_Date_Link__c</fullName>
+        <description>Release: P360 March 2013
+Purpose: To Display Expiration Date with a Link to Extend Expiration of TP</description>
+        <externalId>false</externalId>
+        <formula>(IF(NOT(ISPICKVAL(Extend_By__c,'')) &amp;&amp;  NOT(Assignment_Activated__c) ,TEXT(Extend_By__c)&amp; ' After Activation',
+IF(
+ISBLANK(Expiration_Date__c),
+'',
+TEXT(Month(Expiration_Date__c)) &amp; '/' &amp; TEXT(Day(Expiration_Date__c)) &amp; '/' &amp; TEXT(Year(Expiration_Date__c))
+)))
+&amp; '  ' &amp;
+HYPERLINK('../apex/P360_TP_Timer?Id='&amp; Id &amp; '&amp;retURL=' &amp; Id , IF(ISBLANK(Expiration_Date__c) &amp;&amp; (ISPICKVAL(Extend_By__c,'')) , '[Add Expiration]','[Manage Visibility]'), '_self')</formula>
+        <label>Manage Expiration Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expiration_Date__c</fullName>
+        <description>Release: P360 March 2013 
+Purpose: To Capture Date on which the TP will Expire and get Deactivated</description>
+        <externalId>false</externalId>
+        <label>Expiration Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Extend_By__c</fullName>
+        <description>Release: P360 March 2013 
+Purpose: Used to extend the Target Prospect Expiration Date by 30,60,90 Days..</description>
+        <externalId>false</externalId>
+        <label>Extend By</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>15 Days</fullName>
+                    <default>false</default>
+                    <label>15 Days</label>
+                </value>
+                <value>
+                    <fullName>30 Days</fullName>
+                    <default>false</default>
+                    <label>30 Days</label>
+                </value>
+                <value>
+                    <fullName>60 Days</fullName>
+                    <default>false</default>
+                    <label>60 Days</label>
+                </value>
+                <value>
+                    <fullName>90 Days</fullName>
+                    <default>false</default>
+                    <label>90 Days</label>
+                </value>
+                <value>
+                    <fullName>No Expiration</fullName>
+                    <default>true</default>
+                    <label>No Expiration</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Extension_Reason__c</fullName>
+        <description>Release: P360 March 2013 
+Purpose: Store the reason for Extension in Expiration Date.This will be nullified by trigger after creating a child record in prospect extensions.</description>
+        <externalId>false</externalId>
+        <label>Extension Reason</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Explicit Extension by Partner</fullName>
+                    <default>false</default>
+                    <label>Explicit Extension by Partner</label>
+                </value>
+                <value>
+                    <fullName>Initial Expiration with Prospect Upload</fullName>
+                    <default>false</default>
+                    <label>Initial Expiration with Prospect Upload</label>
+                </value>
+                <value>
+                    <fullName>New Deal Creation</fullName>
+                    <default>false</default>
+                    <label>New Deal Creation</label>
+                </value>
+                <value>
+                    <fullName>Partner Created Target Prospect Default</fullName>
+                    <default>false</default>
+                    <label>Partner Created Target Prospect Default</label>
+                </value>
+                <value>
+                    <fullName>TxM Extension</fullName>
+                    <default>false</default>
+                    <label>TxM Extension</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Industry__c</fullName>
+        <description>Industry associated with the end customer</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Customer_Account__r.Industry)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Industry</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LastModifiedByName__c</fullName>
+        <description>Created as part of P360 Sep '12 Release. 
+Hold the Full Name of the Standard System field "Last Modified by" for Gadget.</description>
+        <externalId>false</externalId>
+        <formula>LastModifiedBy.FirstName &amp; " " &amp; LastModifiedBy.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Last Modified By Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Marketing_Collateral__c</fullName>
+        <description>Nov 13 Release: Field is to store marketing campaign collateral and it can have links</description>
+        <externalId>false</externalId>
+        <label>Marketing Collateral</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Marketing_Play_Description__c</fullName>
+        <description>Created as part of P360 Sep '12 Release. 
+Marketing Play Information associated with the target prospect.
+
+FY14 Q2 P360: Changed the Label and API</description>
+        <externalId>false</externalId>
+        <label>Marketing Play Description</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Marketing_Play_Information__c</fullName>
+        <description>Temprorary Field to be deleted on i-Tune has new code</description>
+        <externalId>false</externalId>
+        <label>Marketing Play Information</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Marketing_Play_Name__c</fullName>
+        <description>Nov 13 Release: Field is to store marketing campaign name</description>
+        <externalId>false</externalId>
+        <label>Marketing Play Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Notify_Partner_on_Activation__c</fullName>
+        <description>Should system send email to partner when TP is activated?
+Notify Partner upon Activation</description>
+        <externalId>false</externalId>
+        <label>Notify Partner on Activation</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>true</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSR_Accepted_Date_Time__c</fullName>
+        <description>Date/Time PSR Accepted Target Prospect Assignment</description>
+        <externalId>false</externalId>
+        <label>PSR Accepted Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PSR_Assigned_Date_Time__c</fullName>
+        <description>Date/Time PSR was assigned to the Target Prospect</description>
+        <externalId>false</externalId>
+        <label>PSR Assigned Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Acceptance_Within_3_Days__c</fullName>
+        <description>Days taken to Accept by Partner</description>
+        <externalId>false</externalId>
+        <formula>Partner_Accepted_Date__c-Partner_Assigned_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Days taken to Accept by Partner</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Accepted_Date__c</fullName>
+        <description>Date/Time when the Partner accepted the Target Prospect</description>
+        <externalId>false</externalId>
+        <label>Partner Accepted Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Added_Date_Time__c</fullName>
+        <description>Date/Time Partner was added to the Target Prospect</description>
+        <externalId>false</externalId>
+        <label>Partner Added Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Assigned_Date__c</fullName>
+        <description>Date/Time when the Partner was assigned to the Target Prospect</description>
+        <externalId>false</externalId>
+        <label>Prospect/Partner Activated Date/Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Assigned__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Set to True when the target prospect/partner is activated.</description>
+        <externalId>false</externalId>
+        <label>Prospect/Partner Activated</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Partner_BEC_ID_PDB__c</fullName>
+        <description>BEC ID from PDB</description>
+        <externalId>false</externalId>
+        <formula>Assigned_Partner__r.PDB_BEC_ID__c</formula>
+        <label>Partner BEC ID (PDB)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_BEC_ID_PGTMV__c</fullName>
+        <description>BEC ID from PGTMV</description>
+        <externalId>false</externalId>
+        <formula>Assigned_Partner__r.BEC_ID__c</formula>
+        <label>Partner BEC ID (PGTMV)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_BE_GEO_ID_PDB__c</fullName>
+        <description>Partner BE GEO ID from pdb</description>
+        <externalId>false</externalId>
+        <formula>Assigned_Partner__r.PDB_BE_GEO_ID__c</formula>
+        <label>Partner BE GEO ID (PDB)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_BE_GEO_ID_PGTMV__c</fullName>
+        <description>Partner BE GEO ID from pgtmv</description>
+        <externalId>false</externalId>
+        <formula>Assigned_Partner__r.BE_GEO_ID__c</formula>
+        <label>Partner BE GEO ID (PGTMV)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_City__c</fullName>
+        <description>Partner City</description>
+        <externalId>false</externalId>
+        <formula>Assigned_Partner__r.CRCity__c</formula>
+        <label>Partner City</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Country__c</fullName>
+        <description>Contains the country value from the partner channel account.</description>
+        <externalId>false</externalId>
+        <formula>Assigned_Partner__r.CRCountry__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Partner Country</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Status_Order__c</fullName>
+        <description>Release: P360 March 2013 
+Purpose: This will store the particular number depends on the partner status. 
+This is used for sorting the Target Prospect records based on the partner lead status.</description>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL( Partner_Status__c , 'Assigned (New)') , 1, 
+IF( ISPICKVAL( Partner_Status__c , 'Partner Assigned') , 2, 
+IF( ISPICKVAL( Partner_Status__c , 'Assigned to PSR') , 3, 
+IF( ISPICKVAL( Partner_Status__c , 'Actively Working') , 4, 
+IF( ISPICKVAL( Partner_Status__c , 'Rejected') , 5, 
+IF( ISPICKVAL( Partner_Status__c , 'Closed') , 6, 7 
+) 
+) 
+) 
+) 
+)  
+)</formula>
+        <label>Partner Status Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Assigned (New)</fullName>
+                    <default>true</default>
+                    <label>Assigned (New)</label>
+                </value>
+                <value>
+                    <fullName>Partner Assigned</fullName>
+                    <default>false</default>
+                    <label>Partner Assigned</label>
+                </value>
+                <value>
+                    <fullName>Assigned to PSR</fullName>
+                    <default>false</default>
+                    <label>Assigned to PSR</label>
+                </value>
+                <value>
+                    <fullName>Actively Working</fullName>
+                    <default>false</default>
+                    <label>Actively Working</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Prospect_Age__c</fullName>
+        <description>Release: P360 March 2013 
+Purpose: Store the age of target prospect. Today - Activation Date of Target Prospect.</description>
+        <externalId>false</externalId>
+        <formula>IF(Assignment_Activated__c == true, (Now() -  Partner_Assigned_Date__c), 0)</formula>
+        <label>Prospect Age (Days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rejected_Reason__c</fullName>
+        <description>Reason for rejecting the partner Assignment</description>
+        <externalId>false</externalId>
+        <label>Reject/Closed Reason</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>SCP_Partner_Status__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No Capacity at this time</fullName>
+                    <default>false</default>
+                    <label>No Capacity at this time</label>
+                </value>
+                <value>
+                    <fullName>Customer outside of my geography</fullName>
+                    <default>false</default>
+                    <label>Customer outside of my geography</label>
+                </value>
+                <value>
+                    <fullName>Customer/vertical outside focus area</fullName>
+                    <default>false</default>
+                    <label>Customer/vertical outside focus area</label>
+                </value>
+                <value>
+                    <fullName>No viable opportunity</fullName>
+                    <default>false</default>
+                    <label>No viable opportunity</label>
+                </value>
+                <value>
+                    <fullName>Too small of an opportunity</fullName>
+                    <default>false</default>
+                    <label>Too small of an opportunity</label>
+                </value>
+                <value>
+                    <fullName>Not certified/qualified to provide solution</fullName>
+                    <default>false</default>
+                    <label>Not certified/qualified to provide solution</label>
+                </value>
+                <value>
+                    <fullName>Customer has no money/budget/credit/financing</fullName>
+                    <default>false</default>
+                    <label>Customer has no money/budget/credit/financing</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Rejected</controllingFieldValue>
+                <valueName>No Capacity at this time</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rejected</controllingFieldValue>
+                <valueName>Customer outside of my geography</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rejected</controllingFieldValue>
+                <valueName>Customer/vertical outside focus area</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed</controllingFieldValue>
+                <valueName>No viable opportunity</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed</controllingFieldValue>
+                <valueName>Too small of an opportunity</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed</controllingFieldValue>
+                <valueName>Not certified/qualified to provide solution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed</controllingFieldValue>
+                <valueName>Customer has no money/budget/credit/financing</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SCP_Partner_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Partner_Status__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Partner Assigned</fullName>
+                    <default>true</default>
+                    <label>Partner Assigned</label>
+                </value>
+                <value>
+                    <fullName>Assigned to PSR</fullName>
+                    <default>false</default>
+                    <label>Assigned to PSR</label>
+                </value>
+                <value>
+                    <fullName>Actively Working</fullName>
+                    <default>false</default>
+                    <label>Actively Working</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Actively Working</controllingFieldValue>
+                <controllingFieldValue>Partner Assigned</controllingFieldValue>
+                <controllingFieldValue>Assigned to PSR</controllingFieldValue>
+                <valueName>Actively Working</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Actively Working</controllingFieldValue>
+                <controllingFieldValue>Closed</controllingFieldValue>
+                <valueName>Closed</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rejected</controllingFieldValue>
+                <controllingFieldValue>Partner Assigned</controllingFieldValue>
+                <controllingFieldValue>Assigned to PSR</controllingFieldValue>
+                <valueName>Rejected</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Partner Assigned</controllingFieldValue>
+                <valueName>Partner Assigned</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Assigned to PSR</controllingFieldValue>
+                <valueName>Assigned to PSR</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>TBM_TAM_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>TBM/TAM Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TBM_TAM_Name__c</fullName>
+        <description>Created as part of P360 Sep '12 Release. 
+Hold the Full Name of the Look Up field "TBM/TAM" for Gadget.</description>
+        <externalId>false</externalId>
+        <formula>TBM_TAM__r.FirstName &amp; " " &amp;  TBM_TAM__r.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>TBM/TAM Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TBM_TAM_Username__c</fullName>
+        <description>Created as part of P360 Sep '12 Release. 
+Hold the Username of the Look Up field "TBM/TAM" for Gadget.</description>
+        <externalId>false</externalId>
+        <formula>TBM_TAM__r.Username</formula>
+        <label>TBM TAM Username</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TBM_TAM__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Territory Business Manager or the Territory Account Manager.</description>
+        <externalId>false</externalId>
+        <label>TBM/TAM</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Assigned_Partners2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>TP_Conflicts_with_Partner_Allocation__c</fullName>
+        <description>Indicates if the TP partner conflicts with Partner Allocation that is set on the end customer account.</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ (Target_Prospect_Source__c != 'Partner') &amp;&amp; 
+ (Assigned_Partner__c == Customer_Account__r.Allocated_Partner_1__c ||
+  Assigned_Partner__c == Customer_Account__r.Allocated_Partner_2__c || 
+  Assigned_Partner__c == Customer_Account__r.Allocated_Partner_3__c ||
+  Assigned_Partner__c == Customer_Account__r.Allocated_Partner_4__c),
+'No',
+'Yes'
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>TP Conflicts with Partner Allocation</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_Architecture__c</fullName>
+        <externalId>false</externalId>
+        <label>Target Architecture</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Any/All Technologies</fullName>
+                    <default>false</default>
+                    <label>Any/All Technologies</label>
+                </value>
+                <value>
+                    <fullName>Collaboration-Unified Communications (UC)</fullName>
+                    <default>false</default>
+                    <label>Collaboration-Unified Communications (UC)</label>
+                </value>
+                <value>
+                    <fullName>Core-Routing Switching &amp; Services</fullName>
+                    <default>false</default>
+                    <label>Core-Routing Switching &amp; Services</label>
+                </value>
+                <value>
+                    <fullName>Data Center-Unified Computing Systems (UCS)</fullName>
+                    <default>false</default>
+                    <label>Data Center-Unified Computing Systems (UCS)</label>
+                </value>
+                <value>
+                    <fullName>Video-TelePresence &amp; Conferencing</fullName>
+                    <default>false</default>
+                    <label>Video-TelePresence &amp; Conferencing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Target_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Target Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Target_Prospect_Owner_ID__c</fullName>
+        <description>Target Prospect Owner ID</description>
+        <externalId>false</externalId>
+        <formula>OwnerId</formula>
+        <label>Target Prospect Owner ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_Prospect_Source__c</fullName>
+        <defaultValue>IF(
+ISPICKVAL($User.UserType, 'PowerPartner'), 'Partner', 'Cisco'
+)</defaultValue>
+        <description>Target Prospect Source set to partner</description>
+        <externalId>false</externalId>
+        <label>Target Prospect Source</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Technology_Filter__c</fullName>
+        <description>This picklist field is used on the TP filter screen</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This picklist field is used on the TP filter screen</inlineHelpText>
+        <label>Technology Filter</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Collab Applications</fullName>
+                    <default>false</default>
+                    <label>Collab Applications</label>
+                </value>
+                <value>
+                    <fullName>Collab Voice</fullName>
+                    <default>false</default>
+                    <label>Collab Voice</label>
+                </value>
+                <value>
+                    <fullName>DataCenter UCS</fullName>
+                    <default>false</default>
+                    <label>DataCenter UCS</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Routing</fullName>
+                    <default>false</default>
+                    <label>Routing</label>
+                </value>
+                <value>
+                    <fullName>Security</fullName>
+                    <default>false</default>
+                    <label>Security</label>
+                </value>
+                <value>
+                    <fullName>Services</fullName>
+                    <default>false</default>
+                    <label>Services</label>
+                </value>
+                <value>
+                    <fullName>Switching</fullName>
+                    <default>false</default>
+                    <label>Switching</label>
+                </value>
+                <value>
+                    <fullName>Telepresence</fullName>
+                    <default>false</default>
+                    <label>Telepresence</label>
+                </value>
+                <value>
+                    <fullName>Wirless</fullName>
+                    <default>false</default>
+                    <label>Wirless</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>has_Customer_Intelligence__c</fullName>
+        <externalId>false</externalId>
+        <formula>NOT ISNULL(Customer_Account_ID__c) &amp;&amp; NOT ISNULL(Customer_Account__r.CI_Last_Updated_Date__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>has Customer Intelligence</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isPSRAssigned__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is made to true whenever one of the "Assigned PSR" value is selected</description>
+        <externalId>false</externalId>
+        <label>PSR Assigned?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>is_PA_Assigned_Today__c</fullName>
+        <description>Nov 13 Release: To identicate whether PA is assigned Today</description>
+        <externalId>false</externalId>
+        <formula>IF(TODAY() - DATEVALUE(Partner_Assigned_Date__c) =0,"Yes","No")</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is PA Assigned Today</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>is_PSR_Assigned_Today__c</fullName>
+        <description>Nov 13 Release: To identicate whether PSR is assigned Today</description>
+        <externalId>false</externalId>
+        <formula>IF(TODAY() - DATEVALUE(PSR_Assigned_Date_Time__c) =0,True,False)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is PSR Assigned Today</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Partner assignments of End User Accounts are stored in this object.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>zzTarget Prospect</label>
+    <nameField>
+        <label>Target Prospect Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Target Prospects</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Customer_Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Partner_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchResultsAdditionalFields>Assigned_Partner__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Customer_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Partner_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Partner_Country__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Target_Architecture__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <visibility>Public</visibility>
+    <fieldSets>
+        <fullName>P360TPTxMAlert</fullName>
+        <description>TxM Dashboard</description>
+        <displayedFields>
+            <field>Customer_Account__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>TBM_TAM__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Marketing_Play_Name__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>P360TPTxMAlert</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>P360TPTxMDashboardAlert</fullName>
+        <description>To display field on TxM Dashboard</description>
+        <displayedFields>
+            <field>Customer_Account__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>TBM_TAM__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Marketing_Play_Name__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Partner_Status__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Expiration_Date__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Deal_Create_Date__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Assignment_Activated__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>P360TPTxMDashboardAlert</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>P360TPTxMNotification</fullName>
+        <description>TxM Dashboard</description>
+        <displayedFields>
+            <field>Customer_Account__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Marketing_Play_Name__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Expiration_Date__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>TBM_TAM__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Partner_Status__c</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>P360TPTxMNotification</label>
+    </fieldSets>
+    <listViews>
+        <fullName>ALL_Target_Prospects</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Partner_Status__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Marketing_Play_Description__c</columns>
+        <columns>Deal_Create_Date__c</columns>
+        <columns>Rejected_Reason__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>OWNER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <label>ALL Target Prospects</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Partner_Accepted_Prospects</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Marketing_Play_Description__c</columns>
+        <columns>Expiration_Date__c</columns>
+        <columns>Prospect_Age__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Partner_Status__c</field>
+            <operation>equals</operation>
+            <value>Actively Working</value>
+        </filters>
+        <label>Partner Accepted Prospects</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Partner_Created</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Partner_Status__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Marketing_Play_Description__c</columns>
+        <columns>Rejected_Reason__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>OWNER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Target_Prospect_Source__c</field>
+            <operation>equals</operation>
+            <value>Partner</value>
+        </filters>
+        <label>Partner Created</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Partner_Newly_Assigned_Prospects</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Partner_Status__c</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Marketing_Play_Description__c</columns>
+        <columns>Expiration_Date__c</columns>
+        <columns>Prospect_Age__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Partner_Status__c</field>
+            <operation>equals</operation>
+            <value>Partner Assigned,Assigned to PSR</value>
+        </filters>
+        <label>Partner Newly Assigned Prospects</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Prospects_Not_Activated</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Partner_Status__c</columns>
+        <columns>Target_Description__c</columns>
+        <columns>Marketing_Play_Description__c</columns>
+        <columns>Expiration_Date__c</columns>
+        <columns>Prospect_Age__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>TBM_TAM__c</columns>
+        <columns>Assigned_Partner_ID__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Partner_Status__c</field>
+            <operation>equals</operation>
+            <value>Assigned (New)</value>
+        </filters>
+        <label>Prospects Not Activated</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Rejected_Closed_Prospects</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Partner_Status__c</columns>
+        <columns>Rejected_Reason__c</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Marketing_Play_Description__c</columns>
+        <columns>Expiration_Date__c</columns>
+        <columns>Prospect_Age__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Partner_Status__c</field>
+            <operation>equals</operation>
+            <value>Rejected,Closed</value>
+        </filters>
+        <label>Rejected/Closed Prospects</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Target_Prospects_Expiring_Today</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Partner_Status__c</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Expiration_Date__c</columns>
+        <columns>Prospect_Age__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Assignment_Activated__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Expiration_Date__c</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Target Prospects Expiring Today</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Target_Prospects_Expiring_Tomorrow</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Partner_Status__c</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Expiration_Date__c</columns>
+        <columns>Prospect_Age__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Assignment_Activated__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Expiration_Date__c</field>
+            <operation>equals</operation>
+            <value>TOMORROW</value>
+        </filters>
+        <label>Target Prospects Expiring Tomorrow</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Target_Prospects_expiring_in_1_week</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Partner_Status__c</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Expiration_Date__c</columns>
+        <columns>Prospect_Age__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Assignment_Activated__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Expiration_Date__c</field>
+            <operation>equals</operation>
+            <value>NEXT_N_DAYS:7</value>
+        </filters>
+        <label>Target Prospects expiring in 1 week</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Target_Prospects_expiring_in_2_weeks</fullName>
+        <columns>Assignment_Activated__c</columns>
+        <columns>NAME</columns>
+        <columns>Assigned_Partner__c</columns>
+        <columns>Customer_Account__c</columns>
+        <columns>Partner_Status__c</columns>
+        <columns>Partner_Country__c</columns>
+        <columns>Target_Architecture__c</columns>
+        <columns>Expiration_Date__c</columns>
+        <columns>Prospect_Age__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Assignment_Activated__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Expiration_Date__c</field>
+            <operation>equals</operation>
+            <value>NEXT_N_DAYS:14</value>
+        </filters>
+        <label>Target Prospects expiring in 2 weeks</label>
+        <language>en_US</language>
+    </listViews>
+    <sharingReasons>
+        <fullName>Sharing_With_Partner__c</fullName>
+        <label>Sharing With Partner</label>
+    </sharingReasons>
+    <webLinks>
+        <fullName>Partner_Self_Service_PSS_Link</fullName>
+        <availability>online</availability>
+        <description>Link for Partner Users to access the PSS link from the Lead and Assigned Partner Records in Portal</description>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Partner Self Service (PSS) Link</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://apps.cisco.com/WWChannels/GETLOG/login.do</url>
+    </webLinks>
+    <webLinks>
+        <fullName>View_All_Deals</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View All Deals</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://tools-stage-was6.cisco.com/YS2PDD/home.do?actionType=showP360Deals&amp;partnerCCOID=pec_hold_test_12&amp;sfdcAccountId=0013000000Cyv0qAAB&amp;partnerRole=PA&amp;localeChanged=en_US.</url>
+    </webLinks>
+</CustomObject>
